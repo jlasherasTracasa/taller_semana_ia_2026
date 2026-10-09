@@ -37,8 +37,10 @@ def main():
         p = os.path.join(RAIZ, "alumnos", "ejercicios", e["id"], "ENUNCIADO.md")
         if os.path.exists(p):
             escenas[e["id"]] = enlaces(open(p, encoding="utf-8").read())
-    wiki = {os.path.basename(p)[:-3]: enlaces(open(p, encoding="utf-8").read())
-            for p in sorted(glob.glob(os.path.join(RAIZ, "wiki", "*.md"))) if not os.path.basename(p).startswith("_")}
+    orden = re.findall(r"\]\(([A-Za-z0-9_-]+)\.md\)", open(os.path.join(RAIZ, "wiki", "_Sidebar.md"), encoding="utf-8").read())
+    paginas = [os.path.basename(p)[:-3] for p in glob.glob(os.path.join(RAIZ, "wiki", "*.md")) if not os.path.basename(p).startswith("_")]
+    paginas.sort(key=lambda n: orden.index(n) if n in orden else len(orden))
+    wiki = {n: enlaces(open(os.path.join(RAIZ, "wiki", n + ".md"), encoding="utf-8").read()) for n in paginas}
     datos = {"indice": IDX, "validacion": VAL, "escenas": escenas, "wiki": wiki, "repo": REPO}
     html = open(os.path.join(RAIZ, "herramientas", "web_plantilla.html"), encoding="utf-8").read()
     html = html.replace("/*DATOS*/null", json.dumps(datos, ensure_ascii=False).replace("</", "<\\/"))
