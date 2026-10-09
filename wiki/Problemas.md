@@ -2,6 +2,11 @@
 
 | Síntoma | Por qué pasa | Arreglo |
 |---|---|---|
+| `python3: command not found` o «no se reconoce» | Python no está instalado o no está en el PATH | [🐍 Instalar Python](Instalar-Python.md). En Windows prueba `py` |
+| `python3` abre la Microsoft Store | Windows trae un alias que no es Python | Usa `py`, o quita el alias en *Alias de ejecución de aplicaciones* |
+| `The virtual environment was not created successfully` | En Ubuntu/Debian falta `python3-venv` | `sudo apt install python3-venv` |
+| Python 3.9 o anterior (típico en Mac) | El del sistema es antiguo | `brew install python@3.12` o el instalador de python.org |
+| `opencode --version` dice 1.x | Se instaló el paquete antiguo `opencode-ai` | `npm uninstall -g opencode-ai && npm i -g @opencode/cli@2.0.19` |
 | `Error: Invalid URL` o `No api key passed in` | opencode 2.x manda la orden a un **servicio en segundo plano** que arrancó antes de que cargaras tu `.env` | Usa `python3 taller.py lanzar …` o añade `--standalone`. También vale `opencode service restart` tras cargar el `.env` |
 | `opencode run` se queda colgado sin hacer nada | Espera texto por la entrada estándar, o una orden está en `ask` | Lanza con `< /dev/null` (taller.py ya lo hace); para `ask`, usa el modo interactivo (`python3 taller.py abrir …`) |
 | «The user dismissed this question» | El modelo usó la tool `question` en modo `run`, donde nadie contesta | Ya está `"question": "deny"` en el kit. Si usas otro `opencode.json`, añádelo |
@@ -10,7 +15,7 @@
 | Los ficheros aparecen en otra carpeta | opencode toma la carpeta de la variable `PWD` | Usa `taller.py`, o haz `cd` a la carpeta antes de lanzar `opencode` |
 | `/informe-semanal` no hace nada | Los comandos solo existen en el **modo interactivo** | `python3 taller.py abrir f3` y escribe `/informe-semanal` |
 | `No module named pptx` (u openpyxl, reportlab…) | Falta instalar las bibliotecas | `pip install -r requirements.txt` con el `.venv` activado |
-| Windows: `opencode` no se encuentra | El instalador de npm crea un `.cmd` que la terminal aún no ve | Cierra y abre la terminal después de `npm i -g opencode-ai` |
+| Windows: `opencode` no se encuentra | El instalador de npm crea un `.cmd` que la terminal aún no ve | Cierra y abre la terminal después de `npm i -g @opencode/cli@2.0.19` |
 | El comprobador dice ❌ pero el agente dijo «Listo» | Pasa. Es la lección del taller | Lee qué falla, mejora el encargo y vuelve a lanzarlo: `--prompt "…"` |
 | La clave ha aparecido en pantalla o en un fichero | — | Pide otra al profesor y borra la vieja. No la subas a ningún sitio |
 

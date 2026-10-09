@@ -197,16 +197,16 @@ async function construir(conNotas) {
 
   // ================================================================ 4 · Prepara tu portátil
   {
-    const s = slide("Antes de empezar", "Prepara tu portátil en cinco minutos", "Node, Python y la clave que os damos en clase. Paso a paso en la wiki: «Primeros pasos»");
+    const s = slide("Antes de empezar", "Prepara tu portátil en cinco minutos", "Python 3.10+, Node 18+ y la clave que os damos en clase. Paso a paso en la wiki: «Instalar Python» y «Primeros pasos»");
     codigo(s, ["# 1 · Descarga el kit", "git clone https://github.com/jlasherasTracasa/taller_semana_ia_2026.git", "cd taller_semana_ia_2026/alumnos", "",
-      "# 2 · Instala el agente y las bibliotecas", "npm i -g opencode-ai", "python3 -m venv .venv && . .venv/bin/activate", "pip install -r requirements.txt", "",
+      "# 2 · Instala el agente y las bibliotecas", "npm i -g @opencode/cli@2.0.19", "python3 -m venv .venv && . .venv/bin/activate", "pip install -r requirements.txt", "",
       "# 3 · Tu clave, en un fichero que nunca se comparte", "cp .env.example .env", "", "# 4 · Comprueba y empieza", "bash comprobar_entorno.sh", "python3 taller.py"].join("\n"), 0.6, 2.05, 7.5, 4.6, 12);
     filaIcono(s, "key", "La clave va en .env", "opencode.json solo lleva {env:…}. Nunca la pegues en un chat. Wiki: «Variables de entorno».", 8.4, 2.05, 4.35, 1.4);
     filaIcono(s, "terminal", "Siempre --standalone", "opencode 2 usa un servicio en segundo plano que no ve tu .env. taller.py ya lo pone.", 8.4, 3.65, 4.35, 1.4);
-    filaIcono(s, "folder", "Trabaja en copias", "taller.py prepara cada ejercicio en ~/taller-agentes/, fuera del kit.", 8.4, 5.25, 4.35, 1.4);
+    filaIcono(s, "folder", "¿Sin Python o sin Node?", "Wiki «Instalar Python»: Windows (winget), Mac (brew) y Linux (apt). En Windows, py en vez de python3.", 8.4, 5.25, 4.35, 1.4);
     notas(s, "Si lo mandaste antes, aquí solo se comprueba (5 min máximo; quien vaya con retraso, en pareja). " +
       "Gotcha real de opencode 2.x: sin --standalone, la orden va a un servicio en segundo plano arrancado antes de cargar el .env → «Invalid URL» o «No api key». " +
-      "Windows: PowerShell + Python + Node funcionan; taller.py no necesita bash. Sin Node: F.0 y F.1 solo necesitan Python.");
+      "Ojo: el paquete npm opencode-ai instala la 1.x; el bueno es @opencode/cli@2.0.19. Windows: PowerShell + Python + Node funcionan; taller.py no necesita bash. Sin Node: F.0 y F.1 solo necesitan Python.");
   }
 
   // ================================================================ 01 · Qué es un agente

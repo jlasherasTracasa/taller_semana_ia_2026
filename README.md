@@ -37,6 +37,7 @@
 | Quiero… | Ve a |
 |---|---|
 | **Ver los ejercicios y mi itinerario** desde el navegador | 🌐 **[jlasherastracasa.github.io/taller_semana_ia_2026](https://jlasherastracasa.github.io/taller_semana_ia_2026/)** |
+| **Instalar Python y Node** (Windows, macOS, Linux) | 🐍 [Wiki → Instalar Python](https://jlasherastracasa.github.io/taller_semana_ia_2026/#/wiki/Instalar-Python) |
 | **Instalar y empezar** (paso a paso) | 📖 [Wiki → Primeros pasos](https://jlasherastracasa.github.io/taller_semana_ia_2026/#/wiki/Primeros-pasos) · también en [`wiki/`](wiki/Home.md) |
 | Poner mi **clave** (variables de entorno) | 📖 [Wiki → Variables de entorno](wiki/Variables-de-entorno.md) |
 | Entender el **`opencode.json`** | 📖 [Wiki → El fichero opencode.json](wiki/opencode-json.md) |
@@ -94,10 +95,12 @@ comprobador automático, **lo que pasó cuando lo validamos** y dos o tres camin
 
 ## 🚀 Empezar en cinco minutos
 
+> 🐍 Antes: **Python 3.10+** y **Node.js 18+** ([cómo instalarlos](wiki/Instalar-Python.md)). En Windows, `py` en vez de `python3`.
+
 ```bash
 git clone https://github.com/jlasherasTracasa/taller_semana_ia_2026.git
 cd taller_semana_ia_2026/alumnos
-npm i -g opencode-ai                                   # el agente
+npm i -g @opencode/cli@2.0.19                                   # el agente
 python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
 cp .env.example .env                                   # y escribe la clave que te damos en clase
 python3 taller.py                                      # perfiles, áreas y tu progreso

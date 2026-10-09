@@ -5,6 +5,7 @@ ejercicios. Están todas resueltas en el kit, pero si tienes guías o scripts an
 
 | Antes (1.x) | Ahora (2.x) | Qué hacer |
 |---|---|---|
+| `npm i -g opencode-ai` | Ese paquete se quedó en la 1.18. La 2.x es **otro paquete** | `npm i -g @opencode/cli@2.0.19` (antes, `npm uninstall -g opencode-ai`) |
 | `opencode run` ejecutaba todo en el mismo proceso | Usa un **servicio en segundo plano** que no ve las variables de tu terminal | `opencode run --standalone …` |
 | `opencode run --command informe-semanal` | `--command` ya no existe | Modo interactivo: `opencode` y `/informe-semanal` |
 | Comandos en `.opencode/command/` | `.opencode/commands/` | Renombrar la carpeta |

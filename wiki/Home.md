@@ -5,6 +5,7 @@ Aquí está todo lo que necesitas para hacer los ejercicios en clase y repetirlo
 
 | Página | Para qué |
 |---|---|
+| [🐍 Instalar Python](Instalar-Python.md) | Python, Node.js y el agente en Windows, macOS y Linux, paso a paso |
 | [🚀 Primeros pasos](Primeros-pasos.md) | Instalar opencode, poner tu clave y lanzar tu primer encargo |
 | [🧭 Cómo funciona el taller](Como-funciona.md) | Perfiles, áreas, comprobador, siguiente paso y niveles |
 | [🧠 Conceptos](Conceptos.md) | Agente, ReAct, tools, AGENTS.md, comandos, skills, MCP, subagentes, permisos |

@@ -7,8 +7,11 @@
 
 ## 🚀 Puesta en marcha
 
+> 🐍 Necesitas **Python 3.10+** y **Node.js 18+**. ¿No los tienes? [Wiki → Instalar Python](../wiki/Instalar-Python.md).
+> En Windows escribe `py` donde pone `python3`.
+
 ```bash
-npm i -g opencode-ai                                    # el agente (validado con la 2.0.19)
+npm i -g @opencode/cli@2.0.19                                    # el agente (validado con la 2.0.19)
 python3 -m venv .venv && . .venv/bin/activate           # Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt                         # las bibliotecas de los ejercicios
 cp .env.example .env                                    # y escribe la clave que te damos en clase

@@ -1,6 +1,7 @@
 **🧭 Taller de agentes**
 
 - [Inicio](Home.md)
+- [🐍 Instalar Python](Instalar-Python.md)
 - [🚀 Primeros pasos](Primeros-pasos.md)
 - [🧭 Cómo funciona](Como-funciona.md)
 - [🧠 Conceptos](Conceptos.md)

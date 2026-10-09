@@ -21,7 +21,7 @@ PY=python3; [ -x .venv/bin/python ] && PY=.venv/bin/python
 if command -v "$PY" >/dev/null 2>&1 && "$PY" -c 'import sys; sys.exit(sys.version_info < (3, 10))'; then
   pasa "$("$PY" --version) ($PY)"
 else
-  falla "hace falta Python 3.10+ (https://www.python.org)"
+  falla "hace falta Python 3.10+  →  Windows: winget install Python.Python.3.12 · macOS: brew install python@3.12 · Linux: sudo apt install python3 python3-venv python3-pip  (wiki: Instalar Python)"
 fi
 
 echo "== 2) Bibliotecas de los ejercicios (requirements.txt) =="
@@ -40,7 +40,7 @@ echo "== 3) Node 18 o superior =="
 if command -v node >/dev/null 2>&1 && node -e 'process.exit(parseInt(process.versions.node) < 18 ? 1 : 0)'; then
   pasa "node $(node --version)"
 else
-  falla "hace falta Node.js 18+ (https://nodejs.org)"
+  falla "hace falta Node.js 18+  →  Windows: winget install OpenJS.NodeJS.LTS · macOS: brew install node · Linux: sudo apt install nodejs npm  (wiki: Instalar Python)"
 fi
 
 echo "== 4) opencode 2.x =="
@@ -48,10 +48,10 @@ if command -v opencode >/dev/null 2>&1; then
   V=$(opencode --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
   case "$V" in
     2.*) pasa "opencode $V (validado con 2.0.19)" ;;
-    *)   avisa "opencode $V: el kit está validado con la 2.0.19 →  npm i -g opencode-ai@2.0.19" ;;
+    *)   avisa "opencode $V: el kit está validado con la 2.0.19 →  npm i -g @opencode/cli@2.0.19" ;;
   esac
 else
-  falla "no está instalado →  npm i -g opencode-ai"
+  falla "no está instalado →  npm i -g @opencode/cli@2.0.19"
 fi
 
 echo "== 5) Clave del modelo (no se imprime) =="

@@ -2,6 +2,9 @@
 
 Necesitas un portátil **sin GPU** (vale cualquiera), **Node.js 18+** y **Python 3.10+**. Calcula 10 minutos.
 
+> 🐍 ¿No sabes si tienes Python o Node, o no los tienes? Sigue antes [Instalar Python](Instalar-Python.md)
+> (Windows, macOS y Linux). En Windows escribe `py` donde pone `python3`.
+
 ## 1. Descarga el kit
 
 ```bash
@@ -14,7 +17,7 @@ cd taller_semana_ia_2026/alumnos
 ## 2. Instala el agente y las bibliotecas
 
 ```bash
-npm i -g opencode-ai                 # el agente (validado con la 2.0.19)
+npm i -g @opencode/cli@2.0.19                 # el agente (validado con la 2.0.19)
 python3 -m venv .venv                # un entorno de Python solo para el taller
 . .venv/bin/activate                 # Windows (PowerShell): .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
