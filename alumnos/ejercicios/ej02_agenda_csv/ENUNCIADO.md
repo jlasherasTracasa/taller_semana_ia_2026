@@ -1,10 +1,10 @@
-# 🔵 EJ 02 · El programa de fiestas
+# 🔵 EJ 02 · Agenda de actos a partir de una hoja de cálculo
 
-> 🌐 **Puerta A · El escaparate** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 🌐 **Webs** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## 📖 La escena
+## 📌 La situación
 
-La comisión de fiestas tiene el programa en una hoja de cálculo. Lo quieren en el móvil de todo el pueblo.
+La comisión de fiestas tiene el programa en una hoja de cálculo y quiere publicarlo en una página que se lea bien en el móvil.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Lee programa.csv y crea agenda.html: una sola columna
 - Sin dependencias externas.
 
 ```bash
-python3 taller.py comprobar ej02      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej02      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -45,8 +45,8 @@ Los 6 actos, agrupados en mañana y tarde, y los contó al final.
 
 Prompt, salida real y ficheros: [`soluciones/ej02_agenda_csv/`](../../soluciones/ej02_agenda_csv/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Ahora, que la gente pueda apuntarse** → [🟣 EJ 03 · El formulario que guarda en JSON (y el proceso ajeno)](../ej03_formulario_json/ENUNCIADO.md)
-- **Publicarla** → [🔵 EJ 04 · Publicar la web (sin darle tus llaves)](../ej04_github_pages/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Ahora, que la gente pueda apuntarse** → [🟣 EJ 03 · Formulario web que guarda los envíos (sin matar procesos ajenos)](../ej03_formulario_json/ENUNCIADO.md)
+- **Publicarla** → [🔵 EJ 04 · Publicar una web en GitHub Pages (sin darle tus credenciales)](../ej04_github_pages/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

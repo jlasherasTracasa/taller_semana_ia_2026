@@ -1,10 +1,10 @@
 # 🔵 F.4 · Skills: recetas que el agente carga cuando las necesita
 
-> ⚙️ **Puerta F · La sala de máquinas** · 🔵 Medio · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 📚 💻
+> ⚙️ **Cómo funciona un agente** · 🔵 Medio · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 📚 💻
 
-## 📖 La escena
+## 📌 La situación
 
-La asociación de vecinos necesita el acta de la reunión con el formato exacto del registro. Hay una receta para eso.
+Una asociación de vecinos necesita el acta de cada reunión con el formato exacto que pide el registro de asociaciones.
 
 ## 🎯 Objetivo
 
@@ -38,7 +38,7 @@ opencode run --standalone "Haz el acta de la reunión de transcripcion_reunion.t
 - En la salida verás que el agente llamó a la tool `skill`: fíjate en que el encargo **no** la nombraba.
 
 ```bash
-python3 taller.py comprobar f4      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar f4      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧗 Reto extra
@@ -51,8 +51,8 @@ El agente **descubrió y cargó la skill** `acta-reunion` sin que el encargo la 
 
 Prompt, salida real y ficheros: [`soluciones/f4_skills/`](../../soluciones/f4_skills/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
 - **Quiero darle una herramienta nueva, no una receta** → [🟣 F.6 · Tu propia tool: plazos en días hábiles](../f6_tool_propia/ENUNCIADO.md)
 - **Quiero que un segundo agente revise el trabajo** → [🟣 F.7 · Subagentes: un redactor y un revisor que no puede tocar nada](../f7_subagentes/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

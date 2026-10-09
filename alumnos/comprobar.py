@@ -445,6 +445,33 @@ def ej25(d):
     ok(re.search(r"no lo dice|no aparece|no figura|no viene|no indica", tel, re.I), "admite que la carta no da teléfono")
 
 
+def ej26(d):
+    t = leer(os.path.join(d, "comparativa.md"))
+    if not ok(t, "existe comparativa.md"):
+        return
+    nums = [float(x.replace(".", "").replace(",", ".")) if "," in x else float(x)
+            for x in re.findall(r"\d{3}(?:[.,]\d{2})(?!\d)", t)]
+    for letra, valor in (("A", 704.14), ("B", 646.89), ("C", 711.51)):
+        ok(any(abs(n - valor) <= 1 for n in nums), f"coste anual de la oferta {letra}: {valor:.2f} €".replace(".", ","))
+    ok(re.search(r"(m[aá]s barat[ao]|recomiend|elige|mejor opci)[^\n]{0,80}\bB\b|\bB\b[^\n]{0,80}(m[aá]s barat|recomend|mejor)", t, re.I),
+       "recomienda la oferta B")
+    ok(re.search(r"cuota", t, re.I), "explica el efecto de la cuota mensual de la C")
+
+
+def ej27(d):
+    t = leer(os.path.join(d, "revision.md")).lower()
+    if not ok(t, "existe revision.md"):
+        return
+    ok(re.search(r"inyecci[oó]n sql|sql injection", t), "detecta la inyección SQL")
+    ok(re.search(r"(clave|api.?key|secreto|credencial)[^\n]{0,80}(c[oó]digo|hardcod|fuente|escrita|repositorio)|hardcod", t), "detecta la clave escrita en el código")
+    ok(re.search(r"65", t) and re.search(r"regresi|>=|mayor o igual|jubilad", t), "detecta la regresión de la cuota a los 65")
+    ok(re.search(r"test", t) and re.search(r"(borr|elimin|quit)[a-z]*[^\n]{0,60}test|test[^\n]{0,60}(borr|elimin|quit)", t), "detecta los tests eliminados")
+    ok(re.search(r"except", t), "señala el except que oculta errores")
+    ok(re.search(r"(pedir|solicitar|request)[^\n]{0,20}cambios|no aprobar|rechaz|changes requested", t), "veredicto: pedir cambios")
+    orig = os.path.join(KIT, "ejercicios/ej27_revision_codigo/cambio.diff")
+    ok(leer(os.path.join(d, "cambio.diff")) == leer(orig), "no ha modificado el diff")
+
+
 def f2(d):
     avisos = busca(d, "avisos/2026-11-08_*.md")
     if not ok(avisos, "aviso guardado en avisos/2026-11-08_*.md (norma de AGENTS.md)"):

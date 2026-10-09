@@ -1,10 +1,10 @@
-# 🔵 EJ 12 · Números que cuadran
+# 🔵 EJ 12 · Presentación con gráfico y totales que cuadran
 
-> 📊 **Puerta C · La bodega** · 🔵 Medio · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 📊 **Informes y presentaciones** · 🔵 Medio · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## 📖 La escena
+## 📌 La situación
 
-La tienda del pueblo quiere un gráfico de ventas. Y que los totales cuadren al céntimo.
+Una tienda quiere un gráfico de ventas del semestre y una tabla de totales que cuadren al céntimo con sus datos.
 
 ## 🎯 Objetivo
 
@@ -35,7 +35,7 @@ opencode run --standalone "Lee ventas_tienda.csv y genera ventas.pptx con tres d
 - `ventas.pptx` con el gráfico y los totales EXACTOS: hogar 29.800 €, textil 18.700 €, bazar 14.000 €, total 62.500 €.
 
 ```bash
-python3 taller.py comprobar ej12      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej12      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas
@@ -48,8 +48,8 @@ Gráfico y tabla con los totales exactos. En la ronda 1, sin pedir la tabla, **l
 
 Prompt, salida real y ficheros: [`soluciones/ej12_grafico_pptx/`](../../soluciones/ej12_grafico_pptx/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Que se repita cada semana** → [🔵 EJ 16 · El informe que se recalcula solo](../ej16_informe_semanal/ENUNCIADO.md)
+- **Que se repita cada semana** → [🔵 EJ 16 · Informe semanal que se recalcula solo](../ej16_informe_semanal/ENUNCIADO.md)
 - **Como comando** → [🔵 F.3 · Comandos: el encargo de todos los lunes en una palabra](../f3_comandos/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

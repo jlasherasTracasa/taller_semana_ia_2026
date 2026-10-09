@@ -1,10 +1,10 @@
-# 🟢 EJ 15 · La carpeta de Descargas
+# 🟢 EJ 15 · Ordenar la carpeta de Descargas
 
-> 🗂️ **Puerta D · El ayuntamiento** · 🟢 Fácil · ⏱ 10 min · 🛠️ `opencode run` · Recomendado para: 🧭
+> 🗂️ **Documentos y tareas repetitivas** · 🟢 Fácil · ⏱ 10 min · 🛠️ `opencode run` · Recomendado para: 🧭
 
-## 📖 La escena
+## 📌 La situación
 
-Once archivos mezclados: facturas, fotos de la playa, el temario de oposiciones… Ordenar sin perder nada.
+La carpeta de Descargas tiene facturas, fotos, hojas de cálculo y documentos mezclados. Hay que ordenarla sin perder nada.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Organiza descargas/: crea las subcarpetas facturas, f
 - Nada borrado ni renombrado, nada suelto.
 
 ```bash
-python3 taller.py comprobar ej15      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej15      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -45,7 +45,7 @@ python3 taller.py comprobar ej15      # el agente no puede darte el sello: solo 
 
 Prompt, salida real y ficheros: [`soluciones/ej15_ordenar_descargas/`](../../soluciones/ej15_ordenar_descargas/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Certificados para todos** → [🟢 EJ 19 · Un certificado para cada persona](../ej19_certificados_pdf/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Certificados para todos** → [🟢 EJ 19 · Certificados personalizados en lote](../ej19_certificados_pdf/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

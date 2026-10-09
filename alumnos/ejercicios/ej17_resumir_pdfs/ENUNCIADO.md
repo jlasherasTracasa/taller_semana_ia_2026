@@ -1,10 +1,10 @@
-# 🔵 EJ 17 · Tres PDF en una tabla
+# 🔵 EJ 17 · Resumir varios PDF en una tabla
 
-> 🗂️ **Puerta D · El ayuntamiento** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 🗂️ **Documentos y tareas repetitivas** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## 📖 La escena
+## 📌 La situación
 
-El centro de mayores tiene tres guías en PDF. Nadie se las ha leído. Una tabla con lo esencial, por favor.
+Un centro de mayores tiene tres guías en PDF que nadie se ha leído. Se necesita una tabla con lo esencial de cada una.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Lee los PDF de apuntes/ uno a uno con pdfplumber y cr
 - Los puntos se pueden encontrar en los originales (compruébalo con uno).
 
 ```bash
-python3 taller.py comprobar ej17      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej17      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -45,7 +45,7 @@ Tabla con los tres PDF y puntos sacados del texto.
 
 Prompt, salida real y ficheros: [`soluciones/ej17_resumir_pdfs/`](../../soluciones/ej17_resumir_pdfs/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
 - **Facturas a Excel** → [🔵 EJ 18 · Facturas en PDF a Excel](../ej18_facturas_excel/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

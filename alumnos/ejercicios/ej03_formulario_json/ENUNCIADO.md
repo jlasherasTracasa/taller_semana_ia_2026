@@ -1,10 +1,10 @@
-# 🟣 EJ 03 · El formulario que guarda en JSON (y el proceso ajeno)
+# 🟣 EJ 03 · Formulario web que guarda los envíos (sin matar procesos ajenos)
 
-> 🌐 **Puerta A · El escaparate** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 💻
+> 🌐 **Webs** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 💻
 
-## 📖 La escena
+## 📌 La situación
 
-Inscripciones para el taller de pan: un formulario y un servidor mínimo. Aquí, preparando el taller, un agente mató un proceso que no era suyo.
+Para las inscripciones a un taller hace falta un formulario y un servidor mínimo que guarde los datos. Ojo: preparando este taller, un agente mató un proceso que no era suyo.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Crea un formulario de contacto HTML (nombre, correo y
 - No queda nada escuchando en el 8901 al acabar.
 
 ```bash
-python3 taller.py comprobar ej03      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej03      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas
@@ -49,7 +49,7 @@ Cumple, pero tardó casi 4 minutos: varios intentos de `nohup timeout 60 … &` 
 
 Prompt, salida real y ficheros: [`soluciones/ej03_formulario_json/`](../../soluciones/ej03_formulario_json/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
 - **¿Qué más podría hacer un agente con bash libre?** → [⚫ F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?](../f8_permisos/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

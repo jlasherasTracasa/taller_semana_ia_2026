@@ -1,10 +1,10 @@
-# 🔵 EJ 11 · La vendimia en diapositivas
+# 🔵 EJ 11 · De informe escrito a presentación
 
-> 📊 **Puerta C · La bodega** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 📊 **Informes y presentaciones** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## 📖 La escena
+## 📌 La situación
 
-La Bodega Larraz presenta la cosecha en la cooperativa. Tienen el informe; no tienen tiempo para el PowerPoint.
+Una bodega presenta los resultados de la vendimia en la asamblea de la cooperativa. Tiene el informe escrito; falta la presentación.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Lee informe_cosecha.md y genera presentacion.pptx con
 - Cifras fieles: 84.000 kg, −12 % frente a 95.500 kg.
 
 ```bash
-python3 taller.py comprobar ej11      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej11      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -45,8 +45,8 @@ python3 taller.py comprobar ej11      # el agente no puede darte el sello: solo 
 
 Prompt, salida real y ficheros: [`soluciones/ej11_informe_pptx/`](../../soluciones/ej11_informe_pptx/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Con gráfico de verdad** → [🔵 EJ 12 · Números que cuadran](../ej12_grafico_pptx/ENUNCIADO.md)
-- **Revisar un deck ajeno** → [🔵 EJ 13 · Revisar la presentación de otro](../ej13_revision_deck/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Con gráfico de verdad** → [🔵 EJ 12 · Presentación con gráfico y totales que cuadran](../ej12_grafico_pptx/ENUNCIADO.md)
+- **Revisar un deck ajeno** → [🔵 EJ 13 · Revisar y corregir una presentación ajena](../ej13_revision_deck/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

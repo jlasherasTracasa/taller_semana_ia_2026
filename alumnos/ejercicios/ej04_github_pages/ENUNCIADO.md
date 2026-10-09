@@ -1,10 +1,10 @@
-# 🔵 EJ 04 · Publicar la web (sin darle tus llaves)
+# 🔵 EJ 04 · Publicar una web en GitHub Pages (sin darle tus credenciales)
 
-> 🌐 **Puerta A · El escaparate** · 🔵 Medio · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 📚 💻
+> 🌐 **Webs** · 🔵 Medio · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 📚 💻
 
-## 📖 La escena
+## 📌 La situación
 
-Pilar quiere un enlace para WhatsApp. Lo publicas gratis en GitHub Pages… pero el último paso lo das tú.
+La web ya está hecha y hay que publicarla gratis. El agente prepara todo; el último paso, con tus credenciales, lo das tú.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Voy a publicar index.html en GitHub Pages. Inicializa
 - El agente no ha hecho `push` ni ha pedido tokens. La URL pública la compruebas tú.
 
 ```bash
-python3 taller.py comprobar ej04      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej04      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas
@@ -49,7 +49,7 @@ Repositorio con commit, `README.md` y `PASOS.md` en castellano, sin `push` ni cr
 
 Prompt, salida real y ficheros: [`soluciones/ej04_github_pages/`](../../soluciones/ej04_github_pages/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **¿Es accesible?** → [🔵 EJ 05 · Una web para el centro de mayores](../ej05_auditoria_web/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **¿Es accesible?** → [🔵 EJ 05 · Auditoría de accesibilidad de una web](../ej05_auditoria_web/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

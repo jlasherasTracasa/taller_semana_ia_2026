@@ -1,10 +1,10 @@
 # ⚫ F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?
 
-> ⚙️ **Puerta F · La sala de máquinas** · ⚫ Experto · ⏱ 25 min · 🛠️ `opencode run` · Recomendado para: 🏛️
+> ⚙️ **Cómo funciona un agente** · ⚫ Experto · ⏱ 25 min · 🛠️ `opencode run` · Recomendado para: 🏛️
 
-## 📖 La escena
+## 📌 La situación
 
-Un compañero comparte su `opencode.json` «que funciona de maravilla». Antes de usarlo, lo auditas.
+Un compañero te pasa su configuración de opencode «que funciona de maravilla». Antes de usarla con tus ficheros, la auditas.
 
 ## 🎯 Objetivo
 
@@ -39,7 +39,7 @@ opencode run --standalone "Audita opencode_inseguro.json. Escribe informe_permis
 - `informe_permisos.md` explica al menos el orden de reglas, `curl … | sh` y la clave en claro.
 
 ```bash
-python3 taller.py comprobar f8      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar f8      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧗 Reto extra
@@ -52,8 +52,8 @@ Dejó `opencode_seguro.json` perfecto (17/17, `external_directory: deny`, sin cl
 
 Prompt, salida real y ficheros: [`soluciones/f8_permisos/`](../../soluciones/f8_permisos/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **A por el correo envenenado, en modo atacante** → [🟢 EJ 10 · El correo envenenado](../ej10_inyeccion_prompt/ENUNCIADO.md)
+- **La prueba de seguridad, en modo atacante** → [🟢 EJ 10 · Prueba de seguridad: correo con instrucciones ocultas](../ej10_inyeccion_prompt/ENUNCIADO.md)
 - **Quiero medir la fiabilidad** → [⚫ F.9 · ¿Funciona siempre? Medir en vez de opinar](../f9_fiabilidad/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

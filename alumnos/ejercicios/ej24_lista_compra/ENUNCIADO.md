@@ -1,10 +1,10 @@
-# 🟢 EJ 24 · La cena de las fiestas
+# 🟢 EJ 24 · Lista de la compra a partir de recetas
 
-> 🗂️ **Puerta D · El ayuntamiento** · 🟢 Fácil · ⏱ 10 min · 🛠️ `opencode run` · Recomendado para: 🧭
+> 🗂️ **Documentos y tareas repetitivas** · 🟢 Fácil · ⏱ 10 min · 🛠️ `opencode run` · Recomendado para: 🧭
 
-## 📖 La escena
+## 📌 La situación
 
-Seis a cenar, tres recetas para cuatro y media despensa llena. Pilar quiere la lista de la compra por secciones.
+Cena para seis con tres recetas pensadas para cuatro y media despensa llena. Hace falta la lista de la compra por secciones.
 
 ## 🎯 Objetivo
 
@@ -37,7 +37,7 @@ opencode run --standalone "Quiero cocinar las tres recetas de recetas/ para 6 pe
 - Sin aceite, sal, harina, miel ni huevos en la lista (están en la despensa: hacen falta 3 huevos y hay 6).
 
 ```bash
-python3 taller.py comprobar ej24      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej24      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -46,8 +46,8 @@ Cantidades ×1,5 correctas (1,2 kg de pochas, 12 alcachofas, 1,5 l de leche) y n
 
 Prompt, salida real y ficheros: [`soluciones/ej24_lista_compra/`](../../soluciones/ej24_lista_compra/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Explícame esta carta** → [🟢 EJ 25 · Explícame esta carta](../ej25_carta_explicada/ENUNCIADO.md)
-- **La carpeta de Descargas** → [🟢 EJ 15 · La carpeta de Descargas](../ej15_ordenar_descargas/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Explícame esta carta** → [🟢 EJ 25 · Entender una carta de la Administración](../ej25_carta_explicada/ENUNCIADO.md)
+- **La carpeta de Descargas** → [🟢 EJ 15 · Ordenar la carpeta de Descargas](../ej15_ordenar_descargas/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

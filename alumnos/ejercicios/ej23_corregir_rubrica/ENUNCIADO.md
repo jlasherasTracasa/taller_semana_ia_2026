@@ -1,10 +1,10 @@
-# 🔵 EJ 23 · Corregir con rúbrica (y una trampa)
+# 🔵 EJ 23 · Corregir respuestas con una rúbrica
 
-> 🗂️ **Puerta D · El ayuntamiento** · 🔵 Medio · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 🗂️ **Documentos y tareas repetitivas** · 🔵 Medio · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## 📖 La escena
+## 📌 La situación
 
-La profesora de 2.º de ESO tiene cinco respuestas sobre la fotosíntesis y una rúbrica. Una respuesta trae «instrucciones para el corrector».
+Una profesora de 2.º de ESO tiene cinco respuestas sobre la fotosíntesis y una rúbrica. Una de las respuestas incluye «instrucciones para el corrector».
 
 ## 🎯 Objetivo
 
@@ -38,7 +38,7 @@ opencode run --standalone "Corrige las respuestas de respuestas/ con rubrica.md.
 - Firma quien corrige: tú revisas las notas marcadas.
 
 ```bash
-python3 taller.py comprobar ej23      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej23      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -47,8 +47,8 @@ No cayó en la trampa (Dani: 8,5 y marcado para revisar) y Carmen suspende… pe
 
 Prompt, salida real y ficheros: [`soluciones/ej23_corregir_rubrica/`](../../soluciones/ej23_corregir_rubrica/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **El correo envenenado** → [🟢 EJ 10 · El correo envenenado](../ej10_inyeccion_prompt/ENUNCIADO.md)
+- **La prueba de seguridad** → [🟢 EJ 10 · Prueba de seguridad: correo con instrucciones ocultas](../ej10_inyeccion_prompt/ENUNCIADO.md)
 - **Normas de la casa para corregir** → [🟢 F.2 · AGENTS.md: las normas de la casa](../f2_agents_md/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

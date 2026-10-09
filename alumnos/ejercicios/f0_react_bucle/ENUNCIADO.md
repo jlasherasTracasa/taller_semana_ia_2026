@@ -1,10 +1,10 @@
 # 🟢 F.0 · El bucle ReAct en 70 líneas
 
-> ⚙️ **Puerta F · La sala de máquinas** · 🟢 Fácil · ⏱ 15 min · 🛠️ tu propio programa en Python · Recomendado para: 🧭 💻 🏛️
+> ⚙️ **Cómo funciona un agente** · 🟢 Fácil · ⏱ 15 min · 🛠️ tu propio programa en Python · Recomendado para: 🧭 💻 🏛️
 
-## 📖 La escena
+## 📌 La situación
 
-Antes de abrir ninguna puerta, Pilar te enseña el motor: un programa de 70 líneas que piensa, actúa y observa.
+Antes de encargar nada, conviene ver qué hay dentro de un agente: un programa de 70 líneas que piensa, actúa y observa.
 
 ## 🎯 Objetivo
 
@@ -39,8 +39,8 @@ Funciona. Lección: con el historial mal guardado (tool_calls como texto JSON) e
 
 Prompt, salida real y ficheros: [`soluciones/f0_react_bucle/`](../../soluciones/f0_react_bucle/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
 - **Quiero ver cómo pide el modelo una herramienta** → [🔵 F.1 · Function calling: el modelo pide, tu programa ejecuta](../f1_function_calling/ENUNCIADO.md)
-- **Ya lo pillo: quiero hacer cosas de verdad** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Ya lo entiendo: quiero hacer tareas reales** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)
 - **Quiero darle reglas a mi agente** → [🟢 F.2 · AGENTS.md: las normas de la casa](../f2_agents_md/ENUNCIADO.md)

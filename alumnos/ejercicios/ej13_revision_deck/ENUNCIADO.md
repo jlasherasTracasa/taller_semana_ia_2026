@@ -1,10 +1,10 @@
-# 🔵 EJ 13 · Revisar la presentación de otro
+# 🔵 EJ 13 · Revisar y corregir una presentación ajena
 
-> 📊 **Puerta C · La bodega** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 📊 **Informes y presentaciones** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## 📖 La escena
+## 📌 La situación
 
-El deck de ferias tiene faltas, mayúsculas locas y espacios dobles. Hay que corregirlo sin cambiar el contenido.
+Una presentación para una feria tiene faltas, mayúsculas inconsistentes y espacios dobles. Hay que corregirla sin cambiar el contenido.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Revisa deck_ferias.pptx y entrégame primero informe_
 - El original, intacto.
 
 ```bash
-python3 taller.py comprobar ej13      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej13      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -45,7 +45,7 @@ Informe y copia corregida, original intacto. Repetido con un HOME limpio porque 
 
 Prompt, salida real y ficheros: [`soluciones/ej13_revision_deck/`](../../soluciones/ej13_revision_deck/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Traducirlo** → [🟣 EJ 14 · Traducir un pptx por dentro](../ej14_traducir_deck/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Traducirlo** → [🟣 EJ 14 · Traducir una presentación sin romperla](../ej14_traducir_deck/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

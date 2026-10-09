@@ -1,10 +1,10 @@
-# 🟢 EJ 19 · Un certificado para cada persona
+# 🟢 EJ 19 · Certificados personalizados en lote
 
-> 🗂️ **Puerta D · El ayuntamiento** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚
+> 🗂️ **Documentos y tareas repetitivas** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚
 
-## 📖 La escena
+## 📌 La situación
 
-Fin de curso en el centro de mayores: un certificado de asistencia para cada participante.
+Termina un curso y cada participante necesita su certificado de asistencia con su nombre, curso y horas.
 
 ## 🎯 Objetivo
 
@@ -35,7 +35,7 @@ opencode run --standalone "Lee nombres.csv y genera en la carpeta certificados/ 
 - Un PDF por fila del CSV, cada uno con su nombre, ninguno repetido.
 
 ```bash
-python3 taller.py comprobar ej19      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej19      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -44,7 +44,7 @@ Un PDF por persona, cada uno con su nombre.
 
 Prompt, salida real y ficheros: [`soluciones/ej19_certificados_pdf/`](../../soluciones/ej19_certificados_pdf/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Exámenes por corregir** → [🔵 EJ 23 · Corregir con rúbrica (y una trampa)](../ej23_corregir_rubrica/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Exámenes por corregir** → [🔵 EJ 23 · Corregir respuestas con una rúbrica](../ej23_corregir_rubrica/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

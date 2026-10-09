@@ -1,10 +1,10 @@
 # 🔵 F.1 · Function calling: el modelo pide, tu programa ejecuta
 
-> ⚙️ **Puerta F · La sala de máquinas** · 🔵 Medio · ⏱ 15 min · 🛠️ tu propio programa en Python · Recomendado para: 💻 🏛️
+> ⚙️ **Cómo funciona un agente** · 🔵 Medio · ⏱ 15 min · 🛠️ tu propio programa en Python · Recomendado para: 💻 🏛️
 
-## 📖 La escena
+## 📌 La situación
 
-—¿Y si el agente se inventa una cuenta? —pregunta Pilar. Le enseñas que el modelo ni siquiera hace la cuenta: la pide.
+¿Y si el agente se inventa una cuenta? En realidad el modelo no calcula ni ejecuta nada: pide que lo haga tu programa.
 
 ## 🎯 Objetivo
 
@@ -36,8 +36,8 @@ Funciona: tool_call con `(1250+3750)*1.21`, ejecución local 6050.0 y respuesta 
 
 Prompt, salida real y ficheros: [`soluciones/f1_function_calling/`](../../soluciones/f1_function_calling/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
 - **Quiero ver un servidor de tools de verdad (MCP)** → [🟣 F.5 · MCP: enchufar un servidor de herramientas](../f5_mcp/ENUNCIADO.md)
 - **Quiero escribir MI propia tool** → [🟣 F.6 · Tu propia tool: plazos en días hábiles](../f6_tool_propia/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

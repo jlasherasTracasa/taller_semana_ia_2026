@@ -3,7 +3,7 @@
 
   alumnos/ejercicios/<id>/ENUNCIADO.md   un enunciado por escena, con sus bifurcaciones
   alumnos/ejercicios/indice.json         lo que usan taller.py, la web y la presentación
-  alumnos/AVENTURA.md                    el libro-juego: prólogo, perfiles, mapa, puertas y finales
+  alumnos/ITINERARIOS.md                    el libro-juego: prólogo, perfiles, mapa, puertas y finales
 
 Uso:  python3 herramientas/construir_kit.py
 """
@@ -27,7 +27,7 @@ def corto(e):
 
 def enlace(destino, desde_ejercicio=True):
     if destino == "PLAZA":
-        return "../../AVENTURA.md#-la-plaza" if desde_ejercicio else "#-la-plaza"
+        return "../../ITINERARIOS.md#-áreas-y-ejercicios" if desde_ejercicio else "#-áreas-y-ejercicios"
     if destino == "replicar_paper":
         return "../../replicar_paper/README.md" if desde_ejercicio else "replicar_paper/README.md"
     return f"../{destino}/ENUNCIADO.md" if desde_ejercicio else f"ejercicios/{destino}/ENUNCIADO.md"
@@ -35,7 +35,7 @@ def enlace(destino, desde_ejercicio=True):
 
 def nombre_destino(destino):
     if destino == "PLAZA":
-        return "↩️ La plaza"
+        return "↩️ Inicio: todas las áreas"
     d = A.POR_ID[destino]
     return f"{A.NIVELES[d['nivel']][0]} {d['num']} · {d['titulo']}"
 
@@ -47,9 +47,9 @@ def enunciado(e):
     modo = {"run": "`opencode run`", "interactivo": "`opencode` interactivo", "script": "tu propio programa en Python",
             "varios": "varios pasos"}[e["modo"]]
     L = [f"# {ico} {e['num']} · {e['titulo']}", "",
-         f"> {p['icono']} **Puerta {e['puerta']} · {p['nombre']}** · {ico} {nivel} · ⏱ {e['min']} min · "
+         f"> {p['icono']} **{p['nombre']}** · {ico} {nivel} · ⏱ {e['min']} min · "
          f"🛠️ {modo} · Recomendado para: {perf}", "",
-         "## 📖 La escena", "", e["escena"], "",
+         "## 📌 La situación", "", e["escena"], "",
          "## 🎯 Objetivo", "", e["objetivo"], ""]
     if e["datos"]:
         L += ["## 📦 Lo que tienes en esta carpeta", ""] + [f"- {x}" for x in e["datos"]] + [""]
@@ -66,7 +66,7 @@ def enunciado(e):
               "entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.", ""]
     L += ["## ✅ ¿Lo ha hecho de verdad?", ""] + [f"- {x}" for x in e["criterio"]] + [""]
     if corto(e) not in ("f0", "f1", "f9", "ej21", "reto"):
-        L += ["```bash", f"python3 taller.py comprobar {corto(e)}      # el agente no puede darte el sello: solo el comprobador",
+        L += ["```bash", f"python3 taller.py comprobar {corto(e)}      # el agente no decide si está bien: lo decide el comprobador",
               "```", ""]
     if e["pistas"]:
         L += ["## 💡 Pistas", ""] + [f"- {x}" for x in e["pistas"]] + [""]
@@ -78,55 +78,55 @@ def enunciado(e):
         if v.get("solucion"):
             L += [f"Prompt, salida real y ficheros: [`soluciones/{e['id']}/`](../../soluciones/{e['id']}/)", ""]
     if e["siguiente"]:
-        L += ["## 🔀 ¿Y ahora qué?", ""]
+        L += ["## 🔀 Siguiente paso", ""]
         L += [f"- **{t}** → [{nombre_destino(d)}]({enlace(d)})" for t, d in e["siguiente"]] + [""]
     return "\n".join(L)
 
 
 def mermaid():
     L = ["```mermaid", "flowchart LR",
-         '  P(("🏛️ La plaza<br/>Puente la Reina"))']
+         '  P(("👤 Tu perfil"))']
     for k, p in A.PUERTAS.items():
         L.append(f'  {k}["{p["icono"]} {p["nombre"]}<br/><small>{p["tema"]}</small>"]')
         L.append(f"  P --> {k}")
     for k in "ABCDF":
         L.append(f"  {k} -.-> X")
-    L += ['  X --> FIN{{"🏁 Finales<br/>🥉 🥈 🥇"}}', '  F --> R["🏔️ La torre<br/>replicar un paper"]', "  R --> FIN",
-          "  classDef jefe fill:#7a1f1f,color:#fff,stroke:#f2a93b;", "  class X jefe;", "```"]
+    L += ['  X --> FIN{{"🎯 Nivel alcanzado<br/>básico · intermedio · avanzado"}}', '  F --> R["🔬 Reto avanzado<br/>replicar un artículo"]', "  R --> FIN",
+          "  classDef seg fill:#5a2a24,color:#fff,stroke:#e4b858;", "  class X seg;", "```"]
     return "\n".join(L)
 
 
 def aventura_md(indice):
-    L = ["# 🧭 Elige tu propia aventura · Agentes de IA en Puente la Reina", "",
+    L = ["# 🧭 Itinerarios del taller · Elige tu camino", "",
          "> Taller «Más allá de ChatGPT: crea y conecta agentes de IA» · Semana de la IA 2026 · UPNA · "
-         "viernes 23 de octubre", "", A.PROLOGO, "", "## 🗺️ El mapa", "", mermaid(), "",
-         "## 🧑‍🤝‍🧑 ¿Quién eres?", "",
-         "Elige el perfil que más se parezca a ti. Es solo una ruta recomendada: puedes cambiar de puerta cuando quieras.", ""]
+         "viernes 23 de octubre", "", A.PROLOGO, "", "## 🗺️ Mapa", "", mermaid(), "",
+         "## 👤 Elige tu perfil", "",
+         "Elige el perfil que más se parezca a ti. Es un itinerario recomendado: puedes cambiar de área cuando quieras.", ""]
     for k, p in A.PERFILES.items():
         ruta = " → ".join(f"[{A.POR_ID[i]['num']}]({enlace(i, False)})" for i in p["ruta"])
-        L += [f"### {p['icono']} {p['nombre']}", "", f"*{p['quien']}*", "", f"**Ruta:** {ruta}", "", f"💡 {p['consejo']}", ""]
+        L += [f"### {p['icono']} {p['nombre']}", "", f"*{p['quien']}*", "", f"**Itinerario:** {ruta}", "", f"💡 {p['consejo']}", ""]
     L += ["## 📶 Niveles", "", "| | Nivel | Para quién |", "|---|---|---|"]
     L += [f"| {i} | {n} | {t} |" for i, n, t in A.NIVELES.values()] + [""]
-    L += ["## 🏛️ La plaza", "", "Desde aquí sale todo. Elige una puerta (y vuelve cuando quieras):", ""]
+    L += ["## 📚 Áreas y ejercicios", "", "Elige un área y un ejercicio. Cada uno te propone el siguiente paso al terminar.", ""]
     for k, p in A.PUERTAS.items():
         ejs = [e for e in A.E if e["puerta"] == k]
-        L += [f"### {p['icono']} Puerta {k} · {p['nombre']}", "", f"*{p['texto']}*", "",
-              "| | Escena | ⏱ | Para |", "|---|---|---|---|"]
+        L += [f"### {p['icono']} {p['nombre']}", "", f"*{p['texto']}*", "",
+              "| | Ejercicio | ⏱ | Perfiles |", "|---|---|---|---|"]
         for e in ejs:
             perf = " ".join(A.PERFILES[x]["icono"] for x in e["perfiles"])
             L.append(f"| {A.NIVELES[e['nivel']][0]} | [{e['num']} · {e['titulo']}]({enlace(e['id'], False)}) | {e['min']}' | {perf} |")
         L.append("")
-    L += ["### 🏔️ La torre", "", "Reto final para quien quiera más: replicar en CPU un paper de encoders legales en "
-          "español. → [replicar_paper/](replicar_paper/README.md)", ""]
-    L += ["## 🏁 Los finales", "", "Tu pasaporte (`python3 taller.py pasaporte`) te dice a cuál has llegado.", "",
-          "| | Final | Cómo se llega | Qué te llevas |", "|---|---|---|---|"]
+    L += ["### 🔬 Reto avanzado", "", "Para quien quiera más: replicar en CPU un artículo científico sobre encoders "
+          "legales en español. → [replicar_paper/](replicar_paper/README.md)", ""]
+    L += ["## 🎯 Niveles", "", "`python3 taller.py progreso` te dice qué nivel has alcanzado.", "",
+          "| | Nivel | Cómo se llega | Qué te llevas |", "|---|---|---|---|"]
     L += [f"| {a} | **{b}** | {c} | {d} |" for a, b, c, d in A.FINALES] + [""]
-    L += ["## 🎮 Cómo se juega", "", "```bash",
-          "python3 taller.py                 # la plaza: perfiles, puertas y tu pasaporte",
-          "python3 taller.py empezar ej01    # prepara la carpeta y te cuenta la escena",
+    L += ["## ▶️ Cómo se trabaja", "", "```bash",
+          "python3 taller.py                 # perfiles, áreas y tu progreso",
+          "python3 taller.py empezar ej01    # prepara la carpeta y te explica la situación",
           "python3 taller.py lanzar ej01     # el agente hace el encargo",
-          "python3 taller.py comprobar ej01  # ¿lo hizo de verdad? Si sí: 🏅 y te propone adónde ir",
-          "```", ""]
+          "python3 taller.py comprobar ej01  # ¿lo hizo de verdad? Si sí, queda completado y te propone el siguiente paso",
+          "```", "", "También en la web: https://jlasherastracasa.github.io/taller_semana_ia_2026/", ""]
     return "\n".join(L)
 
 
@@ -136,22 +136,22 @@ def main():
         x = {k: v for k, v in e.items() if k in ("id", "num", "titulo", "puerta", "nivel", "min", "modo", "perfiles",
                                                  "escena", "objetivo", "prompt", "criterio", "siguiente")}
         x["num_corto"] = corto(e)
-        x["puerta_icono"] = A.PUERTAS[e["puerta"]]["icono"] if e["puerta"] in A.PUERTAS else "🏔️"
+        x["puerta_icono"] = A.PUERTAS[e["puerta"]]["icono"] if e["puerta"] in A.PUERTAS else "🔬"
         x["validacion"] = VAL.get(e["id"])
         lista.append(x)
         if e["id"] == "replicar_paper":
             continue
         open(os.path.join(EJ_DIR, e["id"], "ENUNCIADO.md"), "w", encoding="utf-8").write(enunciado(e))
     puertas = dict(A.PUERTAS)
-    puertas["R"] = {"icono": "🏔️", "nombre": "La torre", "tema": "Reto final", "texto": "Replicar un paper en CPU."}
+    puertas["R"] = {"icono": "🔬", "nombre": "Reto avanzado", "tema": "Investigación", "texto": "Replicar un artículo científico en CPU."}
     indice = {"ejercicios": lista, "puertas": puertas, "perfiles": A.PERFILES,
               "niveles": {str(k): v for k, v in A.NIVELES.items()},
               "finales": A.FINALES, "prologo": A.PROLOGO,
-              "prologo_corto": "\n🏛️  LA PLAZA · Puente la Reina / Gares\n\n" + A.PROLOGO.split("\n\n")[1] + "\n",
+              "prologo_corto": "\n🧭  TALLER DE AGENTES DE IA · itinerarios\n\n" + A.PROLOGO.split("\n\n")[0] + "\n",
               "fecha_validacion": A.FECHA_VALIDACION, "opencode": A.OPENCODE, "modelo": A.MODELO}
     json.dump(indice, open(os.path.join(EJ_DIR, "indice.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    open(os.path.join(RAIZ, "alumnos", "AVENTURA.md"), "w", encoding="utf-8").write(aventura_md(indice))
-    print(f"{len(lista)} escenas · ENUNCIADO.md, indice.json y AVENTURA.md regenerados")
+    open(os.path.join(RAIZ, "alumnos", "ITINERARIOS.md"), "w", encoding="utf-8").write(aventura_md(indice))
+    print(f"{len(lista)} ejercicios · ENUNCIADO.md, indice.json y ITINERARIOS.md regenerados")
 
 
 if __name__ == "__main__":

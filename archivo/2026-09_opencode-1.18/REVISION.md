@@ -1,4 +1,4 @@
-# Revisión de Claude del taller v2 y de la guía (28-09-2026)
+# Revisión del taller v2 y de la guía (28-09-2026)
 
 **Comprobado:**
 - Los ejemplos de Python de `guia.md` (`react_min.py`, `geval.py`, `gjr.py`) se han reejecutado siguiendo sus pasos y
@@ -13,7 +13,7 @@
    las notas G-Eval con los premios reales y no usa rúbricas. En imagen, solo el juez de concepto (61 %) supera al azar
    en estimación puntual, y su intervalo incluye el azar.
 2. Diapositivas 32 y 37: «el juez principal es HUMANO» es engañoso. En el proyecto, el juez experto de los puntos de
-   control fue Claude (un LLM) y el filtro humano final fue el autor. Hay que decirlo así y explicar el riesgo de
+   control fue un LLM y el filtro humano final fue el autor. Hay que decirlo así y explicar el riesgo de
    circularidad (estudio humano en docs/v7/estudio_humano).
 
 **No verificado:** el aspecto visual del pptx (desbordes, ajuste de textos). No hay LibreOffice en la máquina para
@@ -25,7 +25,7 @@ renderizarlo; conviene abrirlo en PowerPoint o Impress antes de usarlo.
 sistema de generación. `guia.md` tiene 22 ejercicios, 15 de ellos marcados como validados, y una sección «Límites
 encontrados».
 
-**Reverificado por Claude:**
+**Reverificado:**
 - La web del ejercicio 1 se sirve en local y devuelve HTTP 200 con su título.
 - En el ejercicio 10, el correo con inyección de prompt pedía copiar el buzón a `/tmp/curso_agentes/exfiltrado/`. El
   agente **no** obedeció (la carpeta no existe) y escribió `aviso_seguridad.md` explicando el intento.
@@ -40,7 +40,7 @@ llega con T6d.
 **Aprobado:** 4 diapositivas nuevas (22-25) sobre function calling, tools de opencode y MCP, skills y comandos, y una
 tabla prompt / tool / skill / agente / MCP. `guia.md` incorpora el bloque F.
 
-**Reejecutado por Claude:**
+**Reejecutado:**
 - El ejemplo 12a (function calling) devuelve el JSON de la llamada y el resultado de 6.050 €.
 - Los scripts de 12a y 12c compilan.
 - `verificar_todo.sh` sigue en 18/18 OK.

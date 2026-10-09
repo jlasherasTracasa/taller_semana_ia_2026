@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""El mando de la aventura. Solo usa la biblioteca estándar: funciona igual en Linux, macOS y Windows.
+"""El mando del taller. Solo usa la biblioteca estándar: funciona igual en Linux, macOS y Windows.
 
-  python3 taller.py                      la plaza: perfiles, puertas y tu pasaporte
-  python3 taller.py empezar ej01         prepara la carpeta de trabajo del ejercicio y te cuenta la escena
+  python3 taller.py                      perfiles, áreas, ejercicios y tu progreso
+  python3 taller.py empezar ej01         prepara la carpeta de trabajo y te explica la situación
   python3 taller.py lanzar ej01          ejecuta el encargo del enunciado con opencode (guarda salida.txt)
   python3 taller.py lanzar ej01 --prompt "tu propio encargo"
   python3 taller.py abrir ej21           abre opencode en modo interactivo en la carpeta del ejercicio
   python3 taller.py ejecutar f0 react_min.py [args]   ejecuta un script del ejercicio con tu .env cargado
-  python3 taller.py comprobar ej01       pasa el comprobador; si todo está bien, te sella el pasaporte 🏅
-  python3 taller.py pasaporte            tus sellos y a qué final has llegado
+  python3 taller.py comprobar ej01       pasa el comprobador; si todo está bien, marca el ejercicio como completado
+  python3 taller.py progreso             ejercicios completados y nivel alcanzado
 
 Las carpetas de trabajo van a ~/taller-agentes/ (cámbialo con la variable TALLER_TRABAJO).
 Las claves se leen del fichero .env de este kit; nunca se copian a las carpetas de trabajo.
@@ -19,7 +19,7 @@ KIT = os.path.dirname(os.path.abspath(__file__))
 TRABAJO = os.path.expanduser(os.environ.get("TALLER_TRABAJO", "~/taller-agentes"))
 INDICE = json.load(open(os.path.join(KIT, "ejercicios", "indice.json"), encoding="utf-8"))
 EJS = {e["id"]: e for e in INDICE["ejercicios"]}
-PASAPORTE = os.path.join(TRABAJO, "pasaporte.json")
+PROGRESO = os.path.join(TRABAJO, "progreso.json")
 WIN = os.name == "nt"
 
 
@@ -82,7 +82,7 @@ def empezar(ej, silencioso=False):
     if not silencioso:
         n = INDICE["niveles"][str(e["nivel"])]
         print(f"\n{e['puerta_icono']} {e['num']} · {e['titulo']}   {n[0]} {n[1]} · ⏱ {e['min']} min\n")
-        print(f"📖 {e['escena']}\n")
+        print(f"📌 {e['escena']}\n")
         print(f"📁 Tu carpeta: {d}")
         if e.get("prompt") and e["modo"] == "run":
             print(f"\n💬 El encargo:\n   {e['prompt']}\n\n▶️  Lánzalo:  python3 taller.py lanzar {e['num_corto']}")
@@ -162,9 +162,9 @@ def ejecutar(ej, script, args):
     return subprocess.call([sys.executable, script] + args, cwd=d, env=env)
 
 
-def leer_pasaporte():
+def leer_progreso():
     try:
-        return json.load(open(PASAPORTE, encoding="utf-8"))
+        return json.load(open(PROGRESO, encoding="utf-8"))
     except (OSError, ValueError):
         return {}
 
@@ -175,15 +175,16 @@ def comprobar(ej):
         sys.exit(f"Aún no has empezado {e['num']}:  python3 taller.py empezar {e['num_corto']}")
     rc = subprocess.call([sys.executable, os.path.join(KIT, "comprobar.py"), ej, d])
     if rc == 0:
-        p = leer_pasaporte()
+        p = leer_progreso()
         p[ej] = time.strftime("%Y-%m-%d %H:%M")
         os.makedirs(TRABAJO, exist_ok=True)
-        json.dump(p, open(PASAPORTE, "w", encoding="utf-8"), indent=1)
-        print(f"\n🏅 ¡Sello conseguido! {e['puerta_icono']} {e['num']} · {e['titulo']}")
+        json.dump(p, open(PROGRESO, "w", encoding="utf-8"), indent=1)
+        print(f"\n✅ Ejercicio completado: {e['num']} · {e['titulo']}")
     else:
-        print("\nSin sello todavía. Mejora el encargo (más CONTEXTO, LÍMITES y CRITERIO) y vuelve a lanzarlo.")
+        print("\nTodavía no está. Mejora el encargo (más CONTEXTO, ENTREGA, LÍMITES y CRITERIO) y vuelve a lanzarlo:\n"
+              f"   python3 taller.py lanzar {e['num_corto']} --prompt \"tu versión del encargo\"")
     if e.get("siguiente"):
-        print("\n🔀 ¿Y ahora qué?")
+        print("\n🔀 Siguiente paso:")
         for texto, destino in e["siguiente"]:
             if destino == "PLAZA":
                 print(f"   ↩️  {texto}:  python3 taller.py")
@@ -205,46 +206,46 @@ def final(p):
     return None
 
 
-def pasaporte():
-    p = leer_pasaporte()
-    print(f"\n🛂 Tu pasaporte · {len(p)} sello(s)\n")
+def progreso():
+    p = leer_progreso()
+    print(f"\n📈 Tu progreso · {len(p)} ejercicio(s) completado(s)\n")
     for clave, puerta in INDICE["puertas"].items():
-        sellos = [EJS[i] for i in p if i in EJS and EJS[i]["puerta"] == clave]
-        print(f"  {puerta['icono']} {puerta['nombre']:24} " + (" ".join(f"🏅{s['num']}" for s in sellos) or "·"))
+        hechos = [EJS[i] for i in p if i in EJS and EJS[i]["puerta"] == clave]
+        print(f"  {puerta['icono']} {puerta['nombre']:34} " + (" ".join(f"✅{s['num']}" for s in hechos) or "·"))
     f = final(p)
     if f is not None:
         ico, nombre, _, texto = INDICE["finales"][f]
-        print(f"\n{ico} FINAL «{nombre}». {texto}")
+        print(f"\n{ico} {nombre.upper()} alcanzado. {texto}")
     else:
-        print("\nAún no has llegado a ningún final: el primero pide 3 sellos y vencer al 🐉 correo envenenado (EJ 10).")
+        print("\nAún no tienes nivel: el básico pide 3 ejercicios y la prueba de seguridad (EJ 10).")
 
 
-def plaza():
+def inicio():
     print(INDICE["prologo_corto"])
-    print("¿Quién eres? Cada perfil tiene una ruta recomendada (pero puedes ir donde quieras):\n")
+    print("Perfiles e itinerarios recomendados (puedes ir a cualquier ejercicio):\n")
     for p in INDICE["perfiles"].values():
         ruta = " → ".join(EJS[i]["num"] for i in p["ruta"] if i in EJS)
-        print(f"  {p['icono']} {p['nombre']}: {p['quien']}\n     Ruta: {ruta}\n")
-    print("Las puertas:\n")
+        print(f"  {p['icono']} {p['nombre']}: {p['quien']}\n     Itinerario: {ruta}\n")
+    print("Áreas y ejercicios:\n")
     for clave, puerta in INDICE["puertas"].items():
         ejs = [e for e in INDICE["ejercicios"] if e["puerta"] == clave]
         print(f"  {puerta['icono']} {puerta['nombre']} · {puerta['tema']}")
         for e in ejs:
             n = INDICE["niveles"][str(e["nivel"])][0]
-            hecho = " 🏅" if e["id"] in leer_pasaporte() else ""
+            hecho = " ✅" if e["id"] in leer_progreso() else ""
             print(f"      {n} {e['num']:5} {e['titulo']}{hecho}")
     print("\nEmpieza con:  python3 taller.py empezar <ejercicio>   (por ejemplo: python3 taller.py empezar ej01)")
-    pasaporte()
+    progreso()
 
 
 if __name__ == "__main__":
     a = sys.argv[1:]
     if not a:
-        plaza()
+        inicio()
     elif a[0] in ("-h", "--help", "ayuda"):
         print(__doc__)
-    elif a[0] == "pasaporte":
-        pasaporte()
+    elif a[0] in ("progreso", "pasaporte"):
+        progreso()
     elif a[0] == "ejecutar" and len(a) > 2:
         sys.exit(ejecutar(buscar(a[1]), a[2], a[3:]))
     elif a[0] in ("empezar", "lanzar", "abrir", "comprobar") and len(a) > 1:

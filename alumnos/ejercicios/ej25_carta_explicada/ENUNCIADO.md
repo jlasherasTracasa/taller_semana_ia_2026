@@ -1,10 +1,10 @@
-# 🟢 EJ 25 · Explícame esta carta
+# 🟢 EJ 25 · Entender una carta de la Administración
 
-> 📬 **Puerta B · La estafeta** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚
+> 📬 **Correo y trámites** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚
 
-## 📖 La escena
+## 📌 La situación
 
-«REQUERIMIENTO PREVIO A LA VÍA DE APREMIO». Pilar se ha asustado. ¿Qué le piden, para cuándo, y qué pasa si no hace nada?
+Llega una carta de «requerimiento previo a la vía de apremio» por dos recibos del agua. Hay que entender qué piden, para cuándo y qué pasa si no se paga.
 
 ## 🎯 Objetivo
 
@@ -37,7 +37,7 @@ opencode run --standalone "Lee carta.txt y escribe explicacion.md para una perso
 - En «¿A qué teléfono llamo?» pone que la carta no lo dice.
 
 ```bash
-python3 taller.py comprobar ej25      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej25      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas
@@ -50,8 +50,9 @@ python3 taller.py comprobar ej25      # el agente no puede darte el sello: solo 
 
 Prompt, salida real y ficheros: [`soluciones/ej25_carta_explicada/`](../../soluciones/ej25_carta_explicada/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
+- **Comparar ofertas de luz** → [🟢 EJ 26 · ¿Qué oferta de luz me sale más barata?](../ej26_factura_luz/ENUNCIADO.md)
 - **Darle una calculadora de plazos** → [🟣 F.6 · Tu propia tool: plazos en días hábiles](../f6_tool_propia/ENUNCIADO.md)
-- **El correo raro** → [🟢 EJ 10 · El correo envenenado](../ej10_inyeccion_prompt/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **La prueba de seguridad** → [🟢 EJ 10 · Prueba de seguridad: correo con instrucciones ocultas](../ej10_inyeccion_prompt/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

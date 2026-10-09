@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller de agentes de IA</title>
+<meta name="description" content="Taller «Más allá de ChatGPT: crea y conecta agentes de IA» · Semana de la IA 2026 · UPNA. 38 ejercicios con agentes reales, por perfiles.">
+<link rel="icon" href="img/logo_semana_ia_2026_oscuro.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="vendor/marked.min.js"></script>
+<script src="vendor/mermaid.min.js"></script>
+<style>
+:root{
+  --fondo:#F6F5F1; --superficie:#FFFFFF; --superficie2:#F0EEE8; --tinta:#14212B; --tinta2:#4A5866; --linea:#E2DED4;
+  --primario:#1E3442; --sobre-primario:#FFFFFF; --oro:#B8862B; --oro-suave:#F6EBD3; --cian:#2B8FBF; --cian-suave:#E2F2FA;
+  --verde:#2E8B57; --verde-suave:#E3F3EA; --rojo:#C0453A; --rojo-suave:#FBE6E3; --morado:#7A5BC2; --ambar:#C98A1A;
+  --sombra1:0 1px 2px rgba(20,33,43,.06),0 1px 3px rgba(20,33,43,.08);
+  --sombra3:0 4px 8px rgba(20,33,43,.08),0 8px 24px rgba(20,33,43,.10);
+  --radio:16px; --logo:url(img/logo_semana_ia_2026_horizontal_oscuro.png);
+}
+@media (prefers-color-scheme:dark){:root:not([data-tema="claro"]){
+  --fondo:#0F1C26; --superficie:#172833; --superficie2:#1E3442; --tinta:#EEF2F5; --tinta2:#A9B8C4; --linea:#2C4352;
+  --primario:#E4B858; --sobre-primario:#14212B; --oro:#E4B858; --oro-suave:#3A3322; --cian:#5BC8EE; --cian-suave:#173847;
+  --verde:#5CC98A; --verde-suave:#173A2A; --rojo:#F08070; --rojo-suave:#3D2220; --morado:#B48CF0;
+  --sombra1:0 1px 2px rgba(0,0,0,.4); --sombra3:0 6px 24px rgba(0,0,0,.45); --logo:url(img/logo_semana_ia_2026_horizontal.png);
+}}
+:root[data-tema="oscuro"]{
+  --fondo:#0F1C26; --superficie:#172833; --superficie2:#1E3442; --tinta:#EEF2F5; --tinta2:#A9B8C4; --linea:#2C4352;
+  --primario:#E4B858; --sobre-primario:#14212B; --oro:#E4B858; --oro-suave:#3A3322; --cian:#5BC8EE; --cian-suave:#173847;
+  --verde:#5CC98A; --verde-suave:#173A2A; --rojo:#F08070; --rojo-suave:#3D2220; --morado:#B48CF0;
+  --sombra1:0 1px 2px rgba(0,0,0,.4); --sombra3:0 6px 24px rgba(0,0,0,.45); --logo:url(img/logo_semana_ia_2026_horizontal.png);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);color:var(--tinta);font:16px/1.65 Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--cian);text-underline-offset:3px}
+h1,h2,h3,.cond{font-family:"Barlow Condensed",system-ui,sans-serif;font-weight:700;line-height:1.1;letter-spacing:.2px}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.9em;background:var(--superficie2);padding:1px 6px;border-radius:6px}
+
+/* barra superior */
+.barra{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--superficie) 92%,transparent);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--linea);display:flex;align-items:center;gap:12px;padding:10px 20px}
+.marca{display:block;width:150px;height:22px;background:var(--logo) left center/contain no-repeat}
+.barra nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+.barra nav a,.icono-btn{font:600 15px Barlow;color:var(--tinta2);text-decoration:none;padding:8px 12px;border-radius:999px;border:0;background:none;cursor:pointer}
+.barra nav a:hover,.icono-btn:hover{background:var(--superficie2);color:var(--tinta)}
+.barra nav a.activo{background:var(--oro-suave);color:var(--tinta)}
+
+main{max-width:1040px;margin:0 auto;padding:32px 20px 96px}
+.eyebrow{font:700 13px Barlow;letter-spacing:2px;text-transform:uppercase;color:var(--oro)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;padding:16px 0 40px}
+.hero h1{font-size:clamp(40px,6vw,64px);margin:10px 0 16px;font-weight:800}
+.hero h1 span{color:var(--oro)}
+.hero p{color:var(--tinta2);font-size:18px;margin:0 0 24px}
+.hero figure{margin:0}
+.hero img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px;box-shadow:var(--sombra3)}
+.hero figcaption{font-size:12.5px;color:var(--tinta2);margin-top:8px}
+
+h2.sec{font-size:32px;margin:56px 0 6px}
+p.sub{color:var(--tinta2);margin:0 0 20px}
+.rejilla{display:grid;gap:16px}
+.r2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.r3{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.r4{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.tarjeta{background:var(--superficie);border-radius:var(--radio);box-shadow:var(--sombra1);padding:20px;color:inherit;text-decoration:none;display:block;
+  transition:box-shadow .2s,transform .2s;border:1px solid transparent}
+a.tarjeta:hover,button.tarjeta:hover{box-shadow:var(--sombra3);transform:translateY(-2px)}
+.tarjeta h3{margin:10px 0 6px;font-size:22px}
+.tarjeta p{margin:0;color:var(--tinta2);font-size:15px}
+.tarjeta.sel{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro),var(--sombra1)}
+.avatar{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:var(--oro-suave)}
+.pasos{counter-reset:p;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.pasos .tarjeta::before{counter-increment:p;content:counter(p);font:800 34px "Barlow Condensed";color:var(--oro)}
+
+.area{margin-top:36px}
+.area-cab{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.area-cab h3{font-size:26px;margin:0}
+.area-cab span{color:var(--tinta2);font-size:15px}
+.lista{background:var(--superficie);border-radius:var(--radio);box-shadow:var(--sombra1);overflow:hidden;margin-top:12px}
+.fila{display:grid;grid-template-columns:auto 64px 1fr auto;gap:14px;align-items:center;padding:12px 18px;text-decoration:none;color:inherit;border-top:1px solid var(--linea)}
+.fila:first-child{border-top:0}
+.fila:hover{background:var(--superficie2)}
+.fila .n{font:700 17px "Barlow Condensed";color:var(--oro)}
+.fila .t{font-weight:600}
+.fila .m{font-size:13px;color:var(--tinta2)}
+.dot{width:10px;height:10px;border-radius:50%}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--superficie2);color:var(--tinta2);white-space:nowrap}
+.chip.ok{background:var(--verde-suave);color:var(--verde)} .chip.fallo{background:var(--rojo-suave);color:var(--rojo)} .chip.parcial{background:var(--oro-suave);color:var(--ambar)}
+.chip.hecho{background:var(--primario);color:var(--sobre-primario)}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px Barlow;padding:11px 20px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;transition:box-shadow .2s}
+.btn.lleno{background:var(--primario);color:var(--sobre-primario)}
+.btn.lleno:hover{box-shadow:var(--sombra3)}
+.btn.tonal{background:var(--oro-suave);color:var(--tinta)}
+.btn.borde{background:none;color:var(--tinta);border:1px solid var(--linea)}
+.botones{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+
+.doc{background:var(--superficie);border-radius:var(--radio);box-shadow:var(--sombra1);padding:8px 36px 28px}
+.doc h1{font-size:38px;margin:26px 0 8px}
+.doc h2{font-size:24px;margin:34px 0 10px}
+.doc blockquote{margin:14px 0;padding:10px 16px;border-radius:12px;background:var(--oro-suave);color:var(--tinta)}
+.doc blockquote p{margin:0}
+.doc table{border-collapse:collapse;width:100%;font-size:15px;margin:14px 0;display:block;overflow-x:auto}
+.doc th{font:700 16px "Barlow Condensed";text-align:left;color:var(--tinta2);border-bottom:2px solid var(--linea)}
+.doc th,.doc td{padding:8px 10px;border-bottom:1px solid var(--linea)}
+.doc pre{background:#0F1C26;color:#D9E8F2;border-radius:12px;padding:16px 92px 16px 18px;overflow-x:auto;position:relative}
+.doc pre code{background:none;padding:0;color:inherit;white-space:pre-wrap;word-break:break-word}
+.doc ul{padding-left:22px}
+.copiar{position:absolute;top:10px;right:10px;font:600 12.5px Barlow;padding:5px 12px;border-radius:999px;border:0;background:#E4B858;color:#14212B;cursor:pointer}
+.mermaid{display:flex;justify-content:center;background:transparent!important;color:var(--tinta)!important}
+.progreso{height:6px;border-radius:999px;background:var(--superficie2);overflow:hidden;margin:12px 0 6px}
+.progreso div{height:100%;background:var(--oro);border-radius:999px}
+.nota{font-size:14px;color:var(--tinta2)}
+.indice-wiki{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.indice-wiki a{font-size:14px;padding:6px 12px;border-radius:999px;background:var(--superficie);box-shadow:var(--sombra1);text-decoration:none;color:var(--tinta)}
+.indice-wiki a.activo{background:var(--primario);color:var(--sobre-primario)}
+footer{border-top:1px solid var(--linea);padding:28px 20px 40px;text-align:center;color:var(--tinta2);font-size:14px}
+footer img{height:64px;margin:0 10px 12px;vertical-align:middle;background:#fff;border-radius:10px;padding:6px}
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:24px}.doc{padding:4px 18px 20px}.fila{grid-template-columns:auto 52px 1fr}.fila .chip{display:none}.barra{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<header class="barra">
+  <a class="marca" href="#/" aria-label="Inicio"></a>
+  <nav id="nav">
+    <a href="#/" data-r="">Inicio</a>
+    <a href="#/ejercicios" data-r="ejercicios">Ejercicios</a>
+    <a href="#/progreso" data-r="progreso">Mi progreso</a>
+    <a href="#/wiki/Home" data-r="wiki">Wiki</a>
+    <a href="taller-agentes-ia.pdf">Diapositivas</a>
+    <button class="icono-btn" id="tema" title="Cambiar tema claro/oscuro">◐</button>
+  </nav>
+</header>
+<main id="app"></main>
+<footer>
+  <img src="img/logo_catedra_ia.png" alt="Cátedra Tracasa de Ciencias de la Computación e Inteligencia Artificial · UPNA">
+  <div>Taller «Más allá de ChatGPT: crea y conecta agentes de IA» · Semana de la IA 2026 · Universidad Pública de Navarra</div>
+  <div><a id="repo" href="#">Kit, ejercicios y soluciones en GitHub</a></div>
+</footer>
+<script>
+const D = /*DATOS*/null;
+const I = D.indice, EJ = Object.fromEntries(I.ejercicios.map(e => [e.id, e]));
+const AREAS = Object.entries(I.puertas);
+const NIVCOL = {1:"var(--verde)", 2:"var(--cian)", 3:"var(--morado)", 4:"var(--rojo)"};
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const leer = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } };
+const guardar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)) } catch {} };
+const hechos = () => leer("taller_hechos", {});
+const perfil = () => leer("taller_perfil", null);
+const md = t => window.marked ? marked.parse(t) : `<pre>${esc(t)}</pre>`;
+const inline = t => esc(t).replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+$("#repo").href = D.repo;
+
+// tema claro/oscuro (se recuerda en este navegador)
+const tema0 = leer("taller_tema", null); if (tema0) document.documentElement.dataset.tema = tema0;
+$("#tema").onclick = () => {
+  const osc = getComputedStyle(document.documentElement).getPropertyValue("--fondo").trim().toLowerCase() === "#0f1c26";
+  document.documentElement.dataset.tema = osc ? "claro" : "oscuro"; guardar("taller_tema", document.documentElement.dataset.tema); ruta();
+};
+
+function fila(e) {
+  const v = e.validacion, h = hechos()[e.id];
+  const chip = h ? `<span class="chip hecho">✓ Completado</span>`
+    : v ? `<span class="chip ${v.estado}">${{ok:"Validado", parcial:"Validado a medias", fallo:"Falló al validar"}[v.estado]}</span>` : "";
+  return `<a class="fila" href="#/ejercicio/${e.id}"><span class="dot" style="background:${NIVCOL[e.nivel]}" title="${I.niveles[e.nivel][1]}"></span>
+    <span class="n">${e.num}</span><span><div class="t">${esc(e.titulo)}</div>
+    <div class="m">${I.niveles[e.nivel][1]} · ${e.min} min · ${e.perfiles.map(p => I.perfiles[p].nombre.replace(" de software", "")).join(", ")}</div></span>${chip}</a>`;
+}
+
+function areas(filtro) {
+  let h = "";
+  for (const [k, a] of AREAS) {
+    const ejs = I.ejercicios.filter(e => e.puerta === k && (!filtro || filtro.includes(e.id)));
+    if (!ejs.length) continue;
+    h += `<section class="area"><div class="area-cab"><h3>${a.icono} ${a.nombre}</h3><span>${esc(a.tema)}</span></div>
+      <div class="lista">${ejs.map(fila).join("")}</div></section>`;
+  }
+  return h;
+}
+
+function inicio() {
+  const p = perfil(), r = D.validacion._resumen;
+  let h = `<section class="hero"><div><div class="eyebrow">Semana de la IA 2026 · Viernes 23 de octubre · Aulario UPNA</div>
+    <h1>Más allá de ChatGPT: <span>crea y conecta agentes de IA</span></h1>
+    <p>${I.ejercicios.length - 1} ejercicios con tareas reales —correo, facturas, webs, presentaciones, trámites, programación— para que cada perfil elija su camino. Funciona en cualquier portátil, sin GPU.</p>
+    <div class="botones"><a class="btn lleno" href="#/wiki/Primeros-pasos">Empezar</a><a class="btn tonal" href="#/ejercicios">Ver los ejercicios</a><a class="btn borde" href="${D.repo}">GitHub</a></div></div>
+    <figure><img src="img/encrucijada_semana_ia_2026.jpg" alt="Dos personas ante un camino de circuitos"><figcaption>Imagen del cartel de la Semana de la IA 2026</figcaption></figure></section>
+    <h2 class="sec">Cómo funciona</h2><p class="sub">Un taller práctico, sin un único camino.</p>
+    <div class="pasos">
+      <div class="tarjeta"><h3>Elige tu perfil</h3><p>Cada perfil tiene un itinerario recomendado. Puedes salirte cuando quieras.</p></div>
+      <div class="tarjeta"><h3>Haz el ejercicio</h3><p>El agente ejecuta el encargo en una carpeta de trabajo: <code>python3 taller.py lanzar ej01</code>.</p></div>
+      <div class="tarjeta"><h3>Compruébalo</h3><p>Solo cuenta si lo dice <code>comprobar.py</code>, nunca si lo dice el agente.</p></div>
+      <div class="tarjeta"><h3>Elige el siguiente</h3><p>Cada ejercicio termina con dos o tres caminos según lo que te interese.</p></div>
+    </div>
+    <h2 class="sec">¿Cuál es tu perfil?</h2><p class="sub">Elige uno para ver tu itinerario. Se guarda en este navegador.</p><div class="rejilla r4">`;
+  for (const [k, v] of Object.entries(I.perfiles))
+    h += `<button class="tarjeta ${p === k ? "sel" : ""}" style="text-align:left;font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start" onclick="elegir('${k}')">
+      <div class="avatar">${v.icono}</div><h3>${v.nombre}</h3><p>${esc(v.quien)}</p></button>`;
+  h += `</div>`;
+  if (p) {
+    const v = I.perfiles[p];
+    h += `<h2 class="sec">Tu itinerario · ${v.nombre}</h2><p class="sub">💡 ${inline(v.consejo)}</p>${areas(v.ruta)}
+      <div class="botones"><a class="btn tonal" href="#/ejercicios">Ver todos los ejercicios</a></div>`;
+  }
+  h += `<h2 class="sec">Validado de verdad</h2><p class="sub">Cada ejercicio se ejecutó con opencode 2.0.19 y GLM-5.3-Flash, solo con CPU, el ${r.fecha}.</p>
+    <div class="rejilla r3"><div class="tarjeta"><div class="eyebrow">Criterio cumplido</div><h3 style="font-size:40px">${r.ok} de ${r.total}</h3><p>Los que fallan lo hacen por motivos reales y están documentados.</p></div>
+    <div class="tarjeta"><div class="eyebrow">Coste medio</div><h3 style="font-size:40px">${(r.coste_medio * 100).toFixed(1).replace(".", ",")} cént.</h3><p>por ejercicio en OpenRouter (mediana: 1,25 céntimos).</p></div>
+    <div class="tarjeta"><div class="eyebrow">Lo que más gasta</div><h3 style="font-size:40px">97 %</h3><p>de los tokens son de entrada: el agente relee todo el contexto en cada paso.</p></div></div>`;
+  return h;
+}
+
+function ejercicios() {
+  const filas = Object.values(I.niveles).map(([ico, n, t], i) => `<span class="chip"><span class="dot" style="background:${NIVCOL[i + 1]}"></span>${n}</span>`).join(" ");
+  let g = "flowchart LR\n  P([\"Tu perfil\"])\n";
+  for (const [k, a] of AREAS) if (k !== "R") g += `  ${k}["${a.icono} ${a.nombre}"]\n  P --> ${k}\n`;
+  g += `  A & B & C & D & F -.-> X\n  X --> N([\"Nivel alcanzado\"])\n`;
+  return `<h1 class="cond" style="font-size:44px;margin:0 0 8px">Ejercicios</h1><p class="sub">${filas}</p>
+    <div class="doc" style="padding:20px"><pre class="mermaid">${g}</pre></div>${areas()}`;
+}
+
+function ejercicio(id) {
+  const e = EJ[id];
+  if (!e || !D.escenas[id]) return `<p>No encuentro ese ejercicio. <a href="#/ejercicios">Ver todos</a>.</p>`;
+  const h = hechos()[id];
+  return `<div class="botones" style="margin-top:0"><a class="btn borde" href="#/ejercicios">← Todos los ejercicios</a></div>
+    <div class="doc">${md(D.escenas[id])}</div>
+    <div class="botones"><button class="btn ${h ? "tonal" : "lleno"}" onclick="marcar('${id}')">${h ? "✓ Completado (desmarcar)" : "Marcar como completado"}</button>
+    <a class="btn borde" href="${D.repo}/tree/main/alumnos/ejercicios/${id}">Datos del ejercicio</a>
+    <a class="btn borde" href="${D.repo}/tree/main/alumnos/soluciones/${id}">Solución real</a></div>
+    <p class="nota">Marca el ejercicio cuando <code>python3 taller.py comprobar ${e.num_corto}</code> te diga que está bien.</p>`;
+}
+
+function nivel(s) {
+  const ids = Object.keys(s).filter(i => EJ[i]);
+  const areasHechas = new Set(ids.map(i => EJ[i].puerta));
+  const seg = s["ej10_inyeccion_prompt"], experto = ids.some(i => EJ[i].nivel === 4);
+  if (seg && ["A", "B", "C", "D", "F"].every(a => areasHechas.has(a)) && experto) return 2;
+  if (seg && ids.length >= 7 && [...areasHechas].filter(a => a !== "X").length >= 3) return 1;
+  if (seg && ids.length >= 4) return 0;
+  return null;
+}
+
+function progreso() {
+  const s = hechos(), n = Object.keys(s).length, f = nivel(s);
+  let h = `<h1 class="cond" style="font-size:44px;margin:0 0 8px">Mi progreso</h1>
+    <p class="sub">${n} ejercicio${n === 1 ? "" : "s"} completado${n === 1 ? "" : "s"} · se guarda en este navegador. En el portátil: <code>python3 taller.py progreso</code>.</p><div class="rejilla r3">`;
+  for (const [k, a] of AREAS) {
+    const ejs = I.ejercicios.filter(e => e.puerta === k), x = ejs.filter(e => s[e.id]).length;
+    h += `<div class="tarjeta"><div class="avatar">${a.icono}</div><h3>${a.nombre}</h3><div class="progreso"><div style="width:${100 * x / ejs.length}%"></div></div>
+      <p>${x} de ${ejs.length}${x ? " · " + ejs.filter(e => s[e.id]).map(e => e.num).join(", ") : ""}</p></div>`;
+  }
+  h += `</div><h2 class="sec">Niveles</h2><div class="rejilla r2">`;
+  I.finales.forEach(([ico, nom, como, texto], i) => {
+    h += `<div class="tarjeta ${f === i ? "sel" : ""}"><div class="avatar">${ico}</div><h3>${nom}${f === i ? " · tu nivel" : ""}</h3><p><em>${inline(como)}</em></p><p style="margin-top:8px">${inline(texto)}</p></div>`;
+  });
+  return h + `</div><div class="botones"><button class="btn borde" onclick="if(confirm('¿Borrar tu progreso de este navegador?')){guardar('taller_hechos',{});ruta()}">Borrar mi progreso</button></div>`;
+}
+
+function wiki(p) {
+  const nombres = {Home: "Inicio"};
+  const indice = Object.keys(D.wiki).map(k => `<a class="${k === p ? "activo" : ""}" href="#/wiki/${k}">${nombres[k] || k.replace(/-/g, " ")}</a>`).join("");
+  return `<div class="indice-wiki">${indice}</div><div class="doc">${D.wiki[p] ? md(D.wiki[p]) : "<p>Página no encontrada.</p>"}</div>`;
+}
+
+function elegir(k) { guardar("taller_perfil", k); ruta(); }
+function marcar(id) { const s = hechos(); if (s[id]) delete s[id]; else s[id] = new Date().toISOString(); guardar("taller_hechos", s); ruta(); }
+
+async function ruta() {
+  const [a, b] = location.hash.replace(/^#\/?/, "").split("/");
+  const app = $("#app");
+  app.innerHTML = a === "ejercicio" ? ejercicio(b) : a === "ejercicios" ? ejercicios() : a === "progreso" ? progreso()
+    : a === "wiki" ? wiki(decodeURIComponent(b || "Home")) : inicio();
+  document.querySelectorAll("#nav a").forEach(x => x.classList.toggle("activo", x.dataset.r === (a === "ejercicio" ? "ejercicios" : a || "")));
+  app.querySelectorAll("pre code.language-mermaid").forEach(c => { const d = document.createElement("pre"); d.className = "mermaid"; d.textContent = c.textContent; c.parentElement.replaceWith(d); });
+  if (window.mermaid) {
+    const osc = getComputedStyle(document.documentElement).getPropertyValue("--fondo").trim().toLowerCase() === "#0f1c26";
+    mermaid.initialize({startOnLoad: false, theme: osc ? "dark" : "neutral", fontFamily: "Barlow"});
+    try { await mermaid.run({nodes: app.querySelectorAll(".mermaid")}); } catch (e) { console.warn(e); }
+  }
+  app.querySelectorAll(".doc pre:not(.mermaid)").forEach(pre => {
+    const btn = document.createElement("button"); btn.className = "copiar"; btn.textContent = "Copiar";
+    btn.onclick = () => navigator.clipboard.writeText(pre.querySelector("code")?.innerText ?? pre.innerText).then(() => { btn.textContent = "Copiado"; setTimeout(() => btn.textContent = "Copiar", 1500); });
+    pre.appendChild(btn);
+  });
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", ruta);
+ruta();
+</script>
+</body>
+</html>

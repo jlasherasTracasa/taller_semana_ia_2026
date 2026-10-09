@@ -1,10 +1,10 @@
-# 🔵 EJ 16 · El informe que se recalcula solo
+# 🔵 EJ 16 · Informe semanal que se recalcula solo
 
-> 📊 **Puerta C · La bodega** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 📊 **Informes y presentaciones** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## 📖 La escena
+## 📌 La situación
 
-Cada lunes, el mismo informe con datos nuevos. Mejor un script que lo recalcule que un texto copiado.
+El informe de ventas se repite cada semana con datos nuevos. Mejor un script que lo recalcule que un texto que hay que rehacer.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Lee ventas_tienda.csv y escribe un script informe.py 
 - Existe `informe.py` y, si cambias el CSV, el informe cambia.
 
 ```bash
-python3 taller.py comprobar ej16      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej16      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -45,8 +45,8 @@ python3 taller.py comprobar ej16      # el agente no puede darte el sello: solo 
 
 Prompt, salida real y ficheros: [`soluciones/ej16_informe_semanal/`](../../soluciones/ej16_informe_semanal/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Programarlo cada lunes** → [🟣 EJ 21 · Que se ejecute solo (con tu permiso)](../ej21_programar_cron/ENUNCIADO.md)
+- **Programarlo cada lunes** → [🟣 EJ 21 · Programar una tarea periódica (con tu permiso)](../ej21_programar_cron/ENUNCIADO.md)
 - **Como comando** → [🔵 F.3 · Comandos: el encargo de todos los lunes en una palabra](../f3_comandos/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

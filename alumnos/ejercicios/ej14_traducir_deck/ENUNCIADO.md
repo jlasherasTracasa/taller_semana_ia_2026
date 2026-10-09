@@ -1,10 +1,10 @@
-# 🟣 EJ 14 · Traducir un pptx por dentro
+# 🟣 EJ 14 · Traducir una presentación sin romperla
 
-> 📊 **Puerta C · La bodega** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 💻
+> 📊 **Informes y presentaciones** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 💻
 
-## 📖 La escena
+## 📌 La situación
 
-La charla va a una feria en Burdeos. Hay que traducirla sin romper tablas ni gráficos.
+La misma charla se va a dar en una feria en Burdeos. Hay que traducirla al inglés sin romper tablas ni gráficos.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Traduce charla_taller_es.pptx al inglés editando el 
 - El texto está en inglés.
 
 ```bash
-python3 taller.py comprobar ej14      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej14      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -45,6 +45,6 @@ Mismas diapositivas, tablas, gráficos e imágenes; texto en inglés.
 
 Prompt, salida real y ficheros: [`soluciones/ej14_traducir_deck/`](../../soluciones/ej14_traducir_deck/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

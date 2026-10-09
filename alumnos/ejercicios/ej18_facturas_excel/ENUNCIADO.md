@@ -1,10 +1,10 @@
 # 🔵 EJ 18 · Facturas en PDF a Excel
 
-> 🗂️ **Puerta D · El ayuntamiento** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 🗂️ **Documentos y tareas repetitivas** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## 📖 La escena
+## 📌 La situación
 
-Dos facturas en PDF para la gestoría. Que alguien las pase a Excel. Ese alguien es tu agente.
+La gestoría pide las facturas del mes en una hoja de cálculo. Están en PDF.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Extrae de los PDF de facturas/ el emisor, la fecha, l
 - Fila final 1.667,38.
 
 ```bash
-python3 taller.py comprobar ej18      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej18      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -45,7 +45,7 @@ Totales 454,48 y 1.212,90 y suma 1.667,38. En la ronda 1 puso la suma como fórm
 
 Prompt, salida real y ficheros: [`soluciones/ej18_facturas_excel/`](../../soluciones/ej18_facturas_excel/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Certificados en lote** → [🟢 EJ 19 · Un certificado para cada persona](../ej19_certificados_pdf/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Certificados en lote** → [🟢 EJ 19 · Certificados personalizados en lote](../ej19_certificados_pdf/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

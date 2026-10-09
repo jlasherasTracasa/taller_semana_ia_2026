@@ -1,10 +1,10 @@
-# 🟣 EJ 21 · Que se ejecute solo (con tu permiso)
+# 🟣 EJ 21 · Programar una tarea periódica (con tu permiso)
 
-> 🗂️ **Puerta D · El ayuntamiento** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode` interactivo · Recomendado para: 💻
+> 🗂️ **Documentos y tareas repetitivas** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode` interactivo · Recomendado para: 💻
 
-## 📖 La escena
+## 📌 La situación
 
-La vigilancia, cada minuto, sin nadie delante. El agente va a tocar tu sistema: te pedirá permiso.
+La comprobación de la web tiene que ejecutarse sola cada cierto tiempo. El agente va a tocar tu sistema, así que te pedirá permiso.
 
 ## 🎯 Objetivo
 
@@ -34,7 +34,7 @@ Validado con `opencode run --auto` (aprueba los `ask`): timer de systemd de usua
 
 Prompt, salida real y ficheros: [`soluciones/ej21_programar_cron/`](../../soluciones/ej21_programar_cron/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)
 - **Auditar permisos** → [⚫ F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?](../f8_permisos/ENUNCIADO.md)

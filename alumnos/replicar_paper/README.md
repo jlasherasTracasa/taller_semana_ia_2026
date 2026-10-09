@@ -152,7 +152,7 @@ compare su tabla con la del paper y explique **por qué** difieren (escala de da
 - La API del BOE solo sirve en consolidado las normas en vigor; algunos identificadores antiguos dan 404.
 
 ---
-## Revisión de Claude (28-09-2026)
+## Revisión (28-09-2026)
 
 - **Comprobado:**
   - La CPU se fuerza en los tres scripts, con `assert not torch.cuda.is_available()`.

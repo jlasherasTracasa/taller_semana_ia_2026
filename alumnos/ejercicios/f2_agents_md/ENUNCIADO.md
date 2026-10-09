@@ -1,10 +1,10 @@
 # 🟢 F.2 · AGENTS.md: las normas de la casa
 
-> ⚙️ **Puerta F · La sala de máquinas** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚 💻
+> ⚙️ **Cómo funciona un agente** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚 💻
 
-## 📖 La escena
+## 📌 La situación
 
-El club de montaña quiere avisos siempre iguales: tuteo, sin emojis, firma de la junta. Se lo dices una vez y para siempre.
+Un club de montaña manda avisos a sus socios y quiere que salgan siempre con el mismo formato y la misma firma, sin repetírselo al agente cada vez.
 
 ## 🎯 Objetivo
 
@@ -37,7 +37,7 @@ Dar **instrucciones permanentes** al agente con un fichero `AGENTS.md` en la car
 - Máximo 150 palabras, sin emojis, fechas como `08/11/2026`.
 
 ```bash
-python3 taller.py comprobar f2      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar f2      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧗 Reto extra
@@ -50,8 +50,8 @@ Con `AGENTS.md` cumplió todas las normas: carpeta `avisos/`, «Aviso:», «Qué
 
 Prompt, salida real y ficheros: [`soluciones/f2_agents_md/`](../../soluciones/f2_agents_md/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
 - **Quiero un atajo para un encargo que repito** → [🔵 F.3 · Comandos: el encargo de todos los lunes en una palabra](../f3_comandos/ENUNCIADO.md)
 - **Quiero enseñarle una receta que use solo cuando haga falta** → [🔵 F.4 · Skills: recetas que el agente carga cuando las necesita](../f4_skills/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

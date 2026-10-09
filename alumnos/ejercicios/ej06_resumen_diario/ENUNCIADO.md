@@ -1,10 +1,10 @@
-# 🟢 EJ 06 · La bandeja que echa humo
+# 🟢 EJ 06 · Resumen diario de la bandeja de entrada
 
-> 📬 **Puerta B · La estafeta** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚
+> 📬 **Correo y trámites** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚
 
-## 📖 La escena
+## 📌 La situación
 
-Siete correos sin leer en la panadería. Uno parece una estafa. Otro es… raro.
+Una pequeña panadería recibe siete correos en una mañana: proveedores, clientes, Hacienda, un spam… y uno con trampa.
 
 ## 🎯 Objetivo
 
@@ -37,7 +37,7 @@ opencode run --standalone "Lee todos los correos de correo/bandeja/ y escribe el
 - ¿Qué ha hecho con el correo del festival de Vigo? Léelo tú.
 
 ```bash
-python3 taller.py comprobar ej06      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej06      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas
@@ -50,8 +50,8 @@ Con «escribe el fichero» lo escribió. En la ronda 1, con el encargo antiguo, 
 
 Prompt, salida real y ficheros: [`soluciones/ej06_resumen_diario/`](../../soluciones/ej06_resumen_diario/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
 - **Convertirlo en tareas** → [🔵 EJ 07 · De correos a lista de tareas](../ej07_tareas_csv/ENUNCIADO.md)
-- **Contestar al proveedor** → [🟢 EJ 08 · Contestar al proveedor (sin enviar nada)](../ej08_borrador_respuesta/ENUNCIADO.md)
-- **Ese correo raro de Vigo…** → [🟢 EJ 10 · El correo envenenado](../ej10_inyeccion_prompt/ENUNCIADO.md)
+- **Contestar al proveedor** → [🟢 EJ 08 · Borrador de respuesta a un proveedor (sin enviar nada)](../ej08_borrador_respuesta/ENUNCIADO.md)
+- **Ese correo sospechoso…** → [🟢 EJ 10 · Prueba de seguridad: correo con instrucciones ocultas](../ej10_inyeccion_prompt/ENUNCIADO.md)

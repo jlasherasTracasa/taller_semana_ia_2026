@@ -1,10 +1,10 @@
 # ⚫ F.9 · ¿Funciona siempre? Medir en vez de opinar
 
-> ⚙️ **Puerta F · La sala de máquinas** · ⚫ Experto · ⏱ 30 min · 🛠️ tu propio programa en Python · Recomendado para: 🏛️
+> ⚙️ **Cómo funciona un agente** · ⚫ Experto · ⏱ 30 min · 🛠️ tu propio programa en Python · Recomendado para: 🏛️
 
-## 📖 La escena
+## 📌 La situación
 
-El EJ 07 te salió bien una vez. Pilar pregunta: «¿Y mañana también?». Lo mides.
+El encargo te salió bien una vez. Si lo vas a usar cada semana, necesitas saber si sale bien siempre y cuánto cuesta.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ Calcula pass^5 (probabilidad de que salgan bien los 5) a partir de la tasa de un
 
 Prompt, salida real y ficheros: [`soluciones/f9_fiabilidad/`](../../soluciones/f9_fiabilidad/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Al reto final: replicar un paper en CPU** → [⚫ RETO · La torre: replicar un paper de IA en CPU](../../replicar_paper/README.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Reto avanzado: replicar un artículo en CPU** → [⚫ RETO · Reto avanzado: replicar un artículo científico en CPU](../../replicar_paper/README.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

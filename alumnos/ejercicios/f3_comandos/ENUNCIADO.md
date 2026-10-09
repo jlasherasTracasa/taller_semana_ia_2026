@@ -1,10 +1,10 @@
 # 🔵 F.3 · Comandos: el encargo de todos los lunes en una palabra
 
-> ⚙️ **Puerta F · La sala de máquinas** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode` interactivo · Recomendado para: 📚 💻
+> ⚙️ **Cómo funciona un agente** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode` interactivo · Recomendado para: 📚 💻
 
-## 📖 La escena
+## 📌 La situación
 
-La tienda pide el mismo informe cada semana. En vez de copiar el encargo, lo guardas como comando: `/informe-semanal`.
+Cada lunes alguien prepara el mismo informe de ventas. En lugar de copiar y pegar el encargo, se guarda como comando del equipo.
 
 ## 🎯 Objetivo
 
@@ -32,7 +32,7 @@ Después crea tú un segundo comando, `.opencode/commands/resumen-mes.md`, que r
 - Tu comando `/resumen-mes junio` escribe `resumen_junio.txt` con 12.800 € en total.
 
 ```bash
-python3 taller.py comprobar f3      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar f3      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -41,8 +41,8 @@ El cuerpo del comando genera las 3 diapositivas con los totales exactos. El coma
 
 Prompt, salida real y ficheros: [`soluciones/f3_comandos/`](../../soluciones/f3_comandos/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
 - **Quiero una receta que el agente cargue él solo** → [🔵 F.4 · Skills: recetas que el agente carga cuando las necesita](../f4_skills/ENUNCIADO.md)
-- **Quiero que lo haga cada lunes sin pedírselo** → [🟣 EJ 21 · Que se ejecute solo (con tu permiso)](../ej21_programar_cron/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Quiero que lo haga cada lunes sin pedírselo** → [🟣 EJ 21 · Programar una tarea periódica (con tu permiso)](../ej21_programar_cron/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

@@ -1,10 +1,10 @@
-# 🔵 EJ 09 · Del correo al calendario
+# 🔵 EJ 09 · De un correo a un evento de calendario
 
-> 📬 **Puerta B · La estafeta** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 📬 **Correo y trámites** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## 📖 La escena
+## 📌 La situación
 
-El ayuntamiento confirma el taller de pan del sábado 28. Que no se le olvide a nadie.
+El ayuntamiento confirma por correo un taller. Hay que pasarlo al calendario sin equivocarse de día, hora ni zona horaria.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Lee taller_pan.eml y genera taller_pan.ics con el eve
 - Se importa sin errores en Google Calendar u Outlook.
 
 ```bash
-python3 taller.py comprobar ej09      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej09      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas
@@ -49,7 +49,7 @@ DTSTART 28/11/2026 10:00 con `TZID=Europe/Madrid` y bloque VTIMEZONE, validado c
 
 Prompt, salida real y ficheros: [`soluciones/ej09_calendario_ics/`](../../soluciones/ej09_calendario_ics/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **La carta que nadie entiende** → [🟢 EJ 25 · Explícame esta carta](../ej25_carta_explicada/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **La carta que nadie entiende** → [🟢 EJ 25 · Entender una carta de la Administración](../ej25_carta_explicada/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

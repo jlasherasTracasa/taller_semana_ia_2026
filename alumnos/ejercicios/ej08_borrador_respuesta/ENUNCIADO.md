@@ -1,10 +1,10 @@
-# 🟢 EJ 08 · Contestar al proveedor (sin enviar nada)
+# 🟢 EJ 08 · Borrador de respuesta a un proveedor (sin enviar nada)
 
-> 📬 **Puerta B · La estafeta** · 🟢 Fácil · ⏱ 10 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚
+> 📬 **Correo y trámites** · 🟢 Fácil · ⏱ 10 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚
 
-## 📖 La escena
+## 📌 La situación
 
-El proveedor sube la harina. Si confirmas antes del jueves 26, mantienes 38 € el saco.
+El proveedor de harina sube precios: si se confirma antes del jueves 26 se mantienen 38 € el saco. Hay que contestar, sin enviar nada.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Lee correo/bandeja/01_proveedor_urgente.eml y escribe
 - No se ha enviado nada.
 
 ```bash
-python3 taller.py comprobar ej08      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej08      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -45,7 +45,7 @@ Borrador con los 38 €/saco y el jueves 26; no envió nada.
 
 Prompt, salida real y ficheros: [`soluciones/ej08_borrador_respuesta/`](../../soluciones/ej08_borrador_respuesta/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Al calendario** → [🔵 EJ 09 · Del correo al calendario](../ej09_calendario_ics/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Al calendario** → [🔵 EJ 09 · De un correo a un evento de calendario](../ej09_calendario_ics/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

@@ -1,10 +1,10 @@
-# 🔵 EJ 22 · ¿Qué ha cambiado entre estas dos versiones?
+# 🔵 EJ 22 · Qué ha cambiado entre dos versiones de un documento
 
-> 🗂️ **Puerta D · El ayuntamiento** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 🗂️ **Documentos y tareas repetitivas** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## 📖 La escena
+## 📌 La situación
 
-La memoria anual de la asociación tiene dos versiones. La junta solo quiere saber qué cambió.
+La memoria anual de una asociación tiene dos versiones y la junta solo quiere saber qué ha cambiado, con las cifras.
 
 ## 🎯 Objetivo
 
@@ -35,7 +35,7 @@ opencode run --standalone "Lee informe_v1.docx e informe_v2.docx con python-docx
 - `cambios.md` en prosa que menciona talleres, socios y remanente con las cifras de ambas versiones.
 
 ```bash
-python3 taller.py comprobar ej22      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej22      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -44,6 +44,6 @@ Resumen en prosa con talleres, socios y remanente y las cifras de ambas versione
 
 Prompt, salida real y ficheros: [`soluciones/ej22_comparar_versiones/`](../../soluciones/ej22_comparar_versiones/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

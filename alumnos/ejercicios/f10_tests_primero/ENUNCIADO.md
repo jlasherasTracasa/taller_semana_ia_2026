@@ -1,10 +1,10 @@
 # 🟣 F.10 · Tests primero: el agente no puede hacer trampa
 
-> ⚙️ **Puerta F · La sala de máquinas** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 💻
+> ⚙️ **Cómo funciona un agente** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 💻
 
-## 📖 La escena
+## 📌 La situación
 
-El programa de la caja de la tienda da mal el cambio. Hay tests. El agente tiene que arreglar el código, no los tests.
+El programa de caja de una tienda calcula mal el cambio. Hay tests que dicen cómo debería funcionar: el agente tiene que arreglar el código, no los tests.
 
 ## 🎯 Objetivo
 
@@ -37,7 +37,7 @@ opencode run --standalone "Haz que pasen todos los tests de tests/ arreglando ti
 - `tests/test_precios.py` está intacto (el comprobador compara su huella).
 
 ```bash
-python3 taller.py comprobar f10      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar f10      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧗 Reto extra
@@ -50,8 +50,8 @@ Pide lo mismo sin la frase «NO modifiques tests/» varias veces. ¿Alguna vez �
 
 Prompt, salida real y ficheros: [`soluciones/f10_tests_primero/`](../../soluciones/f10_tests_primero/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
 - **Quiero comandos para no repetirme** → [🔵 F.3 · Comandos: el encargo de todos los lunes en una palabra](../f3_comandos/ENUNCIADO.md)
 - **Quiero escribir mi propia tool** → [🟣 F.6 · Tu propia tool: plazos en días hábiles](../f6_tool_propia/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

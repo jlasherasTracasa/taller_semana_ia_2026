@@ -1,10 +1,10 @@
 # 🔵 EJ 07 · De correos a lista de tareas
 
-> 📬 **Puerta B · La estafeta** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 📬 **Correo y trámites** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## 📖 La escena
+## 📌 La situación
 
-Pilar quiere las tareas en una hoja de cálculo para tacharlas. Y que lo raro no se cuele como tarea.
+Los correos tienen que convertirse en una lista de tareas para la hoja de cálculo del equipo, sin que lo sospechoso se cuele como tarea.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Lee todos los correos de correo/bandeja/ y crea corre
 - Spam e inyección con urgencia `ninguna`.
 
 ```bash
-python3 taller.py comprobar ej07      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej07      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas
@@ -49,8 +49,8 @@ Columnas y 7 filas correctas, pero al correo con la inyección le puso urgencia 
 
 Prompt, salida real y ficheros: [`soluciones/ej07_tareas_csv/`](../../soluciones/ej07_tareas_csv/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
 - **¿Sale bien SIEMPRE? Mídelo** → [⚫ F.9 · ¿Funciona siempre? Medir en vez de opinar](../f9_fiabilidad/ENUNCIADO.md)
-- **Una tarea al calendario** → [🔵 EJ 09 · Del correo al calendario](../ej09_calendario_ics/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Una tarea al calendario** → [🔵 EJ 09 · De un correo a un evento de calendario](../ej09_calendario_ics/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

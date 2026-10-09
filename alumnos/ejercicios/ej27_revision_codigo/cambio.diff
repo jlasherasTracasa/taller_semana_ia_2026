@@ -1,0 +1,57 @@
+diff --git a/app/socios.py b/app/socios.py
+index 3f1a2c4..9b7e0d1 100644
+--- a/app/socios.py
++++ b/app/socios.py
+@@ -1,12 +1,16 @@
+ import sqlite3
++import requests
+ 
+ DB = "socios.db"
++API_KEY = "sk-live-4f9a2b7c1e8d6f3a0b5c9e2d7a1f4b8c"   # clave del servicio de envíos
+ 
+ 
+ def conectar():
+     return sqlite3.connect(DB)
+ 
+ 
+-def buscar_socio(conn, dni):
+-    return conn.execute("SELECT * FROM socios WHERE dni = ?", (dni,)).fetchone()
++def buscar_socios(conn, texto):
++    consulta = "SELECT nombre, dni, telefono FROM socios WHERE nombre LIKE '%" + texto + "%'"
++    return conn.execute(consulta).fetchall()
+ 
+ 
+@@ -20,14 +24,27 @@ def alta_socio(conn, nombre, dni, telefono):
+     conn.commit()
+ 
+ 
+-def cuota_anual(edad):
+-    if edad >= 65:
+-        return 15
+-    return 30
++def cuota_anual(edad):
++    if edad > 65:
++        return 15
++    if edad < 18:
++        return 10
++    return 30
++
++
++def avisar_socios(conn, mensaje):
++    for nombre, dni, telefono in conn.execute("SELECT nombre, dni, telefono FROM socios"):
++        try:
++            requests.post("https://api.envios-ejemplo.com/sms",
++                          json={"to": telefono, "text": mensaje, "key": API_KEY})
++        except:
++            pass
++    print("Avisos enviados a todos los socios")
+diff --git a/tests/test_socios.py b/tests/test_socios.py
+index 1c2d3e4..1c2d3e4 100644
+--- a/tests/test_socios.py
++++ b/tests/test_socios.py
+@@ -8,6 +8,3 @@ def test_alta_y_busqueda(conn):
+     alta_socio(conn, "Ane Goñi", "12345678Z", "600000000")
+-    assert buscar_socio(conn, "12345678Z")[0] == "Ane Goñi"
+-
+-def test_cuota_jubilado():
+-    assert cuota_anual(65) == 15

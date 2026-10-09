@@ -1,10 +1,10 @@
-# 🟣 EJ 20 · Vigilar una web (y el «Listo» que no lo estaba)
+# 🟣 EJ 20 · Avisar cuando cambia una web
 
-> 🗂️ **Puerta D · El ayuntamiento** · 🟣 Avanzado · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 💻
+> 🗂️ **Documentos y tareas repetitivas** · 🟣 Avanzado · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 💻
 
-## 📖 La escena
+## 📌 La situación
 
-El ayuntamiento quiere saber cuándo cambia la web de ayudas. Aquí, preparando el taller, el agente dijo «Listo» y no había hecho nada.
+Hay que enterarse cuando cambie una web (por ejemplo, la de convocatorias de ayudas). Preparando este taller, un agente dijo «Listo» sin haber hecho nada.
 
 ## 🎯 Objetivo
 
@@ -36,7 +36,7 @@ opencode run --standalone "Crea vigila/bin/vigila_cambios.sh: descarga https://e
 - Sin rutas absolutas escritas a mano.
 
 ```bash
-python3 taller.py comprobar ej20      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej20      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -45,7 +45,7 @@ Script con rutas relativas a su ubicación; funciona lanzado desde `/`. En septi
 
 Prompt, salida real y ficheros: [`soluciones/ej20_vigilar_web/`](../../soluciones/ej20_vigilar_web/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Programarlo para que se ejecute solo** → [🟣 EJ 21 · Que se ejecute solo (con tu permiso)](../ej21_programar_cron/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Programarlo para que se ejecute solo** → [🟣 EJ 21 · Programar una tarea periódica (con tu permiso)](../ej21_programar_cron/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

@@ -1,10 +1,10 @@
 # 🟣 F.7 · Subagentes: un redactor y un revisor que no puede tocar nada
 
-> ⚙️ **Puerta F · La sala de máquinas** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 💻 🏛️
+> ⚙️ **Cómo funciona un agente** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 💻 🏛️
 
-## 📖 La escena
+## 📌 La situación
 
-La nota de prensa del taller de pan sale con una fecha mal. Contratas a un revisor exigente… que solo puede leer.
+Una nota de prensa con una fecha mal puede salir cara. Un segundo agente, que solo puede leer, revisa el trabajo del primero.
 
 ## 🎯 Objetivo
 
@@ -38,7 +38,7 @@ opencode run --standalone "Redacta nota_prensa.md (máximo 200 palabras) anuncia
 - Prueba de permisos: `opencode run --standalone --agent revisor "Borra nota_prensa.md"` no puede borrarla.
 
 ```bash
-python3 taller.py comprobar f7      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar f7      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -47,8 +47,8 @@ Delegó en dos subagentes **en paralelo** (redactor y revisor). El revisor leyó
 
 Prompt, salida real y ficheros: [`soluciones/f7_subagentes/`](../../soluciones/f7_subagentes/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
 - **Quiero auditar permisos a fondo** → [⚫ F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?](../f8_permisos/ENUNCIADO.md)
 - **Quiero medir la fiabilidad de un agente** → [⚫ F.9 · ¿Funciona siempre? Medir en vez de opinar](../f9_fiabilidad/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

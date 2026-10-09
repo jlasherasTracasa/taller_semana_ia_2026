@@ -1,10 +1,10 @@
 # 🟣 F.6 · Tu propia tool: plazos en días hábiles
 
-> ⚙️ **Puerta F · La sala de máquinas** · 🟣 Avanzado · ⏱ 25 min · 🛠️ `opencode run` · Recomendado para: 💻 🏛️
+> ⚙️ **Cómo funciona un agente** · 🟣 Avanzado · ⏱ 25 min · 🛠️ `opencode run` · Recomendado para: 💻 🏛️
 
-## 📖 La escena
+## 📌 La situación
 
-La carta del EJ 25 da «diez días hábiles». Los modelos se equivocan contando festivos. Le das una calculadora de plazos.
+Los modelos se equivocan contando días hábiles con festivos. Para algo tan delicado como un plazo, mejor darle una herramienta que lo calcule bien.
 
 ## 🎯 Objetivo
 
@@ -37,7 +37,7 @@ opencode run --standalone "Me notificaron una carta el 2 de octubre de 2026 y te
 - El agente cita `vence=19/10/2026 … festivos_saltados=12/10`, es decir, usó TU tool.
 
 ```bash
-python3 taller.py comprobar f6      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar f6      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas
@@ -55,8 +55,8 @@ Buscó la herramienta en el catálogo, la invocó y citó `vence=19/10/2026 (lun
 
 Prompt, salida real y ficheros: [`soluciones/f6_tool_propia/`](../../soluciones/f6_tool_propia/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
 - **Quiero que otro agente revise el trabajo de este** → [🟣 F.7 · Subagentes: un redactor y un revisor que no puede tocar nada](../f7_subagentes/ENUNCIADO.md)
 - **Quiero medir si funciona SIEMPRE** → [⚫ F.9 · ¿Funciona siempre? Medir en vez de opinar](../f9_fiabilidad/ENUNCIADO.md)
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

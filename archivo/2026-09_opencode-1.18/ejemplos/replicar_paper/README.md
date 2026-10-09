@@ -149,7 +149,7 @@ UV_CACHE_DIR=/mnt/SSD6TB/modelos/uv-cache uv pip install --python .venv/bin/pyth
 - La API del BOE solo sirve en consolidado las normas en vigor; algunos identificadores antiguos dan 404.
 
 ---
-## Revisión de Claude (28-09-2026)
+## Revisión (28-09-2026)
 
 - **Comprobado:**
   - La CPU se fuerza en los tres scripts, con `assert not torch.cuda.is_available()`.

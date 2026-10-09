@@ -1,10 +1,10 @@
-# 🔵 EJ 05 · Una web para el centro de mayores
+# 🔵 EJ 05 · Auditoría de accesibilidad de una web
 
-> 🌐 **Puerta A · El escaparate** · 🔵 Medio · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 🌐 **Webs** · 🔵 Medio · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## 📖 La escena
+## 📌 La situación
 
-La web del centro de mayores tiene letra diminuta y gris claro sobre blanco. Los socios no la leen.
+La web de un centro de mayores tiene letra pequeña y poco contraste: sus usuarios no la pueden leer. Hay que auditarla y corregirla.
 
 ## 🎯 Objetivo
 
@@ -37,7 +37,7 @@ opencode run --standalone "Audita web_centro_mayores.html: contraste de color, t
 - El original sigue intacto.
 
 ```bash
-python3 taller.py comprobar ej05      # el agente no puede darte el sello: solo el comprobador
+python3 taller.py comprobar ej05      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
@@ -46,7 +46,7 @@ Con `question: deny` y «no me hagas preguntas», escribió `incidencias.md` y l
 
 Prompt, salida real y ficheros: [`soluciones/ej05_auditoria_web/`](../../soluciones/ej05_auditoria_web/)
 
-## 🔀 ¿Y ahora qué?
+## 🔀 Siguiente paso
 
-- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
-- **A la estafeta: el correo** → [🟢 EJ 06 · La bandeja que echa humo](../ej06_resumen_diario/ENUNCIADO.md)
+- **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)
+- **Área de correo y trámites** → [🟢 EJ 06 · Resumen diario de la bandeja de entrada](../ej06_resumen_diario/ENUNCIADO.md)

@@ -1,14 +1,14 @@
 {
  "_resumen": {
   "fecha": "09-10-2026",
-  "ok": 33,
-  "total": 36,
-  "tokens_entrada": 3756872,
-  "tokens_salida": 131767,
-  "tokens_medios": 117838,
-  "coste_medio": 0.019073160606060607,
-  "coste_total": 0.6294143,
-  "escenas_medidas": 33,
+  "ok": 35,
+  "total": 38,
+  "tokens_entrada": 3864253,
+  "tokens_salida": 145351,
+  "tokens_medios": 114560,
+  "coste_medio": 0.01863752714285714,
+  "coste_total": 0.65231345,
+  "escenas_medidas": 35,
   "top": [
    {
     "num": "EJ 13",
@@ -35,16 +35,16 @@
     "coste": 0.03821985
    },
    {
-    "num": "EJ 23",
-    "entrada": 71031,
-    "salida": 2247,
-    "coste": 0.01177815
-   },
-   {
     "num": "F.8",
     "entrada": 70021,
     "salida": 4583,
     "coste": 0.01279465
+   },
+   {
+    "num": "EJ 25",
+    "entrada": 64062,
+    "salida": 7528,
+    "coste": 0.0133733
    },
    {
     "num": "F.2",
@@ -383,5 +383,23 @@
   "entrada": 64062,
   "salida": 7528,
   "solucion": true
+ },
+ "ej26_factura_luz": {
+  "estado": "ok",
+  "fecha": "09-10-2026",
+  "segundos": 18,
+  "entrada": 44078,
+  "salida": 2546,
+  "solucion": true,
+  "nota": "Calculó con un script los tres costes exactos (704,14 / 646,89 / 711,51 €), recomendó la B y explicó que la C, con el kWh más barato, es la más cara por la cuota de 5 € al mes: el folleto mentía."
+ },
+ "ej27_revision_codigo": {
+  "estado": "ok",
+  "fecha": "09-10-2026",
+  "segundos": 110,
+  "entrada": 63303,
+  "salida": 11038,
+  "solucion": true,
+  "nota": "Encontró los seis problemas (inyección SQL, clave en el código, regresión de la cuota a los 65, tests borrados, `except: pass` y datos personales a un tercero) y pidió cambios. **En el primer intento**, con «No modifiques nada: solo revisa», hizo la revisión en pantalla y **no creó `revision.md`**."
  }
 }
