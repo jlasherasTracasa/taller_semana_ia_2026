@@ -1,28 +1,45 @@
-# EJ 20 · Vigilar una web pública
+# 🟣 EJ 20 · Vigilar una web (y el «Listo» que no lo estaba)
 
-## Objetivo
-Primera mitad de una rutina: un script que comprueba si una página web ha cambiado y deja constancia en un log.
-En el EJ 21 lo programarás para que se ejecute solo.
+> 🗂️ **Puerta D · El ayuntamiento** · 🟣 Avanzado · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 💻
 
-## Datos de partida
-- Ninguno. El agente crea `vigila/bin/vigila_cambios.sh` desde cero.
+## 📖 La escena
 
-## Prompt sugerido
+El ayuntamiento quiere saber cuándo cambia la web de ayudas. Aquí, preparando el taller, el agente dijo «Listo» y no había hecho nada.
+
+## 🎯 Objetivo
+
+Un script que comprueba si una web ha cambiado y lo apunta en un log.
+
+## 📦 Lo que tienes en esta carpeta
+
+- Ninguno: el agente crea `vigila/`.
+
+## 💬 El encargo
+
+Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+
 ```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Crea vigila/bin/vigila_cambios.sh: descarga https://example.com con curl, calcula su hash SHA-256, lo compara con el guardado en vigila/hash.txt y añade una línea con fecha a vigila/log/vigilancia.log (inicio, sin cambios o CAMBIO DETECTADO). Las rutas deben calcularse a partir de la ubicación del propio script, sin rutas absolutas, para que funcione se lance desde donde se lance. Ejecútalo dos veces y enséñame el log."
+python3 taller.py lanzar ej20
 ```
 
-## Criterio de éxito
-- El script funciona lanzado desde cualquier carpeta (prueba `cd /tmp && bash ~/…/vigila_cambios.sh`).
-- `vigila/log/vigilancia.log` tiene dos líneas: «inicio vigilancia hash=…» y «sin cambios (…)».
-- No hay rutas absolutas escritas a mano en el script.
+O a mano, desde la carpeta de trabajo del ejercicio:
 
-## Pistas
-- `DIR="$(cd "$(dirname "$0")/.." && pwd)"` da la carpeta `vigila/` sea cual sea el directorio actual.
-- `sha256sum` corta con `cut -d' ' -f1`.
+```bash
+opencode run --standalone "Crea vigila/bin/vigila_cambios.sh: descarga https://example.com con curl, calcula su hash SHA-256, lo compara con el guardado en vigila/hash.txt y añade una línea con fecha a vigila/log/vigilancia.log (inicio, sin cambios o CAMBIO DETECTADO). Las rutas deben calcularse a partir de la ubicación del propio script, sin rutas absolutas, para que funcione se lance desde donde se lance. Ejecútalo dos veces y enséñame el log." | tee salida.txt
+```
 
-## Tiempo estimado
-≈ 15 min
+> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
-## Dificultad
-Media
+## ✅ ¿Lo ha hecho de verdad?
+
+- El log tiene dos líneas y el script funciona lanzado desde `/`.
+- Sin rutas absolutas escritas a mano.
+
+```bash
+python3 taller.py comprobar ej20      # el agente no puede darte el sello: solo el comprobador
+```
+
+## 🔀 ¿Y ahora qué?
+
+- **Programarlo para que se ejecute solo** → [🟣 EJ 21 · Que se ejecute solo (con tu permiso)](../ej21_programar_cron/ENUNCIADO.md)
+- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)

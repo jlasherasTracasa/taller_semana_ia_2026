@@ -1,21 +1,44 @@
-# EJ 14 · Traducir un deck conservando el formato
+# 🟣 EJ 14 · Traducir un pptx por dentro
 
-## Objetivo
-Traducir una presentación editando el XML directamente, sin reconstruir el archivo.
+> 📊 **Puerta C · La bodega** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 💻
 
-## Datos de partida
-- `charla_taller_es.pptx` — presentación breve en castellano.
+## 📖 La escena
 
-## Prompt sugerido
+La charla va a una feria en Burdeos. Hay que traducirla sin romper tablas ni gráficos.
+
+## 🎯 Objetivo
+
+Traducir un pptx editando su XML (un pptx es un zip), sin reconstruirlo.
+
+## 📦 Lo que tienes en esta carpeta
+
+- `charla_taller_es.pptx`.
+
+## 💬 El encargo
+
+Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+
 ```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Traduce charla_taller_es.pptx al inglés editando el XML directamente (unzip → edita slideN.xml → zip). Usa defusedxml.minidom, no xml.etree. Entrega charla_taller_en.pptx. No alteres imágenes, tablas ni gráficos."
+python3 taller.py lanzar ej14
 ```
 
-## Criterio de éxito
-`charla_taller_en.pptx` que se abre sin avisos de reparación y conserva tablas y gráficos intactos, con el texto traducido.
+O a mano, desde la carpeta de trabajo del ejercicio:
 
-## Tiempo estimado
-≈ 25 min
+```bash
+opencode run --standalone "Traduce charla_taller_es.pptx al inglés editando el XML directamente (descomprime, edita el texto de ppt/slides/slideN.xml y vuelve a comprimir). Usa defusedxml o expresiones regulares sobre las etiquetas a:t, no xml.etree sin protección. Entrega charla_taller_en.pptx. No alteres imágenes, tablas ni gráficos." | tee salida.txt
+```
 
-## Dificultad
-Alta
+> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+
+## ✅ ¿Lo ha hecho de verdad?
+
+- `charla_taller_en.pptx` abre sin aviso de reparación, con el mismo número de diapositivas, tablas y gráficos.
+- El texto está en inglés.
+
+```bash
+python3 taller.py comprobar ej14      # el agente no puede darte el sello: solo el comprobador
+```
+
+## 🔀 ¿Y ahora qué?
+
+- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)

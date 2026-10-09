@@ -5,13 +5,13 @@ import json
 import os
 import litellm
 
-# En LiteLLM el prefijo del proveedor va en el nombre del modelo.
-# "openai/..." = cualquier API compatible con OpenAI (aquí, LiteLLM local).
-MODEL = "openai/GLM-5.3-Flash"
-API_BASE = os.environ["LITELLM_API_BASE"] + "/v1"
-API_KEY = os.environ["LITELLM_API_KEY"]
-
-KW = {"api_base": API_BASE, "api_key": API_KEY}
+# Con el LiteLLM del taller: "openai/<modelo>" + su URL. Con OpenRouter: "openrouter/z-ai/glm-5.3-flash".
+if os.environ.get("LITELLM_API_KEY"):
+    MODEL = os.environ.get("TALLER_MODELO", "openai/GLM-5.3-Flash")
+    KW = {"api_base": os.environ["LITELLM_API_BASE"] + "/v1", "api_key": os.environ["LITELLM_API_KEY"]}
+else:
+    MODEL = os.environ.get("TALLER_MODELO", "openrouter/z-ai/glm-5.3-flash")
+    KW = {"api_key": os.environ["OPENROUTER_API_KEY"]}
 
 # 1) El ESQUEMA de la tool: nombre, descripción y JSON Schema de los parámetros.
 tools = [
@@ -73,7 +73,7 @@ msg = r1.choices[0].message
 print("== RESPUESTA 1 DEL MODELO ==")
 print("content:", repr(msg.content))
 print("tool_calls (JSON crudo devuelto por el modelo):")
-print(json.dumps([tc.to_json() for tc in (msg.tool_calls or [])], indent=2, ensure_ascii=False))
+print(json.dumps([tc.model_dump() for tc in (msg.tool_calls or [])], indent=2, ensure_ascii=False))
 
 if not msg.tool_calls:
     raise SystemExit("El modelo no pidió ninguna herramienta; relanza la demo.")
@@ -83,7 +83,7 @@ for tc in msg.tool_calls:
     args = json.loads(tc.function.arguments)
     resultado = calculadora(**args)
     print(f"\n== EJECUCIÓN LOCAL (nuestro código) ==\ncalculadora({args}) = {resultado}")
-    messages.append({"role": "assistant", "content": None, "tool_calls": [tc.to_json()]})
+    messages.append({"role": "assistant", "content": None, "tool_calls": [tc.model_dump()]})
     messages.append({"role": "tool", "tool_call_id": tc.id, "content": resultado})
 
 # 4) Devolvemos el resultado al modelo para que redacte la respuesta final.

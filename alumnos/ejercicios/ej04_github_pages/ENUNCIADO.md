@@ -1,21 +1,49 @@
-# EJ 04 · Publicar en GitHub Pages
+# 🔵 EJ 04 · Publicar la web (sin darle tus llaves)
 
-## Objetivo
-Dejar tu página personal publicada de forma gratuita en internet mediante GitHub Pages.
+> 🌐 **Puerta A · El escaparate** · 🔵 Medio · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 📚 💻
 
-## Datos de partida
-- `index.html` — copia de la página del EJ 1 (o la tuya propia).
+## 📖 La escena
 
-## Prompt sugerido
+Pilar quiere un enlace para WhatsApp. Lo publicas gratis en GitHub Pages… pero el último paso lo das tú.
+
+## 🎯 Objetivo
+
+Preparar el repositorio y una guía de publicación; el `git push` y la URL los haces tú.
+
+## 📦 Lo que tienes en esta carpeta
+
+- `index.html`: la página que vas a publicar.
+
+## 💬 El encargo
+
+Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+
 ```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Voy a publicar mi index.html en GitHub Pages. Explícame los pasos numerados para crear el repositorio, activar Pages y subir el archivo. Prepara también un README.md breve para el repo. Todo en castellano."
+python3 taller.py lanzar ej04
 ```
 
-## Criterio de éxito
-Repositorio preparado + pasos numerados claros. La verificación final (push real y URL pública accesible) la haces **tú**: por seguridad, el agente no debe manejar tus credenciales ni hacer el push.
+O a mano, desde la carpeta de trabajo del ejercicio:
 
-## Tiempo estimado
-≈ 15 min
+```bash
+opencode run --standalone "Voy a publicar index.html en GitHub Pages. Inicializa aquí un repositorio git con un primer commit, escribe un README.md breve y PASOS.md con los pasos numerados para crear el repositorio en GitHub, activar Pages y subir los cambios. Todo en castellano. NO hagas git push ni pidas credenciales: ese paso lo haré yo." | tee salida.txt
+```
 
-## Dificultad
-Media
+> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+
+## ✅ ¿Lo ha hecho de verdad?
+
+- Hay repositorio git local con un commit, `README.md` y `PASOS.md` en castellano.
+- El agente no ha hecho `push` ni ha pedido tokens. La URL pública la compruebas tú.
+
+```bash
+python3 taller.py comprobar ej04      # el agente no puede darte el sello: solo el comprobador
+```
+
+## 💡 Pistas
+
+- Usa un token de GitHub con permisos mínimos y caducidad corta. Nunca lo pegues en un chat.
+
+## 🔀 ¿Y ahora qué?
+
+- **¿Es accesible?** → [🔵 EJ 05 · Una web para el centro de mayores](../ej05_auditoria_web/ENUNCIADO.md)
+- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)

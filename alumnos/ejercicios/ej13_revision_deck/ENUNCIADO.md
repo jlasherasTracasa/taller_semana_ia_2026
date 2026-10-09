@@ -1,21 +1,45 @@
-# EJ 13 · Revisión de estilo de un deck
+# 🔵 EJ 13 · Revisar la presentación de otro
 
-## Objetivo
-Corregir ortografía y consistencia tipográfica de una presentación sin cambiar su contenido.
+> 📊 **Puerta C · La bodega** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## Datos de partida
-- `deck_ferias.pptx` — presentación de un certamen artesano con erratas, mayúsculas inconsistentes y espacios mal puestos.
+## 📖 La escena
 
-## Prompt sugerido
+El deck de ferias tiene faltas, mayúsculas locas y espacios dobles. Hay que corregirlo sin cambiar el contenido.
+
+## 🎯 Objetivo
+
+Corregir ortografía y consistencia de un pptx sin tocar el original.
+
+## 📦 Lo que tienes en esta carpeta
+
+- `deck_ferias.pptx`.
+
+## 💬 El encargo
+
+Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+
 ```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Revisa deck_ferias.pptx y entrégame primero un informe_incidencias.md con cada error detectado (ortografía, mayúsculas, espacios, tildes) y después una copia corregida como deck_ferias_corregido.pptx. No toques el original."
+python3 taller.py lanzar ej13
 ```
 
-## Criterio de éxito
-Informe separado de cambios y copia corregida que abre sin avisos; el archivo original queda intacto.
+O a mano, desde la carpeta de trabajo del ejercicio:
 
-## Tiempo estimado
-≈ 20 min
+```bash
+opencode run --standalone "Revisa deck_ferias.pptx y entrégame primero informe_incidencias.md con cada error (ortografía, mayúsculas, espacios, tildes) y después una copia corregida como deck_ferias_corregido.pptx. No toques el original. Comprueba al final que el original no ha cambiado." | tee salida.txt
+```
 
-## Dificultad
-Media
+> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+
+## ✅ ¿Lo ha hecho de verdad?
+
+- `informe_incidencias.md` y `deck_ferias_corregido.pptx` (mismo número de diapositivas).
+- El original, intacto.
+
+```bash
+python3 taller.py comprobar ej13      # el agente no puede darte el sello: solo el comprobador
+```
+
+## 🔀 ¿Y ahora qué?
+
+- **Traducirlo** → [🟣 EJ 14 · Traducir un pptx por dentro](../ej14_traducir_deck/ENUNCIADO.md)
+- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)

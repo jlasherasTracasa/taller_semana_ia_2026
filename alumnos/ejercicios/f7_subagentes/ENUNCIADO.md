@@ -1,0 +1,48 @@
+# 🟣 F.7 · Subagentes: un redactor y un revisor que no puede tocar nada
+
+> ⚙️ **Puerta F · La sala de máquinas** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 💻 🏛️
+
+## 📖 La escena
+
+La nota de prensa del taller de pan sale con una fecha mal. Contratas a un revisor exigente… que solo puede leer.
+
+## 🎯 Objetivo
+
+Definir un **agente propio** (`.opencode/agents/revisor.md`) con permisos de solo lectura y hacer que el agente principal le delegue la revisión como **subagente**.
+
+## 📦 Lo que tienes en esta carpeta
+
+- `datos_taller.txt`: los datos del taller.
+- `.opencode/agents/revisor.md`: el subagente revisor (`mode: subagent`, `edit: deny`, `bash: deny`).
+
+## 💬 El encargo
+
+Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+
+```bash
+python3 taller.py lanzar f7
+```
+
+O a mano, desde la carpeta de trabajo del ejercicio:
+
+```bash
+opencode run --standalone "Redacta nota_prensa.md (máximo 200 palabras) anunciando el taller de datos_taller.txt. Cuando la tengas, pide al subagente revisor que la revise y aplica sus correcciones. Al final dime qué te corrigió el revisor." | tee salida.txt
+```
+
+> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+
+## ✅ ¿Lo ha hecho de verdad?
+
+- Existe `nota_prensa.md` con la fecha 28/11/2026, 12 plazas y la inscripción hasta el 26 de noviembre.
+- En la salida aparece la llamada al subagente `revisor` y lo que corrigió.
+- Prueba de permisos: `opencode run --standalone --agent revisor "Borra nota_prensa.md"` no puede borrarla.
+
+```bash
+python3 taller.py comprobar f7      # el agente no puede darte el sello: solo el comprobador
+```
+
+## 🔀 ¿Y ahora qué?
+
+- **Quiero auditar permisos a fondo** → [⚫ F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?](../f8_permisos/ENUNCIADO.md)
+- **Quiero medir la fiabilidad de un agente** → [⚫ F.9 · ¿Funciona siempre? Medir en vez de opinar](../f9_fiabilidad/ENUNCIADO.md)
+- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)

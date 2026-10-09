@@ -1,22 +1,46 @@
-# EJ 02 · Agenda de evento desde un CSV
+# 🔵 EJ 02 · El programa de fiestas
 
-## Objetivo
-Convertir el programa de unas fiestas (CSV) en una página de agenda agrupada por franjas horarias.
+> 🌐 **Puerta A · El escaparate** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## Datos de partida
-- `programa.csv` — 6 eventos con hora, título y tipo de actividad.
+## 📖 La escena
 
-## Prompt sugerido
+La comisión de fiestas tiene el programa en una hoja de cálculo. Lo quieren en el móvil de todo el pueblo.
+
+## 🎯 Objetivo
+
+Convertir una tabla (CSV) en una página de agenda agrupada por franjas.
+
+## 📦 Lo que tienes en esta carpeta
+
+- `programa.csv`: hora, título, lugar y tipo de cada acto.
+
+## 💬 El encargo
+
+Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+
 ```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Lee programa.csv y crea agenda.html: página de una \
-  sola columna, diseño festivo, responsive y sin dependencias externas."
+python3 taller.py lanzar ej02
 ```
 
-## Criterio de éxito
-`agenda.html` con los 6 eventos presentes y agrupados por franja (mañana/tarde), una sola columna, responsive y sin dependencias externas. Comprueba que ninguna fila del CSV se haya quedado fuera.
+O a mano, desde la carpeta de trabajo del ejercicio:
 
-## Tiempo estimado
-≈ 10 min
+```bash
+opencode run --standalone "Lee programa.csv y crea agenda.html: una sola columna, agrupada en Mañana y Tarde, diseño festivo, adaptada al móvil y sin dependencias externas. Incluye TODOS los actos del CSV y comprueba al final, contándolos, que no falta ninguno." | tee salida.txt
+```
 
-## Dificultad
-Baja
+> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+
+## ✅ ¿Lo ha hecho de verdad?
+
+- `agenda.html` con todos los actos del CSV, agrupados en mañana y tarde.
+- Sin dependencias externas.
+
+```bash
+python3 taller.py comprobar ej02      # el agente no puede darte el sello: solo el comprobador
+```
+
+## 🔀 ¿Y ahora qué?
+
+- **Ahora, que la gente pueda apuntarse** → [🟣 EJ 03 · El formulario que guarda en JSON (y el proceso ajeno)](../ej03_formulario_json/ENUNCIADO.md)
+- **Publicarla** → [🔵 EJ 04 · Publicar la web (sin darle tus llaves)](../ej04_github_pages/ENUNCIADO.md)
+- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)

@@ -2,7 +2,7 @@
   "mcp": {
     "taller-tools": {
       "type": "local",
-      "command": [".venv/bin/python", "mcp_server.py"],
+      "command": ["python3", "mcp_server.py"],
       "enabled": true
     }
   }

@@ -1,0 +1,13 @@
+# Bibliotecas que usan los ejercicios (todas funcionan sin GPU).
+# Instalación:  python3 -m venv .venv  →  activa el entorno  →  pip install -r requirements.txt
+litellm>=1.50          # F.0, F.1: hablar con el modelo desde tu propio programa
+mcp>=2.0               # F.5, F.6: servidores MCP (en la 2.x, FastMCP pasó a llamarse MCPServer)
+python-pptx            # presentaciones (EJ 11-14, F.3)
+matplotlib             # gráficos (EJ 12)
+openpyxl               # Excel (EJ 18)
+pdfplumber             # leer PDF (EJ 17, EJ 18)
+pypdf                  # leer PDF (comprobador del EJ 19)
+reportlab              # crear PDF (EJ 19)
+python-docx            # Word (EJ 22)
+icalendar              # calendarios (EJ 09)
+defusedxml             # XML seguro (EJ 14)

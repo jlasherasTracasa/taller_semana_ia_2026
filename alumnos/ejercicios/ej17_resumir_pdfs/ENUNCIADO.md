@@ -1,21 +1,45 @@
-# EJ 17 · Resumir todos los PDF de una carpeta
+# 🔵 EJ 17 · Tres PDF en una tabla
 
-## Objetivo
-Obtener un resumen estructurado de un conjunto de documentos PDF de golpe.
+> 🗂️ **Puerta D · El ayuntamiento** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
 
-## Datos de partida
-- `apuntes/guia_gimnasia.pdf`, `apuntes/programa_memoria.pdf` y `apuntes/normas_excursiones.pdf` — documentos ficticios de un centro cívico.
+## 📖 La escena
 
-## Prompt sugerido
+El centro de mayores tiene tres guías en PDF. Nadie se las ha leído. Una tabla con lo esencial, por favor.
+
+## 🎯 Objetivo
+
+Resumir varios PDF en una tabla, con puntos sacados del texto real.
+
+## 📦 Lo que tienes en esta carpeta
+
+- `apuntes/`: tres PDF (gimnasia, excursiones, taller de memoria).
+
+## 💬 El encargo
+
+Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+
 ```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Lee los PDF de apuntes/ uno a uno con pdfplumber y crea resumen_apuntes.md: tabla Markdown con título, tema y tres puntos clave de cada documento."
+python3 taller.py lanzar ej17
 ```
 
-## Criterio de éxito
-Tabla que cubre los tres PDFs, con puntos clave tomados del texto real (no inventados) y verificables abriendo los originales.
+O a mano, desde la carpeta de trabajo del ejercicio:
 
-## Tiempo estimado
-≈ 20 min
+```bash
+opencode run --standalone "Lee los PDF de apuntes/ uno a uno con pdfplumber y crea resumen_apuntes.md: una tabla Markdown con el título, el tema y tres puntos clave de cada documento, sacados del texto (no inventes nada)." | tee salida.txt
+```
 
-## Dificultad
-Media
+> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+
+## ✅ ¿Lo ha hecho de verdad?
+
+- La tabla cubre los tres PDF.
+- Los puntos se pueden encontrar en los originales (compruébalo con uno).
+
+```bash
+python3 taller.py comprobar ej17      # el agente no puede darte el sello: solo el comprobador
+```
+
+## 🔀 ¿Y ahora qué?
+
+- **Facturas a Excel** → [🔵 EJ 18 · Facturas en PDF a Excel](../ej18_facturas_excel/ENUNCIADO.md)
+- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)

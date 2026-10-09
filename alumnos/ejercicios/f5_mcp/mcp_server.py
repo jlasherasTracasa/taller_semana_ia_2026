@@ -1,10 +1,10 @@
 # Servidor MCP local mínimo (stdio): expone UNA tool para opencode.
-# Ejecutar: .venv/bin/python mcp_server.py   (opencode lo lanza él mismo)
-from mcp.server.mcpserver import MCPServer as FastMCP
+# No hace falta ejecutarlo a mano: opencode lo arranca solo (ver opencode.json de esta carpeta).
+from mcp.server.mcpserver import MCPServer  # SDK de MCP 2.x (en 1.x se llamaba FastMCP)
 
 import csv
 
-mcp = FastMCP("taller-tools")
+mcp = MCPServer("taller-tools")
 
 @mcp.tool()
 def suma_columna(ruta: str, columna: str) -> str:

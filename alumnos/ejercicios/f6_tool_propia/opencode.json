@@ -1,0 +1,9 @@
+{
+  "mcp": {
+    "plazos": {
+      "type": "local",
+      "command": ["python3", "dias_habiles_mcp.py"],
+      "enabled": true
+    }
+  }
+}

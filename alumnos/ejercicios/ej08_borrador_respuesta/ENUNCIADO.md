@@ -1,23 +1,45 @@
-# EJ 08 · Borradores de respuesta
+# 🟢 EJ 08 · Contestar al proveedor (sin enviar nada)
 
-## Objetivo
-Redactar una respuesta profesional manteniendo una cifra concreta del correo original (38 €/saco).
+> 📬 **Puerta B · La estafeta** · 🟢 Fácil · ⏱ 10 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚
 
-## Datos de partida
-- `correo/bandeja/01_proveedor_urgente.eml` — aviso de subida de precios con plazo del jueves 26.
+## 📖 La escena
 
-## Prompt sugerido
+El proveedor sube la harina. Si confirmas antes del jueves 26, mantienes 38 € el saco.
+
+## 🎯 Objetivo
+
+Redactar una respuesta profesional que mantenga una cifra concreta, sin enviar nada.
+
+## 📦 Lo que tienes en esta carpeta
+
+- `correo/bandeja/01_proveedor_urgente.eml`.
+
+## 💬 El encargo
+
+Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+
 ```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Lee correo/bandeja/01_proveedor_urgente.eml y escribe \
-  un borrador de respuesta en correo/borrador_proveedor.md confirmando el pedido mensual para \
-  mantener el precio antiguo. Tono profesional en castellano. No envíes nada, solo el borrador."
+python3 taller.py lanzar ej08
 ```
 
-## Criterio de éxito
-`correo/borrador_proveedor.md`: borrador profesional en castellano que confirma el pedido antes del jueves 26 y menciona los 38 €/saco. Nada se envía: el agente solo redacta.
+O a mano, desde la carpeta de trabajo del ejercicio:
 
-## Tiempo estimado
-≈ 10 min
+```bash
+opencode run --standalone "Lee correo/bandeja/01_proveedor_urgente.eml y escribe un borrador de respuesta en correo/borrador_proveedor.md confirmando el pedido mensual para mantener el precio antiguo de 38 euros el saco. Tono profesional, en castellano. No envíes nada: solo el borrador." | tee salida.txt
+```
 
-## Dificultad
-Baja
+> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+
+## ✅ ¿Lo ha hecho de verdad?
+
+- `correo/borrador_proveedor.md` menciona los 38 € y el plazo del jueves 26.
+- No se ha enviado nada.
+
+```bash
+python3 taller.py comprobar ej08      # el agente no puede darte el sello: solo el comprobador
+```
+
+## 🔀 ¿Y ahora qué?
+
+- **Al calendario** → [🔵 EJ 09 · Del correo al calendario](../ej09_calendario_ics/ENUNCIADO.md)
+- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)

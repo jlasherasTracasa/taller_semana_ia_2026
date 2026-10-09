@@ -1,23 +1,47 @@
-# EJ 01 · Página personal desde cero
+# 🟢 EJ 01 · La web de Pilar
 
-## Objetivo
-Convertir un texto en bruto (una bio) en una página web personal terminada, en un solo archivo HTML.
+> 🌐 **Puerta A · El escaparate** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭
 
-## Datos de partida
-- `bio_pilar.txt` — biografía en texto plano de Pilar Azcona (panadera).
+## 📖 La escena
 
-## Prompt sugerido
+Pilar te da un papel con su biografía: «Quiero una página como las de la tele, pero sencilla».
+
+## 🎯 Objetivo
+
+Convertir un texto en bruto en una página web terminada, en un solo archivo.
+
+## 📦 Lo que tienes en esta carpeta
+
+- `bio_pilar.txt`: la biografía de Pilar.
+
+## 💬 El encargo
+
+Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+
 ```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Lee bio_pilar.txt y crea una página personal en un \
-  único archivo index.html: HTML5+CSS embebido, responsive, en castellano, sin dependencias \
-  externas ni frameworks."
+python3 taller.py lanzar ej01
 ```
 
-## Criterio de éxito
-`index.html` único (sin `<link>` ni `<script src>` externos), responsive, en castellano, con contacto funcional (mailto/tel). Ábrelo en el navegador y estrecha la ventana: nada debe cortarse.
+O a mano, desde la carpeta de trabajo del ejercicio:
 
-## Tiempo estimado
-≈ 10 min
+```bash
+opencode run --standalone "Lee bio_pilar.txt y crea una página personal en un único archivo index.html: HTML y CSS dentro del mismo archivo, adaptada al móvil, en castellano (lang=es), sin dependencias externas ni frameworks, con enlaces mailto y tel para contactar. Corrige las erratas del texto original." | tee salida.txt
+```
 
-## Dificultad
-Baja
+> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+
+## ✅ ¿Lo ha hecho de verdad?
+
+- `index.html` único, sin CSS ni JS externos, con `lang="es"` y meta viewport.
+- Enlaces `mailto:` y `tel:` que funcionan.
+- Ábrela en el navegador y estrecha la ventana: nada se corta. (Hay una errata en la bio: ¿la corrigió?)
+
+```bash
+python3 taller.py comprobar ej01      # el agente no puede darte el sello: solo el comprobador
+```
+
+## 🔀 ¿Y ahora qué?
+
+- **¿La publicamos en internet?** → [🔵 EJ 04 · Publicar la web (sin darle tus llaves)](../ej04_github_pages/ENUNCIADO.md)
+- **¿Es accesible para gente mayor?** → [🔵 EJ 05 · Una web para el centro de mayores](../ej05_auditoria_web/ENUNCIADO.md)
+- **Quiero una web que reciba datos** → [🟣 EJ 03 · El formulario que guarda en JSON (y el proceso ajeno)](../ej03_formulario_json/ENUNCIADO.md)

@@ -1,27 +1,34 @@
-# EJ 21 · Programar la tarea (cron)
+# 🟣 EJ 21 · Que se ejecute solo (con tu permiso)
 
-## Objetivo
-Automatizar la vigilancia del EJ 20 para que se ejecute sola cada cierto tiempo, sin que nadie la lance.
+> 🗂️ **Puerta D · El ayuntamiento** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode` interactivo · Recomendado para: 💻
 
-## Datos de partida
-- `vigila/bin/vigila_cambios.sh` — script de vigilancia (copia del validado en el EJ 20).
-- Nota de entorno: si no tienes `cron`, el equivalente moderno es un **timer de systemd usuario** (ver guía, EJ 21).
+## 📖 La escena
 
-## Prompt sugerido
-Este ejercicio se hace en **modo interactivo** (`opencode`, sin `run`): el `opencode.json` del kit marca
-`systemctl *` y `crontab *` como `ask`, así que el agente **te pedirá permiso** antes de tocar tu sistema.
-En `opencode run` (no interactivo) esa petición se quedaría bloqueada. Lee cada orden antes de aprobarla.
+La vigilancia, cada minuto, sin nadie delante. El agente va a tocar tu sistema: te pedirá permiso.
 
+## 🎯 Objetivo
+
+Programar la vigilancia con cron o un timer de systemd **aprobando** cada orden que toca el sistema.
+
+## 📦 Lo que tienes en esta carpeta
+
+- `vigila/bin/vigila_cambios.sh`: el script del EJ 20.
+
+## 💬 El encargo
+
+Modo **interactivo** (el kit pone `crontab` y `systemctl` en `ask`; en `opencode run` la pregunta se quedaría colgada):
 ```bash
-$ opencode --model vllm/GLM-5.3-Flash
-> Quiero ejecutar vigila/bin/vigila_cambios.sh cada minuto. Si en este equipo no hay cron, usa un timer de systemd usuario equivalente. Genera los ficheros de unidad, arranca el timer, espera a que se registren al menos dos entradas en vigila/log/vigilancia.log y desactiva después el timer dejando el sistema limpio.
+opencode
+> Quiero ejecutar vigila/bin/vigila_cambios.sh cada minuto. Si en este equipo no hay cron, usa un timer de systemd de usuario. Genera los ficheros, arranca el timer, espera a que haya al menos dos entradas en vigila/log/vigilancia.log y desactívalo después dejando el sistema limpio.
 ```
+Lee cada orden antes de aprobarla.
 
-## Criterio de éxito
-Línea de cron o ficheros `.service` + `.timer` correctos; tras dos disparos, el log muestra al menos dos entradas separadas ~60 s. Al acabar la prueba, desactiva el timer (`systemctl --user disable --now`) para dejar el sistema limpio.
+## ✅ ¿Lo ha hecho de verdad?
 
-## Tiempo estimado
-≈ 20 min
+- El log tiene al menos dos entradas separadas ~60 s.
+- Al terminar no queda el timer: `systemctl --user list-timers`.
 
-## Dificultad
-Alta
+## 🔀 ¿Y ahora qué?
+
+- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
+- **Auditar permisos** → [⚫ F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?](../f8_permisos/ENUNCIADO.md)

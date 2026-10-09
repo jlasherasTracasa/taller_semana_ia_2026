@@ -1,27 +1,37 @@
-# F.1 · Tools: function calling — el modelo no ejecuta nada
+# 🔵 F.1 · Function calling: el modelo pide, tu programa ejecuta
 
-## Objetivo
-Ver con tus propios ojos que el modelo NO ejecuta herramientas: pide usarlas con un JSON y tu código decide.
+> ⚙️ **Puerta F · La sala de máquinas** · 🔵 Medio · ⏱ 15 min · 🛠️ tu propio programa en Python · Recomendado para: 💻 🏛️
 
-## Datos de partida
-- `fc_calculadora.py` — script autónomo con LiteLLM: declara el esquema de una tool «calculadora», imprime el tool_call JSON del modelo, ejecuta la función real (sin eval) y devuelve el resultado al modelo.
+## 📖 La escena
 
-## Prompt sugerido
+—¿Y si el agente se inventa una cuenta? —pregunta Pilar. Le enseñas que el modelo ni siquiera hace la cuenta: la pide.
+
+## 🎯 Objetivo
+
+Ver con tus ojos que el modelo **no ejecuta** herramientas: devuelve un JSON pidiendo usarlas y es tu código quien decide si las ejecuta.
+
+## 📦 Lo que tienes en esta carpeta
+
+- `fc_calculadora.py`: una tool «calculadora» segura (sin `eval`) y el bucle de dos turnos.
+
+## 💬 El encargo
+
 ```bash
-(NO es un encargo al agente: script autónomo de function calling con LiteLLM + GLM)
-
-$ set -a; . ./.env; set +a
-$ python fc_calculadora.py      # o .venv/bin/python si usas el entorno del kit
-
-El modelo recibe el esquema de la tool «calculadora» y responde con un tool_call
-JSON; NUESTRO programa ejecuta la función y devuelve el resultado al modelo.
+python3 taller.py ejecutar f1 fc_calculadora.py
 ```
 
-## Criterio de éxito
-El script imprime: (1) el tool_call con la expresión `(1250+3750)*1.21`, (2) el resultado local 6050.0, (3) la respuesta final «6.050 €». Experimenta: cambia la expresión del mensaje y observa cómo cambia el JSON pedido.
+## ✅ ¿Lo ha hecho de verdad?
 
-## Tiempo estimado
-≈ 15 min
+- Se imprime el `tool_call` con la expresión `(1250+3750)*1.21`.
+- Se imprime el resultado local `6050.0`.
+- La respuesta final dice **6.050 €**.
 
-## Dificultad
-Media
+## 🧗 Reto extra
+
+Cambia el mensaje por «¿Cuánto es 9**9**9?» y comprueba que tu calculadora lo rechaza. ¿Por qué no usamos `eval()`?
+
+## 🔀 ¿Y ahora qué?
+
+- **Quiero ver un servidor de tools de verdad (MCP)** → [🟣 F.5 · MCP: enchufar un servidor de herramientas](../f5_mcp/ENUNCIADO.md)
+- **Quiero escribir MI propia tool** → [🟣 F.6 · Tu propia tool: plazos en días hábiles](../f6_tool_propia/ENUNCIADO.md)
+- **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)
