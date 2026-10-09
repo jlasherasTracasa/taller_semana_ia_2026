@@ -1,0 +1,62 @@
+# Ejecución real: 2026-09-28 · 35 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
+
+        s=s.replace(a,b)
+    open(p,'w',encoding='utf8').write(s)
+# verify
+import re
+for n in (1,2,3,4):
+    d=open(f'unpacked/ppt/slides/slide{n}.xml',encoding='utf8').read()
+    print(n,[t for t in re.findall(r'<a:t>(.*?)</a:t>',d)])
+EOF
+1 ['El certamen de artesanía de Tafalla']
+2 ['Datos generales', '32 expositores este año', 'Del 12 al 15 de septiembre', 'Entrada gratuita']
+3 ['Actividades', 'Taller de cestería (sábado 10:00)', 'Concierto de txistu, domingo', 'Degustación de quesos con D.O. Roncal']
+4 ['Organización', 'Contacto: ferias@tafalla-example.es', 'Teléfono 948 70 00 00 (extensión 3)']
+
+$ rm -f deck_ferias_corregido.pptx && (cd unpacked && zip -Xqr ../deck_ferias_corregido.pptx .) && python3 ~/.agents/skills/pptx/scripts/office/validate.py deck_ferias_corregido.pptx --original deck_ferias.pptx
+/bin/bash: line 1: zip: command not found
+
+$ python3 - <<'EOF'
+import zipfile, os
+src='deck_ferias.pptx'; out='deck_ferias_corregido.pptx'
+zin=zipfile.ZipFile(src)
+zout=zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED)
+for item in zin.infolist():
+    data=open(os.path.join('unpacked',item.filename),'rb').read() if item.filename.startswith('ppt/slides/slide') else zin.read(item.filename)
+    zout.writestr(item, data)
+zout.close()
+print('ok')
+EOF
+python3 ~/.agents/skills/pptx/scripts/office/validate.py deck_ferias_corregido.pptx --original deck_ferias.pptx && markitdown deck_ferias_corregido.pptx
+ok
+All validations PASSED!
+<!-- Slide number: 1 -->
+# El certamen de artesanía de Tafalla
+
+<!-- Slide number: 2 -->
+# Datos generales
+32 expositores este año
+Del 12 al 15 de septiembre
+Entrada gratuita
+
+<!-- Slide number: 3 -->
+# Actividades
+Taller de cestería (sábado 10:00)
+Concierto de txistu, domingo
+Degustación de quesos con D.O. Roncal
+
+<!-- Slide number: 4 -->
+# Organización
+Contacto: ferias@tafalla-example.es
+Teléfono 948 70 00 00 (extensión 3)
+
+Hecho. Entregables:
+
+**1. `informe_incidencias.md`** — 13 incidencias detectadas, todas ortotipográficas (contenido intacto):
+- **Tildes (6):** *artesaNIA* → artesanía, *cesteria* → cestería, *sabado* → sábado, *Organizacion* → Organización, *Telefono* → Teléfono, *extension* → extensión
+- **Mayúsculas (5):** *artesaNIA*, *SEPTIEMBRE*, *CONCIERTO* (todo en mayúsculas injustificado) y viñetas en minúscula (*entrada*, *taller*) inconsistentes con el resto
+- **Espacios (3):** espacio antes de la coma en «txistu ,», doble espacio antes de «(extensión 3)» y espacios finales tras «Roncal»
+
+**2. `deck_ferias_corregido.pptx`** — copia corregida, creada desempaquetando el XML, aplicando solo esos cambios de texto y reempaquetando. La validación pasa (`All validations PASSED!`) y `markitdown` confirma los textos corregidos.
+
+El original no ha sido tocado.

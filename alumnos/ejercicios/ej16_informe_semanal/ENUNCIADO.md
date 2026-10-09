@@ -39,6 +39,12 @@ opencode run --standalone "Lee ventas_tienda.csv y escribe un script informe.py 
 python3 taller.py comprobar ej16      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+`informe.py` regenera el informe con 29.800 / 18.700 / 14.000, junio 12.800 y +43,8 %. El encargo antiguo apuntaba a `pptx/ventas_tienda.csv`, una ruta que no existe.
+
+Prompt, salida real y ficheros: [`soluciones/ej16_informe_semanal/`](../../soluciones/ej16_informe_semanal/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Programarlo cada lunes** → [🟣 EJ 21 · Que se ejecute solo (con tu permiso)](../ej21_programar_cron/ENUNCIADO.md)

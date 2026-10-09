@@ -1,3 +1,1 @@
-$ opencode run --model vllm/GLM-5.3-Flash "Lee informe_cosecha.md y genera presentacion.pptx: \
-  5-6 diapositivas 16:9 sobrias con títulos y viñetas. Usa $HOME/.../.venv/bin/python que ya \
-  tiene python-pptx instalado."
+Lee informe_cosecha.md y genera presentacion.pptx con python-pptx (está en el requirements.txt del kit): entre 5 y 6 diapositivas 16:9 sobrias, con portada, resumen, rendimiento por variedad, evolución y conclusiones. Copia las cifras tal cual del informe. Al final, abre el pptx con python-pptx y dime cuántas diapositivas tiene.

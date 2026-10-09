@@ -30,6 +30,12 @@ python3 taller.py ejecutar f9 medir.py ej07 5 --prompt "tu versión mejorada del
 
 Calcula pass^5 (probabilidad de que salgan bien los 5) a partir de la tasa de un intento. ¿Lo pondrías en producción?
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+3 intentos del EJ 07: 3/3 aciertos, 29 s de media, ≈56.500 tokens de entrada por intento (≈0,01 $). Pero en la ronda general el EJ 07 falló: **3 de 4** en total. Mismo encargo, distinto resultado.
+
+Prompt, salida real y ficheros: [`soluciones/f9_fiabilidad/`](../../soluciones/f9_fiabilidad/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Al reto final: replicar un paper en CPU** → [⚫ RETO · La torre: replicar un paper de IA en CPU](../../replicar_paper/README.md)

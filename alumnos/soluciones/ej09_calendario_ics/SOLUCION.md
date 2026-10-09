@@ -1,25 +1,28 @@
-# Solución · EJ 09 · Evento de calendario desde un correo
+# ✅ Solución · EJ 09 · Del correo al calendario
 
-## Prompt exacto usado
-```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Lee taller_pan.eml y genera taller_pan.ics con el evento correspondiente: título, fecha y hora exactas del correo y lugar. Formato RFC 5545, con zona horaria explícita (Europe/Madrid)."
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 27 s · 55.423 tokens de entrada y 2.100 de salida.
+
+## Qué pasó
+
+DTSTART 28/11/2026 10:00 con `TZID=Europe/Madrid` y bloque VTIMEZONE, validado con `icalendar`. En la ronda 1 dejó la hora «flotante», sin zona horaria.
+
+## Veredicto del comprobador
+
+```text
+✅ existe taller_pan.ics
+  ✅ estructura VCALENDAR/VEVENT
+  ✅ empieza a las 10:00 (20261128T1000)
+  ✅ el día es el sábado 28/11/2026
+  ✅ tiene final (DTEND o DURATION)
+  ✅ zona horaria explícita
+
+🎉 Criterio de éxito cumplido · ej09
 ```
 
-## Resultado
-`taller_pan.ics` válido (RFC 5545) con VTIMEZONE Europe/Madrid, DTSTART 20261128T100000 y DTEND 20261128T120000, importable en Google Calendar u Outlook.
+## Qué hay en esta carpeta
 
-## Salida real (extracto validado 2026-09-28)
-```
-Generado `taller_pan.ics`: taller de pan artesano, sábado 28/11/2026 10:00,
-Casa de Cultura de Puente, con VTIMEZONE Europe/Madrid.
+- `prompt.txt`: el encargo exacto.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
+- `ficheros/`: lo que creó o cambió el agente.
 
-BEGIN:VEVENT
-UID:taller-pan-20261128@ayto-puente.es
-DTSTART;TZID=Europe/Madrid:20261128T100000
-DTEND;TZID=Europe/Madrid:20261128T120000
-SUMMARY:Taller de pan artesano
-LOCATION:Casa de Cultura\, Puente
-END:VEVENT
-```
-
-El artefacto generado está en esta misma carpeta.
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

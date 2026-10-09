@@ -1,0 +1,1 @@
+Voy a publicar mi index.html en GitHub Pages. Explícame los pasos numerados para crear el repositorio, activar Pages y subir el archivo. Prepara también un README.md breve para el repo. Todo en castellano.

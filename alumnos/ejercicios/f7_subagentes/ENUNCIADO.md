@@ -41,6 +41,12 @@ opencode run --standalone "Redacta nota_prensa.md (máximo 200 palabras) anuncia
 python3 taller.py comprobar f7      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Delegó en dos subagentes **en paralelo** (redactor y revisor). El revisor leyó una versión anterior del fichero y marcó un error ya corregido: una condición de carrera de manual. Con `edit: deny`, el revisor no pudo editar (`Edit … failed`).
+
+Prompt, salida real y ficheros: [`soluciones/f7_subagentes/`](../../soluciones/f7_subagentes/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Quiero auditar permisos a fondo** → [⚫ F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?](../f8_permisos/ENUNCIADO.md)

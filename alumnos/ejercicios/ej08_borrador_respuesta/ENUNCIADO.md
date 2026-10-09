@@ -39,6 +39,12 @@ opencode run --standalone "Lee correo/bandeja/01_proveedor_urgente.eml y escribe
 python3 taller.py comprobar ej08      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Borrador con los 38 €/saco y el jueves 26; no envió nada.
+
+Prompt, salida real y ficheros: [`soluciones/ej08_borrador_respuesta/`](../../soluciones/ej08_borrador_respuesta/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Al calendario** → [🔵 EJ 09 · Del correo al calendario](../ej09_calendario_ics/ENUNCIADO.md)

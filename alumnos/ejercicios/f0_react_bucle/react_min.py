@@ -58,7 +58,7 @@ for paso in range(1, MAX_PASOS + 1):
     if not msg.tool_calls:                      # sin acciones pendientes: el agente da la tarea por terminada
         print("\nFIN: el modelo no pide más herramientas.")
         break
-    mensajes.append({"role": "assistant", "content": msg.content, "tool_calls": [tc.to_json() for tc in msg.tool_calls]})
+    mensajes.append({"role": "assistant", "content": msg.content, "tool_calls": [tc.model_dump() for tc in msg.tool_calls]})
     for tc in msg.tool_calls:
         args = json.loads(tc.function.arguments or "{}")
         print(f"[{paso}] ACTUAR   {tc.function.name}({args})")

@@ -1,9 +1,20 @@
-Extracto real de la salida de opencode run (validado 2026-09-28, ./):
-Wrote file successfully.
-Creado `agenda.html` con los 6 eventos del CSV. Una sola columna, estilo festivo
-(banderines, tarjetas con sombras de color, hora en círculo rojo), etiquetas coloreadas
-por tipo de actividad y totalmente responsive sin ninguna dependencia externa.
 
-Verificación objetiva:
-$ curl -s -o /dev/null -w "%{http_code}" http://localhost:8910/agenda.html
-200
+> build · Qwen3.8-27B-FP8
+→ Read . 
+> build · Qwen3.8-27B-FP8
+→ Read ENUNCIADO.md 
+→ Read programa.csv 
+> build · Qwen3.8-27B-FP8
+Tengo los datos: 6 actos en total. Ahora creo `agenda.html` con diseño festivo, adaptable al móvil y agrupación Mañana/Tarde:
+← Write agenda.html
+Created file successfully: agenda.html
+> build · Qwen3.8-27B-FP8
+¡Hecho! He creado `agenda.html` con:
+
+- **Todos los actos del CSV (6 de 6)**: chupinazo, dulzainas, comida popular, cuentacuentos, verbena y fuegos artificiales ✅
+- **Agrupación por franjas**: ☀️ Mañana (10:00, 11:30, 13:00) y 🌙 Tarde (17:00, 19:30, 22:00)
+- **Diseño festivo**: colores rojo/amarillo tipo banderines, cabecera con degradado y tarjetas por acto
+- **Adaptada al móvil**: una sola columna, `viewport` y tamaños fluidos con `clamp()`
+- **Sin dependencias externas**: CSS inline, fuentes del sistema
+
+El pie de página incluye la comprobación: *Total de actos: 6 de 6 ✅*. Puedes verificarlo con `python3 taller.py comprobar ej02`.

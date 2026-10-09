@@ -22,7 +22,7 @@ for i in range(1, n + 1):
     taller.config_opencode(ej, d, env)
     t0 = time.time()
     with open(os.path.join(d, "salida.txt"), "w", encoding="utf-8") as f:
-        subprocess.call(["opencode", "run", "--standalone", prompt], cwd=d, env=env, stdin=subprocess.DEVNULL,
+        subprocess.call(["opencode", "run", "--standalone", prompt], cwd=d, env=dict(env, PWD=d), stdin=subprocess.DEVNULL,
                         stdout=f, stderr=subprocess.STDOUT, shell=taller.WIN)
     seg = time.time() - t0
     ok = subprocess.call([sys.executable, os.path.join(KIT, "comprobar.py"), ej, d], stdout=subprocess.DEVNULL) == 0

@@ -39,6 +39,12 @@ opencode run --standalone "Lee los PDF de apuntes/ uno a uno con pdfplumber y cr
 python3 taller.py comprobar ej17      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Tabla con los tres PDF y puntos sacados del texto.
+
+Prompt, salida real y ficheros: [`soluciones/ej17_resumir_pdfs/`](../../soluciones/ej17_resumir_pdfs/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Facturas a Excel** → [🔵 EJ 18 · Facturas en PDF a Excel](../ej18_facturas_excel/ENUNCIADO.md)

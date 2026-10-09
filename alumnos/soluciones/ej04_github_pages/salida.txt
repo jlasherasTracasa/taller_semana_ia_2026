@@ -1,56 +1,101 @@
-# Ejecución real: 2026-09-28 · 8 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
 
-
-> build · GLM-5.3-Flash
-
-$ ls -la ./
-total 24
-drwxr-xr-x  2 usuario usuarios 4096 Sep 28 23:32 .
-drwxr-xr-x 14 usuario usuarios 4096 Sep 28 23:32 ..
--rw-r--r--  1 usuario usuarios   35 Sep 28 23:32 .salida_completa.txt
--rw-r--r--  1 usuario usuarios  788 Sep 28 23:32 ENUNCIADO.md
--rw-r--r--  1 usuario usuarios 3694 Sep 28 23:32 index.html
--rw-r--r--  1 usuario usuarios  859 Sep 28 23:32 opencode.json
-
-→ Read ENUNCIADO.md
-→ Read index.html
-Preparo el `README.md` y te dejo los pasos numerados:
-
+> build · Qwen3.8-27B-FP8
+→ Read . 
+> build · Qwen3.8-27B-FP8
+→ Read ENUNCIADO.md 
+$ head -30 index.html; echo ---; wc -l index.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilar Azcona · Panadera de Puente la Reina</title>
+<style>
+  :root {
+    --marron: #7b4a21;
+    --marron-oscuro: #4c2c12;
+    --crema: #fdf6ec;
+    --dorado: #e0a94f;
+    --texto: #3d2f22;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: var(--crema);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(160deg, var(--marron), var(--marron-oscuro));
+    color: #fff;
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+  }
+  header .inicial {
+    width: 84px; height: 84px;
+    margin: 0 auto 1rem;
+---
+135 index.html
+> build · Qwen3.8-27B-FP8
+La página está lista (`index.html` de Pilar Azcona). Preparo el repositorio, README y PASOS en castellano, sin hacer `push`.
 ← Write README.md
-Wrote file successfully.
+Created file successfully: README.md
+> build · Qwen3.8-27B-FP8
+← Write PASOS.md
+Created file successfully: PASOS.md
+> build · Qwen3.8-27B-FP8
+← Write .gitignore
+Created file successfully: .gitignore
+> build · Qwen3.8-27B-FP8
+$ git init -b main && git add index.html README.md PASOS.md .gitignore && git -c user.name="Taller IA TCSA" -c user.email="taller@ejemplo.local" commit -m "Web de la panadería de Pilar Azcona + guía de publicación en Pages" && git log --oneline --stat
+Initialized empty Git repository in ~/taller-agentes/ej04_github_pages/.git/
+[main (root-commit) da96d75] Web de la panadería de Pilar Azcona + guía de publicación en Pages
+ 4 files changed, 215 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 PASOS.md
+ create mode 100644 README.md
+ create mode 100644 index.html
+da96d75 Web de la panadería de Pilar Azcona + guía de publicación en Pages
+ .gitignore |   5 +++
+ PASOS.md   |  57 ++++++++++++++++++++++++++
+ README.md  |  18 +++++++++
+ index.html | 135 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 215 insertions(+)
+> build · Qwen3.8-27B-FP8
+$ git status --short; git log --format='%h %an: %s'; ls
+da96d75 Taller IA TCSA: Web de la panadería de Pilar Azcona + guía de publicación en Pages
+ENUNCIADO.md
+PASOS.md
+README.md
+index.html
+opencode.json
+salida.txt
+> build · Qwen3.8-27B-FP8
+→ Read PASOS.md 
+→ Read README.md 
+> build · Qwen3.8-27B-FP8
+Listo. Repositorio preparado en `ej04_github_pages/`, todo en castellano y sin haber tocado el `push`:
 
-He creado `README.md`. Aquí tienes los pasos numerados (la verificación final —push y URL— la haces tú, el agente no maneja credenciales):
+**Repositorio git**
+```
+da96d75 (main) Web de la panadería de Pilar Azcona + guía de publicación en Pages
+ .gitignore |   5 +
+ PASOS.md   |  57 +
+ README.md  |  18 +
+ index.html | 135 +
+```
 
-## Pasos para publicar en GitHub Pages
+**Contenido creado**
+- **`README.md`** — breve: qué es la página (`index.html`, HTML+CSS puro sin dependencias) y cómo se publica (rama `main` vía GitHub Pages).
+- **`PASOS.md`** — 6 pasos numerados:
+  1. Crear repo en GitHub (público, sin inicializar con nada)
+  2. Conectar el remoto local
+  3. `git push -u origin main` *(marcado como "lo haces tú")*
+  4. Activar Pages (Settings → Pages → `main` / root)
+  5. Comprobar la URL pública
+  6. Publicar cambios futuros
+- **`.gitignore`** — excluye `salida.txt`, `opencode.json` y `ENUNCIADO.md` (archivos locales del taller; solo se publican los 4 archivos útiles).
 
-**1. Crear el repositorio**
-- Entra en [github.com](https://github.com) con tu cuenta.
-- Pulsa **New repository** (o el botón `+` arriba a la derecha).
-- Nombre sugerido: `pilar-pagina` (o el que prefieras). Visibilidad: **Public** (obligatorio para Pages en cuentas gratuitas).
-- Marca **Add a README file** para que el repo no quede vacío y pulsa **Create repository**.
+En el paso 3 y en el apartado del token he anotado la recomendación de seguridad del enunciado: token *fine-grained* con permiso mínimo (escritura solo en ese repo) y caducidad corta — nunca tu password ni un token pegado en chats.
 
-**2. Subir el archivo `index.html`**
-- Opción web: en el repo, pulsa **Add file → Upload files**, arrastra tu `index.html` (y este `README.md`) y pulsa **Commit changes**.
-- Opción con git (reemplaza `<tu-usuario>` y `<nombre-del-repo>`):
-  ```bash
-  git init
-  git add index.html README.md
-  git commit -m "Publicar página personal"
-  git branch -M main
-  git remote add origin https://github.com/<tu-usuario>/<nombre-del-repo>.git
-  git push -u origin main
-  ```
-  Git te pedirá autenticación; usa un *token de acceso personal* como contraseña (no tu clave de GitHub).
-
-**3. Activar GitHub Pages**
-- En el repo, ve a **Settings → Pages** (menú lateral izquierdo).
-- En **Build and deployment → Source**, elige **Deploy from a branch**.
-- En **Branch**, selecciona `main` y carpeta `/ (root)`, y pulsa **Save**.
-
-**4. Verificar la publicación**
-- Espera 1–2 minutos y recarga **Settings → Pages**: aparecerá la URL, típicamente:
-  `https://<tu-usuario>.github.io/<nombre-del-repo>/`
-- Ábrela en el navegador. Si sale 404, espera un poco más o comprueba que el archivo se llama exactamente `index.html` (minúsculas) y está en la raíz del repo.
-
-**5. Actualizar la página (opcional)**
-- Cada `git push` a `main` (o editar `index.html` desde la web con el lápiz) redespliega la página automáticamente.
+Cuando hagas el `push` y actives Pages, la URL será `https://<usuario>.github.io/<repo>/`. Si quieres, compruébala luego con `python3 taller.py comprobar ej04`.

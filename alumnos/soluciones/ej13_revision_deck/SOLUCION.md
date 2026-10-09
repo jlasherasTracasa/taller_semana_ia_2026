@@ -1,29 +1,27 @@
-# Solución · EJ 13 · Revisión de estilo de un deck
+# ✅ Solución · EJ 13 · Revisar la presentación de otro
 
-## Prompt exacto usado
-```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Revisa deck_ferias.pptx y entrégame primero un informe_incidencias.md con cada error detectado (ortografía, mayúsculas, espacios, tildes) y después una copia corregida como deck_ferias_corregido.pptx. No toques el original."
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 134 s · 565.225 tokens de entrada y 10.369 de salida.
+
+## Qué pasó
+
+Informe y copia corregida, original intacto. Repetido con un HOME limpio porque en la primera pasada el agente usó una skill `pptx` global de la máquina del docente: sin ella, también pasa.
+
+## Veredicto del comprobador
+
+```text
+✅ el original está intacto
+  ✅ existe informe_incidencias.md
+  ✅ deck_ferias_corregido.pptx válido
+  ✅ mismo número de diapositivas (4 / 4)
+  ✅ el texto ha cambiado (hay correcciones)
+
+🎉 Criterio de éxito cumplido · ej13
 ```
 
-## Resultado
-`informe_incidencias.md` con 13 incidencias documentadas (6 de tildes, 5 de mayúsculas y 3 de espaciado; la n.º 1, «artesaNIA», cuenta en dos categorías). Ojo: el resumen final del agente (extracto de abajo) dice 5 y 6: **revisa el fichero, no el resumen** y `deck_ferias_corregido.pptx`, editado solo en el texto de los runs (formato intacto). El original quedó intacto (comprobado por md5).
+## Qué hay en esta carpeta
 
-## Salida real (extracto validado 2026-09-28)
-```
-- Tildes (5): cestería, sábado, Organización, Teléfono, extensión
-- Mayúsculas (6): «artesaNIA» → artesanía, «SEPTIEMBRE» → septiembre,
-  «entrada gratuita» → Entrada…, «CONCIERTO» → Concierto
-- Espacios (3): espacio antes de la coma en «txistu ,», doble espacio, espacios finales
+- `prompt.txt`: el encargo exacto.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
+- `ficheros/`: lo que creó o cambió el agente.
 
-$ .../validate.py deck_ferias_corregido.pptx --original deck_ferias.pptx && md5sum deck_ferias.pptx
-All validations PASSED!
-7f4de0820d61bf106fdd83433317a6db  deck_ferias.pptx
-```
-
-Los artefactos generados están en esta misma carpeta.
-
-## Nota sobre la validación
-El agente encontró en la máquina del docente la **skill `pptx`** (`~/.agents/skills/pptx`) y usó su `validate.py`
-para comprobar que el fichero corregido es un PPTX válido. Es un buen ejemplo de skill: instrucciones y scripts
-que el agente descubre y usa solo. Si tú no la tienes, pide que valide con
-`python -c "import pptx; pptx.Presentation('deck_ferias_corregido.pptx')"` o abriéndolo en LibreOffice.
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

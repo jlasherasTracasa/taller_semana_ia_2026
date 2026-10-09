@@ -40,6 +40,12 @@ opencode run --standalone "Quiero cocinar las tres recetas de recetas/ para 6 pe
 python3 taller.py comprobar ej24      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Cantidades ×1,5 correctas (1,2 kg de pochas, 12 alcachofas, 1,5 l de leche) y nada de la despensa en la lista.
+
+Prompt, salida real y ficheros: [`soluciones/ej24_lista_compra/`](../../soluciones/ej24_lista_compra/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Explícame esta carta** → [🟢 EJ 25 · Explícame esta carta](../ej25_carta_explicada/ENUNCIADO.md)

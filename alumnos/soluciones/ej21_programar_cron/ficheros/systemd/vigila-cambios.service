@@ -1,0 +1,6 @@
+[Unit]
+Description=Vigilancia de cambios en https://example.com (EJ21)
+
+[Service]
+Type=oneshot
+ExecStart=~/taller-agentes/ej21_programar_cron/vigila/bin/vigila_cambios.sh

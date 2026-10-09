@@ -1,0 +1,30 @@
+
+> build · Qwen3.8-27B-FP8
+→ Read . 
+> build · Qwen3.8-27B-FP8
+→ Read despensa.txt 
+→ Read recetas 
+> build · Qwen3.8-27B-FP8
+→ Read recetas/cuajada.txt 
+→ Read recetas/menestra.txt 
+→ Read recetas/pochas_con_verduras.txt 
+> build · Qwen3.8-27B-FP8
+He leído las tres recetas (todas para 4 personas) y la despensa. Cálculo: ×1,5 para 6 comensales.
+← Write lista_compra.md
+Created file successfully: lista_compra.md
+> build · Qwen3.8-27B-FP8
+Lista creada en `lista_compra.md`. Resumen de las decisiones:
+
+**Escalado ×1,5** (4 → 6 personas):
+- **Verduras**: 12 alcachofas, 600 g guisantes, 600 g habas, 450 g espárragos (≈2 manojos), y los discretos redondeados a la unidad superior: 2 cebollas, 2 pimientos, 2 puerros, 3 tomates.
+- **Pochas**: 1,2 kg frescas.
+- **Lácteos**: 1,5 L de leche de oveja y cuajo (1,5 sobres → compra 2).
+- **Frutos secos**: 150 g de nueces.
+
+**Excluidos por despensa** (van en la sección final "Ya lo tienes en casa", con el motivo):
+- Aceite y sal (menestra y pochas)
+- Harina (pedía 150 g escalados; tienes 1 kg)
+- Miel (tarro entero, para la cuajada)
+- Huevos (la menestra necesita 3 escalados; tienes 6, te sobran)
+
+También dejé anotada la nota de las recetas: pochas **sin chorizo** por la invitada vegetariana.

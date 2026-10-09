@@ -1,7 +1,77 @@
-Extracto real de la salida de opencode run (validado 2026-09-28):
-- Diapositiva 2: gráfico de líneas matplotlib (meses vs hogar, textil, bazar)
-  incrustado como imagen de alta resolución.
-- Diapositiva 3: totales por categoría — Hogar 29.800 € (48%), Textil 18.700 € (30%),
-  Bazar 14.000 € (22%), Total general: 62.500 €
 
-Verificado a mano contra ventas_tienda.csv: totales exactos.
+> build · Qwen3.8-27B-FP8
+→ Read ventas_tienda.csv 
+✱ Glob "*" 4 matches
+> build · Qwen3.8-27B-FP8
+→ Read ENUNCIADO.md 
+> build · Qwen3.8-27B-FP8
+El enunciado y el CSV están claros. Voy a escribir un script que lea el CSV, calcule los totales con Python, genere el gráfico con matplotlib y monte el PPTX con python-pptx. Primero compruebo las dependencias:
+$ python3 -c "import matplotlib, pptx; print(matplotlib.__version__, pptx.__version__)"
+3.11.2 1.0.2
+> build · Qwen3.8-27B-FP8
+Perfecto, tengo `matplotlib` y `python-pptx`. Escribo el script:
+← Write generar_ventas.py
+Created file successfully: generar_ventas.py
+> build · Qwen3.8-27B-FP8
+$ python3 generar_ventas.py
+Totales calculados desde el CSV:
+  hogar: 29.800 €
+  textil: 18.700 €
+  bazar: 14.000 €
+  TOTAL: 62.500 €
+Gráfico guardado en grafico_ventas.png
+Presentación guardada en ventas.pptx
+> build · Qwen3.8-27B-FP8
+Los totales cuadran con lo esperado. Verifico el contenido real del PPTX leyéndolo de nuevo con Python (diapositivas, imagen y tabla):
+$ python3 - <<'EOF'
+from pptx import Presentation
+prs = Presentation("ventas.pptx")
+print(f"Diapositivas: {len(prs.slides)}")
+for n, slide in enumerate(prs.slides, 1):
+    print(f"\n-- Diapositiva {n} --")
+    for shape in slide.shapes:
+        if shape.has_text_frame:
+            for p in shape.text_frame.paragraphs:
+                if p.text.strip():
+                    print(f"  texto: {p.text}")
+        elif shape.shape_type == 13:  # Picture
+            print(f"  [imagen {shape.image.ext}, {shape.width}x{shape.height} EMU]")
+        elif shape.has_table:
+            for row in shape.table.rows:
+                print("  tabla:", " | ".join(c.text for c in row.cells))
+EOF
+Diapositivas: 3
+
+-- Diapositiva 1 --
+  texto: Ventas de la tienda
+  texto: Enero – Junio · Hogar, Textil y Bazar
+
+-- Diapositiva 2 --
+  texto: Evolución mensual por categoría
+  [imagen png, 6400800x3556000 EMU]
+
+-- Diapositiva 3 --
+  texto: Totales por categoría
+  tabla: Categoría | Total (€)
+  tabla: Hogar | 29.800
+  tabla: Textil | 18.700
+  tabla: Bazar | 14.000
+  tabla: TOTAL GENERAL | 62.500
+> build · Qwen3.8-27B-FP8
+Hecho. `ventas.pptx` está generado con las tres diapositivas pedidas:
+
+**Contenido del PPTX**
+1. **Portada** — «Ventas de la tienda · Enero – Junio · Hogar, Textil y Bazar»
+2. **Gráfico de líneas** — evolución mensual por categoría, hecho con matplotlib e insertado como imagen PNG (guardado también en `grafico_ventas.png`)
+3. **Tabla de totales** — escrita en la diapositiva:
+
+| Categoría | Total (€) |
+|---|---|
+| Hogar | 29.800 |
+| Textil | 18.700 |
+| Bazar | 14.000 |
+| **TOTAL GENERAL** | **62.500** |
+
+**Garantía de cálculo**: los totales no se escribieron a mano; el script (`generar_ventas.py`) lee `ventas_tienda.csv` con el módulo `csv`, suma cada columna con `sum()` sobre enteros, y esos valores son los que pinta matplotlib y vuelca en la tabla. La verificación posterior del PPTX confirma que coinciden exactamente con los esperados: hogar 29.800 €, textil 18.700 €, bazar 14.000 €, total 62.500 €.
+
+Si quieres reproducirlo de cero: `python3 generar_ventas.py`.

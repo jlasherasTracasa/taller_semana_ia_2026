@@ -1,3 +1,1 @@
-$ opencode run --model vllm/GLM-5.3-Flash "Lee pptx/ventas_tienda.csv y genera informe_semanal.txt \
-  con el resumen de ventas: total por categoría, mes con mayores ventas y tendencia general. \
-  Calcula los totales realmente leyendo el CSV, no los inventes."
+Lee ventas_tienda.csv y escribe un script informe.py que genere informe_semanal.txt con el total por categoría, el mes con más ventas y la tendencia de enero a junio en porcentaje. Ejecútalo. Los números tienen que salir del CSV, nunca escritos a mano.

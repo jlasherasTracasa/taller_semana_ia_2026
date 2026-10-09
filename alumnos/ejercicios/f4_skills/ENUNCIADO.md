@@ -45,6 +45,12 @@ python3 taller.py comprobar f4      # el agente no puede darte el sello: solo el
 
 Crea tu propia skill en `.opencode/skills/<nombre>/SKILL.md` (por ejemplo, «ficha-receta» o «parte-de-incidencias») y comprueba que se activa con un encargo que no la menciona.
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+El agente **descubrió y cargó la skill** `acta-reunion` sin que el encargo la nombrara, escribió `actas/2026-10-15_acta.md` y el validador de la skill dijo `ACTA VÁLIDA` a la primera.
+
+Prompt, salida real y ficheros: [`soluciones/f4_skills/`](../../soluciones/f4_skills/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Quiero darle una herramienta nueva, no una receta** → [🟣 F.6 · Tu propia tool: plazos en días hábiles](../f6_tool_propia/ENUNCIADO.md)

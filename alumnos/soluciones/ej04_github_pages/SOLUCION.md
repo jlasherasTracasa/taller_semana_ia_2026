@@ -1,20 +1,29 @@
-# Solución · EJ 04 · Publicar en GitHub Pages
+# ✅ Solución · EJ 04 · Publicar la web (sin darle tus llaves)
 
-## Prompt exacto usado
-Ver `prompt.txt` (el del ENUNCIADO).
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 50 s · 96.222 tokens de entrada y 3.501 de salida.
 
-## Resultado (parte del agente: validada el 2026-09-28, 8 s)
-- `README.md` breve para el repositorio (en esta carpeta).
-- Pasos numerados en la respuesta (`salida.txt`): crear repo público → subir `index.html` (web o `git push`) →
-  Settings → Pages → *Deploy from a branch*, `main`, `/ (root)` → esperar 1–2 min → URL
-  `https://<tu-usuario>.github.io/<repo>/`. Incluye qué hacer si sale 404.
-- El agente **no** hizo push ni pidió credenciales, como exige el enunciado.
+## Qué pasó
 
-## Parte que haces tú (no validable por el docente)
-El `git push` y la comprobación de la URL pública necesitan **tu** cuenta de GitHub. En el `opencode.json` del
-kit, `git push *` está en `ask`: si el agente lo intenta, te pedirá permiso y deberías decir que no.
-Usa un *token de acceso personal* de permisos mínimos y revócalo al terminar el taller.
+Repositorio con commit, `README.md` y `PASOS.md` en castellano, sin `push` ni credenciales. En septiembre, sin «todo en castellano», respondió en inglés.
 
-## Lección
-En el primer intento el prompt no decía el idioma y el agente respondió en inglés. Añadir «Todo en castellano»
-lo arregló: **lo que no pides explícitamente, lo decide el modelo**.
+## Veredicto del comprobador
+
+```text
+✅ repositorio git inicializado (.git)
+  ✅ con al menos un commit
+  ✅ existe PASOS.md con los pasos
+  ✅ ningún token metido en la URL del remoto
+  ✅ existe README.md
+  ✅ README en castellano
+  ✅ no hay tokens escritos en el README
+
+🎉 Criterio de éxito cumplido · ej04
+```
+
+## Qué hay en esta carpeta
+
+- `prompt.txt`: el encargo exacto.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
+- `ficheros/`: lo que creó o cambió el agente.
+
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

@@ -1,35 +1,15 @@
-# Solución · F.1 · Tools: function calling
+# ✅ Solución · F.1 · Function calling: el modelo pide, tu programa ejecuta
 
-## Prompt exacto usado
-```bash
-(NO es un encargo al agente: script autónomo de function calling con LiteLLM + GLM)
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU.
 
-$ set -a; . ./.env; set +a
-$ python fc_calculadora.py      # o .venv/bin/python si usas el entorno del kit
+## Qué pasó
 
-El modelo recibe el esquema de la tool «calculadora» y responde con un tool_call
-JSON; NUESTRO programa ejecuta la función y devuelve el resultado al modelo.
-```
+Funciona: tool_call con `(1250+3750)*1.21`, ejecución local 6050.0 y respuesta «6.050 €».
 
-## Resultado
-El modelo devolvió el tool_call {name: calculadora, expresion: (1250+3750)*1.21}; nuestro programa calculó 6050.0 y el modelo redactó «El total con IVA del 21 % aplicado es 6.050 €».
+## Qué hay en esta carpeta
 
-## Salida real (extracto validado 2026-09-28)
-```
-== RESPUESTA 1 DEL MODELO ==
-content: ''
-tool_calls (JSON crudo devuelto por el modelo):
-[
-  "{\n  \"index\": 0,\n  \"function\": {\n    \"arguments\": \"{\\\"expresion\\\": \\\"(1250+3750)*1.21\\\"}\",\n    \"name\": \"calculadora\"\n  },\n  \"id\": \"call_23abb25e20e3408ca19085eb\",\n  \"type\": \"function\"\n}"
-]
+- Pasos: los del ENUNCIADO.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
 
-== EJECUCIÓN LOCAL (nuestro código) ==
-calculadora({'expresion': '(1250+3750)*1.21'}) = 6050.0
 
-== RESPUESTA 2 DEL MODELO ==
-El total con IVA del 21 % aplicado es **6.050 €**.
-
-[exit 0]
-```
-
-Los artefactos generados (archivos de resultado) están en esta misma carpeta.
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

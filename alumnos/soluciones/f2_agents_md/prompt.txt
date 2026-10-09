@@ -1,0 +1,1 @@
+Escribe el aviso para los socios con la excursión de datos_salida.txt.

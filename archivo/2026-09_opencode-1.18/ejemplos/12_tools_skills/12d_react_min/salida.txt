@@ -1,0 +1,23 @@
+OBJETIVO: ¿Cuál de los ficheros de la carpeta notas/ tiene más líneas y de qué trata?
+
+[1] PENSAR   Voy a listar el contenido de la carpeta notas/ para ver qué ficheros contiene.
+[1] ACTUAR   listar_carpeta({'carpeta': 'notas/'})
+[1] OBSERVAR compra.txt | ideas.txt | reunion.txt
+[2] PENSAR   Ahora voy a leer los tres ficheros para contar sus líneas y conocer su contenido.
+[2] ACTUAR   leer_archivo({'ruta': 'notas/compra.txt'})
+[2] OBSERVAR Leche | Pan | Huevos | 
+[2] ACTUAR   leer_archivo({'ruta': 'notas/ideas.txt'})
+[2] OBSERVAR Taller de pan en noviembre | Visita al museo | 
+[2] ACTUAR   leer_archivo({'ruta': 'notas/reunion.txt'})
+[2] OBSERVAR Reunión del jueves con la asociación de vecinos | Orden del día: fiestas de San Fermín txiki | Presupuesto de la txaranga | Tu
+[3] PENSAR   El fichero con más líneas es **reunion.txt**, con **5 líneas** (frente a las 2 de compra.txt y las 2 de ideas.txt).
+
+Sobre su contenido: trata de una **reunión vecinal del jueves**, donde se incluyen:
+- La orden del día: las fiestas de San Fermín txiki
+- El presupuesto de la txaranga
+- Los turnos de la barra
+- Un apartado de ruegos y preguntas
+
+En cambio, `compra.txt` es una lista de la compra (leche, pan, huevos) e `ideas.txt` recoge un par de ideas (un taller de pan en noviembre y una visita al museo).
+
+FIN: el modelo no pide más herramientas.

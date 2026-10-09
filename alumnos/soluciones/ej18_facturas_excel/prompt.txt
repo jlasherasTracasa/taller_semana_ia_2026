@@ -1,1 +1,1 @@
-Extrae de los PDF de facturas/ el emisor, la fecha, la base imponible, el IVA y el total, y genera facturas.xlsx (con openpyxl). Añade una fila final con la suma de totales y comprueba que cuadra con los originales.
+Extrae de los PDF de facturas/ el emisor, la fecha, la base imponible, el IVA y el total, y genera facturas.xlsx con openpyxl. Añade una fila final con la suma de totales escrita como número (no como fórmula) y comprueba que cuadra con la suma de los totales de los PDF.

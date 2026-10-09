@@ -30,6 +30,12 @@ python3 taller.py ejecutar f1 fc_calculadora.py
 
 Cambia el mensaje por «¿Cuánto es 9**9**9?» y comprueba que tu calculadora lo rechaza. ¿Por qué no usamos `eval()`?
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Funciona: tool_call con `(1250+3750)*1.21`, ejecución local 6050.0 y respuesta «6.050 €».
+
+Prompt, salida real y ficheros: [`soluciones/f1_function_calling/`](../../soluciones/f1_function_calling/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Quiero ver un servidor de tools de verdad (MCP)** → [🟣 F.5 · MCP: enchufar un servidor de herramientas](../f5_mcp/ENUNCIADO.md)

@@ -44,6 +44,12 @@ python3 taller.py comprobar ej06      # el agente no puede darte el sello: solo 
 
 - En la validación, con un encargo que no decía «escribe el fichero», el agente dio el resumen en pantalla, no creó el fichero y terminó tan tranquilo.
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Con «escribe el fichero» lo escribió. En la ronda 1, con el encargo antiguo, **dio el resumen en pantalla y nunca creó el fichero**.
+
+Prompt, salida real y ficheros: [`soluciones/ej06_resumen_diario/`](../../soluciones/ej06_resumen_diario/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Convertirlo en tareas** → [🔵 EJ 07 · De correos a lista de tareas](../ej07_tareas_csv/ENUNCIADO.md)

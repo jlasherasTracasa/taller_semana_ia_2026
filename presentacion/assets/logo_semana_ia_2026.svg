@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="760" viewBox="0 0 520 760">
+  <!-- Recreación tipográfica del logotipo de la Semana de la IA 2026 (Cátedra Tracasa · UPNA) para el taller -->
+  <g font-family="Barlow Condensed" text-anchor="middle">
+    <text x="260" y="92" font-size="104" font-weight="800" fill="#FFFFFF" letter-spacing="2">SEMANA</text>
+    <text x="260" y="168" font-size="78" font-weight="700" fill="#E4B858" letter-spacing="4">DE LA</text>
+    <text x="260" y="470" font-size="400" font-weight="800" fill="#FFFFFF" letter-spacing="-6">IA</text>
+    <text x="260" y="548" font-size="78" font-weight="700" fill="#E4B858" letter-spacing="4">REN</text>
+    <text x="260" y="640" font-size="104" font-weight="800" fill="#FFFFFF" letter-spacing="2">ASTEA</text>
+    <rect x="40" y="668" width="440" height="3" fill="#E4B858"/>
+    <text x="260" y="728" font-size="44" font-weight="600" fill="#FFFFFF" letter-spacing="3">URRIAK 19-23 OCTUBRE</text>
+  </g>
+</svg>

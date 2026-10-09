@@ -1,0 +1,8 @@
+$ python3 taller.py ejecutar f9 medir.py ej07 3
+intento 1: ✅     50 s    49,299 tokens de entrada   2,013 de salida
+intento 2: ✅     22 s    60,066 tokens de entrada   2,989 de salida
+intento 3: ✅     16 s    60,149 tokens de entrada   2,100 de salida
+
+ej07_tareas_csv: 3/3 aciertos (tasa 100%) · 29 s de media
+pass^3 estimado (que salgan bien los 3 seguidos): 100%
+Tokens medios por intento: 56,505 de entrada y 2,367 de salida ≈ 0.0097 $ en OpenRouter (GLM-5.3-Flash)

@@ -1,29 +1,29 @@
-# Solución · Informe semanal desde un CSV
+# ✅ Solución · EJ 16 · El informe que se recalcula solo
 
-## Prompt exacto usado
-```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Lee pptx/ventas_tienda.csv y genera informe_semanal.txt \
-  con el resumen de ventas: total por categoría, mes con mayores ventas y tendencia general. \
-  Calcula los totales realmente leyendo el CSV, no los inventes."
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 37 s · 83.603 tokens de entrada y 3.951 de salida.
+
+## Qué pasó
+
+`informe.py` regenera el informe con 29.800 / 18.700 / 14.000, junio 12.800 y +43,8 %. El encargo antiguo apuntaba a `pptx/ventas_tienda.csv`, una ruta que no existe.
+
+## Veredicto del comprobador
+
+```text
+✅ existe informe_semanal.txt
+  ✅ total 29800 correcto
+  ✅ total 18700 correcto
+  ✅ total 14000 correcto
+  ✅ mejor mes: junio con 12.800
+  ✅ tendencia +43,8 %
+  ✅ existe informe.py (el informe se puede regenerar)
+
+🎉 Criterio de éxito cumplido · ej16
 ```
 
-## Resultado
-`informe_semanal.txt` con hogar 29.800 / textil 18.700 / bazar 14.000, mejor mes junio (12.800) y tendencia SUBE (+43,8 %); cifras comprobadas a mano contra el CSV.
+## Qué hay en esta carpeta
 
-## Salida real (extracto validado 2026-09-28)
-```
-Extracto real de informe_semanal.txt generado por opencode run (validado 2026-09-28;
-totales comprobados a mano contra el CSV):
-TOTAL POR CATEGORÍA
-hogar:  29.800
-textil: 18.700
-bazar:  14.000
+- `prompt.txt`: el encargo exacto.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
+- `ficheros/`: lo que creó o cambió el agente.
 
-MES CON MAYORES VENTAS
-junio, con un total de 12.800
-
-TENDENCIA GENERAL
-SUBE. ... de 8.900 en enero a 12.800 en junio, un aumento del 43,8 %.
-```
-
-Los artefactos generados (archivos de resultado) están en esta misma carpeta.
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

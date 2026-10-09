@@ -42,6 +42,12 @@ python3 taller.py comprobar ej12      # el agente no puede darte el sello: solo 
 
 - Con el encargo antiguo (sin pedir la tabla) los totales no aparecían en ningún sitio: lo que no pides, no está.
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Gráfico y tabla con los totales exactos. En la ronda 1, sin pedir la tabla, **los totales no estaban en ningún sitio**. Repetido con un HOME limpio (sin skills globales): también pasa.
+
+Prompt, salida real y ficheros: [`soluciones/ej12_grafico_pptx/`](../../soluciones/ej12_grafico_pptx/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Que se repita cada semana** → [🔵 EJ 16 · El informe que se recalcula solo](../ej16_informe_semanal/ENUNCIADO.md)

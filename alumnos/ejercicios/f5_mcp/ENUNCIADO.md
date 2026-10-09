@@ -40,6 +40,12 @@ opencode run --standalone "Usa la tool suma_columna del servidor MCP taller-tool
 python3 taller.py comprobar f5      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Cita literalmente `filas=6 suma=29800 media=4966.67`. En opencode 2.x la tool MCP no aparece suelta: el modelo la **busca en un catálogo** y la llama escribiendo código (tool `execute`), y el catálogo puede tardar unos segundos en cargarse.
+
+Prompt, salida real y ficheros: [`soluciones/f5_mcp/`](../../soluciones/f5_mcp/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Ahora quiero escribir MI servidor MCP** → [🟣 F.6 · Tu propia tool: plazos en días hábiles](../f6_tool_propia/ENUNCIADO.md)

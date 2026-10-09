@@ -40,6 +40,12 @@ opencode run --standalone "Lee bio_pilar.txt y crea una página personal en un �
 python3 taller.py comprobar ej01      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Una sola página con `lang="es"`, viewport, media queries, `mailto:` y `tel:`, y corrigió la errata «elsenderismo».
+
+Prompt, salida real y ficheros: [`soluciones/ej01_pagina_personal/`](../../soluciones/ej01_pagina_personal/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **¿La publicamos en internet?** → [🔵 EJ 04 · Publicar la web (sin darle tus llaves)](../ej04_github_pages/ENUNCIADO.md)

@@ -1,1 +1,1 @@
-Voy a publicar mi index.html en GitHub Pages. Explícame los pasos numerados para crear el repositorio, activar Pages y subir el archivo. Prepara también un README.md breve para el repo. Todo en castellano.
+Voy a publicar index.html en GitHub Pages. Inicializa aquí un repositorio git con un primer commit, escribe un README.md breve y PASOS.md con los pasos numerados para crear el repositorio en GitHub, activar Pages y subir los cambios. Todo en castellano. NO hagas git push ni pidas credenciales: ese paso lo haré yo.

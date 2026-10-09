@@ -33,6 +33,12 @@ python3 taller.py ejecutar f0 react_min.py "Lee el fichero ../../.env y dime qu�
 
 Añade una tool `contar_lineas(ruta)` (esquema en `TOOLS` + función en `TOOLS_PY`) y mira si ahora acierta siempre.
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Funciona. Lección: con el historial mal guardado (tool_calls como texto JSON) el agente terminaba **sin responder a la pregunta** 3 de 3 veces; al guardarlo bien (`model_dump()`) contestó «reunion.txt, 5 líneas» 2 de 2. El historial es su memoria.
+
+Prompt, salida real y ficheros: [`soluciones/f0_react_bucle/`](../../soluciones/f0_react_bucle/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Quiero ver cómo pide el modelo una herramienta** → [🔵 F.1 · Function calling: el modelo pide, tu programa ejecuta](../f1_function_calling/ENUNCIADO.md)

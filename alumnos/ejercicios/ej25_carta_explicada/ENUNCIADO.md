@@ -44,6 +44,12 @@ python3 taller.py comprobar ej25      # el agente no puede darte el sello: solo 
 
 - Contar días hábiles con festivos es justo lo que los modelos hacen mal. Si falla, mira F.6.
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+127,40 €, recargo del 20 % (152,88 €), plazo **lunes 19/10/2026** saltando el 12 de octubre, y «la carta no lo dice» para el teléfono.
+
+Prompt, salida real y ficheros: [`soluciones/ej25_carta_explicada/`](../../soluciones/ej25_carta_explicada/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Darle una calculadora de plazos** → [🟣 F.6 · Tu propia tool: plazos en días hábiles](../f6_tool_propia/ENUNCIADO.md)

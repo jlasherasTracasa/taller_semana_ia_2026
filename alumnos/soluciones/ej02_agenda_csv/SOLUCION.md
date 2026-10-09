@@ -1,25 +1,26 @@
-# Solución · Agenda de evento desde un CSV
+# ✅ Solución · EJ 02 · El programa de fiestas
 
-## Prompt exacto usado
-```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Lee programa.csv y crea agenda.html: página de una \
-  sola columna, diseño festivo, responsive y sin dependencias externas."
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 37 s · 37.679 tokens de entrada y 1.961 de salida.
+
+## Qué pasó
+
+Los 6 actos, agrupados en mañana y tarde, y los contó al final.
+
+## Veredicto del comprobador
+
+```text
+✅ existe agenda.html
+  ✅ los 6 eventos del CSV están en la página
+  ✅ agrupado por mañana/tarde
+  ✅ sin dependencias externas
+
+🎉 Criterio de éxito cumplido · ej02
 ```
 
-## Resultado
-`agenda.html` creado: 6 eventos del CSV agrupados mañana/tarde, tarjetas con hora en círculo, etiquetas coloreadas por tipo, responsive sin dependencias.
+## Qué hay en esta carpeta
 
-## Salida real (extracto validado 2026-09-28)
-```
-Extracto real de la salida de opencode run (validado 2026-09-28, ./):
-Wrote file successfully.
-Creado `agenda.html` con los 6 eventos del CSV. Una sola columna, estilo festivo
-(banderines, tarjetas con sombras de color, hora en círculo rojo), etiquetas coloreadas
-por tipo de actividad y totalmente responsive sin ninguna dependencia externa.
+- `prompt.txt`: el encargo exacto.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
+- `ficheros/`: lo que creó o cambió el agente.
 
-Verificación objetiva:
-$ curl -s -o /dev/null -w "%{http_code}" http://localhost:8910/agenda.html
-200
-```
-
-Los artefactos generados (archivos de resultado) están en esta misma carpeta.
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

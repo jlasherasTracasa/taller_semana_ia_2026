@@ -1,0 +1,7 @@
+Salida real, verificada con python-pptx tras opencode run (validado 2026-09-28):
+slides: 5
+1 | Informe de cosecha — Bodega Larraz · Vendimia 2025
+2 | Resumen de la vendimia
+3 | Rendimiento por variedad
+4 | Evolución de la cosecha (kg)
+5 | Conclusiones y recomendaciones

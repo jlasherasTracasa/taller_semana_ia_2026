@@ -39,6 +39,12 @@ opencode run --standalone "Revisa deck_ferias.pptx y entrégame primero informe_
 python3 taller.py comprobar ej13      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Informe y copia corregida, original intacto. Repetido con un HOME limpio porque en la primera pasada el agente usó una skill `pptx` global de la máquina del docente: sin ella, también pasa.
+
+Prompt, salida real y ficheros: [`soluciones/ej13_revision_deck/`](../../soluciones/ej13_revision_deck/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Traducirlo** → [🟣 EJ 14 · Traducir un pptx por dentro](../ej14_traducir_deck/ENUNCIADO.md)

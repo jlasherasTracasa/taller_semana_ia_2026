@@ -1,0 +1,1 @@
+Lee taller_pan.eml y genera taller_pan.ics con el evento correspondiente: título, fecha y hora exactas del correo y lugar. Formato RFC 5545, con zona horaria explícita (Europe/Madrid).

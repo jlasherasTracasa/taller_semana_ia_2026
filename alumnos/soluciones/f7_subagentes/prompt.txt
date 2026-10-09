@@ -1,0 +1,1 @@
+Redacta nota_prensa.md (máximo 200 palabras) anunciando el taller de datos_taller.txt. Cuando la tengas, pide al subagente revisor que la revise y aplica sus correcciones. Al final dime qué te corrigió el revisor.

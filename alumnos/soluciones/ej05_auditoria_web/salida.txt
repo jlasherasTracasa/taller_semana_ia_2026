@@ -1,40 +1,151 @@
-# Ejecución real: 2026-09-28 · 20 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
 
+> build · Qwen3.8-27B-FP8
+✱ Glob "**/web_centro_mayores.html" 1 match
+> build · Qwen3.8-27B-FP8
+→ Read web_centro_mayores.html 
+> build · Qwen3.8-27B-FP8
+La página es un mini-HTML intencionadamente malo. Calculo los contrastes reales con precisión y luego escribo la auditoría y la corrección.
+$ python3 - <<'EOF'
+def srgb(c):
+    c/=255
+    return c/12.92 if c<=0.03928 else ((c+0.055)/1.055)**2.4
+def lum(hexs):
+    hexs=hexs.lstrip('#')
+    r,g,b=(int(hexs[i:i+2],16) for i in (0,2,4))
+    return 0.2126*srgb(r)+0.7152*srgb(g)+0.0722*srgb(b)
+def ratio(a,b):
+    la,lb=lum(a),lum(b)
+    if la<lb: la,lb=lb,la
+    return (la+0.05)/(lb+0.05)
+pairs=[("texto gris #4d4d4d sobre fondo morado #7a2c8f","#4d4d4d","#7a2c8f"),
+       ("enlace verde tenue #88ffaa sobre #7a2c8f","#8fa".replace('#',''),"#7a2c8f"),
+       ("#8fa real (0x8f,0xfa →)",
+        "8ffaa0"[:6],"7a2c8f"),
+       ("enlace grisáceo #99aaaa sobre #7a2c8f","9aa","7a2c8f"),
+       ("blanco #ffffff sobre #7a2c8f","ffffff","7a2c8f"),
+       ("negro #1a1a1a sobre blanco","1a1a1a","ffffff"),
+       ("enlace propuesto #ffd75e sobre #7a2c8f","ffd75e","7a2c8f"),
+       ("texto propuesto #f2e8f7 sobre #6b2480","f2e8f7","6b2480")]
+for name,f,b in pairs:
+    print(f"{ratio(f,b):5.2f}:1  {name}")
+EOF
+1.04:1  texto gris #4d4d4d sobre fondo morado #7a2c8f
+Traceback (most recent call last):
+  File "<stdin>", line 22, in <module>
+  File "<stdin>", line 9, in ratio
+  File "<stdin>", line 6, in lum
+  File "<stdin>", line 6, in <genexpr>
+ValueError: invalid literal for int() with base 16: ''
+> build · Qwen3.8-27B-FP8
+$ python3 - <<'EOF'
+def srgb(c):
+    c/=255
+    return c/12.92 if c<=0.03928 else ((c+0.055)/1.055)**2.4
+def lum(hexs):
+    hexs=hexs.lstrip('#')
+    while len(hexs)<6: hexs=hexs*2  # expandir 3 dígitos tipo #8fa → 88ffaa
+    r,g,b=(int(hexs[i:i+2],16) for i in (0,2,4))
+    return 0.2126*srgb(r)+0.7152*srgb(g)+0.0722*srgb(b)
+def ratio(a,b):
+    la,lb=lum(a),lum(b)
+    if la<lb: la,lb=lb,la
+    return (la+0.05)/(lb+0.05)
+pairs=[("texto gris #4d4d4d sobre fondo morado #7a2c8f","#4d4d4d","#7a2c8f"),
+       ("enlace #8fa (verde claro) sobre #7a2c8f","8fa","7a2c8f"),
+       ("enlace grisáceo #9aa sobre #7a2c8f","9aa","7a2c8f"),
+       ("blanco #ffffff sobre morado original #7a2c8f","ffffff","7a2c8f"),
+       ("negro #1a1a1a sobre blanco","1a1a1a","ffffff"),
+       ("enlace propuesto #ffd75e sobre #7a2c8f","ffd75e","7a2c8f"),
+       ("texto propuesto blanco sobre #6b2480","ffffff","6b2480")]
+for name,f,b in pairs:
+    print(f"{ratio(f,b):5.2f}:1  {name}")
+EOF
+1.04:1  texto gris #4d4d4d sobre fondo morado #7a2c8f
+ 3.54:1  enlace #8fa (verde claro) sobre #7a2c8f
+ 3.34:1  enlace grisáceo #9aa sobre #7a2c8f
+ 8.13:1  blanco #ffffff sobre morado original #7a2c8f
+17.40:1  negro #1a1a1a sobre blanco
+ 5.86:1  enlace propuesto #ffd75e sobre #7a2c8f
+ 9.59:1  texto propuesto blanco sobre #6b2480
+> build · Qwen3.8-27B-FP8
+Contrastes confirmados. Escribo la auditoría y la página corregida.
+← Write incidencias.md
+Created file successfully: incidencias.md
+> build · Qwen3.8-27B-FP8
+He pegado texto corrupto en la sección de decisiones; lo corrijo.
+→ Read incidencias.md [offset=80]
+> build · Qwen3.8-27B-FP8
+← Edit incidencias.md
+Index: incidencias.md
+===================================================================
+--- incidencias.md
++++ incidencias.md
+@@ -91,6 +91,6 @@
+ 
+ 1. **Paleta conservada** (morado de fondo) pero texto blanco y enlaces ámbar: se mantiene la identidad con contrastes AAA/AA.
+ 2. **Fuente:** se sustituye *Comic Sans MS* por una pila legible (`Verdana, Geneva, sans-serif`): Verdana tiene trazos anchos y buena diferenciación de caracteres para mayores; si se desea otra, cambiar una línea.
+ 3. **Tabla del programa:** en móvil (≤600 px) cada día pasa a bloque apilado en vez de scroller horizontal; sigue siendo una `<table>` semántica para lectores de pantalla.
+-4. **Página de destino:** `agenda.html` se conserva como en el onclick original; las excursiones apuntan a `excursiones.html` (nueva); el logo deja de ser enlace (no lo era funcionalmente para teclado).
++4. **Páginas de destino:** `agenda.html` se conserva como en el onclick original; las excursiones apuntan a `excursiones.html` (nueva); el logo deja de ser enlace (no lo era funcionalmente para teclado).
+ 5. **El original no se toca**: correcciones solo en `web_corregida.html`.
 
-> build · GLM-5.3-Flash
-
-→ Read web_centro_mayores.html
-
+> build · Qwen3.8-27B-FP8
+Ahora la página corregida:
 ← Write web_corregida.html
-Wrote file successfully.
+Created file successfully: web_corregida.html
+> build · Qwen3.8-27B-FP8
+He pegado texto corrupto en la sección de decisiones; lo corrijo.
+→ Read incidencias.md [offset=80]
+> build · Qwen3.8-27B-FP8
+✗ Edit incidencias.md failed
+Error: Could not find oldString in ~/taller-agentes/ej05_auditoria_web/incidencias.md. It must match exactly, including whitespace and indentation.
+> build · Qwen3.8-27B-FP8
+✱ Glob "**/web_centro_mayores*" 1 match
+> build · Qwen3.8-27B-FP8
+→ Read web_centro_mayores.html 
+> build · Qwen3.8-27B-FP8
+El último write quedó corrupto; reescribo `web_corregida.html` limpia, aplicando las 9 correcciones de la auditoría:
+← Write web_corregida.html
+Wrote file successfully: web_corregida.html
+> build · Qwen3.8-27B-FP8
+Ahora verifico que `incidencias.md` quedó completa y que el original no se ha tocado:
+→ Read incidencias.md 
+> build · Qwen3.8-27B-FP8
+$ ls -la && md5sum web_centro_mayores.html
+total 36
+drwxr-xr-x  2 alumno alumno 4096 Oct  9 09:26 .
+drwxr-xr-x 30 alumno alumno 4096 Oct  9 09:26 ..
+-rw-r--r--  1 alumno alumno 1880 Oct  9 09:20 ENUNCIADO.md
+-rw-r--r--  1 alumno alumno  313 Oct  9 08:44 bio_pilar.txt
+-rw-r--r--  1 alumno alumno 6419 Oct  9 09:25 incidencias.md
+-rw-r--r--  1 alumno alumno 1068 Oct  9 09:24 opencode.json
+-rw-r--r--  1 alumno alumno    0 Oct  9 09:24 salida.txt
+-rw-r--r--  1 alumno alumno  584 Oct  9 08:44 web_centro_mayores.html
+-rw-r--r--  1 alumno alumno 1824 Oct  9 09:26 web_corregida.html
+e9d2615117d673c42f1d2f0a7d74fbfc  web_centro_mayores.html
+> build · Qwen3.8-27B-FP8
+Auditoría completa. Los tres ficheros están en su sitio y el original no se ha tocado (584 bytes, sin modificar).
 
-**Lista de incidencias detectadas**
+## Resumen de la auditoría
 
-1. **Contraste de color**
-   - Texto `#4d4d4d` sobre fondo `#7a2c8f`: contraste ≈ 1,7:1 (mínimo WCAG AA: 4,5:1).
-   - Enlaces `#8fa` y `#9aa` sobre fondo morado: contraste insuficiente.
-   - Enlace "leer mas" (`#9aa`, gris claro) casi invisible.
+`web_centro_mayores.html` tenía una única "página" de 13 líneas con fallos deliberados en los 6 ejes que pediste. **9 incidencias documentadas** en `incidencias.md`, cada una con ubicación exacta, problema, criterio WCAG 2.1 AA y corrección aplicada:
 
-2. **Tamaño de fuente**
-   - `font-size:9px` en el cuerpo y `8px` en el enlace: ilegible, muy por debajo del mínimo recomendado (16px / 1rem).
+| Ámbito | Hallazgo principal |
+|---|---|
+| 🔴 **Contraste** | Texto `#4d4d4d` sobre morado `#7a2c8f` = **1,04:1** (invisible). Corregido a blanco → 8,13:1 AAA |
+| 🔴 **Tamaño de letra** | Base **9 px** y enlace a 8 px. Corregido a 18 px base |
+| 🔴 **Teclado** | El menú era un `<div onclick>` — **imposible enfocarlo ni activarlo con Enter**. Sustituido por `<a href="agenda.html">` |
+| 🟠 **Móvil** | Sin `<meta viewport>` + tabla a 900 px fijos → en un móvil el texto renderiza a ~4 px efectivos. Corregido con viewport + media query que apila las celdas ≤600 px |
+| 🟠 **`lang`** | Ausente (`<html>` pelado) → lectores de pantalla sin idioma. Añadido `lang="es"` |
+| 🟠 **Alt** | `<img src="logo.gif">` sin `alt`. Añadido |
+| Enlaces | Dos con contraste 3,5:1 y uno muerto (`href="#"`). Corregidos a `#ffd75e` (5,86:1) y destino real |
 
-3. **Media queries / diseño responsive**
-   - No existe ninguna regla `@media`.
-   - Anchos fijos en píxeles (`table{width:900px}`, `width="900"`) que impiden adaptarse a pantallas pequeñas.
-   - Falta la etiqueta `<meta name="viewport">`.
+## Decisiones tomadas sin preguntar (documentadas en el `.md`)
 
-4. **Atributo `lang`**
-   - `<html>` no declara idioma (debería ser `<html lang="es">`). Además, hay texto sin tildes ("Miercoles", "informacion", "mas").
+- **Conservé el morado corporativo** pero con texto blanco/enlaces ámbar: mismo look, contraste AAA/AA.
+- Sustituí *Comic Sans* por pila **Verdana/Geneva** (trazos anchos, buena diferenciación para mayores).
+- Las celdas de la tabla **se apilan en móvil** como bloques; la tabla sigue siendo semántica.
+- Los enlaces apuntan a `agenda.html` y `excursiones.html` (esta última no existe aún — queda como página pendiente, mejor un 404 que un `#`).
+- El logo deja de ser enlace: no lo era funcionalmente para teclado.
 
-5. **Navegación por teclado**
-   - `<div onclick="location='agenda.html'">`: los `div` no reciben foco ni responden a Enter/Espacio; debe ser un `<a href>` o `<button>`.
-   - El enlace "leer mas" apunta a `href="#"` (destino inútil) y su texto no es descriptivo (debería indicar a qué lleva).
-
-Ahora creo la versión corregida:
-Correcciones aplicadas en `web_corregida.html`:
-
-- **Contraste:** fondo blanco con texto `#333` y enlaces `#0055cc` (todos superan 4,5:1).
-- **Tamaño de fuente:** 1rem (16px) en todo el documento.
-- **Media queries:** añadidas (`@media max-width: 600px`), tabla fluida con `max-width` y `<meta viewport>`.
-- **Idioma:** `<html lang="es">` más `charset UTF-8` y tildes corregidas (Miércoles, información…).
-- **Teclado:** el `div onclick` se sustituye por un enlace real a `agenda.html`, el falso `href="#"` ahora apunta a una página, los textos de enlace son descriptivos y hay `alt` en el logo y estilos de foco visibles.
+**Ficheros:** `incidencias.md` (auditoría completa con matriz de contrastes calculados), `web_corregida.html` (correcciones aplicadas), `web_centro_mayores.html` (intacto).

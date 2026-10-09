@@ -39,6 +39,12 @@ opencode run --standalone "Lee programa.csv y crea agenda.html: una sola columna
 python3 taller.py comprobar ej02      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Los 6 actos, agrupados en mañana y tarde, y los contó al final.
+
+Prompt, salida real y ficheros: [`soluciones/ej02_agenda_csv/`](../../soluciones/ej02_agenda_csv/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Ahora, que la gente pueda apuntarse** → [🟣 EJ 03 · El formulario que guarda en JSON (y el proceso ajeno)](../ej03_formulario_json/ENUNCIADO.md)

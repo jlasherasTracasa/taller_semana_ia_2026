@@ -1,1 +1,1 @@
-Traduce charla_taller_es.pptx al inglés editando el XML directamente (unzip → edita slideN.xml → zip). Usa defusedxml.minidom, no xml.etree. Entrega charla_taller_en.pptx. No alteres imágenes, tablas ni gráficos.
+Traduce charla_taller_es.pptx al inglés editando el XML directamente (descomprime, edita el texto de ppt/slides/slideN.xml y vuelve a comprimir). Usa defusedxml o expresiones regulares sobre las etiquetas a:t, no xml.etree sin protección. Entrega charla_taller_en.pptx. No alteres imágenes, tablas ni gráficos.

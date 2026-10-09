@@ -1,29 +1,28 @@
-# Solución · Página personal desde cero
+# ✅ Solución · EJ 01 · La web de Pilar
 
-## Prompt exacto usado
-```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Lee bio_pilar.txt y crea una página personal en un \
-  único archivo index.html: HTML5+CSS embebido, responsive, en castellano, sin dependencias \
-  externas ni frameworks."
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 22 s · 80.689 tokens de entrada y 2.419 de salida.
+
+## Qué pasó
+
+Una sola página con `lang="es"`, viewport, media queries, `mailto:` y `tel:`, y corrigió la errata «elsenderismo».
+
+## Veredicto del comprobador
+
+```text
+✅ existe index.html
+  ✅ sin CSS/JS externos 
+  ✅ lang="es" (encontrado: es)
+  ✅ meta viewport (responsive)
+  ✅ al menos una media query
+  ✅ contacto con mailto: o tel:
+
+🎉 Criterio de éxito cumplido · ej01
 ```
 
-## Resultado
-`index.html` creado: página única, paleta cálida de panadería, secciones Mi historia / Talleres / Aficiones / Contacto con mailto y tel funcionales, media query móvil.
+## Qué hay en esta carpeta
 
-## Salida real (extracto validado 2026-09-28)
-```
-Extracto real de la salida de opencode run (validado 2026-09-28, ./):
-- Página personal de Pilar Azcona en un único archivo: HTML5 con CSS embebido,
-  sin dependencias ni frameworks.
-- Responsive (clamp, media query móvil, ancho máximo de contenido) con paleta
-  cálida de panadería (marrón, crema, dorado).
-- Secciones: cabecera con navegación, Mi historia, Talleres de masa madre,
-  Aficiones y pie con contacto (mailto y tel funcionales).
+- `prompt.txt`: el encargo exacto.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
+- `ficheros/`: lo que creó o cambió el agente.
 
-Verificación objetiva:
-$ python3 -m http.server 8910 &
-$ curl -s -o /dev/null -w "%{http_code}" http://localhost:8910/index.html
-200
-```
-
-Los artefactos generados (archivos de resultado) están en esta misma carpeta.
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

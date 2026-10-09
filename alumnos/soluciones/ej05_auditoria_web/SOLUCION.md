@@ -1,24 +1,29 @@
-# Solución · EJ 05 · Auditoría responsive/accesible
+# ✅ Solución · EJ 05 · Una web para el centro de mayores
 
-## Prompt exacto usado
-```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Audita web_centro_mayores.html: contraste de color, tamaño de fuente, media queries, atributo lang y navegación por teclado. Entrega primero la lista de incidencias y después la página corregida como web_corregida.html."
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 123 s · 226.139 tokens de entrada y 8.598 de salida.
+
+## Qué pasó
+
+Con `question: deny` y «no me hagas preguntas», escribió `incidencias.md` y la página corregida. En la ronda 1 (opencode 2 sin ese permiso) **se paró a preguntar** y, en modo `run`, falló.
+
+## Veredicto del comprobador
+
+```text
+✅ existe web_corregida.html
+  ✅ declara lang="es"
+  ✅ todas las imágenes con alt (0 sin alt)
+  ✅ tiene media queries
+  ✅ ningún font-size por debajo de 14px
+  ✅ el original sigue ahí
+  ✅ existe incidencias.md con la lista de fallos
+
+🎉 Criterio de éxito cumplido · ej05
 ```
 
-## Resultado
-Lista de **5 incidencias** y `web_corregida.html` con `lang="es"`, texto `#333` y enlaces `#0055cc` sobre blanco (todos
-por encima de 4,5:1), letra de 16 px, `<meta viewport>` y `@media (max-width: 600px)` con tabla fluida, el `div`
-clicable convertido en enlace real, `alt` en el logo y estilos de foco visibles. También corrigió tildes
-(«Miércoles», «información»).
+## Qué hay en esta carpeta
 
-## Salida real (extracto validado 2026-09-28)
-```
-1. Contraste de color: texto #4d4d4d sobre #7a2c8f ≈ 1,7:1 (mínimo WCAG AA: 4,5:1); enlaces #8fa y #9aa ilegibles.
-2. Tamaño de fuente: 9px en el cuerpo y 8px en el enlace.
-3. Media queries: ninguna @media; anchos fijos (table{width:900px}); falta <meta name="viewport">.
-4. Atributo lang: <html> sin idioma; además, texto sin tildes.
-5. Navegación por teclado: <div onclick=…> no recibe foco; enlace «leer mas» con href="#".
-```
+- `prompt.txt`: el encargo exacto.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
+- `ficheros/`: lo que creó o cambió el agente.
 
-## Cómo comprobarlo tú
-Abre las dos páginas en el navegador, estrecha la ventana y recorre la corregida solo con el tabulador.
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

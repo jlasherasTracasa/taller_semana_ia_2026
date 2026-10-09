@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Prueba curl",
+    "correo": "test@taller.es",
+    "mensaje": "Envío de prueba desde curl (ej03)"
+  },
+  {
+    "nombre": "Prueba curl",
+    "correo": "test@taller.es",
+    "mensaje": "Envío de prueba desde curl (ej03)"
+  },
+  {
+    "nombre": "Prueba curl",
+    "correo": "test@taller.es",
+    "mensaje": "Envio de prueba desde curl (ej03)"
+  },
+  {
+    "nombre": "Ana Prueba",
+    "correo": "ana@ejemplo.es",
+    "mensaje": "Hola, quiero apuntarme al taller"
+  }
+]

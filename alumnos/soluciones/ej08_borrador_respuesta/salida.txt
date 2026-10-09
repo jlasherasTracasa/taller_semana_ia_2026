@@ -1,10 +1,22 @@
-Extracto real de correo/borrador_proveedor.md generado por opencode run (validado 2026-09-28):
-Estimados señores de Harinas Verde:
 
-Acusamos recibo de su comunicación del día de hoy, relativa a la actualización de precios
-de la harina integral a partir del próximo lunes.
+> build · Qwen3.8-27B-FP8
+→ Read correo/bandeja/01_proveedor_urgente.eml 
+> build · Qwen3.8-27B-FP8
+✱ Glob "correo/**" 1 match
+> build · Qwen3.8-27B-FP8
+→ Read correo 
+> build · Qwen3.8-27B-FP8
+→ Read correo/bandeja/01_proveedor_urgente.eml 
+> build · Qwen3.8-27B-FP8
+← Write correo/borrador_proveedor.md
+Created file successfully: correo/borrador_proveedor.md
+> build · Qwen3.8-27B-FP8
+Listo.
 
-Les confirmamos nuestro pedido mensual habitual de harina integral, formulado dentro del
-plazo indicado (antes del jueves 26), con el fin de mantener el precio actual de 38 € por saco...
+**Correo leído** — `correo/bandeja/01_proveedor_urgente.eml`: Harinas Verde S.A. comunica una subida de harina integral de 38 € a 44 € el saco desde el lunes, y ofrece mantener el precio antiguo si se confirma el pedido mensual antes del jueves 26.
 
-No se envió ningún correo: solo se creó el borrador.
+**Borrador creado** — `correo/borrador_proveedor.md` con tono profesional, que:
+- Acusa recibo del aviso de subida de precios.
+- Confirma el pedido mensual dentro del plazo (antes del jueves 26).
+- Deja constancia de que aplica el precio antiguo de 38 €/saco según sus condiciones.
+- Pide confirmación formal del pedido con precio mantenido y la fecha de entrega.

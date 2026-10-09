@@ -38,6 +38,12 @@ opencode run --standalone "Lee informe_v1.docx e informe_v2.docx con python-docx
 python3 taller.py comprobar ej22      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Resumen en prosa con talleres, socios y remanente y las cifras de ambas versiones.
+
+Prompt, salida real y ficheros: [`soluciones/ej22_comparar_versiones/`](../../soluciones/ej22_comparar_versiones/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)

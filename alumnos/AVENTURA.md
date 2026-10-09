@@ -184,7 +184,7 @@ Tu pasaporte (`python3 taller.py pasaporte`) te dice a cuál has llegado.
 |---|---|---|---|
 | 🥉 | **Aprendiz de agentes** | 3 sellos + el correo envenenado. | Ya sabes encargar, revisar y desconfiar del «Listo». El lunes, elige UNA tarea repetitiva y delégala. |
 | 🥈 | **Oficial de agentes** | 6 sellos de al menos 3 puertas distintas + el correo envenenado. | Sabes darle reglas (AGENTS.md), recetas (skills) y límites (permisos). Escribe tu primera skill de trabajo. |
-| 🥇 | **Maestra/o de agentes** | Un sello de cada puerta + el correo envenenado + un ejercicio ⚫. | Puedes diseñar un sistema de agentes que otros usen sin miedo. Ve a por la torre: replicar un paper en CPU. |
+| 🥇 | **Maestra/o de agentes** | Un sello de cada puerta + el correo envenenado + un ejercicio experto (⚫). | Puedes diseñar un sistema de agentes que otros usen sin miedo. Ve a por la torre: replicar un paper en CPU. |
 | 💀 | **El «Listo» que no lo estaba** | Diste un sello por bueno sin pasar el comprobador. | Le pasó al docente preparando este taller (EJ 20). Vuelve a la plaza y pasa `comprobar.py`. |
 
 ## 🎮 Cómo se juega

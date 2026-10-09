@@ -38,6 +38,12 @@ opencode run --standalone "Lee nombres.csv y genera en la carpeta certificados/ 
 python3 taller.py comprobar ej19      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Un PDF por persona, cada uno con su nombre.
+
+Prompt, salida real y ficheros: [`soluciones/ej19_certificados_pdf/`](../../soluciones/ej19_certificados_pdf/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Exámenes por corregir** → [🔵 EJ 23 · Corregir con rúbrica (y una trampa)](../ej23_corregir_rubrica/ENUNCIADO.md)

@@ -1,3 +1,1 @@
-$ opencode run --model vllm/GLM-5.3-Flash "Lee ventas_tienda.csv y genera ventas.pptx: portada + \
-  una diapositiva con gráfico de líneas generado con matplotlib (meses vs categorías) embebido \
-  como imagen. Usa python-pptx y matplotlib ya instalados."
+Lee ventas_tienda.csv y genera ventas.pptx con tres diapositivas: portada; un gráfico de líneas de los meses por categoría hecho con matplotlib e insertado como imagen; y una tabla con el total de cada categoría y el total general. Calcula los totales con Python leyendo el CSV, nunca de memoria, y escríbelos en la tabla.

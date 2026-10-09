@@ -44,6 +44,12 @@ python3 taller.py comprobar f10      # el agente no puede darte el sello: solo e
 
 Pide lo mismo sin la frase «NO modifiques tests/» varias veces. ¿Alguna vez «arregla» los tests en vez del código?
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+9/9 tests en verde sin tocar `tests/`. Arregló los cuatro fallos, incluido el cambio en céntimos enteros para evitar el error de coma flotante.
+
+Prompt, salida real y ficheros: [`soluciones/f10_tests_primero/`](../../soluciones/f10_tests_primero/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Quiero comandos para no repetirme** → [🔵 F.3 · Comandos: el encargo de todos los lunes en una palabra](../f3_comandos/ENUNCIADO.md)

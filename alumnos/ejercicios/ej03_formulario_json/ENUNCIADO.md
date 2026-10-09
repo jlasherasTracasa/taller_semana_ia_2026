@@ -43,6 +43,12 @@ python3 taller.py comprobar ej03      # el agente no puede darte el sello: solo 
 
 - El `opencode.json` del kit prohíbe `kill`, `pkill` y `killall`: por eso el encargo pide `timeout 60`.
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Cumple, pero tardó casi 4 minutos: varios intentos de `nohup timeout 60 … &` fallaron antes de dar con la forma de arrancar el servidor en segundo plano. No mató nada y no dejó el puerto ocupado. En septiembre, con otro encargo, **mató un proceso ajeno**.
+
+Prompt, salida real y ficheros: [`soluciones/ej03_formulario_json/`](../../soluciones/ej03_formulario_json/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **¿Qué más podría hacer un agente con bash libre?** → [⚫ F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?](../f8_permisos/ENUNCIADO.md)

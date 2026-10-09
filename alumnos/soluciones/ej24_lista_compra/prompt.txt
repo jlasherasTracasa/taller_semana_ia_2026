@@ -1,0 +1,1 @@
+Quiero cocinar las tres recetas de recetas/ para 6 personas (las recetas son para 4). Escribe lista_compra.md con las cantidades multiplicadas por 1,5 y agrupadas por sección del súper (verdura, lácteos, frutos secos…). No pongas lo que ya tengo según despensa.txt; añade al final una sección Ya lo tienes en casa con eso.

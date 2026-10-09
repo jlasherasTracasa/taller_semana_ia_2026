@@ -12,11 +12,8 @@ profesor/notas_profesor.md
 presentacion/*-con-notas.pptx
 presentacion/*-con-notas.pdf
 
-# ---- presentaciones antiguas con notas del ponente
-archivo/*.pptx
-# hasta regenerarlas sin notas, las presentaciones actuales tampoco suben
-presentacion/taller-agentes-ia.pptx
-alumnos/taller-agentes-ia.pptx
+# ---- presentaciones antiguas, con notas del ponente
+archivo/presentaciones/
 
 # ---- dependencias y basura
 node_modules/
@@ -26,3 +23,4 @@ __pycache__/
 .DS_Store
 trabajo/
 entrega/
+_site/

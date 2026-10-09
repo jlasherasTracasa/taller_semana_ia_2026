@@ -1,0 +1,40 @@
+# Ejecución real: 2026-09-28 · 20 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
+
+
+> build · GLM-5.3-Flash
+
+→ Read web_centro_mayores.html
+
+← Write web_corregida.html
+Wrote file successfully.
+
+**Lista de incidencias detectadas**
+
+1. **Contraste de color**
+   - Texto `#4d4d4d` sobre fondo `#7a2c8f`: contraste ≈ 1,7:1 (mínimo WCAG AA: 4,5:1).
+   - Enlaces `#8fa` y `#9aa` sobre fondo morado: contraste insuficiente.
+   - Enlace "leer mas" (`#9aa`, gris claro) casi invisible.
+
+2. **Tamaño de fuente**
+   - `font-size:9px` en el cuerpo y `8px` en el enlace: ilegible, muy por debajo del mínimo recomendado (16px / 1rem).
+
+3. **Media queries / diseño responsive**
+   - No existe ninguna regla `@media`.
+   - Anchos fijos en píxeles (`table{width:900px}`, `width="900"`) que impiden adaptarse a pantallas pequeñas.
+   - Falta la etiqueta `<meta name="viewport">`.
+
+4. **Atributo `lang`**
+   - `<html>` no declara idioma (debería ser `<html lang="es">`). Además, hay texto sin tildes ("Miercoles", "informacion", "mas").
+
+5. **Navegación por teclado**
+   - `<div onclick="location='agenda.html'">`: los `div` no reciben foco ni responden a Enter/Espacio; debe ser un `<a href>` o `<button>`.
+   - El enlace "leer mas" apunta a `href="#"` (destino inútil) y su texto no es descriptivo (debería indicar a qué lleva).
+
+Ahora creo la versión corregida:
+Correcciones aplicadas en `web_corregida.html`:
+
+- **Contraste:** fondo blanco con texto `#333` y enlaces `#0055cc` (todos superan 4,5:1).
+- **Tamaño de fuente:** 1rem (16px) en todo el documento.
+- **Media queries:** añadidas (`@media max-width: 600px`), tabla fluida con `max-width` y `<meta viewport>`.
+- **Idioma:** `<html lang="es">` más `charset UTF-8` y tildes corregidas (Miércoles, información…).
+- **Teclado:** el `div onclick` se sustituye por un enlace real a `agenda.html`, el falso `href="#"` ahora apunta a una página, los textos de enlace son descriptivos y hay `alt` en el logo y estilos de foco visibles.

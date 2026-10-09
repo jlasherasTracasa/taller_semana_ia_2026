@@ -39,6 +39,12 @@ opencode run --standalone "Lee informe_cosecha.md y genera presentacion.pptx con
 python3 taller.py comprobar ej11      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+6 diapositivas con 84.000 kg y −12 % frente a 95.500 kg.
+
+Prompt, salida real y ficheros: [`soluciones/ej11_informe_pptx/`](../../soluciones/ej11_informe_pptx/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Con gráfico de verdad** → [🔵 EJ 12 · Números que cuadran](../ej12_grafico_pptx/ENUNCIADO.md)

@@ -39,6 +39,12 @@ opencode run --standalone "Extrae de los PDF de facturas/ el emisor, la fecha, l
 python3 taller.py comprobar ej18      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Totales 454,48 y 1.212,90 y suma 1.667,38. En la ronda 1 puso la suma como fórmula `=SUM()`, que no se ve sin abrir el Excel: ahora el encargo pide el número.
+
+Prompt, salida real y ficheros: [`soluciones/ej18_facturas_excel/`](../../soluciones/ej18_facturas_excel/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Certificados en lote** → [🟢 EJ 19 · Un certificado para cada persona](../ej19_certificados_pdf/ENUNCIADO.md)

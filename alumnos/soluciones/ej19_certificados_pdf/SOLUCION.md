@@ -1,22 +1,23 @@
-# Solución · EJ 19 · Certificados y cartas personalizadas en PDF
+# ✅ Solución · EJ 19 · Un certificado para cada persona
 
-## Prompt exacto usado
-```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Lee nombres.csv y genera un certificado_asistencia_NOMBRE.pdf para cada persona, con una plantilla sobria (reportlab o fpdf2): nombre, curso y horas. Verifica al final que hay un PDF por fila del CSV."
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 24 s · 89.272 tokens de entrada y 1.928 de salida.
+
+## Qué pasó
+
+Un PDF por persona, cada uno con su nombre.
+
+## Veredicto del comprobador
+
+```text
+✅ un PDF por persona (5 PDF / 5 filas)
+
+🎉 Criterio de éxito cumplido · ej19
 ```
 
-## Resultado
-`generar_certificados.py` (reportlab; plantilla A4 apaisada sobria: doble marco, nombre destacado, curso y horas) y 5 PDFs, uno por fila del CSV, con verificación 1:1.
+## Qué hay en esta carpeta
 
-## Salida real (extracto validado 2026-09-28)
-```
-Verificación: el CSV tiene 5 filas y se generaron 5 PDFs, uno por persona:
-- certificado_asistencia_amparo_lecumberri.pdf
-- certificado_asistencia_felix_bergoa.pdf
-- certificado_asistencia_nieves_izco.pdf
-- certificado_asistencia_purificacion_aranguren.pdf
-- certificado_asistencia_teodoro_sanz.pdf
-Después el agente abrió cada PDF con pypdf y comprobó nombre, curso y horas: «TODOS CORRECTOS».
-```
+- `prompt.txt`: el encargo exacto.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
+- `ficheros/`: lo que creó o cambió el agente.
 
-Los artefactos generados están en esta misma carpeta.
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

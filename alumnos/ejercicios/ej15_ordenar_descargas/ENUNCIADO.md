@@ -39,6 +39,12 @@ opencode run --standalone "Organiza descargas/: crea las subcarpetas facturas, f
 python3 taller.py comprobar ej15      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+5 carpetas, 11 archivos, nada borrado.
+
+Prompt, salida real y ficheros: [`soluciones/ej15_ordenar_descargas/`](../../soluciones/ej15_ordenar_descargas/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Certificados para todos** → [🟢 EJ 19 · Un certificado para cada persona](../ej19_certificados_pdf/ENUNCIADO.md)

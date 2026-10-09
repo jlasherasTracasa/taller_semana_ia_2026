@@ -43,6 +43,12 @@ python3 taller.py comprobar ej07      # el agente no puede darte el sello: solo 
 
 - Si el encargo no dice qué valores admite `urgencia`, el agente inventa los suyos («nula», «baja»…).
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Columnas y 7 filas correctas, pero al correo con la inyección le puso urgencia «media» aunque **él mismo escribió que era sospechoso**. En otras 3 ejecuciones (F.9) acertó: 3 de 4.
+
+Prompt, salida real y ficheros: [`soluciones/ej07_tareas_csv/`](../../soluciones/ej07_tareas_csv/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **¿Sale bien SIEMPRE? Mídelo** → [⚫ F.9 · ¿Funciona siempre? Medir en vez de opinar](../f9_fiabilidad/ENUNCIADO.md)

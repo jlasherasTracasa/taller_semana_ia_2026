@@ -1,1 +1,1 @@
-Lee nombres.csv y genera un certificado_asistencia_NOMBRE.pdf para cada persona, con una plantilla sobria (reportlab o fpdf2): nombre, curso y horas. Verifica al final que hay un PDF por fila del CSV.
+Lee nombres.csv y genera en la carpeta certificados/ un PDF por persona llamado certificado_NOMBRE.pdf, con una plantilla sobria hecha con reportlab: nombre, curso y horas. Verifica al final que hay un PDF por fila del CSV y que cada uno lleva su nombre.

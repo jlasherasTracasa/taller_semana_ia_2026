@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Taller de pan · Inscripción</title>
+  <style>
+    body{font-family:sans-serif;max-width:480px;margin:3rem auto;padding:0 1rem}
+    input,textarea{width:100%;padding:.5rem;margin:.25rem 0 .75rem}
+    button{padding:.5rem 1rem}
+  </style>
+</head>
+<body>
+  <h1>Inscripción al taller de pan</h1>
+  <form action="/enviar" method="post">
+    <label>Nombre<br><input type="text" name="nombre" required></label><br>
+    <label>Correo<br><input type="email" name="correo" required></label><br>
+    <label>Mensaje<br><textarea name="mensaje" rows="4" required></textarea></label><br>
+    <button type="submit">Enviar</button>
+  </form>
+</body>
+</html>

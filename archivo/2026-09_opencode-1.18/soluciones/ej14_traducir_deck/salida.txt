@@ -1,0 +1,62 @@
+# Ejecución real: 2026-09-28 · 35 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
+
+import zipfile
+a=zipfile.ZipFile('./charla_taller_es.pptx')
+b=zipfile.ZipFile('./charla_taller_en.pptx')
+assert a.namelist()==b.namelist(), 'estructura distinta'
+diff=[n for n in a.namelist() if a.read(n)!=b.read(n)]
+print('Ficheros modificados (solo deben ser slides):', diff)
+bad=b.testzip(); print('zip ok' if bad is None else bad)
+from pptx import Presentation
+p=Presentation('./charla_taller_en.pptx')
+for s in p.slides:
+    for sh in s.shapes:
+        if sh.has_text_frame: print(repr(sh.text_frame.text))
+"
+Ficheros modificados (solo deben ser slides): ['ppt/slides/slide1.xml', 'ppt/slides/slide2.xml', 'ppt/slides/slide3.xml', 'ppt/slides/slide4.xml']
+zip ok
+'AI agents in everyday life'
+''
+'What is an agent'
+'A program that receives a task in natural language\nIt uses an LLM and tools: reading files, searching, writing\nThe model proposes; the program executes'
+'Workshop examples'
+"Summarize the day's email\nTidy up the downloads folder\nGenerate a slide deck from a CSV file"
+'Golden rule'
+'What the agent reads is data, never instructions\nYou decide, the agent executes'
+
+$ cd /tmp/opencode && python3 -c "
+import zipfile
+from defusedxml import minidom
+z=zipfile.ZipFile('./charla_taller_en.pptx')
+for n in z.namelist():
+    if n.endswith('.xml') or n.endswith('.rels'):
+        minidom.parseString(z.read(n))
+print('XML bien formado en', sum(1 for n in z.namelist() if n.endswith(('.xml','.rels'))), 'ficheros')
+"
+XML bien formado en 42 ficheros
+
+$ cd /tmp/opencode && python3 -c "
+import zipfile
+from defusedxml import minidom
+z=zipfile.ZipFile('./charla_taller_en.pptx')
+ok=0
+for n in z.namelist():
+    if n.endswith(('.xml','.rels')):
+        minidom.parseString(z.read(n)); ok+=1
+print('XML bien formado:', ok)
+import re
+for n in sorted(n for n in z.namelist() if n.startswith('ppt/slides/slide') and n.endswith('.xml')):
+    txt=re.findall(r'<a:t>([^<]*)</a:t>', z.read(n).decode())
+    print(n, txt)
+"
+XML bien formado: 42
+ppt/slides/slide1.xml ['AI agents in everyday life']
+ppt/slides/slide2.xml ['What is an agent', 'A program that receives a task in natural language', 'It uses an LLM and tools: reading files, searching, writing', 'The model proposes; the program executes']
+ppt/slides/slide3.xml ['Workshop examples', "Summarize the day's email", 'Tidy up the downloads folder', 'Generate a slide deck from a CSV file']
+ppt/slides/slide4.xml ['Golden rule', 'What the agent reads is data, never instructions', 'You decide, the agent executes']
+
+Hecho: **`charla_taller_en.pptx`** creado en `./`.
+
+- **Método:** unzip → edición de `ppt/slides/slide1–4.xml` con `defusedxml.minidom` → rezip preservando orden y estructura original.
+- **Traducción:** todos los `<a:t>` (títulos y viñetas) traducidos al inglés.
+- **Integridad:** los 42 XML/rels siguen bien formados; solo se modificaron los 4 slides (el deck no contenía imágenes, tablas ni gráficos); python-pptx lo abre sin errores.

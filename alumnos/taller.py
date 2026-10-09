@@ -53,6 +53,8 @@ def buscar(clave):
 
 
 def carpeta(ej):
+    if os.path.commonpath([os.path.realpath(TRABAJO), KIT]) == KIT:
+        sys.exit("La carpeta de trabajo no puede estar dentro del kit: el agente podría tocar enunciados y soluciones.")
     return os.path.join(TRABAJO, ej)
 
 
@@ -93,6 +95,9 @@ def empezar(ej, silencioso=False):
 
 
 def opencode(args, d, env, salida=None):
+    # opencode decide en qué carpeta trabaja mirando la variable PWD, no el directorio real del proceso:
+    # sin esta línea, el agente escribiría en la carpeta desde la que lanzaste taller.py.
+    env = dict(env, PWD=d)
     cmd = ["opencode"] + args
     if salida is None:
         return subprocess.call(cmd, cwd=d, env=env, shell=WIN)
@@ -117,7 +122,7 @@ def coste(entrada, salida):
 def tokens(d, env):
     """Tokens gastados en la carpeta d según las estadísticas de opencode."""
     try:
-        r = subprocess.run(["opencode", "stats", "--standalone", "--json", "--all", "--project", "."], cwd=d, env=env,
+        r = subprocess.run(["opencode", "stats", "--standalone", "--json", "--all", "--project", "."], cwd=d, env=dict(env, PWD=d),
                            stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=120, shell=WIN)
         t = json.loads(r.stdout)["tokens"]
         return {"entrada": t["input"] + t["cache"]["read"], "salida": t["output"] + t.get("reasoning", 0)}
@@ -153,8 +158,7 @@ def abrir(ej):
 
 def ejecutar(ej, script, args):
     d = empezar(ej, silencioso=True)
-    env = cargar_env()
-    env["TALLER_KIT"] = KIT
+    env = dict(cargar_env(), TALLER_KIT=KIT, PWD=d)
     return subprocess.call([sys.executable, script] + args, cwd=d, env=env)
 
 

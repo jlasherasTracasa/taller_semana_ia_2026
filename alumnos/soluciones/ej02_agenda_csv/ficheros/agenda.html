@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa de Fiestas</title>
+<style>
+  :root {
+    --rojo: #d62828;
+    --amarillo: #fcbf49;
+    --azul: #003049;
+    --crema: #fff8ec;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: var(--crema);
+    color: var(--azul);
+    min-height: 100vh;
+  }
+  header {
+    background: linear-gradient(135deg, var(--rojo), var(--amarillo));
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem 1.5rem;
+    border-bottom: 4px solid var(--azul);
+  }
+  header h1 { font-size: clamp(1.8rem, 6vw, 2.8rem); letter-spacing: 1px; }
+  header p { font-style: italic; opacity: .9; margin-top: .4rem; }
+  main { max-width: 34rem; margin: 0 auto; padding: 1.25rem; }
+  h2 {
+    display: inline-block;
+    background: var(--azul);
+    color: var(--amarillo);
+    padding: .45rem 1.2rem;
+    border-radius: 999px;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 .75rem;
+  }
+  .acto {
+    background: white;
+    border-left: 6px solid var(--rojo);
+    border-radius: .6rem;
+    padding: .8rem 1rem;
+    margin-bottom: .7rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,.08);
+  }
+  .acto .hora {
+    display: inline-block;
+    background: var(--rojo);
+    color: white;
+    font-weight: bold;
+    padding: .1rem .55rem;
+    border-radius: .4rem;
+    font-size: .9rem;
+  }
+  .acto .titulo { font-weight: bold; font-size: 1.05rem; margin: .3rem 0 .15rem; }
+  .acto .lugar { font-size: .9rem; opacity: .75; }
+  footer {
+    text-align: center;
+    padding: 1.5rem 1rem 2rem;
+    font-size: .85rem;
+    color: var(--azul);
+  }
+  footer strong { color: var(--rojo); }
+</style>
+</head>
+<body>
+<header>
+  <h1>🎉 Fiestas del Pueblo 🎉</h1>
+  <p>Programa oficial · No te lo pierdas</p>
+</header>
+<main>
+  <h2>☀️ Mañana</h2>
+  <div class="acto">
+    <span class="hora">10:00</span>
+    <div class="titulo">Chupinazo y pregón</div>
+    <div class="lugar">📍 Plaza del Ayuntamiento</div>
+  </div>
+  <div class="acto">
+    <span class="hora">11:30</span>
+    <div class="titulo">Concierto de dulzainas</div>
+    <div class="lugar">📍 Plaza Consistorial</div>
+  </div>
+  <div class="acto">
+    <span class="hora">13:00</span>
+    <div class="titulo">Comida popular</div>
+    <div class="lugar">📍 Paseo de Ronda</div>
+  </div>
+
+  <h2>🌙 Tarde</h2>
+  <div class="acto">
+    <span class="hora">17:00</span>
+    <div class="titulo">Cuentacuentos infantil</div>
+    <div class="lugar">📍 Biblioteca municipal</div>
+  </div>
+  <div class="acto">
+    <span class="hora">19:30</span>
+    <div class="titulo">Verbena con la Charanga El Zarapo</div>
+    <div class="lugar">📍 Plaza del Ayuntamiento</div>
+  </div>
+  <div class="acto">
+    <span class="hora">22:00</span>
+    <div class="titulo">Fuegos artificiales</div>
+    <div class="lugar">📍 Río Arga</div>
+  </div>
+</main>
+<footer>
+  Total de actos: <strong>6 de 6</strong> ✅ — ¡todos presentes!
+</footer>
+</body>
+</html>

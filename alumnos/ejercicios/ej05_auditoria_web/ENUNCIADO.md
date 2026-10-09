@@ -40,6 +40,12 @@ opencode run --standalone "Audita web_centro_mayores.html: contraste de color, t
 python3 taller.py comprobar ej05      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Con `question: deny` y «no me hagas preguntas», escribió `incidencias.md` y la página corregida. En la ronda 1 (opencode 2 sin ese permiso) **se paró a preguntar** y, en modo `run`, falló.
+
+Prompt, salida real y ficheros: [`soluciones/ej05_auditoria_web/`](../../soluciones/ej05_auditoria_web/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)

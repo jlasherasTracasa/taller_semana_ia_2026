@@ -44,6 +44,12 @@ python3 taller.py comprobar f2      # el agente no puede darte el sello: solo el
 
 Escribe tus propias normas (tu empresa, tu clase, tu casa) y pruébalas con tres encargos distintos.
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Con `AGENTS.md` cumplió todas las normas: carpeta `avisos/`, «Aviso:», «Qué llevar:», fechas dd/mm/aaaa y la firma. Sin él, el mismo encargo salió con emojis, firma «La organización» y una pregunta final.
+
+Prompt, salida real y ficheros: [`soluciones/f2_agents_md/`](../../soluciones/f2_agents_md/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Quiero un atajo para un encargo que repito** → [🔵 F.3 · Comandos: el encargo de todos los lunes en una palabra](../f3_comandos/ENUNCIADO.md)

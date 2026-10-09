@@ -1,2 +1,1 @@
-$ opencode run --model vllm/GLM-5.3-Flash "Lee programa.csv y crea agenda.html: página de una \
-  sola columna, diseño festivo, responsive y sin dependencias externas."
+Lee programa.csv y crea agenda.html: una sola columna, agrupada en Mañana y Tarde, diseño festivo, adaptada al móvil y sin dependencias externas. Incluye TODOS los actos del CSV y comprueba al final, contándolos, que no falta ninguno.

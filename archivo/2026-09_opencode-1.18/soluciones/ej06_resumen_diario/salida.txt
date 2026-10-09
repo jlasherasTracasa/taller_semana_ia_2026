@@ -1,0 +1,4 @@
+Extracto real de la salida de opencode run (validado 2026-09-28, ./):
+Hecho: `correo/resumen_diario.md` creado con los 7 correos clasificados en urgente
+(proveedor, cliente boda, IVA), media (festival Vigo, quedada, taller) y baja
+(spam de lotería).

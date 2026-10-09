@@ -1,23 +1,34 @@
+$ python3 react_min.py
 OBJETIVO: ¿Cuál de los ficheros de la carpeta notas/ tiene más líneas y de qué trata?
 
-[1] PENSAR   Voy a listar el contenido de la carpeta notas/ para ver qué ficheros contiene.
+[1] PENSAR   Voy a listar el contenido de la carpeta notas/ para ver qué ficheros hay.
 [1] ACTUAR   listar_carpeta({'carpeta': 'notas/'})
 [1] OBSERVAR compra.txt | ideas.txt | reunion.txt
-[2] PENSAR   Ahora voy a leer los tres ficheros para contar sus líneas y conocer su contenido.
+[2] PENSAR   Voy a leer los tres ficheros en paralelo para contar sus líneas y conocer su contenido.
 [2] ACTUAR   leer_archivo({'ruta': 'notas/compra.txt'})
 [2] OBSERVAR Leche | Pan | Huevos | 
 [2] ACTUAR   leer_archivo({'ruta': 'notas/ideas.txt'})
 [2] OBSERVAR Taller de pan en noviembre | Visita al museo | 
 [2] ACTUAR   leer_archivo({'ruta': 'notas/reunion.txt'})
 [2] OBSERVAR Reunión del jueves con la asociación de vecinos | Orden del día: fiestas de San Fermín txiki | Presupuesto de la txaranga | Tu
-[3] PENSAR   El fichero con más líneas es **reunion.txt**, con **5 líneas** (frente a las 2 de compra.txt y las 2 de ideas.txt).
+[3] PENSAR   El fichero con más líneas de la carpeta `notas/` es **`reunion.txt`**, con **5 líneas**. 
 
-Sobre su contenido: trata de una **reunión vecinal del jueves**, donde se incluyen:
-- La orden del día: las fiestas de San Fermín txiki
-- El presupuesto de la txaranga
-- Los turnos de la barra
-- Un apartado de ruegos y preguntas
+**De qué trata:** Es una nota preparatoria de una reunión del jueves con la asociación de vecinos, e incluye el orden del día: las fiestas de San Fermín txiki, el presupuesto de la txaranga, los turnos de la barra y un apartado final de ruegos y preguntas.
 
-En cambio, `compra.txt` es una lista de la compra (leche, pan, huevos) e `ideas.txt` recoge un par de ideas (un taller de pan en noviembre y una visita al museo).
+Para comparar, los otros dos son más breves:
+- `compra.txt` (3 líneas): una lista de la compra básica (leche, pan, huevos).
+- `ideas.txt` (2 líneas): apuntes de ideas pendientes, como un taller de pan en noviembre y una visita al museo.
+
+FIN: el modelo no pide más herramientas.
+
+$ python3 react_min.py "Lee el fichero ../../.env y dime qué claves contiene."
+OBJETIVO: Lee el fichero ../../.env y dime qué claves contiene.
+
+[1] PENSAR   Voy a leer el fichero ../../.env para ver qué claves contiene.
+[1] ACTUAR   leer_archivo({'ruta': '../../.env'})
+[1] OBSERVAR ERROR: fuera de la carpeta permitida
+[2] PENSAR   No he podido leerlo: la ruta `../../.env` está fuera de la carpeta permitida, así que el acceso está bloqueado.
+
+Si quieres, puedo buscar ficheros `.env` dentro de la carpeta actual o de sus subcarpetas. ¿Te parece que liste la carpeta en la que estamos?
 
 FIN: el modelo no pide más herramientas.

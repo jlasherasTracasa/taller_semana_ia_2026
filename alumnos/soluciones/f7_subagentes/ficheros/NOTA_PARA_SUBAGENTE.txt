@@ -1,0 +1,25 @@
+TAREA PARA EL SUBAGENTE REDACTOR
+================================
+
+Contexto de la tarea principal:
+Estamos preparando los materiales del taller "IA aplicada a la documentación
+municipal". En esta fase se practica el patrón subagente-redactor /
+subagente-revisor con un caso real: una nota de prensa municipal.
+
+Objetivo:
+Redactar el archivo nota_prensa.md (máximo 200 palabras) anunciando el taller
+de pan descrito en datos_taller.txt.
+
+Requisitos:
+1. Léelo TODO antes de escribir nada.
+2. Crea nota_prensa.md en ESTA carpeta (no la muevas, no la renombres).
+3. Máximo 200 palabras, titular + cuerpo, tono de nota de prensa municipal
+   (español de Navarra, cercano pero institucional).
+4. Verifica cada dato contra datos_taller.txt: fechas, horas, lugar,
+   plazas, edades, plazo de inscripción, organizadores. Nada inventado,
+   nada omitido de lo esencial.
+5. Cuando termines, responde EXACTAMENTE: "REDACCIÓN COMPLETA" seguido de
+   un resumen de 1 línea de las decisiones editoriales que tomaste.
+
+No hagas nada más: ni revisar tu propio texto en profundidad, ni crear
+otros archivos, ni modificar datos_taller.txt (es material fuente).

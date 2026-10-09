@@ -39,6 +39,12 @@ opencode run --standalone "Traduce charla_taller_es.pptx al inglés editando el 
 python3 taller.py comprobar ej14      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Mismas diapositivas, tablas, gráficos e imágenes; texto en inglés.
+
+Prompt, salida real y ficheros: [`soluciones/ej14_traducir_deck/`](../../soluciones/ej14_traducir_deck/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)

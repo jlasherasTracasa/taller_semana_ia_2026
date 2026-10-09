@@ -1,25 +1,25 @@
-# Solución · EJ 17 · Resumir todos los PDF de una carpeta
+# ✅ Solución · EJ 17 · Tres PDF en una tabla
 
-## Prompt exacto usado
-```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Lee los PDF de apuntes/ uno a uno con pdfplumber y crea resumen_apuntes.md: tabla Markdown con título, tema y tres puntos clave de cada documento."
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 25 s · 46.938 tokens de entrada y 2.006 de salida.
+
+## Qué pasó
+
+Tabla con los tres PDF y puntos sacados del texto.
+
+## Veredicto del comprobador
+
+```text
+✅ existe resumen_apuntes.md
+  ✅ cubre los tres PDF
+  ✅ es una tabla Markdown
+
+🎉 Criterio de éxito cumplido · ej17
 ```
 
-## Resultado
-`resumen_apuntes.md` con la tabla solicitada (título, tema y tres puntos clave por cada uno de los 3 PDFs), extraída del texto real de los documentos.
+## Qué hay en esta carpeta
 
-## Salida real (extracto validado 2026-09-28)
-```
-Trabajamos atención, lenguaje y orientación con juegos de mesa y asociaciones.
---- page 2 ---
-Sesiones 1 a 4
-Presentación, atención selectiva con tarjetas, listas de la compra encadenadas...
+- `prompt.txt`: el encargo exacto.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
+- `ficheros/`: lo que creó o cambió el agente.
 
-← Write resumen_apuntes.md
-Wrote file successfully.
-
-Hecho. Leí los 3 PDF de apuntes/ con pdfplumber y creé resumen_apuntes.md
-con la tabla (título, tema y tres puntos clave por documento).
-```
-
-El artefacto generado está en esta misma carpeta.
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

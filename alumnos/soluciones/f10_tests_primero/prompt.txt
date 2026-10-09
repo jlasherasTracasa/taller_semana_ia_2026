@@ -1,0 +1,1 @@
+Haz que pasen todos los tests de tests/ arreglando tienda/precios.py. NO modifiques nada dentro de tests/. Ejecuta python3 -m unittest al final y enséñame el resultado.

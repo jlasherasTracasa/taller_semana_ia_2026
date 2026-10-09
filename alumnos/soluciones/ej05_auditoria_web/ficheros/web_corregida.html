@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Programa semanal — Centro de Mayores</title>
+<style>
+  body{
+    font-family:Verdana,Geneva,sans-serif;
+    background:#7a2c8f;
+    color:#ffffff;              /* 8.13:1 sobre el morado (WCAG AA/AAA) */
+    font-size:18px;             /* base legible para público mayor */
+    line-height:1.5;
+    margin:0; padding:1.25rem;
+  }
+  a{color:#ffd75e; text-decoration:underline}   /* 5.86:1 sobre el morado */
+  a:hover,a:focus-visible{text-decoration-thickness:2px}
+  :focus-visible{outline:3px solid #ffd75e; outline-offset:2px}
+  h3{font-size:1.4rem;margin:1.25rem 0 .75rem}
+  header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem}
+  header img{width:56px;height:auto}
+  table{width:100%;border-collapse:collapse}
+  th,td{padding:.6rem .75rem;border-bottom:1px solid rgba(255,255,255,.25);text-align:left}
+  .tabla-wrap{overflow-x:auto}   /* red de seguridad en pantallas muy estrechas */
+  @media (max-width:600px){      /* apilado en móvil (≤600 px) */
+    body{padding:1rem;font-size:17px}
+    th,td{display:block;width:100%;border-bottom:none;padding:.35rem 0}
+    tr{border-bottom:1px solid rgba(255,255,255,.25)}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="logo.gif" alt="Logotipo del centro de mayores" width="56" height="56">
+  <!-- menú principal: enlace real, enfocable y activable con teclado -->
+  <a href="agenda.html"><b>Mi web</b></a>
+</header>
+
+<h3>Programa del centro</h3>
+<div class="tabla-wrap">
+  <table>
+    <tr><td>Lunes 10:00 gimnasia</td><td>Martes 11:00 memoria</td>
+        <td>Miércoles 17:00 bingo</td></tr>
+  </table>
+</div>
+
+<p>Consulta la <a href="excursiones.html">información sobre las excursiones</a>.</p>
+
+</body>
+</html>

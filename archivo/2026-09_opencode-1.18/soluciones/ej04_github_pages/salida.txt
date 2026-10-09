@@ -1,0 +1,56 @@
+# Ejecución real: 2026-09-28 · 8 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
+
+
+> build · GLM-5.3-Flash
+
+$ ls -la ./
+total 24
+drwxr-xr-x  2 usuario usuarios 4096 Sep 28 23:32 .
+drwxr-xr-x 14 usuario usuarios 4096 Sep 28 23:32 ..
+-rw-r--r--  1 usuario usuarios   35 Sep 28 23:32 .salida_completa.txt
+-rw-r--r--  1 usuario usuarios  788 Sep 28 23:32 ENUNCIADO.md
+-rw-r--r--  1 usuario usuarios 3694 Sep 28 23:32 index.html
+-rw-r--r--  1 usuario usuarios  859 Sep 28 23:32 opencode.json
+
+→ Read ENUNCIADO.md
+→ Read index.html
+Preparo el `README.md` y te dejo los pasos numerados:
+
+← Write README.md
+Wrote file successfully.
+
+He creado `README.md`. Aquí tienes los pasos numerados (la verificación final —push y URL— la haces tú, el agente no maneja credenciales):
+
+## Pasos para publicar en GitHub Pages
+
+**1. Crear el repositorio**
+- Entra en [github.com](https://github.com) con tu cuenta.
+- Pulsa **New repository** (o el botón `+` arriba a la derecha).
+- Nombre sugerido: `pilar-pagina` (o el que prefieras). Visibilidad: **Public** (obligatorio para Pages en cuentas gratuitas).
+- Marca **Add a README file** para que el repo no quede vacío y pulsa **Create repository**.
+
+**2. Subir el archivo `index.html`**
+- Opción web: en el repo, pulsa **Add file → Upload files**, arrastra tu `index.html` (y este `README.md`) y pulsa **Commit changes**.
+- Opción con git (reemplaza `<tu-usuario>` y `<nombre-del-repo>`):
+  ```bash
+  git init
+  git add index.html README.md
+  git commit -m "Publicar página personal"
+  git branch -M main
+  git remote add origin https://github.com/<tu-usuario>/<nombre-del-repo>.git
+  git push -u origin main
+  ```
+  Git te pedirá autenticación; usa un *token de acceso personal* como contraseña (no tu clave de GitHub).
+
+**3. Activar GitHub Pages**
+- En el repo, ve a **Settings → Pages** (menú lateral izquierdo).
+- En **Build and deployment → Source**, elige **Deploy from a branch**.
+- En **Branch**, selecciona `main` y carpeta `/ (root)`, y pulsa **Save**.
+
+**4. Verificar la publicación**
+- Espera 1–2 minutos y recarga **Settings → Pages**: aparecerá la URL, típicamente:
+  `https://<tu-usuario>.github.io/<nombre-del-repo>/`
+- Ábrela en el navegador. Si sale 404, espera un poco más o comprueba que el archivo se llama exactamente `index.html` (minúsculas) y está en la raíz del repo.
+
+**5. Actualizar la página (opcional)**
+- Cada `git push` a `main` (o editar `index.html` desde la web con el lápiz) redespliega la página automáticamente.

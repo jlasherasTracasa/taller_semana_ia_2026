@@ -1,24 +1,25 @@
-# Solución · EJ 18 · Facturas PDF → Excel
+# ✅ Solución · EJ 18 · Facturas en PDF a Excel
 
-## Prompt exacto usado
-```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Extrae de los PDF de facturas/ el emisor, la fecha, la base imponible, el IVA y el total, y genera facturas.xlsx (con openpyxl). Añade una fila final con la suma de totales y comprueba que cuadra con los originales."
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 51 s · 136.325 tokens de entrada y 3.960 de salida.
+
+## Qué pasó
+
+Totales 454,48 y 1.212,90 y suma 1.667,38. En la ronda 1 puso la suma como fórmula `=SUM()`, que no se ve sin abrir el Excel: ahora el encargo pide el número.
+
+## Veredicto del comprobador
+
+```text
+✅ facturas.xlsx existe y es legible
+  ✅ totales de las dos facturas (454,48 y 1.212,90)
+  ✅ fila final con la suma 1.667,38
+
+🎉 Criterio de éxito cumplido · ej18
 ```
 
-## Resultado
-`facturas.xlsx` con emisor, fecha, base, IVA y total de las dos facturas, más la fila de suma de totales verificada contra los originales.
+## Qué hay en esta carpeta
 
-## Salida real (extracto validado 2026-09-28)
-```
-Totales originales: ['454.48', '1212.90'] -> suma 1667.38
-CUADRA: la suma del xlsx coincide con los originales.
+- `prompt.txt`: el encargo exacto.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
+- `ficheros/`: lo que creó o cambió el agente.
 
-Generado facturas.xlsx con los datos extraídos:
-| Emisor | Fecha | Base | IVA | Total |
-|---|---|---|---|---|
-| Ferretería Etxeberria | 03/02/2026 | 375,60 | 78,88 | 454,48 |
-| Limpiezas Ribera S.L. | 28/02/2026 | 1.002,40 | 210,50 | 1.212,90 |
-| SUMA TOTALES | | | | 1.667,38 |
-```
-
-El artefacto generado está en esta misma carpeta.
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

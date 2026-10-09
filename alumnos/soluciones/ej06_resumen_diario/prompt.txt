@@ -1,3 +1,1 @@
-$ opencode run --model vllm/GLM-5.3-Flash "Lee todos los correos de correo/bandeja/ (archivos .eml) \
-  y escribe correo/resumen_diario.md con un resumen diario ordenado por urgencia (urgente/media/baja), \
-  indicando remitente, asunto y acción requerida."
+Lee todos los correos de correo/bandeja/ y escribe el fichero correo/resumen_diario.md con un resumen ordenado por urgencia (urgente, media, baja), indicando de cada correo el remitente, el asunto y la acción que pide. El spam va aparte como no accionable. Escribe el fichero (no basta con enseñármelo en pantalla) y comprueba al final que existe.

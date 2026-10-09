@@ -43,6 +43,12 @@ python3 taller.py comprobar ej04      # el agente no puede darte el sello: solo 
 
 - Usa un token de GitHub con permisos mínimos y caducidad corta. Nunca lo pegues en un chat.
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Repositorio con commit, `README.md` y `PASOS.md` en castellano, sin `push` ni credenciales. En septiembre, sin «todo en castellano», respondió en inglés.
+
+Prompt, salida real y ficheros: [`soluciones/ej04_github_pages/`](../../soluciones/ej04_github_pages/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **¿Es accesible?** → [🔵 EJ 05 · Una web para el centro de mayores](../ej05_auditoria_web/ENUNCIADO.md)

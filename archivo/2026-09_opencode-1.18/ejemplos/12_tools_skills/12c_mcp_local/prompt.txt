@@ -1,0 +1,7 @@
+$ opencode run --model vllm/GLM-5.3-Flash "Lista tus tools disponibles. Deberías tener una \
+  llamada suma_columna que viene de un servidor MCP propio. Úsala para sumar la columna \
+  'hogar' de datos/ventas_tienda.csv y dime el resultado exacto que devolvió la herramienta."
+
+opencode.json (fragmento) conecta el servidor stdio local:
+{ "mcp": { "taller-tools": { "type": "local",
+    "command": ["<venv>/bin/python", "mcp_server.py"], "enabled": true } } }

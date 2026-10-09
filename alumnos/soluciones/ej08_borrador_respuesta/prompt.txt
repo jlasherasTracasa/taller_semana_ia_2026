@@ -1,3 +1,1 @@
-$ opencode run --model vllm/GLM-5.3-Flash "Lee correo/bandeja/01_proveedor_urgente.eml y escribe \
-  un borrador de respuesta en correo/borrador_proveedor.md confirmando el pedido mensual para \
-  mantener el precio antiguo. Tono profesional en castellano. No envíes nada, solo el borrador."
+Lee correo/bandeja/01_proveedor_urgente.eml y escribe un borrador de respuesta en correo/borrador_proveedor.md confirmando el pedido mensual para mantener el precio antiguo de 38 euros el saco. Tono profesional, en castellano. No envíes nada: solo el borrador.

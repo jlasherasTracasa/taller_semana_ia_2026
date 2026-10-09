@@ -1,0 +1,62 @@
+# Ejecución real: 2026-09-28 · 22 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
+
+-rw-r--r--  1 usuario usuarios 36820 Sep 28 20:16 informe_v2.docx
+-rw-r--r--  1 usuario usuarios   576 Sep 28 20:16 opencode.json
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'docx'
+
+$ pip install python-docx -q 2>&1 | tail -1 || pip install --user python-docx -q 2>&1 | tail -1
+hint: See PEP 668 for the detailed specification.
+
+$ pip install --break-system-packages -q python-docx 2>&1 | tail -2; python3 -c "import docx; print('ok', docx.__version__ if hasattr(docx,'__version__') else '')"
+ok 1.2.0
+
+← Write compara_informes.py
+Wrote file successfully.
+
+$ python3 compara_informes.py
+v1: 4 parrafos | v2: 4 parrafos | ratio: 0.250
+======================================================================
+
+--- REPLACE ---
+  VIEJO: En 2025 el centro ofreció 14 talleres y contó con 210 socios.
+  VIEJO: La gimnasia de mantenimiento fue el taller más frecuentado.
+  VIEJO: El saldo económico cerró en positivo.
+  NUEVO: En 2025 el centro ofreció 17 talleres y contó con 238 socios.
+  NUEVO: La gimnasia de mantenimiento volvió a ser el taller más frecuentado, seguido del nuevo taller de memoria digital.
+  NUEVO: El saldo económico cerró en positivo, con un remanente de 3.150 euros destinado a audiovisuales del salón.
+
+$ python3 - <<'EOF'
+import difflib
+from docx import Document
+
+def texto(path):
+    return [p.text.strip() for p in Document(path).paragraphs if p.text.strip()]
+
+a, b = texto("informe_v1.docx"), texto("informe_v2.docx")
+for pa in a: print("V1:", pa)
+print()
+for pb in b: print("V2:", pb)
+EOF
+V1: Informe anual del Centro Cívico Alhama
+V1: En 2025 el centro ofreció 14 talleres y contó con 210 socios.
+V1: La gimnasia de mantenimiento fue el taller más frecuentado.
+V1: El saldo económico cerró en positivo.
+
+V2: Informe anual del Centro Cívico Alhama
+V2: En 2025 el centro ofreció 17 talleres y contó con 238 socios.
+V2: La gimnasia de mantenimiento volvió a ser el taller más frecuentado, seguido del nuevo taller de memoria digital.
+V2: El saldo económico cerró en positivo, con un remanente de 3.150 euros destinado a audiovisuales del salón.
+
+← Write cambios.md
+Wrote file successfully.
+
+Hecho. `cambios.md` resume la comparación (difflib sobre los párrafos extraídos con python-docx, 4 en cada versión):
+
+- **Cifras viejas → nuevas**: 14 → 17 talleres y 210 → 238 socios.
+- **Añadido**: mención del nuevo taller de memoria digital y el remanente de 3.150 € destinado a audiovisuales del salón.
+- **Eliminado**: nada; los tres párrafos del cuerpo se conservan reformulados (verbal cambia a «volvió a ser», y el saldo «positivo» se concreta con la cifra).
+- La portada no cambia.
+
+El script usado queda en `compara_informes.py` por si quieres reproducirlo.

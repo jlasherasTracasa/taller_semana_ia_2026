@@ -1,62 +1,63 @@
-# Ejecución real: 2026-09-28 · 22 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
 
--rw-r--r--  1 usuario usuarios 36820 Sep 28 20:16 informe_v2.docx
--rw-r--r--  1 usuario usuarios   576 Sep 28 20:16 opencode.json
-Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-ModuleNotFoundError: No module named 'docx'
-
-$ pip install python-docx -q 2>&1 | tail -1 || pip install --user python-docx -q 2>&1 | tail -1
-hint: See PEP 668 for the detailed specification.
-
-$ pip install --break-system-packages -q python-docx 2>&1 | tail -2; python3 -c "import docx; print('ok', docx.__version__ if hasattr(docx,'__version__') else '')"
-ok 1.2.0
-
-← Write compara_informes.py
-Wrote file successfully.
-
-$ python3 compara_informes.py
-v1: 4 parrafos | v2: 4 parrafos | ratio: 0.250
-======================================================================
-
---- REPLACE ---
-  VIEJO: En 2025 el centro ofreció 14 talleres y contó con 210 socios.
-  VIEJO: La gimnasia de mantenimiento fue el taller más frecuentado.
-  VIEJO: El saldo económico cerró en positivo.
-  NUEVO: En 2025 el centro ofreció 17 talleres y contó con 238 socios.
-  NUEVO: La gimnasia de mantenimiento volvió a ser el taller más frecuentado, seguido del nuevo taller de memoria digital.
-  NUEVO: El saldo económico cerró en positivo, con un remanente de 3.150 euros destinado a audiovisuales del salón.
-
+> build · Qwen3.8-27B-FP8
+$ ls -la && python3 -c "import docx; print('python-docx OK', docx.__version__ if hasattr(docx,'__version__') else '')"
+total 88
+drwxr-xr-x  2 alumno alumno  4096 Oct  9 09:26 .
+drwxr-xr-x 34 alumno alumno  4096 Oct  9 09:26 ..
+-rw-r--r--  1 alumno alumno  1521 Oct  9 09:20 ENUNCIADO.md
+-rw-r--r--  1 alumno alumno 36748 Oct  9 08:44 informe_v1.docx
+-rw-r--r--  1 alumno alumno 36820 Oct  9 08:44 informe_v2.docx
+-rw-r--r--  1 alumno alumno  1068 Oct  9 09:26 opencode.json
+-rw-r--r--  1 alumno alumno     0 Oct  9 09:26 salida.txt
+python-docx OK 1.2.0
+> build · Qwen3.8-27B-FP8
+→ Read ENUNCIADO.md 
 $ python3 - <<'EOF'
-import difflib
-from docx import Document
+import docx
 
-def texto(path):
-    return [p.text.strip() for p in Document(path).paragraphs if p.text.strip()]
+def full_text(path):
+    d = docx.Document(path)
+    parts = []
+    for p in d.paragraphs:
+        if p.text.strip():
+            parts.append(p.text.strip())
+    for t in d.tables:
+        for row in t.rows:
+            cells = [c.text.strip() for c in row.cells]
+            parts.append(" | ".join(cells))
+    return parts
 
-a, b = texto("informe_v1.docx"), texto("informe_v2.docx")
-for pa in a: print("V1:", pa)
-print()
-for pb in b: print("V2:", pb)
+v1 = full_text("informe_v1.docx")
+v2 = full_text("informe_v2.docx")
+print(f"v1: {len(v1)} bloques | v2: {len(v2)} bloques")
+print("--- V1 ---")
+for b in v1: print(repr(b))
+print("--- V2 ---")
+for b in v2: print(repr(b))
 EOF
-V1: Informe anual del Centro Cívico Alhama
-V1: En 2025 el centro ofreció 14 talleres y contó con 210 socios.
-V1: La gimnasia de mantenimiento fue el taller más frecuentado.
-V1: El saldo económico cerró en positivo.
-
-V2: Informe anual del Centro Cívico Alhama
-V2: En 2025 el centro ofreció 17 talleres y contó con 238 socios.
-V2: La gimnasia de mantenimiento volvió a ser el taller más frecuentado, seguido del nuevo taller de memoria digital.
-V2: El saldo económico cerró en positivo, con un remanente de 3.150 euros destinado a audiovisuales del salón.
-
+v1: 4 bloques | v2: 4 bloques
+--- V1 ---
+'Informe anual del Centro Cívico Alhama'
+'En 2025 el centro ofreció 14 talleres y contó con 210 socios.'
+'La gimnasia de mantenimiento fue el taller más frecuentado.'
+'El saldo económico cerró en positivo.'
+--- V2 ---
+'Informe anual del Centro Cívico Alhama'
+'En 2025 el centro ofreció 17 talleres y contó con 238 socios.'
+'La gimnasia de mantenimiento volvió a ser el taller más frecuentado, seguido del nuevo taller de memoria digital.'
+'El saldo económico cerró en positivo, con un remanente de 3.150 euros destinado a audiovisuales del salón.'
+> build · Qwen3.8-27B-FP8
+He extraído el texto de ambas versiones (4 bloques cada una: título + 3 frases). Ahora escribo `cambios.md` en prosa:
 ← Write cambios.md
-Wrote file successfully.
+Created file successfully: cambios.md
+> build · Qwen3.8-27B-FP8
+Listo. He leído ambos `.docx` con python-docx, comparado su texto y escrito **`cambios.md`**.
 
-Hecho. `cambios.md` resume la comparación (difflib sobre los párrafos extraídos con python-docx, 4 en cada versión):
+Lo que contienen los documentos (título + 3 párrafos cada uno) y lo que resume el archivo:
 
-- **Cifras viejas → nuevas**: 14 → 17 talleres y 210 → 238 socios.
-- **Añadido**: mención del nuevo taller de memoria digital y el remanente de 3.150 € destinado a audiovisuales del salón.
-- **Eliminado**: nada; los tres párrafos del cuerpo se conservan reformulados (verbal cambia a «volvió a ser», y el saldo «positivo» se concreta con la cifra).
-- La portada no cambia.
+- **Modificado:** talleres **14 → 17** y socios **210 → 238**.
+- **Añadido:** el nuevo *taller de memoria digital* como segundo más frecuentado, y la única cifra económica del informe: remanente de **3.150 €** para audiovisuales del salón.
+- **Eliminado:** nada (el título no cambia y ninguna frase desaparece; la versión 2 solo actualiza y amplía).
+- Sobre el remanente, dejo claro que la "cifra vieja" no existe: la v1 hablaba de saldo positivo sin cuantificarlo.
 
-El script usado queda en `compara_informes.py` por si quieres reproducirlo.
+El resumen está todo en prosa, pensado para alguien que no ha visto los documentos, con las cifras viejas y nuevas de talleres, socios y remanente.

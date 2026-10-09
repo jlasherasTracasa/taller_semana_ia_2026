@@ -1,0 +1,3 @@
+$ opencode run --model vllm/GLM-5.3-Flash "Lee bio_pilar.txt y crea una página personal en un \
+  único archivo index.html: HTML5+CSS embebido, responsive, en castellano, sin dependencias \
+  externas ni frameworks."

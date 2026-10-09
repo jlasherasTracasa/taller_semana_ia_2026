@@ -49,6 +49,12 @@ python3 taller.py comprobar f6      # el agente no puede darte el sello: solo el
 
 Añade la tool `es_habil(fecha)` y pregunta «¿el 3 de diciembre de 2026 es hábil en Navarra?».
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Buscó la herramienta en el catálogo, la invocó y citó `vence=19/10/2026 (lunes) festivos_saltados=12/10`. Antes, sin la tool, acertó también pero calculando con `shell`: la tool hace el resultado **verificable**. En opencode 2.x ya no hay tools en `.opencode/tools/` (la API de plugins v2 no las registra): por eso es MCP.
+
+Prompt, salida real y ficheros: [`soluciones/f6_tool_propia/`](../../soluciones/f6_tool_propia/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Quiero que otro agente revise el trabajo de este** → [🟣 F.7 · Subagentes: un redactor y un revisor que no puede tocar nada](../f7_subagentes/ENUNCIADO.md)

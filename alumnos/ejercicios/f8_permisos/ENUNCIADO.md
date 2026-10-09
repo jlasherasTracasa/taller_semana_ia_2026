@@ -46,6 +46,12 @@ python3 taller.py comprobar f8      # el agente no puede darte el sello: solo el
 
 Piensa como atacante: ¿`python3 -c "import shutil; shutil.rmtree('x')"` lo para algún patrón? Conclusión: los patrones son un cinturón, no una jaula. Para aislar de verdad: contenedor o máquina virtual.
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Dejó `opencode_seguro.json` perfecto (17/17, `external_directory: deny`, sin claves) pero **no escribió `informe_permisos.md`** y terminó preguntando si quería que lo escribiera: hizo la parte que tenía comprobación y se saltó la que no.
+
+Prompt, salida real y ficheros: [`soluciones/f8_permisos/`](../../soluciones/f8_permisos/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **A por el correo envenenado, en modo atacante** → [🟢 EJ 10 · El correo envenenado](../ej10_inyeccion_prompt/ENUNCIADO.md)

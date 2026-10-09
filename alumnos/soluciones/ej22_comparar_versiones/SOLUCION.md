@@ -1,21 +1,28 @@
-# Solución · EJ 22 · Comparar dos versiones de un documento
+# ✅ Solución · EJ 22 · ¿Qué ha cambiado entre estas dos versiones?
 
-## Prompt exacto usado
-```bash
-$ opencode run --model vllm/GLM-5.3-Flash "Lee informe_v1.docx e informe_v2.docx con python-docx, compara su texto con difflib y escribe cambios.md: un resumen en prosa de lo añadido, lo eliminado y lo modificado, con las cifras viejas y nuevas."
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 26 s · 37.945 tokens de entrada y 1.973 de salida.
+
+## Qué pasó
+
+Resumen en prosa con talleres, socios y remanente y las cifras de ambas versiones.
+
+## Veredicto del comprobador
+
+```text
+✅ existe cambios.md
+  ✅ menciona «taller»
+  ✅ menciona «socio»
+  ✅ menciona «remanente»
+  ✅ incluye cifras
+  ✅ está en prosa, no es un diff crudo
+
+🎉 Criterio de éxito cumplido · ej22
 ```
 
-## Resultado
-`cambios.md`: resumen en prosa de añadidos, eliminaciones y modificaciones con las cifras exactas de ambas versiones.
+## Qué hay en esta carpeta
 
-## Salida real (extracto validado 2026-09-28)
-```
-Hecho. Comparé ambos docx con difflib y escribí cambios.md:
-- Modificado: cifras actualizadas (14 → 17 talleres, 210 → 238 socios)
-  y reformuladas las frases del taller más frecuentado y del saldo.
-- Añadido: el taller de memoria digital y el remanente de 3.150 euros
-  destinado a audiovisuales.
-- Eliminado: nada; v2 solo actualiza y amplía el texto de v1.
-```
+- `prompt.txt`: el encargo exacto.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
+- `ficheros/`: lo que creó o cambió el agente.
 
-El artefacto generado está en esta misma carpeta.
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

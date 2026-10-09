@@ -1,7 +1,59 @@
-Salida real, verificada con python-pptx tras opencode run (validado 2026-09-28):
-slides: 5
-1 | Informe de cosecha — Bodega Larraz · Vendimia 2025
-2 | Resumen de la vendimia
-3 | Rendimiento por variedad
-4 | Evolución de la cosecha (kg)
-5 | Conclusiones y recomendaciones
+
+> build · Qwen3.8-27B-FP8
+$ ls -la ~/taller-agentes/ej11_informe_pptx/ && find /tmp/… -name "informe_cosecha.md" -o -name "requirements.txt" | head -20
+total 20
+drwxr-xr-x  2 alumno alumno 4096 Oct  9 09:25 .
+drwxr-xr-x 26 alumno alumno 4096 Oct  9 09:25 ..
+-rw-r--r--  1 alumno alumno 1860 Oct  9 09:20 ENUNCIADO.md
+-rw-r--r--  1 alumno alumno  773 Oct  9 08:44 informe_cosecha.md
+-rw-r--r--  1 alumno alumno 1068 Oct  9 09:25 opencode.json
+-rw-r--r--  1 alumno alumno    0 Oct  9 09:25 salida.txt
+~/taller-agentes/ej11_informe_pptx/informe_cosecha.md
+~/taller-agentes/ej11_informe_pptx/informe_cosecha.md
+> build · Qwen3.8-27B-FP8
+→ Read informe_cosecha.md 
+→ Read ENUNCIADO.md 
+> build · Qwen3.8-27B-FP8
+→ Read informe_cosecha.md 
+$ python3 -c "import pptx; print(pptx.__version__)"
+1.0.2
+> build · Qwen3.8-27B-FP8
+← Write generar_presentacion.py
+Created file successfully: generar_presentacion.py
+> build · Qwen3.8-27B-FP8
+← Write generar_presentacion.py
+Wrote file successfully: generar_presentacion.py
+> build · Qwen3.8-27B-FP8
+$ python3 generar_presentacion.py
+Diapositivas: 5
+> build · Qwen3.8-27B-FP8
+$ python3 -c "
+from pptx import Presentation
+p = Presentation('presentacion.pptx')
+print('Diapositivas:', len(p.slides))
+print('Tamaño:', p.slide_width.inches, 'x', p.slide_height.inches, 'in')
+for i, s in enumerate(p.slides, 1):
+    texts = [sh.text_frame.text.split(chr(10))[0] for sh in s.shapes if sh.has_text_frame and sh.text_frame.text.strip()]
+    print(i, '→', ' | '.join(texts[:2]) if texts else '(tabla)')
+" && ls -la presentacion.pptx
+Diapositivas: 5
+Tamaño: 13.33299978127734 x 7.5 in
+1 → Bodega Larraz | Informe de cosecha — Vendimia 2025
+2 → Resumen de la vendimia 2025 | • La vendimia de 2025 cerró con 84.000 kg de uva recogida.
+3 → Rendimiento por variedad
+4 → Evolución (kg totales) | 2021
+5 → Conclusiones | • Menos cantidad pero más grado: se prevé un vino estructurado
+-rw-r--r-- 1 alumno alumno 33180 Oct  9 09:26 presentacion.pptx
+> build · Qwen3.8-27B-FP8
+Listo ✅ — se generó `presentacion.pptx` a partir de `informe_cosecha.md` (guion en `generar_presentacion.py`).
+
+**Contenido (5 diapositivas, 16:9):**
+1. **Portada** — Bodega Larraz · Informe de cosecha, vendimia 2025
+2. **Resumen** — 84.000 kg recogidos, un 12 % menos que en 2024 (95.500 kg) por la sequía; graduación media de 12,1 → 13,4 ºBaumé
+3. **Rendimiento por variedad** — tabla con Garnacha 41.000 kg (49 %, 13,8), Tempranillo 28.500 kg (34 %, 13,1), Graciano 9.500 kg (11 %, 13,0), Otras 5.000 kg (6 %, 12,6)
+4. **Evolución** — 2021: 71.000 · 2022: 79.500 · 2023: 88.000 · 2024: 95.500 · 2025: 84.000 kg
+5. **Conclusiones** — menos cantidad pero más grado, mayor potencial de crianza; ampliar parcela de Garnacha en 2026
+
+Todas las cifras se copiaron tal cual del informe.
+
+**Verificación final:** el archivo abre sin errores con python-pptx y tiene **5 diapositivas** (dentro del rango 5–6 pedido). Si prefieres 6, se puede separar el resumen o añadir una de cierre/próximos pasos.

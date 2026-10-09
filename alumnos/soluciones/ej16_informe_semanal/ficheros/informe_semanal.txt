@@ -1,0 +1,11 @@
+INFORME SEMANAL DE VENTAS
+==============================
+
+Total por categoría:
+  hogar: 29.800
+  textil: 18.700
+  bazar: 14.000
+
+Mes con más ventas: junio (12.800)
+
+Tendencia enero → junio: +43.8 %

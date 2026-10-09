@@ -1,0 +1,7 @@
+Extracto real de la salida de opencode run (validado 2026-09-28):
+- Diapositiva 2: gráfico de líneas matplotlib (meses vs hogar, textil, bazar)
+  incrustado como imagen de alta resolución.
+- Diapositiva 3: totales por categoría — Hogar 29.800 € (48%), Textil 18.700 € (30%),
+  Bazar 14.000 € (22%), Total general: 62.500 €
+
+Verificado a mano contra ventas_tienda.csv: totales exactos.

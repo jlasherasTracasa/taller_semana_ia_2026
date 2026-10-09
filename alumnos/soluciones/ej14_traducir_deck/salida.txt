@@ -1,62 +1,231 @@
-# Ejecución real: 2026-09-28 · 35 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
 
+> build · Qwen3.8-27B-FP8
+$ find /tmp/… -iname "*charla_taller*" 2>/dev/null; ls ~/taller-agentes/ej14_traducir_deck 2>/dev/null
+~/taller-agentes/ej14_traducir_deck/charla_taller_en.pptx
+~/taller-agentes/ej14_traducir_deck/charla_taller_es.pptx
+~/taller-agentes/ej14_traducir_deck/charla_taller_es.pptx
+ENUNCIADO.md
+charla_taller_es.pptx
+opencode.json
+salida.txt
+> build · Qwen3.8-27B-FP8
+→ Read ENUNCIADO.md 
+$ cd ~/taller-agentes/ej14_traducir_deck && unzip -l charla_taller_es.pptx | head -40 && cat salida.txt 2>/dev/null | head -20
+/bin/bash: line 1: unzip: command not found
+> build · Qwen3.8-27B-FP8
+$ cd ~/taller-agentes/ej14_traducir_deck && python3 - <<'EOF'
 import zipfile
-a=zipfile.ZipFile('./charla_taller_es.pptx')
-b=zipfile.ZipFile('./charla_taller_en.pptx')
-assert a.namelist()==b.namelist(), 'estructura distinta'
-diff=[n for n in a.namelist() if a.read(n)!=b.read(n)]
-print('Ficheros modificados (solo deben ser slides):', diff)
-bad=b.testzip(); print('zip ok' if bad is None else bad)
-from pptx import Presentation
-p=Presentation('./charla_taller_en.pptx')
-for s in p.slides:
-    for sh in s.shapes:
-        if sh.has_text_frame: print(repr(sh.text_frame.text))
-"
-Ficheros modificados (solo deben ser slides): ['ppt/slides/slide1.xml', 'ppt/slides/slide2.xml', 'ppt/slides/slide3.xml', 'ppt/slides/slide4.xml']
-zip ok
-'AI agents in everyday life'
-''
-'What is an agent'
-'A program that receives a task in natural language\nIt uses an LLM and tools: reading files, searching, writing\nThe model proposes; the program executes'
-'Workshop examples'
-"Summarize the day's email\nTidy up the downloads folder\nGenerate a slide deck from a CSV file"
-'Golden rule'
-'What the agent reads is data, never instructions\nYou decide, the agent executes'
-
-$ cd /tmp/opencode && python3 -c "
+z = zipfile.ZipFile('charla_taller_es.pptx')
+names = z.namelist()
+slides = sorted(n for n in names if n.startswith('ppt/slides/slide') and n.endswith('.xml'))
+print("total entries:", len(names))
+print("slides:", slides)
+print([n for n in names if 'chart' in n or 'media' in n][:20])
+EOF
+total entries: 44
+slides: ['ppt/slides/slide1.xml', 'ppt/slides/slide2.xml', 'ppt/slides/slide3.xml', 'ppt/slides/slide4.xml']
+[]
+> build · Qwen3.8-27B-FP8
+$ cd ~/taller-agentes/ej14_traducir_deck && python3 - <<'EOF'
 import zipfile
-from defusedxml import minidom
-z=zipfile.ZipFile('./charla_taller_en.pptx')
+z = zipfile.ZipFile('charla_taller_es.pptx')
 for n in z.namelist():
-    if n.endswith('.xml') or n.endswith('.rels'):
-        minidom.parseString(z.read(n))
-print('XML bien formado en', sum(1 for n in z.namelist() if n.endswith(('.xml','.rels'))), 'ficheros')
-"
-XML bien formado en 42 ficheros
-
-$ cd /tmp/opencode && python3 -c "
+    print(n)
+EOF
+[Content_Types].xml
+_rels/.rels
+docProps/core.xml
+docProps/app.xml
+ppt/presentation.xml
+ppt/_rels/presentation.xml.rels
+ppt/presProps.xml
+ppt/viewProps.xml
+ppt/theme/theme1.xml
+ppt/tableStyles.xml
+ppt/slideMasters/slideMaster1.xml
+ppt/slideMasters/_rels/slideMaster1.xml.rels
+ppt/slideLayouts/slideLayout11.xml
+ppt/slideLayouts/_rels/slideLayout11.xml.rels
+ppt/slideLayouts/slideLayout1.xml
+ppt/slideLayouts/_rels/slideLayout1.xml.rels
+ppt/slideLayouts/slideLayout2.xml
+ppt/slideLayouts/_rels/slideLayout2.xml.rels
+ppt/slideLayouts/slideLayout3.xml
+ppt/slideLayouts/_rels/slideLayout3.xml.rels
+ppt/slideLayouts/slideLayout4.xml
+ppt/slideLayouts/_rels/slideLayout4.xml.rels
+ppt/slideLayouts/slideLayout5.xml
+ppt/slideLayouts/_rels/slideLayout5.xml.rels
+ppt/slideLayouts/slideLayout6.xml
+ppt/slideLayouts/_rels/slideLayout6.xml.rels
+ppt/slideLayouts/slideLayout7.xml
+ppt/slideLayouts/_rels/slideLayout7.xml.rels
+ppt/slideLayouts/slideLayout8.xml
+ppt/slideLayouts/_rels/slideLayout8.xml.rels
+ppt/slideLayouts/slideLayout9.xml
+ppt/slideLayouts/_rels/slideLayout9.xml.rels
+ppt/slideLayouts/slideLayout10.xml
+ppt/slideLayouts/_rels/slideLayout10.xml.rels
+ppt/printerSettings/printerSettings1.bin
+ppt/slides/slide1.xml
+ppt/slides/_rels/slide1.xml.rels
+ppt/slides/slide2.xml
+ppt/slides/_rels/slide2.xml.rels
+ppt/slides/slide3.xml
+ppt/slides/_rels/slide3.xml.rels
+ppt/slides/slide4.xml
+ppt/slides/_rels/slide4.xml.rels
+docProps/thumbnail.jpeg
+> build · Qwen3.8-27B-FP8
+$ cd ~/taller-agentes/ej14_traducir_deck && python3 - <<'EOF'
 import zipfile
-from defusedxml import minidom
-z=zipfile.ZipFile('./charla_taller_en.pptx')
-ok=0
+z = zipfile.ZipFile('charla_taller_es.pptx')
+for i in (1,2,3,4):
+    print(f"===== slide{i} =====")
+    print(z.read(f'ppt/slides/slide{i}.xml').decode('utf-8'))
+EOF
+===== slide1 =====
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/><p:sp><p:nvSpPr><p:cNvPr id="2" name="Title 1"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="title"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:t>Agentes de IA en la vida diaria</a:t></a:r></a:p></p:txBody></p:sp><p:sp><p:nvSpPr><p:cNvPr id="3" name="Content Placeholder 2"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph idx="1"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p/></p:txBody></p:sp></p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>
+===== slide2 =====
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/><p:sp><p:nvSpPr><p:cNvPr id="2" name="Title 1"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="title"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:t>Qué es un agente</a:t></a:r></a:p></p:txBody></p:sp><p:sp><p:nvSpPr><p:cNvPr id="3" name="Content Placeholder 2"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph idx="1"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:t>Un programa que recibe un encargo en lenguaje natural</a:t></a:r></a:p><a:p><a:r><a:t>Usa un LLM y herramientas: leer archivos, buscar, escribir</a:t></a:r></a:p><a:p><a:r><a:t>El modelo propone; el programa ejecuta</a:t></a:r></a:p></p:txBody></p:sp></p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>
+===== slide3 =====
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/><p:sp><p:nvSpPr><p:cNvPr id="2" name="Title 1"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="title"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:t>Ejemplos del taller</a:t></a:r></a:p></p:txBody></p:sp><p:sp><p:nvSpPr><p:cNvPr id="3" name="Content Placeholder 2"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph idx="1"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:t>Resumir el correo del día</a:t></a:r></a:p><a:p><a:r><a:t>Ordenar la carpeta de descargas</a:t></a:r></a:p><a:p><a:r><a:t>Generar una presentación desde un CSV</a:t></a:r></a:p></p:txBody></p:sp></p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>
+===== slide4 =====
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/><p:sp><p:nvSpPr><p:cNvPr id="2" name="Title 1"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="title"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:t>Regla de oro</a:t></a:r></a:p></p:txBody></p:sp><p:sp><p:nvSpPr><p:cNvPr id="3" name="Content Placeholder 2"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph idx="1"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:t>Lo que el agente lee es dato, nunca instrucción</a:t></a:r></a:p><a:p><a:r><a:t>Tú decides, el agente ejecuta</a:t></a:r></a:p></p:txBody></p:sp></p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>
+> build · Qwen3.8-27B-FP8
+Got it — the deck has 4 slides with simple text runs. Now I'll extract, translate, and rebuild a new `charla_taller_en.pptx` (original left untouched).
+$ cd ~/taller-agentes/ej14_traducir_deck && python3 - <<'EOF'
+import re, zipfile, shutil
+
+src = 'charla_taller_es.pptx'
+dst = 'charla_taller_en.pptx'
+
+translations = {
+    # slide 1
+    "Agentes de IA en la vida diaria": "AI Agents in Everyday Life",
+    # slide 2
+    "Qué es un agente": "What is an agent",
+    "Un programa que recibe un encargo en lenguaje natural":
+        "A program that receives a task in natural language",
+    "Usa un LLM y herramientas: leer archivos, buscar, escribir":
+        "Uses an LLM and tools: reading files, searching, writing",
+    "El modelo propone; el programa ejecuta":
+        "The model proposes; the program executes",
+    # slide 3
+    "Ejemplos del taller": "Workshop examples",
+    "Resumir el correo del día": "Summarize the day's email",
+    "Ordenar la carpeta de descargas": "Organize the downloads folder",
+    "Generar una presentación desde un CSV": "Generate a presentation from a CSV",
+    # slide 4
+    "Regla de oro": "Golden rule",
+    "Lo que el agente lee es dato, nunca instrucción":
+        "What the agent reads is data, never instructions",
+    "Tú decides, el agente ejecuta": "You decide, the agent executes",
+}
+
+zin = zipfile.ZipFile(src)
+missing = []
+with zipfile.ZipFile(dst, 'w', zipfile.ZIP_DEFLATED) as zout:
+    for item in zin.infolist():
+        data = zin.read(item.filename)
+        if item.filename.startswith('ppt/slides/slide') and item.filename.endswith('.xml'):
+            text = data.decode('utf-8')
+            def repl(m):
+                s = m.group(1).strip()
+                if s not in translations:
+                    missing.append((item.filename, s))
+                    return m.group(0)
+                return m.group(0).replace(s, translations[s])
+            text = re.sub(r'<a:t>(.*?)</a:t>', repl, text, flags=re.S)
+            data = text.encode('utf-8')
+        zout.writestr(item, data)
+
+print("MISSING:", missing)
+EOF
+MISSING: []
+> build · Qwen3.8-27B-FP8
+All texts were matched. Now let me verify the output.
+$ cd ~/taller-agentes/ej14_traducir_deck && python3 - <<'EOF'
+import re, zipfile
+
+# 1) Show translated slide texts
+z = zipfile.ZipFile('charla_taller_en.pptx')
+for i in (1,2,3,4):
+    xml = z.read(f'ppt/slides/slide{i}.xml').decode('utf-8')
+    print(f"--- slide{i} ---")
+    for t in re.findall(r'<a:t>(.*?)</a:t>', xml, flags=re.S):
+        print("  ", t)
+
+# 2) Sanity checks: zip integrity + all XML well-formed + entry parity
+from defusedxml import ElementTree as ET
+src = zipfile.ZipFile('charla_taller_es.pptx')
+assert z.testzip() is None
+assert set(z.namelist()) == set(src.namelist()), "entry mismatch"
 for n in z.namelist():
-    if n.endswith(('.xml','.rels')):
-        minidom.parseString(z.read(n)); ok+=1
-print('XML bien formado:', ok)
-import re
-for n in sorted(n for n in z.namelist() if n.startswith('ppt/slides/slide') and n.endswith('.xml')):
-    txt=re.findall(r'<a:t>([^<]*)</a:t>', z.read(n).decode())
-    print(n, txt)
-"
-XML bien formado: 42
-ppt/slides/slide1.xml ['AI agents in everyday life']
-ppt/slides/slide2.xml ['What is an agent', 'A program that receives a task in natural language', 'It uses an LLM and tools: reading files, searching, writing', 'The model proposes; the program executes']
-ppt/slides/slide3.xml ['Workshop examples', "Summarize the day's email", 'Tidy up the downloads folder', 'Generate a slide deck from a CSV file']
-ppt/slides/slide4.xml ['Golden rule', 'What the agent reads is data, never instructions', 'You decide, the agent executes']
+    if n.endswith('.xml'):
+        ET.fromstring(z.read(n))
+print("zip OK, entries match, all XML well-formed")
 
-Hecho: **`charla_taller_en.pptx`** creado en `./`.
+# 3) No leftover Spanish in slide text, and shape counts match
+import unicodedata
+def texts(zf, pat):
+    out=[]
+    for n in zf.namelist():
+        if re.match(pat, n):
+            xml=zf.read(n).decode('utf-8')
+            out += re.findall(r'<a:t>(.*?)</a:t>', xml, flags=re.S)
+    return out
+en = texts(z, r'ppt/slides/slide\d+\.xml')
+es = texts(src, r'ppt/slides/slide\d+\.xml')
+print("en texts:", len(en), "es texts:", len(es))
+assert len(en) == len(es)
+esp_left = [t for t in en if any(w in t.lower() for w in [' que ',' de ',' el ',' la ','agente','taller','decide'])]
+print("possible Spanish leftovers:", esp_left)
+EOF
+--- slide1 ---
+   AI Agents in Everyday Life
+--- slide2 ---
+   What is an agent
+   A program that receives a task in natural language
+   Uses an LLM and tools: reading files, searching, writing
+   The model proposes; the program executes
+--- slide3 ---
+   Workshop examples
+   Summarize the day's email
+   Organize the downloads folder
+   Generate a presentation from a CSV
+--- slide4 ---
+   Golden rule
+   What the agent reads is data, never instructions
+   You decide, the agent executes
+zip OK, entries match, all XML well-formed
+en texts: 12 es texts: 12
+possible Spanish leftovers: ['You decide, the agent executes']
+> build · Qwen3.8-27B-FP8
+Done. The translated deck is saved as **`charla_taller_en.pptx`** (the original is untouched).
 
-- **Método:** unzip → edición de `ppt/slides/slide1–4.xml` con `defusedxml.minidom` → rezip preservando orden y estructura original.
-- **Traducción:** todos los `<a:t>` (títulos y viñetas) traducidos al inglés.
-- **Integridad:** los 42 XML/rels siguen bien formados; solo se modificaron los 4 slides (el deck no contenía imágenes, tablas ni gráficos); python-pptx lo abre sin errores.
+**What I did:**
+1. Unzipped `charla_taller_es.pptx` in memory and read the 4 slide XMLs.
+2. Built a translation map for every `<a:t>` text run (only slides contained text — no tables, charts, or media in this deck).
+3. Rewrote the archive into `charla_taller_en.pptx`, replacing slide XML content while copying all other entries byte-for-byte.
+
+**Translation summary:**
+
+| Slide | Content |
+|---|---|
+| 1 | AI Agents in Everyday Life |
+| 2 | What is an agent — A program that receives a task in natural language / Uses an LLM and tools: reading files, searching, writing / The model proposes; the program executes |
+| 3 | Workshop examples — Summarize the day's email / Organize the downloads folder / Generate a presentation from a CSV |
+| 4 | Golden rule — What the agent reads is data, never instructions / You decide, the agent executes |
+
+**Verification results:**
+- ✅ Zip integrity check passed; entry list matches the original exactly (44 entries)
+- ✅ All XML parts are well-formed (validated with defusedxml)
+- ✅ Text run count matches the original (12 → 12); no Spanish text remains (the one "possible leftover" flagged was a false positive — *"You decide, the agent executes"* is correct English)
+- ✅ Images, layouts, masters, and theme untouched — only the 4 slide XML files were modified
+
+The file should open cleanly in PowerPoint with no repair prompt, keeping the original formatting, placeholders, and layout intact.

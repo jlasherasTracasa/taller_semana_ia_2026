@@ -1,0 +1,31 @@
+
+> build · Qwen3.8-27B-FP8
+→ Skill "acta-reunion" 
+> build · Qwen3.8-27B-FP8
+✱ Glob "**/transcripcion_reunion.txt" 1 match
+> build · Qwen3.8-27B-FP8
+→ Read transcripcion_reunion.txt 
+> build · Qwen3.8-27B-FP8
+Encontrado. Redacto el acta siguiendo la plantilla de la skill:
+← Write actas/2026-10-15_acta.md
+Created file successfully: actas/2026-10-15_acta.md
+> build · Qwen3.8-27B-FP8
+Ahora la valido con el script de la skill:
+$ python3 .opencode/skills/acta-reunion/validar_acta.py actas/2026-10-15_acta.md
+ACTA VÁLIDA
+> build · Qwen3.8-27B-FP8
+✅ `ACTA VÁLIDA` a la primera. El acta está en **`actas/2026-10-15_acta.md`**.
+
+**Resumen de lo capturado:**
+
+| # | Acuerdo | Votación | Responsable | Límite |
+|---|---|---|---|---|
+| 1 | Fiestas txikis: fuera el concierto, solo txaranga del sábado (1.800 € de subvención) | 3-2 | — | — |
+| 2 | Cerrar el presupuesto de fiestas | — | Iñaki Lacasta | 30/10/2026 |
+| 3 | Escribir a la mancomunidad por el horario de recogida de vidrio | — | Javier Mina | 23/10/2026 |
+| 4 | Cartel informativo en el portal | — | Rosa Echeverría | 19/10/2026 |
+| 5 | Cuota se mantiene en 15 € | unanimidad | — | — |
+
+Detalles respetados tal cual de la transcripción: lugar (calle Mayor), horario (19:00–20:10), ausencia excusada (Pello Arbizu), cifras sin redondear y próxima reunión 19/11/2026 a las 19:00. No he inventado cargos para Javier Mina ni Ana Urroz (no constan en la transcripción).
+
+Si quieres retocar algo (por ejemplo, añadirles un cargo conocido o rewording del acuerdo 1), lo ajusto y revalido.

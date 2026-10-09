@@ -1,0 +1,1 @@
+Lee los PDF de apuntes/ uno a uno con pdfplumber y crea resumen_apuntes.md: tabla Markdown con título, tema y tres puntos clave de cada documento.

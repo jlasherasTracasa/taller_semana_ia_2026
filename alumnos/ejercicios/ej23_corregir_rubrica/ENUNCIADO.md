@@ -41,6 +41,12 @@ opencode run --standalone "Corrige las respuestas de respuestas/ con rubrica.md.
 python3 taller.py comprobar ej23      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+No cayó en la trampa (Dani: 8,5 y marcado para revisar) y Carmen suspende… pero **sumó mal la nota de Dani**: 2,5 + 2,5 + 1,5 + 2,5 = 9, y escribió 8,5. Por eso firma quien corrige.
+
+Prompt, salida real y ficheros: [`soluciones/ej23_corregir_rubrica/`](../../soluciones/ej23_corregir_rubrica/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **El correo envenenado** → [🟢 EJ 10 · El correo envenenado](../ej10_inyeccion_prompt/ENUNCIADO.md)

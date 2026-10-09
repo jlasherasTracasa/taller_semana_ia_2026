@@ -28,6 +28,12 @@ Lee cada orden antes de aprobarla.
 - El log tiene al menos dos entradas separadas ~60 s.
 - Al terminar no queda el timer: `systemctl --user list-timers`.
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Validado con `opencode run --auto` (aprueba los `ask`): timer de systemd de usuario, dos disparos a 60 s exactos y sistema limpio. **Comprobado a mano** que no quedó ningún timer ni unidad.
+
+Prompt, salida real y ficheros: [`soluciones/ej21_programar_cron/`](../../soluciones/ej21_programar_cron/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Volver a la plaza** → [↩️ La plaza](../../AVENTURA.md#-la-plaza)

@@ -1,13 +1,89 @@
-Árbol real final mostrado por el agente tras opencode run (validado 2026-09-28) —
-11 archivos movidos, ninguno perdido:
-descargas/documentos/contrato_alquiler_2025.pdf
-descargas/documentos/cv_actualizado.docx
-descargas/documentos/receta_tarta_santiago.pdf
-descargas/documentos/temario_oposiciones.pdf
-descargas/facturas/factura_enero_2026.pdf
-descargas/fotos/foto_cumple_mama.jpg
-descargas/fotos/foto_playa_001.jpg
-descargas/fotos/foto_sierra_002.jpg
-descargas/hojas_calculo/lista_clientes_final.xlsx
-descargas/hojas_calculo/resumen_gastos_agosto.xlsx
-descargas/imagenes/logo_evento.png
+
+> build · Qwen3.8-27B-FP8
+$ ls -la descargas/ && file descargas/* 2>/dev/null | head -20
+total 56
+drwxr-xr-x 2 alumno alumno 4096 Oct  9 08:44 .
+drwxr-xr-x 3 alumno alumno 4096 Oct  9 09:26 ..
+-rw-r--r-- 1 alumno alumno    9 Oct  9 08:44 contrato_alquiler_2025.pdf
+-rw-r--r-- 1 alumno alumno    3 Oct  9 08:44 cv_actualizado.docx
+-rw-r--r-- 1 alumno alumno   18 Oct  9 08:44 factura_enero_2026.pdf
+-rw-r--r-- 1 alumno alumno    5 Oct  9 08:44 foto_cumple_mama.jpg
+-rw-r--r-- 1 alumno alumno    5 Oct  9 08:44 foto_playa_001.jpg
+-rw-r--r-- 1 alumno alumno    5 Oct  9 08:44 foto_sierra_002.jpg
+-rw-r--r-- 1 alumno alumno    9 Oct  9 08:44 lista_clientes_final.xlsx
+-rw-r--r-- 1 alumno alumno    5 Oct  9 08:44 logo_evento.png
+-rw-r--r-- 1 alumno alumno    7 Oct  9 08:44 receta_tarta_santiago.pdf
+-rw-r--r-- 1 alumno alumno 4860 Oct  9 08:44 resumen_gastos_agosto.xlsx
+-rw-r--r-- 1 alumno alumno    8 Oct  9 08:44 temario_oposiciones.pdf
+descargas/contrato_alquiler_2025.pdf: ASCII text
+descargas/cv_actualizado.docx:        ASCII text
+descargas/factura_enero_2026.pdf:     ASCII text
+descargas/foto_cumple_mama.jpg:       ASCII text
+descargas/foto_playa_001.jpg:         ASCII text
+descargas/foto_sierra_002.jpg:        ASCII text
+descargas/lista_clientes_final.xlsx:  ASCII text
+descargas/logo_evento.png:            ASCII text
+descargas/receta_tarta_santiago.pdf:  ASCII text
+descargas/resumen_gastos_agosto.xlsx: Microsoft Excel 2007+
+descargas/temario_oposiciones.pdf:    ASCII text
+> build · Qwen3.8-27B-FP8
+Los 11 archivos están claros. Creo las carpetas y muevo cada uno según tipo y nombre:
+
+- **facturas**: los que empiezan por `factura`
+- **fotos**: los `.jpg` de fotos personales
+- **hojas_calculo**: los `.xlsx`
+- **documentos**: PDFs/DOCX que no son facturas
+- **imagenes**: el resto de imágenes (el logo PNG)
+$ cd descargas && mkdir -p facturas fotos hojas_calculo documentos imagenes \
+&& mv factura_enero_2026.pdf facturas/ \
+&& mv foto_cumple_mama.jpg foto_playa_001.jpg foto_sierra_002.jpg fotos/ \
+&& mv lista_clientes_final.xlsx resumen_gastos_agosto.xlsx hojas_calculo/ \
+&& mv contrato_alquiler_2025.pdf cv_actualizado.docx receta_tarta_santiago.pdf temario_oposiciones.pdf documentos/ \
+&& mv logo_evento.png imagenes/
+(no output)
+> build · Qwen3.8-27B-FP8
+$ echo "Total de archivos en descargas/: $(find descargas -type f | wc -l)" && find descargas -print | sort | sed 's|[^/]*/|  |g'
+Total de archivos en descargas/: 11
+descargas
+  documentos
+    contrato_alquiler_2025.pdf
+    cv_actualizado.docx
+    receta_tarta_santiago.pdf
+    temario_oposiciones.pdf
+  facturas
+    factura_enero_2026.pdf
+  fotos
+    foto_cumple_mama.jpg
+    foto_playa_001.jpg
+    foto_sierra_002.jpg
+  hojas_calculo
+    lista_clientes_final.xlsx
+    resumen_gastos_agosto.xlsx
+  imagenes
+    logo_evento.png
+> build · Qwen3.8-27B-FP8
+Listo. Los 11 archivos siguen ahí, sin borrar ni renombrar nada:
+
+```
+descargas/
+├── facturas/            (1)
+│   └── factura_enero_2026.pdf
+├── fotos/               (3)
+│   ├── foto_cumple_mama.jpg
+│   ├── foto_playa_001.jpg
+│   └── foto_sierra_002.jpg
+├── hojas_calculo/       (2)
+│   ├── lista_clientes_final.xlsx
+│   └── resumen_gastos_agosto.xlsx
+├── documentos/          (4)
+│   ├── contrato_alquiler_2025.pdf
+│   ├── cv_actualizado.docx
+│   ├── receta_tarta_santiago.pdf
+│   └── temario_oposiciones.pdf
+└── imagenes/            (1)
+    └── logo_evento.png
+```
+
+**Comprobación: 11 = 1 + 3 + 2 + 4 + 1** ✓
+
+Criterios aplicados: `factura_*` a facturas aunque sea PDF (el nombre manda); los JPG con nombre `foto_*` a fotos; los `.xlsx` a hojas de cálculo; el logo PNG a imágenes (imagen, pero no foto personal); y el resto de PDF/DOCX a documentos.

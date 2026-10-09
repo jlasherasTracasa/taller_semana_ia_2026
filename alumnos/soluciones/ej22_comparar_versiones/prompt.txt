@@ -1,1 +1,1 @@
-Lee informe_v1.docx e informe_v2.docx con python-docx, compara su texto con difflib y escribe cambios.md: un resumen en prosa de lo añadido, lo eliminado y lo modificado, con las cifras viejas y nuevas.
+Lee informe_v1.docx e informe_v2.docx con python-docx, compara su texto y escribe cambios.md: un resumen en prosa, para alguien que no ha visto los documentos, de lo añadido, lo eliminado y lo modificado, con las cifras viejas y nuevas.

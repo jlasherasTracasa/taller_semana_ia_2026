@@ -1,62 +1,123 @@
-# Ejecución real: 2026-09-28 · 31 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
 
-cni
-containerd
-nvidia
-veeam
-
-$ find / -maxdepth 4 -name "soffice*" 2>/dev/null; python3 "~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/xlsx/scripts/office/soffice.py" --help 2>&1 | head -20
-Traceback (most recent call last):
-  File "~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/xlsx/scripts/office/soffice.py", line 191, in <module>
-    result = run_soffice(sys.argv[1:])
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/xlsx/scripts/office/soffice.py", line 46, in run_soffice
-    return subprocess.run(["soffice"] + args, env=get_soffice_env(), **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/subprocess.py", line 548, in run
-    with Popen(*popenargs, **kwargs) as process:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
-    self._execute_child(args, executable, preexec_fn, close_fds,
-  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
-    raise child_exception_type(errno_num, err_msg, err_filename)
-FileNotFoundError: [Errno 2] No such file or directory: 'soffice'
-
-No hay LibreOffice en esta máquina, así que no puedo recalcular con `recalc.py`. Verifico leyendo el `facturas.xlsx` generado:
-$ python3 - <<'EOF'
+> build · Qwen3.8-27B-FP8
+→ Read facturas 
+> build · Qwen3.8-27B-FP8
+→ Read facturas/factura_limpieza.pdf 
+→ Read facturas/factura_ferreteria.pdf 
+> build · Qwen3.8-27B-FP8
+$ cd "~/taller-agentes/ej18_facturas_excel/facturas" && (pdftotext -layout factura_ferreteria.pdf - 2>/dev/null || python3 -c "
+import sys
+try:
+    from pypdf import PdfReader
+except ImportError:
+    from PyPDF2 import PdfReader
+r = PdfReader('factura_ferreteria.pdf')
+for p in r.pages:
+    print(p.extract_text())
+")
+Factura 2026/041 — Ferretería Etxeberria
+Cliente: Centro Cívico Alhama
+Fecha: 03/02/2026
+Mano de obra instalación pasamanos ....... 180,00 EUR
+Pasamanos aluminio 12 m x 14,50 .......... 174,00 EUR
+T ornillería y anclajes ...................... 21,60 EUR
+Base imponible ............................ 375,60 EUR
+IVA 21 % .................................... 78,88 EUR
+TOTAL ..................................... 454,48 EUR
+> build · Qwen3.8-27B-FP8
+$ cd "~/taller-agentes/ej18_facturas_excel/facturas" && (pdftotext -layout factura_limpieza.pdf - 2>/dev/null || python3 -c "
+try:
+    from pypdf import PdfReader
+except ImportError:
+    from PyPDF2 import PdfReader
+r = PdfReader('factura_limpieza.pdf')
+for p in r.pages:
+    print(p.extract_text())
+")
+Factura 2026/019 — Limpiezas Ribera S.L.
+Cliente: Centro Cívico Alhama
+Fecha: 28/02/2026
+Servicio mensual limpieza (20 jornadas) .. 940,00 EUR
+Productos de consumo ....................... 62,40 EUR
+Base imponible .......................... 1.002,40 EUR
+IVA 21 % ................................... 210,50 EUR
+TOTAL ................................... 1.212,90 EUR
+> build · Qwen3.8-27B-FP8
+He extraído los datos de ambos PDF. Ahora compruebo si hay un Excel existente en el directorio:
+✱ Glob "**/*.xlsx" in . · 0 matches
+> build · Qwen3.8-27B-FP8
+$ ls -la "~/taller-agentes/ej18_facturas_excel"
+total 20
+drwxr-xr-x  3 alumno alumno 4096 Oct  9 09:26 .
+drwxr-xr-x 35 alumno alumno 4096 Oct  9 09:26 ..
+-rw-r--r--  1 alumno alumno 1633 Oct  9 09:20 ENUNCIADO.md
+drwxr-xr-x  2 alumno alumno 4096 Oct  9 08:44 facturas
+-rw-r--r--  1 alumno alumno 1068 Oct  9 09:26 opencode.json
+-rw-r--r--  1 alumno alumno    0 Oct  9 09:26 salida.txt
+> build · Qwen3.8-27B-FP8
+→ Read ENUNCIADO.md 
+> build · Qwen3.8-27B-FP8
+El enunciado lo confirma: se espera `facturas.xlsx` con totales 454,48 y 1.212,90 y suma final 1.667,38. Genero el Excel con openpyxl:
+$ python3 -c "import openpyxl; print(openpyxl.__version__)"
+3.1.5
+> build · Qwen3.8-27B-FP8
+← Write generar_facturas_xlsx.py
+Created file successfully: generar_facturas_xlsx.py
+> build · Qwen3.8-27B-FP8
+El archivo quedó corrupto al final; lo reescribo limpio:
+← Write generar_facturas_xlsx.py
+Wrote file successfully: generar_facturas_xlsx.py
+> build · Qwen3.8-27B-FP8
+$ cd "~/taller-agentes/ej18_facturas_excel" && python3 generar_facturas_xlsx.py
+Totales PDF: [454.48, 1212.9] -> suma esperada: 1667.38
+Suma escrita en facturas.xlsx (fila 4): 1667.38
+OK: cuadra con la suma de los totales de los PDF.
+> build · Qwen3.8-27B-FP8
+$ cd "~/taller-agentes/ej18_facturas_excel" && ls -la facturas.xlsx && python3 -c "
 from openpyxl import load_workbook
-wb = load_workbook("facturas.xlsx")
-ws = wb["Facturas"]
-print("Contenido de facturas.xlsx:")
-for row in ws.iter_rows(values_only=True):
-    print(row)
-# Comprobación aritmética contra los originales (independiente del Excel)
-orig = [(375.60, 78.88, 454.48), (1002.40, 210.50, 1212.90)]
-assert all(abs(b + i - t) < 0.005 and abs(round(b*0.21, 2) - i) < 0.005 for b, i, t in orig)
-sb = round(sum(b for b, _, _ in orig), 2); si = round(sum(i for _, i, _ in orig), 2); st = round(sum(t for _, _, t in orig), 2)
-assert abs(sb + si - st) < 0.005
-print(f"\nOriginales: base={sb:.2f} EUR, IVA={si:.2f} EUR, total={st:.2f} EUR")
-print("Fórmula en el Excel:", ws.cell(row=4, column=5).value)
-print(f"=SUM(E2:E3) evalúa a {st:.2f} EUR -> cuadra con los PDF (verificado por cómputo directo; LibreOffice no está instalado para recálculo)")
-EOF
-Contenido de facturas.xlsx:
-('Emisor', 'Fecha', 'Base imponible', 'IVA', 'Total')
-('Ferretería Etxeberria', '03/02/2026', 375.6, 78.88, 454.48)
-('Limpiezas Ribera S.L.', '28/02/2026', 1002.4, 210.5, 1212.9)
-('SUMA TOTAL', None, '=SUM(C2:C3)', '=SUM(D2:D3)', '=SUM(E2:E3)')
+wb = load_workbook('facturas.xlsx')
+ws = wb.active
+print('Hoja:', ws.title)
+for fila in ws.iter_rows(values_only=True):
+    print(fila)
+# comprobaciones: tipos numéricos y sin fórmulas
+import openpyxl
+for row in ws.iter_rows(min_row=2):
+    for c in row[3:]:
+        assert isinstance(c.value, (int, float)), f'{c.coordinate} no es numero: {c.value!r}'
+        assert not (isinstance(c.value, str) and c.value.startswith('=')), 'hay formula'
+print('OK: economicos como numeros, sin formulas, suma final en F4')
+"
+-rw-r--r-- 1 alumno alumno 5231 Oct  9 09:27 facturas.xlsx
+Hoja: Facturas
+('Emisor', 'Nº factura', 'Fecha', 'Base imponible (EUR)', 'IVA 21% (EUR)', 'Total (EUR)')
+('Ferretería Etxeberria', '2026/041', '03/02/2026', 375.6, 78.88, 454.48)
+('Limpiezas Ribera S.L.', '2026/019', '28/02/2026', 1002.4, 210.5, 1212.9)
+('SUMA', None, None, 1378, 289.38, 1667.38)
+OK: economicos como numeros, sin formulas, suma final en F4
+> build · Qwen3.8-27B-FP8
+Listo. El ejercicio 18 está completo y verificado:
 
-Originales: base=1378.00 EUR, IVA=289.38 EUR, total=1667.38 EUR
-Fórmula en el Excel: =SUM(E2:E3)
-=SUM(E2:E3) evalúa a 1667.38 EUR -> cuadra con los PDF (verificado por cómputo directo; LibreOffice no está instalado para recálculo)
+## Resultado
 
-Hecho. `facturas.xlsx` generado con openpyxl:
+**`facturas.xlsx`** (hoja "Facturas") generada con openpyxl a partir de los dos PDF de `facturas/`:
 
-| Emisor | Fecha | Base | IVA | Total |
-|---|---|---|---|---|
-| Ferretería Etxeberria | 03/02/2026 | 375,60 EUR | 78,88 EUR | 454,48 EUR |
-| Limpiezas Ribera S.L. | 28/02/2026 | 1.002,40 EUR | 210,50 EUR | 1.212,90 EUR |
-| **SUMA TOTAL** | | 1.378,00 | 289,38 | **1.667,38** |
+| Emisor | Nº factura | Fecha | Base (EUR) | IVA 21% (EUR) | Total (EUR) |
+|---|---|---|---|---|---|
+| Ferretería Etxeberria | 2026/041 | 03/02/2026 | 375,60 | 78,88 | **454,48** |
+| Limpiezas Ribera S.L. | 2026/019 | 28/02/2026 | 1.002,40 | 210,50 | **1.212,90** |
+| **SUMA** | | | 1.378,00 | 289,38 | **1.667,38** |
 
-- Los totales de cada PDF son coherentes con su base (base × 1,21) y la fila final usa fórmulas `=SUM(...)` (columnas C, D, E).
-- La suma (1.667,38 EUR) cuadra con los originales, verificado por cómputo directo.
-- Nota: LibreOffice no está instalado en esta máquina, así que no pude ejecutar el recálculo del skill; las fórmulas están escritas correctamente y los valores verificados aritméticamente contra los PDF.
+## Cumplimiento del enunciado
+
+- ✅ Los cinco campos extraídos de cada PDF (emisor, fecha, base, IVA, total), más el nº de factura como contexto.
+- ✅ La fila final con la suma de totales escrita **como número** (1667.38 float, no fórmula ni texto) — verificado programáticamente.
+- ✅ **Cuadra con los PDF**: 454,48 + 1.212,90 = 1.667,38 (el valor exacto que pide la checklist del ENUNCIADO).
+- ✅ Bonus: también sumé base imponible e IVA en la fila SUMA.
+
+El script `generar_facturas_xlsx.py` queda en la carpeta por si quieres regenerarlo o adaptarlo cuando lleguen más facturas.
+
+Puedes pasarlo por el comprobador oficial cuando quieras:
+```bash
+python3 taller.py comprobar ej18
+```

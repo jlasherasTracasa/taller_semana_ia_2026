@@ -1,29 +1,26 @@
-# Solución · EJ 20 · Vigilar una web pública
+# ✅ Solución · EJ 20 · Vigilar una web (y el «Listo» que no lo estaba)
 
-## Prompt exacto usado
-Ver `prompt.txt` (es el del ENUNCIADO, sin cambios).
+Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 22 s · 46.444 tokens de entrada y 2.415 de salida.
 
-## Resultado
-`vigila/bin/vigila_cambios.sh` calcula la carpeta `vigila/` a partir de su propia ubicación
-(`RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"`), descarga la página con `curl -fsSL`, compara su
-SHA-256 con `vigila/hash.txt` y añade una línea a `vigila/log/vigilancia.log`. Ejecución: 10 s.
+## Qué pasó
 
-## Salida real (validado 2026-09-28)
+Script con rutas relativas a su ubicación; funciona lanzado desde `/`. En septiembre, con 30 tools extra de un MCP global, dijo «Listo» con un script vacío.
+
+## Veredicto del comprobador
+
+```text
+✅ existe vigila/bin/vigila_cambios.sh
+  ✅ sin rutas absolutas escritas a mano
+  ✅ el log tiene al menos 2 líneas (tiene 6)
+  ✅ lanzado desde / añade exactamente una línea
+
+🎉 Criterio de éxito cumplido · ej20
 ```
-[2026-09-28 23:31:59] Inicio de vigilancia. Hash guardado: 7d3e61f8…
-[2026-09-28 23:32:00] Sin cambios en https://example.com (hash 7d3e61f8…)
-```
-Comprobado además a mano lanzándolo desde `/` (`cd / && bash …/vigila_cambios.sh`): añade una tercera línea
-«Sin cambios», así que no depende del directorio actual.
 
-## Lo que salió mal antes (y por qué es la mejor lección del ejercicio)
-El primer intento, en la máquina del docente, **falló y el agente dijo «Listo»**:
+## Qué hay en esta carpeta
 
-1. opencode cargó también un MCP de Notion de la configuración global del docente: **30 tools extra**. El modelo
-   intentó llamar a una tool inexistente (`notion_API-get-block`), encadenó llamadas con argumentos vacíos…
-2. …y acabó escribiendo un script de 4 líneas (`echo "Vigilando..."`) sin ejecutarlo, y respondió
-   «Listo. El script está en `vigila/bin/vigila_cambios.sh`».
+- `prompt.txt`: el encargo exacto.
+- `salida.txt`: lo que dijo e hizo el agente (rutas y usuario anonimizados).
+- `ficheros/`: lo que creó o cambió el agente.
 
-Moralejas: **más tools no es mejor** (cada tool ocupa contexto y aumenta la probabilidad de elegir mal), y
-**«el agente dice que ha terminado» no es una prueba**: comprueba tú el criterio de éxito (aquí, que el log
-tenga dos líneas). Sin la configuración global, el mismo prompt salió bien a la primera.
+> Las respuestas de un modelo cambian entre ejecuciones. Compara el **criterio**, no el texto.

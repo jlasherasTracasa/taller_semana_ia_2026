@@ -35,6 +35,12 @@ Después crea tú un segundo comando, `.opencode/commands/resumen-mes.md`, que r
 python3 taller.py comprobar f3      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+El cuerpo del comando genera las 3 diapositivas con los totales exactos. El comando original decía que el CSV tenía columnas `mes,categoria,importe` (falso): corregido. En opencode 2.x `run --command` ya no existe: los comandos se usan con `/nombre` en modo interactivo.
+
+Prompt, salida real y ficheros: [`soluciones/f3_comandos/`](../../soluciones/f3_comandos/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Quiero una receta que el agente cargue él solo** → [🔵 F.4 · Skills: recetas que el agente carga cuando las necesita](../f4_skills/ENUNCIADO.md)

@@ -1,0 +1,64 @@
+
+> build · Qwen3.8-27B-FP8
+→ Read carta.txt 
+> build · Qwen3.8-27B-FP8
+← Write explicacion.md
+Created file successfully: explicacion.md
+> build · Qwen3.8-27B-FP8
+Un momento, corrijo una inconsistencia con los nombres exactos de la carta en el último apartado:
+← Edit explicacion.md
+Index: explicacion.md
+===================================================================
+--- explicacion.md
++++ explicacion.md
+@@ -97,7 +97,7 @@
+ ## ¿A qué teléfono llamo?
+ 
+ **La carta no lo dice.** En la carta no aparece ningún teléfono, ni correo electrónico, ni horario de atención, ni página web. Lo único que aparece es la dirección del organismo:
+ 
+-> Servicio Mancomunado de Aguas del Valle de Argaíz — Plaza de los Fueros, 3 · 31999 Villaverde de Argaitz
++> Servicio Mancomunado de Aguas del Valle de Argaitz — Plaza de los Fueros, 3 · 31999 Villaverde de Arga
+ 
+ *(Si necesita confirmar algo —por ejemplo el número de cuenta— tendrá que acudir personalmente a esa dirección o buscar su contacto por otros medios: la carta no aporta teléfono ni horario.)*
+
+> build · Qwen3.8-27B-FP8
+Añado una precisión útil sobre el número de cuenta tal cual figura en la carta:
+← Edit explicacion.md
+Index: explicacion.md
+===================================================================
+--- explicacion.md
++++ explicacion.md
+@@ -85,9 +85,9 @@
+ ## Sus pasos, uno a uno
+ 
+ 1. **Localice el papel de la carta** y apunte el número de expediente: **SMA/2026/004817**.
+ 2. **Compruebe si ya pagó** esos recibos. Si ya estaban pagados, guarde a mano los justificantes de pago.
+-3. **Pague 127,40 €** mediante transferencia o ingreso en la cuenta que indica la carta, poniendo como concepto el número de expediente (**SMA/2026/004817**). Hazlo antes del **lunes 19 de octubre de 2026**, mejor esta misma semana.
++3. **Pague 127,40 €** mediante transferencia o ingreso en la cuenta que indica la carta (**ES00 0000 0000 0000 0000 0000**, tal como aparece escrita en ella), poniendo como concepto el número de expediente (**SMA/2026/004817**). Hazlo antes del **lunes 19 de octubre de 2026**, mejor esta misma semana.
+ 4. **Guarde bien el resguardo** de la transferencia o del ingreso.
+ 5. Si la carta llegara después de haber pagado, envíeles o presénteles el **justificante de pago**, tal como pide la propia carta.
+ 6. Si **no está de acuerdo** con la deuda, presente el **recurso de reposición antes del 3 de noviembre de 2026**.
+ 7. **No tire la carta ni los recibos**: guárdelos juntos con el resguardo del pago.
+
+> build · Qwen3.8-27B-FP8
+Listo. He leído `carta.txt` y escrito `explicacion.md` pensado para una lectura fácil por una persona mayor. Resumen de lo que contiene:
+
+**Lo esencial**
+- **Qué le piden:** dos recibos del agua impagados (58,20 € + 69,20 €) = **127,40 €**, expediente SMA/2026/004817.
+- **Plazo:** notificación el viernes **2/oct/2026** → cuenta desde el 3/oct excluyendo sábados, domingos y festivos:
+
+| Hábiles | Fechas |
+|---|---|
+| 1–5 | lun 5 → vie 9 oct |
+| — | sáb 10, dom 11 y **lun 12 (Fiesta Nacional)** no cuentan |
+| 6–9 | mar 13 → vie 16 oct |
+| — | sáb 17 y dom 18 no cuentan |
+| **10** | **lunes 19 de octubre de 2026 → último día** |
+
+- **Si no paga nada:** recargo del 20 % (**25,48 €**) → deuda mínima de **152,88 €**, más intereses de demora y costas, e inicio de la vía de apremio.
+- **Pasos:** lista numerada de 7 pasos (pagar con el expediente como concepto, guardar resguardo, justificante si ya pagó, recurso de reposición antes del 3/nov/2026 si no está de acuerdo).
+- **¿A qué teléfono llamo?:** la carta no lo dice — tampoco email, horario ni web; solo consta la dirección del organismo.
+
+**Dos notas de honestidad que dejé reflejadas en el documento:**
+- El IBAN de la carta es literalmente `ES00 0000...` (todo ceros): lo transcribí tal cual está, sin inventar dígitos.
+- El festivo del 12 de octubre es el único que cae en el plazo según el calendario nacional; la carta no menciona festivos locales del pueblo ficticio, y así lo indico por si acaso.

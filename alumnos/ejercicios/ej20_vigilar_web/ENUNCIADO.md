@@ -39,6 +39,12 @@ opencode run --standalone "Crea vigila/bin/vigila_cambios.sh: descarga https://e
 python3 taller.py comprobar ej20      # el agente no puede darte el sello: solo el comprobador
 ```
 
+## 🧪 Lo que pasó al validarlo (09-10-2026)
+
+Script con rutas relativas a su ubicación; funciona lanzado desde `/`. En septiembre, con 30 tools extra de un MCP global, dijo «Listo» con un script vacío.
+
+Prompt, salida real y ficheros: [`soluciones/ej20_vigilar_web/`](../../soluciones/ej20_vigilar_web/)
+
 ## 🔀 ¿Y ahora qué?
 
 - **Programarlo para que se ejecute solo** → [🟣 EJ 21 · Que se ejecute solo (con tu permiso)](../ej21_programar_cron/ENUNCIADO.md)

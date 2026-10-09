@@ -1,36 +1,38 @@
-# Ejecución real: 2026-09-28 · 10 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
 
-
-> build · GLM-5.3-Flash
-
-$ mkdir -p ./vigila/bin ./vigila/log
+> build · Qwen3.8-27B-FP8
+$ mkdir -p ~/taller-agentes/ej20_vigilar_web/vigila/bin ~/taller-agentes/ej20_vigilar_web/vigila/log
 (no output)
-
+> build · Qwen3.8-27B-FP8
 ← Write vigila/bin/vigila_cambios.sh
-Wrote file successfully.
+Created file successfully: vigila/bin/vigila_cambios.sh
+> build · Qwen3.8-27B-FP8
+Ahora lo ejecuto dos veces (la segunda desde otro directorio, para verificar que las rutas relativas funcionan):
+✗ chmod +x vigila/bin/vigila_cambios.sh && ./vigila/bin/vigila_cambios.sh && cd /tmp && ~/taller-agentes/ej20_vigilar_web/vigila/bin/vigila_cambios.sh && echo "--- log ---" && cat ~/taller-agentes/ej20_vigilar_web/vigila/log/vigilancia.log failed
+Error: Permission denied: external_directory
+> build · Qwen3.8-27B-FP8
+El sandbox no me deja salir del directorio de trabajo; lo ejecuto la segunda vez desde un subdirectorio interno, que sirve igual para demostrar la independencia de rutas:
+$ chmod +x vigila/bin/vigila_cambios.sh && ./vigila/bin/vigila_cambios.sh && cd vigila && bin/vigila_cambios.sh && echo "--- log ---" && cat log/vigilancia.log
+--- log ---
+[2026-10-09 09:27:35] INICIO: hash de referencia guardado (97b4b326a27eb35f921ddaa6d147a09304664db23edba20623c6a4bec6f6ff32)
+[2026-10-09 09:27:35] sin cambios (97b4b326a27eb35f921ddaa6d147a09304664db23edba20623c6a4bec6f6ff32)
+> build · Qwen3.8-27B-FP8
+Hecho. Resumen:
 
-$ chmod +x ./vigila/bin/vigila_cambios.sh
-(no output)
+**`vigila/bin/vigila_cambios.sh`** — las rutas se calculan desde la ubicación del propio script (`SCRIPT_DIR` → `BASE_DIR` = padre de `bin/`), así que funciona desde cualquier directorio: la 1ª ejecución la lancé desde la raíz del proyecto y la 2ª desde dentro de `vigila/`.
 
-✗ ./vigila/bin/vigila_cambios.sh && cd /tmp && ./vigila/bin/vigila_cambios.sh failed
-Error: The user has specified a rule which prevents you from using this specific tool call. Here are some of the relevant rules [{"permission":"*","action":"allow","pattern":"*"},{"permission":"external_directory","pattern":"*","action":"ask"},{"permission":"external_directory","pattern":"~/.local/share/opencode/tool-output/*","action":"allow"},{"permission":"external_directory","pattern":"/tmp/opencode/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/google-workspace/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/docs/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/computer-use/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/pptx/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/docx/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/pdf/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/deep-research/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/xlsx/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/import-memory/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/built-in-browser/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/morning/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/chrome-browser/*","action":"allow"},{"permission":"external_directory","pattern":"~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/skill-creator/*","action":"allow"},{"permission":"external_directory","pattern":"~/.agents/skills/pptx/*","action":"allow"},{"permission":"external_directory","pattern":"~/.agents/skills/docx/*","action":"allow"},{"permission":"external_directory","pattern":"~/.agents/skills/pdf/*","action":"allow"},{"permission":"external_directory","pattern":"~/.agents/skills/xlsx/*","action":"allow"},{"permission":"external_directory","action":"deny","pattern":"*"},{"permission":"external_directory","pattern":"~/.local/share/opencode/tool-output/*","action":"allow"}]
-Ahora lo ejecuto dos veces, la segunda desde otro directorio para comprobar que las rutas relativas funcionan:
-El sandbox bloqueó el `cd /tmp`; ejecuto ambas veces desde el directorio de trabajo:
+Comportamiento por ejecución:
+1. Descarga `https://example.com` con `curl -fsS`
+2. Calcula el SHA-256 del contenido
+3. Compara con `vigila/hash.txt`:
+   - No existe → guarda la referencia (**INICIO**)
+   - Coincide → **sin cambios**
+   - Difiere → **CAMBIO DETECTADO** + actualiza la referencia
+4. Añade línea con fecha a `vigila/log/vigilancia.log`
 
-$ ./vigila/bin/vigila_cambios.sh
-(no output)
-
-$ ./vigila/bin/vigila_cambios.sh
-(no output)
-
-→ Read vigila/log/vigilancia.log
-Script creado en `vigila/bin/vigila_cambios.sh` (chmod +x aplicado) y ejecutado dos veces. El log:
-
+**Log tras las dos ejecuciones:**
 ```
-[2026-09-28 23:31:59] Inicio de vigilancia. Hash guardado: 7d3e61f8f627c8cc640c209ba0777db95f198a64e766f47484c321d5eb5e0962
-[2026-09-28 23:32:00] Sin cambios en https://example.com (hash 7d3e61f8f627c8cc640c209ba0777db95f198a64e766f47484c321d5eb5e0962)
+[2026-10-09 09:27:35] INICIO: hash de referencia guardado (97b4b326a27eb35f921ddaa6d147a09304664db23edba20623c6a4bec6f6ff32)
+[2026-10-09 09:27:35] sin cambios (97b4b326a27eb35f921ddaa6d147a09304664db23edba20623c6a4bec6f6ff32)
 ```
 
-- Primera ejecución: no existía `vigila/hash.txt`, así que registró "Inicio de vigilancia" y guardó el hash.
-- Segunda ejecución: el hash coincide, registró "Sin cambios".
-- Las rutas se derivan con `$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)` (vigila_cambios.sh:6), por lo que funciona lanzándolo desde cualquier directorio (solo usa `$RAIZ`, nunca rutas absolutas fijas). Si el hash cambiara, escribiría "CAMBIO DETECTADO" y actualizaría `hash.txt`.
+Si quieres ver el `CAMBIO DETECTADO`, basta con editar `vigila/hash.txt` a mano y relanzar el script.

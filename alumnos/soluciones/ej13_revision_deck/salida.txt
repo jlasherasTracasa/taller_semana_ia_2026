@@ -1,62 +1,185 @@
-# Ejecución real: 2026-09-28 · 35 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
 
-        s=s.replace(a,b)
-    open(p,'w',encoding='utf8').write(s)
-# verify
-import re
-for n in (1,2,3,4):
-    d=open(f'unpacked/ppt/slides/slide{n}.xml',encoding='utf8').read()
-    print(n,[t for t in re.findall(r'<a:t>(.*?)</a:t>',d)])
+> build · Qwen3.8-27B-FP8
+✱ Glob "**/*.pptx" 1 match
+$ ls -la
+total 48
+drwxr-xr-x 2 alumno alumno  4096 Oct  9 09:35 .
+drwxr-xr-x 5 alumno alumno  4096 Oct  9 09:35 ..
+-rw-r--r-- 1 alumno alumno  1617 Oct  9 09:32 ENUNCIADO.md
+-rw-r--r-- 1 alumno alumno 30988 Oct  9 08:44 deck_ferias.pptx
+-rw-r--r-- 1 alumno alumno  1068 Oct  9 09:35 opencode.json
+-rw-r--r-- 1 alumno alumno     0 Oct  9 09:35 salida.txt
+> build · Qwen3.8-27B-FP8
+✗ cd /tmp && python3 -c "import pptx; print(pptx.__version__)" 2>&1; md5sum deck_ferias.pptx 2>/dev/null || md5sum "~/taller-agentes/ej13_revision_deck/deck_ferias.pptx" failed
+Error: Permission denied: external_directory
+→ Read ENUNCIADO.md 
+> build · Qwen3.8-27B-FP8
+$ md5sum deck_ferias.pptx; stat -c '%s %y' deck_ferias.pptx
+7f4de0820d61bf106fdd83433317a6db  deck_ferias.pptx
+30988 2026-10-09 08:44:36.875872072 +0200
+$ python3 -c "import pptx; print(pptx.__version__)"
+1.0.2
+> build · Qwen3.8-27B-FP8
+python-pptx está disponible. Guardo el hash del original y extraigo todo el texto de las diapositivas:
+$ cp deck_ferias.pptx /tmp/opencode/deck_original_backup.pptx && md5sum /tmp/opencode/deck_original_backup.pptx
+7f4de0820d61bf106fdd83433317a6db  /tmp/opencode/deck_original_backup.pptx
+> build · Qwen3.8-27B-FP8
+$ python3 << 'EOF'
+from pptx import Presentation
+from pptx.util import Emu
+
+prs = Presentation('deck_ferias.pptx')
+print(f"Diapositivas: {len(prs.slides)}")
+print("=" * 70)
+
+for i, slide in enumerate(prs.slides, 1):
+    print(f"\n=== SLIDE {i} (layout: {slide.slide_layout.name}) ===")
+    for shape in slide.shapes:
+        if shape.has_text_frame:
+            tf = shape.text_frame
+            for p_idx, para in enumerate(tf.paragraphs):
+                for r_idx, run in enumerate(para.runs):
+                    if run.text:
+                        print(f"  [{shape.shape_id}|p{p_idx}|r{r_idx}] {run.text!r}")
+        if shape.has_table:
+            tbl = shape.table
+            for row_i, row in enumerate(tbl.rows):
+                for col_i, cell in enumerate(row.cells):
+                    for p_idx, para in enumerate(cell.text_frame.paragraphs):
+                        for r_idx, run in enumerate(para.runs):
+                            if run.text:
+                                print(f"  [TABLA {shape.shape_id}|f{row_i}c{col_i}|p{p_idx}|r{r_idx}] {run.text!r}")
+    # notas
+    if slide.has_notes_slide:
+        notes = slide.notes_slide.notes_text_frame.text
+        if notes.strip():
+            print(f"  [NOTAS] {notes!r}")
 EOF
-1 ['El certamen de artesanía de Tafalla']
-2 ['Datos generales', '32 expositores este año', 'Del 12 al 15 de septiembre', 'Entrada gratuita']
-3 ['Actividades', 'Taller de cestería (sábado 10:00)', 'Concierto de txistu, domingo', 'Degustación de quesos con D.O. Roncal']
-4 ['Organización', 'Contacto: ferias@tafalla-example.es', 'Teléfono 948 70 00 00 (extensión 3)']
+Diapositivas: 4
+======================================================================
 
-$ rm -f deck_ferias_corregido.pptx && (cd unpacked && zip -Xqr ../deck_ferias_corregido.pptx .) && python3 ~/.agents/skills/pptx/scripts/office/validate.py deck_ferias_corregido.pptx --original deck_ferias.pptx
-/bin/bash: line 1: zip: command not found
+=== SLIDE 1 (layout: Title and Content) ===
+  [2|p0|r0] 'El certamen de artesaNIA de Tafalla'
 
-$ python3 - <<'EOF'
-import zipfile, os
-src='deck_ferias.pptx'; out='deck_ferias_corregido.pptx'
-zin=zipfile.ZipFile(src)
-zout=zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED)
-for item in zin.infolist():
-    data=open(os.path.join('unpacked',item.filename),'rb').read() if item.filename.startswith('ppt/slides/slide') else zin.read(item.filename)
-    zout.writestr(item, data)
-zout.close()
-print('ok')
+=== SLIDE 2 (layout: Title and Content) ===
+  [2|p0|r0] 'Datos generales'
+  [3|p0|r0] '32 expositores este año'
+  [3|p1|r0] 'Del 12 al 15 de SEPTIEMBRE'
+  [3|p2|r0] 'entrada gratuita'
+
+=== SLIDE 3 (layout: Title and Content) ===
+  [2|p0|r0] 'Actividades'
+  [3|p0|r0] 'taller de cesteria (sabado 10:00)'
+  [3|p1|r0] 'CONCIERTO de txistu , domingo'
+  [3|p2|r0] 'Degustación de quesos con D.O. Roncal  '
+
+=== SLIDE 4 (layout: Title and Content) ===
+  [2|p0|r0] 'Organizacion'
+  [3|p0|r0] 'Contacto: ferias@tafalla-example.es'
+  [3|p1|r0] 'Telefono 948 70 00 00  (extension 3)'
+> build · Qwen3.8-27B-FP8
+El deck tiene 4 diapositivas y ya localicé los errores. Ahora creo la copia corregida aplicando las correcciones run a run (para conservar el formato) y genero el informe:
+← Write corregir_deck.py
+Created file successfully: corregir_deck.py
+> build · Qwen3.8-27B-FP8
+$ python3 corregir_deck.py
+Correcciones aplicadas: 8/8
+> build · Qwen3.8-27B-FP8
+$ python3 << 'EOF'
+from pptx import Presentation
+
+prs = Presentation('deck_ferias_corregido.pptx')
+print(f"Diapositivas: {len(prs.slides)}")
+print("=" * 70)
+
+for i, slide in enumerate(prs.slides, 1):
+    print(f"\n=== SLIDE {i} ===")
+    for shape in slide.shapes:
+        if shape.has_text_frame:
+            for para in shape.text_frame.paragraphs:
+                t = "".join(r.text for r in para.runs)
+                if t:
+                    print(f"  {t!r}")
+        if shape.has_table:
+            for row in shape.table.rows:
+                for cell in row.cells:
+                    for para in cell.text_frame.paragraphs:
+                        t = "".join(r.text for r in para.runs)
+                        if t:
+                            print(f"  [TABLA] {t!r}")
+    if slide.has_notes_slide:
+        notes = slide.notes_slide.notes_text_frame.text
+        if notes.strip():
+            print(f"  [NOTAS] {notes!r}")
 EOF
-python3 ~/.agents/skills/pptx/scripts/office/validate.py deck_ferias_corregido.pptx --original deck_ferias.pptx && markitdown deck_ferias_corregido.pptx
-ok
-All validations PASSED!
-<!-- Slide number: 1 -->
-# El certamen de artesanía de Tafalla
+Diapositivas: 4
+======================================================================
 
-<!-- Slide number: 2 -->
-# Datos generales
-32 expositores este año
-Del 12 al 15 de septiembre
-Entrada gratuita
+=== SLIDE 1 ===
+  'El certamen de artesanía de Tafalla'
 
-<!-- Slide number: 3 -->
-# Actividades
-Taller de cestería (sábado 10:00)
-Concierto de txistu, domingo
-Degustación de quesos con D.O. Roncal
+=== SLIDE 2 ===
+  'Datos generales'
+  '32 expositores este año'
+  'Del 12 al 15 de septiembre'
+  'Entrada gratuita'
 
-<!-- Slide number: 4 -->
-# Organización
-Contacto: ferias@tafalla-example.es
-Teléfono 948 70 00 00 (extensión 3)
+=== SLIDE 3 ===
+  'Actividades'
+  'Taller de cestería (sábado 10:00)'
+  'Concierto de txistu, domingo'
+  'Degustación de quesos con D.O. Roncal'
 
-Hecho. Entregables:
+=== SLIDE 4 ===
+  'Organización'
+  'Contacto: ferias@tafalla-example.es'
+  'Teléfono 948 70 00 00 (extensión 3)'
+> build · Qwen3.8-27B-FP8
+← Write informe_incidencias.md
+Created file successfully: informe_incidencias.md
+> build · Qwen3.8-27B-FP8
+Ahora la verificación final: el original no debe haber cambiado y la copia debe estar bien formada.
+$ md5sum deck_ferias.pptx /tmp/opencode/deck_original_backup.pptx; stat -c '%s %y' deck_ferias.pptx; python3 -c "
+from pptx import Presentation
+a = Presentation('deck_ferias.pptx')
+b = Presentation('deck_ferias_corregido.pptx')
+print('Diapositivas original:', len(a.slides))
+print('Diapositivas corregido:', len(b.slides))
+import os
+print('Tamaños:', os.path.getsize('deck_ferias.pptx'), '->', os.path.getsize('deck_ferias_corregido.pptx'))
+"
+7f4de0820d61bf106fdd83433317a6db  deck_ferias.pptx
+7f4de0820d61bf106fdd83433317a6db  /tmp/opencode/deck_original_backup.pptx
+30988 2026-10-09 08:44:36.875872072 +0200
+Diapositivas original: 4
+Diapositivas corregido: 4
+Tamaños: 30988 -> 30998
+> build · Qwen3.8-27B-FP8
+Todo verificado. Resumen de lo entregado:
 
-**1. `informe_incidencias.md`** — 13 incidencias detectadas, todas ortotipográficas (contenido intacto):
-- **Tildes (6):** *artesaNIA* → artesanía, *cesteria* → cestería, *sabado* → sábado, *Organizacion* → Organización, *Telefono* → Teléfono, *extension* → extensión
-- **Mayúsculas (5):** *artesaNIA*, *SEPTIEMBRE*, *CONCIERTO* (todo en mayúsculas injustificado) y viñetas en minúscula (*entrada*, *taller*) inconsistentes con el resto
-- **Espacios (3):** espacio antes de la coma en «txistu ,», doble espacio antes de «(extensión 3)» y espacios finales tras «Roncal»
+## ✅ Trabajo completado
 
-**2. `deck_ferias_corregido.pptx`** — copia corregida, creada desempaquetando el XML, aplicando solo esos cambios de texto y reempaquetando. La validación pasa (`All validations PASSED!`) y `markitdown` confirma los textos corregidos.
+### 📄 `informe_incidencias.md`
+Informe con las **8 incidencias** detectadas y corregidas:
 
-El original no ha sido tocado.
+| # | DIAPOSITIVA | TIPO | ANTES → DESPUÉS |
+|---|---|---|---|
+| 1 | 1 | Mayúsculas + tilde | `artesaNIA` → `artesanía` |
+| 2 | 2 | Mayúsculas (mes) | `SEPTIEMBRE` → `septiembre` |
+| 3 | 2 | Inicial minúscula | `entrada gratuita` → `Entrada gratuita` |
+| 4 | 3 | Inicial + tildes | `taller de cesteria (sabado 10:00)` → `Taller de cestería (sábado 10:00)` |
+| 5 | 3 | MAYÚSCULAS + espacio antes de coma | `CONCIERTO de txistu , domingo` → `Concierto de txistu, domingo` |
+| 6 | 3 | Espacios dobles finales | `D.O. Roncal␣␣` → `D.O. Roncal` |
+| 7 | 4 | Tilde | `Organizacion` → `Organización` |
+| 8 | 4 | Tildes + doble espacio | `Telefono 948 70 00 00␣␣(extension 3)` → `Teléfono 948 70 00 00 (extensión 3)` |
+
+### 📊 `deck_ferias_corregido.pptx`
+- 4 diapositivas (igual que el original).
+- Solo texto modificado run a run: formato, fuentes y diseño intactos.
+
+### 🔒 Original intacto
+- MD5 antes: `7f4de0820d61bf106fdd83433317a6db` → MD5 después: **idéntico**
+- Mismo tamaño (30988 B) y misma fecha de modificación (08:44) — nunca fue tocado.
+- Además dejé una copia de seguridad en `/tmp/opencode/deck_original_backup.pptx` por si acaso.
+
+En la carpeta también quedó `corregir_deck.py`, el script reproducible que aplicó las correcciones (puedes borrarlo si no lo necesitas).

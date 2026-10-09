@@ -1,0 +1,9 @@
+[Unit]
+Description=Ejecuta vigila_cambios.sh cada minuto
+
+[Timer]
+OnCalendar=minutely
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target
