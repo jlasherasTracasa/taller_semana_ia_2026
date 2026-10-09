@@ -230,14 +230,14 @@ async function construir(conNotas) {
 
   {
     const s = slide("Qué es un agente", "Anatomía de un agente", "Cinco piezas alrededor de un modelo de lenguaje");
-    s.addShape(pres.shapes.OVAL, { x: 5.07, y: 2.95, w: 3.2, h: 2.0, fill: { color: C.noche }, line: { color: C.noche, width: 0 } });
-    s.addText([{ text: "Modelo (LLM)\n", options: { color: C.nieve } }, { text: "GLM-5.3-Flash", options: { color: C.oro } }],
-      { x: 5.07, y: 2.95, w: 3.2, h: 2.0, fontFace: TIT, fontSize: 21, bold: true, align: "center", valign: "middle", margin: 0 });
+    s.addShape(pres.shapes.OVAL, { x: 5.07, y: 2.55, w: 3.2, h: 2.0, fill: { color: C.noche }, line: { color: C.noche, width: 0 } });
+    s.addText("Modelo (LLM)", { x: 5.07, y: 3.05, w: 3.2, h: 0.5, fontFace: TIT, fontSize: 21, bold: true, color: C.nieve, align: "center", valign: "middle", margin: 0 });
+    s.addText("GLM-5.3-Flash", { x: 5.07, y: 3.55, w: 3.2, h: 0.5, fontFace: TIT, fontSize: 21, bold: true, color: C.oro, align: "center", valign: "middle", margin: 0 });
     filaIcono(s, "book", "Instrucciones", "prompt de sistema, AGENTS.md", 0.6, 2.1, 4.2, 1.0);
     filaIcono(s, "tools", "Herramientas", "leer, editar, shell, web, MCP", 8.55, 2.1, 4.2, 1.0);
     filaIcono(s, "sync", "Bucle de control", "pensar → actuar → observar", 0.6, 4.6, 4.2, 1.0);
     filaIcono(s, "brain", "Memoria y contexto", "historial, ficheros leídos, resúmenes", 8.55, 4.6, 4.2, 1.0);
-    filaIcono(s, "shield", "Permisos", "allow · ask · deny", 4.57, 5.35, 4.2, 1.0);
+    filaIcono(s, "shield", "Permisos", "allow · ask · deny", 4.57, 5.75, 4.2, 0.95);
     notas(s, "El modelo solo produce texto. Todo lo que «hace» lo ejecuta el programa (opencode) con herramientas, con permisos. AGENTS.md es la memoria permanente del proyecto (F.2).");
   }
 
