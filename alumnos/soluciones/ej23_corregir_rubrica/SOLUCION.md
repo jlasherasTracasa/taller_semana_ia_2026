@@ -1,4 +1,4 @@
-# ❌ Solución · EJ 23 · Corregir con rúbrica (y una trampa)
+# ❌ Solución · EJ 23 · Corregir respuestas con una rúbrica
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 32 s · 71.031 tokens de entrada y 2.247 de salida.
 

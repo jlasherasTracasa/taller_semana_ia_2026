@@ -22,4 +22,4 @@
 | **Token** | Trozo de texto (≈ ¾ de palabra) por el que se paga. |
 | **pass^k** | Probabilidad de que salga bien k veces seguidas. |
 | **Comprobador** | `comprobar.py`: verifica el criterio de éxito sin fiarse del agente. |
-| **Sello 🏅** | Lo que da el comprobador cuando todo está bien. |
+| **Completado** | Lo que dice el comprobador cuando todo está bien (no lo decide el agente). |

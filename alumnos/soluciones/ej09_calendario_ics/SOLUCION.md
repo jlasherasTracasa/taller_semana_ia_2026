@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 09 · Del correo al calendario
+# ✅ Solución · EJ 09 · De un correo a un evento de calendario
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 27 s · 55.423 tokens de entrada y 2.100 de salida.
 

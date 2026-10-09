@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 02 · El programa de fiestas
+# ✅ Solución · EJ 02 · Agenda de actos a partir de una hoja de cálculo
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 37 s · 37.679 tokens de entrada y 1.961 de salida.
 

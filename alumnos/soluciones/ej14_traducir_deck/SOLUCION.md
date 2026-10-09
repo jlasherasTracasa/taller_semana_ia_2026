@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 14 · Traducir un pptx por dentro
+# ✅ Solución · EJ 14 · Traducir una presentación sin romperla
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 39 s · 87.925 tokens de entrada y 2.904 de salida.
 

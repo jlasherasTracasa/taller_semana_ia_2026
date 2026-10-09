@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 08 · Contestar al proveedor (sin enviar nada)
+# ✅ Solución · EJ 08 · Borrador de respuesta a un proveedor (sin enviar nada)
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 12 s · 51.882 tokens de entrada y 631 de salida.
 

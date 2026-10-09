@@ -15,7 +15,7 @@ flowchart LR
 
 | Dónde | Ruta | Para qué |
 |---|---|---|
-| **Proyecto** (la que usamos) | `opencode.json` en la carpeta desde la que lanzas `opencode` | La configuración de ESE trabajo. `taller.py` la copia en cada carpeta de escena. |
+| **Proyecto** (la que usamos) | `opencode.json` en la carpeta desde la que lanzas `opencode` | La configuración de ESE trabajo. `taller.py` la copia en cada carpeta de ejercicio. |
 | **Global** | Linux/macOS: `~/.config/opencode/opencode.json` · Windows: `%USERPROFILE%\.config\opencode\opencode.json` | Lo que quieres en todos tus proyectos. **Cuidado**: también se carga en el taller. |
 
 Las dos se **combinan** y, si chocan, gana la del proyecto. Lo que pongas en la global (por ejemplo, un MCP con 30
@@ -82,7 +82,7 @@ llama al fichero `opencode.jsonc`.
 1. **`allow`** = lo hace · **`ask`** = te pregunta · **`deny`** = prohibido.
 2. En los patrones, `*` es «cualquier cosa» (también nada) y `?` «un carácter».
 3. **Gana la ÚLTIMA regla que coincide.** Por eso `"*": "allow"` va **primero**: si lo pones al final, anula todos
-   los `deny`. Pruébalo en la escena F.8 con `simular_permisos.py`.
+   los `deny`. Pruébalo en el ejercicio F.8 con `simular_permisos.py`.
 
 ## 🔁 Variantes que vas a necesitar
 
@@ -96,7 +96,7 @@ OpenRouter viene de serie en opencode; basta con la variable `OPENROUTER_API_KEY
 
 (`taller.py` lo hace solo si en tu `.env` solo hay clave de OpenRouter.)
 
-### Enchufar un servidor MCP (escenas F.5 y F.6)
+### Enchufar un servidor MCP (ejercicios F.5 y F.6)
 
 ```json
 {

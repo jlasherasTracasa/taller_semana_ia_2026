@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 17 · Tres PDF en una tabla
+# ✅ Solución · EJ 17 · Resumir varios PDF en una tabla
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 25 s · 46.938 tokens de entrada y 2.006 de salida.
 

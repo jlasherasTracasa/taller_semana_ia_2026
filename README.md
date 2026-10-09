@@ -1,177 +1,180 @@
 <p align="center">
-  <img src="presentacion/assets/logo_catedra_ia.png" height="90" alt="Cátedra de Ciencias de la Computación e Inteligencia Artificial · UPNA · Tracasa">
+  <img src="presentacion/assets/logo_semana_ia_2026_horizontal_oscuro.png" height="34" alt="Semana de la IA 2026">
 </p>
 
-<h1 align="center">:robot: Taller «Agentes de IA para el trabajo de cada día»</h1>
+<h1 align="center">Más allá de ChatGPT: crea y conecta agentes de IA</h1>
 
 <p align="center">
-  <em>Semana de la IA 2026 · Universidad Pública de Navarra · 23 de octubre de 2026</em><br>
-  <em>Guía del docente: qué hay, cómo prepararlo, cómo darlo y cómo regenerarlo todo.</em>
-</p>
-
-<p align="center">
-  <img alt="opencode" src="https://img.shields.io/badge/agente-opencode_1.18-0F2A56?logo=gnubash&logoColor=white">
-  <img alt="GLM" src="https://img.shields.io/badge/modelo-GLM--5.3--Flash-2050A0">
-  <img alt="CPU" src="https://img.shields.io/badge/alumnos-solo_CPU-00A8D0?logo=intel&logoColor=white">
-  <img alt="ejercicios" src="https://img.shields.io/badge/ejercicios-26_validados-178A5B?logo=githubactions&logoColor=white">
-  <img alt="pptx" src="https://img.shields.io/badge/presentaci%C3%B3n-32_diapositivas-C8323B?logo=microsoftpowerpoint&logoColor=white">
+  Taller práctico de la <b>Semana de la IA 2026</b> · Universidad Pública de Navarra<br>
+  Viernes 23 de octubre · 17:00 · Aulario de la UPNA
 </p>
 
 <p align="center">
-  <img src="presentacion/assets/portada_el_primer_golpe.jpg" width="360" alt="«El primer golpe», imagen de portada generada con IA"><br>
-  <sub>Portada: «El primer golpe», generada con Qwen-Image-2.1 en el proyecto de este repositorio (no se presenta al concurso).</sub>
+  <a href="https://jlasherastracasa.github.io/taller_semana_ia_2026/"><b>🌐 Web del taller</b></a> ·
+  <a href="https://jlasherastracasa.github.io/taller_semana_ia_2026/#/wiki/Home"><b>📖 Wiki</b></a> ·
+  <a href="https://jlasherastracasa.github.io/taller_semana_ia_2026/#/ejercicios"><b>🧩 Ejercicios</b></a> ·
+  <a href="presentacion/taller-agentes-ia.pdf"><b>🖥️ Diapositivas</b></a>
+</p>
+
+<p align="center">
+  <img alt="ejercicios" src="https://img.shields.io/badge/ejercicios-38-1E3442">
+  <img alt="validados" src="https://img.shields.io/badge/validados-35%2F38-2E8B57">
+  <img alt="agente" src="https://img.shields.io/badge/agente-opencode%202.0.19-1E3442">
+  <img alt="modelo" src="https://img.shields.io/badge/modelo-GLM--5.3--Flash-B8862B">
+  <img alt="cpu" src="https://img.shields.io/badge/hardware-solo%20CPU-4A5866">
+  <img alt="coste" src="https://img.shields.io/badge/coste-%E2%89%881%20c%C3%A9ntimo%2Fejercicio-4A5866">
+  <a href="https://github.com/jlasherasTracasa/taller_semana_ia_2026/actions/workflows/pages.yml"><img alt="web" src="https://github.com/jlasherasTracasa/taller_semana_ia_2026/actions/workflows/pages.yml/badge.svg"></a>
+</p>
+
+<p align="center">
+  <img src="presentacion/assets/encrucijada_semana_ia_2026.jpg" width="680" alt="Dos personas ante un camino de circuitos (imagen del cartel de la Semana de la IA 2026)">
 </p>
 
 ---
 
-## :dart: En 30 segundos
+## 🚪 Cómo entrar
 
-- **Qué es:** un taller práctico de unas 3 horas para público no especialista. Primero se explica qué es un
-  agente (ReAct, tools, permisos, skills, MCP, subagentes) y después se ponen a trabajar agentes reales con
-  **opencode + GLM-5.3-Flash** en tareas de oficina: webs, correo, presentaciones y rutinas.
-- **Qué necesitan los alumnos:** un portátil **sin GPU**, Node 18+, Python 3.10+ y la URL y clave de LiteLLM que
-  les das tú.
-- **Qué les das:** `entrega/taller_alumnos.zip` (se genera con `bash scripts/zip_alumnos.sh`), con la
-  presentación, la guía, los 26 ejercicios con datos y soluciones reales y la réplica de un paper.
-- **Qué está comprobado:** los 26 ejercicios se ejecutaron de verdad el 28-09-2026 con el kit tal cual (mismo
-  `opencode.json`, solo CPU). Los problemas que salieron están documentados abajo y se cuentan en clase.
+| Quiero… | Ve a |
+|---|---|
+| **Ver los ejercicios y mi itinerario** desde el navegador | 🌐 **[jlasherastracasa.github.io/taller_semana_ia_2026](https://jlasherastracasa.github.io/taller_semana_ia_2026/)** |
+| **Instalar y empezar** (paso a paso) | 📖 [Wiki → Primeros pasos](https://jlasherastracasa.github.io/taller_semana_ia_2026/#/wiki/Primeros-pasos) · también en [`wiki/`](wiki/Home.md) |
+| Poner mi **clave** (variables de entorno) | 📖 [Wiki → Variables de entorno](wiki/Variables-de-entorno.md) |
+| Entender el **`opencode.json`** | 📖 [Wiki → El fichero opencode.json](wiki/opencode-json.md) |
+| Algo **no funciona** | 📖 [Wiki → Problemas y soluciones](wiki/Problemas.md) |
+| Las **diapositivas** | 🖥️ [PDF](presentacion/taller-agentes-ia.pdf) · [PowerPoint](presentacion/taller-agentes-ia.pptx) |
+| Trabajar en mi portátil | 📁 [`alumnos/`](alumnos/README.md): el kit |
 
-## :file_folder: Qué hay en esta carpeta
+> 📱 En clase, escanea el código QR de la segunda diapositiva: lleva a la web.
 
-```text
-docs/taller/
-├── README.md                  ← esta guía del docente
-├── presentacion/
-│   ├── taller-agentes-ia.pptx ← la presentación (32 diapositivas con notas del ponente)
-│   ├── taller-agentes-ia.pdf  ← la misma en PDF, por si falla PowerPoint
-│   ├── assets/                ← logos oficiales (Cátedra, UPNA, Tracasa) e imagen de portada
-│   └── fuente/                ← generador pptxgenjs + datos de los ejercicios (README propio)
-├── alumnos/                   ← EL KIT: lo que va en el zip (README propio)
-│   ├── README.md, guia_alumno.md, opencode.json, .env.example, comprobar_entorno.sh
-│   ├── ejercicios/            ← 26 enunciados con sus datos de partida (sin solución)
-│   ├── soluciones/            ← prompt exacto, salida real y ficheros generados de cada uno
-│   └── replicar_paper/        ← reto avanzado: réplica en CPU de un paper de encoders legales
-├── profesor/                  ← material del docente (README propio)
-│   ├── validar_ejercicio.sh   ← ejecuta un ejercicio como un alumno y guarda la salida real
-│   └── ejemplos/              ← banco de ejemplos validados + verificar_todo.sh (18 comprobaciones)
-└── archivo/                   ← versiones anteriores (pptx v1 y v2, guía v2, revisiones)
+## 💡 Qué es
+
+Un taller de unas tres horas para **todos los públicos**: desde quien nunca ha abierto una terminal hasta quien
+diseña sistemas. Primero, lo justo de teoría (qué es un agente, ReAct, tools, permisos, skills, MCP, subagentes).
+Después, **cada persona elige su itinerario** entre 38 ejercicios con tareas reales y pone a trabajar a un agente de
+verdad —[opencode](https://opencode.ai) con **GLM-5.3-Flash**— en su propio portátil, **sin GPU**.
+
+```mermaid
+flowchart LR
+  P([👤 Elige tu perfil]) --> E[🧩 Haz un ejercicio]
+  E --> A[🤖 El agente trabaja<br/>en una carpeta de copia]
+  A --> C{✅ comprobar.py}
+  C -- no --> M[✍️ Mejora el encargo] --> A
+  C -- sí --> S[🔀 Elige el siguiente paso]
+  S --> E
+  S --> N([🎯 Nivel alcanzado])
 ```
 
-## :white_check_mark: Antes del taller
+**La regla del taller:** un ejercicio está bien cuando lo dice el **comprobador**, no cuando el agente dice «Listo».
 
-**Una semana antes**
+## 👥 Perfiles
 
-- [ ] Crea en LiteLLM una clave por alumno (o una compartida con límite de gasto) y apunta la URL base.
-      Coste orientativo con GLM-5.3-Flash: céntimos por alumno y taller.
-- [ ] Genera y prueba el zip: `bash scripts/zip_alumnos.sh`, descomprímelo en una carpeta limpia y ejecuta
-      `bash comprobar_entorno.sh` con tu `.env`.
-- [ ] Envía el zip con estas instrucciones: instalar Node 18+ y `npm i -g opencode-ai`, y traer el portátil cargado.
-- [ ] Si vas a hacer el reto del paper en clase, avisa de que descarga unos 1,6 GB de modelos la primera vez.
+| | Perfil | Para quién | Empieza por |
+|---|---|---|---|
+| 🧭 | **Explorador/a** | Nunca ha abierto una terminal: jubilados, curiosos | Lista de la compra, factura de la luz, una carta de la Administración |
+| 📚 | **Oficina y aula** | Correo, Word y Excel a diario: docentes, administración, pequeños negocios | Resumen del correo, tareas, calendario, corrección con rúbrica |
+| 💻 | **Programador/a** | Escribe código y quiere ver las tripas | Bucle ReAct, function calling, tests, revisión de código, MCP |
+| 🏛️ | **Arquitecto/a de software** | Diseña sistemas: seguridad, fiabilidad y coste | Permisos, inyección de prompt, subagentes, pass^k |
 
-**El día del taller**
+Los itinerarios completos están en [`alumnos/ITINERARIOS.md`](alumnos/ITINERARIOS.md) y en la web.
 
-- [ ] Comprueba que la URL de LiteLLM es accesible desde la red del aula (`curl $LITELLM_API_BASE/health`).
-- [ ] Lleva `taller-agentes-ia.pdf` en un USB, por si acaso.
-- [ ] Prepara en tu portátil las demos en directo: `alumnos/ejercicios/f0_react_bucle/` y
-      `alumnos/ejercicios/ej10_inyeccion_prompt/`.
-- [ ] Reparte las claves en papel o en una diapositiva privada, **nunca** dentro del zip ni en el repositorio.
+## 🧩 Los ejercicios
 
-## :clock3: Agenda (≈ 3 h)
+| Área | Ejercicios | Ejemplos |
+|---|:-:|---|
+| 🌐 **Webs** | 5 | Web personal, agenda desde una hoja de cálculo, formulario, accesibilidad, publicar en GitHub Pages |
+| 📬 **Correo y trámites** | 6 | Resumen de la bandeja, tareas, respuesta a un proveedor, calendario, **carta de la Administración**, **ofertas de luz** |
+| 📊 **Informes y presentaciones** | 5 | De informe a presentación, gráfico con totales, revisar y traducir un PowerPoint, informe semanal |
+| 🗂️ **Documentos y tareas repetitivas** | 9 | Ordenar Descargas, PDF a tabla, facturas a Excel, certificados, **corregir con rúbrica**, lista de la compra, tareas programadas |
+| ⚙️ **Cómo funciona un agente** | 12 | ReAct en 70 líneas, function calling, AGENTS.md, comandos, skills, MCP, tool propia, subagentes, permisos, fiabilidad, tests, **revisión de código** |
+| 🛡️ **Prueba de seguridad** | 1 | Un correo con instrucciones ocultas para el agente: obligatoria para todos |
+| 🔬 **Reto avanzado** | 1 | Replicar en CPU un artículo científico sobre encoders legales en español |
 
-| Bloque | Min | Diapositivas | Qué hacer en el aula |
-|---|---:|---|---|
-| 0 · Conceptos | 30 | 4–15 | Agente, anatomía, **ReAct**, tools, permisos, MCP, skills, subagentes. **Demo en directo: F.0** (`react_min.py`) |
-| A · Web | 30 | 17 | EJ 01 y EJ 02 todos; EJ 03–05 los rápidos |
-| B · Correo | 30 | 18–19 | EJ 06–08 y **EJ 10 (inyección)** todos juntos |
-| C · Presentaciones | 20 | 20 | EJ 11 y EJ 12 |
-| D · Rutinas | 25 | 21 | EJ 15 y EJ 16; EJ 21 (timer) en directo por el docente, en modo interactivo |
-| E · Seguridad | 15 | 24–28 | Los **tres casos reales** de abajo + cuándo NO usar un agente |
-| F · Tools y skills | 20 | 22–23 | F.1 (function calling), F.2 (comando) y F.3 (MCP) |
-| Cierre | 10 | 29–32 | Reto del paper, glosario y «qué hacer el lunes» |
+Cada ejercicio trae su situación, los datos de partida, el encargo listo para copiar, el criterio de éxito, un
+comprobador automático, **lo que pasó cuando lo validamos** y dos o tres caminos para seguir.
 
-Si hay poco tiempo, quita C y D: los conceptos, el EJ 10 y los casos reales son lo que más se recuerda.
+## 🚀 Empezar en cinco minutos
 
-## :rotating_light: Tres casos reales para contar en clase
+```bash
+git clone https://github.com/jlasherasTracasa/taller_semana_ia_2026.git
+cd taller_semana_ia_2026/alumnos
+npm i -g opencode-ai                                   # el agente
+python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
+cp .env.example .env                                   # y escribe la clave que te damos en clase
+python3 taller.py                                      # perfiles, áreas y tu progreso
+python3 taller.py empezar ej01 && python3 taller.py lanzar ej01 && python3 taller.py comprobar ej01
+```
 
-Salieron al validar el kit y son lo más didáctico del taller: cada uno tiene diapositiva o está en las soluciones.
+Más detalle (Windows incluido) en la [wiki](wiki/Primeros-pasos.md).
 
-1. **El agente mató un proceso ajeno (EJ 03).** Con `bash` en `allow`, el 8000 ocupado y el encargo «arranca el
-   servidor», el agente mató el proceso de otro programa para liberar el puerto (`salida_incidente.txt`).
-   → Por eso el kit deniega `kill`, `pkill`, `killall`, `rm -rf` y `sudo` por patrón (verificado en el log de
-   opencode: `pattern="kill 600198" action=deny`).
-2. **Al prohibir `kill`, no podía parar ni su propio servidor (EJ 03, segundo intento).** Se inventó un endpoint
-   `/shutdown`, dejó un servidor vivo y dio un PID que **no existía** (`salida_sin_kill.txt`).
-   → El patrón correcto es arrancar con `timeout 60 …`; ahora va en el prompt.
-3. **«Listo.» y no lo estaba (EJ 20).** Un MCP de Notion de la configuración global del docente añadía 30 tools; el
-   modelo llamó a una que no existía, escribió un script de 4 líneas que no hacía nada y dijo «Listo». Sin esas
-   tools, el mismo prompt salió bien en 10 s.
-   → Más tools no es mejor, y «he terminado» no es una prueba.
+## 🧪 Validado de verdad
 
-Otros detalles del mismo tipo, citados en las soluciones: F.0 cuenta mal las líneas de un fichero que acaba de
-leer; en el EJ 13 el resumen del agente contradice su propio informe; en el EJ 04 respondió en inglés hasta que el
-prompt pidió castellano.
+Los 38 ejercicios se ejecutaron el **09-10-2026** con opencode 2.0.19 y GLM-5.3-Flash, solo con CPU, como lo haría
+un alumno (`profesor/validar.sh`), y se comprobaron con `comprobar.py`. **35 de 38 cumplen el criterio**; los tres
+restantes fallan por motivos reales que se cuentan en clase (el agente sumó mal una nota, olvidó un informe, no aplicó
+una regla que él mismo citaba). Las salidas reales están en [`alumnos/soluciones/`](alumnos/soluciones/README.md).
 
-## :wrench: Cómo se regenera todo
+Lo que salió al prepararlo —y se convirtió en contenido del taller—:
 
-Desde la raíz del repositorio y con el `.env` cargado (`set -a; . ./.env; set +a`):
+- 🔪 Un agente **mató un proceso que no era suyo** para liberar un puerto.
+- ✅ Varios dijeron **«Listo»** sin haber creado el fichero pedido.
+- 📂 Lanzado desde un script, un agente **escribió fuera de su carpeta** (opencode usa la variable `PWD`).
+- 🔄 De opencode 1.18 a 2.0, en tres semanas, cambiaron **cinco cosas** que rompían ejercicios ([wiki](wiki/opencode-2.md)).
 
-| Qué | Orden |
+## 💰 Coste
+
+Mediana de **0,0125 $ por ejercicio** en OpenRouter; los 38 ejercicios una vez, **0,65 $**. Para un aula de 30
+personas basta con **35 $** de crédito con margen. Detalle y tabla por número de alumnos en
+[`profesor/PRESUPUESTO.md`](profesor/PRESUPUESTO.md).
+
+## 📁 Qué hay en el repositorio
+
+```text
+taller_semana_ia_2026/
+├── alumnos/                 ← EL KIT (lo que usa cada participante)
+│   ├── taller.py            ← el mando: empezar · lanzar · comprobar · progreso
+│   ├── comprobar.py         ← verifica el criterio de éxito de cada ejercicio
+│   ├── ITINERARIOS.md       ← perfiles, áreas, mapa y niveles
+│   ├── ejercicios/          ← 38 ejercicios: ENUNCIADO.md + datos de partida
+│   ├── soluciones/          ← encargo, salida real y ficheros de la validación
+│   ├── replicar_paper/      ← reto avanzado
+│   └── opencode.json · requirements.txt · .env.example · comprobar_entorno.sh
+├── wiki/                    ← la wiki (también en la web)
+├── presentacion/            ← diapositivas (pptx y pdf), logos y generador
+├── profesor/                ← validar.sh, PRESUPUESTO.md y las notas del profesor CIFRADAS
+├── herramientas/            ← fuente única (aventura.py) y generadores del kit y de la web
+├── archivo/                 ← versiones anteriores (septiembre, opencode 1.18)
+└── .github/workflows/       ← publica la web en GitHub Pages en cada push
+```
+
+```mermaid
+flowchart LR
+  F[herramientas/aventura.py<br/>fuente única] --> K[construir_kit.py]
+  V[herramientas/validacion.json<br/>resultados reales] --> K
+  K --> EN[ejercicios/*/ENUNCIADO.md]
+  K --> IT[ITINERARIOS.md]
+  K --> IX[indice.json]
+  IX --> T[taller.py]
+  IX --> P[generar_presentacion.js] --> PP[diapositivas]
+  IX --> W[construir_web.py] --> GH[GitHub Pages]
+  WK[wiki/*.md] --> W
+```
+
+## 🧑‍🏫 Para el docente
+
+| | |
 |---|---|
-| Datos de las tarjetas de ejercicios | `python3 docs/taller/presentacion/fuente/extraer_ejercicios.py` |
-| Presentación (pptx) | `cd docs/taller/presentacion/fuente && npm install && node generar_presentacion.js` |
-| PDF de la presentación | `soffice --headless --convert-to pdf taller-agentes-ia.pptx` (LibreOffice) |
-| Validar un ejercicio como un alumno | `bash docs/taller/profesor/validar_ejercicio.sh ej03_formulario_json` |
-| Comprobaciones objetivas del banco (sin LLM) | `bash docs/taller/profesor/ejemplos/verificar_todo.sh` |
-| Réplica del paper completa (≈ 6 min en CPU) | `bash docs/taller/alumnos/replicar_paper/verificar.sh --reranker` |
-| Zip para los alumnos | `bash scripts/zip_alumnos.sh` → `entrega/taller_alumnos.zip` |
+| Validar todos los ejercicios | `bash profesor/validar.sh` (≈ 10 min, ≈ 0,65 $) → `python3 herramientas/guardar_soluciones.py <ronda>` |
+| Cambiar un ejercicio | Edita `herramientas/aventura.py` y ejecuta `python3 herramientas/construir_kit.py` |
+| Regenerar las diapositivas | `cd presentacion/fuente && npm install && node generar_presentacion.js` |
+| Ver la web en local | `python3 herramientas/construir_web.py && python3 -m http.server -d _site` |
+| Notas del profesor | Solo cifradas en el repositorio: `bash profesor/notas.sh descifrar` (pide la contraseña) |
 
-`validar_ejercicio.sh` copia el ejercicio a `/tmp/curso_agentes/validacion/`, usa el `opencode.json` del kit,
-**aísla tu configuración global de opencode** (MCP, ajustes) para que el agente vea lo mismo que un alumno, ejecuta
-el prompt del enunciado y guarda `prompt.txt` y `salida.txt` en `alumnos/soluciones/<ejercicio>/`. Revisa siempre a
-mano el resultado antes de darlo por bueno: el caso 3 pasó con código de salida 0.
+## 🙌 Créditos
 
-## :warning: Límites conocidos
+Organiza la **Cátedra Tracasa de Ciencias de la Computación e Inteligencia Artificial** (UPNA · Tracasa
+Instrumental) dentro de la Semana de la IA 2026, promovida por el Departamento de Universidad, Innovación y
+Transformación Digital del Gobierno de Navarra.
 
-- Las respuestas cambian entre ejecuciones; lo que tiene que coincidir es el criterio de éxito, no el texto.
-- `opencode run` no puede contestar a un permiso `ask`: la tool se queda bloqueada. Por eso el kit usa `allow`
-  con patrones `deny`, y el EJ 21 (que usa `systemctl`, en `ask`) se hace en modo interactivo.
-- En la máquina de validación no había `cron`; el EJ 21 se validó con un timer de systemd de usuario.
-- El EJ 04 no publica nada: el `git push` y la URL pública son del alumno, con su cuenta y un token de permisos
-  mínimos.
-- EJ 13, EJ 14 y F.2 aprovecharon una skill `pptx` instalada en la máquina del docente; sin ella el agente valida
-  de otra forma (python-pptx, LibreOffice). Las soluciones lo explican.
-- Los totales solo salen exactos si el prompt pide «calculados, no inventados»; aun así, hay que comprobarlos.
-
-## :question: Preguntas frecuentes
-
-<details>
-<summary><b>¿Puedo usar otro modelo u otro proveedor?</b></summary>
-
-Sí. Cambia `provider` en `opencode.json` (por ejemplo, OpenRouter con `{env:OPENROUTER_API_KEY}`) y el nombre del
-modelo en los prompts. Los ejercicios no dependen de GLM, pero las salidas de referencia sí.
-</details>
-
-<details>
-<summary><b>¿Y si un alumno no puede instalar Node?</b></summary>
-
-Que haga los ejercicios F.0 y F.1, que solo necesitan Python y `pip install litellm`, y siga el resto en pareja.
-</details>
-
-<details>
-<summary><b>¿Es seguro dejar <code>bash</code> en <code>allow</code>?</b></summary>
-
-Solo en una carpeta desechable y con los patrones `deny` del kit, que es lo que se hace. Antes de usarlo con
-ficheros reales, cambia a `ask` y trabaja en modo interactivo.
-</details>
-
-<details>
-<summary><b>¿Dónde está el material de la versión anterior?</b></summary>
-
-En `archivo/`: presentaciones v1 (original) y v2, la guía v2, la estructura original y las revisiones.
-</details>
-
----
-
-<sub>Logos: © Universidad Pública de Navarra, Tracasa Instrumental y Cátedra de Ciencias de la Computación e
-Inteligencia Artificial, descargados de sus webs oficiales para uso en el taller. Presentación, guía y ejercicios
-preparados con la ayuda de Claude y GLM-5.3-Flash, y revisados a mano.</sub>
+<sub>Logos e imagen del cartel: © Universidad Pública de Navarra, Tracasa Instrumental y Cátedra Tracasa de Ciencias de
+la Computación e Inteligencia Artificial, usados para este taller. Tipografía Barlow Condensed (SIL Open Font License).
+Las entidades, personas y correos de los ejercicios son ficticios.</sub>

@@ -1,14 +1,10 @@
-# :card_file_box: Archivo
+# 🗄️ Archivo
 
-Versiones anteriores del taller. Se conservan como referencia, **no se usan** en la edición actual.
+Versiones anteriores del taller. Se conservan como referencia; **no se usan** en la edición actual.
 
-| Fichero | Qué es |
+| Carpeta o fichero | Qué es |
 |---|---|
-| `taller-agentes-ia-v1.pptx` | Presentación original (32 diapositivas, tema oscuro). |
-| `estructura_original.md` | Análisis de la estructura de la v1. |
-| `taller-agentes-ia-v2.pptx` | Segunda versión (41 diapositivas), anterior al enfoque práctico y a la plantilla de la Cátedra. |
-| `guia_v2.md` | Guía de la v2, sustituida por `alumnos/guia_alumno.md`. |
-| `REVISION.md` | Revisión de la v2 y de su guía. |
-| `curso_realizado.md` | Bitácora de la primera validación de los ejercicios (28-09-2026). |
+| `2026-09_opencode-1.18/` | El kit validado el 28-09-2026 con opencode 1.18: guía antigua, banco de ejemplos, soluciones, revisión y bitácora |
+| `presentaciones/` | Presentaciones v1 y v2 (no se suben al repositorio: llevan notas del ponente) |
 
-La versión vigente está en `../presentacion/` (presentación) y `../alumnos/` (kit y guía).
+La versión vigente está en [`../alumnos/`](../alumnos/README.md) y [`../presentacion/`](../presentacion/README.md).

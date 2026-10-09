@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 25 · Explícame esta carta
+# ✅ Solución · EJ 25 · Entender una carta de la Administración
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 106 s · 64.062 tokens de entrada y 7.528 de salida.
 

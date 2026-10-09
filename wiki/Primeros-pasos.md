@@ -39,15 +39,15 @@ Abre `.env` y rellena **una** de las dos opciones con lo que te demos en clase:
 
 ```bash
 bash comprobar_entorno.sh            # Windows sin bash: python3 taller.py
-python3 taller.py                    # la plaza: perfiles, puertas y tu pasaporte
+python3 taller.py                    # perfiles, áreas, ejercicios y tu progreso
 ```
 
 ## 5. Tu primer encargo
 
 ```bash
-python3 taller.py empezar ej01       # te cuenta la escena y prepara ~/taller-agentes/ej01_pagina_personal
+python3 taller.py empezar ej01       # te explica la situación y prepara ~/taller-agentes/ej01_pagina_personal
 python3 taller.py lanzar ej01        # el agente trabaja (tarda unos 30 s)
-python3 taller.py comprobar ej01     # ¿lo hizo de verdad? Si sí: 🏅
+python3 taller.py comprobar ej01     # ¿lo hizo de verdad? Si sí, queda completado
 ```
 
 Abre `~/taller-agentes/ej01_pagina_personal/index.html` en el navegador. ¡Es la web de Pilar!

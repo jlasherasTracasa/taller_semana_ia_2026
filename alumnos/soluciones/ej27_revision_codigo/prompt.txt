@@ -1,0 +1,1 @@
+Revisa cambio.diff (y DESCRIPCION_PR.md) como un desarrollador senior. Escribe revision.md con cada problema ordenado por severidad (crítico, alto, medio, bajo): fichero y línea, qué pasa, por qué importa y cómo corregirlo con código. Termina con un veredicto: aprobar o pedir cambios. No modifiques cambio.diff ni ningún otro fichero existente: lo único que creas es revision.md.

@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 06 · La bandeja que echa humo
+# ✅ Solución · EJ 06 · Resumen diario de la bandeja de entrada
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 39 s · 73.689 tokens de entrada y 2.795 de salida.
 

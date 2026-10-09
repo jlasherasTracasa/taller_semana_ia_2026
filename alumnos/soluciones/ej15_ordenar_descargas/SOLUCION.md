@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 15 · La carpeta de Descargas
+# ✅ Solución · EJ 15 · Ordenar la carpeta de Descargas
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 18 s · 37.784 tokens de entrada y 1.530 de salida.
 

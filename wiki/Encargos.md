@@ -35,4 +35,4 @@ CRITERIO  Al final comprueba <qué> (cuenta, abre el fichero, ejecuta los tests)
 ## Truco: que se compruebe solo
 
 Pide al agente que **verifique** al final («cuenta las filas», «abre el pptx y dime cuántas diapositivas tiene»,
-«ejecuta los tests»). Y después compruébalo tú: `python3 taller.py comprobar <escena>`.
+«ejecuta los tests»). Y después compruébalo tú: `python3 taller.py comprobar <ejercicio>`.

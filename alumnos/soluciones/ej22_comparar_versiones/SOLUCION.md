@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 22 · ¿Qué ha cambiado entre estas dos versiones?
+# ✅ Solución · EJ 22 · Qué ha cambiado entre dos versiones de un documento
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 26 s · 37.945 tokens de entrada y 1.973 de salida.
 

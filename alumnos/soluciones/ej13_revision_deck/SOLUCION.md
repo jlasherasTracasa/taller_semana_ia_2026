@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 13 · Revisar la presentación de otro
+# ✅ Solución · EJ 13 · Revisar y corregir una presentación ajena
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 134 s · 565.225 tokens de entrada y 10.369 de salida.
 

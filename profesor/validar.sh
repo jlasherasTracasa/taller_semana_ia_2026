@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Valida las escenas del kit como lo haría un alumno, con taller.py, y deja un resumen.
+# Valida los ejercicios del kit como lo haría un alumno, con taller.py, y deja un resumen.
 #
-#   bash profesor/validar.sh                 # todas las escenas con encargo único (8 en paralelo)
-#   bash profesor/validar.sh ej07 f4         # solo esas
+#   bash profesor/validar.sh                 # todos los ejercicios con encargo único (8 en paralelo)
+#   bash profesor/validar.sh ej07 f4         # solo esos
 #   PARALELO=4 bash profesor/validar.sh
 #
 # Después:  python3 herramientas/guardar_soluciones.py <carpeta que imprime al final>
@@ -44,7 +44,7 @@ una() {
 }
 export -f una; export KIT RONDA
 
-echo "Ronda en $RONDA · escenas: $LISTA"
+echo "Ronda en $RONDA · ejercicios: $LISTA"
 printf '%s\n' $LISTA | xargs -P "${PARALELO:-8}" -I{} bash -c 'una {}'
 echo
 sort "$RONDA/resumen.txt"

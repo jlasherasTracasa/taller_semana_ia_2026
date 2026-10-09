@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 24 · La cena de las fiestas
+# ✅ Solución · EJ 24 · Lista de la compra a partir de recetas
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 36 s · 48.473 tokens de entrada y 3.411 de salida.
 

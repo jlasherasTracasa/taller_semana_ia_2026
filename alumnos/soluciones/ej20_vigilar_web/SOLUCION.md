@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 20 · Vigilar una web (y el «Listo» que no lo estaba)
+# ✅ Solución · EJ 20 · Avisar cuando cambia una web
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 22 s · 46.444 tokens de entrada y 2.415 de salida.
 
@@ -11,7 +11,7 @@ Script con rutas relativas a su ubicación; funciona lanzado desde `/`. En septi
 ```text
 ✅ existe vigila/bin/vigila_cambios.sh
   ✅ sin rutas absolutas escritas a mano
-  ✅ el log tiene al menos 2 líneas (tiene 6)
+  ✅ el log tiene al menos 2 líneas (tiene 7)
   ✅ lanzado desde / añade exactamente una línea
 
 🎉 Criterio de éxito cumplido · ej20

@@ -1,0 +1,62 @@
+
+> build · Qwen3.8-27B-FP8
+→ Read cambio.diff 
+$ ls -la
+total 24
+drwxr-xr-x 2 alumno alumno 4096 Oct  9 10:00 .
+drwxr-xr-x 5 alumno alumno 4096 Oct  9 10:00 ..
+-rw-r--r-- 1 alumno alumno  385 Oct  9 09:59 DESCRIPCION_PR.md
+-rw-r--r-- 1 alumno alumno 2797 Oct  9 10:00 ENUNCIADO.md
+-rw-r--r-- 1 alumno alumno 1653 Oct  9 09:59 cambio.diff
+-rw-r--r-- 1 alumno alumno 1068 Oct  9 10:00 opencode.json
+-rw-r--r-- 1 alumno alumno    0 Oct  9 10:00 salida.txt
+> build · Qwen3.8-27B-FP8
+→ Read ENUNCIADO.md 
+→ Read DESCRIPCION_PR.md 
+> build · Qwen3.8-27B-FP8
+He revisado `cambio.diff` y `DESCRIPCION_PR.md`. El diff es pequeño (un solo módulo más tests), así que lo he analizado completo y verificado cada afirmación contra el código real del diff. Escribo `revision.md`:
+← Write revision.md
+Created file successfully: revision.md
+> build · Qwen3.8-27B-FP8
+Corrijo una errata que se me ha colado en P8:
+← Edit revision.md
+Index: revision.md
+===================================================================
+--- revision.md
++++ revision.md
+@@ -120,9 +120,9 @@
+ - **Dónde:** `app/socios.py` · `avisar_socios()` · ~línea 43
+ - **Qué pasa:** `requests.post(...)` sin `timeout`: si el proveedor no responde, el proceso se queda colgado indefinidamente.
+ - **Corrección:** `timeout=(3, 10)` (conexión, lectura) en cada llamada, como en el snippet de P5.
+ 
+-### P8 · Cambio de API sin迁移: `buscar_socio` → `buscar_socios` rompe a los llamadores
++### P8 · Cambio de API sin migración: `buscar_socio` → `buscar_socios` rompe a los llamadores
+ - **Dónde:** `app/socios.py` · hunk 1 · ~líneas 12–14
+ - **Qué pasa:** cambia el nombre (singular→plural), los parámetros (dni→texto) y el tipo devuelto (fila única por `SELECT *` → lista de tuplas de 3 columnas). Cualquier llamador existente de `buscar_socio` fallará con `NameError`, y los que usaran columnas extra del `SELECT *` verán tupples distintos.
+ - **Por qué importa:** es un cambio rompiente de API interna que la descripción del PR no declara; combinado con P4, nadie detectará las roturas hasta producción.
+ - **Corrección:** mantener compatibilidad temporal (`def buscar_socio(conn, dni)` como *wrapper* deprecado) o migrar todos los llamadores en este mismo PR, y dejarlo escrito en la descripción. Escapar además los comodines `%`/`_` que el usuario pueda teclear (`texto.replace("%", r"\%")` con `ESCAPE '\'` en el SQL).
+
+> build · Qwen3.8-27B-FP8
+He creado **`revision.md`** con la revisión completa. No he tocado ningún fichero existente.
+
+## Resumen de lo encontrado
+
+**🔴 Críticos (2)**
+1. **Inyección SQL** en `buscar_socios()`: la consulta se construye concatenando el texto del usuario (`"LIKE '%" + texto + "%'"`) — además es una regresión, la versión anterior usaba parámetros `(?)` correctamente.
+2. **Clave API de producción hardcodeada** (`sk-live-...`) en el fuente: queda en el historial de git y exige rotación inmediata.
+
+**🟠 Altos (4)**
+3. **Regresión de negocio**: `edad >= 65` pasó a `edad > 65` — los socios de 65 años pagan 30 € en vez de 15 €.
+4. **Tests borrados para que la suite pase** (incluido `test_cuota_jubilado`, que era precisamente el que detectaba P3).
+5. **`except: pass`** en `avisar_socios()` que oculta fallos y dice "Avisos enviados" aunque no haya salido ningún SMS.
+6. **Datos personales (teléfonos) enviados en masa a un tercero** sin control ni consentimiento, con la clave en el cuerpo del POST.
+
+**🟡 Medios (3):** sin `timeout` en HTTP, cambio rompiente de API no declarado (`buscar_socio`→`buscar_socios`), y comodines `%`/`_` sin escapar sin `LIMIT`.
+
+**🟢 Bajos (1 agrupado):** `print` en vez de logging, dependencia `requests` sin actualizar requirements, configurabilidad.
+
+## Veredicto
+
+❌ **Pedir cambios — no mezclar hoy.** Los bloqueantes son P1 y P2, con P3/P4 casi al mismo nivel (dinero + tests eliminados para tapar las regresiones). La revisión incluye snippets de corrección para cada punto y tests restaurados/adaptados a la nueva API.
+
+Un detalle que refuerza el veredicto: la propia descripción del PR admite «he quitado un par de tests que fallaban» — no es cosmético, es la prueba de que los tests estaban haciendo bien su trabajo contra los bugs P1 y P3.

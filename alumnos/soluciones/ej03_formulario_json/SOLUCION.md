@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 03 · El formulario que guarda en JSON (y el proceso ajeno)
+# ✅ Solución · EJ 03 · Formulario web que guarda los envíos (sin matar procesos ajenos)
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 232 s · 516.650 tokens de entrada y 14.019 de salida.
 

@@ -1,0 +1,44 @@
+
+> build · Qwen3.8-27B-FP8
+→ Read . 
+> build · Qwen3.8-27B-FP8
+→ Read ofertas.md 
+→ Read consumo_2025.csv [limit=15]
+> build · Qwen3.8-27B-FP8
+← Write calcula_ofertas.py
+Created file successfully: calcula_ofertas.py
+> build · Qwen3.8-27B-FP8
+$ python3 calcula_ofertas.py
+Consumo anual: punta=998 llano=1157 valle=1659 kWh (total 3814)
+Coste potencia (4.6 kW x 365 dias): A=151.11  B=134.32  C=159.50
+Cuotas fijas: C=60.00
+
+Oferta A: energia=  553.03  total=  704.14 eur
+Oferta B: energia=  512.58  total=  646.89 eur
+Oferta C: energia=  492.01 + cuota 60.00  total=  711.51 eur
+
+MAS BARATA: Oferta B
+  Ahorro frente a A: 57.25 eur/año
+  Ahorro frente a C: 64.62 eur/año
+> build · Qwen3.8-27B-FP8
+La más barata es la Oferta B. Ahora escribo `comparativa.md`:
+← Write comparativa.md
+Created file successfully: comparativa.md
+> build · Qwen3.8-27B-FP8
+Listo. He creado dos archivos en `ej26_factura_luz/`:
+
+**`calcula_ofertas.py`** — lee `consumo_2025.csv`, aplica las condiciones de cada oferta (energía por periodos, 4,6 kW × 365 días y cuota fija mensual de la C) y muestra el desglose por oferta.
+
+**`comparativa.md`** — tabla con el coste anual de cada oferta, la ganadora y los ahorros frente a las otras dos.
+
+Resumen del resultado:
+
+| Oferta | Total anual |
+|--------|------------:|
+| A · «Luz Plana» (Ebro Energía) | 704,14 € |
+| **B · «Tres Periodos» (Arga Luz)** | **646,89 €** ← más barata |
+| C · «Ahorro Club» (Bidasoa Eléctrica) | 711,51 € |
+
+La **Oferta B** es la más barata: ahorra **57,25 €/año** frente a la A y **64,62 €/año** frente a la C. Todo calculado sin IVA ni impuesto eléctrico, tal como pedía el enunciado.
+
+Un apunte interesante: la Oferta C se anuncia como «la más barata del mercado», pero al incluir su cuota de 5 €/mes resulta ser la más cara de las tres — buena muestra de por qué conviene hacer las cuentas.

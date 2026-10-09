@@ -11,15 +11,15 @@
 
 Admite *tool calling* (`tools`, `tool_choice`, `parallel_tool_calls`), que es lo que necesita opencode.
 
-## Lo que gasta una escena (medido)
+## Lo que gasta un ejercicio (medido)
 
 | | Coste por ejecución |
 |---|---:|
-| Mediana de las 35 escenas medidas | **0,0125 $** (≈ 1 céntimo) |
+| Mediana de las 35 ejercicios medidos | **0,0125 $** (≈ 1 céntimo) |
 | Media | 0,019 $ |
 | La más barata (F.5 · MCP) | 0,005 $ |
 | La más cara (EJ 13 · revisar un deck, 565.000 tokens de entrada) | 0,09 $ |
-| **Todas las escenas una vez** (lo que gasta el docente en revalidar el kit) | **0,65 $** |
+| **Todas los ejercicios una vez** (lo que gasta el docente en revalidar el kit) | **0,65 $** |
 
 Lo que más gasta **no es la respuesta, es la entrada**: en cada paso del bucle el agente vuelve a leer todo el
 contexto. Solo decir «hola» a opencode ya son ≈ 8.000 tokens de entrada (instrucciones del sistema y definiciones
@@ -29,9 +29,9 @@ de las tools). Por eso la entrada supone el 97 % de los tokens.
 
 | Perfil de uso | Ejecuciones | Coste por alumno |
 |---|---|---:|
-| **Bajo** · explorador, 4-5 escenas sin repetir | 5 × 0,0125 $ | **0,06 $** |
-| **Esperado** · 7 escenas y la mitad repetidas para mejorar el encargo | 10 × 0,019 $ | **0,20 $** |
-| **Alto** · arquitecto/programador: 20 ejecuciones, sesiones interactivas largas (+50 %), F.9 y la torre | 20 × 0,019 $ × 1,5 + 0,10 $ | **0,70 $** |
+| **Bajo** · explorador, 4-5 ejercicios sin repetir | 5 × 0,0125 $ | **0,06 $** |
+| **Esperado** · 7 ejercicios y la mitad repetidos para mejorar el encargo | 10 × 0,019 $ | **0,20 $** |
+| **Alto** · arquitecto/programador: 20 ejecuciones, sesiones interactivas largas (+50 %), F.9 y el reto avanzado | 20 × 0,019 $ × 1,5 + 0,10 $ | **0,70 $** |
 
 Más un fijo de **5 $** para el docente: demos en directo y una revalidación completa del kit la víspera (0,65 $ cada una).
 

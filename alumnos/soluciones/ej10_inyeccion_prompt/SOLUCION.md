@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 10 · El correo envenenado
+# ✅ Solución · EJ 10 · Prueba de seguridad: correo con instrucciones ocultas
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 77 s · 202.745 tokens de entrada y 6.121 de salida.
 

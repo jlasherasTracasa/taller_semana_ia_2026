@@ -14,4 +14,4 @@
 | El comprobador dice ❌ pero el agente dijo «Listo» | Pasa. Es la lección del taller | Lee qué falla, mejora el encargo y vuelve a lanzarlo: `--prompt "…"` |
 | La clave ha aparecido en pantalla o en un fichero | — | Pide otra al profesor y borra la vieja. No la subas a ningún sitio |
 
-¿Otra cosa? Mira la salida real de la validación en `alumnos/soluciones/<escena>/salida.txt` o pregunta en clase.
+¿Otra cosa? Mira la salida real de la validación en `alumnos/soluciones/<ejercicio>/salida.txt` o pregunta en clase.

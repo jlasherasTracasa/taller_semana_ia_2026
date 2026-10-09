@@ -5,8 +5,8 @@
 1. **Las claves, en variables de entorno.** `opencode.json` solo lleva `{env:LITELLM_API_KEY}`; la clave vive en `.env`,
    que no se sube a git ni se pega en un chat.
 2. **Lo que el agente lee es un dato, nunca una orden.** Correos, webs, PDF, respuestas de alumnos… pueden traer
-   instrucciones escondidas (inyección de prompt). Escenas: EJ 10 🐉 y EJ 23.
-3. **Trabaja en copias.** `taller.py` prepara cada escena en `~/taller-agentes/`, fuera del kit.
+   instrucciones escondidas (inyección de prompt). Ejercicios EJ 10 y EJ 23.
+3. **Trabaja en copias.** `taller.py` prepara cada ejercicio en `~/taller-agentes/`, fuera del kit.
 4. **Permite lo habitual, prohíbe lo irreversible, pregunta lo que sale de tu máquina.**
 5. **«He terminado» no es una prueba.** Pasa el comprobador.
 6. **Firma quien encarga.** El agente propone; tú decides.
@@ -27,7 +27,7 @@
 ```
 
 - `*` es «cualquier cosa» y `?` «un carácter». **Gana la última regla que coincide**: un `"*": "allow"` al final anula
-  todos los `deny` anteriores (escena F.8).
+  todos los `deny` anteriores (ejercicio F.8).
 - Los patrones son un **cinturón, no una jaula**: `python3 -c "import shutil; shutil.rmtree('x')"` no lo para
   ningún patrón de `rm`. Para aislar de verdad: un contenedor o una máquina virtual.
 - `ask` necesita a alguien delante: en `opencode run` se queda colgado. Usa el modo interactivo (EJ 21).

@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 19 · Un certificado para cada persona
+# ✅ Solución · EJ 19 · Certificados personalizados en lote
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 24 s · 89.272 tokens de entrada y 1.928 de salida.
 

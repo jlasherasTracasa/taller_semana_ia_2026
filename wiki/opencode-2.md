@@ -8,7 +8,7 @@ ejercicios. Están todas resueltas en el kit, pero si tienes guías o scripts an
 | `opencode run` ejecutaba todo en el mismo proceso | Usa un **servicio en segundo plano** que no ve las variables de tu terminal | `opencode run --standalone …` |
 | `opencode run --command informe-semanal` | `--command` ya no existe | Modo interactivo: `opencode` y `/informe-semanal` |
 | Comandos en `.opencode/command/` | `.opencode/commands/` | Renombrar la carpeta |
-| Tools propias en `.opencode/tools/*.ts` | La API de plugins v2 no registra tools | Escribir un servidor **MCP** (escena F.6) |
+| Tools propias en `.opencode/tools/*.ts` | La API de plugins v2 no registra tools | Escribir un servidor **MCP** (ejercicio F.6) |
 | Las tools MCP aparecían en la lista | Se **buscan en un catálogo** y se llaman desde la tool `execute` | Nada: el modelo lo hace solo; tarda unos segundos en verlas |
 | — | Nueva tool `question`: el modelo te pregunta | En `run` bloquea: `"question": "deny"` |
 | `bash` en permisos | Se sigue aceptando (internamente se llama `shell`) | Nada |

@@ -230,9 +230,9 @@ async function construir(conNotas) {
 
   {
     const s = slide("Qué es un agente", "Anatomía de un agente", "Cinco piezas alrededor de un modelo de lenguaje");
-    s.addShape(pres.shapes.OVAL, { x: 5.32, y: 3.0, w: 2.7, h: 1.9, fill: { color: C.noche }, line: { color: C.noche, width: 0 } });
+    s.addShape(pres.shapes.OVAL, { x: 5.07, y: 2.95, w: 3.2, h: 2.0, fill: { color: C.noche }, line: { color: C.noche, width: 0 } });
     s.addText([{ text: "Modelo (LLM)\n", options: { color: C.nieve } }, { text: "GLM-5.3-Flash", options: { color: C.oro } }],
-      { x: 5.32, y: 3.0, w: 2.7, h: 1.9, fontFace: TIT, fontSize: 21, bold: true, align: "center", valign: "middle", margin: 0 });
+      { x: 5.07, y: 2.95, w: 3.2, h: 2.0, fontFace: TIT, fontSize: 21, bold: true, align: "center", valign: "middle", margin: 0 });
     filaIcono(s, "book", "Instrucciones", "prompt de sistema, AGENTS.md", 0.6, 2.1, 4.2, 1.0);
     filaIcono(s, "tools", "Herramientas", "leer, editar, shell, web, MCP", 8.55, 2.1, 4.2, 1.0);
     filaIcono(s, "sync", "Bucle de control", "pensar → actuar → observar", 0.6, 4.6, 4.2, 1.0);
@@ -247,7 +247,7 @@ async function construir(conNotas) {
       "[1] PENSAR   Voy a listar la carpeta notas/ para ver qué ficheros hay.", "[1] ACTUAR   listar_carpeta({'carpeta': 'notas/'})",
       "[1] OBSERVAR compra.txt | ideas.txt | reunion.txt", "[2] ACTUAR   leer_archivo({'ruta': 'notas/compra.txt'})   … y los otros dos",
       "[3] PENSAR   El fichero con más líneas es reunion.txt, con 5 líneas.", "", "FIN: el modelo no pide más herramientas."].join("\n"), 0.6, 2.05, 7.7, 3.9, 12);
-    filaIcono(s, "flag", "Termina cuando el modelo decide", "no cuando está bien hecho.", 8.6, 2.05, 4.15, 1.15);
+    filaIcono(s, "flag", "Acaba cuando el modelo quiere", "no cuando está bien hecho.", 8.6, 2.05, 4.15, 1.15);
     filaIcono(s, "brain", "El historial es su memoria", "guardado mal, dejaba de responder a la pregunta (bug real, corregido).", 8.6, 3.4, 4.15, 1.15);
     filaIcono(s, "shield", "Tu programa pone los límites", "máximo de pasos y carpeta permitida.", 8.6, 4.75, 4.15, 1.15);
     s.addText("Demo en directo:  python3 taller.py ejecutar f0 react_min.py", { x: 0.6, y: 6.2, w: 12, h: 0.4, fontFace: MONO, fontSize: 13, color: C.cian, margin: 0 });
@@ -468,7 +468,7 @@ async function construir(conNotas) {
       s.addText(h, { x: x + 0.25, y: 2.9, w: 2.45, h: 0.45, fontFace: TIT, fontSize: 20, bold: true, color: C.tinta, margin: 0 });
       s.addText(t, { x: x + 0.25, y: 3.35, w: 2.45, h: 0.8, fontFace: TXT, fontSize: 13, color: C.tinta2, margin: 0, valign: "top" });
     });
-    codigo(s, "cd replicar_paper && bash verificar.sh --reranker      # ≈ 6 min en CPU · ≈ 1,6 GB de modelos la primera vez", 0.6, 4.65, 12.15, 0.65, 13);
+    codigo(s, "cd replicar_paper && bash verificar.sh --reranker      # ≈ 6 min en CPU · 1,6 GB la primera vez", 0.6, 4.65, 12.15, 0.65, 13);
     notas(s, "Para casa o para quien acabe pronto. Todo corre en CPU.");
   }
 

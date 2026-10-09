@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 21 · Que se ejecute solo (con tu permiso)
+# ✅ Solución · EJ 21 · Programar una tarea periódica (con tu permiso)
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 93 s · 122.275 tokens de entrada y 6.530 de salida.
 

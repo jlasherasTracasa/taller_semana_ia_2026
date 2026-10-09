@@ -3,7 +3,7 @@
 
 Uso:  python3 herramientas/guardar_soluciones.py <carpeta_de_la_ronda> [otra_carpeta_que_tiene_prioridad …]
 
-Por cada escena guarda: el encargo (prompt.txt), la salida real del agente (salida.txt, con las rutas y el usuario
+Por cada ejercicio guarda: el encargo (prompt.txt), la salida real del agente (salida.txt, con las rutas y el usuario
 anonimizados), los ficheros que creó o cambió y un SOLUCION.md con el veredicto del comprobador y lo que pasó.
 Nunca copia opencode.json, .env, entornos virtuales ni los datos de partida sin cambios.
 """
@@ -100,6 +100,6 @@ if __name__ == "__main__":
     for ej, d in sorted(hechos.items()):
         print(guardar(ej, d), ej)
     open(os.path.join(DEST, "README.md"), "w", encoding="utf-8").write(
-        "# 🧪 Soluciones reales\n\nLo que hizo el agente en la validación, escena por escena: el encargo, la salida y los "
+        "# 🧪 Soluciones reales\n\nLo que hizo el agente en la validación, ejercicio por ejercicio: el encargo, la salida y los "
         "ficheros. **Úsalas para comparar, no para copiar**: el sello te lo da `comprobar.py` sobre TU carpeta.\n\n"
         + "\n".join(f"- [{IDX[ej]['num']} · {IDX[ej]['titulo']}]({ej}/SOLUCION.md)" for ej in sorted(hechos, key=list(IDX).index)) + "\n")

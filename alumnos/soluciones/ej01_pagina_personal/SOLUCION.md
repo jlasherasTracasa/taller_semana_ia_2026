@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 01 · La web de Pilar
+# ✅ Solución · EJ 01 · Una web personal en un solo archivo
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 22 s · 80.689 tokens de entrada y 2.419 de salida.
 

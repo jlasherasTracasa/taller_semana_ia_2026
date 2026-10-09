@@ -1,7 +1,7 @@
 # 🧠 Conceptos
 
-Todo lo que necesitas para entender qué hace (y qué hace mal) un agente. Cada concepto tiene su escena en la
-**sala de máquinas** ⚙️ para verlo funcionar.
+Todo lo que necesitas para entender qué hace (y qué hace mal) un agente. Cada concepto tiene su ejercicio en el área
+**«Cómo funciona un agente»** ⚙️ para verlo funcionar.
 
 ## Chat, chat con herramientas y agente
 
@@ -26,7 +26,7 @@ flowchart TB
 El modelo **solo produce texto**. Todo lo que «hace» lo ejecuta el programa (opencode) a través de herramientas, y
 los permisos deciden qué puede hacer sin preguntarte.
 
-## ReAct: pensar, actuar, observar (escena F.0)
+## ReAct: pensar, actuar, observar (ejercicio F.0)
 
 ```mermaid
 sequenceDiagram
@@ -47,7 +47,7 @@ sequenceDiagram
 Dos lecciones de la validación: el bucle termina cuando **el modelo decide**, no cuando está bien hecho; y el
 historial que le devuelves **es su memoria**: guardado mal, el agente dejaba de responder a la pregunta.
 
-## Tools y function calling (escena F.1)
+## Tools y function calling (ejercicio F.1)
 
 Una *tool* es una función descrita con un esquema JSON (nombre, descripción, parámetros). El modelo responde con algo
 como `{"name": "calculadora", "arguments": {"expresion": "(1250+3750)*1.21"}}` y **tu programa decide** si la
@@ -55,7 +55,7 @@ ejecuta. Los argumentos los escribe el modelo… o un atacante a través de un d
 
 ## Las piezas de opencode 2.x
 
-| Pieza | Qué es | Dónde vive | Cuándo se usa | Escena |
+| Pieza | Qué es | Dónde vive | Cuándo se usa | Ejercicio |
 |---|---|---|---|---|
 | **AGENTS.md** | Normas permanentes del proyecto | `AGENTS.md` | Siempre | F.2 |
 | **Comando** | Un encargo guardado con nombre | `.opencode/commands/x.md` | Cuando escribes `/x` (modo interactivo) | F.3 |
@@ -73,7 +73,7 @@ Las tools de un servidor MCP no aparecen sueltas: el modelo las **busca en un ca
 **escribiendo un poco de código** con la tool `execute` (`tools.plazos.dias_habiles({...})`). El catálogo se carga
 unos segundos después de arrancar.
 
-## Fiabilidad: pass@k y pass^k (escena F.9)
+## Fiabilidad: pass@k y pass^k (ejercicio F.9)
 
 - **pass@k**: probabilidad de que salga bien **alguna** de k veces.
 - **pass^k**: probabilidad de que salga bien **las k** veces. Es lo que importa en una rutina.

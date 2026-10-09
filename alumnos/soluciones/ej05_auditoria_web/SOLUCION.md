@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 05 · Una web para el centro de mayores
+# ✅ Solución · EJ 05 · Auditoría de accesibilidad de una web
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 123 s · 226.139 tokens de entrada y 8.598 de salida.
 

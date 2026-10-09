@@ -1,38 +1,27 @@
-# :teacher: Material del docente
+# 🧑‍🏫 Material del docente
 
-| Fichero o carpeta | Qué es |
+| Fichero | Qué es |
 |---|---|
-| `validar_ejercicio.sh` | Ejecuta un ejercicio del kit como lo haría un alumno y guarda el prompt y la salida real en `alumnos/soluciones/<ejercicio>/`. |
-| `ejemplos/` | Banco de ejemplos validados (webs, correo, pptx, rutinas, tools y skills, réplica del paper) con `verificar_todo.sh`. Tiene su propio README. |
+| `notas_profesor.md.enc` | **Notas del profesor, cifradas** (AES-256): minutado, guion de demos, qué contar en cada ejercicio, problemas típicos, preguntas difíciles |
+| `taller-con-notas.pptx.enc` | La presentación con notas del ponente, cifrada |
+| `notas.sh` | `bash profesor/notas.sh descifrar` / `cifrar`. La contraseña **no** está en el repositorio |
+| [`PRESUPUESTO.md`](PRESUPUESTO.md) | Cuánto cuesta GLM-5.3-Flash en OpenRouter según el número de alumnos (medido) |
+| `validar.sh` | Ejecuta los ejercicios como un alumno y deja un resumen |
 
-## `validar_ejercicio.sh`
+> Los alumnos tienen acceso a este repositorio: por eso las notas solo van cifradas. Lo descifrado va a
+> `profesor_privado/` y a `presentacion/*-con-notas.pptx`, que están en `.gitignore`.
 
-```bash
-set -a; . ./.env; set +a                              # desde la raíz del repo
-bash docs/taller/profesor/validar_ejercicio.sh ej03_formulario_json
-```
-
-Qué hace:
-1. Copia `alumnos/ejercicios/<ejercicio>/` y el `opencode.json` del kit a `/tmp/curso_agentes/validacion/<ejercicio>/`.
-2. **Aísla tu configuración global de opencode** (`XDG_CONFIG_HOME` propio, sin `opencode.json` global). Motivo
-   real: un MCP de Notion global añadía 30 tools, y el EJ 20 falló con un «Listo» falso.
-3. Extrae el prompt del bloque `opencode run "…"` del ENUNCIADO y lo ejecuta con `timeout 900`, solo CPU.
-4. Escribe `prompt.txt` y `salida.txt` (cabecera con fecha, segundos y código de salida, más las últimas 60 líneas sin
-   códigos ANSI).
-
-Qué **no** hace: copiar los ficheros generados a `soluciones/` ni escribir `SOLUCION.md`. Eso se hace a mano,
-**después de revisar el resultado**: un código de salida 0 no significa que el ejercicio esté bien (EJ 20).
-Después, regenera `presentacion/fuente/ejercicios.json` con `extraer_ejercicios.py`.
-
-Cuidado con los procesos que deja el agente (servidores, timers). Compruébalo al terminar:
-`ss -ltnp | grep 89` y `systemctl --user list-timers | grep vigila`.
-
-## `ejemplos/verificar_todo.sh`
-
-Dieciocho comprobaciones objetivas sobre el banco, sin LLM ni GPU: respuesta HTTP 200 de los HTML, pptx legibles y
-con el número de diapositivas esperado, CSV con sus columnas, totales cuadrados con el CSV, inyección sin efecto,
-sintaxis de los scripts y log de vigilancia.
+## Validar el kit
 
 ```bash
-bash docs/taller/profesor/ejemplos/verificar_todo.sh
+bash profesor/validar.sh                    # todos los ejercicios con encargo (≈ 10 min, ≈ 0,65 $)
+bash profesor/validar.sh ej07 f4            # solo algunos
+python3 herramientas/guardar_soluciones.py /tmp/validacion_taller/<ronda>   # copia salidas y ficheros a alumnos/soluciones
 ```
+
+Necesita las claves en `alumnos/.env`. Aísla tu configuración global de opencode (`HOME` y `XDG_CONFIG_HOME`
+propios): los MCP y skills globales del docente cambian el comportamiento del agente. Revisa siempre a mano lo que
+falle **y lo que pase**: un OK del comprobador no lo es todo. Después, actualiza `herramientas/validacion.json`.
+
+F.0, F.1 y F.9 son programas de Python (`python3 alumnos/taller.py ejecutar f0 react_min.py`), F.3 y EJ 21 son de modo
+interactivo (`taller.py abrir …`) y conviene probarlos a mano.

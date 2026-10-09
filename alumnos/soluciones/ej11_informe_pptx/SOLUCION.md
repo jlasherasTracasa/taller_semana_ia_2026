@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 11 · La vendimia en diapositivas
+# ✅ Solución · EJ 11 · De informe escrito a presentación
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 67 s · 93.304 tokens de entrada y 4.776 de salida.
 

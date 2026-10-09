@@ -1,4 +1,4 @@
-# ✅ Solución · EJ 04 · Publicar la web (sin darle tus llaves)
+# ✅ Solución · EJ 04 · Publicar una web en GitHub Pages (sin darle tus credenciales)
 
 Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 50 s · 96.222 tokens de entrada y 3.501 de salida.
 

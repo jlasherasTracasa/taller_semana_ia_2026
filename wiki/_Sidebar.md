@@ -2,7 +2,7 @@
 
 - [Inicio](Home.md)
 - [🚀 Primeros pasos](Primeros-pasos.md)
-- [🎮 Cómo se juega](Como-se-juega.md)
+- [🧭 Cómo funciona](Como-funciona.md)
 - [🧠 Conceptos](Conceptos.md)
 - [✍️ Encargos](Encargos.md)
 - [🔑 Variables de entorno](Variables-de-entorno.md)
