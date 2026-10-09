@@ -555,7 +555,7 @@ ej(id="ej24_lista_compra", num="EJ 24", puerta="D", nivel=1, min=10, modo="run",
    prompt="Quiero cocinar las tres recetas de recetas/ para 6 personas (las recetas son para 4). Escribe lista_compra.md con las cantidades multiplicadas por 1,5 y agrupadas por sección del súper (verdura, lácteos, frutos secos…). No pongas lo que ya tengo según despensa.txt; añade al final una sección Ya lo tienes en casa con eso.",
    criterio=["`lista_compra.md` con 1,2 kg de pochas, 12 alcachofas, 600 g de guisantes, 1,5 l de leche de oveja…",
              "Sin aceite, sal, harina, miel ni huevos en la lista (están en la despensa: hacen falta 3 huevos y hay 6)."],
-   siguiente=[("Explícame esta carta", "ej25_carta_explicada"), ("La carpeta de Descargas", "ej15_ordenar_descargas"),
+   siguiente=[("Entender una carta de la Administración", "ej25_carta_explicada"), ("La carpeta de Descargas", "ej15_ordenar_descargas"),
               ("Volver al inicio", "PLAZA")])
 
 ej(id="ej20_vigilar_web", num="EJ 20", puerta="D", nivel=3, min=15, modo="run", perfiles=["programador"],

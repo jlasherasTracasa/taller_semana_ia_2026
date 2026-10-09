@@ -48,6 +48,6 @@ Prompt, salida real y ficheros: [`soluciones/ej24_lista_compra/`](../../solucion
 
 ## 🔀 Siguiente paso
 
-- **Explícame esta carta** → [🟢 EJ 25 · Entender una carta de la Administración](../ej25_carta_explicada/ENUNCIADO.md)
+- **Entender una carta de la Administración** → [🟢 EJ 25 · Entender una carta de la Administración](../ej25_carta_explicada/ENUNCIADO.md)
 - **La carpeta de Descargas** → [🟢 EJ 15 · Ordenar la carpeta de Descargas](../ej15_ordenar_descargas/ENUNCIADO.md)
 - **Volver al inicio** → [↩️ Inicio: todas las áreas](../../ITINERARIOS.md#-áreas-y-ejercicios)

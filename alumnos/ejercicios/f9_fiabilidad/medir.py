@@ -28,7 +28,7 @@ for i in range(1, n + 1):
     ok = subprocess.call([sys.executable, os.path.join(KIT, "comprobar.py"), ej, d], stdout=subprocess.DEVNULL) == 0
     tok = taller.tokens(d, env)
     filas.append((i, ok, seg, tok))
-    print(f"intento {i}: {'✅' if ok else '❌'}  {seg:5.0f} s  {tok['entrada']:>8,} tokens de entrada  {tok['salida']:>6,} de salida")
+    print(f"intento {i}: {'✅' if ok else '❌'}  {seg:5.0f} s  {taller.es(tok['entrada']):>8} tokens de entrada  {taller.es(tok['salida']):>6} de salida")
 
 aciertos = sum(1 for f in filas if f[1])
 p = aciertos / n
@@ -36,7 +36,7 @@ print(f"\n{ej}: {aciertos}/{n} aciertos (tasa {p:.0%}) · {sum(f[2] for f in fil
 print(f"pass^{n} estimado (que salgan bien los {n} seguidos): {p ** n:.0%}")
 ent = sum(f[3]["entrada"] for f in filas) / n
 sal = sum(f[3]["salida"] for f in filas) / n
-print(f"Tokens medios por intento: {ent:,.0f} de entrada y {sal:,.0f} de salida "
-      f"≈ {taller.coste(ent, sal):.4f} $ en OpenRouter (GLM-5.3-Flash)")
+print(f"Tokens medios por intento: {taller.es(ent)} de entrada y {taller.es(sal)} de salida "
+      f"≈ {taller.es(taller.coste(ent, sal), 4)} $ en OpenRouter (GLM-5.3-Flash)")
 json.dump([{"intento": i, "ok": o, "segundos": s, **t} for i, o, s, t in filas],
           open(os.path.join(base, "resultados.json"), "w"), indent=1)

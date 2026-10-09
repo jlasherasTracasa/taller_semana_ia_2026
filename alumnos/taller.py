@@ -115,6 +115,12 @@ def opencode(args, d, env, salida=None):
 PRECIO = {"entrada": 0.15, "salida": 0.50}
 
 
+def es(n, dec=0):
+    """Número en formato español: 62.677 · 0,0107"""
+    t = f"{n:,.{dec}f}"
+    return t.replace(",", "·").replace(".", ",").replace("·", ".")
+
+
 def coste(entrada, salida):
     return (entrada * PRECIO["entrada"] + salida * PRECIO["salida"]) / 1e6
 
@@ -144,8 +150,8 @@ def lanzar(ej, prompt=None):
     print(f"\n⏱ {time.time() - t0:.0f} s · código {rc} · salida guardada en salida.txt")
     t = tokens(d, env)
     if t["entrada"]:
-        print(f"🪙 Tokens acumulados en esta carpeta: {t['entrada']:,} de entrada y {t['salida']:,} de salida "
-              f"(≈ {coste(t['entrada'], t['salida']):.4f} $ en OpenRouter)")
+        print(f"🪙 Tokens acumulados en esta carpeta: {es(t['entrada'])} de entrada y {es(t['salida'])} de salida "
+              f"(≈ {es(coste(t['entrada'], t['salida']), 4)} $ en OpenRouter)")
     print(f"✅ ¿Lo ha hecho de verdad?  python3 taller.py comprobar {e['num_corto']}")
     return rc
 
