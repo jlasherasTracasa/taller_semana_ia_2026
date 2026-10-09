@@ -1,0 +1,3 @@
+$ opencode run --model vllm/GLM-5.3-Flash "Organiza descargas/: crea subcarpetas facturas/, fotos/, \
+  hojas_calculo/, documentos/, imagenes/ y mueve cada archivo según su tipo sin borrar nada. \
+  Luego muéstrame el árbol resultante."

@@ -1,0 +1,3 @@
+$ opencode run --model vllm/GLM-5.3-Flash "Lee ventas_tienda.csv y genera ventas.pptx: portada + \
+  una diapositiva con gráfico de líneas generado con matplotlib (meses vs categorías) embebido \
+  como imagen. Usa python-pptx y matplotlib ya instalados."

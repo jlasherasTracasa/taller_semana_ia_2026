@@ -1,0 +1,2480 @@
+[
+ {
+  "q": "¿Puede un juez suspender la ejecución de la pena mientras se resuelve una petición de indulto?",
+  "pos_id": "BOE-A-1995-25444-0000",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué es la tentativa y cuándo queda exento de responsabilidad penal quien desiste del delito?",
+  "pos_id": "BOE-A-1995-25444-0001",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Quién está exento de responsabilidad criminal si actúa en estado de necesidad sin haberla provocado y sin obligación de sacrificarse por su cargo?",
+  "pos_id": "BOE-A-1995-25444-0002",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Se considera agravante cometer un delito por motivos racistas o por la orientación sexual de la víctima?",
+  "pos_id": "BOE-A-1995-25444-0003",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Es penalmente responsable una empresa si el delito lo cometió un empleado bajo su autoridad sin control adecuado?",
+  "pos_id": "BOE-A-1995-25444-0004",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué circunstancias atenuantes de la responsabilidad penal de una persona jurídica pueden considerarse tras cometerse un delito?",
+  "pos_id": "BOE-A-1995-25444-0005",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Se exige responsabilidad penal a una persona jurídica si no se identifica al autor físico del delito?",
+  "pos_id": "BOE-A-1995-25444-0006",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿La prisión de dos años es una pena grave o menos grave según el Código Penal?",
+  "pos_id": "BOE-A-1995-25444-0007",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuántos fines de semana como máximo puede durar el arresto de fin de semana y dónde se debe cumplir?",
+  "pos_id": "BOE-A-1995-25444-0008",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Se pueden imponer trabajos en beneficio de la comunidad sin el consentimiento del penado?",
+  "pos_id": "BOE-A-1995-25444-0009",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuál es la duración mínima y máxima de la pena de multa según el sistema de días-multa?",
+  "pos_id": "BOE-A-1995-25444-0010",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué ocurre si no pago la multa penal y puedo cumplirla con trabajos en beneficio de la comunidad?",
+  "pos_id": "BOE-A-1995-25444-0011",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿En qué mitad de la pena se impone cuando concurre solo una circunstancia atenuante?",
+  "pos_id": "BOE-A-1995-25444-0012",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué circunstancias permiten imponer sanciones a una persona jurídica por plazo superior a dos años?",
+  "pos_id": "BOE-A-1995-25444-0013",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Cómo se calcula la pena superior e inferior en grado y qué límites máximos se aplican según el Código Penal?",
+  "pos_id": "BOE-A-1995-25444-0014",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo se aplica el delito continuado y qué pena corresponde según el artículo 74 del Código Penal?",
+  "pos_id": "BOE-A-1995-25444-0015",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuál es el máximo de cumplimiento efectivo de la condena cuando alguno de los delitos está castigado con prisión superior a veinte años?",
+  "pos_id": "BOE-A-1995-25444-0016",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuántos años de prisión debe cumplir el penado antes de progresar a tercer grado si fue condenado por varios delitos, uno con prisión permanente revisable y el resto suma más de quince años?",
+  "pos_id": "BOE-A-1995-25444-0017",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Puede suspenderse la ejecución de una pena si el penado padece una enfermedad muy grave e incurable?",
+  "pos_id": "BOE-A-1995-25444-0018",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué condiciones puede imponer el juez al suspender la ejecución de una pena de prisión?",
+  "pos_id": "BOE-A-1995-25444-0019",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Puede suspenderse la pena de prisión a un condenado por delito cometido por dependencia de drogas si está en tratamiento?",
+  "pos_id": "BOE-A-1995-25444-0020",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo puede el juez sustituir una pena de prisión por arresto de fin de semana o multa?",
+  "pos_id": "BOE-A-1995-25444-0021",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Puede sustituirse la pena de prisión de un extranjero en situación irregular por su expulsión y qué prohibición de regreso se aplica?",
+  "pos_id": "BOE-A-1995-25444-0022",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Puede el juez de vigilancia penitenciaria proponer anualmente el cese, sustitución o suspensión de una medida de seguridad privativa de libertad?",
+  "pos_id": "BOE-A-1995-25444-0023",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Durante cuántos años puede el juez imponer la privación del permiso de conducción como medida de seguridad?",
+  "pos_id": "BOE-A-1995-25444-0024",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Responden los exentos de responsabilidad criminal también por la responsabilidad civil derivada del delito?",
+  "pos_id": "BOE-A-1995-25444-0025",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Quién responde civilmente por delitos cometidos con medios de comunicación siendo titular?",
+  "pos_id": "BOE-A-1995-25444-0026",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué delitos permiten al juez ordenar el decomiso de bienes cuando no se acredita su origen lícito?",
+  "pos_id": "BOE-A-1995-25444-0027",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo no procede acordar el decomiso según el artículo 127 bis del Código Penal?",
+  "pos_id": "BOE-A-1995-25444-0028",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿En qué casos puede el juez acordar el decomiso de bienes provenientes de actividad delictiva previa del condenado?",
+  "pos_id": "BOE-A-1995-25444-0029",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué consecuencias puede imponer el juez a una empresa penalmente responsable y durante cuánto tiempo?",
+  "pos_id": "BOE-A-1995-25444-0030",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Puede el juez ordenar la toma de muestras de ADN a un condenado por terrorismo si se opone a la recogida?",
+  "pos_id": "BOE-A-1995-25444-0031",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo puede el juez rechazar el perdón del ofendido otorgado por los representantes de un menor?",
+  "pos_id": "BOE-A-1995-25444-0032",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿En cuánto tiempo prescriben las faltas según el Código Penal?",
+  "pos_id": "BOE-A-1995-25444-0033",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué requisitos y plazos existen para cancelar los antecedentes penales tras extinguirse la condena?",
+  "pos_id": "BOE-A-1995-25444-0034",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué penas se imponen por causar lesiones por imprudencia grave y qué penas adicionales si se usó vehículo o arma?",
+  "pos_id": "BOE-A-1995-25444-0035",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Exime de responsabilidad penal el consentimiento del afectado en trasplantes, esterilizaciones o cirugía transexual, y qué requisitos exige la esterilización judicial de incapaces?",
+  "pos_id": "BOE-A-1995-25444-0036",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena corresponde al receptor que consiente un trasplante de órgano sabiendo que su origen es ilícito?",
+  "pos_id": "BOE-A-1995-25444-0037",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone a quien exige dinero amenazando con revelar hechos de la vida privada de otra persona?",
+  "pos_id": "BOE-A-1995-25444-0038",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena conlleva el acoso mediante contacto insistente por cualquier medio de comunicación según el Código Penal?",
+  "pos_id": "BOE-A-1995-25444-0039",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena conlleva acosar a una mujer para impedirle interrumpir voluntariamente su embarazo?",
+  "pos_id": "BOE-A-1995-25444-0040",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena de prisión e inhabilitación corresponde a un funcionario que tortura a un detenido para obtener una confesión?",
+  "pos_id": "BOE-A-1995-25444-0041",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone por trata de seres humanos con fines de explotación sexual cuando la víctima es menor de edad?",
+  "pos_id": "BOE-A-1995-25444-0042",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone a la persona jurídica responsable de los delitos del artículo 177 bis?",
+  "pos_id": "BOE-A-1995-25444-0043",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Está exenta de pena la víctima de trata de seres humanos por delitos cometidos durante su explotación?",
+  "pos_id": "BOE-A-1995-25444-0044",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena corresponde a la agresión sexual cometida por tres o más personas actuando en grupo?",
+  "pos_id": "BOE-A-1995-25444-0045",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena conlleva el abuso sexual sin violencia ni intimidación y cuándo se considera que no hay consentimiento?",
+  "pos_id": "BOE-A-1995-25444-0046",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena conlleva contactar por internet con un menor de dieciséis años proponiéndole un encuentro para cometer abusos sexuales?",
+  "pos_id": "BOE-A-1995-25444-0047",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena conlleva difundir o revelar a terceros los datos secretos descubiertos mediante un delito contra la intimidad?",
+  "pos_id": "BOE-A-1995-25444-0048",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone si el responsable de un fichero revela datos de salud con fines lucrativos?",
+  "pos_id": "BOE-A-1995-25444-0049",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone a los responsables sanitarios que por imprudencia grave permiten la sustitución de un niño en un centro sanitario?",
+  "pos_id": "BOE-A-1995-25444-0050",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena conlleva entregar un menor mediante compensación económica eludiendo los procedimientos legales de adopción?",
+  "pos_id": "BOE-A-1995-25444-0051",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena corresponde a un progenitor que retiene a su hijo incumpliendo una resolución judicial y lo devuelve tras diez días sin comunicar su paradero?",
+  "pos_id": "BOE-A-1995-25444-0052",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué penas se imponen si la estafa recae sobre bienes de primera necesidad y además reviste especial gravedad?",
+  "pos_id": "BOE-A-1995-25444-0053",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone a quien agrava dolosamente su propia insolvencia y puede perseguirse el delito antes de que termine el proceso civil?",
+  "pos_id": "BOE-A-1995-25444-0054",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena conlleva retirarse fraudulentamente de una subasta tras obtener la adjudicación?",
+  "pos_id": "BOE-A-1995-25444-0055",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena conlleva dañar datos o programas informáticos ajenos según el Código Penal?",
+  "pos_id": "BOE-A-1995-25444-0056",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena conlleva plagiar una obra literaria con ánimo de lucro y sin autorización de los titulares?",
+  "pos_id": "BOE-A-1995-25444-0057",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena conlleva fabricar objetos con una patente registrada sin consentimiento del titular y con fines comerciales?",
+  "pos_id": "BOE-A-1995-25444-0058",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone a los administradores de una sociedad emisora que falsean información económico-financiera para captar inversores?",
+  "pos_id": "BOE-A-1995-25444-0059",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena corresponde a quien soborna a un empleado de una empresa para obtener ventajas en la compra de mercancías?",
+  "pos_id": "BOE-A-1995-25444-0060",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué penas se imponen por sobornar a un funcionario para conseguir contratos en actividades económicas internacionales?",
+  "pos_id": "BOE-A-1995-25444-0061",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo quedan exentos de responsabilidad criminal los directivos que cooperan en delitos contra la competencia?",
+  "pos_id": "BOE-A-1995-25444-0062",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena corresponde a quien, con ánimo de lucro y a sabiendas, oculte los efectos de un delito contra el patrimonio sin haber intervenido en él?",
+  "pos_id": "BOE-A-1995-25444-0063",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena corresponde por blanqueo de capitales cometido por imprudencia grave?",
+  "pos_id": "BOE-A-1995-25444-0064",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué penas y medidas pueden imponerse a los jefes de una organización dedicada a delinquir según el artículo 302 del Código Penal?",
+  "pos_id": "BOE-A-1995-25444-0065",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone por donaciones ilegales a un partido político que superen los 100.000 euros?",
+  "pos_id": "BOE-A-1995-25444-0066",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone por defraudar a la Hacienda Pública cuando la cuantía defraudada supera los quince millones de pesetas?",
+  "pos_id": "BOE-A-1995-25444-0067",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo queda exento de responsabilidad penal por defraudar tributos si regulariza su situación?",
+  "pos_id": "BOE-A-1995-25444-0068",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone por defraudar a la Hacienda Pública usando paraísos fiscales o personas interpuestas?",
+  "pos_id": "BOE-A-1995-25444-0069",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena conlleva defraudar a la Seguridad Social por encima de quince millones de pesetas?",
+  "pos_id": "BOE-A-1995-25444-0070",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone si el delito contra la Seguridad Social se comete mediante personas interpuestas o paraísos fiscales?",
+  "pos_id": "BOE-A-1995-25444-0071",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone por cobrar prestaciones de la Seguridad Social mediante simulación u ocultación de hechos?",
+  "pos_id": "BOE-A-1995-25444-0072",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Se exonera de responsabilidad penal quien devuelve prestaciones defraudadas antes de una inspección?",
+  "pos_id": "BOE-A-1995-25444-0073",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Puede la Administración cobrar provisionalmente durante el proceso penal del artículo 307 ter y cuándo puede el juez suspenderlo?",
+  "pos_id": "BOE-A-1995-25444-0074",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Se exime de responsabilidad penal por subvenciones si se reintegra el dinero antes de una inspección o querella?",
+  "pos_id": "BOE-A-1995-25444-0075",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Se puede revocar la suspensión de la pena si el penado no paga la deuda tributaria teniendo capacidad económica?",
+  "pos_id": "BOE-A-1995-25444-0076",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone por llevar dobles contabilidades para ocultar la situación real de la empresa estando obligado a llevar contabilidad mercantil?",
+  "pos_id": "BOE-A-1995-25444-0077",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué penas acarrea facilitar el tráfico ilegal de personas con ánimo de lucro y víctima menor de edad?",
+  "pos_id": "BOE-A-1995-25444-0078",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué penas y medidas puede imponer el juez a un promotor que construya sin autorización en suelo no urbanizable?",
+  "pos_id": "BOE-A-1995-25444-0079",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena corresponde por causar lesiones a un animal doméstico que requieran tratamiento veterinario fuera de actividades reguladas?",
+  "pos_id": "BOE-A-1995-25444-0080",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone si al cometer el delito de maltrato animal se causa la muerte de un vertebrado no incluido en el apartado anterior?",
+  "pos_id": "BOE-A-1995-25444-0081",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena corresponde por causar la voladura de un puente con peligro para la vida de las personas?",
+  "pos_id": "BOE-A-1995-25444-0082",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué penas se imponen por suministrar sustancias dopantes a deportistas poniendo en peligro su salud?",
+  "pos_id": "BOE-A-1995-25444-0083",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena corresponde a quien vende medicamentos alterados sabiéndolo y poniendo en peligro la salud?",
+  "pos_id": "BOE-A-1995-25444-0084",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué penas se imponen por suministrar sustancias dopantes a deportistas poniendo en peligro su salud?",
+  "pos_id": "BOE-A-1995-25444-0085",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pena se impone a quien despacha al consumo público carne de animales de abasto sin respetar los períodos de espera reglamentarios?",
+  "pos_id": "BOE-A-1995-25444-0086",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué agravantes aplican al delito de tráfico de drogas si se vende a menores o en centros docentes?",
+  "pos_id": "BOE-A-1995-25444-0087",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué penas se imponen por tráfico de drogas cuando los hechos son cometidos por miembros de una organización delictiva?",
+  "pos_id": "BOE-A-1995-25444-0088",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué medidas puede decretar el juez además de la pena para los jefes de organizaciones delictivas de extrema gravedad?",
+  "pos_id": "BOE-A-1995-25444-0089",
+  "doc": "BOE-A-1995-25444",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué disposiciones de la Ley 3/2012 de reforma del mercado laboral quedan derogadas por el texto refundido del Estatuto de los Trabajadores?",
+  "pos_id": "BOE-A-2015-11430-0090",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta: ¿A quién se aplica el Estatuto de los Trabajadores y qué trabajos quedan excluidos?",
+  "pos_id": "BOE-A-2015-11430-0091",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre ámbito de aplicación del Estatuto de los Trabajadores",
+  "pos_id": "BOE-A-2015-11430-0092",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Relaciones laborales de carácter especial según el Estatuto de los Trabajadores",
+  "pos_id": "BOE-A-2015-11430-0093",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre fuentes de la relación laboral y jerarquía normativa en el Estatuto de los Trabajadores",
+  "pos_id": "BOE-A-2015-11430-0094",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Derechos básicos de los trabajadores según el Estatuto de los Trabajadores",
+  "pos_id": "BOE-A-2015-11430-0095",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué contratos de trabajo deben constar por escrito?",
+  "pos_id": "BOE-A-2015-11430-0096",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Copia básica de contratos: plazo y trámites",
+  "pos_id": "BOE-A-2015-11430-0097",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Contrato en prácticas: duración máxima y requisitos",
+  "pos_id": "BOE-A-2015-11430-0098",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Límite de duración y periodo de prueba del contrato en prácticas",
+  "pos_id": "BOE-A-2015-11430-0099",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Duración y prórrogas del contrato de formación y aprendizaje",
+  "pos_id": "BOE-A-2015-11430-0100",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Contratos formativos: duración y formación",
+  "pos_id": "BOE-A-2015-11430-0101",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Requisitos formativos del contrato para la formación",
+  "pos_id": "BOE-A-2015-11430-0102",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Límites de jornada en contratos de formación y aprendizaje",
+  "pos_id": "BOE-A-2015-11430-0103",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Contrato a tiempo parcial: definición y reglas",
+  "pos_id": "BOE-A-2015-11430-0104",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "¿Pueden los trabajadores a tiempo parcial hacer horas extraordinarias y complementarias?",
+  "pos_id": "BOE-A-2015-11430-0105",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo es voluntaria la conversión a tiempo parcial?",
+  "pos_id": "BOE-A-2015-11430-0106",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Horas complementarias en contratos a tiempo parcial",
+  "pos_id": "BOE-A-2015-11430-0107",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Horas complementarias en contratos a tiempo parcial",
+  "pos_id": "BOE-A-2015-11430-0108",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Reglas de duración del contrato de relevo por jubilación parcial",
+  "pos_id": "BOE-A-2015-11430-0109",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Duración y jornada del contrato de relevo",
+  "pos_id": "BOE-A-2015-11430-0110",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Definición y derechos del trabajo a distancia",
+  "pos_id": "BOE-A-2015-11430-0111",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Duración máxima del periodo de prueba según el Estatuto de los Trabajadores",
+  "pos_id": "BOE-A-2015-11430-0112",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Duración máxima de contratos temporales por exceso de pedidos",
+  "pos_id": "BOE-A-2015-11430-0113",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Contratación eventual por convenio y encadenamiento de temporales",
+  "pos_id": "BOE-A-2015-11430-0114",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Requisitos para prevenir el abuso de contratos temporales",
+  "pos_id": "BOE-A-2015-11430-0115",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre derechos de trabajadores temporales y conversión a indefinidos",
+  "pos_id": "BOE-A-2015-11430-0116",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre contrato fijo-discontinuo en Estatuto de los Trabajadores",
+  "pos_id": "BOE-A-2015-11430-0117",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre nulidad de cláusulas discriminatorias laborales",
+  "pos_id": "BOE-A-2015-11430-0118",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta: medidas de acción positiva y planes de igualdad en negociación colectiva",
+  "pos_id": "BOE-A-2015-11430-0119",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Derechos y obligaciones en seguridad y salud laboral (art. 19 ET)",
+  "pos_id": "BOE-A-2015-11430-0120",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre paralización de actividades por riesgo grave e inminente de accidente laboral",
+  "pos_id": "BOE-A-2015-11430-0121",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre dirección y control de la actividad laboral del trabajador según el Estatuto",
+  "pos_id": "BOE-A-2015-11430-0122",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre pactos de no concurrencia y permanencia",
+  "pos_id": "BOE-A-2015-11430-0123",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta: Sistema de clasificación profesional por grupos profesionales",
+  "pos_id": "BOE-A-2015-11430-0124",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Permiso retribuido de 20 horas anuales de formación profesional",
+  "pos_id": "BOE-A-2015-11430-0125",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué se considera salario según el artículo 26 del Estatuto de los Trabajadores?",
+  "pos_id": "BOE-A-2015-11430-0126",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo debe pagarse el salario y cómo se documenta?",
+  "pos_id": "BOE-A-2015-11430-0127",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Preferencia de créditos salariales en el Estatuto de los Trabajadores",
+  "pos_id": "BOE-A-2015-11430-0128",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué es el Fondo de Garantía Salarial y qué límite tiene?",
+  "pos_id": "BOE-A-2015-11430-0129",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Límites de indemnización del Fondo de Garantía Salarial",
+  "pos_id": "BOE-A-2015-11430-0130",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Límites de indemnización del Fondo de Garantía Salarial",
+  "pos_id": "BOE-A-2015-11430-0131",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre el FOGASA: insolvencia, plazos de prescripción y cotización",
+  "pos_id": "BOE-A-2015-11430-0132",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre el FOGASA y empresas con actividad en dos Estados miembros de la UE",
+  "pos_id": "BOE-A-2015-11430-0133",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuál es la duración máxima de la jornada laboral?",
+  "pos_id": "BOE-A-2015-11430-0134",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuántas horas diarias de trabajo efectivo permite el Estatuto de los Trabajadores?",
+  "pos_id": "BOE-A-2015-11430-0135",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Adaptación de jornada para conciliación en el Estatuto de los Trabajadores",
+  "pos_id": "BOE-A-2015-11430-0136",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta: ¿Cuál es el límite anual de horas extraordinarias y cómo se compensan?",
+  "pos_id": "BOE-A-2015-11430-0137",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Definición y límites del trabajo nocturno en el Estatuto de los Trabajadores",
+  "pos_id": "BOE-A-2015-11430-0138",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Reglas sobre trabajo a turnos y nocturno en el Estatuto",
+  "pos_id": "BOE-A-2015-11430-0139",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Evaluación de salud para trabajadores nocturnos y adaptación del ritmo de trabajo",
+  "pos_id": "BOE-A-2015-11430-0140",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Descanso semanal y fiestas laborales retribuidas",
+  "pos_id": "BOE-A-2015-11430-0141",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Días de permiso retribuido por nacimiento de hijo y traslado",
+  "pos_id": "BOE-A-2015-11430-0142",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Permiso por nacimiento de hijo prematuro hospitalizado",
+  "pos_id": "BOE-A-2015-11430-0143",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Reducción de jornada por hospitalización de menor con cáncer",
+  "pos_id": "BOE-A-2015-11430-0144",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Reducción de jornada por lactancia y preaviso de 15 días",
+  "pos_id": "BOE-A-2015-11430-0145",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuántos días de vacaciones anuales mínimos tiene un trabajador?",
+  "pos_id": "BOE-A-2015-11430-0146",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre movilidad funcional en el Estatuto de los Trabajadores",
+  "pos_id": "BOE-A-2015-11430-0147",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre traslado geográfico y derechos del trabajador",
+  "pos_id": "BOE-A-2015-11430-0148",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué porcentaje de trabajadores debe comprender el traslado en empresas de 100 a 300 empleados?",
+  "pos_id": "BOE-A-2015-11430-0149",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Plazos para constituir comisión representativa en periodo de consultas",
+  "pos_id": "BOE-A-2015-11430-0150",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Traslado de trabajadores y derecho del cónyuge",
+  "pos_id": "BOE-A-2015-11430-0151",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta: derechos de víctimas de violencia de género en traslados de trabajo",
+  "pos_id": "BOE-A-2015-11430-0152",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Derecho preferente a puesto de trabajo para trabajadores con discapacidad en tratamiento",
+  "pos_id": "BOE-A-2015-11430-0153",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué condiciones exige el artículo 41 del Estatuto de los Trabajadores para modificar sustancialmente el horario o turnos de trabajo?",
+  "pos_id": "BOE-A-2015-11430-0154",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta sobre indemnización por modificación sustancial de condiciones de trabajo",
+  "pos_id": "BOE-A-2015-11430-0155",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Consulta: ¿Cuánto dura el periodo de consultas en la modificación sustancial colectiva de condiciones de trabajo?",
+  "pos_id": "BOE-A-2015-11430-0156",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Reglas para formar comisión negociadora en centros de trabajo",
+  "pos_id": "BOE-A-2015-11430-0157",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Plazos para constituir comisión representativa en modificación sustancial de condiciones de trabajo",
+  "pos_id": "BOE-A-2015-11430-0158",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "Periodo de consultas en modificaciones sustanciales de condiciones de trabajo",
+  "pos_id": "BOE-A-2015-11430-0159",
+  "doc": "BOE-A-2015-11430",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué medios de acreditación de la representación ante las Administraciones Públicas admite el artículo 5 de la Ley 39/2015?",
+  "pos_id": "BOE-A-2015-10565-0160",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué ocurre si no se acredita la representación al presentar un acto en un procedimiento administrativo y cómo puede subsanarse?",
+  "pos_id": "BOE-A-2015-10565-0161",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué requisitos de interoperabilidad y comprobación de la representación deben cumplir los registros electrónicos de apoderamientos?",
+  "pos_id": "BOE-A-2015-10565-0162",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué información mínima debe contener un asiento del registro electrónico de apoderamientos y cuánto dura la validez máxima de un poder inscrito?",
+  "pos_id": "BOE-A-2015-10565-0163",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué sistemas electrónicos válidos existen para identificar a los interesados en un procedimiento administrativo?",
+  "pos_id": "BOE-A-2015-10565-0164",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué sistemas de firma electrónica se consideran válidos al relacionarse con las Administraciones Públicas por medios electrónicos?",
+  "pos_id": "BOE-A-2015-10565-0165",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué asistencia deben dar las Administraciones a los interesados que no disponen de medios electrónicos?",
+  "pos_id": "BOE-A-2015-10565-0166",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué derechos tiene el ciudadano en sus relaciones con las Administraciones Públicas según el artículo 13 de la Ley 39/2015?",
+  "pos_id": "BOE-A-2015-10565-0167",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Quiénes están obligados a relacionarse electrónicamente con las Administraciones Públicas y pueden elegir el medio?",
+  "pos_id": "BOE-A-2015-10565-0168",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿En qué lengua se tramita un procedimiento si varios interesados no se ponen de acuerdo sobre la cooficial?",
+  "pos_id": "BOE-A-2015-10565-0169",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué garantías y requisitos debe cumplir el Registro Electrónico General y los registros de los organismos públicos?",
+  "pos_id": "BOE-A-2015-10565-0170",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué debe garantizar el registro electrónico en cada asiento y qué datos de presentación constancia?",
+  "pos_id": "BOE-A-2015-10565-0171",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué hace la oficina de registro con los documentos presentados presencialmente tras digitalizarlos para el expediente electrónico?",
+  "pos_id": "BOE-A-2015-10565-0172",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué condiciones debe cumplir el archivo electrónico de documentos de procedimientos finalizados en cuanto a conservación y seguridad?",
+  "pos_id": "BOE-A-2015-10565-0173",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué debe hacer quien conoce datos de otros interesados que no han comparecido en un procedimiento?",
+  "pos_id": "BOE-A-2015-10565-0174",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué plazo máximo hay para resolver y notificar un procedimiento cuando la norma no lo fija?",
+  "pos_id": "BOE-A-2015-10565-0175",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué deben informar las Administraciones a los interesados sobre el plazo máximo de resolución y los efectos del silencio?",
+  "pos_id": "BOE-A-2015-10565-0176",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuánto tiempo como máximo puede suspenderse el plazo para resolver si se solicita un informe preceptivo?",
+  "pos_id": "BOE-A-2015-10565-0177",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué causas prevé la ley para la suspensión del plazo máximo de resolución de un procedimiento administrativo?",
+  "pos_id": "BOE-A-2015-10565-0178",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿En qué supuestos tiene efecto desestimatorio el silencio administrativo en los procedimientos iniciados a solicitud del interesado?",
+  "pos_id": "BOE-A-2015-10565-0179",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué efectos tiene la estimación del recurso de alzada interpuesto contra la desestimación por silencio administrativo si no se dicta resolución expresa?",
+  "pos_id": "BOE-A-2015-10565-0180",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué requisitos debe cumplir un documento electrónico administrativo para considerarse válido?",
+  "pos_id": "BOE-A-2015-10565-0181",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué validez tienen las copias auténticas de documentos administrativos y quién está habilitado para expedirlas?",
+  "pos_id": "BOE-A-2015-10565-0182",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué reglas exige el artículo 27 para que las copias de documentos administrativos sean válidas y auténticas?",
+  "pos_id": "BOE-A-2015-10565-0183",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿En qué plazo debe expedirse una copia auténtica de un documento público administrativo solicitada por un interesado?",
+  "pos_id": "BOE-A-2015-10565-0184",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "Consulta: ¿Puede un interesado negarse a aportar documentos que ya posea la Administración en un procedimiento administrativo?",
+  "pos_id": "BOE-A-2015-10565-0185",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Puede la Administración requerirme un documento que ya aporté anteriormente a otra Administración pública?",
+  "pos_id": "BOE-A-2015-10565-0186",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Cómo se computa un plazo administrativo en días y qué días se excluyen del cómputo?",
+  "pos_id": "BOE-A-2015-10565-0187",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Cómo se computan los plazos cuando un documento se presenta en día inhábil en el registro electrónico?",
+  "pos_id": "BOE-A-2015-10565-0189",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuánto puede ampliarse un plazo del procedimiento administrativo y cuándo debe solicitarse la ampliación?",
+  "pos_id": "BOE-A-2015-10565-0190",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué actos administrativos están obligados a motivarse según el artículo 35 de la Ley 39/2015?",
+  "pos_id": "BOE-A-2015-10565-0191",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué forma deben tener los actos administrativos y qué ocurre cuando se dictan verbalmente o en serie?",
+  "pos_id": "BOE-A-2015-10565-0192",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Desde cuándo producen efectos los actos administrativos y en qué casos puede demorarse o otorgarse eficacia retroactiva a su eficacia?",
+  "pos_id": "BOE-A-2015-10565-0193",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué contenido debe tener una notificación y en qué plazo debe cursarse según la Ley 39/2015?",
+  "pos_id": "BOE-A-2015-10565-0194",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo pueden las administraciones practicar notificaciones por medios no electrónicos aunque el interesado esté obligado a recibirlas electrónicamente?",
+  "pos_id": "BOE-A-2015-10565-0195",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Es válida una notificación si la Administración no envía el aviso previo a la sede electrónica?",
+  "pos_id": "BOE-A-2015-10565-0196",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pasa si nadie se hace cargo de una notificación en papel en el domicilio y cuántos intentos se realizan?",
+  "pos_id": "BOE-A-2015-10565-0197",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo se entiende practicada una notificación electrónica y cuándo se considera rechazada si es obligatoria?",
+  "pos_id": "BOE-A-2015-10565-0198",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo debe publicarse un acto en el diario oficial y qué efectos tiene esa publicación?",
+  "pos_id": "BOE-A-2015-10565-0199",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué derechos tienen los interesados en un procedimiento administrativo según el artículo 53 de la Ley 39/2015?",
+  "pos_id": "BOE-A-2015-10565-0200",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué medidas provisionales puede adoptar el órgano administrativo antes o durante del procedimiento y en qué plazo deben confirmarse?",
+  "pos_id": "BOE-A-2015-10565-0201",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué medidas provisionales pueden adoptarse en un procedimiento administrativo y cuándo se extinguen?",
+  "pos_id": "BOE-A-2015-10565-0202",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué debe especificar una petición razonada en un procedimiento sancionador y vincula al órgano competente para iniciarlo?",
+  "pos_id": "BOE-A-2015-10565-0203",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué es una denuncia administrativa y qué requisitos mínimos debe contener según la ley?",
+  "pos_id": "BOE-A-2015-10565-0204",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué consecuencias tiene que el presunto responsable no presente alegaciones en el plazo en un procedimiento sancionador?",
+  "pos_id": "BOE-A-2015-10565-0205",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué requisitos formales debe cumplir una solicitud para iniciar un procedimiento administrativo y cuándo puede presentarse una única solicitud para varias personas?",
+  "pos_id": "BOE-A-2015-10565-0206",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿En qué plazo prescribe el derecho a reclamar una indemnización por responsabilidad patrimonial?",
+  "pos_id": "BOE-A-2015-10565-0207",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué plazo tiene el interesado para subsanar la solicitud y qué ocurre si no lo hace?",
+  "pos_id": "BOE-A-2015-10565-0208",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué diferencia hay entre una declaración responsable y una comunicación, y desde cuándo permiten ejercer un derecho o iniciar una actividad?",
+  "pos_id": "BOE-A-2015-10565-0209",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué consecuencias tiene la inexactitud esencial de datos en una declaración responsable o comunicación?",
+  "pos_id": "BOE-A-2015-10565-0210",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué información se excluye del expediente administrativo por tener carácter auxiliar o de apoyo?",
+  "pos_id": "BOE-A-2015-10565-0211",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Cómo deben realizarse los actos de instrucción y qué garantías debe asegurar el órgano instructor en el procedimiento?",
+  "pos_id": "BOE-A-2015-10565-0212",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué plazo tiene el instructor para abrir un período de prueba y cuándo puede rechazar las pruebas propuestas?",
+  "pos_id": "BOE-A-2015-10565-0213",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pasa si no se emite un informe en el plazo de diez días en un procedimiento administrativo?",
+  "pos_id": "BOE-A-2015-10565-0214",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué informe es preceptivo en un procedimiento de responsabilidad patrimonial y cuándo se requiere dictamen del Consejo de Estado?",
+  "pos_id": "BOE-A-2015-10565-0215",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿En qué plazo pueden alegar los interesados en el trámite de audiencia y cuándo puede prescindirse de él?",
+  "pos_id": "BOE-A-2015-10565-0216",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuál es el plazo mínimo para formular alegaciones en el trámite de información pública y qué efectos tiene no comparecer?",
+  "pos_id": "BOE-A-2015-10565-0217",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué pasa si el infractor reconoce su responsabilidad en un procedimiento sancionador y paga voluntariamente antes de la resolución?",
+  "pos_id": "BOE-A-2015-10565-0218",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué contenido mínimo y qué requisitos deben cumplir los acuerdos, pactos y convenios que celebren las Administraciones Públicas?",
+  "pos_id": "BOE-A-2015-10565-0219",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "Tu último mensaje parece haber llegado corrupto: mezcla un texto que no corresponde con el artículo 88 real de la Ley 39/2015 y un fragmento de código truncado, por lo que no lo uso como base.",
+  "pos_id": "BOE-A-2015-10565-0220",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué debe contener la propuesta de resolución en un procedimiento sancionador y cuándo puede omitirse su formulación?",
+  "pos_id": "BOE-A-2015-10565-0221",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué debe incluir la resolución en un procedimiento sancionador y cuándo es ejecutiva?",
+  "pos_id": "BOE-A-2015-10565-0222",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué debe contener la resolución en procedimientos de responsabilidad patrimonial y qué ocurre si pasan seis meses sin resolución?",
+  "pos_id": "BOE-A-2015-10565-0223",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Puede la Administración seguir un procedimiento si su incoación entraña interés general pese al desistimiento del interesado?",
+  "pos_id": "BOE-A-2015-10565-0224",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué ocurre si el interesado paraliza un procedimiento y no lo reanuda en tres meses?",
+  "pos_id": "BOE-A-2015-10565-0225",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo puede acordarse la tramitación simplificada del procedimiento administrativo común y cómo oponerse los interesados?",
+  "pos_id": "BOE-A-2015-10565-0226",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué trámites incluye la tramitación simplificada y en qué plazo debe resolverse el procedimiento?",
+  "pos_id": "BOE-A-2015-10565-0227",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo puede la Administración declarar de oficio la nulidad de sus actos y qué papel juega el dictamen consultivo?",
+  "pos_id": "BOE-A-2015-10565-0228",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuánto tiempo tiene la Administración para declarar la lesividad de un acto anulable y qué pasa si no lo hace?",
+  "pos_id": "BOE-A-2015-10565-0229",
+  "doc": "BOE-A-2015-10565",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué principios rigen la contratación del sector público y cómo se garantiza el acceso de las pymes?",
+  "pos_id": "BOE-A-2017-12902-0230",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué contratos están sujetos a la Ley de Contratos del Sector Público y cómo se determina que un contrato es oneroso?",
+  "pos_id": "BOE-A-2017-12902-0231",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué entidades integran el sector público según la Ley de Contratos, incluidas las fundaciones públicas y sus requisitos?",
+  "pos_id": "BOE-A-2017-12902-0232",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Forman parte del sector público las sociedades mercantiles con más del 50% de capital en manos de entidades públicas?",
+  "pos_id": "BOE-A-2017-12902-0233",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué entidades de derecho público se consideran poder adjudicador aunque no se financien mayoritariamente con ingresos de mercado?",
+  "pos_id": "BOE-A-2017-12902-0234",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué contratos del ámbito de la defensa y seguridad quedan fuera de esta ley?",
+  "pos_id": "BOE-A-2017-12902-0235",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué contratos de defensa o seguridad quedan excluidos de la Ley de Contratos del Sector Público cuando se adjudican según un acuerdo internacional sobre estacionamiento de tropas?",
+  "pos_id": "BOE-A-2017-12902-0236",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué requisitos debe cumplir un convenio entre entidades públicas para quedar excluido de la Ley de Contratos del Sector Público?",
+  "pos_id": "BOE-A-2017-12902-0237",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué contratos celebrados con organizaciones o instituciones financieras internacionales quedan fuera del ámbito de la Ley de Contratos del Sector Público?",
+  "pos_id": "BOE-A-2017-12902-0238",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Están excluidos de la Ley de Contratos del Sector Público los contratos de compraventa y arrendamiento de inmuebles, y en qué casos se aplicaría a programas de ordenador?",
+  "pos_id": "BOE-A-2017-12902-0239",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Están excluidos de la Ley de Contratos del Sector Público los contratos de arbitraje y conciliación y los servicios de campañas políticas adjudicados por un partido político?",
+  "pos_id": "BOE-A-2017-12902-0240",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Puede contratarse una obra sin referirse a una obra completa cuando la Administración ejecuta las obras por sí misma?",
+  "pos_id": "BOE-A-2017-12902-0241",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué debe implicar el derecho de explotación de las obras en un contrato de concesión de obras?",
+  "pos_id": "BOE-A-2017-12902-0242",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Se considera contrato de suministro la adquisición de programas de ordenador desarrollados a medida?",
+  "pos_id": "BOE-A-2017-12902-0243",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "**Consulta:** ¿Qué normas se aplican para adjudicar un contrato mixto que combina servicios y suministros, y cómo se determina su objeto principal?",
+  "pos_id": "BOE-A-2017-12902-0244",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué normas se aplican a un contrato mixto con prestaciones separables de obras y de concesión si se adjudica un contrato único?",
+  "pos_id": "BOE-A-2017-12902-0245",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué contratos se sujetan a regulación armonizada?",
+  "pos_id": "BOE-A-2017-12902-0246",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué órganos pueden declarar la protección de intereses esenciales para la seguridad del Estado en contratos?",
+  "pos_id": "BOE-A-2017-12902-0247",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué servicios jurídicos quedan excluidos del ámbito de la ley cuando deben ser prestados por un notario público?",
+  "pos_id": "BOE-A-2017-12902-0248",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué normas se aplican a los efectos y extinción de los contratos privados del sector público?",
+  "pos_id": "BOE-A-2017-12902-0249",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Ante qué orden jurisdiccional se impugna la adjudicación de un contrato privado de una Administración Pública?",
+  "pos_id": "BOE-A-2017-12902-0250",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué principios debe respetar una entidad del sector público antes de celebrar un contrato y qué requisitos de documentación preparatoria exige el artículo 28?",
+  "pos_id": "BOE-A-2017-12902-0251",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Es obligatoria la prórroga para el empresario y con cuánta antelación debe preavisar el órgano de contratación?",
+  "pos_id": "BOE-A-2017-12902-0252",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuál es el plazo máximo de duración de los contratos de suministros y servicios de prestación sucesiva, incluyendo prórrogas?",
+  "pos_id": "BOE-A-2017-12902-0253",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuánto puede prorrogarse un contrato vencido a la espera del nuevo adjudicatario?",
+  "pos_id": "BOE-A-2017-12902-0254",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuál es la duración máxima de un contrato de concesión de servicios no sanitarios?",
+  "pos_id": "BOE-A-2017-12902-0255",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuánto dura como máximo una concesión de servicios sanitarios y qué ocurre si el retraso es culpa del concesionario?",
+  "pos_id": "BOE-A-2017-12902-0256",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿En qué casos puede la Administración ejecutar obras directamente con empresarios particulares en lugar de licitar?",
+  "pos_id": "BOE-A-2017-12902-0257",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuándo puede la Administración fabricar bienes muebles con colaboración de empresarios particulares y qué régimen jurídico se aplica a esos contratos?",
+  "pos_id": "BOE-A-2017-12902-0258",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué responsabilidad tienen varias entidades del sector público cuando contratan conjuntamente en nombre y por cuenta de todas ellas?",
+  "pos_id": "BOE-A-2017-12902-0259",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué requisitos debe cumplir una entidad para ser medio propio personificado y cómo se calcula su compensación?",
+  "pos_id": "BOE-A-2017-12902-0260",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué porcentaje de actividades debe realizar un medio propio para el poder adjudicador que lo controla?",
+  "pos_id": "BOE-A-2017-12902-0261",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué requisitos debe cumplir una entidad para ser considerada medio propio personificado de un poder adjudicador?",
+  "pos_id": "BOE-A-2017-12902-0262",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué requisitos debe cumplir un ente para ser medio propio personificado de dos o más poderes adjudicadores con control conjunto?",
+  "pos_id": "BOE-A-2017-12902-0263",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué requisitos debe cumplir un medio propio personificado para que los encargos no se consideren contrato, y qué normas debe cumplir la formalización de dichos encargos?",
+  "pos_id": "BOE-A-2017-12902-0264",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué documentos se requieren para autorizar el Consejo de Ministros un encargo a un medio propio y sus modificaciones?",
+  "pos_id": "BOE-A-2017-12902-0265",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué requisitos debe cumplir una persona jurídica para ser considerada medio propio personificado de una entidad del sector público que no es poder adjudicador?",
+  "pos_id": "BOE-A-2017-12902-0266",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué menciones debe incluir el contrato si se han pactado varios documentos y existe contradicción entre ellos?",
+  "pos_id": "BOE-A-2017-12902-0267",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuándo se perfeccionan los contratos basados en un acuerdo marco y los del sistema dinámico de adquisición?",
+  "pos_id": "BOE-A-2017-12902-0268",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuándo es nulo de pleno derecho un contrato público por falta de crédito o por no publicar el anuncio de licitación?",
+  "pos_id": "BOE-A-2017-12902-0269",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué órgano es competente para declarar la nulidad o lesividad de los actos de adjudicación cuando el contratante no es una Administración Pública?",
+  "pos_id": "BOE-A-2017-12902-0270",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué órgano es competente para declarar la nulidad de un contrato cuando la entidad contratante está vinculada a varias Administraciones?",
+  "pos_id": "BOE-A-2017-12902-0271",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué efectos tiene la nulidad de un contrato público si causa grave trastorno al servicio público?",
+  "pos_id": "BOE-A-2017-12902-0272",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué actos de trámite del procedimiento de adjudicación pueden recurrirse mediante el recurso especial en materia de contratación?",
+  "pos_id": "BOE-A-2017-12902-0273",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué actos del procedimiento de adjudicación pueden impugnarse mediante el recurso especial en contratos públicos?",
+  "pos_id": "BOE-A-2017-12902-0274",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Quién resuelve los recursos contractuales en la Administración General del Estado y qué requisitos deben cumplir su presidente y vocales?",
+  "pos_id": "BOE-A-2017-12902-0275",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Quién designa al Presidente y los Vocales del Tribunal Recursivo y por qué causas pueden ser removidos?",
+  "pos_id": "BOE-A-2017-12902-0276",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué requisitos debe cumplir el órgano independiente de una Comunidad Autónoma para resolver recursos en materia de contratos?",
+  "pos_id": "BOE-A-2017-12902-0277",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Quién resuelve los recursos de contratación en las Corporaciones Locales?",
+  "pos_id": "BOE-A-2017-12902-0278",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Ante qué órgano se recurre un acto de una entidad contratante vinculada a varias Administraciones con igual participación?",
+  "pos_id": "BOE-A-2017-12902-0279",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "Medidas cautelares antes del recurso especial en contratos públicos",
+  "pos_id": "BOE-A-2017-12902-0280",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Caducan las medidas cautelares si no se interpone el recurso especial en contratación dentro del plazo?",
+  "pos_id": "BOE-A-2017-12902-0281",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "Plazo para recurrir pliegos de licitación",
+  "pos_id": "BOE-A-2017-12902-0282",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Desde cuándo se computa el plazo para recurrir la adjudicación de un contrato público?",
+  "pos_id": "BOE-A-2017-12902-0283",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Dónde puede presentarse el escrito de interposición del recurso especial en materia de contratación y qué debe acompañarlo?",
+  "pos_id": "BOE-A-2017-12902-0284",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué plazo tiene el órgano de contratación para facilitar el acceso al expediente cuando se solicita antes de interponer el recurso especial?",
+  "pos_id": "BOE-A-2017-12902-0285",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿En qué plazo debe remitirse el expediente de contratación tras interponerse un recurso especial y cuántos días tienen los interesados para alegaciones?",
+  "pos_id": "BOE-A-2017-12902-0286",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿En qué plazo debe resolverse sobre las medidas cautelares solicitadas junto al recurso y puede el órgano acordarlas de oficio?",
+  "pos_id": "BOE-A-2017-12902-0287",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿En qué plazo debe resolver el órgano competente el recurso especial tras recibir las alegaciones y cómo se notifica la resolución a los interesados?",
+  "pos_id": "BOE-A-2017-12902-0288",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Puede el órgano competente imponer una multa por interponer un recurso con temeridad o mala fe y cuál es su importe?",
+  "pos_id": "BOE-A-2017-12902-0289",
+  "doc": "BOE-A-2017-12902",
+  "split": "test"
+ },
+ {
+  "q": "¿Se aplica la ley a los datos de personas fallecidas?",
+  "pos_id": "BOE-A-2018-16673-0290",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Quién puede acceder a los datos personales de una persona fallecida y en qué casos se lo prohíbe la ley?",
+  "pos_id": "BOE-A-2018-16673-0291",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Es responsable el responsable del tratamiento si los datos inexactos los obtuvo de un registro público o de un intermediario?",
+  "pos_id": "BOE-A-2018-16673-0292",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué norma puede fundamentar el tratamiento de datos por obligación legal o interés público según el artículo 8?",
+  "pos_id": "BOE-A-2018-16673-0293",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Basta el consentimiento del afectado para tratar datos sobre su ideología, religión u orientación sexual?",
+  "pos_id": "BOE-A-2018-16673-0294",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Bajo qué condiciones pueden los abogados y procuradores tratar datos de condenas e infracciones penales de sus clientes?",
+  "pos_id": "BOE-A-2018-16673-0295",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué debe contener la información básica cuando los datos no se obtienen del afectado y cómo puede facilitarse el resto de la información?",
+  "pos_id": "BOE-A-2018-16673-0296",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Puede un menor de catorce años ejercer sus derechos de acceso y rectificación a través de sus padres?",
+  "pos_id": "BOE-A-2018-16673-0297",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Puede el responsable pedir al afectado que especifique qué datos quiere cuando ejercita el derecho de acceso sobre una gran cantidad de datos?",
+  "pos_id": "BOE-A-2018-16673-0298",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuánto tiempo pueden permanecer mis datos de deuda en un sistema de información crediticia?",
+  "pos_id": "BOE-A-2018-16673-0299",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué requisitos y obligaciones deben cumplir los sistemas de información crediticia al incluir datos de deudores según el artículo 20?",
+  "pos_id": "BOE-A-2018-16673-0300",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuánto tiempo pueden conservarse las imágenes de videovigilancia y cuándo deben entregarse a la autoridad?",
+  "pos_id": "BOE-A-2018-16673-0301",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué debe incluir el dispositivo informativo y qué tratamientos de imágenes están excluidos del Reglamento?",
+  "pos_id": "BOE-A-2018-16673-0302",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué normativa aplica al tratamiento de imágenes de videocámaras por parte del empleador en la empresa?",
+  "pos_id": "BOE-A-2018-16673-0303",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué deben hacer las empresas cuando un usuario se opone a recibir publicidad y qué son los sistemas de exclusión publicitaria?",
+  "pos_id": "BOE-A-2018-16673-0304",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué requisitos exige la ley para los canales internos de denuncias de empresas privadas y quién puede acceder a esos datos?",
+  "pos_id": "BOE-A-2018-16673-0305",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuánto tiempo se conservan los datos en el sistema de denuncias internas y qué ocurre al cumplirse tres meses?",
+  "pos_id": "BOE-A-2018-16673-0306",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Puede denegar un organismo estadístico los derechos de acceso o supresión si los datos están protegidos por el secreto estadístico?",
+  "pos_id": "BOE-A-2018-16673-0307",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué medidas deben adoptar responsables y encargados cuando el tratamiento implica categorías especiales de datos o podría privar a los afectados del control sobre sus datos?",
+  "pos_id": "BOE-A-2018-16673-0308",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué supuestos requieren una evaluación de impacto en protección de datos según el artículo 28?",
+  "pos_id": "BOE-A-2018-16673-0309",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Responde el representante de un responsable no establecido en la UE de forma solidaria ante la AEPD y por daños y perjuicios según el artículo 82 del RGPD?",
+  "pos_id": "BOE-A-2018-16673-0310",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué obligaciones tiene el responsable del tratamiento al bloquear datos y qué ocurre al vencer el plazo de prescripción?",
+  "pos_id": "BOE-A-2018-16673-0311",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Puede el encargado del tratamiento conservar datos bloqueados tras finalizar el servicio por posibles responsabilidades?",
+  "pos_id": "BOE-A-2018-16673-0312",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué entidades están obligadas a designar un delegado de protección de datos según el artículo 34 de la Ley de Protección de Datos?",
+  "pos_id": "BOE-A-2018-16673-0313",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Están obligados los centros sanitarios a designar delegado de protección de datos y qué plazo hay para comunicar su nombramiento?",
+  "pos_id": "BOE-A-2018-16673-0314",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Puede el responsable del tratamiento sancionar o remover a su delegado de protección de datos por desempeñar sus funciones?",
+  "pos_id": "BOE-A-2018-16673-0315",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Puede el afectado acudir primero al delegado de protección de datos antes de reclamar ante la Agencia Española de Protección de Datos y en qué plazo responde?",
+  "pos_id": "BOE-A-2018-16673-0316",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Quién puede promover los códigos de conducta y qué obligaciones tienen los responsables que se adhieran a ellos?",
+  "pos_id": "BOE-A-2018-16673-0317",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Cómo se someten los códigos de conducta al mecanismo de coherencia del RGPD y qué ocurre con el procedimiento mientras el Comité Europeo emite su dictamen?",
+  "pos_id": "BOE-A-2018-16673-0318",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Quién puede aprobar normas corporativas vinculantes y cuál es la duración máxima del procedimiento?",
+  "pos_id": "BOE-A-2018-16673-0319",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué requisitos exige la ley para autorizar transferencias internacionales de datos a países sin decisión de adecuación, y qué efecto tiene la remisión del expediente al Comité Europeo?",
+  "pos_id": "BOE-A-2018-16673-0320",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué naturaleza, denominación oficial y ministerio de relación tiene la Agencia Española de Protección de Datos?",
+  "pos_id": "BOE-A-2018-16673-0321",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué porcentaje del presupuesto puede autorizar la Presidencia de la AEPD en modificaciones presupuestarias?",
+  "pos_id": "BOE-A-2018-16673-0322",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué normativa regula el personal de la Agencia Española de Protección de Datos y qué órganos controlan su gestión económica?",
+  "pos_id": "BOE-A-2018-16673-0323",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Quién nombra a la Presidencia de la Agencia Española de Protección de Datos y a su Adjunto, y qué requisitos deben cumplir?",
+  "pos_id": "BOE-A-2018-16673-0324",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Quién nombra al Presidente de la Agencia Española de Protección de Datos y cuánto dura su mandato?",
+  "pos_id": "BOE-A-2018-16673-0325",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Quién propone al representante de las comunidades autónomas en el Consejo Consultivo de la Agencia Española de Protección de Datos?",
+  "pos_id": "BOE-A-2018-16673-0326",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué personal puede llevar a cabo las actividades de investigación de la Agencia Española de Protección de Datos y qué consideración tienen esos funcionarios?",
+  "pos_id": "BOE-A-2018-16673-0327",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Están obligadas las Administraciones tributarias y de la Seguridad Social a facilitar datos a la Agencia Española de Protección de Datos para sus investigaciones?",
+  "pos_id": "BOE-A-2018-16673-0328",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué datos puede recabar la Agencia Española de Protección de Datos de operadores y prestadores para identificar al responsable de una infracción cometida por correo electrónico?",
+  "pos_id": "BOE-A-2018-16673-0329",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Puede la Agencia Española de Protección de Datos dictar directrices de obligado cumplimiento tras un plan de auditoría preventiva a un sector?",
+  "pos_id": "BOE-A-2018-16673-0330",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué funciones de acción exterior en protección de datos corresponden a la Agencia Española de Protección de Datos y a las comunidades autónomas?",
+  "pos_id": "BOE-A-2018-16673-0331",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué funciones tiene la Agencia Española de Protección de Datos en el ámbito internacional y en su colaboración con otros Estados?",
+  "pos_id": "BOE-A-2018-16673-0332",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué normas rigen los procedimientos de la Agencia Española de Protección de Datos y en qué casos reclama un afectado?",
+  "pos_id": "BOE-A-2018-16673-0333",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿En qué plazo debe resolverse el procedimiento iniciado por falta de respuesta a una solicitud de ejercicio de derechos del RGPD y qué ocurre si transcurre?",
+  "pos_id": "BOE-A-2018-16673-0334",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuál es el plazo máximo de duración del procedimiento y qué ocurre si se supera?",
+  "pos_id": "BOE-A-2018-16673-0335",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿En qué casos puede la Agencia Española de Protección de Datos inadmitir una reclamación y en qué plazo debe notificar su decisión?",
+  "pos_id": "BOE-A-2018-16673-0336",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuándo debe la AEPD examinar su competencia y determinar si un procedimiento es nacional o transfronterizo?",
+  "pos_id": "BOE-A-2018-16673-0337",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Cuál es el plazo máximo de duración de las actuaciones previas de investigación de la Agencia Española de Protección de Datos y desde cuándo se cuenta?",
+  "pos_id": "BOE-A-2018-16673-0338",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Puede la Agencia Española de Protección de Datos ordenar el bloqueo cautelar de datos antes de iniciar el procedimiento sancionador cuando el tratamiento cause un menoscabo grave?",
+  "pos_id": "BOE-A-2018-16673-0339",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué tratamiento de datos se considera infracción muy grave y cuándo prescribe?",
+  "pos_id": "BOE-A-2018-16673-0340",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Es muy grave cobrar un canon por atender solicitudes de acceso o ejercicio de derechos del afectado?",
+  "pos_id": "BOE-A-2018-16673-0341",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué infracciones sobre el consentimiento del menor o la atención a derechos de acceso y supresión se consideran graves y en cuánto prescriben?",
+  "pos_id": "BOE-A-2018-16673-0342",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué se considera infracción grave si un encargado de tratamiento subcontrata sin autorización previa del responsable?",
+  "pos_id": "BOE-A-2018-16673-0343",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué infracciones se consideran graves por no disponer del registro de actividades de tratamiento o no presentarlo a la autoridad de control?",
+  "pos_id": "BOE-A-2018-16673-0344",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué infracciones graves se cometen por no designar delegado de protección de datos o usar sellos no acreditados?",
+  "pos_id": "BOE-A-2018-16673-0345",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué se considera infracción grave presentar información inexacta para acreditarse como organismo de certificación?",
+  "pos_id": "BOE-A-2018-16673-0346",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Es infracción leve no atender las solicitudes de acceso, rectificación o supresión de datos personales?",
+  "pos_id": "BOE-A-2018-16673-0347",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué infracciones leves tipifica el artículo 74 de la Ley de Protección de Datos Personales?",
+  "pos_id": "BOE-A-2018-16673-0348",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Qué obligaciones tiene el encargado del tratamiento tras una violación de seguridad de datos personales según esta ley?",
+  "pos_id": "BOE-A-2018-16673-0349",
+  "doc": "BOE-A-2018-16673",
+  "split": "test"
+ },
+ {
+  "q": "¿Puede el presidente de Canarias compaginar su cargo con la administración de su patrimonio familiar?",
+  "pos_id": "BOE-A-2023-12668-0350",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Puede el presidente de Canarias convocar elecciones al Parlamento y proponer consultas populares?",
+  "pos_id": "BOE-A-2023-12668-0351",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Quién puede plantear la cuestión de confianza ante el Parlamento de Canarias y disolverlo?",
+  "pos_id": "BOE-A-2023-12668-0352",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Quién nombra y cesa a los consejeros del Gobierno de Canarias?",
+  "pos_id": "BOE-A-2023-12668-0353",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué derechos tiene un expresidente de Canarias tras cesar en el cargo y qué le está prohibido percibir?",
+  "pos_id": "BOE-A-2023-12668-0354",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Puede el Gobierno solicitar al Parlamento de Canarias una sesión extraordinaria y remitirle comunicaciones para debate?",
+  "pos_id": "BOE-A-2023-12668-0355",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué funciones ejecutivas y administrativas corresponden al Gobierno de Canarias según el artículo 31?",
+  "pos_id": "BOE-A-2023-12668-0356",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Quién nombra y cesa a los altos cargos de la Administración de la comunidad autónoma de Canarias?",
+  "pos_id": "BOE-A-2023-12668-0357",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Quién nombra y cesa al vicepresidente del Gobierno de Canarias y en qué plazos debe tomar posesión?",
+  "pos_id": "BOE-A-2023-12668-0358",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Cómo y ante quién se realiza la toma de posesión de los consejeros y en qué plazo tras su publicación?",
+  "pos_id": "BOE-A-2023-12668-0359",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Dónde se publican los trámites de consulta previa e información pública en la elaboración de normas del Gobierno de Canarias?",
+  "pos_id": "BOE-A-2023-12668-0360",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué requisitos previos exige el Gobierno para iniciar la elaboración de un proyecto de ley en Canarias?",
+  "pos_id": "BOE-A-2023-12668-0361",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué contenido debe incluir la memoria justificativa elaborada junto con el anteproyecto de ley?",
+  "pos_id": "BOE-A-2023-12668-0362",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué plazo mínimo debe respetar el trámite de audiencia cuando un anteproyecto de ley afecta a derechos e intereses legítimos?",
+  "pos_id": "BOE-A-2023-12668-0363",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿En qué casos puede el Gobierno acordar la tramitación urgente de anteproyectos de ley y qué plazos se aplican a la audiencia e informes?",
+  "pos_id": "BOE-A-2023-12668-0364",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Quién elabora el proyecto de decreto ley y su memoria justificativa abreviada en materia de vivienda?",
+  "pos_id": "BOE-A-2023-12668-0365",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué trámites deben seguirse para elaborar un decreto legislativo del Gobierno de Canarias y cuándo se solicita el dictamen del Consejo Consultivo?",
+  "pos_id": "BOE-A-2023-12668-0366",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué supuestos eximen de la consulta previa en la elaboración de un reglamento?",
+  "pos_id": "BOE-A-2023-12668-0367",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuándo puede omitirse el trámite de audiencia en un procedimiento de elaboración normativa?",
+  "pos_id": "BOE-A-2023-12668-0368",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué efectos tiene la tramitación urgente en los plazos de audiencia e información pública y en los informes preceptivos?",
+  "pos_id": "BOE-A-2023-12668-0369",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué informes e informes justificativos se exigen para aprobar disposiciones reglamentarias de carácter organizativo y para los decretos de estructura de las consejerías?",
+  "pos_id": "BOE-A-2023-12668-0370",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Puede el Gobierno celebrar sesiones y adoptar acuerdos a distancia por videoconferencia en circunstancias excepcionales?",
+  "pos_id": "BOE-A-2023-12668-0371",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Qué derechos conservan los empleados públicos canarios que asumen un alto cargo, como dirección del Servicio Canario de la Salud o delegación en Bruselas, Caracas o Madrid?",
+  "pos_id": "BOE-A-2023-12668-0372",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Quién aprueba la estructura orgánica y las sedes de las consejerías del Gobierno de Canarias?",
+  "pos_id": "BOE-A-2023-12668-0373",
+  "doc": "BOE-A-2023-12668",
+  "split": "train"
+ },
+ {
+  "q": "¿Cuáles son los objetivos generales de la Ley de Economía Sostenible en materia de investigación, innovación y desarrollo sostenible?",
+  "pos_id": "BOE-A-2011-9617-0374",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué objetivos recoge la ley para promover la igualdad de mujeres y hombres en el sistema español de ciencia, tecnología e innovación?",
+  "pos_id": "BOE-A-2011-9617-0375",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué se entiende por Sistema Español de Ciencia, Tecnología e Innovación y quiénes son sus agentes de coordinación?",
+  "pos_id": "BOE-A-2011-9617-0376",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué principios de composición equilibrada entre mujeres y hombres deben seguir los órganos y comités de evaluación del sistema de ciencia e innovación?",
+  "pos_id": "BOE-A-2011-9617-0377",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué medidas prevé la ley sobre transversalidad de género en ciencia e innovación?",
+  "pos_id": "BOE-A-2011-9617-0378",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Cómo afectan los permisos por maternidad o cuidado de familiares a la evaluación del personal docente e investigador universitario?",
+  "pos_id": "BOE-A-2011-9617-0379",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "Medidas de igualdad en el Sistema Español de Ciencia, Tecnología e Innovación",
+  "pos_id": "BOE-A-2011-9617-0380",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué medidas incluye la ley para incorporar criterios de igualdad en la contratación pública y evaluar su impacto de género?",
+  "pos_id": "BOE-A-2011-9617-0381",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué principios rigen la evaluación científica para asignar recursos públicos y cómo se protege el anonimato de los evaluadores por pares?",
+  "pos_id": "BOE-A-2011-9617-0382",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué define y articula la Estrategia Española de Ciencia y Tecnología según la Ley de Economía Sostenible?",
+  "pos_id": "BOE-A-2011-9617-0383",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué debe incluir la Estrategia Española de Innovación según su período plurianual?",
+  "pos_id": "BOE-A-2011-9617-0384",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué funciones tiene el Consejo de Política Científica, Tecnológica y de Innovación respecto a los planes estatales y el intercambio de información?",
+  "pos_id": "BOE-A-2011-9617-0385",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué mayoría se exige en el Consejo para aprobar los asuntos de los apartados a), c) y f) del artículo 8 y cómo se distribuyen los votos entre el Estado y las Comunidades Autónomas?",
+  "pos_id": "BOE-A-2011-9617-0386",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué funciones tiene el Consejo Asesor de Ciencia, Tecnología e Innovación y a qué ministerio está adscrito?",
+  "pos_id": "BOE-A-2011-9617-0387",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué funciones tiene el Comité Español de Ética de la Investigación y ante quién se adscribe?",
+  "pos_id": "BOE-A-2011-9617-0388",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Cuánto dura el mandato de los miembros del Comité Español de Ética de la Investigación y cuándo cesan?",
+  "pos_id": "BOE-A-2011-9617-0389",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué organismo crea el Sistema de Información sobre Ciencia, Tecnología e Innovación y bajo qué ministerio depende?",
+  "pos_id": "BOE-A-2011-9617-0390",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué tipos de vinculación y figuras puede tener el personal investigador en una universidad u organismo público?",
+  "pos_id": "BOE-A-2011-9617-0391",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué derechos tiene el personal investigador de universidades públicas sobre métodos, autoría, igualdad y medios?",
+  "pos_id": "BOE-A-2011-9617-0392",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Tiene derecho el personal investigador a participar en los beneficios derivados de la explotación de sus resultados de investigación y eso cuenta como salario?",
+  "pos_id": "BOE-A-2011-9617-0393",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Cuáles son los deberes del personal investigador universitario?",
+  "pos_id": "BOE-A-2011-9617-0394",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué deberes tiene el personal investigador en materia de rendición de cuentas, uso de la denominación de la entidad, seguridad y protección de datos?",
+  "pos_id": "BOE-A-2011-9617-0395",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué principios deben respetar los procesos de selección del personal investigador en organismos públicos y universidades?",
+  "pos_id": "BOE-A-2011-9617-0396",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué tipos de movilidad del personal investigador deben promover las universidades y organismos públicos?",
+  "pos_id": "BOE-A-2011-9617-0397",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "Adscripción del personal investigador a otros agentes de investigación",
+  "pos_id": "BOE-A-2011-9617-0398",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "Excedencia temporal del personal investigador con cinco años de antigüedad",
+  "pos_id": "BOE-A-2011-9617-0399",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "Duración máxima y efectos de la excedencia temporal del personal investigador",
+  "pos_id": "BOE-A-2011-9617-0400",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Puede un funcionario de carrera de una universidad pública solicitar excedencia para dirigir un centro de investigación privado?",
+  "pos_id": "BOE-A-2011-9617-0401",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "Requisitos para excedencia temporal de personal investigador",
+  "pos_id": "BOE-A-2011-9617-0402",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "Excedencia voluntaria y reingreso del personal investigador tras estancias formativas",
+  "pos_id": "BOE-A-2011-9617-0403",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "Duración máxima de estancias formativas del personal investigador",
+  "pos_id": "BOE-A-2011-9617-0404",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Puede un investigador de una universidad pública trabajar a tiempo parcial en una empresa participada por la universidad?",
+  "pos_id": "BOE-A-2011-9617-0405",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué modalidades de contrato de trabajo específicas existen para el personal investigador y qué entidades pueden contratarlas?",
+  "pos_id": "BOE-A-2011-9617-0406",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Cuál es la duración máxima de un contrato predoctoral y qué requisitos formales debe cumplir?",
+  "pos_id": "BOE-A-2011-9617-0407",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Cuál es la duración máxima y mínima del contrato de acceso al Sistema Español de Ciencia, Tecnología e Innovación y puede prorrogarse?",
+  "pos_id": "BOE-A-2011-9617-0408",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Puede el personal investigador contratado realizar tareas docentes y cuántas horas anuales como máximo?",
+  "pos_id": "BOE-A-2011-9617-0409",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué plazas pueden acceder los investigadores con certificado R3 en universidades públicas y organismos de investigación?",
+  "pos_id": "BOE-A-2011-9617-0410",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué porcentaje de plazas se reserva en la OEP para investigadores con certificado R3?",
+  "pos_id": "BOE-A-2011-9617-0411",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Qué indemnización recibe el investigador distinguido si el empleador lo desiste sin respetar el preaviso de tres meses?",
+  "pos_id": "BOE-A-2011-9617-0412",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ },
+ {
+  "q": "¿Los contratos de actividades científico-técnicas forman parte de la Oferta de Empleo Público y están limitados por la masa salarial?",
+  "pos_id": "BOE-A-2011-9617-0413",
+  "doc": "BOE-A-2011-9617",
+  "split": "dev"
+ }
+]

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilar Azcona · Panadera de Puente la Reina</title>
+<style>
+  :root {
+    --marron: #7b4a21;
+    --marron-oscuro: #4c2c12;
+    --crema: #fdf6ec;
+    --dorado: #e0a94f;
+    --texto: #3d2f22;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: var(--crema);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(160deg, var(--marron), var(--marron-oscuro));
+    color: #fff;
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+  }
+  header .inicial {
+    width: 84px; height: 84px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--dorado);
+    color: var(--marron-oscuro);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.4rem; font-weight: bold;
+  }
+  header h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); letter-spacing: 1px; }
+  header p { font-style: italic; opacity: .9; margin-top: .5rem; }
+  nav {
+    margin-top: 1.5rem;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 .8rem;
+    padding: .3rem .2rem;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover { border-bottom-color: var(--dorado); }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+  }
+  section { margin-bottom: 2.5rem; }
+  h2 {
+    color: var(--marron);
+    font-size: 1.5rem;
+    margin-bottom: .8rem;
+    border-left: 5px solid var(--dorado);
+    padding-left: .7rem;
+  }
+  .destacado {
+    background: #fff;
+    border: 1px solid #eadfce;
+    border-radius: 10px;
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 2px 6px rgba(75,44,18,.08);
+  }
+  ul { list-style: none; }
+  li::before { content: "🌾 "; }
+  ul li { padding: .25rem 0; }
+  footer {
+    background: var(--marron-oscuro);
+    color: #f3e8d8;
+    text-align: center;
+    padding: 1.8rem 1rem;
+    font-size: .95rem;
+  }
+  footer a { color: var(--dorado); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 480px) {
+    header { padding: 3rem 1rem 2.5rem; }
+    nav a { display: inline-block; margin: .3rem .6rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inicial" aria-hidden="true">P</div>
+  <h1>Pilar Azcona</h1>
+  <p>Panadera jubilada · Puente la Reina, Navarra</p>
+  <nav>
+    <a href="#historia">Mi historia</a>
+    <a href="#talleres">Talleres</a>
+    <a href="#aficiones">Aficiones</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+  <section id="historia">
+    <h2>Mi historia</h2>
+    <p>Durante cuarenta años estuve al frente de la panadería familiar
+    de la calle Mayor de Puente la Reina. El olor del pan recién hecho
+    marcó cada mañana de mi vida, y aunque ya me he jubilado, la masa
+    sigue siendo parte de mí.</p>
+  </section>
+
+  <section id="talleres">
+    <h2>Talleres de masa madre</h2>
+    <p>Ahora comparto lo aprendido impartiendo talleres de pan de masa
+    madre a los vecinos del pueblo. Allí enseño que no hay prisa que
+    valga: la buena masa necesita su tiempo, como todo en la vida.</p>
+  </section>
+
+  <section id="aficiones" class="destacado">
+    <h2>En mis ratos libres</h2>
+    <ul>
+      <li>Senderismo por la Sierra de Andía</li>
+      <li>Las jotas de mi tierra</li>
+    </ul>
+  </section>
+</main>
+
+<footer id="contacto">
+  <p><strong>Contacto:</strong>
+  <a href="mailto:pilar@example.com">pilar@example.com</a> ·
+  <a href="tel:+34611000000">611 000 000</a></p>
+  <p>© 2026 Pilar Azcona · Puente la Reina (Navarra)</p>
+</footer>
+
+</body>
+</html>

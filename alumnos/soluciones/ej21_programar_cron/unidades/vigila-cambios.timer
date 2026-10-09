@@ -1,0 +1,15 @@
+# ~/.config/systemd/user/vigila-cambios.timer
+[Unit]
+Description=Ejecuta vigila-cambios.service cada minuto (EJ 21)
+
+[Timer]
+OnCalendar=*-*-* *:*:00
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target
+
+# Activar:    systemctl --user daemon-reload && systemctl --user enable --now vigila-cambios.timer
+# Comprobar:  systemctl --user list-timers | grep vigila
+# Limpiar:    systemctl --user disable --now vigila-cambios.timer && rm ~/.config/systemd/user/vigila-cambios.*
+# Equivalente cron:  * * * * * cd ~/taller/ejercicios/ej21_programar_cron && bash vigila/bin/vigila_cambios.sh

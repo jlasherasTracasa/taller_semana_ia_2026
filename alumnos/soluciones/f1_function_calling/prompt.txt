@@ -1,0 +1,7 @@
+(NO es un encargo al agente: script autónomo de function calling con LiteLLM + GLM)
+
+$ set -a; . ./.env; set +a
+$ python fc_calculadora.py      # o .venv/bin/python si usas el entorno del kit
+
+El modelo recibe el esquema de la tool «calculadora» y responde con un tool_call
+JSON; NUESTRO programa ejecuta la función y devuelve el resultado al modelo.

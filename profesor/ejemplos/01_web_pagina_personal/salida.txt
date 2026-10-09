@@ -1,0 +1,12 @@
+Extracto real de la salida de opencode run (validado 2026-09-28, /tmp/curso_agentes/web/):
+- Página personal de Pilar Azcona en un único archivo: HTML5 con CSS embebido,
+  sin dependencias ni frameworks.
+- Responsive (clamp, media query móvil, ancho máximo de contenido) con paleta
+  cálida de panadería (marrón, crema, dorado).
+- Secciones: cabecera con navegación, Mi historia, Talleres de masa madre,
+  Aficiones y pie con contacto (mailto y tel funcionales).
+
+Verificación objetiva:
+$ python3 -m http.server 8910 &
+$ curl -s -o /dev/null -w "%{http_code}" http://localhost:8910/index.html
+200

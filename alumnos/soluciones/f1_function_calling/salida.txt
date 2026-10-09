@@ -1,0 +1,14 @@
+== RESPUESTA 1 DEL MODELO ==
+content: ''
+tool_calls (JSON crudo devuelto por el modelo):
+[
+  "{\n  \"index\": 0,\n  \"function\": {\n    \"arguments\": \"{\\\"expresion\\\": \\\"(1250+3750)*1.21\\\"}\",\n    \"name\": \"calculadora\"\n  },\n  \"id\": \"call_23abb25e20e3408ca19085eb\",\n  \"type\": \"function\"\n}"
+]
+
+== EJECUCIÓN LOCAL (nuestro código) ==
+calculadora({'expresion': '(1250+3750)*1.21'}) = 6050.0
+
+== RESPUESTA 2 DEL MODELO ==
+El total con IVA del 21 % aplicado es **6.050 €**.
+
+[exit 0]

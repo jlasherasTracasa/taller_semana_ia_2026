@@ -1,0 +1,62 @@
+# Ejecución real: 2026-09-28 · 147 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
+
+ETIQUETA=$(curl -s "$URL" | md5sum | cut -d' ' -f1)
+ANTERIOR="$(cat ./ 2>/dev/null || echo '')"
+FECHA=$(date '+%Y-%m-%d %H:%M:%S')
+if [ "$ANTERIOR" = "" ]; then
+  echo "$FECHA inicio vigilancia hash=$ETIQUETA" >> ./
+elif [ "$ANTERIOR" = "$ETIQUETA" ]; then
+  echo "$FECHA sin cambios ($ETIQUETA)" >> ./
+else
+  echo "$FECHA CAMBIO DETECTADO $ANTERIOR → $ETIQUETA" >> ./
+fi
+echo "$ETIQUETA" > ./
+
+No hay `crontab` en este equipo, así que usaré un timer de systemd de usuario. Creo los ficheros de unidad y preparo los directorios que espera el script:
+$ mkdir -p ~/.config/systemd/user ./
+(no output)
+
+← Write ~/.config/systemd/user/vigila-cambios.service
+Wrote file successfully.
+
+← Write ~/.config/systemd/user/vigila-cambios.timer
+Wrote file successfully.
+
+Ahora cargo las unidades, arranco el timer y lo dejo disparar dos veces (~2 min):
+$ systemctl --user daemon-reload && systemctl --user enable --now vigila-cambios.timer && systemctl --user start vigila-cambios.service && sleep 125 && systemctl --user list-timers vigila-cambios.timer --no-pager; echo '--- LOG ---'; cat ./
+Created symlink ~/.config/systemd/user/timers.target.wants/vigila-cambios.timer → ~/.config/systemd/user/vigila-cambios.timer.
+NEXT                         LEFT LAST                         PASSED UNIT                 ACTIVATES
+Mon 2026-09-28 20:19:56 CEST  56s Mon 2026-09-28 20:18:56 CEST 4s ago vigila-cambios.timer vigila-cambios.service
+
+1 timers listed.
+Pass --all to see loaded but inactive timers, too.
+--- LOG ---
+2026-09-28 18:43:30 inicio vigilancia hash=5c88674aacdcecd279f5d76323d7d9a3
+2026-09-28 18:43:33 sin cambios (5c88674aacdcecd279f5d76323d7d9a3)
+2026-09-28 18:45:02 sin cambios (5c88674aacdcecd279f5d76323d7d9a3)
+2026-09-28 18:46:03 sin cambios (5c88674aacdcecd279f5d76323d7d9a3)
+2026-09-28 20:16:55 sin cambios (5c88674aacdcecd279f5d76323d7d9a3)
+2026-09-28 20:17:55 sin cambios (5c88674aacdcecd279f5d76323d7d9a3)
+2026-09-28 20:18:56 sin cambios (5c88674aacdcecd279f5d76323d7d9a3)
+
+Dos disparos con ~60 s de diferencia confirmados (20:17:55 y 20:18:56). Ahora desactivo el timer para dejar el sistema limpio:
+$ systemctl --user disable --now vigila-cambios.timer && systemctl --user daemon-reload && systemctl --user list-timers --all --no-pager | grep -c vigila || echo "timer desactivado"
+Removed "~/.config/systemd/user/timers.target.wants/vigila-cambios.timer".
+0
+timer desactivado
+
+Hecho. No había `crontab`, así que usé un timer de systemd de usuario.
+
+**Ficheros generados:**
+- `~/.config/systemd/user/vigila-cambios.service` — ejecuta el script una vez (`Type=oneshot`)
+- `~/.config/systemd/user/vigila-cambios.timer` — dispara cada minuto (`OnBootSec=5s`, `OnUnitActiveSec=60s`)
+
+**Órdenes exactas usadas:**
+```bash
+systemctl --user daemon-reload
+systemctl --user enable --now vigila-cambios.timer   # arrancar
+systemctl --user list-timers vigila-cambios.timer    # comprobar
+systemctl --user disable --now vigila-cambios.timer  # desactivar al acabar
+```
+
+**Verificación:** el log `./` registró disparos a las 20:17:55 y 20:18:56 (separados ~60 s), y el timer ya está desactivado, dejando el sistema limpio.

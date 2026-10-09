@@ -1,0 +1,13 @@
+Salida real (validado 2026-09-28; cron no disponible en la máquina de validación,
+se usó un timer de systemd usuario como sustituto equivalente):
+$ systemctl --user status vigila-cambios.timer
+● vigila-cambios.timer - Ejecuta vigilancia web cada minuto
+   Active: active (waiting) ...
+
+Log real tras esperar varios disparos (vigila/log/vigilancia.log):
+2026-09-28 18:43:30 inicio vigilancia hash=5c88674aacdcecd279f5d76323d7d9a3
+2026-09-28 18:43:33 sin cambios (5c88674aacdcecd279f5d76323d7d9a3)
+2026-09-28 18:45:02 sin cambios (5c88674aacdcecd279f5d76323d7d9a3)
+
+Tras la prueba se hizo `systemctl --user disable --now` y se borraron las unidades
+(estado limpio).

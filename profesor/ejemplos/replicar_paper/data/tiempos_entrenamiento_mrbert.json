@@ -1,0 +1,10 @@
+{
+ "base": "BSC-LT/MrBERT-es",
+ "hilos_cpu": 8,
+ "fases_segundos": {
+  "F1 negativos aleatorios": 268.9,
+  "F2 difíciles medios (PAM)": 265.9,
+  "F3 difíciles duros (PAM)": 273.1
+ },
+ "total_segundos": 848.8
+}

@@ -1,0 +1,12 @@
+{
+  "mcp": {
+    "taller-tools": {
+      "type": "local",
+      "command": [
+        "/home/jlasheras@tcsa.local/imagenes_semana_de_la_ia/.venv/bin/python",
+        "mcp_server.py"
+      ],
+      "enabled": true
+    }
+  }
+}

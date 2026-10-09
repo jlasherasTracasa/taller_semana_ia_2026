@@ -1,0 +1,61 @@
+# Ejecución real: 2026-09-28 · 14 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
+
+
+> build · GLM-5.3-Flash
+
+→ Read apuntes
+→ Skill "pdf"
+
+$ python3 - <<'EOF'
+import pdfplumber
+for f in ["apuntes/guia_gimnasia.pdf","apuntes/normas_excursiones.pdf","apuntes/programa_memoria.pdf"]:
+    print("="*30, f, "="*30)
+    with pdfplumber.open(f) as pdf:
+        for i, page in enumerate(pdf.pages):
+            print(f"--- pagina {i+1} ---")
+            print(page.extract_text())
+EOF
+============================== apuntes/guia_gimnasia.pdf ==============================
+--- pagina 1 ---
+Gimnasia de mantenimiento
+Guía breve para el grupo de los lunes.
+Objetivos: movilidad articular, equilibrio y marcha.
+Material: silla estable y banda elástica suave.
+Sesiones de 45 minutos con calentamiento, parte central y vuelta a la calma.
+--- pagina 2 ---
+Parte central de la sesión
+Series de seis repeticiones con descanso entre series.
+Ejercicios: elevación de rodillas, sentadilla a silla, apertura de brazos con banda.
+Si aparece mareo, parar y avisar al monitor.
+--- pagina 3 ---
+Consejos de seguridad
+Calzado cerrado y sujeto, agua a mano, no retener la respiración.
+Consulte con su médico cualquier duda previa al alta en el grupo.
+============================== apuntes/normas_excursiones.pdf ==============================
+--- pagina 1 ---
+Normas de las excursiones
+Salidas en autobús del centro. Inscripción previa en conserjería.
+Plazas limitadas a 40 personas.
+--- pagina 2 ---
+Puntos clave
+1. Llegar 15 minutos antes de la salida.
+2. Llevar tarjeta sanitaria y teléfono de contacto.
+3. El monitor lleva la lista; avise si se baja del grupo.
+============================== apuntes/programa_memoria.pdf ==============================
+--- pagina 1 ---
+Taller de memoria
+Programa de ocho sesiones para el grupo de los martes.
+Trabajamos atención, lenguaje y orientación con juegos de mesa y asociaciones.
+--- pagina 2 ---
+Sesiones 1 a 4
+Presentación, atención selectiva con tarjetas, listas de la compra encadenadas,
+y adivinanzas en grupo. Cada sesión termina con repaso de la anterior.
+--- pagina 3 ---
+Sesiones 5 a 8
+Rutas mentales por el barrio, nombres propios con trucos de asociación,
+y evaluación final con autoinforme. Se entrega diploma de participación.
+
+← Write resumen_apuntes.md
+Wrote file successfully.
+
+Creado `resumen_apuntes.md`: tabla Markdown con los 3 PDF de `apuntes/` (leídos uno a uno con pdfplumber), incluyendo tema y tres puntos clave de cada documento.

@@ -1,0 +1,7 @@
+# Resumen de los apuntes (apuntes/)
+
+| Documento | Tema | Puntos clave |
+|---|---|---|
+| guia_gimnasia.pdf | Gimnasia de mantenimiento para el grupo de los lunes: movilidad articular, equilibrio y marcha, con silla estable y banda elástica suave. | 1) Sesiones de 45 min con calentamiento, parte central y vuelta a la calma; series de 6 repeticiones con descanso. 2) Ejercicios: elevación de rodillas, sentadilla a silla, apertura de brazos con banda; si hay mareo, parar y avisar al monitor. 3) Seguridad: calzado cerrado, agua a mano, no retener la respiración; consultar dudas con el médico antes del alta en el grupo. |
+| normas_excursiones.pdf | Normas de las excursiones del centro: salidas en autobús con inscripción previa en conserjería y plazas limitadas a 40 personas. | 1) Llegar 15 minutos antes de la salida. 2) Llevar tarjeta sanitaria y teléfono de contacto. 3) El monitor lleva la lista; avisar si alguien se baja del grupo. |
+| programa_memoria.pdf | Taller de memoria de ocho sesiones para el grupo de los martes, trabajando atención, lenguaje y orientación con juegos de mesa y asociaciones. | 1) Sesiones 1-4: presentación, atención selectiva con tarjetas, listas de la compra encadenadas y adivinanzas en grupo, con repaso final de cada sesión. 2) Sesiones 5-8: rutas mentales por el barrio, nombres propios con trucos de asociación y evaluación final con autoinforme. 3) Al terminar se entrega diploma de participación. |

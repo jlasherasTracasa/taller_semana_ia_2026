@@ -1,0 +1,28 @@
+# ---- secretos: NUNCA al repositorio
+.env
+*.env
+!.env.example
+# configuración local del docente (lleva la clave de LiteLLM)
+/opencode.json
+*.key
+
+# ---- notas del profesor en claro (en el repo solo va la versión cifrada .enc)
+profesor_privado/
+profesor/notas_profesor.md
+presentacion/*-con-notas.pptx
+presentacion/*-con-notas.pdf
+
+# ---- presentaciones antiguas con notas del ponente
+archivo/*.pptx
+# hasta regenerarlas sin notas, las presentaciones actuales tampoco suben
+presentacion/taller-agentes-ia.pptx
+alumnos/taller-agentes-ia.pptx
+
+# ---- dependencias y basura
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+trabajo/
+entrega/

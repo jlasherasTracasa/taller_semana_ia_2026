@@ -1,0 +1,9 @@
+# ~/.config/systemd/user/vigila-cambios.service
+[Unit]
+Description=Vigila cambios en la web (EJ 21)
+
+[Service]
+Type=oneshot
+# Cambia la ruta por la de tu carpeta del ejercicio
+WorkingDirectory=%h/taller/ejercicios/ej21_programar_cron
+ExecStart=/bin/bash vigila/bin/vigila_cambios.sh

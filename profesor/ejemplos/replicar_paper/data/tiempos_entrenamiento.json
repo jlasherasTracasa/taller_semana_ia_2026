@@ -1,0 +1,10 @@
+{
+ "base": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+ "hilos_cpu": 8,
+ "fases_segundos": {
+  "F1 negativos aleatorios": 54.9,
+  "F2 difíciles medios (PAM)": 37.5,
+  "F3 difíciles duros (PAM)": 38.4
+ },
+ "total_segundos": 138.3
+}

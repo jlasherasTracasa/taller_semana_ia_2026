@@ -1,0 +1,62 @@
+# Ejecución real: 2026-09-28 · 22 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
+
+5
+certificado_asistencia_amparo_lecumberri.pdf
+certificado_asistencia_felix_bergoa.pdf
+certificado_asistencia_nieves_izco.pdf
+certificado_asistencia_purificacion_aranguren.pdf
+certificado_asistencia_teodoro_sanz.pdf
+
+Verifico que cada PDF contiene el nombre correcto:
+$ python3 - <<'EOF'
+import csv, glob
+from pdfminer.high_level import extract_text
+try:
+    extract_text
+except NameError:
+    raise SystemExit("no pdfminer")
+EOF
+pdftotext -v 2>&1 | head -1
+/bin/bash: line 9: pdftotext: command not found
+
+$ python3 - <<'EOF'
+import csv
+from pypdf import PdfReader
+
+with open("nombres.csv", newline="", encoding="utf-8") as f:
+    filas = list(csv.DictReader(f))
+
+def slug(n):
+    import re, unicodedata
+    t = unicodedata.normalize("NFKD", n)
+    t = "".join(c for c in t if not unicodedata.combining(c))
+    return re.sub(r"[^A-Za-z0-9]+", "_", t).strip("_").lower()
+
+ok = True
+vistos = set()
+for fila in filas:
+    pdf = f"certificado_asistencia_{slug(fila['nombre'])}.pdf"
+    texto = PdfReader(pdf).pages[0].extract_text()
+    bien = fila["nombre"] in texto and fila["curso"] in texto and fila["horas"] in texto
+    ok &= bien and pdf not in vistos
+    vistos.add(pdf)
+    print(("OK " if bien else "FALLO ") + pdf)
+
+print("Resultado:", "TODOS CORRECTOS" if ok else "ERROR")
+EOF
+OK certificado_asistencia_amparo_lecumberri.pdf
+OK certificado_asistencia_teodoro_sanz.pdf
+OK certificado_asistencia_purificacion_aranguren.pdf
+OK certificado_asistencia_felix_bergoa.pdf
+OK certificado_asistencia_nieves_izco.pdf
+Resultado: TODOS CORRECTOS
+
+Listo. Generados los 5 PDFs con reportlab (plantilla sobria A4 apaisada, marco doble, nombre, curso y horas):
+
+- `certificado_asistencia_amparo_lecumberri.pdf`
+- `certificado_asistencia_teodoro_sanz.pdf`
+- `certificado_asistencia_purificacion_aranguren.pdf`
+- `certificado_asistencia_felix_bergoa.pdf`
+- `certificado_asistencia_nieves_izco.pdf`
+
+Verificación: 5 filas en el CSV → 5 PDFs únicos, y en cada uno se extrajo correctamente el nombre, curso y horas (script en `generar_certificados.py`, reutilizable para otras listas).

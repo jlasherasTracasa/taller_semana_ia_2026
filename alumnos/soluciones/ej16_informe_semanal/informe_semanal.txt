@@ -1,0 +1,21 @@
+INFORME SEMANAL DE VENTAS
+=========================
+Fuente: pptx/ventas_tienda.csv (enero - junio)
+
+TOTAL POR CATEGORÍA
+-------------------
+hogar:  29.800
+textil: 18.700
+bazar:  14.000
+
+MES CON MAYORES VENTAS
+----------------------
+junio, con un total de 12.800
+(totales mensuales: enero 8.900, febrero 8.600, marzo 10.100,
+abril 10.600, mayo 11.500, junio 12.800)
+
+TENDENCIA GENERAL
+-----------------
+SUBE. Las ventas mensuales crecen de forma casi continua
+(salvo el pequeño descenso de febrero), pasando de 8.900 en enero
+a 12.800 en junio, un aumento del 43,8 %.

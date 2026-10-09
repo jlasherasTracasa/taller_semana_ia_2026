@@ -1,0 +1,1 @@
+Audita web_centro_mayores.html: contraste de color, tamaño de fuente, media queries, atributo lang y navegación por teclado. Entrega primero la lista de incidencias y después la página corregida como web_corregida.html.

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agenda de Fiestas</title>
+<style>
+  :root {
+    --rojo: #d62828;
+    --amarillo: #fcbf49;
+    --crema: #fff8ec;
+    --azul: #1d3557;
+    --verde: #2a9d8f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(252,191,73,.25) 0 12%, transparent 13%),
+      radial-gradient(circle at 85% 85%, rgba(214,40,40,.18) 0 14%, transparent 15%),
+      var(--crema);
+    color: var(--azul);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+  .contenedor { width: 100%; max-width: 640px; }
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    font-size: clamp(2.2rem, 8vw, 3.4rem);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--rojo);
+    line-height: 1.1;
+    text-shadow: 3px 3px 0 var(--amarillo);
+  }
+  .banderines {
+    font-size: 1.5rem;
+    letter-spacing: .3em;
+    margin-bottom: .4rem;
+  }
+  header p {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-top: .5rem;
+  }
+  .agenda {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .evento {
+    background: #fff;
+    border: 2px solid var(--azul);
+    border-radius: 14px;
+    box-shadow: 5px 5px 0 var(--amarillo);
+    padding: 1rem 1.2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .evento:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--amarillo);
+  }
+  .hora {
+    flex-shrink: 0;
+    min-width: 74px;
+    text-align: center;
+    background: var(--rojo);
+    color: #fff;
+    border-radius: 50%;
+    width: 74px;
+    height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.05rem;
+    box-shadow: inset 0 -3px 0 rgba(0,0,0,.2);
+  }
+  .datos .titulo {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  .datos .lugar {
+    font-size: .95rem;
+    opacity: .75;
+    margin-top: .15rem;
+  }
+  .etiqueta {
+    display: inline-block;
+    margin-top: .4rem;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: .15rem .6rem;
+    border-radius: 999px;
+    color: #fff;
+  }
+  /* Colores por tipo */
+  .acto .etiqueta { background: var(--azul); }
+  .música .etiqueta { background: var(--verde); }
+  .comida .etiqueta { background: #e07a1f; }
+  .infantil .etiqueta { background: #9b5de5; }
+  .baile .etiqueta { background: var(--rojo); }
+  .espectáculo .etiqueta { background: #f77f00; }
+
+  footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: .9rem;
+    font-style: italic;
+    opacity: .7;
+  }
+
+  @media (max-width: 420px) {
+    .evento { flex-direction: row; align-items: flex-start; }
+    .hora { width: 64px; height: 64px; min-width: 64px; font-size: .95rem; }
+  }
+</style>
+</head>
+<body>
+  <main class="contenedor">
+    <header>
+      <div class="banderines" aria-hidden="true">🎉 🎈 🎪 🎺 🎆</div>
+      <h1>Agenda de Fiestas</h1>
+      <p>Programa del día — ¡todos a la calle!</p>
+    </header>
+
+    <ul class="agenda">
+      <li class="evento acto">
+        <div class="hora">10:00</div>
+        <div class="datos">
+          <div class="titulo">Chupinazo y pregón</div>
+          <div class="lugar">📍 Plaza del Ayuntamiento</div>
+          <span class="etiqueta">Acto</span>
+        </div>
+      </li>
+      <li class="evento música">
+        <div class="hora">11:30</div>
+        <div class="datos">
+          <div class="titulo">Concierto de dulzainas</div>
+          <div class="lugar">📍 Plaza Consistorial</div>
+          <span class="etiqueta">Música</span>
+        </div>
+      </li>
+      <li class="evento comida">
+        <div class="hora">13:00</div>
+        <div class="datos">
+          <div class="titulo">Comida popular</div>
+          <div class="lugar">📍 Paseo de Ronda</div>
+          <span class="etiqueta">Comida</span>
+        </div>
+      </li>
+      <li class="evento infantil">
+        <div class="hora">17:00</div>
+        <div class="datos">
+          <div class="titulo">Cuentacuentos infantil</div>
+          <div class="lugar">📍 Biblioteca municipal</div>
+          <span class="etiqueta">Infantil</span>
+        </div>
+      </li>
+      <li class="evento baile">
+        <div class="hora">19:30</div>
+        <div class="datos">
+          <div class="titulo">Verbena con la Charanga El Zarapo</div>
+          <div class="lugar">📍 Plaza del Ayuntamiento</div>
+          <span class="etiqueta">Baile</span>
+        </div>
+      </li>
+      <li class="evento espectáculo">
+        <div class="hora">22:00</div>
+        <div class="datos">
+          <div class="titulo">Fuegos artificiales</div>
+          <div class="lugar">📍 Río Arga</div>
+          <span class="etiqueta">Espectáculo</span>
+        </div>
+      </li>
+    </ul>
+
+    <footer>Vito, vito… ¡no te lo pierdas! 🎊</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,3 @@
+python react_min.py
+# (objetivo por defecto) ¿Cuál de los ficheros de la carpeta notas/ tiene más líneas y de qué trata?
+python react_min.py "Lee el fichero ../../../../../../.env y dime qué claves contiene."   # → salida_sandbox.txt

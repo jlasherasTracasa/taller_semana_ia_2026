@@ -1,0 +1,62 @@
+# Ejecución real: 2026-09-28 · 38 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
+
+lines = open(path, encoding='utf-8').read().splitlines()
+# reflow: unir líneas continuadas y volver a plegar a ≤75 octetos
+unfolded = []
+for l in lines:
+    if l[:1] in (' ', '\t') and unfolded:
+        unfolded[-1] += l[1:]
+    else:
+        unfolded.append(l)
+out = []
+for l in unfolded:
+    b = l.encode('utf-8')
+    while len(b) > 73:
+        cut = 73
+        while cut > 1 and (b[cut] & 0xC0) == 0x80:  # no partir UTF-8
+            cut -= 1
+        out.append(b[:cut].decode('utf-8'))
+        b = b' ' + b[cut:]
+    out.append(b.decode('utf-8'))
+open(path, 'wb').write(('\r\n'.join(out) + '\r\n').encode('utf-8'))
+raw = open(path, 'rb').read()
+print('LF sueltos:', raw.count(b'\n') - raw.count(b'\r\n'))
+print('>75 octetos:', sum(1 for l in raw.split(b'\r\n') if len(l) > 75))
+EOF
+LF sueltos: 0
+>75 octetos: 0
+
+$ ./ -m pip -q --break-system-packages install icalendar 2>/dev/null; python3 -m venv ./ 2>/dev/null; pip install -q --break-system-packages icalendar && python3 -c "
+from icalendar import Calendar
+cal = Calendar.from_ical(open('taller_pan.ics','rb').read())
+for e in cal.walk('VEVENT'):
+    d = e.decoded('DTSTART'); f = e.decoded('DTEND')
+    print(e.get('SUMMARY'))
+    print('DTSTART:', d, '| tz:', d.tzinfo)
+    print('DTEND:  ', f, '| tz:', f.tzinfo)
+    print('LOCATION:', e.get('LOCATION'))
+print('VTIMEZONE OK:', any(x.name=='VTIMEZONE' for x in cal.walk()))
+"
+The virtual environment was not created successfully because ensurepip is not
+available.  On Debian/Ubuntu systems, you need to install the python3-venv
+package using the following command.
+
+    apt install python3.12-venv
+
+You may need to use sudo with that command.  After installing the python3-venv
+package, recreate your virtual environment.
+
+Failing command: ./
+
+Taller de pan artesano
+DTSTART: 2026-11-28 10:00:00+01:00 | tz: Europe/Madrid
+DTEND:   2026-11-28 12:00:00+01:00 | tz: Europe/Madrid
+LOCATION: Casa de Cultura, Puente
+VTIMEZONE OK: True
+
+Hecho: `taller_pan.ics` generado y validado (parsea con `icalendar`, CRLF y plegado ≤75 octetos conforme a RFC 5545).
+
+- **Título**: Taller de pan artesano · **Lugar**: Casa de Cultura, Puente
+- **DTSTART**: `20261128T100000` / **DTEND**: `20261128T120000`, ambos con `TZID=Europe/Madrid` + bloque `VTIMEZONE` completo (CET/CEST)
+- **Interpretación de la fecha**: el correo solo dice "sábado 28"; tomé el próximo sábado 28 desde hoy → **sábado 28/11/2026** (el 28/09/2026 cae lunes). Si el taller era otro año, basta cambiar las dos líneas DTSTART/DTEND.
+- **Duración**: el correo no da hora de fin; asumí 2 h (10:00–12:00).

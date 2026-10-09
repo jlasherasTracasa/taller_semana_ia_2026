@@ -1,0 +1,1 @@
+Quiero ejecutar vigila/bin/vigila_cambios.sh cada minuto durante dos minutos. Si en este equipo no hay cron, usa un timer de systemd usuario equivalente. Genera los ficheros de unidad necesarios y dame las órdenes exactas.

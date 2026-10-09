@@ -1,0 +1,20 @@
+EJ 21 · Vigilar una web pública (cron/timer systemd). El agente preparó el script
+vigila/bin/vigila_cambios.sh (compara hash SHA-256 de una página con el anterior y registra
+el resultado en un log), que se programó con un timer de systemd usuario (cron no estaba
+disponible en la máquina de validación):
+
+# ~/.config/systemd/user/vigila-cambios.service
+[Unit]
+Description=Vigila cambios en una web (taller agentes)
+[Service]
+Type=oneshot
+ExecStart=/tmp/curso_agentes/rutina/vigila/bin/vigila_cambios.sh
+
+# ~/.config/systemd/user/vigila-cambios.timer
+[Timer]
+OnBootSec=30
+OnUnitActiveSec=60
+[Install]
+WantedBy=timers.target
+
+$ systemctl --user daemon-reload && systemctl --user enable --now vigila-cambios.timer

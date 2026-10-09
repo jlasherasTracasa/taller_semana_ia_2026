@@ -1,0 +1,14 @@
+[
+  {
+    "nombre": "Ana",
+    "correo": "ana@example.com",
+    "mensaje": "Prueba desde curl",
+    "fecha": "2026-09-28T23:48:17"
+  },
+  {
+    "nombre": "Luis",
+    "correo": "luis@example.com",
+    "mensaje": "Envio del formulario HTML",
+    "fecha": "2026-09-28T23:48:17"
+  }
+]

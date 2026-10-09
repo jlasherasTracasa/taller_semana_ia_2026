@@ -1,0 +1,62 @@
+# Ejecución real: 2026-09-28 · 31 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
+
+cni
+containerd
+nvidia
+veeam
+
+$ find / -maxdepth 4 -name "soffice*" 2>/dev/null; python3 "~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/xlsx/scripts/office/soffice.py" --help 2>&1 | head -20
+Traceback (most recent call last):
+  File "~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/xlsx/scripts/office/soffice.py", line 191, in <module>
+    result = run_soffice(sys.argv[1:])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/.claude/skills/synced/cfeebf5f-271e-4a7a-bf11-fc3bc60dbc51_370b7c57-47a8-4811-be62-5f59cc617731/xlsx/scripts/office/soffice.py", line 46, in run_soffice
+    return subprocess.run(["soffice"] + args, env=get_soffice_env(), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'soffice'
+
+No hay LibreOffice en esta máquina, así que no puedo recalcular con `recalc.py`. Verifico leyendo el `facturas.xlsx` generado:
+$ python3 - <<'EOF'
+from openpyxl import load_workbook
+wb = load_workbook("facturas.xlsx")
+ws = wb["Facturas"]
+print("Contenido de facturas.xlsx:")
+for row in ws.iter_rows(values_only=True):
+    print(row)
+# Comprobación aritmética contra los originales (independiente del Excel)
+orig = [(375.60, 78.88, 454.48), (1002.40, 210.50, 1212.90)]
+assert all(abs(b + i - t) < 0.005 and abs(round(b*0.21, 2) - i) < 0.005 for b, i, t in orig)
+sb = round(sum(b for b, _, _ in orig), 2); si = round(sum(i for _, i, _ in orig), 2); st = round(sum(t for _, _, t in orig), 2)
+assert abs(sb + si - st) < 0.005
+print(f"\nOriginales: base={sb:.2f} EUR, IVA={si:.2f} EUR, total={st:.2f} EUR")
+print("Fórmula en el Excel:", ws.cell(row=4, column=5).value)
+print(f"=SUM(E2:E3) evalúa a {st:.2f} EUR -> cuadra con los PDF (verificado por cómputo directo; LibreOffice no está instalado para recálculo)")
+EOF
+Contenido de facturas.xlsx:
+('Emisor', 'Fecha', 'Base imponible', 'IVA', 'Total')
+('Ferretería Etxeberria', '03/02/2026', 375.6, 78.88, 454.48)
+('Limpiezas Ribera S.L.', '28/02/2026', 1002.4, 210.5, 1212.9)
+('SUMA TOTAL', None, '=SUM(C2:C3)', '=SUM(D2:D3)', '=SUM(E2:E3)')
+
+Originales: base=1378.00 EUR, IVA=289.38 EUR, total=1667.38 EUR
+Fórmula en el Excel: =SUM(E2:E3)
+=SUM(E2:E3) evalúa a 1667.38 EUR -> cuadra con los PDF (verificado por cómputo directo; LibreOffice no está instalado para recálculo)
+
+Hecho. `facturas.xlsx` generado con openpyxl:
+
+| Emisor | Fecha | Base | IVA | Total |
+|---|---|---|---|---|
+| Ferretería Etxeberria | 03/02/2026 | 375,60 EUR | 78,88 EUR | 454,48 EUR |
+| Limpiezas Ribera S.L. | 28/02/2026 | 1.002,40 EUR | 210,50 EUR | 1.212,90 EUR |
+| **SUMA TOTAL** | | 1.378,00 | 289,38 | **1.667,38** |
+
+- Los totales de cada PDF son coherentes con su base (base × 1,21) y la fila final usa fórmulas `=SUM(...)` (columnas C, D, E).
+- La suma (1.667,38 EUR) cuadra con los originales, verificado por cómputo directo.
+- Nota: LibreOffice no está instalado en esta máquina, así que no pude ejecutar el recálculo del skill; las fórmulas están escritas correctamente y los valores verificados aritméticamente contra los PDF.

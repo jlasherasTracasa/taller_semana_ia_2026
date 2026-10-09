@@ -1,0 +1,62 @@
+# Ejecución real: 2026-09-28 · 27 s · código 0 · opencode + GLM-5.3-Flash · solo CPU
+
+← Write index.html
+Wrote file successfully.
+
+Creo los dos ficheros:
+← Write servidor.py
+Wrote file successfully.
+
+# Todos
+[✓] Crear index.html y servidor.py (stdlib)
+[•] Arrancar servidor con timeout 60 en puerto 8901
+[ ] Probar con curl (JSON y formulario)
+[ ] Verificar resultados.json
+
+Arranco el servidor con `timeout 60` delante (en segundo plano, con salida a log); se parará solo en 60 s y no mato nada manualmente:
+$ nohup timeout 60 python3 servidor.py > servidor.log 2>&1 & sleep 1 && cat servidor.log
+SERVIDOR:http://127.0.0.1:8901
+
+Ha pillado el puerto 8901 (libre). Envío las pruebas con curl: un POST JSON, un GET del formulario y un POST urlencoded (lo que envía el HTML):
+$ curl -s -w '\nHTTP:%{http_code}\n' -X POST http://127.0.0.1:8901/guardar -H 'Content-Type: application/json' -d '{"nombre":"Ana","correo":"ana@example.com","mensaje":"Prueba desde curl"}' && curl -s -w '\nHTTP:%{http_code}\n' http://127.0.0.1:8901/ -o /dev/null && curl -s -w '\nHTTP:%{http_code}\n' -X POST http://127.0.0.1:8901/guardar --data-urlencode 'nombre=Luis' --data-urlencode 'correo=luis@example.com' --data-urlencode 'mensaje=Envio del formulario HTML'
+{"ok": true}
+HTTP:201
+
+HTTP:200
+{"ok": true}
+HTTP:201
+
+$ cat resultados.json
+[
+  {
+    "nombre": "Ana",
+    "correo": "ana@example.com",
+    "mensaje": "Prueba desde curl",
+    "fecha": "2026-09-28T23:48:17"
+  },
+  {
+    "nombre": "Luis",
+    "correo": "luis@example.com",
+    "mensaje": "Envio del formulario HTML",
+    "fecha": "2026-09-28T23:48:17"
+  }
+]
+
+Compruebo que el JSON se ha escrito correctamente:
+# Todos
+[✓] Crear index.html y servidor.py (stdlib)
+[✓] Arrancar servidor con timeout 60 en puerto 8901
+[✓] Probar con curl (JSON y formulario)
+[✓] Verificar resultados.json
+
+Todo verificado. Resumen:
+
+**Ficheros creados** (solo biblioteca estándar):
+- `index.html` — formulario de contacto (nombre, correo, mensaje) que hace POST a `/guardar`
+- `servidor.py` — `ThreadingHTTPServer` que sirve el HTML, acepta POST JSON **y** urlencoded, y acumula cada envío en `resultados.json`. Si 8901 está ocupado elige automáticamente un puerto libre (`servidor.py:65`)
+- Rutas: `GET /` (formulario), `POST /guardar`, `GET /envios` (ver los envíos)
+
+**Validación**:
+1. Servidor arrancado con `nohup timeout 60 python3 servidor.py &` → puerto **8901** (estaba libre); se parará solo en 60 s, sin matar ningún proceso
+2. `curl` POST JSON → `201 {"ok": true}`; `GET /` → `200`; POST urlencoded simulando el HTML → `201`
+3. `resultados.json` contiene los dos envíos con su marca de tiempo

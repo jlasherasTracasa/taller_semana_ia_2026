@@ -1,0 +1,50 @@
+{
+ "metricas": {
+  "BM25": {
+   "nDCG@10": 0.899,
+   "MRR@10": 0.8764,
+   "Recall@10": 0.9667
+  },
+  "Encoder base": {
+   "nDCG@10": 0.6864,
+   "MRR@10": 0.635,
+   "Recall@10": 0.85
+  },
+  "Encoder afinado": {
+   "nDCG@10": 0.7488,
+   "MRR@10": 0.697,
+   "Recall@10": 0.9083
+  },
+  "MrBERT-es afinado por nosotros": {
+   "nDCG@10": 0.7584,
+   "MRR@10": 0.6971,
+   "Recall@10": 0.95
+  },
+  "ALIA-MrBERT-es publicado (zero-shot)": {
+   "nDCG@10": 0.9129,
+   "MRR@10": 0.8861,
+   "Recall@10": 0.9917
+  },
+  "Reranker afinado": {
+   "nDCG@10": 0.8888,
+   "MRR@10": 0.8681,
+   "Recall@10": 0.95
+  },
+  "ALIA-MrBERT-es reranker publicado (zero-shot)": {
+   "nDCG@10": 0.9685,
+   "MRR@10": 0.9576,
+   "Recall@10": 1.0
+  }
+ },
+ "n_consultas_test": 120,
+ "tamano_corpus": 120,
+ "tiempos_segundos": {
+  "BM25": 0.026293039321899414,
+  "Encoder base": 4.8,
+  "Encoder afinado": 1.7,
+  "MrBERT-es afinado por nosotros": 7.6,
+  "ALIA-MrBERT-es publicado (zero-shot)": 9.7,
+  "Reranker afinado": 66.2,
+  "ALIA-MrBERT-es reranker publicado (zero-shot)": 81.6
+ }
+}

@@ -1,0 +1,8 @@
+# Réplica en CPU (instala torch CPU primero para no bajar CUDA):
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   pip install -r requirements.txt
+torch
+sentence-transformers>=3
+rank_bm25
+datasets
+litellm

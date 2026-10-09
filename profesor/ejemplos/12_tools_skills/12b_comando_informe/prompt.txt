@@ -1,0 +1,1 @@
+$ opencode run --model vllm/GLM-5.3-Flash --command informe-semanal
