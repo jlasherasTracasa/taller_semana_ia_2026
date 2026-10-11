@@ -388,7 +388,7 @@ ej(id="ej08_borrador_respuesta", num="EJ 08", puerta="B", nivel=1, min=10, modo=
    escena="El proveedor de harina sube precios: si se confirma antes del jueves 26 se mantienen 38 € el saco. Hay que contestar, sin enviar nada.",
    objetivo="Redactar una respuesta profesional que mantenga una cifra concreta, sin enviar nada.",
    datos=["`correo/bandeja/01_proveedor_urgente.eml`."],
-   prompt="Lee correo/bandeja/01_proveedor_urgente.eml y escribe un borrador de respuesta en correo/borrador_proveedor.md confirmando el pedido mensual para mantener el precio antiguo de 38 euros el saco. Tono profesional, en castellano. No envíes nada: solo el borrador.",
+   prompt="Lee correo/bandeja/01_proveedor_urgente.eml y escribe un borrador de respuesta en correo/borrador_proveedor.md confirmando el pedido mensual para mantener el precio antiguo de 38 euros el saco. Menciona el precio y el plazo que da el proveedor para mantenerlo. Tono profesional, en castellano. No envíes nada: solo el borrador.",
    criterio=["`correo/borrador_proveedor.md` menciona los 38 € y el plazo del jueves 26.", "No se ha enviado nada."],
    siguiente=[("Al calendario", "ej09_calendario_ics"), ("Volver al inicio", "PLAZA")])
 

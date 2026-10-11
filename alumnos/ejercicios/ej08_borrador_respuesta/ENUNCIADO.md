@@ -27,7 +27,7 @@ python taller.py abrir ej08
 **2.** Copia este encargo, pégalo en opencode y pulsa Enter:
 
 ```text
-Lee correo/bandeja/01_proveedor_urgente.eml y escribe un borrador de respuesta en correo/borrador_proveedor.md confirmando el pedido mensual para mantener el precio antiguo de 38 euros el saco. Tono profesional, en castellano. No envíes nada: solo el borrador.
+Lee correo/bandeja/01_proveedor_urgente.eml y escribe un borrador de respuesta en correo/borrador_proveedor.md confirmando el pedido mensual para mantener el precio antiguo de 38 euros el saco. Menciona el precio y el plazo que da el proveedor para mantenerlo. Tono profesional, en castellano. No envíes nada: solo el borrador.
 ```
 
 **3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).

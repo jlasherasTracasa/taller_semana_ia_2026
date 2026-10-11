@@ -194,7 +194,7 @@ def abrir(ej):
     if e.get("prompt") and e["modo"] == "run":
         print(f"\n💬 Pega este encargo cuando se abra:\n   {e['prompt']}\n")
     time.sleep(1)
-    rc = opencode([], d, env)
+    rc = opencode(["--standalone"], d, env)   # sin --standalone usaría el servicio en segundo plano, que no ve tu .env
     print(f"\n✅ ¿Lo ha hecho de verdad?  {PY} taller.py comprobar {e['num_corto']}")
     return rc
 
