@@ -26,6 +26,8 @@ PROGRESO = os.path.join(TRABAJO, "progreso.json")
 WIN = os.name == "nt"
 PY = "python" if WIN else "python3"   # cómo se escribe en las órdenes que se muestran
 GRATIS = "opencode/big-pickle"       # modelo gratuito de opencode por defecto (validado el 11-10-2026)
+# Los gratuitos tienen un límite de uso POR MODELO: si uno lo agota, lanzar prueba el siguiente
+GRATIS_OTROS = ["opencode/nemotron-3-ultra-free", "opencode/ling-3.1-flash-free", "opencode/step-5-preview-free"]
 OPENROUTER = "openrouter/z-ai/glm-5.3-flash"
 VENV_BIN = os.path.join(KIT, ".venv", "Scripts" if WIN else "bin")
 
@@ -177,13 +179,23 @@ def lanzar(ej, prompt=None):
         sys.exit("Este ejercicio no se lanza con un único encargo: sigue los pasos de su ENUNCIADO.md.")
     print(f"🤖 Modelo: {modelo(env) or 'el del opencode.json del kit'}\n🤖 Encargo: {prompt}\n")
     t0 = time.time()
-    for intento in range(3):
-        rc = opencode(["run", "--standalone", prompt], d, env, salida=os.path.join(d, "salida.txt"))
-        # Si otro opencode arranca a la vez, el servidor privado a veces no llega a arrancar: se reintenta
-        if rc == 0 or "exited before reporting readiness" not in open(os.path.join(d, "salida.txt"), encoding="utf-8").read():
+    mod, extra = modelo(env), []
+    otros = [m for m in [GRATIS] + GRATIS_OTROS if m != mod]
+    for intento in range(6):
+        rc = opencode(["run", "--standalone"] + extra + [prompt], d, env, salida=os.path.join(d, "salida.txt"))
+        texto = open(os.path.join(d, "salida.txt"), encoding="utf-8").read()
+        if rc == 0:
             break
-        print("↻ opencode no ha llegado a arrancar; lo intento otra vez…")
-        time.sleep(5 + 5 * intento)
+        if "exited before reporting readiness" in texto:
+            # Si otro opencode arranca a la vez, el servidor privado a veces no llega a arrancar: se reintenta
+            print("↻ opencode no ha llegado a arrancar; lo intento otra vez…")
+            time.sleep(5 + 5 * intento)
+        elif "Rate limit exceeded" in texto and (mod or "").startswith("opencode/") and otros:
+            mod = otros.pop(0)
+            extra = ["-m", mod]
+            print(f"↻ El modelo gratuito ha llegado a su límite de uso. Pruebo con otro: {mod}")
+        else:
+            break
     print(f"\n⏱ {time.time() - t0:.0f} s · código {rc} · salida guardada en salida.txt")
     t = tokens(d, env)
     if t["entrada"]:
