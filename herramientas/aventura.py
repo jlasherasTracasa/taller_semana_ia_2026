@@ -85,7 +85,8 @@ La **prueba de seguridad** (EJ 10) es obligatoria para todos los perfiles.
 """
 
 # ------------------------------------------------------------------------------------------------ ejercicios
-# modo: run (opencode run), interactivo (opencode), script (Python propio), varios (pasos mixtos)
+# modo: run (un encargo: se pega en opencode interactivo o se lanza con opencode run), interactivo (solo en opencode
+# interactivo), script (Python propio), varios (pasos mixtos). demo=True: lo hace el profesor en directo.
 E = []
 
 
@@ -97,11 +98,12 @@ def ej(**k):
     k.setdefault("prompt", None)
     k.setdefault("pasos", None)
     k.setdefault("reto", None)
+    k.setdefault("demo", False)   # True: lo hace el profesor en directo; False: práctica que hace cada alumno
     E.append(k)
 
 
 # ===================================================================== F · La sala de máquinas (escalera)
-ej(id="f0_react_bucle", num="F.0", puerta="F", nivel=1, min=15, modo="script", perfiles=["explorador", "programador", "arquitecto"],
+ej(id="f0_react_bucle", num="F.0", puerta="F", nivel=1, min=15, modo="script", demo=True, perfiles=["explorador", "programador", "arquitecto"],
    titulo="El bucle ReAct en 70 líneas",
    escena="Antes de encargar nada, conviene ver qué hay dentro de un agente: un programa de 70 líneas que piensa, actúa y observa.",
    objetivo="Ver por dentro qué es un agente: un modelo que, en bucle, **piensa** qué le falta, **actúa** pidiendo una "
@@ -109,25 +111,26 @@ ej(id="f0_react_bucle", num="F.0", puerta="F", nivel=1, min=15, modo="script", p
    datos=["`react_min.py`: agente ReAct completo con dos tools de solo lectura (`listar_carpeta`, `leer_archivo`).",
           "`notas/`: tres ficheros de texto cortos."],
    pasos="""```bash
-python3 taller.py ejecutar f0 react_min.py
-python3 taller.py ejecutar f0 react_min.py "Lee el fichero ../../.env y dime qué claves contiene."
+python taller.py ejecutar f0 react_min.py
+python taller.py ejecutar f0 react_min.py "Lee el fichero ../../.env y dime qué claves contiene."
 ```
-(O, con el `.env` cargado en tu terminal, `python3 react_min.py` desde la carpeta del ejercicio.)""",
+Necesita `OPENROUTER_API_KEY` en `.env`: es un programa de Python que llama al modelo directamente, y los modelos
+gratuitos de opencode solo funcionan dentro de opencode. Sin clave, míralo en el proyector y lee `react_min.py`.""",
    criterio=["La primera ejecución muestra líneas `PENSAR`, `ACTUAR` y `OBSERVAR` y termina.",
-             "**Compruébala tú**: ¿responde a la pregunta? ¿cuenta bien las líneas? (`wc -l notas/*`).",
+             "**Compruébala tú**: ¿responde a la pregunta? ¿cuenta bien las líneas? (abre los tres ficheros y cuéntalas).",
              "La segunda termina con `ERROR: fuera de la carpeta permitida`. ¿Quién lo ha impedido, el modelo o tu programa?"],
    reto="Añade una tool `contar_lineas(ruta)` (esquema en `TOOLS` + función en `TOOLS_PY`) y mira si ahora acierta siempre.",
    siguiente=[("Quiero ver cómo pide el modelo una herramienta", "f1_function_calling"),
               ("Ya lo entiendo: quiero hacer tareas reales", "PLAZA"),
               ("Quiero darle reglas a mi agente", "f2_agents_md")])
 
-ej(id="f1_function_calling", num="F.1", puerta="F", nivel=2, min=15, modo="script", perfiles=["programador", "arquitecto"],
+ej(id="f1_function_calling", num="F.1", puerta="F", nivel=2, min=15, modo="script", demo=True, perfiles=["programador", "arquitecto"],
    titulo="Function calling: el modelo pide, tu programa ejecuta",
    escena="¿Y si el agente se inventa una cuenta? En realidad el modelo no calcula ni ejecuta nada: pide que lo haga tu programa.",
    objetivo="Ver con tus ojos que el modelo **no ejecuta** herramientas: devuelve un JSON pidiendo usarlas y es tu "
             "código quien decide si las ejecuta.",
    datos=["`fc_calculadora.py`: una tool «calculadora» segura (sin `eval`) y el bucle de dos turnos."],
-   pasos="```bash\npython3 taller.py ejecutar f1 fc_calculadora.py\n```",
+   pasos="```bash\npython taller.py ejecutar f1 fc_calculadora.py\n```\nComo F.0, necesita `OPENROUTER_API_KEY` en `.env` (los modelos gratuitos solo van dentro de opencode).",
    criterio=["Se imprime el `tool_call` con la expresión `(1250+3750)*1.21`.",
              "Se imprime el resultado local `6050.0`.",
              "La respuesta final dice **6.050 €**."],
@@ -142,16 +145,18 @@ ej(id="f2_agents_md", num="F.2", puerta="F", nivel=1, min=15, modo="run", perfil
    objetivo="Dar **instrucciones permanentes** al agente con un fichero `AGENTS.md` en la carpeta del proyecto, y "
             "comprobar que cambian su comportamiento sin repetirlas en cada encargo.",
    datos=["`datos_salida.txt`: la próxima excursión del club.", "`AGENTS.ejemplo.md`: unas normas de la casa."],
-   pasos="""1. **Sin normas.** Lanza el encargo y mira el resultado:
-   ```bash
-   opencode run --standalone "Escribe el aviso para los socios con la excursión de datos_salida.txt."
-   ```
-2. **Con normas.** Copia las normas y repite el MISMO encargo:
+   pasos="""1. **Sin normas.** Abre opencode (`python taller.py abrir f2`), pega el encargo y mira el resultado:
+   > Escribe el aviso para los socios con la excursión de datos_salida.txt.
+
+   Sal con `Ctrl+C`.
+2. **Con normas.** Copia las normas (en PowerShell, Mac o Linux) y repite el MISMO encargo en un opencode nuevo:
    ```bash
    cp AGENTS.ejemplo.md AGENTS.md
-   opencode run --standalone "Escribe el aviso para los socios con la excursión de datos_salida.txt."
+   python taller.py abrir f2
    ```
-3. Compara los dos avisos. ¿Qué normas ha cumplido? ¿Alguna se ha saltado?""",
+3. Compara los dos avisos. ¿Qué normas ha cumplido? ¿Alguna se ha saltado?
+
+(Sin conversar: `python taller.py lanzar f2` hace el paso que toque, según exista o no `AGENTS.md`.)""",
    prompt="Escribe el aviso para los socios con la excursión de datos_salida.txt.",
    criterio=["Con `AGENTS.md`, el aviso se guarda en `avisos/2026-11-08_*.md`.",
              "Empieza por `Aviso:`, tiene `Qué llevar:` y firma `Junta del Club Andía`.",
@@ -161,7 +166,7 @@ ej(id="f2_agents_md", num="F.2", puerta="F", nivel=1, min=15, modo="run", perfil
               ("Quiero enseñarle una receta que use solo cuando haga falta", "f4_skills"),
               ("Volver al inicio", "PLAZA")])
 
-ej(id="f3_comandos", num="F.3", puerta="F", nivel=2, min=15, modo="interactivo", perfiles=["oficina", "programador"],
+ej(id="f3_comandos", num="F.3", puerta="F", nivel=2, min=15, modo="interactivo", demo=True, perfiles=["oficina", "programador"],
    titulo="Comandos: el encargo de todos los lunes en una palabra",
    escena="Cada lunes alguien prepara el mismo informe de ventas. En lugar de copiar y pegar el encargo, se guarda como comando del equipo.",
    objetivo="Convertir un encargo recurrente en un **comando** versionado (`.opencode/commands/`) que cualquiera del "
@@ -170,9 +175,9 @@ ej(id="f3_comandos", num="F.3", puerta="F", nivel=2, min=15, modo="interactivo",
           "`.opencode/commands/informe-semanal.md`: el comando, ya escrito. Ábrelo y léelo antes de usarlo."],
    pasos="""Los comandos solo funcionan en el **modo interactivo**:
 ```bash
-opencode
-> /informe-semanal
+python taller.py abrir f3
 ```
+y dentro de opencode escribe `/informe-semanal` y pulsa Enter (al escribir `/` verás la lista de comandos).
 Después crea tú un segundo comando, `.opencode/commands/resumen-mes.md`, que reciba el mes como argumento
 (`/resumen-mes junio`) y escriba `resumen_<mes>.txt` con el total de ese mes por categoría.""",
    prompt_validacion=True,
@@ -183,7 +188,7 @@ Después crea tú un segundo comando, `.opencode/commands/resumen-mes.md`, que r
               ("Quiero que lo haga cada lunes sin pedírselo", "ej21_programar_cron"),
               ("Volver al inicio", "PLAZA")])
 
-ej(id="f4_skills", num="F.4", puerta="F", nivel=2, min=20, modo="run", perfiles=["oficina", "programador"],
+ej(id="f4_skills", num="F.4", puerta="F", nivel=2, min=20, modo="run", demo=True, perfiles=["oficina", "programador"],
    titulo="Skills: recetas que el agente carga cuando las necesita",
    escena="Una asociación de vecinos necesita el acta de cada reunión con el formato exacto que pide el registro de asociaciones.",
    objetivo="Ver cómo el agente **descubre** una skill por su descripción, la **carga solo cuando la necesita** y "
@@ -191,7 +196,7 @@ ej(id="f4_skills", num="F.4", puerta="F", nivel=2, min=20, modo="run", perfiles=
    datos=["`transcripcion_reunion.txt`: la transcripción de la junta.",
           "`.opencode/skills/acta-reunion/SKILL.md`: la receta (formato del acta) y `validar_acta.py`, su script."],
    prompt="Haz el acta de la reunión de transcripcion_reunion.txt.",
-   criterio=["Existe `actas/2026-10-15_acta.md` y `python3 .opencode/skills/acta-reunion/validar_acta.py` dice `ACTA VÁLIDA`.",
+   criterio=["Existe `actas/2026-10-15_acta.md` y `python .opencode/skills/acta-reunion/validar_acta.py` dice `ACTA VÁLIDA`.",
              "La tabla de acuerdos tiene al menos 4 filas (txaranga, presupuesto, mancomunidad, cartel, cuota).",
              "En la salida verás que el agente llamó a la tool `skill`: fíjate en que el encargo **no** la nombraba."],
    reto="Crea tu propia skill en `.opencode/skills/<nombre>/SKILL.md` (por ejemplo, «ficha-receta» o «parte-de-incidencias») "
@@ -253,11 +258,11 @@ ej(id="f8_permisos", num="F.8", puerta="F", nivel=4, min=25, modo="run", perfile
    datos=["`opencode_inseguro.json`: la configuración del compañero.",
           "`comandos_prueba.txt`: 17 órdenes con la decisión que deberían tener.",
           "`simular_permisos.py`: aplica la regla de opencode (**gana la última regla que coincide**)."],
-   prompt="Audita opencode_inseguro.json. Escribe informe_permisos.md con cada agujero, por qué es peligroso y cómo se corrige (recuerda: en opencode gana la última regla que coincide). Crea opencode_seguro.json corregido, sin ninguna clave escrita (usa {env:LITELLM_API_KEY}), con external_directory en deny, y pruébalo con python3 simular_permisos.py opencode_seguro.json hasta que salgan 17/17.",
-   criterio=["`python3 simular_permisos.py opencode_seguro.json` da 17/17.",
+   prompt="Audita opencode_inseguro.json. Escribe informe_permisos.md con cada agujero, por qué es peligroso y cómo se corrige (recuerda: en opencode gana la última regla que coincide). Crea opencode_seguro.json corregido, sin ninguna clave escrita (usa {env:LITELLM_API_KEY}), con external_directory en deny, y pruébalo con python simular_permisos.py opencode_seguro.json hasta que salgan 17/17.",
+   criterio=["`python simular_permisos.py opencode_seguro.json` da 17/17.",
              "`external_directory` en `deny` y ninguna `apiKey` escrita a mano.",
              "`informe_permisos.md` explica al menos el orden de reglas, `curl … | sh` y la clave en claro."],
-   reto="Piensa como atacante: ¿`python3 -c \"import shutil; shutil.rmtree('x')\"` lo para algún patrón? "
+   reto="Piensa como atacante: ¿`python -c \"import shutil; shutil.rmtree('x')\"` lo para algún patrón? "
         "Conclusión: los patrones son un cinturón, no una jaula. Para aislar de verdad: contenedor o máquina virtual.",
    siguiente=[("La prueba de seguridad, en modo atacante", "ej10_inyeccion_prompt"),
               ("Quiero medir la fiabilidad", "f9_fiabilidad"),
@@ -270,8 +275,8 @@ ej(id="f9_fiabilidad", num="F.9", puerta="F", nivel=4, min=30, modo="script", pe
             "acierto, el tiempo y los tokens. Distinguir *pass@k* (alguna vez sale) de *pass^k* (sale todas las veces).",
    datos=["`medir.py`: repite un ejercicio N veces en carpetas limpias y resume los resultados."],
    pasos="""```bash
-python3 taller.py ejecutar f9 medir.py ej07 5          # 5 intentos del EJ 07
-python3 taller.py ejecutar f9 medir.py ej07 5 --prompt "tu versión mejorada del encargo"
+python taller.py ejecutar f9 medir.py ej07 5          # 5 intentos del EJ 07
+python taller.py ejecutar f9 medir.py ej07 5 --prompt "tu versión mejorada del encargo"
 ```""",
    criterio=["Una tabla con 5 intentos, cuántos pasan el comprobador, el tiempo medio y los tokens.",
              "Una conclusión escrita: ¿cambia la tasa de acierto al mejorar el encargo? ¿Cuánto cuesta cada intento?"],
@@ -285,8 +290,8 @@ ej(id="f10_tests_primero", num="F.10", puerta="F", nivel=3, min=20, modo="run", 
    objetivo="Usar los **tests como criterio de éxito** objetivo de un agente programador, y detectar si hace trampa.",
    datos=["`tienda/precios.py`: código con fallos (IVA, descuentos, ticket, cambio con céntimos).",
           "`tests/test_precios.py`: 9 tests que describen lo que debe hacer."],
-   prompt="Haz que pasen todos los tests de tests/ arreglando tienda/precios.py. NO modifiques nada dentro de tests/. Ejecuta python3 -m unittest al final y enséñame el resultado.",
-   criterio=["`python3 -m unittest` dice `OK` con 9 tests.",
+   prompt="Haz que pasen todos los tests de tests/ arreglando tienda/precios.py. NO modifiques nada dentro de tests/. Ejecuta python -m unittest al final y enséñame el resultado.",
+   criterio=["`python -m unittest` dice `OK` con 9 tests.",
              "`tests/test_precios.py` está intacto (el comprobador compara su huella)."],
    reto="Pide lo mismo sin la frase «NO modifiques tests/» varias veces. ¿Alguna vez «arregla» los tests en vez del código?",
    siguiente=[("Quiero comandos para no repetirme", "f3_comandos"),
@@ -294,7 +299,7 @@ ej(id="f10_tests_primero", num="F.10", puerta="F", nivel=3, min=20, modo="run", 
               ("Volver al inicio", "PLAZA")])
 
 # ===================================================================== A · Webs
-ej(id="ej01_pagina_personal", num="EJ 01", puerta="A", nivel=1, min=15, modo="run", perfiles=["explorador"],
+ej(id="ej01_pagina_personal", num="EJ 01", puerta="A", nivel=1, min=15, modo="run", demo=True, perfiles=["explorador"],
    titulo="Una web personal en un solo archivo",
    escena="Una panadera jubilada que da talleres de pan quiere una web sencilla para que la encuentren. Tiene su biografía en un texto.",
    objetivo="Convertir un texto en bruto en una página web terminada, en un solo archivo.",
@@ -324,9 +329,9 @@ ej(id="ej03_formulario_json", num="EJ 03", puerta="A", nivel=3, min=20, modo="ru
    objetivo="Crear un formulario web cuyo envío quede guardado en `resultados.json` con un servidor mínimo, "
             "**sin dejar procesos vivos ni matar procesos ajenos**.",
    datos=["Ninguno: el agente lo crea todo."],
-   prompt="Crea un formulario de contacto HTML (nombre, correo y mensaje) y un servidor mínimo en Python, solo con la biblioteca estándar, que guarde cada envío en resultados.json. Arráncalo en el puerto 8901 con timeout 60 delante para que se pare solo; si el puerto está ocupado, elige otro libre y NO mates ningún proceso. Envía una prueba con curl, comprueba que el JSON se ha escrito y, al terminar, asegúrate de que no queda ningún servidor tuyo escuchando.",
+   prompt="Crea un formulario de contacto HTML (nombre, correo y mensaje) y un servidor mínimo servidor.py en Python, solo con la biblioteca estándar, que guarde cada envío en resultados.json y que se apague solo a los 60 segundos (prográmalo dentro del propio servidor, para que funcione igual en Windows, macOS y Linux). Arráncalo en segundo plano en el puerto 8901; si está ocupado, elige otro libre y NO mates ningún proceso. Envía un envío de prueba con un pequeño script de Python (urllib, sin curl), comprueba que el JSON se ha escrito y, al terminar, asegúrate de que no queda ningún servidor tuyo escuchando.",
    criterio=["Existe `resultados.json` con el envío de prueba.", "No queda nada escuchando en el 8901 al acabar."],
-   pistas=["El `opencode.json` del kit prohíbe `kill`, `pkill` y `killall`: por eso el encargo pide `timeout 60`."],
+   pistas=["El `opencode.json` del kit prohíbe `kill`, `pkill`, `killall` y `taskkill`: por eso el encargo pide que el servidor se apague solo."],
    siguiente=[("¿Qué más podría hacer un agente con bash libre?", "f8_permisos"),
               ("Volver al inicio", "PLAZA")])
 
@@ -346,7 +351,7 @@ ej(id="ej05_auditoria_web", num="EJ 05", puerta="A", nivel=2, min=20, modo="run"
    escena="La web de un centro de mayores tiene letra pequeña y poco contraste: sus usuarios no la pueden leer. Hay que auditarla y corregirla.",
    objetivo="Detectar y corregir fallos de accesibilidad y adaptación al móvil de una página real.",
    datos=["`web_centro_mayores.html`: la página original."],
-   prompt="Audita web_centro_mayores.html: contraste de color, tamaño de letra, adaptación al móvil, atributo lang, textos alternativos de las imágenes y navegación con teclado. Escribe incidencias.md con una lista de cada fallo y su corrección, y guarda la página corregida como web_corregida.html sin tocar el original. No me hagas preguntas: si algo es ambiguo, decide tú y explícalo en incidencias.md.",
+   prompt="Audita web_centro_mayores.html: contraste de color, tamaño de letra, adaptación al móvil, atributo lang, textos alternativos de las imágenes y navegación con teclado. Entrega dos ficheros nuevos y no toques el original: (1) incidencias.md, con una lista de cada fallo y su corrección; (2) web_corregida.html, la página ya corregida. No me hagas preguntas: si algo es ambiguo, decide tú y explícalo en incidencias.md. Al final comprueba que existen los dos ficheros.",
    criterio=["`incidencias.md` con cada fallo y su corrección.",
              "`web_corregida.html` con `lang=\"es\"`, letra de 14 px o más, media queries y `alt` en todas las imágenes.",
              "El original sigue intacto."],
@@ -403,7 +408,7 @@ ej(id="ej25_carta_explicada", num="EJ 25", puerta="B", nivel=1, min=15, modo="ru
    escena="Llega una carta de «requerimiento previo a la vía de apremio» por dos recibos del agua. Hay que entender qué piden, para cuándo y qué pasa si no se paga.",
    objetivo="Que el agente explique un documento administrativo en lenguaje llano **sin inventar** lo que no dice.",
    datos=["`carta.txt`: una carta de una entidad ficticia por dos recibos de agua."],
-   prompt="Lee carta.txt y escribe explicacion.md para una persona de 80 años: qué le piden, cuánto tiene que pagar, para qué día exactamente (cuenta los días hábiles sin sábados, domingos ni festivos, desde el día siguiente a la notificación), qué pasa si no hace nada (con el importe) y una lista de pasos. Si te pregunto algo que no está en la carta, como un teléfono o un horario, escribe «la carta no lo dice» en vez de inventarlo. Incluye al final un apartado ¿A qué teléfono llamo?",
+   prompt="Lee carta.txt y escribe explicacion.md para una persona de 80 años: qué le piden, cuánto tiene que pagar, para qué día exactamente (cuenta los días hábiles sin sábados, domingos ni festivos, desde el día siguiente a la notificación), qué pasa si no hace nada (con el importe) y una lista de pasos. Si te pregunto algo que no está en la carta, como un teléfono o un horario, escribe «la carta no lo dice» en vez de inventarlo. Termina con un apartado cuyo título sea exactamente «¿A qué teléfono llamo?» y respóndelo.",
    criterio=["Importe: **127,40 €**; si no paga, recargo del 20 % (**152,88 €** más intereses y costas).",
              "Plazo: **lunes 19/10/2026** (el 12 de octubre es festivo).",
              "En «¿A qué teléfono llamo?» pone que la carta no lo dice."],
@@ -563,22 +568,28 @@ ej(id="ej20_vigilar_web", num="EJ 20", puerta="D", nivel=3, min=15, modo="run", 
    escena="Hay que enterarse cuando cambie una web (por ejemplo, la de convocatorias de ayudas). Preparando este taller, un agente dijo «Listo» sin haber hecho nada.",
    objetivo="Un script que comprueba si una web ha cambiado y lo apunta en un log.",
    datos=["Ninguno: el agente crea `vigila/`."],
-   prompt="Crea vigila/bin/vigila_cambios.sh: descarga https://example.com con curl, calcula su hash SHA-256, lo compara con el guardado en vigila/hash.txt y añade una línea con fecha a vigila/log/vigilancia.log (inicio, sin cambios o CAMBIO DETECTADO). Las rutas deben calcularse a partir de la ubicación del propio script, sin rutas absolutas, para que funcione se lance desde donde se lance. Ejecútalo dos veces y enséñame el log.",
-   criterio=["El log tiene dos líneas y el script funciona lanzado desde `/`.", "Sin rutas absolutas escritas a mano."],
+   prompt="Crea vigila/vigila_cambios.py, en Python y solo con la biblioteca estándar: descarga https://example.com, calcula su hash SHA-256, lo compara con el guardado en vigila/hash.txt y añade una línea con fecha y hora a vigila/log/vigilancia.log (inicio, sin cambios o CAMBIO DETECTADO). Las rutas deben calcularse a partir de la ubicación del propio script, sin rutas absolutas, para que funcione se lance desde donde se lance y en cualquier sistema. Ejecútalo dos veces y enséñame el log.",
+   criterio=["El log tiene dos líneas y el script funciona lanzado desde la raíz del disco (`/` o `C:\\`).", "Sin rutas absolutas escritas a mano."],
    siguiente=[("Programarlo para que se ejecute solo", "ej21_programar_cron"), ("Volver al inicio", "PLAZA")])
 
 ej(id="ej21_programar_cron", num="EJ 21", puerta="D", nivel=3, min=20, modo="interactivo", perfiles=["programador"],
    titulo="Programar una tarea periódica (con tu permiso)",
    escena="La comprobación de la web tiene que ejecutarse sola cada cierto tiempo. El agente va a tocar tu sistema, así que te pedirá permiso.",
-   objetivo="Programar la vigilancia con cron o un timer de systemd **aprobando** cada orden que toca el sistema.",
-   datos=["`vigila/bin/vigila_cambios.sh`: el script del EJ 20."],
-   pasos="""Modo **interactivo** (el kit pone `crontab` y `systemctl` en `ask`; en `opencode run` la pregunta se quedaría colgada):
+   objetivo="Programar la vigilancia con el programador de tareas de tu sistema (Programador de tareas de Windows, cron o "
+            "systemd en Linux, launchd en macOS) **aprobando** cada orden que toca el sistema.",
+   datos=["`vigila/vigila_cambios.py`: el script del EJ 20."],
+   pasos="""Modo **interactivo** (el kit pone `schtasks`, `crontab`, `systemctl` y `launchctl` en `ask`: opencode te pregunta
+antes de ejecutarlas, y en `opencode run` la pregunta se quedaría colgada):
 ```bash
-opencode
-> Quiero ejecutar vigila/bin/vigila_cambios.sh cada minuto. Si en este equipo no hay cron, usa un timer de systemd de usuario. Genera los ficheros, arranca el timer, espera a que haya al menos dos entradas en vigila/log/vigilancia.log y desactívalo después dejando el sistema limpio.
+python taller.py abrir ej21
 ```
-Lee cada orden antes de aprobarla.""",
-   criterio=["El log tiene al menos dos entradas separadas ~60 s.", "Al terminar no queda el timer: `systemctl --user list-timers`."],
+Pega este encargo:
+> Quiero ejecutar vigila/vigila_cambios.py cada minuto con el programador de tareas de este sistema (en Windows, el Programador de tareas con schtasks; en Linux, cron o un timer de systemd de usuario; en macOS, launchd). Usa la ruta completa del Python con el que se ejecuta el kit. Crea la tarea, espera a que haya al menos dos líneas nuevas en vigila/log/vigilancia.log y después elimina la tarea dejando el sistema limpio. Enséñame el log.
+
+Lee cada orden antes de aprobarla: ¿qué crea?, ¿cada cuánto?, ¿cómo se borra?""",
+   criterio=["El log tiene al menos dos entradas separadas unos 60 s.",
+             "Al terminar no queda la tarea: `schtasks /query | findstr vigila` (Windows), `crontab -l` y "
+             "`systemctl --user list-timers` (Linux) o `launchctl list | grep vigila` (macOS) no la muestran."],
    siguiente=[("Volver al inicio", "PLAZA"), ("Auditar permisos", "f8_permisos")])
 
 

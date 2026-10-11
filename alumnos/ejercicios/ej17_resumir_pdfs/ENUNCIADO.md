@@ -1,6 +1,8 @@
 # 🔵 EJ 17 · Resumir varios PDF en una tabla
 
-> 🗂️ **Documentos y tareas repetitivas** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 🗂️ **Documentos y tareas repetitivas** · 🔵 Medio · ⏱ 15 min · 🛠️ opencode interactivo · Recomendado para: 📚
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -16,19 +18,31 @@ Resumir varios PDF en una tabla, con puntos sacados del texto real.
 
 ## 💬 El encargo
 
-Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:
 
 ```bash
-python3 taller.py lanzar ej17
+python taller.py abrir ej17
 ```
 
-O a mano, desde la carpeta de trabajo del ejercicio:
+**2.** Copia este encargo, pégalo en opencode y pulsa Enter:
+
+```text
+Lee los PDF de apuntes/ uno a uno con pdfplumber y crea resumen_apuntes.md: una tabla Markdown con el título, el tema y tres puntos clave de cada documento, sacados del texto (no inventes nada).
+```
+
+**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
 
 ```bash
-opencode run --standalone "Lee los PDF de apuntes/ uno a uno con pdfplumber y crea resumen_apuntes.md: una tabla Markdown con el título, el tema y tres puntos clave de cada documento, sacados del texto (no inventes nada)." | tee salida.txt
+python taller.py lanzar ej17
 ```
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo…"`.
+
+</details>
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -36,7 +50,7 @@ opencode run --standalone "Lee los PDF de apuntes/ uno a uno con pdfplumber y cr
 - Los puntos se pueden encontrar en los originales (compruébalo con uno).
 
 ```bash
-python3 taller.py comprobar ej17      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar ej17      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)

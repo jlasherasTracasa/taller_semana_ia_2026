@@ -1,6 +1,8 @@
 # 🟢 EJ 25 · Entender una carta de la Administración
 
-> 📬 **Correo y trámites** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚
+> 📬 **Correo y trámites** · 🟢 Fácil · ⏱ 15 min · 🛠️ opencode interactivo · Recomendado para: 🧭 📚
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -16,19 +18,31 @@ Que el agente explique un documento administrativo en lenguaje llano **sin inven
 
 ## 💬 El encargo
 
-Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:
 
 ```bash
-python3 taller.py lanzar ej25
+python taller.py abrir ej25
 ```
 
-O a mano, desde la carpeta de trabajo del ejercicio:
+**2.** Copia este encargo, pégalo en opencode y pulsa Enter:
+
+```text
+Lee carta.txt y escribe explicacion.md para una persona de 80 años: qué le piden, cuánto tiene que pagar, para qué día exactamente (cuenta los días hábiles sin sábados, domingos ni festivos, desde el día siguiente a la notificación), qué pasa si no hace nada (con el importe) y una lista de pasos. Si te pregunto algo que no está en la carta, como un teléfono o un horario, escribe «la carta no lo dice» en vez de inventarlo. Termina con un apartado cuyo título sea exactamente «¿A qué teléfono llamo?» y respóndelo.
+```
+
+**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
 
 ```bash
-opencode run --standalone "Lee carta.txt y escribe explicacion.md para una persona de 80 años: qué le piden, cuánto tiene que pagar, para qué día exactamente (cuenta los días hábiles sin sábados, domingos ni festivos, desde el día siguiente a la notificación), qué pasa si no hace nada (con el importe) y una lista de pasos. Si te pregunto algo que no está en la carta, como un teléfono o un horario, escribe «la carta no lo dice» en vez de inventarlo. Incluye al final un apartado ¿A qué teléfono llamo?" | tee salida.txt
+python taller.py lanzar ej25
 ```
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo…"`.
+
+</details>
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -37,7 +51,7 @@ opencode run --standalone "Lee carta.txt y escribe explicacion.md para una perso
 - En «¿A qué teléfono llamo?» pone que la carta no lo dice.
 
 ```bash
-python3 taller.py comprobar ej25      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar ej25      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas

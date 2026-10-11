@@ -1,6 +1,8 @@
 # 🟢 F.2 · AGENTS.md: las normas de la casa
 
-> ⚙️ **Cómo funciona un agente** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚 💻
+> ⚙️ **Cómo funciona un agente** · 🟢 Fácil · ⏱ 15 min · 🛠️ opencode interactivo · Recomendado para: 🧭 📚 💻
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -17,18 +19,20 @@ Dar **instrucciones permanentes** al agente con un fichero `AGENTS.md` en la car
 
 ## 💬 El encargo
 
-1. **Sin normas.** Lanza el encargo y mira el resultado:
-   ```bash
-   opencode run --standalone "Escribe el aviso para los socios con la excursión de datos_salida.txt."
-   ```
-2. **Con normas.** Copia las normas y repite el MISMO encargo:
+1. **Sin normas.** Abre opencode (`python taller.py abrir f2`), pega el encargo y mira el resultado:
+   > Escribe el aviso para los socios con la excursión de datos_salida.txt.
+
+   Sal con `Ctrl+C`.
+2. **Con normas.** Copia las normas (en PowerShell, Mac o Linux) y repite el MISMO encargo en un opencode nuevo:
    ```bash
    cp AGENTS.ejemplo.md AGENTS.md
-   opencode run --standalone "Escribe el aviso para los socios con la excursión de datos_salida.txt."
+   python taller.py abrir f2
    ```
 3. Compara los dos avisos. ¿Qué normas ha cumplido? ¿Alguna se ha saltado?
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+(Sin conversar: `python taller.py lanzar f2` hace el paso que toque, según exista o no `AGENTS.md`.)
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -37,7 +41,7 @@ Dar **instrucciones permanentes** al agente con un fichero `AGENTS.md` en la car
 - Máximo 150 palabras, sin emojis, fechas como `08/11/2026`.
 
 ```bash
-python3 taller.py comprobar f2      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar f2      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧗 Reto extra

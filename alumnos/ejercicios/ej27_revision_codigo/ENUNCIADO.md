@@ -1,6 +1,8 @@
 # 🟣 EJ 27 · Revisión de código de un cambio (pull request)
 
-> ⚙️ **Cómo funciona un agente** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 💻 🏛️
+> ⚙️ **Cómo funciona un agente** · 🟣 Avanzado · ⏱ 20 min · 🛠️ opencode interactivo · Recomendado para: 💻 🏛️
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -17,19 +19,31 @@ Usar al agente como **revisor**: encontrar fallos de seguridad, regresiones y ma
 
 ## 💬 El encargo
 
-Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:
 
 ```bash
-python3 taller.py lanzar ej27
+python taller.py abrir ej27
 ```
 
-O a mano, desde la carpeta de trabajo del ejercicio:
+**2.** Copia este encargo, pégalo en opencode y pulsa Enter:
+
+```text
+Revisa cambio.diff (y DESCRIPCION_PR.md) como un desarrollador senior. Escribe revision.md con cada problema ordenado por severidad (crítico, alto, medio, bajo): fichero y línea, qué pasa, por qué importa y cómo corregirlo con código. Termina con un veredicto: aprobar o pedir cambios. No modifiques cambio.diff ni ningún otro fichero existente: lo único que creas es revision.md.
+```
+
+**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
 
 ```bash
-opencode run --standalone "Revisa cambio.diff (y DESCRIPCION_PR.md) como un desarrollador senior. Escribe revision.md con cada problema ordenado por severidad (crítico, alto, medio, bajo): fichero y línea, qué pasa, por qué importa y cómo corregirlo con código. Termina con un veredicto: aprobar o pedir cambios. No modifiques cambio.diff ni ningún otro fichero existente: lo único que creas es revision.md." | tee salida.txt
+python taller.py lanzar ej27
 ```
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo…"`.
+
+</details>
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -39,7 +53,7 @@ opencode run --standalone "Revisa cambio.diff (y DESCRIPCION_PR.md) como un desa
 - Veredicto: **pedir cambios**.
 
 ```bash
-python3 taller.py comprobar ej27      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar ej27      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas

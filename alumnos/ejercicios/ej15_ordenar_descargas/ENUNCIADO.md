@@ -1,6 +1,8 @@
 # 🟢 EJ 15 · Ordenar la carpeta de Descargas
 
-> 🗂️ **Documentos y tareas repetitivas** · 🟢 Fácil · ⏱ 10 min · 🛠️ `opencode run` · Recomendado para: 🧭
+> 🗂️ **Documentos y tareas repetitivas** · 🟢 Fácil · ⏱ 10 min · 🛠️ opencode interactivo · Recomendado para: 🧭
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -16,19 +18,31 @@ Clasificar archivos por tipo sin borrar ni renombrar ninguno.
 
 ## 💬 El encargo
 
-Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:
 
 ```bash
-python3 taller.py lanzar ej15
+python taller.py abrir ej15
 ```
 
-O a mano, desde la carpeta de trabajo del ejercicio:
+**2.** Copia este encargo, pégalo en opencode y pulsa Enter:
+
+```text
+Organiza descargas/: crea las subcarpetas facturas, fotos, hojas_calculo, documentos e imagenes, y mueve cada archivo a la suya según su tipo y su nombre, sin borrar ni renombrar nada. Al final cuenta los archivos para comprobar que siguen siendo 11 y enséñame el árbol.
+```
+
+**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
 
 ```bash
-opencode run --standalone "Organiza descargas/: crea las subcarpetas facturas, fotos, hojas_calculo, documentos e imagenes, y mueve cada archivo a la suya según su tipo y su nombre, sin borrar ni renombrar nada. Al final cuenta los archivos para comprobar que siguen siendo 11 y enséñame el árbol." | tee salida.txt
+python taller.py lanzar ej15
 ```
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo…"`.
+
+</details>
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -36,7 +50,7 @@ opencode run --standalone "Organiza descargas/: crea las subcarpetas facturas, f
 - Nada borrado ni renombrado, nada suelto.
 
 ```bash
-python3 taller.py comprobar ej15      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar ej15      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)

@@ -2,6 +2,8 @@
 
 > ⚙️ **Cómo funciona un agente** · ⚫ Experto · ⏱ 30 min · 🛠️ tu propio programa en Python · Recomendado para: 🏛️
 
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
+
 ## 📌 La situación
 
 El encargo te salió bien una vez. Si lo vas a usar cada semana, necesitas saber si sale bien siempre y cuánto cuesta.
@@ -17,8 +19,8 @@ Ejecutar el **mismo** encargo varias veces, pasar el comprobador a cada intento 
 ## 💬 El encargo
 
 ```bash
-python3 taller.py ejecutar f9 medir.py ej07 5          # 5 intentos del EJ 07
-python3 taller.py ejecutar f9 medir.py ej07 5 --prompt "tu versión mejorada del encargo"
+python taller.py ejecutar f9 medir.py ej07 5          # 5 intentos del EJ 07
+python taller.py ejecutar f9 medir.py ej07 5 --prompt "tu versión mejorada del encargo"
 ```
 
 ## ✅ ¿Lo ha hecho de verdad?

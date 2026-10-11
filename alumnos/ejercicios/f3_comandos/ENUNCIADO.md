@@ -1,6 +1,8 @@
 # 🔵 F.3 · Comandos: el encargo de todos los lunes en una palabra
 
-> ⚙️ **Cómo funciona un agente** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode` interactivo · Recomendado para: 📚 💻
+> ⚙️ **Cómo funciona un agente** · 🔵 Medio · ⏱ 15 min · 🛠️ solo opencode interactivo · Recomendado para: 📚 💻
+
+> 🎥 **Demo en directo**: lo hace el profesor en el proyector; tú lo miras y lo repites después si quieres.
 
 ## 📌 La situación
 
@@ -19,9 +21,9 @@ Convertir un encargo recurrente en un **comando** versionado (`.opencode/command
 
 Los comandos solo funcionan en el **modo interactivo**:
 ```bash
-opencode
-> /informe-semanal
+python taller.py abrir f3
 ```
+y dentro de opencode escribe `/informe-semanal` y pulsa Enter (al escribir `/` verás la lista de comandos).
 Después crea tú un segundo comando, `.opencode/commands/resumen-mes.md`, que reciba el mes como argumento
 (`/resumen-mes junio`) y escriba `resumen_<mes>.txt` con el total de ese mes por categoría.
 
@@ -32,7 +34,7 @@ Después crea tú un segundo comando, `.opencode/commands/resumen-mes.md`, que r
 - Tu comando `/resumen-mes junio` escribe `resumen_junio.txt` con 12.800 € en total.
 
 ```bash
-python3 taller.py comprobar f3      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar f3      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)

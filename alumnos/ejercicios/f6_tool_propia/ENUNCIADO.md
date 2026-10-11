@@ -1,6 +1,8 @@
 # 🟣 F.6 · Tu propia tool: plazos en días hábiles
 
-> ⚙️ **Cómo funciona un agente** · 🟣 Avanzado · ⏱ 25 min · 🛠️ `opencode run` · Recomendado para: 💻 🏛️
+> ⚙️ **Cómo funciona un agente** · 🟣 Avanzado · ⏱ 25 min · 🛠️ opencode interactivo · Recomendado para: 💻 🏛️
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -17,19 +19,31 @@ Escribir una **tool propia** (un servidor MCP de 30 líneas en Python) para algo
 
 ## 💬 El encargo
 
-Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:
 
 ```bash
-python3 taller.py lanzar f6
+python taller.py abrir f6
 ```
 
-O a mano, desde la carpeta de trabajo del ejercicio:
+**2.** Copia este encargo, pégalo en opencode y pulsa Enter:
+
+```text
+Me notificaron una carta el 2 de octubre de 2026 y tengo 10 días hábiles para pagar. ¿Qué día vence el plazo? Usa la herramienta de plazos y cita su respuesta exacta.
+```
+
+**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
 
 ```bash
-opencode run --standalone "Me notificaron una carta el 2 de octubre de 2026 y tengo 10 días hábiles para pagar. ¿Qué día vence el plazo? Usa la herramienta de plazos y cita su respuesta exacta." | tee salida.txt
+python taller.py lanzar f6
 ```
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo…"`.
+
+</details>
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -37,7 +51,7 @@ opencode run --standalone "Me notificaron una carta el 2 de octubre de 2026 y te
 - El agente cita `vence=19/10/2026 … festivos_saltados=12/10`, es decir, usó TU tool.
 
 ```bash
-python3 taller.py comprobar f6      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar f6      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas

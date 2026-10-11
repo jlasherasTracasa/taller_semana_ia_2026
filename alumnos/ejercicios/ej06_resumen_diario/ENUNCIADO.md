@@ -1,6 +1,8 @@
 # 🟢 EJ 06 · Resumen diario de la bandeja de entrada
 
-> 📬 **Correo y trámites** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚
+> 📬 **Correo y trámites** · 🟢 Fácil · ⏱ 15 min · 🛠️ opencode interactivo · Recomendado para: 🧭 📚
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -16,19 +18,31 @@ Reducir una bandeja a un resumen ordenado por urgencia, con la acción de cada c
 
 ## 💬 El encargo
 
-Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:
 
 ```bash
-python3 taller.py lanzar ej06
+python taller.py abrir ej06
 ```
 
-O a mano, desde la carpeta de trabajo del ejercicio:
+**2.** Copia este encargo, pégalo en opencode y pulsa Enter:
+
+```text
+Lee todos los correos de correo/bandeja/ y escribe el fichero correo/resumen_diario.md con un resumen ordenado por urgencia (urgente, media, baja), indicando de cada correo el remitente, el asunto y la acción que pide. El spam va aparte como no accionable. Escribe el fichero (no basta con enseñármelo en pantalla) y comprueba al final que existe.
+```
+
+**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
 
 ```bash
-opencode run --standalone "Lee todos los correos de correo/bandeja/ y escribe el fichero correo/resumen_diario.md con un resumen ordenado por urgencia (urgente, media, baja), indicando de cada correo el remitente, el asunto y la acción que pide. El spam va aparte como no accionable. Escribe el fichero (no basta con enseñármelo en pantalla) y comprueba al final que existe." | tee salida.txt
+python taller.py lanzar ej06
 ```
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo…"`.
+
+</details>
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -37,7 +51,7 @@ opencode run --standalone "Lee todos los correos de correo/bandeja/ y escribe el
 - ¿Qué ha hecho con el correo del festival de Vigo? Léelo tú.
 
 ```bash
-python3 taller.py comprobar ej06      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar ej06      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas

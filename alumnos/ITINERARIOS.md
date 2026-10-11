@@ -78,6 +78,13 @@ Elige el perfil que más se parezca a ti. Es un itinerario recomendado: puedes c
 
 💡 Ataca tu propia configuración. Mide en vez de opinar: pass^k, tokens, tiempo.
 
+## 🎥 Demos en directo y ✋ prácticas
+
+- **🎥 Demo en directo**: la hace el profesor en el proyector, explicando cada paso. Tú miras (y, si quieres, la repites después).
+- **✋ Práctica**: la haces tú en tu ordenador, a tu ritmo, en clase o en casa. Cuando te atasques o algo no cuadre, **pregunta al profesor**: para eso está.
+
+Demos: [F.0 · El bucle ReAct en 70 líneas](ejercicios/f0_react_bucle/ENUNCIADO.md) · [F.1 · Function calling: el modelo pide, tu programa ejecuta](ejercicios/f1_function_calling/ENUNCIADO.md) · [F.3 · Comandos: el encargo de todos los lunes en una palabra](ejercicios/f3_comandos/ENUNCIADO.md) · [F.4 · Skills: recetas que el agente carga cuando las necesita](ejercicios/f4_skills/ENUNCIADO.md) · [EJ 01 · Una web personal en un solo archivo](ejercicios/ej01_pagina_personal/ENUNCIADO.md)
+
 ## 📶 Niveles
 
 | | Nivel | Para quién |
@@ -95,81 +102,81 @@ Elige un área y un ejercicio. Cada uno te propone el siguiente paso al terminar
 
 *Páginas personales, agendas, formularios y accesibilidad.*
 
-| | Ejercicio | ⏱ | Perfiles |
-|---|---|---|---|
-| 🟢 | [EJ 01 · Una web personal en un solo archivo](ejercicios/ej01_pagina_personal/ENUNCIADO.md) | 15' | 🧭 |
-| 🔵 | [EJ 02 · Agenda de actos a partir de una hoja de cálculo](ejercicios/ej02_agenda_csv/ENUNCIADO.md) | 15' | 📚 |
-| 🟣 | [EJ 03 · Formulario web que guarda los envíos (sin matar procesos ajenos)](ejercicios/ej03_formulario_json/ENUNCIADO.md) | 20' | 💻 |
-| 🔵 | [EJ 04 · Publicar una web en GitHub Pages (sin darle tus credenciales)](ejercicios/ej04_github_pages/ENUNCIADO.md) | 20' | 📚 💻 |
-| 🔵 | [EJ 05 · Auditoría de accesibilidad de una web](ejercicios/ej05_auditoria_web/ENUNCIADO.md) | 20' | 📚 |
+| | Ejercicio | Quién | ⏱ | Perfiles |
+|---|---|---|---|---|
+| 🟢 | [EJ 01 · Una web personal en un solo archivo](ejercicios/ej01_pagina_personal/ENUNCIADO.md) | 🎥 demo | 15' | 🧭 |
+| 🔵 | [EJ 02 · Agenda de actos a partir de una hoja de cálculo](ejercicios/ej02_agenda_csv/ENUNCIADO.md) | ✋ tú | 15' | 📚 |
+| 🟣 | [EJ 03 · Formulario web que guarda los envíos (sin matar procesos ajenos)](ejercicios/ej03_formulario_json/ENUNCIADO.md) | ✋ tú | 20' | 💻 |
+| 🔵 | [EJ 04 · Publicar una web en GitHub Pages (sin darle tus credenciales)](ejercicios/ej04_github_pages/ENUNCIADO.md) | ✋ tú | 20' | 📚 💻 |
+| 🔵 | [EJ 05 · Auditoría de accesibilidad de una web](ejercicios/ej05_auditoria_web/ENUNCIADO.md) | ✋ tú | 20' | 📚 |
 
 ### 📬 Correo y trámites
 
 *Resumir, clasificar, responder sin enviar y entender documentos administrativos.*
 
-| | Ejercicio | ⏱ | Perfiles |
-|---|---|---|---|
-| 🟢 | [EJ 06 · Resumen diario de la bandeja de entrada](ejercicios/ej06_resumen_diario/ENUNCIADO.md) | 15' | 🧭 📚 |
-| 🔵 | [EJ 07 · De correos a lista de tareas](ejercicios/ej07_tareas_csv/ENUNCIADO.md) | 15' | 📚 |
-| 🟢 | [EJ 08 · Borrador de respuesta a un proveedor (sin enviar nada)](ejercicios/ej08_borrador_respuesta/ENUNCIADO.md) | 10' | 🧭 📚 |
-| 🔵 | [EJ 09 · De un correo a un evento de calendario](ejercicios/ej09_calendario_ics/ENUNCIADO.md) | 15' | 📚 |
-| 🟢 | [EJ 25 · Entender una carta de la Administración](ejercicios/ej25_carta_explicada/ENUNCIADO.md) | 15' | 🧭 📚 |
-| 🟢 | [EJ 26 · ¿Qué oferta de luz me sale más barata?](ejercicios/ej26_factura_luz/ENUNCIADO.md) | 15' | 🧭 📚 |
+| | Ejercicio | Quién | ⏱ | Perfiles |
+|---|---|---|---|---|
+| 🟢 | [EJ 06 · Resumen diario de la bandeja de entrada](ejercicios/ej06_resumen_diario/ENUNCIADO.md) | ✋ tú | 15' | 🧭 📚 |
+| 🔵 | [EJ 07 · De correos a lista de tareas](ejercicios/ej07_tareas_csv/ENUNCIADO.md) | ✋ tú | 15' | 📚 |
+| 🟢 | [EJ 08 · Borrador de respuesta a un proveedor (sin enviar nada)](ejercicios/ej08_borrador_respuesta/ENUNCIADO.md) | ✋ tú | 10' | 🧭 📚 |
+| 🔵 | [EJ 09 · De un correo a un evento de calendario](ejercicios/ej09_calendario_ics/ENUNCIADO.md) | ✋ tú | 15' | 📚 |
+| 🟢 | [EJ 25 · Entender una carta de la Administración](ejercicios/ej25_carta_explicada/ENUNCIADO.md) | ✋ tú | 15' | 🧭 📚 |
+| 🟢 | [EJ 26 · ¿Qué oferta de luz me sale más barata?](ejercicios/ej26_factura_luz/ENUNCIADO.md) | ✋ tú | 15' | 🧭 📚 |
 
 ### 📊 Informes y presentaciones
 
 *Presentaciones, gráficos e informes que se pueden comprobar.*
 
-| | Ejercicio | ⏱ | Perfiles |
-|---|---|---|---|
-| 🔵 | [EJ 11 · De informe escrito a presentación](ejercicios/ej11_informe_pptx/ENUNCIADO.md) | 15' | 📚 |
-| 🔵 | [EJ 12 · Presentación con gráfico y totales que cuadran](ejercicios/ej12_grafico_pptx/ENUNCIADO.md) | 20' | 📚 |
-| 🔵 | [EJ 13 · Revisar y corregir una presentación ajena](ejercicios/ej13_revision_deck/ENUNCIADO.md) | 15' | 📚 |
-| 🟣 | [EJ 14 · Traducir una presentación sin romperla](ejercicios/ej14_traducir_deck/ENUNCIADO.md) | 20' | 💻 |
-| 🔵 | [EJ 16 · Informe semanal que se recalcula solo](ejercicios/ej16_informe_semanal/ENUNCIADO.md) | 15' | 📚 |
+| | Ejercicio | Quién | ⏱ | Perfiles |
+|---|---|---|---|---|
+| 🔵 | [EJ 11 · De informe escrito a presentación](ejercicios/ej11_informe_pptx/ENUNCIADO.md) | ✋ tú | 15' | 📚 |
+| 🔵 | [EJ 12 · Presentación con gráfico y totales que cuadran](ejercicios/ej12_grafico_pptx/ENUNCIADO.md) | ✋ tú | 20' | 📚 |
+| 🔵 | [EJ 13 · Revisar y corregir una presentación ajena](ejercicios/ej13_revision_deck/ENUNCIADO.md) | ✋ tú | 15' | 📚 |
+| 🟣 | [EJ 14 · Traducir una presentación sin romperla](ejercicios/ej14_traducir_deck/ENUNCIADO.md) | ✋ tú | 20' | 💻 |
+| 🔵 | [EJ 16 · Informe semanal que se recalcula solo](ejercicios/ej16_informe_semanal/ENUNCIADO.md) | ✋ tú | 15' | 📚 |
 
 ### 🗂️ Documentos y tareas repetitivas
 
 *Facturas, certificados, actas, correcciones, carpetas desordenadas y tareas programadas.*
 
-| | Ejercicio | ⏱ | Perfiles |
-|---|---|---|---|
-| 🟢 | [EJ 15 · Ordenar la carpeta de Descargas](ejercicios/ej15_ordenar_descargas/ENUNCIADO.md) | 10' | 🧭 |
-| 🔵 | [EJ 17 · Resumir varios PDF en una tabla](ejercicios/ej17_resumir_pdfs/ENUNCIADO.md) | 15' | 📚 |
-| 🔵 | [EJ 18 · Facturas en PDF a Excel](ejercicios/ej18_facturas_excel/ENUNCIADO.md) | 15' | 📚 |
-| 🟢 | [EJ 19 · Certificados personalizados en lote](ejercicios/ej19_certificados_pdf/ENUNCIADO.md) | 15' | 🧭 📚 |
-| 🔵 | [EJ 22 · Qué ha cambiado entre dos versiones de un documento](ejercicios/ej22_comparar_versiones/ENUNCIADO.md) | 15' | 📚 |
-| 🔵 | [EJ 23 · Corregir respuestas con una rúbrica](ejercicios/ej23_corregir_rubrica/ENUNCIADO.md) | 20' | 📚 |
-| 🟢 | [EJ 24 · Lista de la compra a partir de recetas](ejercicios/ej24_lista_compra/ENUNCIADO.md) | 10' | 🧭 |
-| 🟣 | [EJ 20 · Avisar cuando cambia una web](ejercicios/ej20_vigilar_web/ENUNCIADO.md) | 15' | 💻 |
-| 🟣 | [EJ 21 · Programar una tarea periódica (con tu permiso)](ejercicios/ej21_programar_cron/ENUNCIADO.md) | 20' | 💻 |
+| | Ejercicio | Quién | ⏱ | Perfiles |
+|---|---|---|---|---|
+| 🟢 | [EJ 15 · Ordenar la carpeta de Descargas](ejercicios/ej15_ordenar_descargas/ENUNCIADO.md) | ✋ tú | 10' | 🧭 |
+| 🔵 | [EJ 17 · Resumir varios PDF en una tabla](ejercicios/ej17_resumir_pdfs/ENUNCIADO.md) | ✋ tú | 15' | 📚 |
+| 🔵 | [EJ 18 · Facturas en PDF a Excel](ejercicios/ej18_facturas_excel/ENUNCIADO.md) | ✋ tú | 15' | 📚 |
+| 🟢 | [EJ 19 · Certificados personalizados en lote](ejercicios/ej19_certificados_pdf/ENUNCIADO.md) | ✋ tú | 15' | 🧭 📚 |
+| 🔵 | [EJ 22 · Qué ha cambiado entre dos versiones de un documento](ejercicios/ej22_comparar_versiones/ENUNCIADO.md) | ✋ tú | 15' | 📚 |
+| 🔵 | [EJ 23 · Corregir respuestas con una rúbrica](ejercicios/ej23_corregir_rubrica/ENUNCIADO.md) | ✋ tú | 20' | 📚 |
+| 🟢 | [EJ 24 · Lista de la compra a partir de recetas](ejercicios/ej24_lista_compra/ENUNCIADO.md) | ✋ tú | 10' | 🧭 |
+| 🟣 | [EJ 20 · Avisar cuando cambia una web](ejercicios/ej20_vigilar_web/ENUNCIADO.md) | ✋ tú | 15' | 💻 |
+| 🟣 | [EJ 21 · Programar una tarea periódica (con tu permiso)](ejercicios/ej21_programar_cron/ENUNCIADO.md) | ✋ tú | 20' | 💻 |
 
 ### ⚙️ Cómo funciona un agente
 
 *En orden de dificultad: bucle, tools, AGENTS.md, comandos, skills, MCP, subagentes, permisos, fiabilidad, tests y revisión de código.*
 
-| | Ejercicio | ⏱ | Perfiles |
-|---|---|---|---|
-| 🟢 | [F.0 · El bucle ReAct en 70 líneas](ejercicios/f0_react_bucle/ENUNCIADO.md) | 15' | 🧭 💻 🏛️ |
-| 🔵 | [F.1 · Function calling: el modelo pide, tu programa ejecuta](ejercicios/f1_function_calling/ENUNCIADO.md) | 15' | 💻 🏛️ |
-| 🟢 | [F.2 · AGENTS.md: las normas de la casa](ejercicios/f2_agents_md/ENUNCIADO.md) | 15' | 🧭 📚 💻 |
-| 🔵 | [F.3 · Comandos: el encargo de todos los lunes en una palabra](ejercicios/f3_comandos/ENUNCIADO.md) | 15' | 📚 💻 |
-| 🔵 | [F.4 · Skills: recetas que el agente carga cuando las necesita](ejercicios/f4_skills/ENUNCIADO.md) | 20' | 📚 💻 |
-| 🟣 | [F.5 · MCP: enchufar un servidor de herramientas](ejercicios/f5_mcp/ENUNCIADO.md) | 20' | 💻 🏛️ |
-| 🟣 | [F.6 · Tu propia tool: plazos en días hábiles](ejercicios/f6_tool_propia/ENUNCIADO.md) | 25' | 💻 🏛️ |
-| 🟣 | [F.7 · Subagentes: un redactor y un revisor que no puede tocar nada](ejercicios/f7_subagentes/ENUNCIADO.md) | 20' | 💻 🏛️ |
-| ⚫ | [F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?](ejercicios/f8_permisos/ENUNCIADO.md) | 25' | 🏛️ |
-| ⚫ | [F.9 · ¿Funciona siempre? Medir en vez de opinar](ejercicios/f9_fiabilidad/ENUNCIADO.md) | 30' | 🏛️ |
-| 🟣 | [F.10 · Tests primero: el agente no puede hacer trampa](ejercicios/f10_tests_primero/ENUNCIADO.md) | 20' | 💻 |
-| 🟣 | [EJ 27 · Revisión de código de un cambio (pull request)](ejercicios/ej27_revision_codigo/ENUNCIADO.md) | 20' | 💻 🏛️ |
+| | Ejercicio | Quién | ⏱ | Perfiles |
+|---|---|---|---|---|
+| 🟢 | [F.0 · El bucle ReAct en 70 líneas](ejercicios/f0_react_bucle/ENUNCIADO.md) | 🎥 demo | 15' | 🧭 💻 🏛️ |
+| 🔵 | [F.1 · Function calling: el modelo pide, tu programa ejecuta](ejercicios/f1_function_calling/ENUNCIADO.md) | 🎥 demo | 15' | 💻 🏛️ |
+| 🟢 | [F.2 · AGENTS.md: las normas de la casa](ejercicios/f2_agents_md/ENUNCIADO.md) | ✋ tú | 15' | 🧭 📚 💻 |
+| 🔵 | [F.3 · Comandos: el encargo de todos los lunes en una palabra](ejercicios/f3_comandos/ENUNCIADO.md) | 🎥 demo | 15' | 📚 💻 |
+| 🔵 | [F.4 · Skills: recetas que el agente carga cuando las necesita](ejercicios/f4_skills/ENUNCIADO.md) | 🎥 demo | 20' | 📚 💻 |
+| 🟣 | [F.5 · MCP: enchufar un servidor de herramientas](ejercicios/f5_mcp/ENUNCIADO.md) | ✋ tú | 20' | 💻 🏛️ |
+| 🟣 | [F.6 · Tu propia tool: plazos en días hábiles](ejercicios/f6_tool_propia/ENUNCIADO.md) | ✋ tú | 25' | 💻 🏛️ |
+| 🟣 | [F.7 · Subagentes: un redactor y un revisor que no puede tocar nada](ejercicios/f7_subagentes/ENUNCIADO.md) | ✋ tú | 20' | 💻 🏛️ |
+| ⚫ | [F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?](ejercicios/f8_permisos/ENUNCIADO.md) | ✋ tú | 25' | 🏛️ |
+| ⚫ | [F.9 · ¿Funciona siempre? Medir en vez de opinar](ejercicios/f9_fiabilidad/ENUNCIADO.md) | ✋ tú | 30' | 🏛️ |
+| 🟣 | [F.10 · Tests primero: el agente no puede hacer trampa](ejercicios/f10_tests_primero/ENUNCIADO.md) | ✋ tú | 20' | 💻 |
+| 🟣 | [EJ 27 · Revisión de código de un cambio (pull request)](ejercicios/ej27_revision_codigo/ENUNCIADO.md) | ✋ tú | 20' | 💻 🏛️ |
 
 ### 🛡️ Prueba de seguridad
 
 *Un correo trae instrucciones ocultas para el agente. ¿Las obedece?*
 
-| | Ejercicio | ⏱ | Perfiles |
-|---|---|---|---|
-| 🟢 | [EJ 10 · Prueba de seguridad: correo con instrucciones ocultas](ejercicios/ej10_inyeccion_prompt/ENUNCIADO.md) | 20' | 🧭 📚 💻 🏛️ |
+| | Ejercicio | Quién | ⏱ | Perfiles |
+|---|---|---|---|---|
+| 🟢 | [EJ 10 · Prueba de seguridad: correo con instrucciones ocultas](ejercicios/ej10_inyeccion_prompt/ENUNCIADO.md) | ✋ tú | 20' | 🧭 📚 💻 🏛️ |
 
 ### 🔬 Reto avanzado
 
@@ -177,7 +184,7 @@ Para quien quiera más: replicar en CPU un artículo científico sobre encoders 
 
 ## 🎯 Niveles
 
-`python3 taller.py progreso` te dice qué nivel has alcanzado.
+`python taller.py progreso` te dice qué nivel has alcanzado.
 
 | | Nivel | Cómo se llega | Qué te llevas |
 |---|---|---|---|
@@ -188,11 +195,13 @@ Para quien quiera más: replicar en CPU un artículo científico sobre encoders 
 
 ## ▶️ Cómo se trabaja
 
+Con el entorno activado (`.venv\Scripts\Activate.ps1` en Windows, `. .venv/bin/activate` en Mac y Linux):
+
 ```bash
-python3 taller.py                 # perfiles, áreas y tu progreso
-python3 taller.py empezar ej01    # prepara la carpeta y te explica la situación
-python3 taller.py lanzar ej01     # el agente hace el encargo
-python3 taller.py comprobar ej01  # ¿lo hizo de verdad? Si sí, queda completado y te propone el siguiente paso
+python taller.py                 # perfiles, áreas y tu progreso
+python taller.py empezar ej24    # prepara la carpeta y te explica la situación
+python taller.py abrir ej24      # abre opencode en modo interactivo: pega el encargo y míralo trabajar
+python taller.py comprobar ej24  # ¿lo hizo de verdad? Si sí, queda completado y te propone el siguiente paso
 ```
 
 También en la web: https://jlasherastracasa.github.io/taller_semana_ia_2026/

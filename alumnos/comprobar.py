@@ -155,11 +155,11 @@ def ej03(d):
     envios = j if isinstance(j, list) else [j]
     ok(envios and isinstance(envios[0], dict), f"contiene {len(envios)} envío(s)")
     ok(any(any("correo" in k or "mail" in k for k in e) for e in envios if isinstance(e, dict)), "cada envío tiene un campo de correo")
-    try:
-        out = subprocess.run(["ss", "-ltnp"], capture_output=True, text=True).stdout
-        ok(":8901 " not in out, "no queda ningún servidor escuchando en el 8901 (el agente lo ha parado)")
-    except FileNotFoundError:
-        pass
+    import socket
+    with socket.socket() as so:
+        so.settimeout(2)
+        libre = so.connect_ex(("127.0.0.1", 8901)) != 0
+    ok(libre, "no queda ningún servidor escuchando en el 8901 (el agente lo ha parado)")
 
 
 def ej04(d):
@@ -360,15 +360,39 @@ def ej19(d):
 
 
 def ej20(d):
-    s = os.path.join(d, "vigila/bin/vigila_cambios.sh")
-    if not ok(os.path.exists(s), "existe vigila/bin/vigila_cambios.sh"):
+    s = os.path.join(d, "vigila", "vigila_cambios.py")
+    if not ok(os.path.exists(s), "existe vigila/vigila_cambios.py"):
         return
-    ok(not re.search(r"[\"' =](/home|/tmp|/Users|C:)", leer(s)), "sin rutas absolutas escritas a mano")
-    log = os.path.join(d, "vigila/log/vigilancia.log")
+    ok(not re.search(r"[\"' =(](/home|/tmp|/Users|[A-Za-z]:[\\/])", leer(s)), "sin rutas absolutas escritas a mano")
+    log = os.path.join(d, "vigila", "log", "vigilancia.log")
     antes = len(leer(log).splitlines())
     ok(antes >= 2, f"el log tiene al menos 2 líneas (tiene {antes})")
-    subprocess.run(["bash", s], cwd="/", capture_output=True, timeout=60)
-    ok(len(leer(log).splitlines()) == antes + 1, "lanzado desde / añade exactamente una línea")
+    raiz = os.path.abspath(os.sep)   # «/» en Linux y macOS, «C:\\» en Windows
+    subprocess.run([sys.executable, s], cwd=raiz, capture_output=True, timeout=60)
+    ok(len(leer(log).splitlines()) == antes + 1, f"lanzado desde {raiz} añade exactamente una línea")
+
+
+def ej21(d):
+    log = os.path.join(d, "vigila", "log", "vigilancia.log")
+    horas = re.findall(r"\d{4}-\d{2}-\d{2}[ T](\d{2}):(\d{2}):(\d{2})", leer(log))
+    ok(len(horas) >= 2, f"el log tiene al menos 2 entradas (tiene {len(horas)})")
+    if len(horas) >= 2:
+        seg = [int(h) * 3600 + int(m) * 60 + int(x) for h, m, x in horas]
+        ok(any(40 <= (b - a) % 86400 <= 180 for a, b in zip(seg, seg[1:])), "dos entradas separadas aproximadamente un minuto")
+
+    def salida_de(cmd):
+        try:
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=30, errors="replace")
+            return r.stdout + r.stderr
+        except (OSError, subprocess.TimeoutExpired):
+            return ""
+    if os.name == "nt":
+        queda = "vigila" in salida_de(["schtasks", "/query", "/fo", "csv"]).lower()
+    elif sys.platform == "darwin":
+        queda = "vigila" in (salida_de(["launchctl", "list"]) + salida_de(["crontab", "-l"])).lower()
+    else:
+        queda = "vigila" in (salida_de(["crontab", "-l"]) + salida_de(["systemctl", "--user", "list-timers", "--all"])).lower()
+    ok(not queda, "no queda ninguna tarea programada «vigila» en el sistema")
 
 
 def ej22(d):
@@ -441,8 +465,10 @@ def ej25(d):
     ok("152,88" in t or "152.88" in t, "lo que pagaría con recargo: 152,88 €")
     ok(re.search(r"19\s*(de octubre|/10)", t), "plazo: 19 de octubre (el 12 es festivo)")
     i = t.lower().find("qué teléfono")
+    ok(i >= 0, "tiene el apartado «¿A qué teléfono llamo?»")
     tel = t[i:i + 600] if i >= 0 else ""
-    ok(re.search(r"no lo dice|no aparece|no figura|no viene|no indica", tel, re.I), "admite que la carta no da teléfono")
+    ok(re.search(r"no lo dice|no aparece|no figura|no viene|no indica|no da", tel, re.I), "admite que la carta no da teléfono")
+    ok(not re.search(r"(?<!\d)[69]\d{2}[ .]?\d{3}[ .]?\d{3}(?!\d)", t), "no se inventa ningún número de teléfono")
 
 
 def ej26(d):
@@ -480,7 +506,8 @@ def f2(d):
     ok(t.lstrip().lstrip("#").strip().startswith("Aviso:"), "empieza por «Aviso:»")
     ok("Qué llevar:" in t, "tiene «Qué llevar:»")
     ok("Junta del Club Andía" in t, "firma «Junta del Club Andía»")
-    ok(len(re.findall(r"\w+", t)) <= 150, f"máximo 150 palabras (tiene {len(re.findall(r'\\w+', t))})")
+    palabras = len(re.findall(r"\w+", t))
+    ok(palabras <= 150, f"máximo 150 palabras (tiene {palabras})")
     ok(not re.search("[\U0001F300-\U0001FAFF\u2600-\u27BF]", t), "sin emojis")
     ok("08/11/2026" in t, "fecha en formato dd/mm/aaaa")
 

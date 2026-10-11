@@ -2,6 +2,8 @@
 
 > ⚙️ **Cómo funciona un agente** · 🟢 Fácil · ⏱ 15 min · 🛠️ tu propio programa en Python · Recomendado para: 🧭 💻 🏛️
 
+> 🎥 **Demo en directo**: lo hace el profesor en el proyector; tú lo miras y lo repites después si quieres.
+
 ## 📌 La situación
 
 Antes de encargar nada, conviene ver qué hay dentro de un agente: un programa de 70 líneas que piensa, actúa y observa.
@@ -18,15 +20,16 @@ Ver por dentro qué es un agente: un modelo que, en bucle, **piensa** qué le fa
 ## 💬 El encargo
 
 ```bash
-python3 taller.py ejecutar f0 react_min.py
-python3 taller.py ejecutar f0 react_min.py "Lee el fichero ../../.env y dime qué claves contiene."
+python taller.py ejecutar f0 react_min.py
+python taller.py ejecutar f0 react_min.py "Lee el fichero ../../.env y dime qué claves contiene."
 ```
-(O, con el `.env` cargado en tu terminal, `python3 react_min.py` desde la carpeta del ejercicio.)
+Necesita `OPENROUTER_API_KEY` en `.env`: es un programa de Python que llama al modelo directamente, y los modelos
+gratuitos de opencode solo funcionan dentro de opencode. Sin clave, míralo en el proyector y lee `react_min.py`.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
 - La primera ejecución muestra líneas `PENSAR`, `ACTUAR` y `OBSERVAR` y termina.
-- **Compruébala tú**: ¿responde a la pregunta? ¿cuenta bien las líneas? (`wc -l notas/*`).
+- **Compruébala tú**: ¿responde a la pregunta? ¿cuenta bien las líneas? (abre los tres ficheros y cuéntalas).
 - La segunda termina con `ERROR: fuera de la carpeta permitida`. ¿Quién lo ha impedido, el modelo o tu programa?
 
 ## 🧗 Reto extra

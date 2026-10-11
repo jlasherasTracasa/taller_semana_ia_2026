@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
-"""El mando del taller. Solo usa la biblioteca estándar: funciona igual en Linux, macOS y Windows.
+"""El mando del taller. Solo usa la biblioteca estándar: funciona igual en Windows, macOS y Linux.
 
-  python3 taller.py                      perfiles, áreas, ejercicios y tu progreso
-  python3 taller.py empezar ej01         prepara la carpeta de trabajo y te explica la situación
-  python3 taller.py lanzar ej01          ejecuta el encargo del enunciado con opencode (guarda salida.txt)
-  python3 taller.py lanzar ej01 --prompt "tu propio encargo"
-  python3 taller.py abrir ej21           abre opencode en modo interactivo en la carpeta del ejercicio
-  python3 taller.py ejecutar f0 react_min.py [args]   ejecuta un script del ejercicio con tu .env cargado
-  python3 taller.py comprobar ej01       pasa el comprobador; si todo está bien, marca el ejercicio como completado
-  python3 taller.py progreso             ejercicios completados y nivel alcanzado
+  python taller.py                      perfiles, áreas, ejercicios y tu progreso
+  python taller.py entorno              comprueba que tu ordenador está listo (y que el modelo responde)
+  python taller.py empezar ej01         prepara la carpeta de trabajo y te explica la situación
+  python taller.py abrir ej01           abre opencode en MODO INTERACTIVO en esa carpeta: pega ahí el encargo
+  python taller.py comprobar ej01       pasa el comprobador; si todo está bien, marca el ejercicio como completado
+  python taller.py lanzar ej01          (alternativa) el encargo de una vez, sin conversar (guarda salida.txt)
+  python taller.py lanzar ej01 --prompt "tu propio encargo"
+  python taller.py ejecutar f0 react_min.py [args]   ejecuta un script del ejercicio con tu .env cargado
+  python taller.py progreso             ejercicios completados y nivel alcanzado
 
+Modelo: sin clave, uno GRATUITO de opencode; con OPENROUTER_API_KEY en .env, GLM-5.3-Flash en OpenRouter.
+Para elegir otro: variable TALLER_MODELO (por ejemplo, TALLER_MODELO=opencode/nemotron-3-ultra-free).
 Las carpetas de trabajo van a ~/taller-agentes/ (cámbialo con la variable TALLER_TRABAJO).
 Las claves se leen del fichero .env de este kit; nunca se copian a las carpetas de trabajo.
 """
@@ -21,6 +24,17 @@ INDICE = json.load(open(os.path.join(KIT, "ejercicios", "indice.json"), encoding
 EJS = {e["id"]: e for e in INDICE["ejercicios"]}
 PROGRESO = os.path.join(TRABAJO, "progreso.json")
 WIN = os.name == "nt"
+PY = "python" if WIN else "python3"   # cómo se escribe en las órdenes que se muestran
+GRATIS = "opencode/big-pickle"       # modelo gratuito de opencode por defecto (validado el 11-10-2026)
+OPENROUTER = "openrouter/z-ai/glm-5.3-flash"
+VENV_BIN = os.path.join(KIT, ".venv", "Scripts" if WIN else "bin")
+
+if WIN:   # que los emojis no rompan la consola de Windows
+    for flujo in (sys.stdout, sys.stderr):
+        try:
+            flujo.reconfigure(encoding="utf-8")
+        except (AttributeError, ValueError):
+            pass
 
 
 def cargar_env():
@@ -34,7 +48,21 @@ def cargar_env():
                 k, v = linea.split("=", 1)
                 if v.strip():
                     env.setdefault(k.strip(), v.strip())
+    if os.path.isdir(VENV_BIN):   # el agente usa el Python del kit, con todas las bibliotecas, aunque no lo actives
+        env["PATH"] = VENV_BIN + os.pathsep + env.get("PATH", "")
+        env["VIRTUAL_ENV"] = os.path.dirname(VENV_BIN)
     return env
+
+
+def modelo(env):
+    """Qué modelo usa el agente: TALLER_MODELO si lo defines; si no, LiteLLM (docente), OpenRouter o el gratuito."""
+    if env.get("TALLER_MODELO"):
+        return env["TALLER_MODELO"]
+    if env.get("LITELLM_API_KEY") and env.get("LITELLM_API_BASE"):
+        return None   # el del opencode.json del kit (LiteLLM del docente)
+    if env.get("OPENROUTER_API_KEY"):
+        return env.get("TALLER_MODELO_OPENROUTER", OPENROUTER)
+    return GRATIS
 
 
 def buscar(clave):
@@ -49,7 +77,7 @@ def buscar(clave):
                 return i
     if clave.lower() in ("reto", "paper", "replicar_paper"):
         return "replicar_paper"
-    sys.exit(f"No encuentro el ejercicio «{clave}». Mira la lista con:  python3 taller.py")
+    sys.exit(f"No encuentro el ejercicio «{clave}». Mira la lista con:  {PY} taller.py")
 
 
 def carpeta(ej):
@@ -66,8 +94,8 @@ def config_opencode(ej, destino, env):
         for k, v in json.load(open(propio, encoding="utf-8")).items():
             if k != "permission":
                 cfg[k] = v
-    if env.get("OPENROUTER_API_KEY") and not env.get("LITELLM_API_KEY"):
-        cfg["model"] = env.get("TALLER_MODELO_OPENROUTER", "openrouter/z-ai/glm-5.3-flash")
+    if modelo(env):
+        cfg["model"] = modelo(env)
     json.dump(cfg, open(os.path.join(destino, "opencode.json"), "w", encoding="utf-8"), indent=2, ensure_ascii=False)
 
 
@@ -84,13 +112,18 @@ def empezar(ej, silencioso=False):
         print(f"\n{e['puerta_icono']} {e['num']} · {e['titulo']}   {n[0]} {n[1]} · ⏱ {e['min']} min\n")
         print(f"📌 {e['escena']}\n")
         print(f"📁 Tu carpeta: {d}")
+        if e.get("demo"):
+            print("🎥 Este ejercicio lo hace el profesor EN DIRECTO. Míralo en el proyector y repítelo después si quieres.")
         if e.get("prompt") and e["modo"] == "run":
-            print(f"\n💬 El encargo:\n   {e['prompt']}\n\n▶️  Lánzalo:  python3 taller.py lanzar {e['num_corto']}")
+            print(f"\n💬 El encargo (cópialo):\n   {e['prompt']}\n")
+            print(f"▶️  1. Abre opencode en tu carpeta:  {PY} taller.py abrir {e['num_corto']}")
+            print("    2. Pega el encargo, pulsa Enter y mira lo que hace. Cuando acabe, sal con Ctrl+C.")
+            print(f"    (Sin conversar, de una vez:  {PY} taller.py lanzar {e['num_corto']})")
         else:
             print(f"\n📄 Este ejercicio tiene pasos propios: léelos en {os.path.join(d, 'ENUNCIADO.md')}")
             if e["modo"] == "interactivo":
-                print(f"▶️  Abre opencode ahí:  python3 taller.py abrir {e['num_corto']}")
-        print(f"✅ Y luego:   python3 taller.py comprobar {e['num_corto']}\n")
+                print(f"▶️  Abre opencode ahí:  {PY} taller.py abrir {e['num_corto']}")
+        print(f"✅ Y luego:   {PY} taller.py comprobar {e['num_corto']}\n")
     return d
 
 
@@ -142,30 +175,118 @@ def lanzar(ej, prompt=None):
     prompt = prompt or e.get("prompt")
     if not prompt:
         sys.exit("Este ejercicio no se lanza con un único encargo: sigue los pasos de su ENUNCIADO.md.")
-    if not (env.get("LITELLM_API_KEY") or env.get("OPENROUTER_API_KEY")):
-        sys.exit("Falta la clave: copia .env.example a .env en la carpeta del kit y rellénala.")
-    print(f"🤖 Encargo: {prompt}\n")
+    print(f"🤖 Modelo: {modelo(env) or 'el del opencode.json del kit'}\n🤖 Encargo: {prompt}\n")
     t0 = time.time()
     rc = opencode(["run", "--standalone", prompt], d, env, salida=os.path.join(d, "salida.txt"))
     print(f"\n⏱ {time.time() - t0:.0f} s · código {rc} · salida guardada en salida.txt")
     t = tokens(d, env)
     if t["entrada"]:
         print(f"🪙 Tokens acumulados en esta carpeta: {es(t['entrada'])} de entrada y {es(t['salida'])} de salida "
-              f"(≈ {es(coste(t['entrada'], t['salida']), 4)} $ en OpenRouter)")
-    print(f"✅ ¿Lo ha hecho de verdad?  python3 taller.py comprobar {e['num_corto']}")
+              f"(≈ {es(coste(t['entrada'], t['salida']), 4)} $ si fuera GLM-5.3-Flash en OpenRouter)")
+    print(f"✅ ¿Lo ha hecho de verdad?  {PY} taller.py comprobar {e['num_corto']}")
     return rc
 
 
 def abrir(ej):
+    e, env = EJS[ej], cargar_env()
     d = empezar(ej, silencioso=True)
-    print(f"Abriendo opencode en {d} (sal con Ctrl+C)…")
-    return opencode([], d, cargar_env())
+    print(f"Abriendo opencode en {d}\nModelo: {modelo(env) or 'el del opencode.json del kit'} · sal con Ctrl+C")
+    if e.get("prompt") and e["modo"] == "run":
+        print(f"\n💬 Pega este encargo cuando se abra:\n   {e['prompt']}\n")
+    time.sleep(1)
+    rc = opencode([], d, env)
+    print(f"\n✅ ¿Lo ha hecho de verdad?  {PY} taller.py comprobar {e['num_corto']}")
+    return rc
 
 
 def ejecutar(ej, script, args):
     d = empezar(ej, silencioso=True)
     env = dict(cargar_env(), TALLER_KIT=KIT, PWD=d)
-    return subprocess.call([sys.executable, script] + args, cwd=d, env=env)
+    py = os.path.join(VENV_BIN, "python.exe" if WIN else "python")
+    return subprocess.call([py if os.path.exists(py) else sys.executable, script] + args, cwd=d, env=env)
+
+
+def entorno(sin_modelo=False):
+    """Comprueba que el ordenador está listo. Funciona igual en Windows, macOS y Linux."""
+    fallos = []
+
+    def paso(bien, texto, arreglo=""):
+        print(f"  {'✅' if bien else '❌'} {texto}" + ("" if bien or not arreglo else f"\n     → {arreglo}"))
+        if not bien:
+            fallos.append(texto)
+        return bien
+
+    def version(cmd):
+        try:
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=60, shell=WIN, stdin=subprocess.DEVNULL)
+            return (r.stdout + r.stderr).strip()
+        except Exception:
+            return ""
+
+    env = cargar_env()
+    print("\n== 1) Python 3.10 o superior ==")
+    py = os.path.join(VENV_BIN, "python.exe" if WIN else "python")
+    v = version([py if os.path.exists(py) else sys.executable, "--version"])
+    paso(sys.version_info >= (3, 10), f"{v or sys.version.split()[0]}", "instala Python 3.12 (wiki: Instalar en Windows)")
+    paso(os.path.exists(py), "entorno .venv del kit creado", f"{PY} -m venv .venv  (en la carpeta alumnos)")
+
+    print("== 2) Bibliotecas de los ejercicios ==")
+    mods = {"litellm": "litellm", "mcp": "mcp", "pptx": "python-pptx", "matplotlib": "matplotlib",
+            "openpyxl": "openpyxl", "pdfplumber": "pdfplumber", "pypdf": "pypdf", "reportlab": "reportlab",
+            "docx": "python-docx", "icalendar": "icalendar", "defusedxml": "defusedxml"}
+    codigo = ("import importlib.util as u; print(' '.join(p for m, p in %r.items() if u.find_spec(m) is None))" % mods)
+    faltan = version([py if os.path.exists(py) else sys.executable, "-c", codigo])
+    paso(not faltan, "todas instaladas" if not faltan else f"faltan: {faltan}",
+         ".venv\\Scripts\\python -m pip install -r requirements.txt" if WIN else ".venv/bin/python -m pip install -r requirements.txt")
+
+    print("== 3) Node.js 18 o superior ==")
+    v = version(["node", "--version"])
+    m = re.match(r"v(\d+)", v)
+    paso(bool(m) and int(m.group(1)) >= 18, f"node {v}" if m else "no encuentro node",
+         "winget install OpenJS.NodeJS.LTS  y abre otra terminal (wiki: Instalar en Windows)")
+
+    print("== 4) opencode 2.x ==")
+    v = version(["opencode", "--version"])
+    m = re.search(r"(\d+)\.(\d+)\.(\d+)", v)
+    if paso(bool(m), f"opencode {m.group(0)}" if m else "no encuentro opencode", "npm i -g @opencode/cli@2.0.19"):
+        if m.group(1) != "2":
+            print("  ⚠️  el kit está validado con la 2.0.19:  npm i -g @opencode/cli@2.0.19")
+    if WIN:
+        bash = shutil.which("bash") or os.path.exists(r"C:\Program Files\Git\bin\bash.exe")
+        print(f"  {'✅' if bash else '⚠️ '} Git Bash {'encontrado' if bash else 'no encontrado: instálalo con  winget install Git.Git  (opencode lo usa para sus órdenes)'}")
+
+    print("== 5) Modelo ==")
+    mod = modelo(env)
+    if mod == GRATIS or (mod or "").startswith("opencode/"):
+        print(f"  ✅ {mod}: gratuito de opencode, sin clave")
+    elif mod and mod.startswith("openrouter/"):
+        print(f"  ✅ {mod}: OpenRouter (clave definida; no se imprime)")
+    else:
+        print(f"  ✅ {mod or 'LiteLLM del docente (opencode.json del kit)'}")
+    print("  ℹ️  F.0 y F.1 (programas en Python) necesitan OPENROUTER_API_KEY: los modelos gratuitos solo van dentro de opencode")
+
+    print("== 6) Prueba real con el modelo ==")
+    if sin_modelo or fallos:
+        print("  ⚠️  omitida" + (": arregla antes lo que está en ❌" if fallos else ""))
+    else:
+        import tempfile
+        d = tempfile.mkdtemp(prefix="taller_")
+        config_opencode("ej01_pagina_personal", d, env)
+        try:
+            r = subprocess.run(["opencode", "run", "--standalone", "Responde exactamente: listo para el taller"], cwd=d,
+                               env=dict(env, PWD=d), capture_output=True, text=True, encoding="utf-8", errors="replace",
+                               timeout=180, shell=WIN, stdin=subprocess.DEVNULL)
+            salida = r.stdout + r.stderr
+        except subprocess.TimeoutExpired:
+            salida = "no contesta en 3 minutos"
+        shutil.rmtree(d, ignore_errors=True)
+        paso("listo para el taller" in salida.lower(), "el modelo responde",
+             salida.strip().splitlines()[-1][:150] if salida.strip() else "sin respuesta (wiki: Problemas)")
+
+    print(f"\n== Resumen: {len(fallos)} cosa(s) por arreglar ==")
+    print(f"🎉 Listo para el taller. Siguiente:  {PY} taller.py" if not fallos else
+          "Arregla lo que está en ❌ (wiki: Instalar en Windows y Problemas). ¿No hay manera? Plan B en la wiki.")
+    return len(fallos)
 
 
 def leer_progreso():
@@ -178,7 +299,7 @@ def leer_progreso():
 def comprobar(ej):
     e, d = EJS[ej], carpeta(ej)
     if not os.path.isdir(d):
-        sys.exit(f"Aún no has empezado {e['num']}:  python3 taller.py empezar {e['num_corto']}")
+        sys.exit(f"Aún no has empezado {e['num']}:  {PY} taller.py empezar {e['num_corto']}")
     rc = subprocess.call([sys.executable, os.path.join(KIT, "comprobar.py"), ej, d])
     if rc == 0:
         p = leer_progreso()
@@ -187,15 +308,15 @@ def comprobar(ej):
         json.dump(p, open(PROGRESO, "w", encoding="utf-8"), indent=1)
         print(f"\n✅ Ejercicio completado: {e['num']} · {e['titulo']}")
     else:
-        print("\nTodavía no está. Mejora el encargo (más CONTEXTO, ENTREGA, LÍMITES y CRITERIO) y vuelve a lanzarlo:\n"
-              f"   python3 taller.py lanzar {e['num_corto']} --prompt \"tu versión del encargo\"")
+        print("\nTodavía no está. Vuelve a opencode y pídele que lo arregle, o mejora el encargo (más CONTEXTO,\n"
+              f"ENTREGA, LÍMITES y CRITERIO) y repítelo:   {PY} taller.py abrir {e['num_corto']}")
     if e.get("siguiente"):
         print("\n🔀 Siguiente paso:")
         for texto, destino in e["siguiente"]:
             if destino == "PLAZA":
-                print(f"   ↩️  {texto}:  python3 taller.py")
+                print(f"   ↩️  {texto}:  {PY} taller.py")
             else:
-                print(f"   ➡️  {texto}:  python3 taller.py empezar {EJS[destino]['num_corto']}")
+                print(f"   ➡️  {texto}:  {PY} taller.py empezar {EJS[destino]['num_corto']}")
     return rc
 
 
@@ -239,8 +360,10 @@ def inicio():
         for e in ejs:
             n = INDICE["niveles"][str(e["nivel"])][0]
             hecho = " ✅" if e["id"] in leer_progreso() else ""
-            print(f"      {n} {e['num']:5} {e['titulo']}{hecho}")
-    print("\nEmpieza con:  python3 taller.py empezar <ejercicio>   (por ejemplo: python3 taller.py empezar ej01)")
+            demo = " 🎥" if e.get("demo") else ""
+            print(f"      {n} {e['num']:5} {e['titulo']}{demo}{hecho}")
+    print(f"\n🎥 = lo hace el profesor en directo · el resto los hacéis vosotros y le preguntáis las dudas.")
+    print(f"Empieza con:  {PY} taller.py empezar <ejercicio>   (por ejemplo: {PY} taller.py empezar ej01)")
     progreso()
 
 
@@ -252,6 +375,8 @@ if __name__ == "__main__":
         print(__doc__)
     elif a[0] in ("progreso", "pasaporte"):
         progreso()
+    elif a[0] == "entorno":
+        sys.exit(entorno("--sin-modelo" in a))
     elif a[0] == "ejecutar" and len(a) > 2:
         sys.exit(ejecutar(buscar(a[1]), a[2], a[3:]))
     elif a[0] in ("empezar", "lanzar", "abrir", "comprobar") and len(a) > 1:

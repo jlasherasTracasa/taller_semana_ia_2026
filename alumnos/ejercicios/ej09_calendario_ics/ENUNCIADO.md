@@ -1,6 +1,8 @@
 # 🔵 EJ 09 · De un correo a un evento de calendario
 
-> 📬 **Correo y trámites** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 📬 **Correo y trámites** · 🔵 Medio · ⏱ 15 min · 🛠️ opencode interactivo · Recomendado para: 📚
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -16,19 +18,31 @@ Convertir los datos de un correo en un evento de calendario importable.
 
 ## 💬 El encargo
 
-Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:
 
 ```bash
-python3 taller.py lanzar ej09
+python taller.py abrir ej09
 ```
 
-O a mano, desde la carpeta de trabajo del ejercicio:
+**2.** Copia este encargo, pégalo en opencode y pulsa Enter:
+
+```text
+Lee taller_pan.eml y genera taller_pan.ics con el evento: título, fecha y hora exactas del correo (el año y el mes salen de la cabecera Date), dos horas y media de duración y el lugar. Formato RFC 5545 con TZID=Europe/Madrid en DTSTART y DTEND y el bloque VTIMEZONE. Valida el fichero leyéndolo con la biblioteca icalendar de Python.
+```
+
+**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
 
 ```bash
-opencode run --standalone "Lee taller_pan.eml y genera taller_pan.ics con el evento: título, fecha y hora exactas del correo (el año y el mes salen de la cabecera Date), dos horas y media de duración y el lugar. Formato RFC 5545 con TZID=Europe/Madrid en DTSTART y DTEND y el bloque VTIMEZONE. Valida el fichero leyéndolo con la biblioteca icalendar de Python." | tee salida.txt
+python taller.py lanzar ej09
 ```
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo…"`.
+
+</details>
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -36,7 +50,7 @@ opencode run --standalone "Lee taller_pan.eml y genera taller_pan.ics con el eve
 - Se importa sin errores en Google Calendar u Outlook.
 
 ```bash
-python3 taller.py comprobar ej09      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar ej09      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas

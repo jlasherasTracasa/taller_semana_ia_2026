@@ -44,11 +44,13 @@ def enunciado(e):
     p = A.PUERTAS[e["puerta"]]
     ico, nivel, _ = A.NIVELES[e["nivel"]]
     perf = " ".join(A.PERFILES[x]["icono"] for x in e["perfiles"])
-    modo = {"run": "`opencode run`", "interactivo": "`opencode` interactivo", "script": "tu propio programa en Python",
+    modo = {"run": "opencode interactivo", "interactivo": "solo opencode interactivo", "script": "tu propio programa en Python",
             "varios": "varios pasos"}[e["modo"]]
+    quien = ("🎥 **Demo en directo**: lo hace el profesor en el proyector; tú lo miras y lo repites después si quieres."
+             if e.get("demo") else "✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.")
     L = [f"# {ico} {e['num']} · {e['titulo']}", "",
          f"> {p['icono']} **{p['nombre']}** · {ico} {nivel} · ⏱ {e['min']} min · "
-         f"🛠️ {modo} · Recomendado para: {perf}", "",
+         f"🛠️ {modo} · Recomendado para: {perf}", "", f"> {quien}", "",
          "## 📌 La situación", "", e["escena"], "",
          "## 🎯 Objetivo", "", e["objetivo"], ""]
     if e["datos"]:
@@ -57,16 +59,20 @@ def enunciado(e):
     if e["pasos"]:
         L += [e["pasos"], ""]
     elif e["prompt"]:
-        L += ["Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):", "", "```bash",
-              f"python3 taller.py lanzar {corto(e)}", "```", "",
-              "O a mano, desde la carpeta de trabajo del ejercicio:", "", "```bash",
-              f'opencode run --standalone "{e["prompt"]}" | tee salida.txt', "```", ""]
+        L += ["**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:", "", "```bash",
+              f"python taller.py abrir {corto(e)}", "```", "",
+              "**2.** Copia este encargo, pégalo en opencode y pulsa Enter:", "", "```text", e["prompt"], "```", "",
+              "**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con "
+              "`Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).", "",
+              "<details><summary>Sin conversar, de una vez (opcional)</summary>", "", "```bash",
+              f"python taller.py lanzar {corto(e)}", "```", "",
+              f"O a mano, desde la carpeta de trabajo: `opencode run --standalone \"…el encargo…\"`.", "", "</details>", ""]
     if e["modo"] == "run" and e["prompt"]:
-        L += ["> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, "
+        L += ["> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, "
               "entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.", ""]
     L += ["## ✅ ¿Lo ha hecho de verdad?", ""] + [f"- {x}" for x in e["criterio"]] + [""]
-    if corto(e) not in ("f0", "f1", "f9", "ej21", "reto"):
-        L += ["```bash", f"python3 taller.py comprobar {corto(e)}      # el agente no decide si está bien: lo decide el comprobador",
+    if corto(e) not in ("f0", "f1", "f9", "reto"):
+        L += ["```bash", f"python taller.py comprobar {corto(e)}      # el agente no decide si está bien: lo decide el comprobador",
               "```", ""]
     if e["pistas"]:
         L += ["## 💡 Pistas", ""] + [f"- {x}" for x in e["pistas"]] + [""]
@@ -105,27 +111,34 @@ def aventura_md(indice):
     for k, p in A.PERFILES.items():
         ruta = " → ".join(f"[{A.POR_ID[i]['num']}]({enlace(i, False)})" for i in p["ruta"])
         L += [f"### {p['icono']} {p['nombre']}", "", f"*{p['quien']}*", "", f"**Itinerario:** {ruta}", "", f"💡 {p['consejo']}", ""]
-    L += ["## 📶 Niveles", "", "| | Nivel | Para quién |", "|---|---|---|"]
+    L += ["## 🎥 Demos en directo y ✋ prácticas", "",
+          "- **🎥 Demo en directo**: la hace el profesor en el proyector, explicando cada paso. Tú miras (y, si quieres, la repites después).",
+          "- **✋ Práctica**: la haces tú en tu ordenador, a tu ritmo, en clase o en casa. Cuando te atasques o algo no "
+          "cuadre, **pregunta al profesor**: para eso está.", "",
+          "Demos: " + " · ".join(f"[{e['num']} · {e['titulo']}]({enlace(e['id'], False)})" for e in A.E if e.get("demo")), "",
+          "## 📶 Niveles", "", "| | Nivel | Para quién |", "|---|---|---|"]
     L += [f"| {i} | {n} | {t} |" for i, n, t in A.NIVELES.values()] + [""]
     L += ["## 📚 Áreas y ejercicios", "", "Elige un área y un ejercicio. Cada uno te propone el siguiente paso al terminar.", ""]
     for k, p in A.PUERTAS.items():
         ejs = [e for e in A.E if e["puerta"] == k]
         L += [f"### {p['icono']} {p['nombre']}", "", f"*{p['texto']}*", "",
-              "| | Ejercicio | ⏱ | Perfiles |", "|---|---|---|---|"]
+              "| | Ejercicio | Quién | ⏱ | Perfiles |", "|---|---|---|---|---|"]
         for e in ejs:
             perf = " ".join(A.PERFILES[x]["icono"] for x in e["perfiles"])
-            L.append(f"| {A.NIVELES[e['nivel']][0]} | [{e['num']} · {e['titulo']}]({enlace(e['id'], False)}) | {e['min']}' | {perf} |")
+            quien = "🎥 demo" if e.get("demo") else "✋ tú"
+            L.append(f"| {A.NIVELES[e['nivel']][0]} | [{e['num']} · {e['titulo']}]({enlace(e['id'], False)}) | {quien} | {e['min']}' | {perf} |")
         L.append("")
     L += ["### 🔬 Reto avanzado", "", "Para quien quiera más: replicar en CPU un artículo científico sobre encoders "
           "legales en español. → [replicar_paper/](replicar_paper/README.md)", ""]
-    L += ["## 🎯 Niveles", "", "`python3 taller.py progreso` te dice qué nivel has alcanzado.", "",
+    L += ["## 🎯 Niveles", "", "`python taller.py progreso` te dice qué nivel has alcanzado.", "",
           "| | Nivel | Cómo se llega | Qué te llevas |", "|---|---|---|---|"]
     L += [f"| {a} | **{b}** | {c} | {d} |" for a, b, c, d in A.FINALES] + [""]
-    L += ["## ▶️ Cómo se trabaja", "", "```bash",
-          "python3 taller.py                 # perfiles, áreas y tu progreso",
-          "python3 taller.py empezar ej01    # prepara la carpeta y te explica la situación",
-          "python3 taller.py lanzar ej01     # el agente hace el encargo",
-          "python3 taller.py comprobar ej01  # ¿lo hizo de verdad? Si sí, queda completado y te propone el siguiente paso",
+    L += ["## ▶️ Cómo se trabaja", "", "Con el entorno activado (`.venv\\Scripts\\Activate.ps1` en Windows, "
+          "`. .venv/bin/activate` en Mac y Linux):", "", "```bash",
+          "python taller.py                 # perfiles, áreas y tu progreso",
+          "python taller.py empezar ej24    # prepara la carpeta y te explica la situación",
+          "python taller.py abrir ej24      # abre opencode en modo interactivo: pega el encargo y míralo trabajar",
+          "python taller.py comprobar ej24  # ¿lo hizo de verdad? Si sí, queda completado y te propone el siguiente paso",
           "```", "", "También en la web: https://jlasherastracasa.github.io/taller_semana_ia_2026/", ""]
     return "\n".join(L)
 
@@ -134,7 +147,7 @@ def main():
     lista = []
     for e in A.E:
         x = {k: v for k, v in e.items() if k in ("id", "num", "titulo", "puerta", "nivel", "min", "modo", "perfiles",
-                                                 "escena", "objetivo", "prompt", "criterio", "siguiente")}
+                                                 "escena", "objetivo", "prompt", "criterio", "siguiente", "demo")}
         x["num_corto"] = corto(e)
         x["puerta_icono"] = A.PUERTAS[e["puerta"]]["icono"] if e["puerta"] in A.PUERTAS else "🔬"
         x["validacion"] = VAL.get(e["id"])

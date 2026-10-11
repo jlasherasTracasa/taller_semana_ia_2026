@@ -1,6 +1,8 @@
 # 🔵 EJ 12 · Presentación con gráfico y totales que cuadran
 
-> 📊 **Informes y presentaciones** · 🔵 Medio · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 📊 **Informes y presentaciones** · 🔵 Medio · ⏱ 20 min · 🛠️ opencode interactivo · Recomendado para: 📚
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -16,26 +18,38 @@ Generar una presentación con un gráfico y una tabla de totales **calculados**,
 
 ## 💬 El encargo
 
-Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:
 
 ```bash
-python3 taller.py lanzar ej12
+python taller.py abrir ej12
 ```
 
-O a mano, desde la carpeta de trabajo del ejercicio:
+**2.** Copia este encargo, pégalo en opencode y pulsa Enter:
+
+```text
+Lee ventas_tienda.csv y genera ventas.pptx con tres diapositivas: portada; un gráfico de líneas de los meses por categoría hecho con matplotlib e insertado como imagen; y una tabla con el total de cada categoría y el total general. Calcula los totales con Python leyendo el CSV, nunca de memoria, y escríbelos en la tabla.
+```
+
+**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
 
 ```bash
-opencode run --standalone "Lee ventas_tienda.csv y genera ventas.pptx con tres diapositivas: portada; un gráfico de líneas de los meses por categoría hecho con matplotlib e insertado como imagen; y una tabla con el total de cada categoría y el total general. Calcula los totales con Python leyendo el CSV, nunca de memoria, y escríbelos en la tabla." | tee salida.txt
+python taller.py lanzar ej12
 ```
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo…"`.
+
+</details>
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
 - `ventas.pptx` con el gráfico y los totales EXACTOS: hogar 29.800 €, textil 18.700 €, bazar 14.000 €, total 62.500 €.
 
 ```bash
-python3 taller.py comprobar ej12      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar ej12      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas

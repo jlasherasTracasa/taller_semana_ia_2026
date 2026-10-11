@@ -1,6 +1,8 @@
 # 🟣 EJ 03 · Formulario web que guarda los envíos (sin matar procesos ajenos)
 
-> 🌐 **Webs** · 🟣 Avanzado · ⏱ 20 min · 🛠️ `opencode run` · Recomendado para: 💻
+> 🌐 **Webs** · 🟣 Avanzado · ⏱ 20 min · 🛠️ opencode interactivo · Recomendado para: 💻
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -16,19 +18,31 @@ Crear un formulario web cuyo envío quede guardado en `resultados.json` con un s
 
 ## 💬 El encargo
 
-Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:
 
 ```bash
-python3 taller.py lanzar ej03
+python taller.py abrir ej03
 ```
 
-O a mano, desde la carpeta de trabajo del ejercicio:
+**2.** Copia este encargo, pégalo en opencode y pulsa Enter:
+
+```text
+Crea un formulario de contacto HTML (nombre, correo y mensaje) y un servidor mínimo servidor.py en Python, solo con la biblioteca estándar, que guarde cada envío en resultados.json y que se apague solo a los 60 segundos (prográmalo dentro del propio servidor, para que funcione igual en Windows, macOS y Linux). Arráncalo en segundo plano en el puerto 8901; si está ocupado, elige otro libre y NO mates ningún proceso. Envía un envío de prueba con un pequeño script de Python (urllib, sin curl), comprueba que el JSON se ha escrito y, al terminar, asegúrate de que no queda ningún servidor tuyo escuchando.
+```
+
+**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
 
 ```bash
-opencode run --standalone "Crea un formulario de contacto HTML (nombre, correo y mensaje) y un servidor mínimo en Python, solo con la biblioteca estándar, que guarde cada envío en resultados.json. Arráncalo en el puerto 8901 con timeout 60 delante para que se pare solo; si el puerto está ocupado, elige otro libre y NO mates ningún proceso. Envía una prueba con curl, comprueba que el JSON se ha escrito y, al terminar, asegúrate de que no queda ningún servidor tuyo escuchando." | tee salida.txt
+python taller.py lanzar ej03
 ```
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo…"`.
+
+</details>
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -36,12 +50,12 @@ opencode run --standalone "Crea un formulario de contacto HTML (nombre, correo y
 - No queda nada escuchando en el 8901 al acabar.
 
 ```bash
-python3 taller.py comprobar ej03      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar ej03      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas
 
-- El `opencode.json` del kit prohíbe `kill`, `pkill` y `killall`: por eso el encargo pide `timeout 60`.
+- El `opencode.json` del kit prohíbe `kill`, `pkill`, `killall` y `taskkill`: por eso el encargo pide que el servidor se apague solo.
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
 

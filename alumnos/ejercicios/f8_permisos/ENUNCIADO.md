@@ -1,6 +1,8 @@
 # ⚫ F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?
 
-> ⚙️ **Cómo funciona un agente** · ⚫ Experto · ⏱ 25 min · 🛠️ `opencode run` · Recomendado para: 🏛️
+> ⚙️ **Cómo funciona un agente** · ⚫ Experto · ⏱ 25 min · 🛠️ opencode interactivo · Recomendado para: 🏛️
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -18,33 +20,45 @@ Encontrar los agujeros de una configuración real (orden de reglas, comodines, c
 
 ## 💬 El encargo
 
-Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:
 
 ```bash
-python3 taller.py lanzar f8
+python taller.py abrir f8
 ```
 
-O a mano, desde la carpeta de trabajo del ejercicio:
+**2.** Copia este encargo, pégalo en opencode y pulsa Enter:
+
+```text
+Audita opencode_inseguro.json. Escribe informe_permisos.md con cada agujero, por qué es peligroso y cómo se corrige (recuerda: en opencode gana la última regla que coincide). Crea opencode_seguro.json corregido, sin ninguna clave escrita (usa {env:LITELLM_API_KEY}), con external_directory en deny, y pruébalo con python simular_permisos.py opencode_seguro.json hasta que salgan 17/17.
+```
+
+**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
 
 ```bash
-opencode run --standalone "Audita opencode_inseguro.json. Escribe informe_permisos.md con cada agujero, por qué es peligroso y cómo se corrige (recuerda: en opencode gana la última regla que coincide). Crea opencode_seguro.json corregido, sin ninguna clave escrita (usa {env:LITELLM_API_KEY}), con external_directory en deny, y pruébalo con python3 simular_permisos.py opencode_seguro.json hasta que salgan 17/17." | tee salida.txt
+python taller.py lanzar f8
 ```
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo…"`.
+
+</details>
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
-- `python3 simular_permisos.py opencode_seguro.json` da 17/17.
+- `python simular_permisos.py opencode_seguro.json` da 17/17.
 - `external_directory` en `deny` y ninguna `apiKey` escrita a mano.
 - `informe_permisos.md` explica al menos el orden de reglas, `curl … | sh` y la clave en claro.
 
 ```bash
-python3 taller.py comprobar f8      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar f8      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧗 Reto extra
 
-Piensa como atacante: ¿`python3 -c "import shutil; shutil.rmtree('x')"` lo para algún patrón? Conclusión: los patrones son un cinturón, no una jaula. Para aislar de verdad: contenedor o máquina virtual.
+Piensa como atacante: ¿`python -c "import shutil; shutil.rmtree('x')"` lo para algún patrón? Conclusión: los patrones son un cinturón, no una jaula. Para aislar de verdad: contenedor o máquina virtual.
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)
 

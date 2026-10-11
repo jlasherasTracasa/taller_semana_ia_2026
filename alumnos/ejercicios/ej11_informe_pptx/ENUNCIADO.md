@@ -1,6 +1,8 @@
 # 🔵 EJ 11 · De informe escrito a presentación
 
-> 📊 **Informes y presentaciones** · 🔵 Medio · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 📚
+> 📊 **Informes y presentaciones** · 🔵 Medio · ⏱ 15 min · 🛠️ opencode interactivo · Recomendado para: 📚
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -16,19 +18,31 @@ Generar una presentación sobria de 5-6 diapositivas a partir de un informe en M
 
 ## 💬 El encargo
 
-Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:
 
 ```bash
-python3 taller.py lanzar ej11
+python taller.py abrir ej11
 ```
 
-O a mano, desde la carpeta de trabajo del ejercicio:
+**2.** Copia este encargo, pégalo en opencode y pulsa Enter:
+
+```text
+Lee informe_cosecha.md y genera presentacion.pptx con python-pptx (está en el requirements.txt del kit): entre 5 y 6 diapositivas 16:9 sobrias, con portada, resumen, rendimiento por variedad, evolución y conclusiones. Copia las cifras tal cual del informe. Al final, abre el pptx con python-pptx y dime cuántas diapositivas tiene.
+```
+
+**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
 
 ```bash
-opencode run --standalone "Lee informe_cosecha.md y genera presentacion.pptx con python-pptx (está en el requirements.txt del kit): entre 5 y 6 diapositivas 16:9 sobrias, con portada, resumen, rendimiento por variedad, evolución y conclusiones. Copia las cifras tal cual del informe. Al final, abre el pptx con python-pptx y dime cuántas diapositivas tiene." | tee salida.txt
+python taller.py lanzar ej11
 ```
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo…"`.
+
+</details>
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -36,7 +50,7 @@ opencode run --standalone "Lee informe_cosecha.md y genera presentacion.pptx con
 - Cifras fieles: 84.000 kg, −12 % frente a 95.500 kg.
 
 ```bash
-python3 taller.py comprobar ej11      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar ej11      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 🧪 Lo que pasó al validarlo (09-10-2026)

@@ -7,6 +7,7 @@
    "nivel": 1,
    "min": 15,
    "modo": "script",
+   "demo": true,
    "perfiles": [
     "explorador",
     "programador",
@@ -17,7 +18,7 @@
    "objetivo": "Ver por dentro qué es un agente: un modelo que, en bucle, **piensa** qué le falta, **actúa** pidiendo una tool y **observa** el resultado, hasta que decide que ha terminado.",
    "criterio": [
     "La primera ejecución muestra líneas `PENSAR`, `ACTUAR` y `OBSERVAR` y termina.",
-    "**Compruébala tú**: ¿responde a la pregunta? ¿cuenta bien las líneas? (`wc -l notas/*`).",
+    "**Compruébala tú**: ¿responde a la pregunta? ¿cuenta bien las líneas? (abre los tres ficheros y cuéntalas).",
     "La segunda termina con `ERROR: fuera de la carpeta permitida`. ¿Quién lo ha impedido, el modelo o tu programa?"
    ],
    "siguiente": [
@@ -54,6 +55,7 @@
    "nivel": 2,
    "min": 15,
    "modo": "script",
+   "demo": true,
    "perfiles": [
     "programador",
     "arquitecto"
@@ -128,6 +130,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "f2",
    "puerta_icono": "⚙️",
    "validacion": {
@@ -147,6 +150,7 @@
    "nivel": 2,
    "min": 15,
    "modo": "interactivo",
+   "demo": true,
    "perfiles": [
     "oficina",
     "programador"
@@ -193,6 +197,7 @@
    "nivel": 2,
    "min": 20,
    "modo": "run",
+   "demo": true,
    "perfiles": [
     "oficina",
     "programador"
@@ -202,7 +207,7 @@
    "objetivo": "Ver cómo el agente **descubre** una skill por su descripción, la **carga solo cuando la necesita** y sigue sus instrucciones y scripts (aquí, un validador).",
    "prompt": "Haz el acta de la reunión de transcripcion_reunion.txt.",
    "criterio": [
-    "Existe `actas/2026-10-15_acta.md` y `python3 .opencode/skills/acta-reunion/validar_acta.py` dice `ACTA VÁLIDA`.",
+    "Existe `actas/2026-10-15_acta.md` y `python .opencode/skills/acta-reunion/validar_acta.py` dice `ACTA VÁLIDA`.",
     "La tabla de acuerdos tiene al menos 4 filas (txaranga, presupuesto, mancomunidad, cartel, cuota).",
     "En la salida verás que el agente llamó a la tool `skill`: fíjate en que el encargo **no** la nombraba."
    ],
@@ -265,6 +270,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "f5",
    "puerta_icono": "⚙️",
    "validacion": {
@@ -310,6 +316,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "f6",
    "puerta_icono": "⚙️",
    "validacion": {
@@ -356,6 +363,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "f7",
    "puerta_icono": "⚙️",
    "validacion": {
@@ -381,9 +389,9 @@
    "titulo": "Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?",
    "escena": "Un compañero te pasa su configuración de opencode «que funciona de maravilla». Antes de usarla con tus ficheros, la auditas.",
    "objetivo": "Encontrar los agujeros de una configuración real (orden de reglas, comodines, clave en claro, directorios externos) y dejarla segura **sin** dejar inservible al agente.",
-   "prompt": "Audita opencode_inseguro.json. Escribe informe_permisos.md con cada agujero, por qué es peligroso y cómo se corrige (recuerda: en opencode gana la última regla que coincide). Crea opencode_seguro.json corregido, sin ninguna clave escrita (usa {env:LITELLM_API_KEY}), con external_directory en deny, y pruébalo con python3 simular_permisos.py opencode_seguro.json hasta que salgan 17/17.",
+   "prompt": "Audita opencode_inseguro.json. Escribe informe_permisos.md con cada agujero, por qué es peligroso y cómo se corrige (recuerda: en opencode gana la última regla que coincide). Crea opencode_seguro.json corregido, sin ninguna clave escrita (usa {env:LITELLM_API_KEY}), con external_directory en deny, y pruébalo con python simular_permisos.py opencode_seguro.json hasta que salgan 17/17.",
    "criterio": [
-    "`python3 simular_permisos.py opencode_seguro.json` da 17/17.",
+    "`python simular_permisos.py opencode_seguro.json` da 17/17.",
     "`external_directory` en `deny` y ninguna `apiKey` escrita a mano.",
     "`informe_permisos.md` explica al menos el orden de reglas, `curl … | sh` y la clave en claro."
    ],
@@ -401,6 +409,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "f8",
    "puerta_icono": "⚙️",
    "validacion": {
@@ -441,6 +450,7 @@
     ]
    ],
    "prompt": null,
+   "demo": false,
    "num_corto": "f9",
    "puerta_icono": "⚙️",
    "validacion": {
@@ -466,9 +476,9 @@
    "titulo": "Tests primero: el agente no puede hacer trampa",
    "escena": "El programa de caja de una tienda calcula mal el cambio. Hay tests que dicen cómo debería funcionar: el agente tiene que arreglar el código, no los tests.",
    "objetivo": "Usar los **tests como criterio de éxito** objetivo de un agente programador, y detectar si hace trampa.",
-   "prompt": "Haz que pasen todos los tests de tests/ arreglando tienda/precios.py. NO modifiques nada dentro de tests/. Ejecuta python3 -m unittest al final y enséñame el resultado.",
+   "prompt": "Haz que pasen todos los tests de tests/ arreglando tienda/precios.py. NO modifiques nada dentro de tests/. Ejecuta python -m unittest al final y enséñame el resultado.",
    "criterio": [
-    "`python3 -m unittest` dice `OK` con 9 tests.",
+    "`python -m unittest` dice `OK` con 9 tests.",
     "`tests/test_precios.py` está intacto (el comprobador compara su huella)."
    ],
    "siguiente": [
@@ -485,6 +495,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "f10",
    "puerta_icono": "⚙️",
    "validacion": {
@@ -504,6 +515,7 @@
    "nivel": 1,
    "min": 15,
    "modo": "run",
+   "demo": true,
    "perfiles": [
     "explorador"
    ],
@@ -574,6 +586,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej02",
    "puerta_icono": "🌐",
    "validacion": {
@@ -599,7 +612,7 @@
    "titulo": "Formulario web que guarda los envíos (sin matar procesos ajenos)",
    "escena": "Para las inscripciones a un taller hace falta un formulario y un servidor mínimo que guarde los datos. Ojo: preparando este taller, un agente mató un proceso que no era suyo.",
    "objetivo": "Crear un formulario web cuyo envío quede guardado en `resultados.json` con un servidor mínimo, **sin dejar procesos vivos ni matar procesos ajenos**.",
-   "prompt": "Crea un formulario de contacto HTML (nombre, correo y mensaje) y un servidor mínimo en Python, solo con la biblioteca estándar, que guarde cada envío en resultados.json. Arráncalo en el puerto 8901 con timeout 60 delante para que se pare solo; si el puerto está ocupado, elige otro libre y NO mates ningún proceso. Envía una prueba con curl, comprueba que el JSON se ha escrito y, al terminar, asegúrate de que no queda ningún servidor tuyo escuchando.",
+   "prompt": "Crea un formulario de contacto HTML (nombre, correo y mensaje) y un servidor mínimo servidor.py en Python, solo con la biblioteca estándar, que guarde cada envío en resultados.json y que se apague solo a los 60 segundos (prográmalo dentro del propio servidor, para que funcione igual en Windows, macOS y Linux). Arráncalo en segundo plano en el puerto 8901; si está ocupado, elige otro libre y NO mates ningún proceso. Envía un envío de prueba con un pequeño script de Python (urllib, sin curl), comprueba que el JSON se ha escrito y, al terminar, asegúrate de que no queda ningún servidor tuyo escuchando.",
    "criterio": [
     "Existe `resultados.json` con el envío de prueba.",
     "No queda nada escuchando en el 8901 al acabar."
@@ -614,6 +627,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej03",
    "puerta_icono": "🌐",
    "validacion": {
@@ -655,6 +669,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej04",
    "puerta_icono": "🌐",
    "validacion": {
@@ -680,7 +695,7 @@
    "titulo": "Auditoría de accesibilidad de una web",
    "escena": "La web de un centro de mayores tiene letra pequeña y poco contraste: sus usuarios no la pueden leer. Hay que auditarla y corregirla.",
    "objetivo": "Detectar y corregir fallos de accesibilidad y adaptación al móvil de una página real.",
-   "prompt": "Audita web_centro_mayores.html: contraste de color, tamaño de letra, adaptación al móvil, atributo lang, textos alternativos de las imágenes y navegación con teclado. Escribe incidencias.md con una lista de cada fallo y su corrección, y guarda la página corregida como web_corregida.html sin tocar el original. No me hagas preguntas: si algo es ambiguo, decide tú y explícalo en incidencias.md.",
+   "prompt": "Audita web_centro_mayores.html: contraste de color, tamaño de letra, adaptación al móvil, atributo lang, textos alternativos de las imágenes y navegación con teclado. Entrega dos ficheros nuevos y no toques el original: (1) incidencias.md, con una lista de cada fallo y su corrección; (2) web_corregida.html, la página ya corregida. No me hagas preguntas: si algo es ambiguo, decide tú y explícalo en incidencias.md. Al final comprueba que existen los dos ficheros.",
    "criterio": [
     "`incidencias.md` con cada fallo y su corrección.",
     "`web_corregida.html` con `lang=\"es\"`, letra de 14 px o más, media queries y `alt` en todas las imágenes.",
@@ -696,6 +711,7 @@
      "ej06_resumen_diario"
     ]
    ],
+   "demo": false,
    "num_corto": "ej05",
    "puerta_icono": "🌐",
    "validacion": {
@@ -742,6 +758,7 @@
      "ej10_inyeccion_prompt"
     ]
    ],
+   "demo": false,
    "num_corto": "ej06",
    "puerta_icono": "📬",
    "validacion": {
@@ -786,6 +803,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej07",
    "puerta_icono": "📬",
    "validacion": {
@@ -827,6 +845,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej08",
    "puerta_icono": "📬",
    "validacion": {
@@ -867,6 +886,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej09",
    "puerta_icono": "📬",
    "validacion": {
@@ -893,7 +913,7 @@
    "titulo": "Entender una carta de la Administración",
    "escena": "Llega una carta de «requerimiento previo a la vía de apremio» por dos recibos del agua. Hay que entender qué piden, para cuándo y qué pasa si no se paga.",
    "objetivo": "Que el agente explique un documento administrativo en lenguaje llano **sin inventar** lo que no dice.",
-   "prompt": "Lee carta.txt y escribe explicacion.md para una persona de 80 años: qué le piden, cuánto tiene que pagar, para qué día exactamente (cuenta los días hábiles sin sábados, domingos ni festivos, desde el día siguiente a la notificación), qué pasa si no hace nada (con el importe) y una lista de pasos. Si te pregunto algo que no está en la carta, como un teléfono o un horario, escribe «la carta no lo dice» en vez de inventarlo. Incluye al final un apartado ¿A qué teléfono llamo?",
+   "prompt": "Lee carta.txt y escribe explicacion.md para una persona de 80 años: qué le piden, cuánto tiene que pagar, para qué día exactamente (cuenta los días hábiles sin sábados, domingos ni festivos, desde el día siguiente a la notificación), qué pasa si no hace nada (con el importe) y una lista de pasos. Si te pregunto algo que no está en la carta, como un teléfono o un horario, escribe «la carta no lo dice» en vez de inventarlo. Termina con un apartado cuyo título sea exactamente «¿A qué teléfono llamo?» y respóndelo.",
    "criterio": [
     "Importe: **127,40 €**; si no paga, recargo del 20 % (**152,88 €** más intereses y costas).",
     "Plazo: **lunes 19/10/2026** (el 12 de octubre es festivo).",
@@ -917,6 +937,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej25",
    "puerta_icono": "📬",
    "validacion": {
@@ -969,6 +990,7 @@
      "f8_permisos"
     ]
    ],
+   "demo": false,
    "num_corto": "ej10",
    "puerta_icono": "🛡️",
    "validacion": {
@@ -1013,6 +1035,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej11",
    "puerta_icono": "📊",
    "validacion": {
@@ -1056,6 +1079,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej12",
    "puerta_icono": "📊",
    "validacion": {
@@ -1096,6 +1120,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej13",
    "puerta_icono": "📊",
    "validacion": {
@@ -1132,6 +1157,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej14",
    "puerta_icono": "📊",
    "validacion": {
@@ -1176,6 +1202,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej16",
    "puerta_icono": "📊",
    "validacion": {
@@ -1216,6 +1243,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej15",
    "puerta_icono": "🗂️",
    "validacion": {
@@ -1256,6 +1284,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej17",
    "puerta_icono": "🗂️",
    "validacion": {
@@ -1296,6 +1325,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej18",
    "puerta_icono": "🗂️",
    "validacion": {
@@ -1336,6 +1366,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej19",
    "puerta_icono": "🗂️",
    "validacion": {
@@ -1371,6 +1402,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej22",
    "puerta_icono": "🗂️",
    "validacion": {
@@ -1416,6 +1448,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej23",
    "puerta_icono": "🗂️",
    "validacion": {
@@ -1460,6 +1493,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej24",
    "puerta_icono": "🗂️",
    "validacion": {
@@ -1485,9 +1519,9 @@
    "titulo": "Avisar cuando cambia una web",
    "escena": "Hay que enterarse cuando cambie una web (por ejemplo, la de convocatorias de ayudas). Preparando este taller, un agente dijo «Listo» sin haber hecho nada.",
    "objetivo": "Un script que comprueba si una web ha cambiado y lo apunta en un log.",
-   "prompt": "Crea vigila/bin/vigila_cambios.sh: descarga https://example.com con curl, calcula su hash SHA-256, lo compara con el guardado en vigila/hash.txt y añade una línea con fecha a vigila/log/vigilancia.log (inicio, sin cambios o CAMBIO DETECTADO). Las rutas deben calcularse a partir de la ubicación del propio script, sin rutas absolutas, para que funcione se lance desde donde se lance. Ejecútalo dos veces y enséñame el log.",
+   "prompt": "Crea vigila/vigila_cambios.py, en Python y solo con la biblioteca estándar: descarga https://example.com, calcula su hash SHA-256, lo compara con el guardado en vigila/hash.txt y añade una línea con fecha y hora a vigila/log/vigilancia.log (inicio, sin cambios o CAMBIO DETECTADO). Las rutas deben calcularse a partir de la ubicación del propio script, sin rutas absolutas, para que funcione se lance desde donde se lance y en cualquier sistema. Ejecútalo dos veces y enséñame el log.",
    "criterio": [
-    "El log tiene dos líneas y el script funciona lanzado desde `/`.",
+    "El log tiene dos líneas y el script funciona lanzado desde la raíz del disco (`/` o `C:\\`).",
     "Sin rutas absolutas escritas a mano."
    ],
    "siguiente": [
@@ -1500,6 +1534,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej20",
    "puerta_icono": "🗂️",
    "validacion": {
@@ -1524,10 +1559,10 @@
    ],
    "titulo": "Programar una tarea periódica (con tu permiso)",
    "escena": "La comprobación de la web tiene que ejecutarse sola cada cierto tiempo. El agente va a tocar tu sistema, así que te pedirá permiso.",
-   "objetivo": "Programar la vigilancia con cron o un timer de systemd **aprobando** cada orden que toca el sistema.",
+   "objetivo": "Programar la vigilancia con el programador de tareas de tu sistema (Programador de tareas de Windows, cron o systemd en Linux, launchd en macOS) **aprobando** cada orden que toca el sistema.",
    "criterio": [
-    "El log tiene al menos dos entradas separadas ~60 s.",
-    "Al terminar no queda el timer: `systemctl --user list-timers`."
+    "El log tiene al menos dos entradas separadas unos 60 s.",
+    "Al terminar no queda la tarea: `schtasks /query | findstr vigila` (Windows), `crontab -l` y `systemctl --user list-timers` (Linux) o `launchctl list | grep vigila` (macOS) no la muestran."
    ],
    "siguiente": [
     [
@@ -1540,6 +1575,7 @@
     ]
    ],
    "prompt": null,
+   "demo": false,
    "num_corto": "ej21",
    "puerta_icono": "🗂️",
    "validacion": {
@@ -1585,6 +1621,7 @@
      "PLAZA"
     ]
    ],
+   "demo": false,
    "num_corto": "ej26",
    "puerta_icono": "📬",
    "validacion": {
@@ -1632,6 +1669,7 @@
      "f8_permisos"
     ]
    ],
+   "demo": false,
    "num_corto": "ej27",
    "puerta_icono": "⚙️",
    "validacion": {
@@ -1661,6 +1699,7 @@
    "criterio": [],
    "siguiente": [],
    "prompt": null,
+   "demo": false,
    "num_corto": "reto",
    "puerta_icono": "🔬",
    "validacion": null

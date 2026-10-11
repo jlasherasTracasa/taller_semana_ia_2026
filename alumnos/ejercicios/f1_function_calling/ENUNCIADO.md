@@ -2,6 +2,8 @@
 
 > ⚙️ **Cómo funciona un agente** · 🔵 Medio · ⏱ 15 min · 🛠️ tu propio programa en Python · Recomendado para: 💻 🏛️
 
+> 🎥 **Demo en directo**: lo hace el profesor en el proyector; tú lo miras y lo repites después si quieres.
+
 ## 📌 La situación
 
 ¿Y si el agente se inventa una cuenta? En realidad el modelo no calcula ni ejecuta nada: pide que lo haga tu programa.
@@ -17,8 +19,9 @@ Ver con tus ojos que el modelo **no ejecuta** herramientas: devuelve un JSON pid
 ## 💬 El encargo
 
 ```bash
-python3 taller.py ejecutar f1 fc_calculadora.py
+python taller.py ejecutar f1 fc_calculadora.py
 ```
+Como F.0, necesita `OPENROUTER_API_KEY` en `.env` (los modelos gratuitos solo van dentro de opencode).
 
 ## ✅ ¿Lo ha hecho de verdad?
 

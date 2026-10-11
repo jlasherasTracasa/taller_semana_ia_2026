@@ -1,6 +1,8 @@
 # 🟢 EJ 26 · ¿Qué oferta de luz me sale más barata?
 
-> 📬 **Correo y trámites** · 🟢 Fácil · ⏱ 15 min · 🛠️ `opencode run` · Recomendado para: 🧭 📚
+> 📬 **Correo y trámites** · 🟢 Fácil · ⏱ 15 min · 🛠️ opencode interactivo · Recomendado para: 🧭 📚
+
+> ✋ **Práctica**: lo haces tú, a tu ritmo. Si te atascas, pregunta al profesor.
 
 ## 📌 La situación
 
@@ -17,19 +19,31 @@ Comparar ofertas con **cálculos hechos con los datos**, no con lo que dice la p
 
 ## 💬 El encargo
 
-Con el mando del taller (prepara la carpeta, carga tu `.env` y guarda la salida):
+**1.** Abre opencode en modo interactivo en tu carpeta de trabajo:
 
 ```bash
-python3 taller.py lanzar ej26
+python taller.py abrir ej26
 ```
 
-O a mano, desde la carpeta de trabajo del ejercicio:
+**2.** Copia este encargo, pégalo en opencode y pulsa Enter:
+
+```text
+Con consumo_2025.csv y ofertas.md, calcula con un script de Python lo que habría pagado en 2025 con cada oferta (energía según periodos, potencia de 4,6 kW los 365 días y cuotas fijas; sin IVA ni impuesto eléctrico). Escribe comparativa.md con una tabla del coste anual de cada oferta, cuál es la más barata y cuánto se ahorra frente a las otras, y una explicación sencilla de por qué. Comprueba si es verdad lo que dice cada folleto.
+```
+
+**3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
 
 ```bash
-opencode run --standalone "Con consumo_2025.csv y ofertas.md, calcula con un script de Python lo que habría pagado en 2025 con cada oferta (energía según periodos, potencia de 4,6 kW los 365 días y cuotas fijas; sin IVA ni impuesto eléctrico). Escribe comparativa.md con una tabla del coste anual de cada oferta, cuál es la más barata y cuánto se ahorra frente a las otras, y una explicación sencilla de por qué. Comprueba si es verdad lo que dice cada folleto." | tee salida.txt
+python taller.py lanzar ej26
 ```
 
-> 💡 Antes de lanzarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
+O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo…"`.
+
+</details>
+
+> 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -37,7 +51,7 @@ opencode run --standalone "Con consumo_2025.csv y ofertas.md, calcula con un scr
 - Recomienda la **B** y explica que la C, pese a tener el kWh más barato, es la más cara por la cuota mensual.
 
 ```bash
-python3 taller.py comprobar ej26      # el agente no decide si está bien: lo decide el comprobador
+python taller.py comprobar ej26      # el agente no decide si está bien: lo decide el comprobador
 ```
 
 ## 💡 Pistas

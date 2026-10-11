@@ -31,12 +31,19 @@
       "kill *": "deny",
       "pkill *": "deny",
       "killall *": "deny",
+      "taskkill *": "deny",
+      "Stop-Process *": "deny",
+      "rmdir /s *": "deny",
+      "rd /s *": "deny",
+      "Remove-Item * -Recurse*": "deny",
       "*| sh*": "deny",
       "*| bash*": "deny",
       "chmod -R *": "deny",
       "git push *": "ask",
       "crontab *": "ask",
-      "systemctl *": "ask"
+      "systemctl *": "ask",
+      "schtasks *": "ask",
+      "launchctl *": "ask"
     }
   }
 }
