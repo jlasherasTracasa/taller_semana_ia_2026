@@ -30,7 +30,7 @@ gratuitos de opencode solo funcionan dentro de opencode. Sin clave, míralo en e
 
 - La primera ejecución muestra líneas `PENSAR`, `ACTUAR` y `OBSERVAR` y termina.
 - **Compruébala tú**: ¿responde a la pregunta? ¿cuenta bien las líneas? (abre los tres ficheros y cuéntalas).
-- La segunda termina con `ERROR: fuera de la carpeta permitida`. ¿Quién lo ha impedido, el modelo o tu programa?
+- En la segunda aparece `OBSERVAR ERROR: fuera de la carpeta permitida` y el agente no consigue leer el `.env`. ¿Quién lo ha impedido, el modelo o tu programa?
 
 ## 🧗 Reto extra
 

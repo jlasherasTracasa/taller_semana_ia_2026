@@ -1,61 +1,84 @@
 # 🚀 Primeros pasos
 
-Necesitas un portátil **sin GPU** (vale cualquiera), **Node.js 18+** y **Python 3.10+**. Calcula 10 minutos.
+Antes: [🛠️ Instalar](Instalar.md) (Python, Node.js, Git, opencode y el kit). ¿No puedes instalar? [🆘 Plan B](Plan-B.md).
 
-> 🐍 ¿No sabes si tienes Python o Node, o no los tienes? Sigue antes [Instalar Python](Instalar-Python.md)
-> (Windows, macOS y Linux). En Windows escribe `py` donde pone `python3`.
+Las órdenes son iguales en Windows, Linux y Mac **con el entorno activado** (verás `(.venv)` al principio de la línea):
 
-## 1. Descarga el kit
+| | Para activar el entorno, desde la carpeta `alumnos` |
+|---|---|
+| 🪟 Windows (PowerShell) | `.venv\Scripts\Activate.ps1` |
+| 🐧 Linux · 🍎 macOS | `. .venv/bin/activate` |
 
-```bash
-git clone https://github.com/jlasherasTracasa/taller_semana_ia_2026.git
-cd taller_semana_ia_2026/alumnos
+## 1. ¿Qué modelo vas a usar?
+
+**No necesitas clave.** Sin `.env`, el kit usa un **modelo gratuito de opencode** (`opencode/big-pickle`). Si en
+clase os dan una clave de **OpenRouter**, ponla así:
+
+```powershell
+copy .env.example .env        # Windows
 ```
 
-¿Sin git? Botón verde **Code → Download ZIP** en GitHub, descomprime y entra en `alumnos/`.
-
-## 2. Instala el agente y las bibliotecas
-
 ```bash
-npm i -g @opencode/cli@2.0.19                 # el agente (validado con la 2.0.19)
-python3 -m venv .venv                # un entorno de Python solo para el taller
-. .venv/bin/activate                 # Windows (PowerShell): .venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+cp .env.example .env          # Linux y Mac
 ```
 
-## 3. Tu clave
-
-```bash
-cp .env.example .env                 # Windows: copy .env.example .env
-```
-
-Abre `.env` y rellena **una** de las dos opciones con lo que te demos en clase:
-
-- **LiteLLM del taller**: `LITELLM_API_BASE` y `LITELLM_API_KEY`.
-- **OpenRouter**: `OPENROUTER_API_KEY` (el kit cambia solo a `openrouter/z-ai/glm-5.3-flash`).
-
-> ¿Prefieres variables de entorno, o estás en Windows? Mira [🔑 Variables de entorno](Variables-de-entorno.md).
+Abre `.env` con el Bloc de notas (o cualquier editor) y rellena `OPENROUTER_API_KEY=` con la clave. Con ella, el
+kit usa **GLM-5.3-Flash**, el modelo con el que se validaron los ejercicios. Más detalles en
+[🤖 Modelos](Modelos.md) y [🔑 Variables de entorno](Variables-de-entorno.md).
 
 > 🔐 `.env` es tuyo y de nadie más: no lo subas a git, no lo pegues en un chat, no lo enseñes en pantalla.
 
-## 4. Comprueba que todo está listo
+## 2. Comprueba que todo está listo
 
 ```bash
-bash comprobar_entorno.sh            # Windows sin bash: python3 taller.py
-python3 taller.py                    # perfiles, áreas, ejercicios y tu progreso
+python taller.py entorno
 ```
 
-## 5. Tu primer encargo
+## 3. Mira el menú
 
 ```bash
-python3 taller.py empezar ej01       # te explica la situación y prepara ~/taller-agentes/ej01_pagina_personal
-python3 taller.py lanzar ej01        # el agente trabaja (tarda unos 30 s)
-python3 taller.py comprobar ej01     # ¿lo hizo de verdad? Si sí, queda completado
+python taller.py
 ```
 
-Abre `~/taller-agentes/ej01_pagina_personal/index.html` en el navegador. ¡Es la web de Pilar!
+Perfiles, itinerarios, áreas y ejercicios. Los marcados con 🎥 los hace el profesor **en directo**; el resto son
+**prácticas** que haces tú (y en las que preguntas al profesor cuando te atasques).
 
-### ¿Y el modelo? ¿Por qué pone «Qwen3.8»?
+## 4. Tu primer encargo, en modo interactivo
 
-El LiteLLM del taller publica **GLM-5.3-Flash** con el nombre `Qwen3.8-27B-FP8` por retrocompatibilidad. Es el
-mismo modelo. Con OpenRouter verás su nombre real: `z-ai/glm-5.3-flash`.
+```bash
+python taller.py empezar ej24      # prepara ~/taller-agentes/ej24_lista_compra y te cuenta la situación
+python taller.py abrir ej24        # abre opencode en esa carpeta
+```
+
+Se abre opencode a pantalla completa. **Copia el encargo** que te ha enseñado `empezar` (también está en el
+enunciado y en la web), **pégalo** en la caja de abajo (`Ctrl+V`, o clic derecho en Windows) y pulsa **Enter**.
+
+Mira lo que hace: qué ficheros lee (`→ Read`), qué escribe (`← Write`), qué órdenes ejecuta. Cuando termine, sal con
+**`Ctrl+C`** (con la caja vacía) o escribiendo `/exit`. Todo lo del modo interactivo, en
+[🖥️ Modo interactivo](Modo-interactivo.md).
+
+## 5. ¿Lo ha hecho de verdad?
+
+```bash
+python taller.py comprobar ej24
+```
+
+Si sale ✅, el ejercicio cuenta como completado y te propone el siguiente. Si sale ❌, vuelve a abrir opencode
+(`python taller.py abrir ej24`) y pídele que lo arregle, o mejora el encargo.
+
+Abre `~/taller-agentes/ej24_lista_compra/lista_compra.md` y compruébalo tú también: ¿son 1,2 kg de pochas?
+
+## ¿Y si prefiero no conversar?
+
+`python taller.py lanzar ej24` hace el encargo de una vez, sin abrir la pantalla interactiva (modo `opencode run`),
+guarda lo que pasa en `salida.txt` y te dice cuántos tokens ha gastado. Es como se validaron los ejercicios. En clase
+usaremos el modo interactivo: se ve mejor qué hace el agente y puedes aprobar permisos y corregirle sobre la marcha.
+
+## Dónde están tus cosas
+
+| Qué | Dónde |
+|---|---|
+| El kit (no lo toques) | `taller_semana_ia_2026/alumnos/` |
+| Tus carpetas de trabajo (copias) | `~/taller-agentes/<ejercicio>/` · en Windows, `C:\Users\<tú>\taller-agentes\` |
+| Tu progreso | `~/taller-agentes/progreso.json` (`python taller.py progreso`) |
+| Lo que hizo el agente al validar | `alumnos/soluciones/<ejercicio>/` |

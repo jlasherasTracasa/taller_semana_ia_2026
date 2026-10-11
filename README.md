@@ -37,9 +37,11 @@
 | Quiero… | Ve a |
 |---|---|
 | **Ver los ejercicios y mi itinerario** desde el navegador | 🌐 **[jlasherastracasa.github.io/taller_semana_ia_2026](https://jlasherastracasa.github.io/taller_semana_ia_2026/)** |
-| **Instalar Python y Node** (Windows, macOS, Linux) | 🐍 [Wiki → Instalar Python](https://jlasherastracasa.github.io/taller_semana_ia_2026/#/wiki/Instalar-Python) |
+| **Instalar** (Windows, Linux, macOS) | 🛠️ [Wiki → Instalar](https://jlasherastracasa.github.io/taller_semana_ia_2026/#/wiki/Instalar) |
+| **Usar opencode en modo interactivo** | 🖥️ [Wiki → Modo interactivo](wiki/Modo-interactivo.md) |
+| **No tengo portátil o no puedo instalar** | 🆘 [Wiki → Plan B](wiki/Plan-B.md): Codespaces en el navegador, en pareja o «en seco» |
 | **Instalar y empezar** (paso a paso) | 📖 [Wiki → Primeros pasos](https://jlasherastracasa.github.io/taller_semana_ia_2026/#/wiki/Primeros-pasos) · también en [`wiki/`](wiki/Home.md) |
-| Poner mi **clave** (variables de entorno) | 📖 [Wiki → Variables de entorno](wiki/Variables-de-entorno.md) |
+| Qué **modelo** uso (gratis o con clave) | 🤖 [Wiki → Modelos](wiki/Modelos.md) |
 | Entender el **`opencode.json`** | 📖 [Wiki → El fichero opencode.json](wiki/opencode-json.md) |
 | Algo **no funciona** | 📖 [Wiki → Problemas y soluciones](wiki/Problemas.md) |
 | Las **diapositivas** | 🖥️ [PDF](presentacion/taller-agentes-ia.pdf) · [PowerPoint](presentacion/taller-agentes-ia.pptx) |
@@ -95,19 +97,37 @@ comprobador automático, **lo que pasó cuando lo validamos** y dos o tres camin
 
 ## 🚀 Empezar en cinco minutos
 
-> 🐍 Antes: **Python 3.10+** y **Node.js 18+** ([cómo instalarlos](wiki/Instalar-Python.md)). En Windows, `py` en vez de `python3`.
+> 🛠️ Antes: **Python 3.10+**, **Node.js 18+** y **Git** ([cómo instalarlos](wiki/Instalar.md)). **No hace falta
+> clave**: sin ella, el agente usa un modelo gratuito de opencode.
+
+🪟 **Windows** (PowerShell):
+
+```powershell
+git clone https://github.com/jlasherasTracasa/taller_semana_ia_2026.git
+cd taller_semana_ia_2026\alumnos
+npm i -g @opencode/cli@2.0.19                          # el agente
+py -m venv .venv; .venv\Scripts\Activate.ps1; python -m pip install -r requirements.txt
+python taller.py entorno                               # ¿está todo listo?
+```
+
+🐧 **Linux** · 🍎 **macOS**:
 
 ```bash
 git clone https://github.com/jlasherasTracasa/taller_semana_ia_2026.git
 cd taller_semana_ia_2026/alumnos
-npm i -g @opencode/cli@2.0.19                                   # el agente
-python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
-cp .env.example .env                                   # y escribe la clave que te damos en clase
-python3 taller.py                                      # perfiles, áreas y tu progreso
-python3 taller.py empezar ej01 && python3 taller.py lanzar ej01 && python3 taller.py comprobar ej01
+npm i -g @opencode/cli@2.0.19
+python3 -m venv .venv && . .venv/bin/activate && python -m pip install -r requirements.txt
+python taller.py entorno
 ```
 
-Más detalle (Windows incluido) en la [wiki](wiki/Primeros-pasos.md).
+Y después, en cualquier sistema:
+
+```bash
+python taller.py                 # perfiles, áreas (🎥 = demo del profesor) y tu progreso
+python taller.py empezar ej24    # prepara la carpeta de trabajo
+python taller.py abrir ej24      # opencode en modo interactivo: pega el encargo y míralo trabajar
+python taller.py comprobar ej24  # ¿lo hizo de verdad?
+```
 
 ## 🧪 Validado de verdad
 
@@ -134,14 +154,15 @@ personas basta con **35 $** de crédito con margen. Detalle y tabla por número 
 ```text
 taller_semana_ia_2026/
 ├── alumnos/                 ← EL KIT (lo que usa cada participante)
-│   ├── taller.py            ← el mando: empezar · lanzar · comprobar · progreso
+│   ├── taller.py            ← el mando: entorno · empezar · abrir · comprobar · progreso
 │   ├── comprobar.py         ← verifica el criterio de éxito de cada ejercicio
 │   ├── ITINERARIOS.md       ← perfiles, áreas, mapa y niveles
 │   ├── ejercicios/          ← 38 ejercicios: ENUNCIADO.md + datos de partida
 │   ├── soluciones/          ← encargo, salida real y ficheros de la validación
 │   ├── replicar_paper/      ← reto avanzado
-│   └── opencode.json · requirements.txt · .env.example · comprobar_entorno.sh
-├── wiki/                    ← la wiki (también en la web)
+│   └── opencode.json · requirements.txt · .env.example
+├── wiki/                    ← la wiki (también en la web): instalar, modo interactivo, modelos, plan B…
+├── .devcontainer/           ← plan B: el kit instalado en GitHub Codespaces
 ├── presentacion/            ← diapositivas (pptx y pdf), logos y generador
 ├── profesor/                ← validar.sh, PRESUPUESTO.md y las notas del profesor CIFRADAS
 ├── herramientas/            ← fuente única (aventura.py) y generadores del kit y de la web

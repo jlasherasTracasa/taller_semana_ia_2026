@@ -1,70 +1,57 @@
 # 🔑 Variables de entorno: dónde se guarda tu clave
 
+> ¿Usas el modelo gratuito de opencode? Entonces **no necesitas ninguna clave** y puedes saltarte esta página.
+> Solo hace falta si en clase os dan una clave de OpenRouter ([🤖 Modelos](Modelos.md)).
+
 Una **variable de entorno** es un par `NOMBRE=valor` que vive en tu terminal y que pueden leer los programas que
-lances desde ella. Las usamos para que la clave del modelo **no esté escrita en ningún fichero que se comparta**:
-`opencode.json` solo dice `{env:LITELLM_API_KEY}` («pon aquí lo que valga esa variable»).
+lances desde ella. Las usamos para que la clave **no esté escrita en ningún fichero que se comparta**: opencode
+lee `OPENROUTER_API_KEY` directamente del entorno, y en un `opencode.json` las claves se escriben como
+`{env:NOMBRE}` («pon aquí lo que valga esa variable»), nunca a mano.
 
 ## Las variables del taller
 
 | Variable | Qué lleva | Ejemplo |
 |---|---|---|
-| `LITELLM_API_BASE` | La URL del LiteLLM del taller, **sin** `/v1` al final | `https://litellm.ejemplo.es` |
-| `LITELLM_API_KEY` | Tu clave del LiteLLM | `sk-…` (te la damos en clase) |
-| `OPENROUTER_API_KEY` | Tu clave de OpenRouter (alternativa a las dos anteriores) | `sk-or-v1-…` |
+| `OPENROUTER_API_KEY` | Tu clave de OpenRouter | `sk-or-v1-…` (te la dan en clase) |
+| `TALLER_MODELO` | *(opcional)* otro modelo para los ejercicios | `opencode/nemotron-3-ultra-free` |
 | `TALLER_TRABAJO` | *(opcional)* dónde crea `taller.py` las carpetas de trabajo | `~/taller-agentes` |
-| `TALLER_MODELO` | *(opcional)* otro modelo para F.0 y F.1 | `openrouter/z-ai/glm-5.3-flash` |
+| `LITELLM_API_BASE` · `LITELLM_API_KEY` | *(solo el docente)* su LiteLLM propio | — |
 
-## ✅ La forma fácil: el fichero `.env` + `taller.py`
+## ✅ La forma fácil: el fichero `.env`
 
-```bash
-cd alumnos
-cp .env.example .env        # Windows: copy .env.example .env
+En la carpeta `alumnos`:
+
+```powershell
+copy .env.example .env        # 🪟 Windows (PowerShell)
+notepad .env
 ```
 
-Abre `.env` con cualquier editor y rellena:
+```bash
+cp .env.example .env          # 🐧 Linux · 🍎 Mac
+nano .env                     # o el editor que quieras
+```
+
+Rellena la línea:
 
 ```bash
-LITELLM_API_BASE=https://la-url-que-os-damos
-LITELLM_API_KEY=la-clave-que-os-damos
+OPENROUTER_API_KEY=sk-or-v1-la-clave-que-os-damos
 ```
 
 Sin espacios alrededor del `=` y sin comillas. **`taller.py` lee este fichero solo** cada vez que lo usas: no hace
 falta nada más. `.env` está en `.gitignore`, así que git no lo subirá.
 
-## 🐧 Linux y 🍎 macOS (bash o zsh)
+## Si quieres usar `opencode` sin taller.py
 
-### Solo para esta terminal (se pierde al cerrarla)
+`taller.py` carga el `.env` por ti. Si lanzas `opencode` a mano, la variable tiene que estar en tu terminal:
 
-```bash
-export LITELLM_API_BASE="https://la-url"
-export LITELLM_API_KEY="la-clave"
-```
-
-### Cargar todo el `.env` de golpe
-
-```bash
-set -a; . ./.env; set +a      # «set -a» exporta todo lo que se defina a continuación
-```
-
-### Para siempre (todas las terminales nuevas)
-
-Añade las líneas `export …` al final de `~/.bashrc` (Linux) o `~/.zshrc` (macOS) y abre una terminal nueva.
-Más seguro: no pongas la clave ahí; pon solo la línea que carga tu `.env`:
-
-```bash
-echo 'set -a; . "$HOME/taller_semana_ia_2026/alumnos/.env"; set +a' >> ~/.bashrc
-```
-
-## 🪟 Windows
-
-### PowerShell, solo para esta ventana
+### 🪟 Windows (PowerShell)
 
 ```powershell
-$env:LITELLM_API_BASE = "https://la-url"
-$env:LITELLM_API_KEY  = "la-clave"
+$env:OPENROUTER_API_KEY = "sk-or-v1-…"          # solo para esta ventana
+setx OPENROUTER_API_KEY "sk-or-v1-…"            # para siempre (ventanas que abras DESPUÉS)
 ```
 
-### PowerShell, cargar el `.env`
+También: *Inicio → «Editar las variables de entorno de esta cuenta»*. Para cargar el `.env` entero en la ventana:
 
 ```powershell
 Get-Content .env | Where-Object { $_ -match '^\s*[^#].*=' } | ForEach-Object {
@@ -72,57 +59,48 @@ Get-Content .env | Where-Object { $_ -match '^\s*[^#].*=' } | ForEach-Object {
 }
 ```
 
-### Para siempre (tu usuario)
+En el Símbolo del sistema (cmd): `set OPENROUTER_API_KEY=sk-or-v1-…`.
 
-```powershell
-setx LITELLM_API_BASE "https://la-url"
-setx LITELLM_API_KEY  "la-clave"
+### 🐧 Linux · 🍎 macOS
+
+```bash
+export OPENROUTER_API_KEY="sk-or-v1-…"          # solo para esta terminal
+set -a; . ./.env; set +a                         # cargar el .env entero
 ```
 
-`setx` solo afecta a las ventanas que abras **después**. También: *Inicio → «Editar las variables de entorno de
-esta cuenta»*.
+Para siempre, añade al final de `~/.bashrc` (Linux) o `~/.zshrc` (Mac) la línea que carga tu `.env`, mejor que la
+clave misma:
 
-### Símbolo del sistema (cmd), solo para esta ventana
-
-```bat
-set LITELLM_API_BASE=https://la-url
-set LITELLM_API_KEY=la-clave
+```bash
+echo 'set -a; . "$HOME/taller_semana_ia_2026/alumnos/.env"; set +a' >> ~/.bashrc
 ```
 
 ## 🔍 Comprobar que está definida (sin enseñar la clave)
 
 ```bash
-bash comprobar_entorno.sh                               # dice «definida (valor oculto)»
-[ -n "$LITELLM_API_KEY" ] && echo "definida" || echo "FALTA"
+python taller.py entorno             # dice qué modelo usa y si la clave está; nunca la imprime
 ```
 
 ```powershell
-if ($env:LITELLM_API_KEY) { "definida" } else { "FALTA" }
+if ($env:OPENROUTER_API_KEY) { "definida" } else { "FALTA" }
 ```
 
-> ⚠️ No hagas `echo $LITELLM_API_KEY` con el proyector encendido.
+> ⚠️ No hagas `echo $OPENROUTER_API_KEY` con el proyector encendido.
 
 ## 🤖 Cómo las usa opencode
 
-En `opencode.json`, `{env:NOMBRE}` se sustituye por el valor de la variable **cuando arranca opencode**:
+En `opencode.json`, `{env:NOMBRE}` se sustituye por el valor de la variable **cuando arranca opencode**.
 
-```json
-"options": {
-  "baseURL": "{env:LITELLM_API_BASE}/v1",
-  "apiKey": "{env:LITELLM_API_KEY}"
-}
-```
+**Trampa de opencode 2.x:** sin `--standalone`, opencode manda el trabajo a un **servicio en segundo plano** que se
+arrancó antes y **no ve las variables que acabas de definir**. Síntomas: `Invalid URL` o `No api key passed in`.
+Soluciones:
 
-**Trampa de opencode 2.x:** `opencode run` sin `--standalone` manda el encargo a un **servicio en segundo plano**
-que se arrancó antes y **no ve las variables que acabas de definir**. Síntomas: `Invalid URL` o
-`No api key passed in`. Soluciones (de más a menos cómoda):
-
-1. Usar `python3 taller.py lanzar …` (ya pone `--standalone` y lee tu `.env`).
-2. Añadir `--standalone`: `opencode run --standalone "…"`.
+1. Usar `python taller.py abrir …` o `lanzar …` (ya ponen `--standalone` y leen tu `.env`).
+2. Añadir `--standalone`: `opencode --standalone` o `opencode run --standalone "…"`.
 3. Reiniciar el servicio después de definir las variables: `opencode service restart`.
 
 ## 🔐 Reglas
 
 - La clave va en `.env` o en variables, **nunca** en `opencode.json`, en el código ni en un chat.
-- Si se te escapa (la pegas, la proyectas, la subes), pide otra y que anulen la vieja.
-- Cada persona, su clave: así se puede limitar el gasto de cada una.
+- Si se te escapa (la pegas, la proyectas, la subes), díselo al profesor para que la anule y te dé otra.
+- Cada persona o pareja, su clave: así se limita el gasto de cada una.

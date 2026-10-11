@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Valida que un acta sigue el formato de la skill acta-reunion. Uso: python3 validar_acta.py actas/AAAA-MM-DD_acta.md"""
+"""Valida que un acta sigue el formato de la skill acta-reunion. Uso: python validar_acta.py actas/AAAA-MM-DD_acta.md"""
 import os, re, sys
 
 ruta = sys.argv[1] if len(sys.argv) > 1 else ""

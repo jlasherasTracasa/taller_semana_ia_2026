@@ -9,12 +9,18 @@ from pathlib import Path
 import litellm
 
 # Con el LiteLLM del taller: "openai/<modelo>" + su URL. Con OpenRouter: "openrouter/z-ai/glm-5.3-flash".
+# Los modelos gratuitos de opencode solo funcionan DENTRO de opencode: este programa necesita OpenRouter (o el LiteLLM del docente)
+OTRO = os.environ.get("TALLER_MODELO", "")
+OTRO = "" if OTRO.startswith("opencode/") else OTRO
 if os.environ.get("LITELLM_API_KEY"):
-    MODEL = os.environ.get("TALLER_MODELO", "openai/GLM-5.3-Flash")
+    MODEL = OTRO or "openai/GLM-5.3-Flash"
     KW = {"api_base": os.environ["LITELLM_API_BASE"] + "/v1", "api_key": os.environ["LITELLM_API_KEY"]}
-else:
-    MODEL = os.environ.get("TALLER_MODELO", "openrouter/z-ai/glm-5.3-flash")
+elif os.environ.get("OPENROUTER_API_KEY"):
+    MODEL = OTRO or "openrouter/z-ai/glm-5.3-flash"
     KW = {"api_key": os.environ["OPENROUTER_API_KEY"]}
+else:
+    sys.exit("Este programa llama al modelo directamente y necesita OPENROUTER_API_KEY en el .env del kit.\n"
+             "Los modelos gratuitos de opencode solo funcionan dentro de opencode (wiki: Modelos).")
 RAIZ = Path(__file__).resolve().parent  # el agente solo puede ver esta carpeta
 MAX_PASOS = 8                            # freno de seguridad: un agente sin límite puede dar vueltas sin fin
 

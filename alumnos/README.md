@@ -7,35 +7,47 @@
 
 ## 🚀 Puesta en marcha
 
-> 🐍 Necesitas **Python 3.10+** y **Node.js 18+**. ¿No los tienes? [Wiki → Instalar Python](../wiki/Instalar-Python.md).
-> En Windows escribe `py` donde pone `python3`.
+> 🛠️ Necesitas **Python 3.10+**, **Node.js 18+** y **Git**. Paso a paso para Windows, Linux y Mac:
+> [Wiki → Instalar](../wiki/Instalar.md). ¿No puedes instalar o no tienes portátil? [Wiki → Plan B](../wiki/Plan-B.md).
 
-```bash
-npm i -g @opencode/cli@2.0.19                                    # el agente (validado con la 2.0.19)
-python3 -m venv .venv && . .venv/bin/activate           # Windows: .venv\Scripts\Activate.ps1
-pip install -r requirements.txt                         # las bibliotecas de los ejercicios
-cp .env.example .env                                    # y escribe la clave que te damos en clase
-bash comprobar_entorno.sh                               # 6 comprobaciones, incluida una llamada al modelo
+🪟 **Windows** (PowerShell), desde esta carpeta:
+
+```powershell
+npm i -g @opencode/cli@2.0.19          # el agente (validado con la 2.0.19)
+py -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python taller.py entorno                 # 6 comprobaciones, incluida una llamada real al modelo
 ```
 
-¿Problemas? [Wiki → Primeros pasos](../wiki/Primeros-pasos.md), [Variables de entorno](../wiki/Variables-de-entorno.md)
-y [Problemas y soluciones](../wiki/Problemas.md).
+🐧 **Linux** · 🍎 **Mac**:
+
+```bash
+npm i -g @opencode/cli@2.0.19
+python3 -m venv .venv && . .venv/bin/activate
+python -m pip install -r requirements.txt
+python taller.py entorno
+```
+
+**No hace falta clave**: sin `.env`, el agente usa un modelo gratuito de opencode. Si en clase os dan una clave de
+OpenRouter, copia `.env.example` a `.env` y ponla ahí ([Wiki → Modelos](../wiki/Modelos.md)).
 
 ## ▶️ Cómo se trabaja
 
+Con el entorno activado (verás `(.venv)`), las órdenes son iguales en todos los sistemas:
+
 ```bash
-python3 taller.py                      # perfiles, áreas, ejercicios y tu progreso
-python3 taller.py empezar ej25         # prepara ~/taller-agentes/ej25_… y te explica la situación
-python3 taller.py lanzar ej25          # el agente hace el encargo (y te dice los tokens que ha gastado)
-python3 taller.py comprobar ej25       # ¿lo hizo de verdad? Si sí, queda completado y te propone el siguiente paso
-python3 taller.py lanzar ej25 --prompt "tu versión mejorada del encargo"
-python3 taller.py abrir ej21           # opencode en modo interactivo, para conversar y aprobar permisos
-python3 taller.py ejecutar f0 react_min.py   # los ejercicios que son programas de Python
-python3 taller.py progreso             # ejercicios completados y nivel alcanzado
+python taller.py                       # perfiles, áreas, ejercicios (🎥 = demo del profesor) y tu progreso
+python taller.py empezar ej24          # prepara ~/taller-agentes/ej24_… y te explica la situación
+python taller.py abrir ej24            # opencode en MODO INTERACTIVO: pega el encargo y míralo trabajar
+python taller.py comprobar ej24        # ¿lo hizo de verdad? Si sí, queda completado y te propone el siguiente paso
+python taller.py progreso              # ejercicios completados y nivel alcanzado
+python taller.py lanzar ej24           # (alternativa) el encargo de una vez, sin conversar; dice los tokens gastados
+python taller.py ejecutar f0 react_min.py   # los ejercicios que son programas de Python (necesitan OpenRouter)
 ```
 
-`taller.py` trabaja **siempre en copias** (`~/taller-agentes/`), lee tu `.env` y lanza opencode en modo
-`--standalone`. Puedes hacerlo todo a mano: cada `ENUNCIADO.md` trae la orden de `opencode` equivalente.
+`taller.py` trabaja **siempre en copias** (`~/taller-agentes/`), lee tu `.env`, elige el modelo y abre opencode en
+modo `--standalone`. Cómo se usa opencode por dentro (teclas, permisos, comandos): [Wiki → Modo interactivo](../wiki/Modo-interactivo.md).
 
 ## 📦 Qué hay
 
@@ -44,12 +56,12 @@ python3 taller.py progreso             # ejercicios completados y nivel alcanzad
 | [`ITINERARIOS.md`](ITINERARIOS.md) | Perfiles, áreas, mapa de ejercicios y niveles. **Empieza aquí.** |
 | `ejercicios/<id>/` | Un ejercicio: `ENUNCIADO.md` (situación, encargo, criterio, siguiente paso) y sus datos |
 | [`soluciones/`](soluciones/README.md) | Lo que hizo el agente en la validación: encargo, salida real y ficheros |
-| `taller.py` | El mando del taller (solo biblioteca estándar; funciona en Windows) |
-| `comprobar.py` | El comprobador de cada ejercicio: `python3 comprobar.py --lista` |
+| `taller.py` | El mando del taller (solo biblioteca estándar; funciona igual en Windows, Linux y Mac) |
+| `comprobar.py` | El comprobador de cada ejercicio: `python comprobar.py --lista` |
 | `opencode.json` | Configuración del agente: modelo y **permisos**. Sin claves ([wiki](../wiki/opencode-json.md)) |
-| `.env.example` | Plantilla para tu clave (cópiala a `.env`, que nunca se sube a git) |
+| `.env.example` | Plantilla para tu clave de OpenRouter, si la usas (cópiala a `.env`, que nunca se sube a git) |
 | `requirements.txt` | Bibliotecas de Python de los ejercicios |
-| `comprobar_entorno.sh` | Comprueba que tu portátil está listo |
+| `comprobar_entorno.sh` | Lo mismo que `python taller.py entorno`, para quien prefiera bash |
 | [`replicar_paper/`](replicar_paper/README.md) | Reto avanzado: replicar un artículo científico en CPU |
 
 ## 🛡️ Reglas de oro

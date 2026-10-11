@@ -35,4 +35,4 @@ Firmado: <secretaria o secretario>, con el visto bueno de <presidenta o presiden
 ## Reglas
 - Una fila por acuerdo; las tareas con responsable también son acuerdos.
 - Las cifras (euros, votos) se copian tal cual de la transcripción. No inventes nada.
-- Al terminar, ejecuta `python3 .opencode/skills/acta-reunion/validar_acta.py <ruta del acta>` y corrige lo que diga hasta que responda `ACTA VÁLIDA`.
+- Al terminar, ejecuta `python .opencode/skills/acta-reunion/validar_acta.py <ruta del acta>` y corrige lo que diga hasta que responda `ACTA VÁLIDA`.

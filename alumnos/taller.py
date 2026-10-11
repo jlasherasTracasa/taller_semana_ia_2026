@@ -177,7 +177,13 @@ def lanzar(ej, prompt=None):
         sys.exit("Este ejercicio no se lanza con un único encargo: sigue los pasos de su ENUNCIADO.md.")
     print(f"🤖 Modelo: {modelo(env) or 'el del opencode.json del kit'}\n🤖 Encargo: {prompt}\n")
     t0 = time.time()
-    rc = opencode(["run", "--standalone", prompt], d, env, salida=os.path.join(d, "salida.txt"))
+    for intento in range(3):
+        rc = opencode(["run", "--standalone", prompt], d, env, salida=os.path.join(d, "salida.txt"))
+        # Si otro opencode arranca a la vez, el servidor privado a veces no llega a arrancar: se reintenta
+        if rc == 0 or "exited before reporting readiness" not in open(os.path.join(d, "salida.txt"), encoding="utf-8").read():
+            break
+        print("↻ opencode no ha llegado a arrancar; lo intento otra vez…")
+        time.sleep(5 + 5 * intento)
     print(f"\n⏱ {time.time() - t0:.0f} s · código {rc} · salida guardada en salida.txt")
     t = tokens(d, env)
     if t["entrada"]:

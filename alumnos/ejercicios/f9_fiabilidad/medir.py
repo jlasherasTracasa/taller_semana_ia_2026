@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """¿Sale bien siempre? Repite un ejercicio N veces en carpetas limpias, pasa el comprobador y resume.
 
-Uso (desde el kit):  python3 taller.py ejecutar f9 medir.py ej07 5 [--prompt "otro encargo"]
+Uso (desde el kit):  python taller.py ejecutar f9 medir.py ej07 5 [--prompt "otro encargo"]
 """
 import json, os, shutil, subprocess, sys, time
 
-KIT = os.environ.get("TALLER_KIT") or sys.exit("Lánzalo con:  python3 taller.py ejecutar f9 medir.py ej07 5")
+KIT = os.environ.get("TALLER_KIT") or sys.exit("Lánzalo con:  python taller.py ejecutar f9 medir.py ej07 5")
 sys.path.insert(0, KIT)
 import taller  # noqa: E402  (el mando del kit: sabe preparar carpetas y lanzar opencode)
 

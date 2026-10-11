@@ -165,7 +165,7 @@ function fila(e) {
     : v ? `<span class="chip ${v.estado}">${{ok:"Validado", parcial:"Validado a medias", fallo:"Falló al validar"}[v.estado]}</span>` : "";
   return `<a class="fila" href="#/ejercicio/${e.id}"><span class="dot" style="background:${NIVCOL[e.nivel]}" title="${I.niveles[e.nivel][1]}"></span>
     <span class="n">${e.num}</span><span><div class="t">${esc(e.titulo)}</div>
-    <div class="m">${I.niveles[e.nivel][1]} · ${e.min} min · ${e.perfiles.map(p => I.perfiles[p].nombre.replace(" de software", "")).join(", ")}</div></span>${chip}</a>`;
+    <div class="m">${e.demo ? "🎥 Demo en directo" : "✋ Práctica"} · ${I.niveles[e.nivel][1]} · ${e.min} min · ${e.perfiles.map(p => I.perfiles[p].nombre.replace(" de software", "")).join(", ")}</div></span>${chip}</a>`;
 }
 
 function areas(filtro) {
@@ -189,10 +189,11 @@ function inicio() {
     <h2 class="sec">Cómo funciona</h2><p class="sub">Un taller práctico, sin un único camino.</p>
     <div class="pasos">
       <div class="tarjeta"><h3>Elige tu perfil</h3><p>Cada perfil tiene un itinerario recomendado. Puedes salirte cuando quieras.</p></div>
-      <div class="tarjeta"><h3>Haz el ejercicio</h3><p>El agente ejecuta el encargo en una carpeta de trabajo: <code>python3 taller.py lanzar ej01</code>.</p></div>
+      <div class="tarjeta"><h3>Haz el ejercicio</h3><p>Abre opencode en tu carpeta de trabajo con <code>python taller.py abrir ej24</code>, pega el encargo y míralo trabajar.</p></div>
       <div class="tarjeta"><h3>Compruébalo</h3><p>Solo cuenta si lo dice <code>comprobar.py</code>, nunca si lo dice el agente.</p></div>
       <div class="tarjeta"><h3>Elige el siguiente</h3><p>Cada ejercicio termina con dos o tres caminos según lo que te interese.</p></div>
     </div>
+    <p class="sub">🎥 <b>Demo en directo</b>: la hace el profesor en el proyector. ✋ <b>Práctica</b>: la haces tú, a tu ritmo, y le preguntas las dudas. Sin portátil o sin poder instalar: <a href="#/wiki/Plan-B">Plan B</a>.</p>
     <h2 class="sec">¿Cuál es tu perfil?</h2><p class="sub">Elige uno para ver tu itinerario. Se guarda en este navegador.</p><div class="rejilla r4">`;
   for (const [k, v] of Object.entries(I.perfiles))
     h += `<button class="tarjeta ${p === k ? "sel" : ""}" style="text-align:left;font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start" onclick="elegir('${k}')">
@@ -228,7 +229,7 @@ function ejercicio(id) {
     <div class="botones"><button class="btn ${h ? "tonal" : "lleno"}" onclick="marcar('${id}')">${h ? "✓ Completado (desmarcar)" : "Marcar como completado"}</button>
     <a class="btn borde" href="${D.repo}/tree/main/alumnos/ejercicios/${id}">Datos del ejercicio</a>
     <a class="btn borde" href="${D.repo}/tree/main/alumnos/soluciones/${id}">Solución real</a></div>
-    <p class="nota">Marca el ejercicio cuando <code>python3 taller.py comprobar ${e.num_corto}</code> te diga que está bien.</p>`;
+    <p class="nota">Marca el ejercicio cuando <code>python taller.py comprobar ${e.num_corto}</code> te diga que está bien.</p>`;
 }
 
 function nivel(s) {
@@ -244,7 +245,7 @@ function nivel(s) {
 function progreso() {
   const s = hechos(), n = Object.keys(s).length, f = nivel(s);
   let h = `<h1 class="cond" style="font-size:44px;margin:0 0 8px">Mi progreso</h1>
-    <p class="sub">${n} ejercicio${n === 1 ? "" : "s"} completado${n === 1 ? "" : "s"} · se guarda en este navegador. En el portátil: <code>python3 taller.py progreso</code>.</p><div class="rejilla r3">`;
+    <p class="sub">${n} ejercicio${n === 1 ? "" : "s"} completado${n === 1 ? "" : "s"} · se guarda en este navegador. En el portátil: <code>python taller.py progreso</code>.</p><div class="rejilla r3">`;
   for (const [k, a] of AREAS) {
     const ejs = I.ejercicios.filter(e => e.puerta === k), x = ejs.filter(e => s[e.id]).length;
     h += `<div class="tarjeta"><div class="avatar">${a.icono}</div><h3>${a.nombre}</h3><div class="progreso"><div style="width:${100 * x / ejs.length}%"></div></div>

@@ -1,0 +1,10 @@
+{
+  "name": "Taller de agentes de IA · Semana de la IA 2026",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "hostRequirements": { "cpus": 2 },
+  "postCreateCommand": "bash .devcontainer/preparar.sh",
+  "customizations": {
+    "codespaces": { "openFiles": ["alumnos/README.md"] },
+    "vscode": { "settings": { "terminal.integrated.cwd": "${containerWorkspaceFolder}/alumnos" } }
+  }
+}

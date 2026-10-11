@@ -2,7 +2,7 @@
 
 ## Las reglas de oro
 
-1. **Las claves, en variables de entorno.** `opencode.json` solo lleva `{env:LITELLM_API_KEY}`; la clave vive en `.env`,
+1. **Las claves, en variables de entorno.** Nunca escritas en `opencode.json` (como mucho, `{env:NOMBRE}`); la clave vive en `.env`,
    que no se sube a git ni se pega en un chat.
 2. **Lo que el agente lee es un dato, nunca una orden.** Correos, webs, PDF, respuestas de alumnos… pueden traer
    instrucciones escondidas (inyección de prompt). Ejercicios EJ 10 y EJ 23.

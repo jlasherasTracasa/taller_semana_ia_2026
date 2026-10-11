@@ -1,8 +1,11 @@
 **🧭 Taller de agentes**
 
 - [Inicio](Home.md)
-- [🐍 Instalar Python](Instalar-Python.md)
+- [🛠️ Instalar](Instalar.md)
 - [🚀 Primeros pasos](Primeros-pasos.md)
+- [🖥️ Modo interactivo](Modo-interactivo.md)
+- [🤖 Modelos](Modelos.md)
+- [🆘 Plan B](Plan-B.md)
 - [🧭 Cómo funciona](Como-funciona.md)
 - [🧠 Conceptos](Conceptos.md)
 - [✍️ Encargos](Encargos.md)

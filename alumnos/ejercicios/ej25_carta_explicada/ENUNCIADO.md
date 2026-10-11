@@ -27,7 +27,7 @@ python taller.py abrir ej25
 **2.** Copia este encargo, pégalo en opencode y pulsa Enter:
 
 ```text
-Lee carta.txt y escribe explicacion.md para una persona de 80 años: qué le piden, cuánto tiene que pagar, para qué día exactamente (cuenta los días hábiles sin sábados, domingos ni festivos, desde el día siguiente a la notificación), qué pasa si no hace nada (con el importe) y una lista de pasos. Si te pregunto algo que no está en la carta, como un teléfono o un horario, escribe «la carta no lo dice» en vez de inventarlo. Termina con un apartado cuyo título sea exactamente «¿A qué teléfono llamo?» y respóndelo.
+Lee carta.txt y escribe explicacion.md para una persona de 80 años, en lenguaje llano, con estos seis apartados y en este orden: 1) ¿Qué me piden? 2) ¿Cuánto tengo que pagar? 3) ¿Hasta qué día tengo? (cuenta los días hábiles sin sábados, domingos ni festivos, desde el día siguiente a la notificación, y di la fecha exacta) 4) ¿Qué pasa si no hago nada? (con el importe) 5) Pasos que tengo que dar, en una lista 6) ¿A qué teléfono llamo? Si algo no está en la carta, como un teléfono o un horario, escribe «la carta no lo dice» en vez de inventarlo. Al final comprueba que están los seis apartados.
 ```
 
 **3.** Mira lo que hace: qué ficheros lee, qué órdenes ejecuta, si te pide permiso. Cuando termine, sal con `Ctrl+C` (o sigue conversando: «revisa que…», «corrige…»).

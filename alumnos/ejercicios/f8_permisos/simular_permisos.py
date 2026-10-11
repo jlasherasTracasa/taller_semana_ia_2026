@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Simula cómo decidiría opencode cada orden de comandos_prueba.txt con un opencode.json dado.
 Regla de opencode: los patrones usan * (cualquier cosa) y ? (un carácter) y GANA LA ÚLTIMA REGLA QUE COINCIDE.
-Uso: python3 simular_permisos.py opencode_inseguro.json        (o tu opencode_seguro.json)
+Uso: python simular_permisos.py opencode_inseguro.json        (o tu opencode_seguro.json)
 """
 import json, re, sys
 

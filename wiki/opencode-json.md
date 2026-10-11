@@ -27,7 +27,9 @@ tools) aparecerá también en el taller: así nació el «Listo» falso del EJ 2
 
 ## 🧩 Un `opencode.json` completo, explicado
 
-Es el del kit (`alumnos/opencode.json`), con comentarios. **Ojo:** JSON no admite comentarios; si los quieres,
+Es el del kit (`alumnos/opencode.json`), con comentarios. La línea `"model"` la cambia `taller.py` en cada carpeta de
+trabajo según tu `.env`: el modelo gratuito `opencode/big-pickle` si no hay clave, u
+`openrouter/z-ai/glm-5.3-flash` si tienes `OPENROUTER_API_KEY` ([🤖 Modelos](Modelos.md)). **Ojo:** JSON no admite comentarios; si los quieres,
 llama al fichero `opencode.jsonc`.
 
 ```jsonc
@@ -35,7 +37,7 @@ llama al fichero `opencode.jsonc`.
   // Ayuda al editor a autocompletar y avisarte de errores
   "$schema": "https://opencode.ai/config.json",
 
-  // Modelo por defecto: "<proveedor>/<modelo>"
+  // Modelo: "<proveedor>/<modelo>". Este es el LiteLLM del docente; taller.py lo cambia según tu .env
   "model": "vllm/Qwen3.8-27B-FP8",
 
   "provider": {
@@ -67,11 +69,15 @@ llama al fichero `opencode.jsonc`.
       "rm -r *": "deny",
       "sudo *": "deny",
       "kill *": "deny", "pkill *": "deny", "killall *": "deny",
+      "taskkill *": "deny", "Stop-Process *": "deny",           // lo mismo en Windows
+      "rmdir /s *": "deny", "rd /s *": "deny", "Remove-Item * -Recurse*": "deny",
       "*| sh*": "deny", "*| bash*": "deny",   // «curl … | sh»
       "chmod -R *": "deny",
       "git push *": "ask",           //   y que pregunte lo que sale de tu máquina
-      "crontab *": "ask",
-      "systemctl *": "ask"
+      "crontab *": "ask",            //   y lo que toca el sistema: tareas programadas
+      "systemctl *": "ask",          //   (Linux)
+      "schtasks *": "ask",           //   (Windows)
+      "launchctl *": "ask"           //   (macOS)
     }
   }
 }
@@ -86,15 +92,20 @@ llama al fichero `opencode.jsonc`.
 
 ## 🔁 Variantes que vas a necesitar
 
-### Usar OpenRouter en vez de LiteLLM
+### Elegir el modelo
 
-OpenRouter viene de serie en opencode; basta con la variable `OPENROUTER_API_KEY` en tu `.env` y cambiar el modelo:
+Los modelos gratuitos de opencode (proveedor `opencode`) y OpenRouter vienen de serie: no hace falta bloque
+`provider`, solo la línea `model` (y, para OpenRouter, la variable `OPENROUTER_API_KEY`):
+
+```json
+{ "model": "opencode/big-pickle" }
+```
 
 ```json
 { "model": "openrouter/z-ai/glm-5.3-flash" }
 ```
 
-(`taller.py` lo hace solo si en tu `.env` solo hay clave de OpenRouter.)
+(`taller.py` lo hace solo según tu `.env`. Dentro de opencode también puedes cambiarlo con `/models`.)
 
 ### Enchufar un servidor MCP (ejercicios F.5 y F.6)
 
@@ -103,14 +114,16 @@ OpenRouter viene de serie en opencode; basta con la variable `OPENROUTER_API_KEY
   "mcp": {
     "plazos": {
       "type": "local",
-      "command": ["python3", "dias_habiles_mcp.py"],
+      "command": ["python", "dias_habiles_mcp.py"],
       "enabled": true
     }
   }
 }
 ```
 
-`python3` tiene que ser el de tu `.venv` (el que tiene el paquete `mcp`): activa el entorno antes de lanzar opencode.
+`python` tiene que ser el de tu `.venv` (el que tiene el paquete `mcp`). `taller.py` lo pone el primero en el PATH
+del agente; si lanzas `opencode` a mano, activa antes el entorno. Escribe `python`, no `python3`: dentro de un
+`.venv` de Windows solo existe `python`.
 
 ### Más permisivo para trabajar tú delante (modo interactivo)
 
@@ -124,8 +137,8 @@ Te preguntará cada orden y cada cambio. Es lo recomendable con **ficheros de ve
 
 | Síntoma | Causa |
 |---|---|
-| `Invalid URL` | `{env:LITELLM_API_BASE}` vacía: el `.env` no está cargado (usa `--standalone` o `taller.py`; ver [Variables de entorno](Variables-de-entorno.md)) |
-| `No api key passed in` | Igual, con `LITELLM_API_KEY` |
+| `Invalid URL` | Una variable `{env:…}` vacía: el `.env` no está cargado (usa `--standalone` o `taller.py`; ver [Variables de entorno](Variables-de-entorno.md)) |
+| `No api key passed in` | Igual, con la clave (`OPENROUTER_API_KEY`) |
 | El modelo no existe | El id de `models` no coincide con el del servidor, o falta el prefijo `proveedor/` en `model` |
 | Ignora tu configuración | Estás lanzando desde otra carpeta: opencode busca `opencode.json` donde trabaja (`PWD`) |
 | JSON inválido | Una coma de más al final, comillas simples o comentarios en un `.json` (usa `.jsonc`) |
