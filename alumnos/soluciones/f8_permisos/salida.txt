@@ -1,23 +1,12 @@
 
 > build · Qwen3.8-27B-FP8
 → Read opencode_inseguro.json 
-$ ls -la
-total 28
-drwxr-xr-x  2 alumno alumno 4096 Oct  9 09:24 .
-drwxr-xr-x 12 alumno alumno 4096 Oct  9 09:24 ..
--rw-r--r--  1 alumno alumno 2579 Oct  9 09:20 ENUNCIADO.md
--rw-r--r--  1 alumno alumno  611 Oct  9 09:11 comandos_prueba.txt
--rw-r--r--  1 alumno alumno 1068 Oct  9 09:24 opencode.json
--rw-r--r--  1 alumno alumno  569 Oct  9 09:11 opencode_inseguro.json
--rw-r--r--  1 alumno alumno    0 Oct  9 09:24 salida.txt
--rw-r--r--  1 alumno alumno 1834 Oct  9 09:12 simular_permisos.py
-> build · Qwen3.8-27B-FP8
-→ Read ENUNCIADO.md 
 → Read simular_permisos.py 
-→ Read comandos_prueba.txt 
-→ Read opencode.json 
 > build · Qwen3.8-27B-FP8
-$ python3 simular_permisos.py opencode_inseguro.json; echo "EXIT=$?"
+→ Read comandos_prueba.txt 
+> build · Qwen3.8-27B-FP8
+Ahora veo el problema central. Déjame ejecutar el simulador sobre la config insegura para confirmar el diagnóstico antes de escribir el informe:
+$ python3 simular_permisos.py opencode_inseguro.json
 ❌ allow (esperado deny )  rm -rf ~/fotos
 ❌ allow (esperado deny )  rm -r ../otro_proyecto
 ❌ allow (esperado deny )  sudo apt install nmap
@@ -39,13 +28,12 @@ $ python3 simular_permisos.py opencode_inseguro.json; echo "EXIT=$?"
 6/17 órdenes con la decisión esperada
 Otros permisos: {'edit': 'allow', 'read': 'allow', 'webfetch': 'allow', 'external_directory': 'allow'}
 ⚠️  Hay una apiKey escrita en el fichero: debería ser {env:NOMBRE_VARIABLE}
-EXIT=1
 > build · Qwen3.8-27B-FP8
-Diagnóstico claro: la configuración del compañero solo acierta 6/17 órdenes. Creo la versión segura:
+Confirmado: solo 6/17. La clave es que `"*": "allow"` está casi al final y **anula** todas las reglas `deny` anteriores (sobra `kill *` porque va después). Ahora creo la config segura:
 ← Write opencode_seguro.json
 Created file successfully: opencode_seguro.json
 > build · Qwen3.8-27B-FP8
-$ python3 simular_permisos.py opencode_seguro.json; echo "EXIT=$?"
+$ python3 simular_permisos.py opencode_seguro.json
 ✅ deny  (esperado deny )  rm -rf ~/fotos
 ✅ deny  (esperado deny )  rm -r ../otro_proyecto
 ✅ deny  (esperado deny )  sudo apt install nmap
@@ -65,22 +53,26 @@ $ python3 simular_permisos.py opencode_seguro.json; echo "EXIT=$?"
 ✅ allow (esperado allow)  cat datos/ventas.csv
 
 17/17 órdenes con la decisión esperada
-Otros permisos: {'edit': 'allow', 'webfetch': 'allow', 'external_directory': 'deny'}
-EXIT=0
+Otros permisos: {'edit': 'ask', 'read': 'allow', 'webfetch': 'ask', 'external_directory': 'deny'}
 > build · Qwen3.8-27B-FP8
-**17/17 — todas las órdenes pasan** ✅
+17/17. Ahora escribo el informe:
+← Write informe_permisos.md
+Created file successfully: informe_permisos.md
+> build · Qwen3.8-27B-FP8
+Auditoría completada. Resumen de lo entregado:
 
-La configuración segura en `opencode_seguro.json` funciona correctamente. Resumen de resultados:
+**`informe_permisos.md`** — 6 agujeros documentados, cada uno con su riesgo y corrección:
+1. **Crítico:** `"*": "allow"` casi al final anula las reglas `deny`/`ask` anteriores (gana la última coincidencia). Solo `kill *` se salva por estar después — por pura casualidad.
+2. **Crítico:** patrones con huecos — `rm -rf *` no cubre `rm -r`, y no hay nada para `pkill`, `chmod -R`, `curl | sh`, claves SSH, `crontab` ni `git reset --hard`.
+3. **Alto:** `external_directory: allow` (acceso fuera del workspace → `~/.ssh`).
+4. **Alto:** `webfetch: allow` (descargas/exfiltración sin confirmar).
+5. **Medio:** `edit: allow` (modificaciones silenciosas).
+6. **Medio-alto:** `apiKey` escrita en el fichero.
 
-| Categoría | Órdenes | Resultado |
-|---|---|---|
-| 🔒 **deny** | `rm -rf`, `rm -r`, `sudo`, `kill -9`, `pkill`, `curl \| sh`, `chmod -R 777`, `cat ~/.ssh/id_rsa` | 8/8 correctas |
-| ❓ **ask** | `git push`, `git push --force`, `git reset --hard`, `crontab -e` | 4/4 correctas |
-| ✅ **allow** | `ls -la`, `python3 informe.py`, `git status`, `git diff`, `cat datos/ventas.csv` | 5/5 correctas |
+**`opencode_seguro.json`** — filosofía invertida: base restrictiva (`"*": "ask"`) primero, `allow` cotidianos después, `deny` de alto riesgo tras ellos (para que prevalezcan), y `ask` de riesgo medio al final. Clave movida a `{env:LITELLM_API_KEY}`.
 
-Además se confirman los permisos generales:
-- `edit`: allow
-- `webfetch`: allow
-- `external_directory`: **deny** ✓
-
-Todas las órdenes sensibles se bloquean o requieren confirmación, mientras que las operaciones seguras del día a día funcionan sin fricción. ¿Quieres que escriba también el `informe_permisos.md` con la explicación de cada decisión?
+**Verificación:**
+```
+opencode_inseguro.json → 6/17 ❌
+opencode_seguro.json   → 17/17 ✅
+```

@@ -1,59 +1,144 @@
 
 > build · Qwen3.8-27B-FP8
-$ ls -la ~/taller-agentes/ej11_informe_pptx/ && find /tmp/… -name "informe_cosecha.md" -o -name "requirements.txt" | head -20
-total 20
-drwxr-xr-x  2 alumno alumno 4096 Oct  9 09:25 .
-drwxr-xr-x 26 alumno alumno 4096 Oct  9 09:25 ..
--rw-r--r--  1 alumno alumno 1860 Oct  9 09:20 ENUNCIADO.md
--rw-r--r--  1 alumno alumno  773 Oct  9 08:44 informe_cosecha.md
--rw-r--r--  1 alumno alumno 1068 Oct  9 09:25 opencode.json
--rw-r--r--  1 alumno alumno    0 Oct  9 09:25 salida.txt
-~/taller-agentes/ej11_informe_pptx/informe_cosecha.md
-~/taller-agentes/ej11_informe_pptx/informe_cosecha.md
-> build · Qwen3.8-27B-FP8
+✗ Read requirements.txt failed
+Error: File not found: ~/taller-agentes/ej11_informe_pptx/requirements.txt
 → Read informe_cosecha.md 
+> build · Qwen3.8-27B-FP8
+✗ Glob "**/requirements.txt" failed
+Error: Permission denied: external_directory
+✱ Glob "**/*" in . · 4 matches
+> build · Qwen3.8-27B-FP8
+→ Read salida.txt 
 → Read ENUNCIADO.md 
 > build · Qwen3.8-27B-FP8
-→ Read informe_cosecha.md 
-$ python3 -c "import pptx; print(pptx.__version__)"
+El informe está claro. No veo el `requirements.txt` en esta carpeta (debe estar en la raíz del kit), así que compruebo si `python-pptx` ya está disponible:
+$ python3 -c "import pptx; print(pptx.__version__)" 2>&1 || pip install python-pptx 2>&1 | tail -2
 1.0.2
 > build · Qwen3.8-27B-FP8
-← Write generar_presentacion.py
-Created file successfully: generar_presentacion.py
+`python-pptx` 1.0.2 está instalado. Genero la presentación a partir de los datos del informe:
+← Write generar_pptx.py
+Created file successfully: generar_pptx.py
 > build · Qwen3.8-27B-FP8
-← Write generar_presentacion.py
-Wrote file successfully: generar_presentacion.py
+Corrijo dos detalles del script (una línea con un placeholder erróneo y simplifico la tabla) antes de ejecutarlo:
+← Edit generar_pptx.py
+Index: generar_pptx.py
+===================================================================
+--- generar_pptx.py
++++ generar_pptx.py
+@@ -73,12 +73,9 @@
+ tabla = tbl_shape.table
+ for j, t in enumerate(encabezado):
+     c = tabla.cell(0, j)
+     c.text = t
+-    r = c.text_frame.paragraphs[0].runs[0] if c.text_frame.paragraphs[0].runs else None
+-    if r is None:
+-        r = c.text_frame.paragraphs[0].add_run()
+-        r.text = t
++    r = c.text_frame.paragraphs[0].runs[0]
+     r.font.bold = True
+     r.font.size = Pt(20)
+ for i, fila in enumerate(filas, start=1):
+     for j, valor in enumerate(fila):
+
+← Edit generar_pptx.py
+Index: generar_pptx.py
+===================================================================
+--- generar_pptx.py
++++ generar_pptx.py
+@@ -96,9 +96,8 @@
+     p = anio_box.paragraphs[0]
+     p.text = anio
+     p.font.size = Pt(24)
+     p.font.bold = True
+-    p.alignment = PP_ALIGN_CENTER if False else None  # placeholder, alineación simple
+     kg_box = caja(s, x, 2.9, ancho, 0.8)
+     p = kg_box.paragraphs[0]
+     p.text = kg + " kg"
+     p.font.size = Pt(22)
+
 > build · Qwen3.8-27B-FP8
-$ python3 generar_presentacion.py
-Diapositivas: 5
+$ python3 generar_pptx.py
+OK: presentacion.pptx con 5 diapositivas 16:9
 > build · Qwen3.8-27B-FP8
-$ python3 -c "
+Generado. Ahora verifico abriéndolo de nuevo con python-pptx y volcando su contenido:
+$ python3 - <<'EOF'
 from pptx import Presentation
-p = Presentation('presentacion.pptx')
-print('Diapositivas:', len(p.slides))
-print('Tamaño:', p.slide_width.inches, 'x', p.slide_height.inches, 'in')
-for i, s in enumerate(p.slides, 1):
-    texts = [sh.text_frame.text.split(chr(10))[0] for sh in s.shapes if sh.has_text_frame and sh.text_frame.text.strip()]
-    print(i, '→', ' | '.join(texts[:2]) if texts else '(tabla)')
-" && ls -la presentacion.pptx
+from pptx.util import Emu
+
+prs = Presentation("presentacion.pptx")
+w, h = prs.slide_width, prs.slide_height
+print(f"Diapositivas: {len(prs.slides.__iter__.__self__._sldIdLst)}")
+print(f"Tamaño: {Emu(w).inches:.2f} x {Emu(h).inches:.2f} in -> ratio {w/h:.3f} (16:9 = 1.778)")
+print("=" * 60)
+for i, slide in enumerate(prs.slides, 1):
+    print(f"\n--- Diapositiva {i} ---")
+    for shape in slide.shapes:
+        if shape.has_text_frame:
+            txt = shape.text_frame.text.strip()
+            if txt:
+                print(" ·", txt.replace("\n", "\n   "))
+        elif shape.has_table:
+            for row in shape.table.rows:
+                print(" |", " | ".join(c.text for c in row.cells))
+EOF
 Diapositivas: 5
-Tamaño: 13.33299978127734 x 7.5 in
-1 → Bodega Larraz | Informe de cosecha — Vendimia 2025
-2 → Resumen de la vendimia 2025 | • La vendimia de 2025 cerró con 84.000 kg de uva recogida.
-3 → Rendimiento por variedad
-4 → Evolución (kg totales) | 2021
-5 → Conclusiones | • Menos cantidad pero más grado: se prevé un vino estructurado
--rw-r--r-- 1 alumno alumno 33180 Oct  9 09:26 presentacion.pptx
+Tamaño: 13.33 x 7.50 in -> ratio 1.778 (16:9 = 1.778)
+============================================================
+
+--- Diapositiva 1 ---
+ · Informe de cosecha
+   Bodega Larraz — Vendimia 2025
+   Asamblea de la cooperativa · Datos de la vendimia 2025
+
+--- Diapositiva 2 ---
+ · Resumen
+ · La vendimia de 2025 cerró con 84.000 kg de uva recogida, un 12% menos que en 2024 (95.500 kg) por la sequía del verano.
+   Aun así, la calidad fue excelente: la graduación media subió de 12,1 a 13,4 grados Baumé.
+
+--- Diapositiva 3 ---
+ · Rendimiento por variedad
+ | Variedad | Kg | % del total | Graduación (Baumé)
+ | Garnacha | 41.000 | 49% | 13,8
+ | Tempranillo | 28.500 | 34% | 13,1
+ | Graciano | 9.500 | 11% | 13,0
+ | Otras variedades | 5.000 | 6% | 12,6
+
+--- Diapositiva 4 ---
+ · Evolución (kg totales)
+ · 2021
+ · 71.000 kg
+ · 2022
+ · 79.500 kg
+ · 2023
+ · 88.000 kg
+ · 2024
+ · 95.500 kg
+ · 2025
+ · 84.000 kg
+ · Máximo en 2024 (95.500 kg); retroceso del 12% en 2025 por la sequía.
+
+--- Diapositiva 5 ---
+ · Conclusiones
+ · Menos cantidad pero más grado: se prevé un vino estructurado con mayor potencial de crianza.
+   Se recomienda ampliar la parcela de Garnacha en 2026.
 > build · Qwen3.8-27B-FP8
-Listo ✅ — se generó `presentacion.pptx` a partir de `informe_cosecha.md` (guion en `generar_presentacion.py`).
+Listo. He creado **`presentacion.pptx`** a partir de `informe_cosecha.md`.
 
-**Contenido (5 diapositivas, 16:9):**
-1. **Portada** — Bodega Larraz · Informe de cosecha, vendimia 2025
-2. **Resumen** — 84.000 kg recogidos, un 12 % menos que en 2024 (95.500 kg) por la sequía; graduación media de 12,1 → 13,4 ºBaumé
-3. **Rendimiento por variedad** — tabla con Garnacha 41.000 kg (49 %, 13,8), Tempranillo 28.500 kg (34 %, 13,1), Graciano 9.500 kg (11 %, 13,0), Otras 5.000 kg (6 %, 12,6)
-4. **Evolución** — 2021: 71.000 · 2022: 79.500 · 2023: 88.000 · 2024: 95.500 · 2025: 84.000 kg
-5. **Conclusiones** — menos cantidad pero más grado, mayor potencial de crianza; ampliar parcela de Garnacha en 2026
+## Resumen del resultado
 
-Todas las cifras se copiaron tal cual del informe.
+**Diapositivas: 5** (verificado reabriendo el fichero con python-pptx), formato **16:9** (13,33″ × 7,5″):
 
-**Verificación final:** el archivo abre sin errores con python-pptx y tiene **5 diapositivas** (dentro del rango 5–6 pedido). Si prefieres 6, se puede separar el resumen o añadir una de cierre/próximos pasos.
+| # | Diapositiva | Contenido |
+|---|---|---|
+| 1 | Portada | Informe de cosecha · Bodega Larraz — Vendimia 2025 |
+| 2 | Resumen | 84.000 kg (−12% vs 95.500 kg en 2024), graduación 12,1 → 13,4 Baumé |
+| 3 | Rendimiento por variedad | Tabla: Garnacha 41.000 (49%, 13,8), Tempranillo 28.500 (34%, 13,1), Graciano 9.500 (11%, 13,0), Otras 5.000 (6%, 12,6) |
+| 4 | Evolución | Serie completa 2021–2025: 71.000 · 79.500 · 88.000 · 95.500 · 84.000 kg |
+| 5 | Conclusiones | Vino más estructurado y potencial de crianza; ampliar parcela de Garnacha en 2026 |
+
+**Detalles a tener en cuenta:**
+- Todas las cifras están copiadas tal cual del informe (los porcentajes cuadran: 49+34+11+6 = 100%).
+- Diseño sobrio: fondo blanco, banda granate para títulos, sin animaciones ni imágenes.
+- He dejado el script generador en `generar_pptx.py` por si quieres retocar colores o textos y regenerar con `python3 generar_pptx.py`.
+
+**Nota:** el `requirements.txt` mencionado en el encargo no está en esta carpeta (solo hay `informe_cosecha.md`, `ENUNCIADO.md` y `salida.txt`), así que comprobé directamente que `python-pptx` 1.0.2 ya estaba instalado en el entorno antes de usarlo.

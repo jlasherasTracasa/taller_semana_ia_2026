@@ -63,9 +63,11 @@ python taller.py comprobar f6      # el agente no decide si está bien: lo decid
 
 Añade la tool `es_habil(fecha)` y pregunta «¿el 3 de diciembre de 2026 es hábil en Navarra?».
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
 Buscó la herramienta en el catálogo, la invocó y citó `vence=19/10/2026 (lunes) festivos_saltados=12/10`. Antes, sin la tool, acertó también pero calculando con `shell`: la tool hace el resultado **verificable**. En opencode 2.x ya no hay tools en `.opencode/tools/` (la API de plugins v2 no las registra): por eso es MCP.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/f6_tool_propia/`](../../soluciones/f6_tool_propia/)
 

@@ -55,9 +55,11 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar f7      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
 Delegó en dos subagentes **en paralelo** (redactor y revisor). El revisor leyó una versión anterior del fichero y marcó un error ya corregido: una condición de carrera de manual. Con `edit: deny`, el revisor no pudo editar (`Edit … failed`).
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/f7_subagentes/`](../../soluciones/f7_subagentes/)
 

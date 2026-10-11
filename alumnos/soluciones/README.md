@@ -2,8 +2,6 @@
 
 Lo que hizo el agente en la validación, ejercicio por ejercicio: el encargo, la salida y los ficheros. **Úsalas para comparar, no para copiar**: el sello te lo da `comprobar.py` sobre TU carpeta.
 
-- [F.0 · El bucle ReAct en 70 líneas](f0_react_bucle/SOLUCION.md)
-- [F.1 · Function calling: el modelo pide, tu programa ejecuta](f1_function_calling/SOLUCION.md)
 - [F.2 · AGENTS.md: las normas de la casa](f2_agents_md/SOLUCION.md)
 - [F.3 · Comandos: el encargo de todos los lunes en una palabra](f3_comandos/SOLUCION.md)
 - [F.4 · Skills: recetas que el agente carga cuando las necesita](f4_skills/SOLUCION.md)
@@ -11,7 +9,6 @@ Lo que hizo el agente en la validación, ejercicio por ejercicio: el encargo, la
 - [F.6 · Tu propia tool: plazos en días hábiles](f6_tool_propia/SOLUCION.md)
 - [F.7 · Subagentes: un redactor y un revisor que no puede tocar nada](f7_subagentes/SOLUCION.md)
 - [F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?](f8_permisos/SOLUCION.md)
-- [F.9 · ¿Funciona siempre? Medir en vez de opinar](f9_fiabilidad/SOLUCION.md)
 - [F.10 · Tests primero: el agente no puede hacer trampa](f10_tests_primero/SOLUCION.md)
 - [EJ 01 · Una web personal en un solo archivo](ej01_pagina_personal/SOLUCION.md)
 - [EJ 02 · Agenda de actos a partir de una hoja de cálculo](ej02_agenda_csv/SOLUCION.md)

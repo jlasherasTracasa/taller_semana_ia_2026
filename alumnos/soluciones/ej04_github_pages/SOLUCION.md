@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 04 · Publicar una web en GitHub Pages (sin darle tus credenciales)
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 50 s · 96.222 tokens de entrada y 3.501 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 17 s · 46.365 tokens de entrada y 1.589 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

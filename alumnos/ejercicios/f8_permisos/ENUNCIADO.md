@@ -60,9 +60,11 @@ python taller.py comprobar f8      # el agente no decide si está bien: lo decid
 
 Piensa como atacante: ¿`python -c "import shutil; shutil.rmtree('x')"` lo para algún patrón? Conclusión: los patrones son un cinturón, no una jaula. Para aislar de verdad: contenedor o máquina virtual.
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
-Dejó `opencode_seguro.json` perfecto (17/17, `external_directory: deny`, sin claves) pero **no escribió `informe_permisos.md`** y terminó preguntando si quería que lo escribiera: hizo la parte que tenía comprobación y se saltó la que no.
+El 11-10: 17/17, `external_directory: deny`, sin claves y con el informe. El 09-10 dejó la configuración perfecta pero **no escribió el informe**: lo no comprobado no se hace.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/f8_permisos/`](../../soluciones/f8_permisos/)
 

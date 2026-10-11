@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 01 · Una web personal en un solo archivo
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 22 s · 80.689 tokens de entrada y 2.419 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 20 s · 19.148 tokens de entrada y 1.897 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

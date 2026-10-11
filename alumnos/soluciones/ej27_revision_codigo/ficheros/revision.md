@@ -1,153 +1,259 @@
-# Revisión de código · PR #42 «Búsqueda por nombre, cuota juvenil y avisos por SMS»
+# Revisión de código · PR #42 — Búsqueda por nombre, cuota juvenil y avisos por SMS
 
-**Revisor:** agente (revisión tipo senior) · **Fecha:** 2026-10-09
-**Alcance:** `cambio.diff` (2 ficheros: `app/socios.py`, `tests/test_socios.py`) y `DESCRIPCION_PR.md`.
-**Veredicto al final:** ❌ **Pedir cambios** (bloqueante: 2 críticos).
+**Revisor:** revisión tipo senior · **Fecha:** 2026-10-11
+**Ficheros revisados:** `cambio.diff`, `DESCRIPCION_PR.md`
+**Referencias de línea:** numeración del fichero resultante según el diff.
 
-> Las líneas se refieren al fichero **resultante** de aplicar el diff; al venir de un diff son aproximadas, pero se identifica siempre la función concreta.
+## Resumen
 
----
+El PR responde a una necesidad real (búsqueda por nombre para secretaría) y añade funcionalidad razonable (cuota juvenil, avisos por SMS). Sin embargo:
 
-## 🔴 Críticos
+- Introduce dos fallos de seguridad graves: **inyección SQL** y una **clave de API en producción escrita en el código**.
+- Contiene una **regresión silenciosa**: un socio de 65 años pierde la tarifa de jubilado, y se **enmascara borrando los tests** que la habrían detectado.
+- El envío masivo de SMS traga excepciones con `except: pass` y reporta éxito siempre, además de enviar datos personales a un tercero sin control.
 
-### P1 · Inyección SQL en la búsqueda por nombre
-- **Dónde:** `app/socios.py` · `buscar_socios()` · ~líneas 19–21 (hunk 1)
-- **Qué pasa:** se construye la consulta por concatenación de texto:
-  ```python
-  consulta = "SELECT nombre, dni, telefono FROM socios WHERE nombre LIKE '%" + texto + "%'"
-  ```
-- **Por qué importa:** cualquier entrada como `' OR 1=1 --` (o `' ; DROP TABLE socios --`, según configuración de SQLite) altera la consulta. `texto` viene de secretaría, es decir, de usuario. Además es una **regresión**: la función anterior (`buscar_socio(conn, dni)`) usaba parámetros `(?)` correctamente.
-- **Cómo corregirlo:** parametrizar y pasar el comodín como dato, nunca como código:
-  ```python
-  def buscar_socios(conn, texto):
-      patron = f"%{texto}%"
-      return conn.execute(
-          "SELECT nombre, dni, telefono FROM socios WHERE nombre LIKE ?",
-          (patron,),
-      ).fetchall()
-  ```
+La descripción del PR admite «he quitado un par de tests que fallaban con el cambio». Eso no es adaptar tests al nuevo comportamiento: es eliminar las alarmas. Es la señal de proceso más preocupante de todo el PR.
 
-### P2 · Clave de API escrita en el código (secreto en el repositorio)
-- **Dónde:** `app/socios.py` · constante `API_KEY` · ~línea 5 (hunk 1)
-- **Qué pasa:** `API_KEY = "sk-live-4f9a2b..."` queda en texto plano en el fuente y, al ser un diff, **quedará en el historial de git para siempre** aunque se borre después.
-- **Por qué importa:** cualquiera con acceso al repo puede suplantar al club en el servicio de envíos (coste económico, spam en nombre del club). El comentario «clave del servicio de envíos» confirma que es real y de producción (`sk-live-`). La clave viaja además en el cuerpo del POST (véase P6).
-- **Cómo corregirlo:**
-  1. **Rotar la clave ahora mismo** (está comprometida solo con existir en el PR).
-  2. Cargarla de entorno y abortar si falta:
-     ```python
-     import os
-     API_KEY = os.environ["SMS_API_KEY"]
-     ```
-  3. Añadir `sk-live-*` a reglas de detección de secretos en CI y quitar la clave del historial antes de mezclar (el PR no debe entrar tal cual).
+| # | Severidad | Problema | Fichero |
+|---|-----------|----------|---------|
+| 1 | 🔴 Crítico | Inyección SQL en la búsqueda por nombre | `app/socios.py` L12–14 |
+| 2 | 🔴 Crítico | Clave de API en texto plano en el código | `app/socios.py` L5 |
+| 3 | 🟠 Alto | Regresión: a los 65 años ya no se aplica la cuota de jubilado | `app/socios.py` L28 |
+| 4 | 🟠 Alto | Tests borrados para que el PR pase | `tests/test_socios.py` L11–14 |
+| 5 | 🟡 Medio | `except: pass` + éxito reportado siempre | `app/socios.py` L37–42 |
+| 6 | 🟡 Medio | Datos personales (teléfonos, DNI) hacia un tercero sin base legal ni minimización | `app/socios.py` L36, L39 |
+| 7 | 🟡 Medio | Cambio de API pública (`buscar_socio` → `buscar_socios`) sin migración | `app/socios.py` L12 |
+| 8 | 🟢 Bajo | Dependencia `requests` sin declarar; `print` en vez de logger | `app/socios.py` L2, L42 |
 
 ---
 
-## 🟠 Altos
+## 1. 🔴 Crítico — Inyección SQL en la búsqueda por nombre
 
-### P3 · Regresión de negocio: los jubilados de 65 años pierden el descuento
-- **Dónde:** `app/socios.py` · `cuota_anual()` · ~líneas 33–34 (hunk 2)
-- **Qué pasa:** el código original aplicaba la tarifa reducida con `edad >= 65`; el cambio la deja en `edad > 65`. Con 65 años exactos la cuota sube de 15 € a 30 €.
-- **Por qué importa:** cambia el comportamiento pactado sin que la descripción del PR lo mencione; afecta a facturación real. Es exactamente el caso que cubría el test `test_cuota_jubilado` que este mismo PR elimina (véase P4): el test no «fallaba con el cambio», **detectaba el bug**.
-- **Cómo corregirlo:**
-  ```python
-  if edad >= 65:
-      return 15
-  ```
+**Fichero/línea:** `app/socios.py`, líneas 12–14 (función `buscar_socios`)
 
-### P4 · Tests borrados para que la suite pase
-- **Dónde:** `tests/test_socios.py` · ~líneas 8–12 · `test_alta_y_busqueda` (aserción recortada) y `test_cuota_jubilado` (eliminado entero)
-- **Qué pasa:** en lugar de adaptar los tests a la nueva API, se eliminan. `DESCRIPCION_PR.md` lo presenta como «he quitado un par de tests que fallaban con el cambio».
-- **Por qué importa:** es la práctica más peligrosa de esta revisión: convierte la suite en cómplice de las regresiones (P1 y P3). Los tests no se borran porque fallen; se arregla el código o se reescribe el test **preservando la cobertura**.
-- **Cómo corregirlo:** restaurarlos adaptados a la API nueva:
-  ```python
-  def test_alta_y_busqueda_por_nombre(conn):
-      alta_socio(conn, "Ane Goñi", "12345678Z", "600000000")
-      resultados = buscar_socios(conn, "Goñi")
-      assert ("Ane Goñi", "12345678Z", "600000000") in resultados
+**Qué pasa:** el valor de `texto` llega del usuario y se concatena directamente en la consulta:
 
-  def test_busqueda_no_inyecta_sql(conn):
-      alta_socio(conn, "Ane Goñi", "12345678Z", "600000000")
-      assert buscar_socios(conn, "' OR 1=1 --") == []   # P1
+```python
+consulta = "SELECT nombre, dni, telefono FROM socios WHERE nombre LIKE '%" + texto + "%'"
+return conn.execute(consulta).fetchall()
+```
 
-  def test_cuota_jubilado():
-      assert cuota_anual(65) == 15                      # P3
+**Por qué importa:** cualquier entrada como `'; DROP TABLE socios; --` o `' OR '1'='1` se ejecuta como SQL: vaciado o manipulación de la tabla, y extracción de la base de datos completa (DNI y teléfonos incluidos). El código anterior ya usaba consultas parametrizadas; este cambio lo elimina. Es el fallo más grave del PR junto con la clave filtrada.
 
-  def test_cuota_juvenil():
-      assert cuota_anual(17) == 10
-      assert cuota_anual(18) == 30                      # borde de los 18
-  ```
+**Cómo corregirlo:** volver a parámetros (`?`). Para `LIKE`, construir el patrón con comodines escapando `%` y `_` del usuario:
 
-### P5 · `except: pass` que oculta errores y éxito fingido
-- **Dónde:** `app/socios.py` · `avisar_socios()` · ~líneas 45–47 (hunk 2)
-- **Qué pasa:** el bucle de envío traga cualquier excepción y al final imprime «Avisos enviados a todos los socios» pase lo que pase.
-- **Por qué importa:** si la clave es inválida o el servicio cae, secretaría cree que los socios están avisados cuando no ha salido ni un SMS. Un `except:` desnudo además captura `KeyboardInterrupt`/`SystemExit`.
-- **Cómo corregirlo:** excepciones concretas, registro de fallos y resultado honesto:
-  ```python
-  import logging
-  log = logging.getLogger(__name__)
+```python
+def buscar_socios(conn, texto):
+    patron = "%" + texto.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_") + "%"
+    return conn.execute(
+        "SELECT nombre, dni, telefono FROM socios WHERE nombre LIKE ? ESCAPE '\\'",
+        (patron,),
+    ).fetchall()
+```
 
-  def avisar_socios(conn, mensaje):
-      ok, fallos = 0, []
-      for nombre, dni, telefono in conn.execute("SELECT nombre, dni, telefono FROM socios"):
-          try:
-              r = requests.post(URL_SMS, json={"to": telefono, "text": mensaje},
-                                headers={"Authorization": f"Bearer {API_KEY}"},
-                                timeout=10)
-              r.raise_for_status()
-              ok += 1
-          except requests.RequestException as e:
-              log.error("SMS fallido para %s: %s", dni, e)
-              fallos.append(dni)
-      if fallos:
-          raise RuntimeError(f"{len(fallos)} avisos sin enviar: {fallos}")
-      return ok
-  ```
-
-### P6 · Envío de datos personales a un tercero sin criterio
-- **Dónde:** `app/socios.py` · `avisar_socios()` · ~líneas 41–44 (hunk 2)
-- **Qué pasa:** la función vuelca **todos** los teléfonos de la base de datos al servicio externo, sin límite, sin consentimiento registrado y con la clave en el cuerpo (`json={"to":..., "key": API_KEY}`).
-- **Por qué importa:** datos personales de socios hacia un proveedor: obligaciones RGPD (encargado de tratamiento, minimización, derecho de oposición). Enviarlos masivamente sin control también multiplica el daño si P2 ocurre. No hay ninguna mención en la descripción del PR.
-- **Cómo corregirlo:** como mínimo, lista de exclusión por socio (campo `acepta_sms`), autenticación por cabecera (no en el cuerpo) y trazabilidad de quién lanzó el envío:
-  ```python
-  SQL = "SELECT nombre, dni, telefono FROM socios WHERE acepta_sms = 1"
-  ```
+Añadir un test: `buscar_socios(conn, "' OR '1'='1")` debe devolver exactamente los socios cuyo nombre contenga esa cadena, es decir, ninguno.
 
 ---
 
-## 🟡 Medios
+## 2. 🔴 Crítico — Clave de API en texto plano en el código
 
-### P7 · Sin `timeout` en las peticiones HTTP
-- **Dónde:** `app/socios.py` · `avisar_socios()` · ~línea 43
-- **Qué pasa:** `requests.post(...)` sin `timeout`: si el proveedor no responde, el proceso se queda colgado indefinidamente.
-- **Corrección:** `timeout=(3, 10)` (conexión, lectura) en cada llamada, como en el snippet de P5.
+**Fichero/línea:** `app/socios.py`, línea 5
 
-### P8 · Cambio de API sin migración: `buscar_socio` → `buscar_socios` rompe a los llamadores
-- **Dónde:** `app/socios.py` · hunk 1 · ~líneas 12–14
-- **Qué pasa:** cambia el nombre (singular→plural), los parámetros (dni→texto) y el tipo devuelto (fila única por `SELECT *` → lista de tuplas de 3 columnas). Cualquier llamador existente de `buscar_socio` fallará con `NameError`, y los que usaran columnas extra del `SELECT *` verán tupples distintos.
-- **Por qué importa:** es un cambio rompiente de API interna que la descripción del PR no declara; combinado con P4, nadie detectará las roturas hasta producción.
-- **Corrección:** mantener compatibilidad temporal (`def buscar_socio(conn, dni)` como *wrapper* deprecado) o migrar todos los llamadores en este mismo PR, y dejarlo escrito en la descripción. Escapar además los comodines `%`/`_` que el usuario pueda teclear (`texto.replace("%", r"\%")` con `ESCAPE '\'` en el SQL).
+**Qué pasa:** la clave del servicio de envíos queda escrita en el código:
 
-### P9 · Falsos positivos de búsqueda y sin límite de resultados
-- **Dónde:** `app/socios.py` · `buscar_socios()` · ~líneas 19–21
-- **Qué pasa:** `LIKE '%texto%'` sin escapar comodines (un `%` del usuario matchea todo) y `fetchall()` sin `LIMIT` sobre toda la tabla.
-- **Corrección:** escapar comodines (P8) y devolver `LIMIT 50`, con paginación si hace falta en UI.
+```python
+API_KEY = "***"   # clave del servicio de envíos
+```
+
+Es prefijo `sk-live-`: es una clave de producción, no de pruebas.
+
+**Por qué importa:** queda en el historial de git para siempre; cualquiera con acceso al repo (o a una copia/fork) obtiene acceso de pago al servicio de SMS y puede hacer spam a coste de la organización. Una vez filtrada, borrarla de una rama no sirve: hay que rotarla. Además la clave viaja de nuevo dentro del cuerpo del POST, lo que hace que acabe en logs del proveedor.
+
+**Cómo corregirlo:**
+
+1. **Rotar la clave hoy mismo** (asumir comprometida desde el momento del commit).
+2. Leerla del entorno y fallar pronto si falta:
+
+```python
+import os
+
+API_KEY = os.environ.get("SMS_API_KEY")
+if not API_KEY:
+    raise RuntimeError("SMS_API_KEY no configurada")
+```
+
+3. Enviarla por cabecera, no en el cuerpo:
+
+```python
+headers={"Authorization": f"Bearer {API_KEY}"}
+```
+
+4. Añadir un escáner de secretos al CI (p. ej. gitleaks) para que esto no vuelva a pasar.
 
 ---
 
-## 🟢 Bajos
+## 3. 🟠 Alto — Regresión: a los 65 años ya no se aplica la cuota de jubilado
 
-### P10 · Detalles menores de estilo y empaquetado
-- `print()` para informar de envíos → usar `logging` (coherente con P5).
-- `import requests` introduce una dependencia nueva: actualizar `requirements.txt`/`pyproject.toml`.
-- Constantes de módulo (`URL_SMS`, tiempos de espera) deberían ser configurables como la clave (P2).
-- `DESCRIPCION_PR.md` pide mezclar «hoy»: la urgencia no reduce el radio de impacto de P1/P2/P3; mejor documentar los riesgos pendientes.
+**Fichero/línea:** `app/socios.py`, línea 28 (función `cuota_anual`)
+
+**Qué pasa:** el cambio de `edad >= 65` a `edad > 65` altera el caso límite: un socio de **65 años exactos** pasa de pagar 15 € a pagar 30 €.
+
+```python
+def cuota_anual(edad):
+    if edad > 65:      # antes: edad >= 65
+        return 15
+```
+
+**Por qué importa:** nadie lo pide en el PR, no está documentado y probablemente el autor lo hizo por accidente al reordenar. Afecta a cobros reales: todo socio de 65 años exactos sería facturado al doble. Es exactamente el tipo de regresión silenciosa que sale a la luz con una reclamación meses después.
+
+**Cómo corregirlo:** restaurar el límite inclusivo y añadir la nueva tarifa juvenil debajo:
+
+```python
+def cuota_anual(edad):
+    if edad >= 65:
+        return 15
+    if edad < 18:
+        return 10
+    return 30
+```
+
+Y cubrir los bordes con tests (ver problema 4): `cuota_anual(64) == 30`, `cuota_anual(65) == 15`, `cuota_anual(17) == 10`, `cuota_anual(18) == 30`.
 
 ---
 
-## Veredicto
+## 4. 🟠 Alto — Tests borrados para que el PR pase
 
-**❌ Pedir cambios — no mezclar hoy.**
+**Fichero/línea:** `tests/test_socios.py`, líneas eliminadas 11–14 (hunk `@@ -8,6 +8,3 @@`): se elimina `test_cuota_jubilado` y la aserción sobre `buscar_socio`.
 
-Bloqueantes: **P1** (inyección SQL, y encima es una regresión de código que ya estaba bien) y **P2** (secreto de producción en el repositorio, requiere rotación de clave inmediata). Prácticamente bloqueantes: **P3** (regresión de facturación que toca dinero) y **P4** (tests eliminados para maquillar exactamente esas dos regresiones).
+**Qué pasa:** en lugar de actualizar los tests al nuevo comportamiento, se eliminan. El autor lo confirma en `DESCRIPCION_PR.md`: «He quitado un par de tests que fallaban con el cambio».
 
-Lo valioso del cambio (búsqueda por nombre, cuota juvenil, avisos SMS) es fácil de salvar: con parametrización SQL, clave por entorno, `>= 65`, excepciones explícitas y los tests restaurados/adaptados, sería un buen PR. Se recomienda revisión de nuevo cuando el autor reenvíe, y aplicar el checklist anterior como comentarios línea a línea en el PR.
+**Por qué importa:** los tests que fallaban eran exactamente los guardianes de los problemas 3 y 7. Borrandolos, la suite pasa en verde y la regresión entra a producción sin nadie la detecte. Un test que falla tras un cambio funcional significa «el comportamiento cambió: decide si eso es correcto y documenta/tests actualizados», no «quita el test». Esto convierte un bug puntual en un fallo de proceso que se repetirá.
+
+**Cómo corregirlo:** restaurar los tests eliminados y ampliarlos al nuevo comportamiento:
+
+```python
+def test_cuota_jubilado_incluye_65():
+    assert cuota_anual(65) == 15
+
+def test_cuota_juvenil():
+    assert cuota_anual(17) == 10
+    assert cuota_anual(18) == 30
+
+def test_busqueda_por_nombre(conn):
+    alta_socio(conn, "Ane Goñi", "12345678Z", "600000000")
+    resultados = buscar_socios(conn, "Goñi")
+    assert ("Ane Goñi", "12345678Z", "600000000") in resultados
+```
+
+Si algún test realmente queda obsoleto, se sustituye en el mismo PR por su equivalente para la nueva API, nunca se borra sin más.
+
+---
+
+## 5. 🟡 Medio — `except: pass`: errores invisibles y éxito garantizado (falso)
+
+**Fichero/línea:** `app/socios.py`, líneas 37–42 (función `avisar_socios`)
+
+**Qué pasa:** cada envío va envuelto en `try/except` desnudo que descarta cualquier error, y al final se imprime éxito incondicional:
+
+```python
+try:
+    requests.post("https://api.envios-ejemplo.com/sms", json={...})
+except:
+    pass
+print("Avisos enviados a todos los socios")
+```
+
+**Por qué importa:** el `except` desnudo atrapa *todo* —incluido `KeyboardInterrupt` y `SystemExit`— y oculta fallos reales: caída del proveedor, clave inválida (401), teléfono mal formateado (400), sin cuota contratada. Si el proveedor está caído, la función imprime «Avisos enviados a todos los socios» y secretaría no reenvía el aviso pensando que ya está hecho. Además no hay `timeout`: sin él, `requests.post` puede bloquearse indefinidamente.
+
+**Cómo corregirlo:** capturar la excepción concreta, registrarla, comprobar la respuesta HTTP y reflejar el resultado real:
+
+```python
+import logging
+
+logger = logging.getLogger(__name__)
+
+def avisar_socios(conn, mensaje):
+    fallos = 0
+    for nombre, telefono in conn.execute("SELECT nombre, telefono FROM socios"):
+        try:
+            resp = requests.post(
+                "https://api.envios-ejemplo.com/sms",
+                json={"to": telefono, "text": mensaje},
+                headers={"Authorization": f"Bearer {API_KEY}"},
+                timeout=10,
+            )
+            resp.raise_for_status()
+        except requests.RequestException as exc:
+            fallos += 1
+            logger.warning("SMS a %s no enviado: %s", nombre, exc)
+    if fallos:
+        raise RuntimeError(f"{fallos} avisos no enviados; revisar logs")
+    logger.info("Avisos enviados a todos los socios")
+```
+
+---
+
+## 6. 🟡 Medio — Datos personales hacia un tercero sin minimización ni base legal
+
+**Fichero/línea:** `app/socios.py`, líneas 36 y 39 (bucle y POST de `avisar_socios`)
+
+**Qué pasa:** la función lee `nombre, dni, telefono` de **todos** los socios y envía su número de teléfono a un servicio externo, de forma masiva y sin ninguna comprobación previa. En concreto, el `dni` se selecciona pero no se usa para nada.
+
+**Por qué importa:** nombres, DNI y teléfonos son datos personales (RGPD/artículos regolarios equivalentes). Comunicarlos a un tercero exige base legal o consentimiento, contrato de encargado de tratamiento con el proveedor, y minimización: no compartir más de lo necesario. El mensaje no menciona cómo gestionar bajas («no enviar más SMS»), lo que en la práctica provoca quejas y denuncias ante la autoridad de protección de datos.
+
+**Cómo corregirlo:**
+
+- Minimizar: no consultar el `dni` si no se necesita. En el ejemplo del punto 5 ya se reduce a `nombre, telefono`.
+- Mantener la lista dentro del sistema: enviar solo al proveedor lo imprescindible (el teléfono), y considerar un servicio interno de mensajería/EMAIL con consentimiento registrado en la tabla `socios`.
+
+```sql
+-- columna de consentimiento gestionada desde la app
+ALTER TABLE socios ADD COLUMN acepta_aviso_sms INTEGER NOT NULL DEFAULT 0;
+```
+
+```python
+for nombre, telefono in conn.execute(
+    "SELECT nombre, telefono FROM socios WHERE acepta_aviso_sms = 1"
+):
+    ...
+```
+
+- Documentar en el PR quién es el encargado de tratamiento y dónde consta el consentimiento, antes de activar esto en producción.
+
+---
+
+## 7. 🟡 Medio — Cambio de API pública sin migración
+
+**Fichero/línea:** `app/socios.py`, línea 12: `buscar_socio(conn, dni)` desaparece y la sustituye `buscar_socios(conn, texto)` (distinto nombre, distinta firma, distinto retorno: fila única → lista de filas).
+
+**Por qué importa:** cualquier módulo que llame a `buscar_socio` dejará de funcionar (fallará en importación o en runtime). Como el retorno cambia de forma (una tupla frente a N tuplas), también afecta a los que iteren el resultado nuevo esperando el formato antiguo. No hay búsqueda por DNI sustituta, que es un caso de uso distinto y probablemente necesario en secretaría.
+
+**Cómo corregirlo:** buscar todos los usos (`grep -rn "buscar_socio" app/ tests/`) y actualizarlos en este mismo PR; conservar la búsqueda por DNI si tiene consumidores:
+
+```python
+def buscar_por_dni(conn, dni):
+    return conn.execute("SELECT nombre, dni, telefono FROM socios WHERE dni = ?", (dni,)).fetchone()
+
+def buscar_socios(conn, texto):  # búsqueda por nombre (problema 1)
+    ...
+```
+
+---
+
+## 8. 🟢 Bajo — Varios menores
+
+- **Dependencia sin declarar** (`app/socios.py`, línea 2): se añade `import requests` pero el diff no toca `requirements.txt`/`pyproject.toml`. Corregir: añadir `requests>=2.32` al manifest del proyecto.
+- **`print` para resultados operativos** (línea 42): usar el módulo `logging` (ya mostrado en el punto 5), para poder enrutar por entorno.
+- **Comentario residual** (línea 5): al mover la clave a variable de entorno, el comentario «# clave del servicio de envíos» debe desaparecer junto con la clave.
+
+---
+
+## Cosas que están bien
+
+Para ser justos: la parametrización que había no se toca en `alta_socio`; la estructura del diff es pequeña y legible; y la funcionalidad pedida (búsqueda por nombre, cuota juvenil) es razonable y bien delimitada. Con las correcciones anteriores, el PR es perfectamente salvable.
+
+---
+
+## Veredicto: 🔴 **Pedir cambios**
+
+No es aprobable en su estado actual: los problemas 1 y 2 son bloqueantes por sí solos (inyección SQL y clave de producción filtrada → rotación inmediata), y el 3+4 supone una regresión económica encubierta con tests borrados. Tras corregir, con la clave rotada, los tests restaurados/ampliados en verde y una pasada de CI con escáner de secretos, el PR puede volver a revisarse y aprobarse en la siguiente iteración. No mergear hoy.

@@ -52,9 +52,11 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar ej22      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
 Resumen en prosa con talleres, socios y remanente y las cifras de ambas versiones.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/ej22_comparar_versiones/`](../../soluciones/ej22_comparar_versiones/)
 

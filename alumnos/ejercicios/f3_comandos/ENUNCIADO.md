@@ -37,9 +37,9 @@ Después crea tú un segundo comando, `.opencode/commands/resumen-mes.md`, que r
 python taller.py comprobar f3      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
-El cuerpo del comando genera las 3 diapositivas con los totales exactos. El comando original decía que el CSV tenía columnas `mes,categoria,importe` (falso): corregido. En opencode 2.x `run --command` ya no existe: los comandos se usan con `/nombre` en modo interactivo.
+Validado en **modo interactivo** el 11-10: `/informe-semanal` → 3 diapositivas y totales exactos; `/resumen-mes junio`, escrito como lo haría un alumno → 12.800 €.
 
 Prompt, salida real y ficheros: [`soluciones/f3_comandos/`](../../soluciones/f3_comandos/)
 

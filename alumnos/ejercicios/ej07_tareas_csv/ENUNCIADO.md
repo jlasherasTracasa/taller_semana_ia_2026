@@ -57,9 +57,11 @@ python taller.py comprobar ej07      # el agente no decide si está bien: lo dec
 
 - Si el encargo no dice qué valores admite `urgencia`, el agente inventa los suyos («nula», «baja»…).
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
-Columnas y 7 filas correctas, pero al correo con la inyección le puso urgencia «media» aunque **él mismo escribió que era sospechoso**. En otras 3 ejecuciones (F.9) acertó: 3 de 4.
+El 11-10 volvió a pasar lo de septiembre: **detectó la inyección y aun así le puso urgencia «media»**. Con el encargo que dice qué hacer con un correo legítimo que trae instrucciones ocultas: 3 de 3.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/ej07_tareas_csv/`](../../soluciones/ej07_tareas_csv/)
 

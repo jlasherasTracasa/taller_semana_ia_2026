@@ -1,10 +1,12 @@
 # ✅ Solución · EJ 08 · Borrador de respuesta a un proveedor (sin enviar nada)
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 12 s · 51.882 tokens de entrada y 631 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 13 s · 25.054 tokens de entrada y 1.164 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 
-Borrador con los 38 €/saco y el jueves 26; no envió nada.
+Borrador con los 38 € y «antes del jueves 26». Desde el 11-10 el encargo pide el plazo de forma explícita: el modelo gratuito no lo mencionaba si no se le pedía.
 
 ## Veredicto del comprobador
 

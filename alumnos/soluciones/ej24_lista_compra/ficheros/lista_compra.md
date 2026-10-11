@@ -1,38 +1,35 @@
-# Lista de la compra (recetas escaladas de 4 a 6 personas, ×1,5)
+# Lista de la compra — cena para 6 personas
 
-## 🥬 Verduras y hortalizas
-- **Alcachofas**: 12 unidades (8 × 1,5)
-- **Guisantes**: 600 g (400 × 1,5)
-- **Habas**: 600 g (400 × 1,5)
-- **Espárragos blancos**: 450 g (300 × 1,5) ≈ 2 manojos
-- **Cebolla**: 1,5 → compra **2**
-- **Pimiento verde**: 1,5 → compra **2**
-- **Tomates maduros**: 3 unidades (2 × 1,5)
-- **Puerro**: 1,5 → compra **2**
+Cantidades calculadas multiplicando por 1,5 las tres recetas (que son para 4).
+Se han descontado los ingredientes que ya hay en casa según `despensa.txt`.
 
-## 🫘 Legumbres frescas
-- **Pochas frescas**: 1,2 kg (800 g × 1,5)
+## Verduras y hortalizas
 
-## 🥛 Lácteos y fermentos
-- **Leche de oveja**: 1,5 litros (1 L × 1,5)
-- **Cuajo**: 1,5 sobres → compra **2 sobres** (equivalen a ~15 gotas de cuajo líquido)
+- Pochas frescas: **1,2 kg** (800 g × 1,5)
+- Alcachofas: **12 unidades** (8 × 1,5)
+- Guisantes: **600 g** (400 g × 1,5)
+- Habas: **600 g** (400 g × 1,5)
+- Espárragos blancos: **450 g** (un manojo y medio)
+- Cebolla: **1,5 unidades** → compra 2, van enteras
+- Pimiento verde: **1,5 unidades** → compra 2, van enteras
+- Tomates maduros: **3 unidades**
+- Puerro: **1,5 unidades** → compra 2, van enteras
 
-## 🌰 Frutos secos
-- **Nueces**: 150 g (100 g × 1,5)
+## Lácteos y huevos
 
----
+- Leche de oveja: **1,5 litros**
+- Cuajo: **1,5 sobres** (o 15 gotas de cuajo líquido)
 
-## ✅ Ya lo tienes en casa (según despensa.txt)
-Estos ingredientes aparecen en las recetas, pero no los compres:
+## Frutos secos
 
-| Ingrediente | Te sirve para |
-|---|---|
-| Aceite de oliva | Menestra y pochas |
-| Sal | Menestra y pochas |
-| Harina (paquete 1 kg) | Rebozado de alcachofas (la menestra pide 150 g escalados) |
-| Miel (tarro entero) | Acompañamiento de la cuajada |
-| Huevos (6 en despensa) | Rebozado de alcachofas (la menestra pide 3 escalados; te sobran) |
+- Nueces peladas: **150 g** (100 g × 1,5)
 
-**Notas:**
-- Sin chorizo en las pochas: hay invitada vegetariana. 🌱
-- Las cantidades "medias" de ingredientes discretos (cebolla, pimiento, puerro, cuajo) se redondean hacia arriba al comprar.
+## Ya lo tienes en casa
+
+Según `despensa.txt`, no hace falta comprarlo:
+
+- Aceite de oliva (garrafa de 5 litros) — hace falta para las dos verduras
+- Sal — para las tres recetas
+- Harina (paquete de 1 kg) — hacen falta 150 g para rebozar las alcachofas
+- Miel (tarro entero) — para la cuajada
+- Huevos (6 unidades) — hacen falta 3 para el rebozado

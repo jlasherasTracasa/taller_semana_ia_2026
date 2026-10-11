@@ -1,6 +1,8 @@
 # ✅ Solución · F.5 · MCP: enchufar un servidor de herramientas
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 9 s · 30.132 tokens de entrada y 903 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 19 s · 35.303 tokens de entrada y 1.120 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

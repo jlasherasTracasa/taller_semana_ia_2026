@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 11 · De informe escrito a presentación
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 67 s · 93.304 tokens de entrada y 4.776 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 34 s · 74.806 tokens de entrada y 3.563 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

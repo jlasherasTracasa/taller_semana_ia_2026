@@ -1,6 +1,8 @@
 # ✅ Solución · F.10 · Tests primero: el agente no puede hacer trampa
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 30 s · 50.158 tokens de entrada y 2.052 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 18 s · 50.244 tokens de entrada y 1.757 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

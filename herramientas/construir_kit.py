@@ -81,6 +81,10 @@ def enunciado(e):
     v = VAL.get(e["id"])
     if v:
         L += [f"## 🧪 Lo que pasó al validarlo ({v.get('fecha', A.FECHA_VALIDACION)})", "", v["nota"], ""]
+        g = v.get("gratis")
+        if g:
+            L += [f"Con el modelo gratuito de opencode (`{g['modelo']}`): "
+                  + ("✅ cumple el criterio." if g["estado"] == "ok" else "❌ no cumple el criterio."), ""]
         if v.get("solucion"):
             L += [f"Prompt, salida real y ficheros: [`soluciones/{e['id']}/`](../../soluciones/{e['id']}/)", ""]
     if e["siguiente"]:

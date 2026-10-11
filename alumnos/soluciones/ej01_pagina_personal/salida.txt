@@ -2,48 +2,23 @@
 > build · Qwen3.8-27B-FP8
 → Read bio_pilar.txt 
 > build · Qwen3.8-27B-FP8
-✱ Glob "*" 4 matches
-> build · Qwen3.8-27B-FP8
-→ Read ENUNCIADO.md 
-> build · Qwen3.8-27B-FP8
-→ Read bio_pilar.txt 
-> build · Qwen3.8-27B-FP8
+Contenido leído. Detecto una errata ("elsenderismo") y creo la página.
 ← Write index.html
 Created file successfully: index.html
 > build · Qwen3.8-27B-FP8
-→ Read index.html 
-> build · Qwen3.8-27B-FP8
-← Edit index.html
-Index: index.html
-===================================================================
---- index.html
-+++ index.html
-@@ -123,9 +123,9 @@
-         <h2>Mis pasiones</h2>
-         <ul>
-           <li>El senderismo por la Sierra de Andía</li>
-           <li>Las jotas de mi tierra</li>
--          <li>La pan de masa madre y la repostería tradicional</li>
-+          <li>El pan de masa madre</li>
-         </ul>
-       </section>
- 
-       <section>
+He leído `bio_pilar.txt` y creado la página personal en `index.html` con todo lo pedido:
 
-> build · Qwen3.8-27B-FP8
-¡Listo! He creado `index.html` con la página personal de Pilar. Resumen de lo que incluye:
+**Contenido (con erratas corregidas)**
+- Corregí **"el senderismo"** (el original decía *"elsenderismo"*). El resto del texto estaba correcto.
 
-**Contenido (a partir de `bio_pilar.txt`):**
-- **Cabecera**: nombre, avatar con sus iniciales y subtítulo «Panadera jubilada · Puente la Reina (Navarra)»
-- **Sobre mí**: sus 40 años al frente de la panadería familiar y sus talleres de masa madre
-- **Mis pasiones**: senderismo por la Sierra de Andía, jotas navarras y el pan de masa madre
-- **Contacto**: enlace `mailto:pilar@example.com` y enlace `tel:+34611000000`
+**Características de la página**
+- ✅ **Un único archivo** con HTML y CSS embebido (`<style>`)
+- ✅ **`lang="es"`** y todo el contenido en castellano
+- ✅ **Adaptada al móvil**: viewport meta, tipografía fluida con `clamp()`, layout flexible y media query que ajusta espaciados y botones a pantalla completa en pantallas pequeñas
+- ✅ **Sin dependencias externas**: ni frameworks, ni fuentes de Google, ni librerías (uso Georgia, una fuente del sistema)
+- ✅ **Enlaces de contacto**:
+  - `mailto:pilar@example.com` para correo
+  - `tel:+34611000000` para llamada
 
-**Requisitos del encargo cumplidos:**
-- ✅ Un único archivo `index.html` con HTML y CSS dentro (sin JS ni CSS externos)
-- ✅ `<html lang="es">` y meta viewport para adaptación al móvil
-- ✅ Enlaces `mailto:` y `tel:` funcionales
-- ✅ Sin dependencias externas ni frameworks
-- ✅ **Errata corregida**: «elsenderismo» → «El senderismo»
-
-Puedes abrir `index.html` en el navegador y estrechar la ventana para comprobar que todo se adapta bien al móvil. Si quieres, también puedes lanzar el comprobador del taller: `python3 taller.py comprobar ej01`.
+**Diseño**
+Elegí una paleta cálida de panadería (tonos masa, corteza y fondo crema), tarjetas con sombra suave para cada sección (Sobre mí, Lo que hago ahora, Aficiones, Contacto) y botones tipo píldora con efecto hover, acorde a la historia de Pilar.

@@ -6,7 +6,7 @@ Estas reglas valen para todo lo que escribas en esta carpeta.
 - Escribe en castellano y **tutea** a los socios.
 - Máximo **150 palabras** por aviso.
 - **Nada de emojis** ni signos de exclamación dobles.
-- Fechas siempre en formato **dd/mm/aaaa** (por ejemplo, 08/11/2026).
+- Fechas siempre en formato **dd/mm/aaaa**, también dentro del texto: «el domingo 08/11/2026», nunca «8 de noviembre».
 
 ## Estructura de un aviso
 1. Una línea de título que empiece por `Aviso:`.

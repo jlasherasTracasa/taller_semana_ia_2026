@@ -1,44 +1,44 @@
 
 > build · Qwen3.8-27B-FP8
-→ Read . 
+✱ Glob "*" 5 matches
 > build · Qwen3.8-27B-FP8
 → Read ofertas.md 
-→ Read consumo_2025.csv [limit=15]
+→ Read consumo_2025.csv 
+→ Read ENUNCIADO.md 
 > build · Qwen3.8-27B-FP8
-← Write calcula_ofertas.py
-Created file successfully: calcula_ofertas.py
+← Write coste_anual.py
+Created file successfully: coste_anual.py
 > build · Qwen3.8-27B-FP8
-$ python3 calcula_ofertas.py
-Consumo anual: punta=998 llano=1157 valle=1659 kWh (total 3814)
-Coste potencia (4.6 kW x 365 dias): A=151.11  B=134.32  C=159.50
-Cuotas fijas: C=60.00
+$ python3 coste_anual.py
+Consumo anual: punta 998 kWh, llano 1157 kWh, valle 1659 kWh (total 3814 kWh)
 
-Oferta A: energia=  553.03  total=  704.14 eur
-Oferta B: energia=  512.58  total=  646.89 eur
-Oferta C: energia=  492.01 + cuota 60.00  total=  711.51 eur
+Oferta                                   Energía  Potencia  Cuotas     Total
+A · Luz Plana (Ebro Energía)              553.03    151.11    0.00    704.14 €
+B · Tres Periodos (Arga Luz)              512.58    134.32    0.00    646.89 €
+C · Ahorro Club (Bidasoa Eléctrica)       492.01    159.50   60.00    711.51 €
 
-MAS BARATA: Oferta B
-  Ahorro frente a A: 57.25 eur/año
-  Ahorro frente a C: 64.62 eur/año
+Más barata: B · Tres Periodos (Arga Luz) -> 646.89 €
+Ahorro frente a A · Luz Plana (Ebro Energía): 57.25 €
+Ahorro frente a C · Ahorro Club (Bidasoa Eléctrica): 64.62 €
 > build · Qwen3.8-27B-FP8
-La más barata es la Oferta B. Ahora escribo `comparativa.md`:
+Los cálculos coinciden. Ahora escribo `comparativa.md`:
 ← Write comparativa.md
 Created file successfully: comparativa.md
 > build · Qwen3.8-27B-FP8
-Listo. He creado dos archivos en `ej26_factura_luz/`:
+Listo. Resumen de lo hecho:
 
-**`calcula_ofertas.py`** — lee `consumo_2025.csv`, aplica las condiciones de cada oferta (energía por periodos, 4,6 kW × 365 días y cuota fija mensual de la C) y muestra el desglose por oferta.
+- **`coste_anual.py`**: lee `consumo_2025.csv`, suma el consumo por periodos (punta 998, llano 1.157, valle 1.659 kWh; total 3.814 kWh) y calcula energía + potencia (4,6 kW × 365 días) + cuotas fijas para cada oferta.
 
-**`comparativa.md`** — tabla con el coste anual de cada oferta, la ganadora y los ahorros frente a las otras dos.
-
-Resumen del resultado:
+- **`comparativa.md`** con los resultados:
 
 | Oferta | Total anual |
-|--------|------------:|
-| A · «Luz Plana» (Ebro Energía) | 704,14 € |
-| **B · «Tres Periodos» (Arga Luz)** | **646,89 €** ← más barata |
-| C · «Ahorro Club» (Bidasoa Eléctrica) | 711,51 € |
+|---|---:|
+| A · «Luz Plana» | 704,14 € |
+| **B · «Tres Periodos» (Arga Luz)** | **646,89 €** ✅ |
+| C · «Ahorro Club» | 711,51 € |
 
-La **Oferta B** es la más barata: ahorra **57,25 €/año** frente a la A y **64,62 €/año** frente a la C. Todo calculado sin IVA ni impuesto eléctrico, tal como pedía el enunciado.
+La más barata es la **B**: ahorra **57,25 €** frente a la A y **64,62 €** frente a la C.
 
-Un apunte interesante: la Oferta C se anuncia como «la más barata del mercado», pero al incluir su cuota de 5 €/mes resulta ser la más cara de las tres — buena muestra de por qué conviene hacer las cuentas.
+Sobre lo que dice cada folleto:
+- **C miente**: se anuncia como «la más barata del mercado», pero es la más cara. Tiene el kWh más barato (0,129 €/kWh), pero la cuota de 5 €/mes (60 €/año) la hunde.
+- **B gana** porque esta casa consume más en valle (1.659 kWh) que en punta (998 kWh), y B cobra el valle muy barato (0,085 €/kWh).

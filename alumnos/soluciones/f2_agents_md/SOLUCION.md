@@ -1,10 +1,12 @@
 # ✅ Solución · F.2 · AGENTS.md: las normas de la casa
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 21 s · 36.627 tokens de entrada y 1.441 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 23 s · 37.047 tokens de entrada y 1.455 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 
-Con `AGENTS.md` cumplió todas las normas: carpeta `avisos/`, «Aviso:», «Qué llevar:», fechas dd/mm/aaaa y la firma. Sin él, el mismo encargo salió con emojis, firma «La organización» y una pregunta final.
+El 11-10 se saltó una vez la norma de las fechas («domingo 8 de noviembre»). Con la norma reforzada con un ejemplo en `AGENTS.md`, la cumple. Sin `AGENTS.md`: emojis, firma inventada y una pregunta final.
 
 ## Veredicto del comprobador
 
@@ -13,7 +15,7 @@ Con `AGENTS.md` cumplió todas las normas: carpeta `avisos/`, «Aviso:», «Qué
   ✅ empieza por «Aviso:»
   ✅ tiene «Qué llevar:»
   ✅ firma «Junta del Club Andía»
-  ✅ máximo 150 palabras (tiene 0)
+  ✅ máximo 150 palabras (tiene 117)
   ✅ sin emojis
   ✅ fecha en formato dd/mm/aaaa
 

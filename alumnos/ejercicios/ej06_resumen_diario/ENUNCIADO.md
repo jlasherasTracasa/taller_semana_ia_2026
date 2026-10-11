@@ -58,9 +58,11 @@ python taller.py comprobar ej06      # el agente no decide si está bien: lo dec
 
 - En la validación, con un encargo que no decía «escribe el fichero», el agente dio el resumen en pantalla, no creó el fichero y terminó tan tranquilo.
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
 Con «escribe el fichero» lo escribió. En la ronda 1, con el encargo antiguo, **dio el resumen en pantalla y nunca creó el fichero**.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/ej06_resumen_diario/`](../../soluciones/ej06_resumen_diario/)
 

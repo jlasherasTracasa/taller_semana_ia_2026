@@ -36,9 +36,9 @@ gratuitos de opencode solo funcionan dentro de opencode. Sin clave, míralo en e
 
 Añade una tool `contar_lineas(ruta)` (esquema en `TOOLS` + función en `TOOLS_PY`) y mira si ahora acierta siempre.
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
-Funciona. Lección: con el historial mal guardado (tool_calls como texto JSON) el agente terminaba **sin responder a la pregunta** 3 de 3 veces; al guardarlo bien (`model_dump()`) contestó «reunion.txt, 5 líneas» 2 de 2. El historial es su memoria.
+Funciona (11-10): responde «reunion.txt, 5 líneas» y bloquea el `.env` 3 de 3. Lección: con el historial mal guardado (tool_calls como texto JSON) el agente terminaba **sin responder a la pregunta** 3 de 3 veces. El historial es su memoria.
 
 Prompt, salida real y ficheros: [`soluciones/f0_react_bucle/`](../../soluciones/f0_react_bucle/)
 

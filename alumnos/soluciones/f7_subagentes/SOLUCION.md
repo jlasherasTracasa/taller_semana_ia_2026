@@ -1,6 +1,8 @@
 # ✅ Solución · F.7 · Subagentes: un redactor y un revisor que no puede tocar nada
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 86 s · 279.249 tokens de entrada y 6.197 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 41 s · 101.937 tokens de entrada y 3.743 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

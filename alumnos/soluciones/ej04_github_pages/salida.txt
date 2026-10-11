@@ -1,101 +1,81 @@
 
 > build · Qwen3.8-27B-FP8
-→ Read . 
+$ ls -la ~/taller-agentes/ej04_github_pages
+total 20
+drwxr-xr-x  2 alumno alumno 4096 Oct 11 11:13 .
+drwxr-xr-x 16 alumno alumno 4096 Oct 11 11:13 ..
+-rw-r--r--  1 alumno alumno 2697 Oct 11 11:10 ENUNCIADO.md
+-rw-r--r--  1 alumno alumno 3694 Oct  9 08:44 index.html
+-rw-r--r--  1 alumno alumno 1277 Oct 11 11:13 opencode.json
+-rw-r--r--  1 alumno alumno    0 Oct 11 11:13 salida.txt
 > build · Qwen3.8-27B-FP8
-→ Read ENUNCIADO.md 
-$ head -30 index.html; echo ---; wc -l index.html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pilar Azcona · Panadera de Puente la Reina</title>
-<style>
-  :root {
-    --marron: #7b4a21;
-    --marron-oscuro: #4c2c12;
-    --crema: #fdf6ec;
-    --dorado: #e0a94f;
-    --texto: #3d2f22;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: var(--crema);
-    color: var(--texto);
-    line-height: 1.6;
-  }
-  header {
-    background: linear-gradient(160deg, var(--marron), var(--marron-oscuro));
-    color: #fff;
-    text-align: center;
-    padding: 4rem 1.5rem 3rem;
-  }
-  header .inicial {
-    width: 84px; height: 84px;
-    margin: 0 auto 1rem;
----
-135 index.html
+→ Read index.html 
 > build · Qwen3.8-27B-FP8
-La página está lista (`index.html` de Pilar Azcona). Preparo el repositorio, README y PASOS en castellano, sin hacer `push`.
+Ahora creo los dos ficheros en castellano:
 ← Write README.md
 Created file successfully: README.md
-> build · Qwen3.8-27B-FP8
 ← Write PASOS.md
 Created file successfully: PASOS.md
 > build · Qwen3.8-27B-FP8
-← Write .gitignore
-Created file successfully: .gitignore
-> build · Qwen3.8-27B-FP8
-$ git init -b main && git add index.html README.md PASOS.md .gitignore && git -c user.name="Taller IA TCSA" -c user.email="taller@ejemplo.local" commit -m "Web de la panadería de Pilar Azcona + guía de publicación en Pages" && git log --oneline --stat
+Ahora inicializo el repositorio git y hago el primer commit:
+$ git init && git add README.md PASOS.md index.html ENUNCIADO.md && git status --short
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
 Initialized empty Git repository in ~/taller-agentes/ej04_github_pages/.git/
-[main (root-commit) da96d75] Web de la panadería de Pilar Azcona + guía de publicación en Pages
- 4 files changed, 215 insertions(+)
+A  ENUNCIADO.md
+A  PASOS.md
+A  README.md
+A  index.html
+?? opencode.json
+?? salida.txt
+> build · Qwen3.8-27B-FP8
+$ printf 'opencode.json\nsalida.txt\n' > .gitignore && git branch -m main && git add .gitignore && git commit -m "Primer commit: pagina personal para GitHub Pages" && git log --oneline
+[main (root-commit) 3f1632b] Primer commit: pagina personal para GitHub Pages
+ Committer: Javier Lasheras Navas <alumno@pmpldl03.ejemplo.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 5 files changed, 290 insertions(+)
  create mode 100644 .gitignore
+ create mode 100644 ENUNCIADO.md
  create mode 100644 PASOS.md
  create mode 100644 README.md
  create mode 100644 index.html
-da96d75 Web de la panadería de Pilar Azcona + guía de publicación en Pages
- .gitignore |   5 +++
- PASOS.md   |  57 ++++++++++++++++++++++++++
- README.md  |  18 +++++++++
- index.html | 135 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 215 insertions(+)
+3f1632b Primer commit: pagina personal para GitHub Pages
 > build · Qwen3.8-27B-FP8
-$ git status --short; git log --format='%h %an: %s'; ls
-da96d75 Taller IA TCSA: Web de la panadería de Pilar Azcona + guía de publicación en Pages
-ENUNCIADO.md
-PASOS.md
-README.md
-index.html
-opencode.json
-salida.txt
-> build · Qwen3.8-27B-FP8
-→ Read PASOS.md 
-→ Read README.md 
-> build · Qwen3.8-27B-FP8
-Listo. Repositorio preparado en `ej04_github_pages/`, todo en castellano y sin haber tocado el `push`:
+Listo, todo preparado. Resumen de lo hecho:
 
-**Repositorio git**
+**Archivos creados:**
+- **README.md** — descripción breve del proyecto en castellano.
+- **PASOS.md** — guía numerada en castellano: crear el repo en GitHub, conectar el remoto, hacer push, activar Pages (Settings → Pages → *Deploy from a branch*), comprobar la URL y cómo actualizar en el futuro.
+
+**Repositorio git:**
+- Inicializado en la rama `main`.
+- Primer commit `3f1632b` con: `index.html`, `README.md`, `PASOS.md`, `ENUNCIADO.md` y un `.gitignore` que excluye los ficheros locales (`opencode.json`, `salida.txt`).
+
+Como pediste, **no he hecho ningún `git push`**. Cuando quieras publicar, solo te faltan los pasos 2 y 3 del PASOS.md (añadir el remoto y hacer push) con tus credenciales.
+
+Un apunte: git ha autogenerado la identidad del commit a partir de tu usuario/hostname (`Javier Lasheras Navas <alumno@pmpldl03.ejemplo.local>`). Si quieres que el commit figure con tu email real de GitHub, ejecuta:
+
+```bash
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu-email@ejemplo.com"
+git commit --amend --reset-author --no-edit
 ```
-da96d75 (main) Web de la panadería de Pilar Azcona + guía de publicación en Pages
- .gitignore |   5 +
- PASOS.md   |  57 +
- README.md  |  18 +
- index.html | 135 +
-```
-
-**Contenido creado**
-- **`README.md`** — breve: qué es la página (`index.html`, HTML+CSS puro sin dependencias) y cómo se publica (rama `main` vía GitHub Pages).
-- **`PASOS.md`** — 6 pasos numerados:
-  1. Crear repo en GitHub (público, sin inicializar con nada)
-  2. Conectar el remoto local
-  3. `git push -u origin main` *(marcado como "lo haces tú")*
-  4. Activar Pages (Settings → Pages → `main` / root)
-  5. Comprobar la URL pública
-  6. Publicar cambios futuros
-- **`.gitignore`** — excluye `salida.txt`, `opencode.json` y `ENUNCIADO.md` (archivos locales del taller; solo se publican los 4 archivos útiles).
-
-En el paso 3 y en el apartado del token he anotado la recomendación de seguridad del enunciado: token *fine-grained* con permiso mínimo (escritura solo en ese repo) y caducidad corta — nunca tu password ni un token pegado en chats.
-
-Cuando hagas el `push` y actives Pages, la URL será `https://<usuario>.github.io/<repo>/`. Si quieres, compruébala luego con `python3 taller.py comprobar ej04`.

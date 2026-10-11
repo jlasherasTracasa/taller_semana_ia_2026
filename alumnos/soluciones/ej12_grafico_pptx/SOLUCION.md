@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 12 · Presentación con gráfico y totales que cuadran
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 119 s · 210.812 tokens de entrada y 8.555 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 24 s · 69.501 tokens de entrada y 2.357 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

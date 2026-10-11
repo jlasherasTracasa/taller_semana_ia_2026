@@ -1,20 +1,32 @@
 
 > build · Qwen3.8-27B-FP8
-→ Read facturas 
+Voy a empezar explorando la carpeta `facturas/` para ver los PDF disponibles.
+$ ls -la facturas/ 2>/dev/null || ls -la
+total 64
+drwxr-xr-x 2 alumno alumno  4096 Oct  9 08:44 .
+drwxr-xr-x 3 alumno alumno  4096 Oct 11 11:15 ..
+-rw-r--r-- 1 alumno alumno 26520 Oct  9 08:44 factura_ferreteria.pdf
+-rw-r--r-- 1 alumno alumno 28092 Oct  9 08:44 factura_limpieza.pdf
 > build · Qwen3.8-27B-FP8
-→ Read facturas/factura_limpieza.pdf 
-→ Read facturas/factura_ferreteria.pdf 
+Hay dos facturas. Voy a comprobar qué herramientas de extracción de texto hay disponibles.
+$ which pdftotext; python3 -c "import pypdf; print('pypdf OK')" 2>/dev/null; python3 -c "import fitz; print('pymupdf OK')" 2>/dev/null; python3 -c "import openpyxl; print('openpyxl OK')" 2>/dev/null
+pypdf OK
+openpyxl OK
 > build · Qwen3.8-27B-FP8
-$ cd "~/taller-agentes/ej18_facturas_excel/facturas" && (pdftotext -layout factura_ferreteria.pdf - 2>/dev/null || python3 -c "
-import sys
-try:
-    from pypdf import PdfReader
-except ImportError:
-    from PyPDF2 import PdfReader
-r = PdfReader('factura_ferreteria.pdf')
-for p in r.pages:
-    print(p.extract_text())
-")
+`pypdf` y `openpyxl` están disponibles. Primero extraigo el texto de ambos PDF para ver su estructura:
+$ python3 -c "
+from pypdf import PdfReader
+for f in ['facturas/factura_ferreteria.pdf', 'facturas/factura_limpieza.pdf']:
+    print('='*60)
+    print(f)
+    print('='*60)
+    r = PdfReader(f)
+    for page in r.pages:
+        print(page.extract_text())
+"
+============================================================
+facturas/factura_ferreteria.pdf
+============================================================
 Factura 2026/041 — Ferretería Etxeberria
 Cliente: Centro Cívico Alhama
 Fecha: 03/02/2026
@@ -24,16 +36,9 @@ T ornillería y anclajes ...................... 21,60 EUR
 Base imponible ............................ 375,60 EUR
 IVA 21 % .................................... 78,88 EUR
 TOTAL ..................................... 454,48 EUR
-> build · Qwen3.8-27B-FP8
-$ cd "~/taller-agentes/ej18_facturas_excel/facturas" && (pdftotext -layout factura_limpieza.pdf - 2>/dev/null || python3 -c "
-try:
-    from pypdf import PdfReader
-except ImportError:
-    from PyPDF2 import PdfReader
-r = PdfReader('factura_limpieza.pdf')
-for p in r.pages:
-    print(p.extract_text())
-")
+============================================================
+facturas/factura_limpieza.pdf
+============================================================
 Factura 2026/019 — Limpiezas Ribera S.L.
 Cliente: Centro Cívico Alhama
 Fecha: 28/02/2026
@@ -43,81 +48,178 @@ Base imponible .......................... 1.002,40 EUR
 IVA 21 % ................................... 210,50 EUR
 TOTAL ................................... 1.212,90 EUR
 > build · Qwen3.8-27B-FP8
-He extraído los datos de ambos PDF. Ahora compruebo si hay un Excel existente en el directorio:
-✱ Glob "**/*.xlsx" in . · 0 matches
-> build · Qwen3.8-27B-FP8
-$ ls -la "~/taller-agentes/ej18_facturas_excel"
-total 20
-drwxr-xr-x  3 alumno alumno 4096 Oct  9 09:26 .
-drwxr-xr-x 35 alumno alumno 4096 Oct  9 09:26 ..
--rw-r--r--  1 alumno alumno 1633 Oct  9 09:20 ENUNCIADO.md
-drwxr-xr-x  2 alumno alumno 4096 Oct  9 08:44 facturas
--rw-r--r--  1 alumno alumno 1068 Oct  9 09:26 opencode.json
--rw-r--r--  1 alumno alumno    0 Oct  9 09:26 salida.txt
-> build · Qwen3.8-27B-FP8
-→ Read ENUNCIADO.md 
-> build · Qwen3.8-27B-FP8
-El enunciado lo confirma: se espera `facturas.xlsx` con totales 454,48 y 1.212,90 y suma final 1.667,38. Genero el Excel con openpyxl:
-$ python3 -c "import openpyxl; print(openpyxl.__version__)"
-3.1.5
-> build · Qwen3.8-27B-FP8
-← Write generar_facturas_xlsx.py
-Created file successfully: generar_facturas_xlsx.py
-> build · Qwen3.8-27B-FP8
-El archivo quedó corrupto al final; lo reescribo limpio:
-← Write generar_facturas_xlsx.py
-Wrote file successfully: generar_facturas_xlsx.py
-> build · Qwen3.8-27B-FP8
-$ cd "~/taller-agentes/ej18_facturas_excel" && python3 generar_facturas_xlsx.py
-Totales PDF: [454.48, 1212.9] -> suma esperada: 1667.38
-Suma escrita en facturas.xlsx (fila 4): 1667.38
-OK: cuadra con la suma de los totales de los PDF.
-> build · Qwen3.8-27B-FP8
-$ cd "~/taller-agentes/ej18_facturas_excel" && ls -la facturas.xlsx && python3 -c "
-from openpyxl import load_workbook
-wb = load_workbook('facturas.xlsx')
+La extracción funcionó correctamente. Los datos son coherentes en ambas facturas (base + IVA 21% = total). Ahora genero `facturas.xlsx`:
+$ python3 << 'EOF'
+import re
+from datetime import datetime
+from pypdf import PdfReader
+from openpyxl import Workbook
+from openpyxl.styles import Font, Alignment
+
+def parse_pdf(path):
+    text = "\n".join(p.extract_text() for p in PdfReader(path).pages)
+    emisor = re.search(r"Factura\s+\S+\s+—\s+(.+)", text).group(1).strip()
+    fecha = datetime.strptime(re.search(r"Fecha:\s*(\d{2}/\d{2}/\d{4})", text).group(1), "%d/%m/%Y")
+    base = float(re.search(r"Base imponible\s*\.?\s*([\d.,]+)\s*EUR", text).group(1).replace(".", "").replace(",", "."))
+    iva = float(re.search(r"IVA\s*\d+\s*%\s*\.?\s*([\d.,]+)\s*EUR", text).group(1).replace(".", "").replace(",", "."))
+    total = float(re.search(r"TOTAL\s*\.?\s*([\d.,]+)\s*EUR", text).group(1).replace(".", "").replace(",", "."))
+    return emisor, fecha, base, iva, total
+
+files = ["facturas/factura_ferreteria.pdf", "facturas/factura_limpieza.pdf"]
+rows = [parse_pdf(f) for f in files]
+
+wb = Workbook()
 ws = wb.active
-print('Hoja:', ws.title)
-for fila in ws.iter_rows(values_only=True):
-    print(fila)
-# comprobaciones: tipos numéricos y sin fórmulas
-import openpyxl
-for row in ws.iter_rows(min_row=2):
-    for c in row[3:]:
-        assert isinstance(c.value, (int, float)), f'{c.coordinate} no es numero: {c.value!r}'
-        assert not (isinstance(c.value, str) and c.value.startswith('=')), 'hay formula'
-print('OK: economicos como numeros, sin formulas, suma final en F4')
-"
--rw-r--r-- 1 alumno alumno 5231 Oct  9 09:27 facturas.xlsx
-Hoja: Facturas
-('Emisor', 'Nº factura', 'Fecha', 'Base imponible (EUR)', 'IVA 21% (EUR)', 'Total (EUR)')
-('Ferretería Etxeberria', '2026/041', '03/02/2026', 375.6, 78.88, 454.48)
-('Limpiezas Ribera S.L.', '2026/019', '28/02/2026', 1002.4, 210.5, 1212.9)
-('SUMA', None, None, 1378, 289.38, 1667.38)
-OK: economicos como numeros, sin formulas, suma final en F4
+ws.title = "Facturas"
+
+headers = ["Emisor", "Fecha", "Base imponible", "IVA", "Total"]
+ws.append(headers)
+for c in ws[1]:
+    c.font = Font(bold=True)
+    c.alignment = Alignment(horizontal="center")
+
+money_fmt = '#,##0.00 "EUR"'
+date_fmt = 'DD/MM/YYYY'
+
+for emisor, fecha, base, iva, total in rows:
+    ws.append([emisor, fecha, base, iva, total])
+    r = ws.max_row
+    ws.cell(row=r, column=2).number_format = date_fmt
+    for col in (3, 4, 5):
+        ws.cell(row=r, column=col).number_format = money_fmt
+
+# Fila de suma de totales como número, no como fórmula
+suma_totales = round(sum(r[4] for r in rows), 2)
+ws.append(["SUMA TOTAL", None, None, None, suma_totales])
+for c in ws[ws.max_row]:
+    c.font = Font(bold=True)
+ws.cell(row=ws.max_row, column=5).number_format = money_fmt
+
+# Anchos de columna
+for col, width in zip("ABCDE", [28, 12, 16, 14, 16]):
+    ws.column_dimensions[col].width = width
+
+wb.save("facturas.xlsx")
+print(f"Suma de totales (número): {suma_totales}")
+EOF
+Traceback (most recent call last):
+  File "<stdin>", line 17, in <module>
+  File "<stdin>", line 11, in parse_pdf
+AttributeError: 'NoneType' object has no attribute 'group'
 > build · Qwen3.8-27B-FP8
-Listo. El ejercicio 18 está completo y verificado:
+El regex del emisor falló en algún archivo. Voy a depurar viendo el texto crudo extraído:
+$ python3 -c "
+from pypdf import PdfReader
+for f in ['facturas/factura_ferreteria.pdf', 'facturas/factura_limpieza.pdf']:
+    t = PdfReader(f).pages[0].extract_text()
+    print(repr(t.splitlines()[0]))
+    for line in t.splitlines():
+        if 'Total' in line or 'TOTAL' in line:
+            print(repr(line))
+"
+'Factura 2026/041 — Ferretería Etxeberria'
+'TOTAL ..................................... 454,48 EUR'
+'Factura 2026/019 — Limpiezas Ribera S.L.'
+'TOTAL ................................... 1.212,90 EUR'
+> build · Qwen3.8-27B-FP8
+El problema está en mis regex: permitía un solo punto (`\.?`) pero las líneas tienen muchos puntos de relleno (`......`). Lo corrijo usando `[\s.]*`:
+$ python3 << 'EOF'
+import re
+from datetime import datetime
+from pypdf import PdfReader
+from openpyxl import Workbook
+from openpyxl.styles import Font, Alignment
 
-## Resultado
+def a_num(s):
+    return float(s.replace(".", "").replace(",", "."))
 
-**`facturas.xlsx`** (hoja "Facturas") generada con openpyxl a partir de los dos PDF de `facturas/`:
+def parse_pdf(path):
+    text = "\n".join(p.extract_text() for p in PdfReader(path).pages)
+    emisor = re.search(r"Factura\s+\S+\s+—\s+(.+)", text).group(1).strip()
+    fecha = datetime.strptime(re.search(r"Fecha:\s*(\d{2}/\d{2}/\d{4})", text).group(1), "%d/%m/%Y")
+    base = a_num(re.search(r"Base imponible[\s.]*(\d[\d.,]*)\s*EUR", text).group(1))
+    iva = a_num(re.search(r"IVA\s+\d+\s*%[\s.]*(\d[\d.,]*)\s*EUR", text).group(1))
+    total = a_num(re.search(r"TOTAL[\s.]*(\d[\d.,]*)\s*EUR", text).group(1))
+    return emisor, fecha, base, iva, total
 
-| Emisor | Nº factura | Fecha | Base (EUR) | IVA 21% (EUR) | Total (EUR) |
-|---|---|---|---|---|---|
-| Ferretería Etxeberria | 2026/041 | 03/02/2026 | 375,60 | 78,88 | **454,48** |
-| Limpiezas Ribera S.L. | 2026/019 | 28/02/2026 | 1.002,40 | 210,50 | **1.212,90** |
-| **SUMA** | | | 1.378,00 | 289,38 | **1.667,38** |
+files = ["facturas/factura_ferreteria.pdf", "facturas/factura_limpieza.pdf"]
+rows = [parse_pdf(f) for f in files]
 
-## Cumplimiento del enunciado
+wb = Workbook()
+ws = wb.active
+ws.title = "Facturas"
 
-- ✅ Los cinco campos extraídos de cada PDF (emisor, fecha, base, IVA, total), más el nº de factura como contexto.
-- ✅ La fila final con la suma de totales escrita **como número** (1667.38 float, no fórmula ni texto) — verificado programáticamente.
-- ✅ **Cuadra con los PDF**: 454,48 + 1.212,90 = 1.667,38 (el valor exacto que pide la checklist del ENUNCIADO).
-- ✅ Bonus: también sumé base imponible e IVA en la fila SUMA.
+headers = ["Emisor", "Fecha", "Base imponible", "IVA", "Total"]
+ws.append(headers)
+for c in ws[1]:
+    c.font = Font(bold=True)
+    c.alignment = Alignment(horizontal="center")
 
-El script `generar_facturas_xlsx.py` queda en la carpeta por si quieres regenerarlo o adaptarlo cuando lleguen más facturas.
+money_fmt = '#,##0.00 "EUR"'
+date_fmt = 'DD/MM/YYYY'
 
-Puedes pasarlo por el comprobador oficial cuando quieras:
-```bash
-python3 taller.py comprobar ej18
-```
+for emisor, fecha, base, iva, total in rows:
+    ws.append([emisor, fecha, base, iva, total])
+    r = ws.max_row
+    ws.cell(row=r, column=2).number_format = date_fmt
+    for col in (3, 4, 5):
+        ws.cell(row=r, column=col).number_format = money_fmt
+
+# Fila final con la suma de totales escrita como número (no como fórmula)
+suma_totales = round(sum(r[4] for r in rows), 2)
+ws.append(["SUMA TOTAL", None, None, None, suma_totales])
+for c in ws[ws.max_row]:
+    c.font = Font(bold=True)
+ws.cell(row=ws.max_row, column=5).number_format = money_fmt
+
+for col, width in zip("ABCDE", [28, 12, 16, 14, 16]):
+    ws.column_dimensions[col].width = width
+
+wb.save("facturas.xlsx")
+
+# Verificación: el total debe ser base + IVA en cada factura,
+# y la suma escrita debe coincidir con la suma calculada.
+for emisor, fecha, base, iva, total in rows:
+    assert abs(base + iva - total) < 0.02, f"Desajuste en {emisor}"
+assert abs(suma_totales - sum(r[4] for r in rows)) < 1e-9
+print("Verificaciones OK (base+IVA=total en cada factura)")
+print(f"Suma de totales (valor numérico escrito): {suma_totales}")
+EOF
+Verificaciones OK (base+IVA=total en cada factura)
+Suma de totales (valor numérico escrito): 1667.38
+> build · Qwen3.8-27B-FP8
+Ahora verifico el contenido real del fichero generado leyéndolo con openpyxl:
+$ python3 << 'EOF'
+from openpyxl import load_workbook
+wb = load_workbook("facturas.xlsx")  # sin data_only: leemos valores tal cual están guardados
+ws = wb.active
+print("Hoja:", ws.title, "| Dimensiones:", ws.dimensions)
+for row in ws.iter_rows(values_only=False):
+    vals = [c.value for c in row]
+    print(vals)
+# Comprobaciones específicas
+last_total = ws.cell(row=ws.max_row, column=5).value
+assert isinstance(last_total, (int, float)), "La suma no es un número"
+assert not (isinstance(last_total, str) and last_total.startswith("=")), "¡Es una fórmula!"
+print("\nOK: la celda E%d contiene el NÚMERO %s (no una fórmula)" % (ws.max_row, last_total))
+EOF
+Hoja: Facturas | Dimensiones: A1:E4
+['Emisor', 'Fecha', 'Base imponible', 'IVA', 'Total']
+['Ferretería Etxeberria', datetime.datetime(2026, 2, 3, 0, 0), 375.6, 78.88, 454.48]
+['Limpiezas Ribera S.L.', datetime.datetime(2026, 2, 28, 0, 0), 1002.4, 210.5, 1212.9]
+['SUMA TOTAL', None, None, None, 1667.38]
+
+OK: la celda E4 contiene el NÚMERO 1667.38 (no una fórmula)
+> build · Qwen3.8-27B-FP8
+Hecho. `facturas.xlsx` generado y verificado:
+
+| Emisor | Fecha | Base imponible | IVA | Total |
+|---|---|---|---|---|
+| Ferretería Etxeberria | 03/02/2026 | 375,60 EUR | 78,88 EUR | 454,48 EUR |
+| Limpiezas Ribera S.L. | 28/02/2026 | 1.002,40 EUR | 210,50 EUR | 1.212,90 EUR |
+| **SUMA TOTAL** | | | | **1.667,38** (número, no fórmula) |
+
+Detalles:
+- **Extracción**: con `pypdf` se leyó el texto de ambos PDF de `facturas/` y se parsearon emisor, fecha, base imponible, IVA (21%) y TOTAL con expresiones regulares tolerantes a los puntos de relleno y al formato español (`1.212,90`).
+- **Verificación de cuadre**: en cada factura base + IVA ≈ total (error < 0,02 € por redondeo), y la suma final (454,48 + 1.212,90 = **1.667,38**) cuadra con la suma de los totales de las facturas.
+- **Excel**: la fila de suma escribe el valor numérico directamente en la celda (`1667.38`), sin fórmula; fechas como tipo fecha (`DD/MM/YYYY`) e importes con formato `#,##0.00 "EUR"`.

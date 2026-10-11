@@ -1,6 +1,8 @@
 # ✅ Solución · F.4 · Skills: recetas que el agente carga cuando las necesita
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 37 s · 58.027 tokens de entrada y 1.955 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 19 s · 41.850 tokens de entrada y 1.753 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

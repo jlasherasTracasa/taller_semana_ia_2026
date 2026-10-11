@@ -1,33 +1,70 @@
 
 > build · Qwen3.8-27B-FP8
-⚙ execute {"code":"// 1) Verificar si existe alguna \"herramienta de plazos\" en el catálogo\nconst r1 = search({ query: \"plazo deadline fecha calendario días\" });\nconst r2 = search({ query: \"business days calculator holidays\" });\n\n// 2) Cálculo verificable del calendario (España, festivos nacionales octubre 2026)\nfunction addDays(d, n) { const x = new Date(Date.UTC(2026, 9, d)); x.setUTCDate(x.getUTCDate() + n); return x; }\nconst wd = [\"domingo\",\"lunes\",\"martes\",\"miércoles\",\"jueves\",\"viernes\",\"sábado\"];\nlet day = 0, results = [];\nfor (let i = 3; i <= 31 && day < 10; i++) {\n  const dt = addDays(i, 0);\n  const w = dt.getUTCDay();\n  const festivo = (i === 12); // 12 oct: Fiesta Nacional (lunes)\n  const habil = w !== 0 && w !== 6 && !festivo;\n  if (habil) { day++; results.push(`día ${day}: ${wd[w]} ${i} oct 2026${festivo ? \"\" : \"\"}`); }\n  else if (i <= 13) results.push(`(no hábil: ${wd[w]} ${i} oct${festivo ? \" — Fiesta Nacional\" : \"\"})`);\n}\nreturn {\n  busquedaPlazos: r1.items,\n  busquedaBusinessDays: r2.items,\n  diaSemana_2oct2026: wd[new Date(Date.UTC(2026,9,2)).getUTCDay()],\n  conteo: results\n};"} 
+⚙ execute {"code":"const results = {};\n// Buscar una herramienta de plazos/deadlines en el catálogo\nresults.plazo = search(\"plazo\");\nresults.deadline = search(\"deadline\");\nresults.habil = search(\"hábil habil business days\");\n// Ver si hay servidores MCP con herramientas extra\ntry {\n  results.mcp = await tools.opencode.list_mcp_resources({});\n} catch (e) {\n  results.mcp = String(e);\n}\nreturn results;"} 
+$ python3 - <<'EOF'
+from datetime import date, timedelta
+
+inicio = date(2026, 10, 2)
+print("Fecha de notificacion:", inicio.strftime("%A %d %B %Y"))
+
+def sumar_habiles(fecha_ini, n, festivos=()):
+    d = fecha_ini
+    contados = 0
+    while contados < n:
+        d += timedelta(days=1)
+        if d.weekday() < 5 and d not in festivos:
+            contados += 1
+            print(f"  dia habil {contados}: {d.strftime('%A %d %B %Y')}")
+    return d
+
+print("\nOpcion A: solo se excluyen fines de semana")
+fin_a = sumar_habiles(inicio, 10)
+
+print("\nOpcion B: ademas se excluye festivo nacional espanol 12 oct 2026")
+fin_b = sumar_habiles(inicio, 10, festivos={date(2026, 10, 12)})
+
+print("\nResultado A:", fin_a.isoformat(), fin_a.strftime("%A"))
+print("Resultado B:", fin_b.isoformat(), fin_b.strftime("%A"))
+EOF
+Fecha de notificacion: Friday 02 October 2026
+
+Opcion A: solo se excluyen fines de semana
+  dia habil 1: Monday 05 October 2026
+  dia habil 2: Tuesday 06 October 2026
+  dia habil 3: Wednesday 07 October 2026
+  dia habil 4: Thursday 08 October 2026
+  dia habil 5: Friday 09 October 2026
+  dia habil 6: Monday 12 October 2026
+  dia habil 7: Tuesday 13 October 2026
+  dia habil 8: Wednesday 14 October 2026
+  dia habil 9: Thursday 15 October 2026
+  dia habil 10: Friday 16 October 2026
+
+Opcion B: ademas se excluye festivo nacional espanol 12 oct 2026
+  dia habil 1: Monday 05 October 2026
+  dia habil 2: Tuesday 06 October 2026
+  dia habil 3: Wednesday 07 October 2026
+  dia habil 4: Thursday 08 October 2026
+  dia habil 5: Friday 09 October 2026
+  dia habil 6: Tuesday 13 October 2026
+  dia habil 7: Wednesday 14 October 2026
+  dia habil 8: Thursday 15 October 2026
+  dia habil 9: Friday 16 October 2026
+  dia habil 10: Monday 19 October 2026
+
+Resultado A: 2026-10-16 Friday
+Resultado B: 2026-10-19 Monday
 > build · Qwen3.8-27B-FP8
-⚙ execute {"code":"// Herramienta localizada en el catálogo actualizado\nconst found = search({ query: \"plazos\" });\nreturn { encontrado: found.items.map(t => ({ path: t.path, description: t.description, signature: t.signature.slice(0, 400) })) };"} 
+⚙ execute {"code":"const r = await tools.plazos.dias_habiles({ desde: \"2026-10-02\", dias: 10 });\nreturn { resultado_exacto: r.result, crudo: r };"} 
 > build · Qwen3.8-27B-FP8
-⚙ execute {"code":"const plazos = tools.plazos[\"dias_habiles\"];\nconst resp = await plazos({ desde: \"2026-10-02\", dias: 10 });\nreturn resp;"} 
-> build · Qwen3.8-27B-FP8
-He localizado y usado la herramienta de plazos (`tools.plazos.dias_habiles`) con los datos de tu carta. Su respuesta literal:
+He consultado la herramienta de plazos (`plazos.dias_habiles`) con `desde: 2026-10-02` y `dias: 10`. Su respuesta exacta fue:
 
 > **`vence=19/10/2026 (lunes) festivos_saltados=12/10`**
 
-## El plazo vence el **lunes 19 de octubre de 2026**
+**En resumen:** el plazo vence el **lunes 19 de octubre de 2026**.
 
-El conteo que aplica la herramienta (arranca el día siguiente a la notificación, saltando findes y festivos nacionales):
+Detalles del cómputo:
+- La notificación fue el viernes 2 de octubre de 2026; el conteo empieza al día siguiente hábil.
+- Días hábiles: 5, 6, 7, 8 y 9 de octubre (cinco), y luego el lunes 12 se salta por ser festivo nacional, continuando 13, 14, 15, 16 (nueve) y finalizando el lunes **19 de octubre** (décimo día hábil).
 
-| # | Día | | # | Día |
-|---|---|---|---|---|
-| — | sáb 3, dom 4 oct (fin de semana) | | día 6 | martes 13 oct |
-| día 1 | lunes 5 oct | | día 7 | miércoles 14 oct |
-| día 2 | martes 6 oct | | día 8 | jueves 15 oct |
-| día 3 | miércoles 7 oct | | día 9 | viernes 16 oct |
-| día 4 | jueves 8 oct | | — | fin de semana |
-| día 5 | viernes 9 oct | | **día 10** | **lunes 19 oct** |
-
-El punto clave: el **lunes 12 de octubre es Fiesta Nacional**, por eso el plazo "salta" de la semana del 5 al 9 directo a la del 13 al 19.
-
-Dos advertencias antes de confiar al 100%:
-
-1. **Festivos autonómicos o locales**: la herramienta solo descuenta festivos nacionales (y de Navarra). Si tu comunidad tiene algún festivo propio en esas fechas, el vencimiento se retrasaría un día por cada uno — compruébalo para tu provincia.
-2. **Verifica que la notificación surtió efecto ese día**: si la carta te llegó más tarde de lo que dice el sello (o recogiste el aviso días después), la fecha de inicio cambia y todo se desplaza.
-
-Si puedes, confirma la fecha contra lo que diga la propia carta (suele indicar la fecha límite) o con el organismo que te la envió — pero con las reglas estándar, **el 19 de octubre a última hora es tu límite**.
+Esto coincide con el cálculo de verificación que hice aparte. Ten en cuenta que la herramienta solo excluye festivos nacionales; si aplica algún calendario con festivos autonómicos o locales adicionales, conviene confirmarlo, aunque en este caso no cambiaría el resultado salvo que hubiera festivo entre el 13 y el 19 de octubre en tu jurisdicción.

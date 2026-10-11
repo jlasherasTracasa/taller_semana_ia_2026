@@ -58,9 +58,11 @@ python taller.py comprobar ej26      # el agente no decide si está bien: lo dec
 
 - Los modelos suman mal de cabeza: por eso el encargo pide «un script de Python». Mira si lo ha usado.
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
 Calculó con un script los tres costes exactos (704,14 / 646,89 / 711,51 €), recomendó la B y explicó que la C, con el kWh más barato, es la más cara por la cuota de 5 € al mes: el folleto mentía.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/ej26_factura_luz/`](../../soluciones/ej26_factura_luz/)
 

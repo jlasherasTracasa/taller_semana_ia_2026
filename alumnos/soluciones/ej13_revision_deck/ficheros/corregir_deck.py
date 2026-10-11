@@ -1,62 +1,68 @@
 #!/usr/bin/env python3
-"""Genera deck_ferias_corregido.pptx a partir de deck_ferias.pptx
-sin tocar el original. Correcciones puntuales de ortografía,
-mayúsculas, espacios y tildes."""
+"""Genera deck_ferias_corregido.pptx copiando el original y aplicando
+solo correcciones de texto ortotipográficas. El original no se modifica.
+"""
 import shutil
-from pptx import Presentation
+import zipfile
 
-ORIGINAL = "deck_ferias.pptx"
-COPIA = "deck_ferias_corregido.pptx"
+SRC = "deck_ferias.pptx"
+DST = "deck_ferias_corregido.pptx"
 
-# Copia del original: el original no se abre para escritura
-shutil.copyfile(ORIGINAL, COPIA)
-
-prs = Presentation(COPIA)
-
-# {slide_idx (1-based): {texto_original: texto_corregido}}
-CORRECCIONES = {
-    1: {
-        "El certamen de artesaNIA de Tafalla": "El certamen de artesanía de Tafalla",
-    },
-    2: {
-        "Del 12 al 15 de SEPTIEMBRE": "Del 12 al 15 de septiembre",
-        "entrada gratuita": "Entrada gratuita",
-    },
-    3: {
-        "taller de cesteria (sabado 10:00)": "Taller de cestería (sábado 10:00)",
-        "CONCIERTO de txistu , domingo": "Concierto de txistu, domingo",
-        "Degustación de quesos con D.O. Roncal  ": "Degustación de quesos con D.O. Roncal",
-    },
-    4: {
-        "Organizacion": "Organización",
-        "Telefono 948 70 00 00  (extension 3)": "Teléfono 948 70 00 00 (extensión 3)",
-    },
+# (fichero dentro del zip, texto original, texto corregido)
+FIXES = {
+    "ppt/slides/slide1.xml": [
+        ("El certamen de artesaNIA de Tafalla",
+         "El certamen de artesanía de Tafalla"),
+    ],
+    "ppt/slides/slide2.xml": [
+        ("Del 12 al 15 de SEPTIEMBRE", "Del 12 al 15 de septiembre"),
+        ("entrada gratuita", "Entrada gratuita"),
+    ],
+    "ppt/slides/slide3.xml": [
+        ("taller de cesteria (sabado 10:00)",
+         "Taller de cestería (sábado 10:00)"),
+        ("CONCIERTO de txistu , domingo", "Concierto de txistu, domingo"),
+        ("Degustación de quesos con D.O. Roncal  ",
+         "Degustación de quesos con D.O. Roncal"),
+    ],
+    "ppt/slides/slide4.xml": [
+        ("Organizacion", "Organización"),
+        ("Telefono 948 70 00 00  (extension 3)",
+         "Teléfono 948 70 00 00 (extensión 3)"),
+    ],
 }
 
-def iter_runs(prs):
-    """Itera sobre todos los runs de texto (shapes y tablas) con su nº de slide."""
-    for i, slide in enumerate(prs.slides, 1):
-        for shape in slide.shapes:
-            if shape.has_text_frame:
-                for para in shape.text_frame.paragraphs:
-                    for run in para.runs:
-                        yield i, run
-            if shape.has_table:
-                for row in shape.table.rows:
-                    for cell in row.cells:
-                        for para in cell.text_frame.paragraphs:
-                            for run in para.runs:
-                                yield i, run
 
-aplicadas = 0
-for idx, run in iter_runs(prs):
-    reglas = CORRECCIONES.get(idx, {})
-    texto = run.text
-    if texto in reglas:
-        run.text = reglas[texto]
-        aplicadas += 1
+def main():
+    with zipfile.ZipFile(SRC) as zin:
+        names = zin.namelist()
+        data = {n: zin.read(n) for n in names}
+        infos = {i.filename: i for i in zin.infolist()}
 
-prs.save(COPIA)
-print(f"Correcciones aplicadas: {aplicadas}/{sum(len(v) for v in CORRECCIONES.values())}")
-if aplicadas != sum(len(v) for v in CORRECCIONES.values()):
-    raise SystemExit("ERROR: no se aplicaron todas las correcciones")
+        applied = []
+        for name, fixes in FIXES.items():
+            xml = data[name].decode("utf-8")
+            for old, new in fixes:
+                count = xml.count(old)
+                if count != 1:
+                    raise SystemExit(
+                        f"ERROR: {name}: {count} coincidencias de {old!r}")
+                xml = xml.replace(old, new)
+                applied.append((name, old, new))
+            data[name] = xml.encode("utf-8")
+
+        with zipfile.ZipFile(DST, "w", zipfile.ZIP_DEFLATED) as zout:
+            for n in names:
+                info = infos[n]
+                out = zipfile.ZipInfo(n, date_time=info.date_time)
+                out.compress_type = zipfile.ZIP_DEFLATED
+                out.external_attr = info.external_attr
+                zout.writestr(out, data[n])
+
+    for name, old, new in applied:
+        print(f"[ok] {name}: {old!r} -> {new!r}")
+    print(f"\nEscrito {DST} con {len(applied)} correcciones.")
+
+
+if __name__ == "__main__":
+    main()

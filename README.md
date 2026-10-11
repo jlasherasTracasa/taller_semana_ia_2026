@@ -18,11 +18,11 @@
 
 <p align="center">
   <img alt="ejercicios" src="https://img.shields.io/badge/ejercicios-38-1E3442">
-  <img alt="validados" src="https://img.shields.io/badge/validados-35%2F38-2E8B57">
+  <img alt="validados" src="https://img.shields.io/badge/validados-38%2F38-2E8B57">
   <img alt="agente" src="https://img.shields.io/badge/agente-opencode%202.0.19-1E3442">
-  <img alt="modelo" src="https://img.shields.io/badge/modelo-GLM--5.3--Flash-B8862B">
+  <img alt="modelo" src="https://img.shields.io/badge/modelo-gratuito%20o%20GLM--5.3--Flash-B8862B">
   <img alt="cpu" src="https://img.shields.io/badge/hardware-solo%20CPU-4A5866">
-  <img alt="coste" src="https://img.shields.io/badge/coste-%E2%89%881%20c%C3%A9ntimo%2Fejercicio-4A5866">
+  <img alt="coste" src="https://img.shields.io/badge/coste-0%20%E2%82%AC%20con%20el%20modelo%20gratuito-4A5866">
   <a href="https://github.com/jlasherasTracasa/taller_semana_ia_2026/actions/workflows/pages.yml"><img alt="web" src="https://github.com/jlasherasTracasa/taller_semana_ia_2026/actions/workflows/pages.yml/badge.svg"></a>
 </p>
 
@@ -52,9 +52,11 @@
 ## 💡 Qué es
 
 Un taller de unas tres horas para **todos los públicos**: desde quien nunca ha abierto una terminal hasta quien
-diseña sistemas. Primero, lo justo de teoría (qué es un agente, ReAct, tools, permisos, skills, MCP, subagentes).
+diseña sistemas. Primero, un poco de historia y de teoría (qué es un modelo de lenguaje, qué es un agente, ReAct, tools, permisos,
+skills, MCP, subagentes), con demos en directo.
 Después, **cada persona elige su itinerario** entre 38 ejercicios con tareas reales y pone a trabajar a un agente de
-verdad —[opencode](https://opencode.ai) con **GLM-5.3-Flash**— en su propio portátil, **sin GPU**.
+verdad —[opencode](https://opencode.ai) en **modo interactivo**, con un modelo gratuito o con GLM-5.3-Flash— en su
+propio ordenador (Windows, Linux o Mac), **sin GPU**. ¿Sin portátil? [Plan B](wiki/Plan-B.md).
 
 ```mermaid
 flowchart LR
@@ -131,10 +133,17 @@ python taller.py comprobar ej24  # ¿lo hizo de verdad?
 
 ## 🧪 Validado de verdad
 
-Los 38 ejercicios se ejecutaron el **09-10-2026** con opencode 2.0.19 y GLM-5.3-Flash, solo con CPU, como lo haría
-un alumno (`profesor/validar.sh`), y se comprobaron con `comprobar.py`. **35 de 38 cumplen el criterio**; los tres
-restantes fallan por motivos reales que se cuentan en clase (el agente sumó mal una nota, olvidó un informe, no aplicó
-una regla que él mismo citaba). Las salidas reales están en [`alumnos/soluciones/`](alumnos/soluciones/README.md).
+Los ejercicios se volvieron a ejecutar el **11-10-2026** con opencode 2.0.19, solo con CPU, como lo haría un alumno
+(`profesor/validar.sh`), y se comprobaron con `comprobar.py`:
+
+- Con **GLM-5.3-Flash**: **38 de 38** cumplen el criterio. F.3 (comandos) y EJ 21 (tareas programadas) se
+  validaron en **modo interactivo**, aprobando los permisos uno a uno; F.0 y F.1 son programas de Python.
+- Con el **modelo gratuito de opencode** (`big-pickle`, sin clave): **33 de 33** de los que se lanzan
+  con un encargo.
+- Los que fallaron durante la revalidación se arreglaron mejorando el encargo (EJ 05, EJ 07, EJ 08, EJ 25, F.2) o
+  se rehicieron para que funcionen en Windows (EJ 03, EJ 20, EJ 21). Lo que pasó en cada uno está en su enunciado.
+
+Las salidas reales están en [`alumnos/soluciones/`](alumnos/soluciones/README.md).
 
 Lo que salió al prepararlo —y se convirtió en contenido del taller—:
 
@@ -145,8 +154,11 @@ Lo que salió al prepararlo —y se convirtió en contenido del taller—:
 
 ## 💰 Coste
 
-Mediana de **0,0125 $ por ejercicio** en OpenRouter; los 38 ejercicios una vez, **0,65 $**. Para un aula de 30
-personas basta con **35 $** de crédito con margen. Detalle y tabla por número de alumnos en
+Con el **modelo gratuito de opencode, 0 €**. Tiene un límite de uso por modelo: si se agota, `taller.py lanzar` pasa
+solo a otro gratuito y en interactivo basta con `/models` ([wiki → Modelos](wiki/Modelos.md)).
+
+Con **GLM-5.3-Flash en OpenRouter** (respaldo, y para F.0 y F.1): mediana de **0,0084 $ por ejercicio**;
+todos los ejercicios una vez, **0,33 $**. Detalle por número de alumnos en
 [`profesor/PRESUPUESTO.md`](profesor/PRESUPUESTO.md).
 
 ## 📁 Qué hay en el repositorio
@@ -187,7 +199,7 @@ flowchart LR
 
 | | |
 |---|---|
-| Validar todos los ejercicios | `bash profesor/validar.sh` (≈ 10 min, ≈ 0,65 $) → `python3 herramientas/guardar_soluciones.py <ronda>` |
+| Validar todos los ejercicios | `bash profesor/validar.sh` (≈ 10 min; `TALLER_MODELO=opencode/big-pickle` para el gratuito) → `python3 herramientas/guardar_soluciones.py <ronda>` |
 | Cambiar un ejercicio | Edita `herramientas/aventura.py` y ejecuta `python3 herramientas/construir_kit.py` |
 | Regenerar las diapositivas | `cd presentacion/fuente && npm install && node generar_presentacion.js` |
 | Ver la web en local | `python3 herramientas/construir_web.py && python3 -m http.server -d _site` |

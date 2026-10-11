@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 18 · Facturas en PDF a Excel
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 51 s · 136.325 tokens de entrada y 3.960 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 41 s · 60.717 tokens de entrada y 3.962 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

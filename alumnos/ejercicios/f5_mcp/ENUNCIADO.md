@@ -54,9 +54,11 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar f5      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
 Cita literalmente `filas=6 suma=29800 media=4966.67`. En opencode 2.x la tool MCP no aparece suelta: el modelo la **busca en un catálogo** y la llama escribiendo código (tool `execute`), y el catálogo puede tardar unos segundos en cargarse.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/f5_mcp/`](../../soluciones/f5_mcp/)
 

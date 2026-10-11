@@ -1,17 +1,19 @@
 # ✅ Solución · EJ 20 · Avisar cuando cambia una web
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 22 s · 46.444 tokens de entrada y 2.415 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 25 s · 21.511 tokens de entrada y 2.657 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 
-Script con rutas relativas a su ubicación; funciona lanzado desde `/`. En septiembre, con 30 tools extra de un MCP global, dijo «Listo» con un script vacío.
+Ahora en Python (antes era bash + curl, que no funciona en Windows): rutas relativas al propio script, log de dos líneas y funciona lanzado desde la raíz del disco. En septiembre, con 30 tools extra de un MCP global, dijo «Listo» con un script vacío.
 
 ## Veredicto del comprobador
 
 ```text
-✅ existe vigila/bin/vigila_cambios.sh
+✅ existe vigila/vigila_cambios.py
   ✅ sin rutas absolutas escritas a mano
-  ✅ el log tiene al menos 2 líneas (tiene 7)
+  ✅ el log tiene al menos 2 líneas (tiene 4)
   ✅ lanzado desde / añade exactamente una línea
 
 🎉 Criterio de éxito cumplido · ej20

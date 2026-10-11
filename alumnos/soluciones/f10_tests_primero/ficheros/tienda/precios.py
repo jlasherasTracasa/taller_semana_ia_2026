@@ -5,7 +5,7 @@ def precio_con_iva(base, tipo="general"):
     """Devuelve el precio con IVA redondeado a 2 decimales. Tipos: general 21 %, reducido 10 %, superreducido 4 %."""
     tipos = {"general": 21, "reducido": 10, "superreducido": 4}
     if tipo not in tipos:
-        raise ValueError(f"Tipo de IVA desconocido: {tipo!r}")
+        raise ValueError(f"Tipo de IVA desconocido: {tipo}")
     return round(base * (1 + tipos[tipo] / 100), 2)
 
 
@@ -27,11 +27,12 @@ def total_ticket(lineas):
 def cambio(entregado, total):
     """Devuelve el cambio en monedas y billetes de euro, de mayor a menor, como lista de valores."""
     valores = [50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
-    resto = round((entregado - total) * 100)  # céntimos, para evitar errores de coma flotante
+    # Se trabaja en céntimos enteros para evitar errores de coma flotante.
+    resto = round((entregado - total) * 100)
     resultado = []
     for v in valores:
-        v_cent = round(v * 100)
-        while resto >= v_cent:
+        centimos = round(v * 100)
+        while resto >= centimos:
             resultado.append(v)
-            resto -= v_cent
+            resto -= centimos
     return resultado

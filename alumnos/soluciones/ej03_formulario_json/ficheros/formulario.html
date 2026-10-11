@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Taller de pan · Inscripción</title>
-  <style>
-    body{font-family:sans-serif;max-width:480px;margin:3rem auto;padding:0 1rem}
-    input,textarea{width:100%;padding:.5rem;margin:.25rem 0 .75rem}
-    button{padding:.5rem 1rem}
-  </style>
+  <meta charset="UTF-8">
+  <title>Inscripción al taller</title>
 </head>
 <body>
-  <h1>Inscripción al taller de pan</h1>
+  <h1>Inscripción al taller</h1>
   <form action="/enviar" method="post">
-    <label>Nombre<br><input type="text" name="nombre" required></label><br>
-    <label>Correo<br><input type="email" name="correo" required></label><br>
-    <label>Mensaje<br><textarea name="mensaje" rows="4" required></textarea></label><br>
-    <button type="submit">Enviar</button>
+    <p>
+      <label for="nombre">Nombre:</label><br>
+      <input type="text" id="nombre" name="nombre" required>
+    </p>
+    <p>
+      <label for="correo">Correo:</label><br>
+      <input type="email" id="correo" name="correo" required>
+    </p>
+    <p>
+      <label for="mensaje">Mensaje:</label><br>
+      <textarea id="mensaje" name="mensaje" rows="4" cols="40" required></textarea>
+    </p>
+    <p>
+      <button type="submit">Enviar</button>
+    </p>
   </form>
 </body>
 </html>

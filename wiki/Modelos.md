@@ -21,15 +21,21 @@ opencode ofrece algunos modelos gratis a través de su servicio **OpenCode Zen**
   disponibles, dentro de opencode escribe `/models`; los gratuitos llevan «Free» en el nombre (también
   `big-pickle`). El 11-10-2026 había, entre otros, `big-pickle`, `nemotron-3-ultra-free`, `mimo-v2.6-flash-free`,
   `step-5-preview-free` y `ling-3.1-flash-free`.
-- **Pueden tener límites de uso.** Si un aula entera sale por la misma conexión, quizá respondan más despacio o den
-  error de límite. Entonces: espera un minuto, prueba otro modelo gratuito o usa la clave de OpenRouter.
+- **Tienen un límite de uso, y es por modelo.** El 11-10-2026, tras unas cien ejecuciones seguidas desde la misma
+  conexión, `big-pickle` respondió `Rate limit exceeded` mientras otros gratuitos seguían funcionando. Si te pasa:
+  - en modo interactivo, `/models` y elige otro «Free» (por ejemplo `nemotron-3-ultra-free`);
+  - con `python taller.py lanzar`, el kit cambia solo al siguiente gratuito;
+  - para todo el taller, pon `TALLER_MODELO=opencode/nemotron-3-ultra-free` en tu `.env` (en clase podemos repartir
+    la sala entre dos modelos para no agotar ninguno);
+  - y si no hay manera, la clave de OpenRouter.
 - **Privacidad**: lo que lee el agente viaja al proveedor del modelo, y los servicios gratuitos pueden usarlo para
   mejorar sus modelos. Con los datos ficticios del taller no hay problema; con los tuyos de verdad, piénsalo.
 
 ### Validación con el modelo gratuito
 
-Los ejercicios se validaron el 11-10-2026 con `opencode/big-pickle` además de con GLM-5.3-Flash: el resultado de
-cada uno está en su enunciado, en «Lo que pasó al validarlo».
+Los ejercicios se validaron el 11-10-2026 con `opencode/big-pickle` además de con GLM-5.3-Flash: todos los que se
+lanzan con un encargo cumplieron el criterio también con el gratuito. El resultado de cada uno está en su enunciado,
+en «Lo que pasó al validarlo».
 
 ## 💳 OpenRouter (GLM-5.3-Flash)
 

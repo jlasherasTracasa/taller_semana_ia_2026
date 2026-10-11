@@ -1,27 +1,38 @@
 # Comparativa de ofertas de luz · 2025
 
-Cálculo a partir de `consumo_2025.csv` (3 814 kWh/año: 998 en punta, 1 157 en llano y 1 659 en valle) y las condiciones de `ofertas.md`.
+Cálculos hechos con el consumo real de `consumo_2025.csv` y los precios de `ofertas.md`
+(mediante el script `coste_anual.py`). Sin IVA ni impuesto eléctrico, como pide el enunciado.
 
-**Criterios comunes:** potencia contratada de 4,6 kW los 365 días, energía según los periodos de cada oferta, cuotas fijas incluidas y **sin IVA ni impuesto eléctrico**.
+**Datos de partida:** consumo anual de 3.814 kWh (punta 998 · llano 1.157 · valle 1.659),
+potencia contratada de 4,6 kW los 365 días.
 
 ## Coste anual por oferta
 
-| Oferta | Comercializadora   | Energía (€) | Potencia (€) | Cuota fija (€) | **Total anual (€)** |
-|--------|--------------------|------------:|-------------:|---------------:|--------------------:|
-| A · «Luz Plana»    | Ebro Energía      | 553,03 | 151,11 | –     | **704,14 €** |
-| B · «Tres Periodos»| Arga Luz          | 512,58 | 134,32 | –     | **646,89 €** |
-| C · «Ahorro Club»  | Bidasoa Eléctrica | 492,01 | 159,50 | 60,00 | **711,51 €** |
+| Oferta | Energía | Potencia | Cuotas fijas | **Total anual** |
+|---|---:|---:|---:|---:|
+| A · «Luz Plana» (Ebro Energía) | 553,03 € | 151,11 € | 0,00 € | **704,14 €** |
+| B · «Tres Periodos» (Arga Luz) | 512,58 € | 134,32 € | 0,00 € | **646,89 €** |
+| C · «Ahorro Club» (Bidasoa Eléctrica) | 492,01 € | 159,50 € | 60,00 € | **711,51 €** |
 
-## ¿Cuál es la más barata?
+**La más barata es la Oferta B (Arga Luz), con 646,89 € al año.**
 
-**La Oferta B («Tres Periodos», Arga Luz)** es la más barata: **646,89 €/año**.
+- Ahorro frente a la A: **57,25 €**
+- Ahorro frente a la C: **64,62 €**
 
-| Frente a | Ahorro anual con la B |
-|----------|----------------------:|
-| A · «Luz Plana»     | **57,25 €** |
-| C · «Ahorro Club»   | **64,62 €** |
+## ¿Es verdad lo que dice cada folleto?
 
-## Notas
+- **Oferta C dice «¡La más barata del mercado!»**: **FALSO.** Es precisamente la más cara
+  (711,51 €). Su precio por kWh es el más bajo (0,129 €/kWh), pero la cuota fija de 5 €/mes
+  (60 € al año) y la potencia algo más cara se lo comen.
+- **Oferta A («Luz Plana»)**: no hace promesas de precio, y su coste queda en el término
+  medio (704,14 €). Coherente, aunque no destaca en nada.
+- **Oferta B («Tres Periodos»)**: tampoco promete ser la más barata, pero **de hecho lo es**
+  gracias al precio bajo en valle (0,085 €/kWh), que es donde más se consume en esta casa.
 
-- La Oferta C presume de ser «la más barata del mercado» en su folleto, pero su precio de energía (0,129 €/kWh frente al 0,145 €/kWh plano de la A) no compensa ni la cuota de 5 €/mes (60 €/año) ni su tarifa de potencia más cara (0,095 €/kW·día): acaba siendo la opción más cara del año.
-- La Oferta B gana gracias a su reparto de consumo hacia el valle (1 659 kWh de 3 814 totales, ~43 %) a un precio muy bajo, y a su tarifa de potencia más barata.
+## Explicación sencilla
+
+Esta casa consume más en valle (noche/madrugada) que en punta: 1.659 kWh frente a 998 kWh.
+La oferta B cobra muy barato ese valle, así que gana aunque su precio en punta (0,210 €/kWh)
+sea el más alto de los tres. La oferta C tiene el cartel más llamativo —y el kWh más barato—,
+pero con una cuota de 5 € cada mes pagas 60 € al año antes de encender una sola bombilla.
+Moraleja: lo que importa no es el precio del kWh del folleto, sino el total con tu consumo real.

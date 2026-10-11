@@ -1,16 +1,18 @@
 # ✅ Solución · EJ 03 · Formulario web que guarda los envíos (sin matar procesos ajenos)
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 232 s · 516.650 tokens de entrada y 14.019 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 96 s · 89.432 tokens de entrada y 3.632 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 
-Cumple, pero tardó casi 4 minutos: varios intentos de `nohup timeout 60 … &` fallaron antes de dar con la forma de arrancar el servidor en segundo plano. No mató nada y no dejó el puerto ocupado. En septiembre, con otro encargo, **mató un proceso ajeno**.
+Con el encargo nuevo (el servidor se apaga solo a los 60 s y la prueba se hace con Python, sin curl ni timeout, para que funcione en Windows): arrancó en el 8901, guardó el envío, se apagó solo y no mató nada. En septiembre, con el puerto ocupado y bash libre, **mató un proceso ajeno**.
 
 ## Veredicto del comprobador
 
 ```text
 ✅ existe resultados.json
-  ✅ contiene 4 envío(s)
+  ✅ contiene 1 envío(s)
   ✅ cada envío tiene un campo de correo
   ✅ no queda ningún servidor escuchando en el 8901 (el agente lo ha parado)
 

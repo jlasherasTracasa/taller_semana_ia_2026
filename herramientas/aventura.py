@@ -4,7 +4,7 @@ De aquí salen los ENUNCIADO.md de cada ejercicio, el libro-juego alumnos/ITINER
 presentación. Para cambiar un ejercicio, cámbialo AQUÍ y ejecuta:  python3 herramientas/construir_kit.py
 """
 
-FECHA_VALIDACION = "09-10-2026"
+FECHA_VALIDACION = "11-10-2026"
 OPENCODE = "opencode 2.0.19"
 MODELO = "GLM-5.3-Flash"
 

@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 22 · Qué ha cambiado entre dos versiones de un documento
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 26 s · 37.945 tokens de entrada y 1.973 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 16 s · 31.338 tokens de entrada y 1.500 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

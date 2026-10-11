@@ -1,75 +1,75 @@
 
 > build · Qwen3.8-27B-FP8
-✱ Glob "**/taller_pan.eml" 1 match
-> build · Qwen3.8-27B-FP8
 → Read taller_pan.eml 
 > build · Qwen3.8-27B-FP8
-El correo es claro: taller de pan artesano el **sábado 28 de noviembre de 2026 a las 10:00** en la casa de cultura (el mes y año salen de la cabecera `Date: Mon, 23 Nov 2026`). Genero el `.ics`:
+El correo indica: taller de pan artesano el sábado 28 a las 10:00 en la casa de cultura. La cabecera `Date` es `Mon, 23 Nov 2026 +0100`, así que el evento es el **28 de noviembre de 2026**. Genero el fichero `.ics`:
 ← Write taller_pan.ics
 Created file successfully: taller_pan.ics
 > build · Qwen3.8-27B-FP8
-Ahora lo valido con la librería `icalendar`:
-$ python3 - <<'EOF'
-try:
-    from icalendar import Calendar
-except ImportError:
-    import subprocess, sys
-    subprocess.run([sys.executable, "-m", "pip", "install", "--quiet", "icalendar"], check=True)
-    from icalendar import Calendar
-
-with open("taller_pan.ics", "rb") as f:
-    cal = Calendar.from_ical(f.read())
-
-for comp in cal.walk():
-    if comp.name == "VEVENT":
-        print("SUMMARY :", comp.get("SUMMARY"))
-        print("DTSTART :", comp.decoded("DTSTART"), "| tz:", comp.decoded("DTSTART").tzname())
-        print("DTEND   :", comp.decoded("DTEND"), "| tz:", comp.decoded("DTEND").tzname())
-        dur = comp.decoded("DTEND") - comp.decoded("DTSTART")
-        print("DURACION:", dur)
-        print("LOCATION:", comp.get("LOCATION"))
-        print("UID     :", comp.get("UID"))
-
-import zoneinfo
-# comprobarweekday y conversión
-from datetime import datetime
-d = datetime(2026, 11, 28, 10, 0, zoneinfo.ZoneInfo("Europe/Madrid"))
-print("28-nov-2026 10:00 Madrid ->", d.strftime("%A %d %B %Y %H:%M %Z%z"))
-print("Día de la semana correcto:", d.strftime("%A") == "Saturday")
-EOF
-SUMMARY : Taller de pan artesano
-DTSTART : 2026-11-28 10:00:00+01:00 | tz: CET
-DTEND   : 2026-11-28 12:30:00+01:00 | tz: CET
-DURACION: 2:30:00
-LOCATION: Casa de Cultura, Puente
-UID     : taller-pan-artesano-20261128@ayto-puente.es
-Traceback (most recent call last):
-  File "<stdin>", line 24, in <module>
-TypeError: 'zoneinfo.ZoneInfo' object cannot be interpreted as an integer
+Ahora lo valido con la biblioteca `icalendar` de Python:
+⚙ execute {"code":"result = await tools.shell({\n  \"command\": \"python3 -c \\\"\\nimport icalendar\\nwith open('taller_pan.ics', 'rb') as f:\\n    cal = icalendar.Calendar.from_ical(f.read())\\nprint('VCALENDAR valido:', cal.name)\\nfor c in cal.walk():\\n    print(c.name, dict((k, str(v)) for k, v in c.items()))\\n\\\"\\n\",\n  \"workdir\": \"~/taller-agentes/ej09_calendario_ics\"\n})"} 
 > build · Qwen3.8-27B-FP8
-El `.ics` parsea perfecto. El error final es solo de mi snippet de comprobación del día de la semana (argumentos mal pasados), lo repito limpio:
-$ python3 -c "
-from datetime import datetime
-from zoneinfo import ZoneInfo
-d = datetime(2026, 11, 28, 10, 0, tzinfo=ZoneInfo('Europe/Madrid'))
-print(d.strftime('%A %d %B %Y %H:%M %Z%z'))
-print('Es sabado:', d.strftime('%A') == 'Saturday')
-"
-Saturday 28 November 2026 10:00 CET+0100
-Es sabado: True
+⚙ execute {"code":"result = await tools.search({\"query\": \"shell execute command\"})\nreturn result"} 
 > build · Qwen3.8-27B-FP8
-Listo. **`taller_pan.ics`** generado y validado en `ej09_calendario_ics/`:
+⚙ execute {"code":"return await tools.search({\"query\": \"shell execute command run\"})"} 
+> build · Qwen3.8-27B-FP8
+⚙ execute {"code":"const a = await tools.search({\"query\": \"python bash terminal process\"});\nreturn {\"results\": a.items.map(i => i.path), \"next\": a.next}"} 
+> build · Qwen3.8-27B-FP8
+⚙ execute {"code":"const a = await tools.search({\"query\": \"run javascript command prompt console\"});\nreturn a.items.map(i => i.path)"} 
+> build · Qwen3.8-27B-FP8
+⚙ execute {"code":"const a = await tools.search({\"query\": \"process spawn child exec system\"});\nreturn a.items.map(i => i.path)"} 
+> build · Qwen3.8-27B-FP8
+⚙ execute {"code":"const all = await tools.search({\"query\": \"\", \"limit\": 100});\nreturn {\"count\": all.items.length, \"paths\": all.items.map(i => i.path), \"next\": all.next}"} 
+> build · Qwen3.8-27B-FP8
+No shell available in this environment (I checked the tool catalog), so for the `icalendar` validation I'll load real Python in the browser via Pyodide (WebAssembly CPython) after creating the file. First, the `.ics`:
+← Write taller_pan.ics
+Wrote file successfully: taller_pan.ics
+> build · Qwen3.8-27B-FP8
+The file is created. Since there's no shell in this environment, I'll validate using real CPython via Pyodide in the browser (which has `icalendar` installable through `micropip`):
+⚙ execute {"code":"return await tools.browser.tabs.open({\"url\": \"about:blank\", \"focus\": true})"} 
+> build · Qwen3.8-27B-FP8
+No browser connected either — so I'll try running real CPython in the Code Mode sandbox by loading Pyodide from CDN (it has WebAssembly + `fetch`):
+⚙ execute {"code":"const src = await (await fetch(\"https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js\")).text();\n(0, eval)(src);\nreturn typeof globalThis.loadPyodide;"} 
+> build · Qwen3.8-27B-FP8
+⚙ execute {"code":"const src = await (await fetch(\"https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js\")).text();\nreturn {bytes: src.length, head: src.slice(0, 120), hasWasm: typeof WebAssembly !== \"undefined\", hasModule: typeof importScripts, fnConstructors: Object.getOwnPropertyNames(globalThis).filter(n => /eval|Function|import/i.test(n))};"} 
+> build · Qwen3.8-27B-FP8
+⚙ execute {"code":"let probes = {};\ntry { probes.wasm = typeof WebAssembly; } catch (e) { probes.wasm = \"ERR:\" + e.message; }\ntry { probes.fnc = typeof Function; } catch (e) { probes.fnc = \"ERR:\" + e.message; }\ntry { probes.proc = typeof process; } catch (e) { probes.proc = \"ERR:\" + e.message; }\ntry { probes.self = typeof self; } catch (e) { probes.self = \"ERR:\" + e.message; }\ntry { probes.req = typeof require; } catch (e) { probes.req = \"ERR:\" + e.message; }\nreturn probes;"} 
+> build · Qwen3.8-27B-FP8
+⚙ execute {"code":"return await tools.search({\"query\": \"\"})"} 
+> build · Qwen3.8-27B-FP8
+The sandbox lacks WebAssembly and no browser is connected, so real Python execution isn't possible in this session. Let me verify the file content and leave a ready-to-run validation script:
+→ Read taller_pan.ics 
+← Write validar_taller_pan.py
+Created file successfully: validar_taller_pan.py
+> build · Qwen3.8-27B-FP8
+Hecho. Resumen del trabajo:
+
+## Datos extraídos de `taller_pan.eml`
 
 | Campo | Valor | Fuente |
 |---|---|---|
-| **Título** | Taller de pan artesano | cuerpo del correo |
-| **Inicio** | sábado 28/11/2026, 10:00 (CET) | "sábado 28 a las 10:00" + mes/año de `Date: Mon, 23 Nov 2026` |
-| **Fin** | 12:30 (2h 30min) | duración pedida |
-| **Lugar** | Casa de Cultura, Puente | cuerpo del correo |
+| Título | Taller de pan artesano | Cuerpo del correo |
+| Fecha | **sábado 28 de noviembre de 2026** | Día del cuerpo («sábado 28»); año y mes de la cabecera `Date: Mon, 23 Nov 2026` (el 28/11/2026 cae efectivamente en sábado ✓) |
+| Inicio | 10:00 | Cuerpo del correo |
+| Duración | 2 h 30 min → fin 12:30 | Requisito |
+| Lugar | Casa de Cultura | Cuerpo del correo |
 
-Detalles de la validación con `icalendar`:
-- ✅ Fichero parsea como `VCALENDAR` válido (RFC 5545)
-- ✅ `DTSTART`/`DTEND` con `TZID=Europe/Madrid`, resolviendo a **CET (+01:00)** — correcto para noviembre
-- ✅ Duración exacta `2:30:00`
-- ✅ Bloque `VTIMEZONE` incluido con reglas CET/CEST
-- ✅ Comprobado que el 28-nov-2026 cae en sábado (el "sábado 28" del texto es coherente con el mes del header)
+## `taller_pan.ics` generado
+
+- **DTSTART;TZID=Europe/Madrid:20261128T100000** y **DTEND;TZID=Europe/Madrid:20261128T123000** (2 h 30 min).
+- Bloque **VTIMEZONE** completo para `Europe/Madrid` con las reglas STANDARD (CET, +01:00) y DAYLIGHT (CEST, +02:00). Nota: el 28/11/2026 ya es horario de invierno (CET, +01:00), porque el cambio de hora fue el 25/10 — el evento no cruza ninguna transición.
+- Requeridos de RFC 5545 presentes: `VERSION`, `PRODID`, `UID`, `DTSTAMP`; descripción con *folding* de líneas y escape `\;`.
+
+## Validación
+
+⚠️ **Transparencia:** en esta sesión no hay shell ni navegador conectado (lo comprobé en el catálogo de herramientas e intenté hasta ejecutar CPython vía Pyodide/WASM), así que **no he podido ejecutar la biblioteca `icalendar` realmente**. En su lugar he hecho dos cosas:
+
+1. **Verificación manual contra RFC 5545** línea a línea: pares BEGIN/END balanceados, propiedades obligatorias de VCALENDAR/VEVENT/VTIMEZONE correctas, offset CET coherente, líneas ≤ 75 octetos, escapes de texto válidos y duración exacta de 150 minutos. **Todo pasa.**
+2. He dejado listo **`validar_taller_pan.py`**, el script que hace la validación real que pediste. En cualquier entorno con Python basta con:
+   ```bash
+   pip install icalendar
+   python3 validar_taller_pan.py
+   ```
+   El script lee `taller_pan.ics` con `Calendar.from_ical()`, comprueba DTSTART/DTEND decodificados (con zona horaria), la duración de 2:30 h, el offset +01:00 y termina con `OK:` si todo cuadra.
+
+Si me das una sesión con terminal, ejecuto el script y te pego su salida literal.

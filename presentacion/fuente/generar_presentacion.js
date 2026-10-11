@@ -738,7 +738,7 @@ async function construir(conNotas) {
     s.addTable(filas.map((r, i) => r.map((c, j) => ({ text: c, options: { bold: i === 0 || j === 0, color: i === 0 ? C.tinta2 : j === 0 ? C.oroOsc : C.tinta, fontFace: i === 0 ? TIT : TXT, fontSize: i === 0 ? 14 : 13, align: j ? "right" : "left",
       border: [{ type: "none" }, { type: "none" }, { type: "solid", color: C.linea, pt: 0.75 }, { type: "none" }] } }))),
       { x: 0.85, y: 2.15, w: 6.7, colW: [1.5, 1.9, 1.5, 1.8], rowH: 0.46, margin: 0.06 });
-    [["Un ejercicio típico", "mediana 0,0125 $ · media " + dolares(RES.coste_medio, 3)], [`Los ${NUM_EJ} ejercicios una vez`, dolares(RES.coste_total, 2)],
+    [["Un ejercicio típico", "mediana " + dolares(RES.coste_mediana || 0.0125, 4) + " · media " + dolares(RES.coste_medio, 3)], [`Los ${NUM_EJ} ejercicios una vez`, dolares(RES.coste_total, 2)],
       ["Modelo gratuito de opencode", "0 € (con límites de uso y la lista cambia)"], ["Precio GLM-5.3-Flash", "0,15 $/M entrada · 0,50 $/M salida"]].forEach(([h, t], i) => {
       tarjeta(s, 8.1, 2.0 + i * 1.15, 4.65, 1.02);
       s.addText(h.toUpperCase(), { x: 8.35, y: 2.08 + i * 1.15, w: 4.2, h: 0.3, fontFace: TXT, fontSize: 9.5, bold: true, color: C.oroOsc, charSpacing: 2, margin: 0 });

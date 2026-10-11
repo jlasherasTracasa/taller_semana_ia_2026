@@ -1,10 +1,12 @@
-# 🟡 Solución · F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?
+# ✅ Solución · F.8 · Auditar permisos: ¿qué puede hacer tu agente sin preguntarte?
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 50 s · 70.021 tokens de entrada y 4.583 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 95 s · 81.134 tokens de entrada y 9.786 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 
-Dejó `opencode_seguro.json` perfecto (17/17, `external_directory: deny`, sin claves) pero **no escribió `informe_permisos.md`** y terminó preguntando si quería que lo escribiera: hizo la parte que tenía comprobación y se saltó la que no.
+El 11-10: 17/17, `external_directory: deny`, sin claves y con el informe. El 09-10 dejó la configuración perfecta pero **no escribió el informe**: lo no comprobado no se hace.
 
 ## Veredicto del comprobador
 
@@ -13,9 +15,9 @@ Dejó `opencode_seguro.json` perfecto (17/17, `external_directory: deny`, sin cl
   ✅ simular_permisos.py: 17/17 órdenes con la decisión esperada
   ✅ external_directory en deny
   ✅ ninguna apiKey escrita a mano
-  ❌ existe informe_permisos.md
+  ✅ existe informe_permisos.md
 
-⚠️  1 comprobación(es) sin cumplir · f8
+🎉 Criterio de éxito cumplido · f8
 ```
 
 ## Qué hay en esta carpeta

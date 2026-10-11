@@ -1,84 +1,96 @@
-"""EJ 19 - Genera un PDF de certificado por persona a partir de nombres.csv."""
+#!/usr/bin/env python3
+"""Genera certificados en PDF a partir de nombres.csv usando reportlab."""
+
 import csv
 import os
+from datetime import date
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
 from reportlab.pdfgen import canvas
 
-ANCHO, ALTO = A4
+CSV_FILE = "nombres.csv"
+OUT_DIR = "certificados"
 
 
-def generar_certificado(nombre, curso, horas, ruta):
+def dibujar_certificado(nombre: str, curso: str, horas: str, ruta: str) -> None:
     c = canvas.Canvas(ruta, pagesize=A4)
+    ancho, alto = A4
 
-    # Borde sobrio (doble marco)
-    c.setStrokeColorRGB(0.25, 0.25, 0.25)
+    # Marco doble sobrio
+    c.setStrokeColorRGB(0.15, 0.15, 0.15)
     c.setLineWidth(2)
-    c.rect(1.5 * cm, 1.5 * cm, ANCHO - 3 * cm, ALTO - 3 * cm)
-    c.setLineWidth(0.75)
-    c.rect(1.7 * cm, 1.7 * cm, ANCHO - 3.4 * cm, ALTO - 3.4 * cm)
+    c.rect(1.2 * cm, 1.2 * cm, ancho - 2.4 * cm, alto - 2.4 * cm)
+    c.setLineWidth(0.7)
+    c.rect(1.45 * cm, 1.45 * cm, ancho - 2.9 * cm, alto - 2.9 * cm)
 
-    # Encabezado
-    c.setFont("Helvetica-Bold", 24)
-    c.drawCentredString(ANCHO / 2, ALTO - 4 * cm, "CERTIFICADO DE ASISTENCIA")
-    c.setFont("Helvetica", 12)
-    c.drawCentredString(ANCHO / 2, ALTO - 5.2 * cm,
-                        "Centro de Mayores · Fin de curso")
+    # Titulo
+    c.setFont("Times-Bold", 32)
+    c.drawCentredString(ancho / 2, alto - 5.5 * cm, "CERTIFICADO")
+    c.setFont("Times-Roman", 14)
+    c.drawCentredString(ancho / 2, alto - 6.6 * cm, "DE ASISTENCIA")
 
-    # Línea separadora
-    c.setLineWidth(1)
-    c.line(6 * cm, ALTO - 6 * cm, ANCHO - 6 * cm, ALTO - 6 * cm)
+    c.setLineWidth(0.8)
+    c.line(5 * cm, alto - 7.3 * cm, ancho - 5 * cm, alto - 7.3 * cm)
 
     # Cuerpo
-    y = ALTO / 2 + 1.5 * cm
-    c.setFont("Helvetica", 12)
-    c.drawCentredString(ANCHO / 2, y + 1.8 * cm, "Se certifica que")
-    c.setFont("Helvetica-Bold", 20)
-    c.drawCentredString(ANCHO / 2, y, nombre)
-    c.setFont("Helvetica", 12)
-    c.drawCentredString(ANCHO / 2, y - 1.2 * cm, "ha participado en la actividad:")
+    c.setFont("Times-Italic", 13)
+    c.drawCentredString(ancho / 2, alto - 10.5 * cm, "Se certifica que")
 
-    c.setFont("Helvetica-BoldOblique", 16)
-    c.drawCentredString(ANCHO / 2, y - 2.6 * cm, f"«{curso}»")
+    c.setFont("Times-Bold", 26)
+    c.drawCentredString(ancho / 2, alto - 12.2 * cm, nombre)
 
-    # Horas, al pie
-    c.setFont("Helvetica", 12)
-    c.drawCentredString(ANCHO / 2, 4.5 * cm,
-                        f"Duración del curso: {horas} horas")
+    c.setFont("Times-Roman", 12)
+    c.drawCentredString(
+        ancho / 2, alto - 13.8 * cm, "ha completado el curso"
+    )
 
-    # Firma
-    c.setFont("Helvetica-Oblique", 11)
-    c.drawRightString(ANCHO - 3 * cm, 3 * cm, "La Dirección")
+    c.setFont("Times-Bold", 16)
+    c.drawCentredString(ancho / 2, alto - 15.0 * cm, curso)
+
+    c.setFont("Times-Roman", 12)
+    c.drawCentredString(
+        ancho / 2, alto - 16.2 * cm,
+        f"con una duracion de {horas} horas",
+    )
+
+    # Pie: fecha de emision
+    c.setFont("Times-Roman", 10)
+    c.drawCentredString(
+        ancho / 2, 3.2 * cm,
+        f"Expedido el {date.today().strftime('%d/%m/%Y')}",
+    )
 
     c.showPage()
     c.save()
 
 
-def main():
-    with open("nombres.csv", newline="", encoding="utf-8") as f:
-        filas = list(csv.DictReader(f))
+def main() -> None:
+    os.makedirs(OUT_DIR, exist_ok=True)
 
-    os.makedirs("certificados", exist_ok=True)
+    personas = []
+    with open(CSV_FILE, newline="", encoding="utf-8") as f:
+        for fila in csv.DictReader(f):
+            nombre = fila["nombre"].strip()
+            personas.append((nombre, fila["curso"].strip(), fila["horas"].strip()))
+            ruta = os.path.join(OUT_DIR, f"certificado_{nombre}.pdf")
+            dibujar_certificado(nombre, fila["curso"].strip(), fila["horas"].strip(), ruta)
+            print(f"Generado: {ruta}")
 
-    for fila in filas:
-        nombre = fila["nombre"].strip()
-        nombre_fichero = nombre.replace(" ", "_")
-        ruta = os.path.join("certificados", f"certificado_{nombre_fichero}.pdf")
-        generar_certificado(nombre, fila["curso"].strip(), fila["horas"].strip(), ruta)
-        print(f"Generado: {ruta}")
+    # Verificacion: un PDF por fila y cada uno con su nombre
+    pdfs = sorted(p for p in os.listdir(OUT_DIR) if p.endswith(".pdf"))
+    esperados = sorted(f"certificado_{n}.pdf" for n, _, _ in personas)
+    assert len(personas) == len(set(n for n, _, _ in personas)), "Nombres duplicados en el CSV"
+    assert pdfs == esperados, f"Desajuste de ficheros:\n{pdfs}\nvs\n{esperados}"
 
-    # Verificación: un PDF por fila, sin duplicados
-    esperados = {f"certificado_{f['nombre'].strip().replace(' ', '_')}.pdf"
-                 for f in filas}
-    generados = set(os.listdir("certificados"))
-    pdfs = {x for x in generados if x.endswith(".pdf")}
+    from pypdf import PdfReader  # verificacion de contenido
 
-    print(f"\nFilas del CSV: {len(filas)} | PDFs generados: {len(pdfs)}")
-    if pdfs == esperados and len(pdfs) == len(filas):
-        print("✔ Verificación correcta: un PDF por fila, cada uno con su nombre.")
-    else:
-        print("✘ Fallos:", esperados ^ pdfs)
+    for nombre, _, _ in personas:
+        reader = PdfReader(os.path.join(OUT_DIR, f"certificado_{nombre}.pdf"))
+        texto = "".join(page.extract_text() or "" for page in reader.pages)
+        assert nombre in texto, f"'{nombre}' no aparece en su certificado"
+
+    print(f"\nOK: {len(personas)} PDFs generados en '{OUT_DIR}/', uno por fila del CSV, todos con su nombre.")
 
 
 if __name__ == "__main__":

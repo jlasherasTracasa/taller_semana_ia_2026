@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 19 · Certificados personalizados en lote
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 24 s · 89.272 tokens de entrada y 1.928 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 35 s · 55.616 tokens de entrada y 3.445 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

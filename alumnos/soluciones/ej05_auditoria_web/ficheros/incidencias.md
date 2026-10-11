@@ -1,96 +1,48 @@
-# Auditoría de accesibilidad — `web_centro_mayores.html`
+# Incidencias de accesibilidad — `web_centro_mayores.html`
 
-**Fecha:** 09-oct-2026 · **Referencias:** WCAG 2.1 AA · Página auditada para usuarios mayores (centro de mayores).
+Auditoría del fichero original `web_centro_mayores.html`. No se ha modificado el original; todas las correcciones están aplicadas en `web_corregida.html`.
 
-Resumen: **9 incidencias** (3 críticas, 4 graves, 2 menores). El original no es utilizable por este público objetivo: texto casi invisible, letra de 8–9 px, imposible de usar en móvil y sin teclado. La corrección está aplicada en **`web_corregida.html`** (el original no se ha tocado).
+## 1. Contraste de color ❌ → ✅
 
----
+**Fallo:** El fondo es morado oscuro (`background:#7a2c8f`) y el texto gris medio (`color:#4d4d4d`). El contraste es muy bajo (≈ 1,6:1) e ilegible para personas con baja visión. Además, los enlaces usan colores verdosos claros (`#8fa`, `#9aa`) que también contrastan mal con el fondo y se confunden entre sí.
 
-## CRÍTICAS
+**Corrección:** Fondo blanco (#ffffff) con texto gris muy oscuro casi negro (#222222), contraste ≈ 16:1. Los enlaces pasan a azul oscuro subrayado (#0b57d0), que contrasta bien sobre blanco y se distingue claramente del texto normal.
 
-### 1. Contraste de color del texto principal — INUTILIZABLE
-- **Dónde:** `<style>` línea 4 — `background:#7a2c8f; color:#4d4d4d`.
-- **Problema:** gris medio sobre morado oscuro = **1,04 : 1**. Requiere ≥ 4,5:1 (WCAG 1.4.3). A efectos prácticos el texto es invisible sobre el fondo; es el fallo más severo de la página.
-- **Corrección:** texto **blanco `#ffffff`** sobre el mismo morado → **8,13 : 1** ✓.
+## 2. Tamaño de letra ❌ → ✅
 
-### 2. Tamaño de letra — 9 px y hasta 8 px
-- **Dónde:** línea 4 `font-size:9px`; línea 12 enlace a `font-size:8px`.
-- **Problema:** 9 px es ilegible para el público mayor; el enlace "leer mas" baja a 8 px. Ninguna cabecera destaca.
-- **Corrección:** base **18 px** (recomendable ≥ 16 px, y más en este colectivo), jerarquía con `h3` a 24 px, enlaces al tamaño base.
+**Fallo:** El cuerpo usa `font-size:9px`, demasiado pequeño para lectores mayores, y un enlace está aún más pequeño (`font-size:8px`). Además, se fuerza un tipo de letra decorativo ("Comic Sans MS") poco legible.
 
-### 3. Navegación con teclado — el menú principal no es enfocable
-- **Dónde:** línea 7 — `<div onclick="location='agenda.html'">`.
-- **Problema:** un `div` clicable no recibe foco ni responde a Enter/Espacio (WCAG 2.1.1 y 4.1.2). Un usuario de teclado o lector de pantalla **no puede entrar a la agenda**. Además el `<div>` no expone rol de enlace.
-- **Corrección:** sustituir por `<a href="agenda.html">`, que es enfocable, activable con Enter y anunciada como enlace. Único elemento interactivo real que existía (los otros dos enlaces son trampas, ver #8).
+**Corrección:** Tamaño base de 18 px (muy por encima del mínimo exigido de 14 px), la fuente pasa a una pila legible del sistema (`Arial, Helvetica, sans-serif`) y todos los elementos escalan relativos a esa base. Se elimina el tamaño diminuto del enlace.
 
----
+## 3. Adaptación al móvil ❌ → ✅
 
-## GRAVES
+**Fallo:** La tabla tiene anchura fija de 900 px (etiqueta `width="900"` y regla CSS `table{width:900px}`), lo que obliga a hacer scroll horizontal en pantallas pequeñas. Falta la etiqueta `<meta name="viewport">`, imprescindible para que el móvil escale la página correctamente.
 
-### 4. Sin `<meta name="viewport">` y tabla a ancho fijo — adaptación al móvil
-- **Dónde:** falta en `<head>`; línea 5 `table{width:900px}` y línea 9 `<table width="900">`.
-- **Problema:** los móviles renderizan a ~980 px y escalan todo a la mitad: texto ya ilegible (9 px → ~4 px efectivos) y desplazamiento horizontal obligatorio (WCAG 1.4.10). Falla el test de 320 px.
-- **Corrección:** `<meta name="viewport" content="width=device-width, initial-scale=1">`, tabla a `width:100%` con celdas apilables por media query y envuelta en contenedor con desbordamiento controlado como red de seguridad.
+**Corrección:** Se añade `<meta name="viewport" content="width=device-width, initial-scale=1">`, se elimina la anchura fija de la tabla (`width:100%`) y se añade una media query (`@media (max-width:600px)`) que apila las celdas del horario en vertical y reduce ligeramente el tamaño base.
 
-### 5. Falta el atributo `lang`
-- **Dónde:** línea 2 — `<html>`.
-- **Problema:** sin `lang`, los lectores de pantalla no saben qué síntesis de voz usar (puede leer español con fonética inglesa) y los buscadores/correctores pierden contexto (WCAG 3.1.1).
-- **Corrección:** `<html lang="es">`.
+## 4. Atributo `lang` ❌ → ✅
 
-### 6. Imagen sin texto alternativo
-- **Dónde:** línea 7 — `<img src="logo.gif">`.
-- **Problema:** un lector de pantalla anuncia "imagen" sin más; si el logo fuera también enlace (está dentro del bloque de navegación), no se sabría a dónde lleva (WCAG 1.1.1).
-- **Corrección:** `alt="Logotipo del centro de mayores"` (y si el conjunto fuese enlace, el `alt` describe el destino).
+**Fallo:** La etiqueta `<html>` no declara el idioma; los lectores de pantalla no saben cómo pronunciar el texto.
 
-### 7. Enlaces con contraste insuficiente
-- **Dónde:** línea 5 `a{color:#8fa}` (≈ **3,54 : 1**) y línea 12 enlace inline `color:#9aa` (**3,34 : 1**).
-- **Problema:** ambos por debajo de 4,5:1 para texto normal (WCAG 1.4.3); el segundo además a 8 px.
-- **Corrección:** color de enlace **`#ffd75e`** sobre el morado (**5,86 : 1** ✓), mismo tamaño que el texto, y subrayado para no depender solo del color.
+**Corrección:** Se añade `lang="es"` en `<html lang="es">`.
 
----
+## 5. Textos alternativos de las imágenes ❌ → ✅
 
-## MENORES
+**Fallo:** El logo usa `<img src="logo.gif">` sin atributo `alt`; un lector de pantalla lo anuncia como "imagen" sin más información (o lo ignora si no hay `alt`).
 
-### 8. Enlace trampa y texto no descriptivo
-- **Dónde:** líneas 11–12 — "Pulsa **AQUI** …" + `<a href="#">leer mas</a>`.
-- **Problema:** `href="#"` no lleva a ningún sitio (enlace muerto) y "leer mas"/"AQUI" no describen destino (WCAG 2.4.4). Con lectores de pantalla se listan los enlaces sueltos y estos no dicen nada.
-- **Corrección:** un único enlace real: `<a href="excursiones.html">Información sobre las excursiones</a>` (si aún no existe esa página, quedará documentada como página pendiente; mejor un 404 honesto que un `#`).
+**Corrección:** Se añade `alt="Logotipo del centro de mayores"`. Al ser un logo que solo identifica el sitio, el texto alternativo es breve y descriptivo.
 
-### 9. Título de la página engañoso
-- **Dónde:** línea 3 — `<title>Pensionista del barrio</title>`.
-- **Problema:** no describe la página (habla del programa semanal del centro). Es lo que anuncian pestaña, historial y lector de pantalla (WCAG 2.4.2).
-- **Corrección:** `<title>Programa semanal — Centro de Mayores</title>`.
+## 6. Navegación con teclado ❌ → ✅
 
----
+**Fallo:** El bloque `<div onclick="location='agenda.html'">` es un enlace falso: un `div` clicable no recibe foco con la tecla Tab ni responde a Enter, así que quien navega con teclado o usa lector de pantalla no puede acceder a la agenda. Además, `<h3>` aparece sin haber un `<h1>` antes (jerarquía de encabezados rota) y el enlace "leer más" apunta a `#` (no lleva a ninguna parte) mientras que el texto del párrafo dice "Pulsa AQUI", dejando el destino ambiguo.
 
-## Matriz resumen
-
-| # | Incidencia | Severidad | WCAG | Estado |
-|---|---|---|---|---|
-| 1 | Contraste texto 1,04:1 | Crítica | 1.4.3 | Corregida |
-| 2 | Letra 8–9 px | Crítica | — (usabilidad) | Corregida |
-| 3 | Menú no enfocable (`div onclick`) | Crítica | 2.1.1 / 4.1.2 | Corregida |
-| 4 | Sin viewport, tabla 900 px | Grave | 1.4.10 | Corregida |
-| 5 | Falta `lang="es"` | Grave | 3.1.1 | Corregida |
-| 6 | `img` sin `alt` | Grave | 1.1.1 | Corregida |
-| 7 | Enlaces < 4,5:1 | Grave | 1.4.3 | Corregida |
-| 8 | Enlace `#` + "AQUI"/"leer mas" | Menor | 2.4.4 | Corregida |
-| 9 | `<title>` genérico | Menor | 2.4.2 | Corregida |
-
-**Contrastes verificados (WCAG 1.4.3):**
-
-| Combinación | Ratio | Veredicto |
-|---|---|---|
-| `#4d4d4d` sobre `#7a2c8f` (original) | 1,04 : 1 | ✗ falla |
-| `#8fa` sobre `#7a2c8f` (enlace original) | 3,54 : 1 | ✗ falla |
-| `#9aa` sobre `#7a2c8f` (enlace original) | 3,34 : 1 | ✗ falla |
-| `#ffffff` sobre `#7a2c8f` (corregido) | 8,13 : 1 | ✓ AAA |
-| `#ffd75e` sobre `#7a2c8f` (enlace corregido) | 5,86 : 1 | ✓ AA |
+**Corrección:**
+- El `div` clicable se sustituye por un `<a href="agenda.html">` real, que es enfocable con Tab y activable con Enter.
+- Se reorganiza la jerarquía de encabezados: `<h1>` para el título principal del sitio y `<h2>` para "Programa del centro".
+- El enlace "leer más" se elimina por estar roto (`href="#"`) y se sustituye por un enlace real a `excursiones.html` con un texto descriptivo ("información sobre las excursiones") en lugar de un "AQUI"/"leer más" fuera de contexto.
 
 ## Decisiones tomadas sin preguntar
 
-1. **Paleta conservada** (morado de fondo) pero texto blanco y enlaces ámbar: se mantiene la identidad con contrastes AAA/AA.
-2. **Fuente:** se sustituye *Comic Sans MS* por una pila legible (`Verdana, Geneva, sans-serif`): Verdana tiene trazos anchos y buena diferenciación de caracteres para mayores; si se desea otra, cambiar una línea.
-3. **Tabla del programa:** en móvil (≤600 px) cada día pasa a bloque apilado en vez de scroller horizontal; sigue siendo una `<table>` semántica para lectores de pantalla.
-4. **Páginas de destino:** `agenda.html` se conserva como en el onclick original; las excursiones apuntan a `excursiones.html` (nueva); el logo deja de ser enlace (no lo era funcionalmente para teclado).
-5. **El original no se toca**: correcciones solo en `web_corregida.html`.
+- **Destino del enlace del logo:** mantenemos `agenda.html`, que era el destino del `onclick` original.
+- **Enlace "leer más":** el original apuntaba a `#` (enlace vacío). Decido convertirlo en un enlace a `excursiones.html` con texto significativo, coherente con el párrafo que lo precede.
+- **Tamaño de letra:** el requisito mínimo es 14 px; uso 18 px porque el público objetivo son personas mayores.

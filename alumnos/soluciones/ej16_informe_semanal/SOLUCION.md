@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 16 · Informe semanal que se recalcula solo
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 37 s · 83.603 tokens de entrada y 3.951 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 16 s · 25.650 tokens de entrada y 1.392 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

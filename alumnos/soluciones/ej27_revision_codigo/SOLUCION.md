@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 27 · Revisión de código de un cambio (pull request)
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 110 s · 63.303 tokens de entrada y 11.038 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 60 s · 36.030 tokens de entrada y 8.351 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

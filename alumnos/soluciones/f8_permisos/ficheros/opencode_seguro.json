@@ -1,44 +1,38 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "vllm/Qwen3.8-27B-FP8",
-  "provider": {
-    "vllm": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "LiteLLM del taller",
-      "options": {
-        "baseURL": "{env:LITELLM_API_BASE}/v1",
-        "apiKey": "{env:LITELLM_API_KEY}"
-      },
-      "models": {
-        "Qwen3.8-27B-FP8": {
-          "name": "GLM-5.3-Flash (se publica como Qwen3.8-27B-FP8 por compatibilidad)",
-          "limit": {
-            "context": 262144,
-            "output": 32768
-          }
-        }
-      }
-    }
-  },
   "permission": {
-    "edit": "allow",
-    "webfetch": "allow",
+    "edit": "ask",
+    "read": "allow",
+    "webfetch": "ask",
     "external_directory": "deny",
     "bash": {
-      "*": "allow",
-      "rm -rf *": "deny",
-      "rm -r *": "deny",
+      "*": "ask",
+      "ls *": "allow",
+      "cat *": "allow",
+      "python3 *": "allow",
+      "git status": "allow",
+      "git diff": "allow",
+      "git *": "allow",
+      "rm -*": "deny",
       "sudo *": "deny",
       "kill *": "deny",
       "pkill *": "deny",
-      "killall *": "deny",
       "chmod -R *": "deny",
-      "*| sh*": "deny",
-      "*| bash*": "deny",
-      "cat *.ssh/*": "deny",
+      "cat ~/.ssh/*": "deny",
+      "curl *": "deny",
       "git push *": "ask",
       "git reset --hard *": "ask",
-      "crontab *": "ask"
+      "crontab *": "ask",
+      "* | sh": "deny"
+    }
+  },
+  "provider": {
+    "vllm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://litellm.ejemplo.local/v1",
+        "apiKey": "{env:LITELLM_API_KEY}"
+      }
     }
   }
 }

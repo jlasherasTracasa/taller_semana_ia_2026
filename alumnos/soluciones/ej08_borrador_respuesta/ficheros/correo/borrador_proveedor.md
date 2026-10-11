@@ -1,27 +1,19 @@
-# Borrador de respuesta — Harinas Verde S.A.
+# Borrador de respuesta
 
 **Para:** pedidos@harinaverde.com
-**De:** panaderia@puente.es
-**Asunto:** RE: URGENTE: subida de precios de harina integral
+**Asunto:** RE: URGENTE: subida de precios de harina integral — Confirmación pedido mensual
 
 ---
 
-Estimados señores de Harinas Verde S.A.:
+Estimados señores:
 
-Acusamos recibo de su comunicación relativa a la actualización de precios de la
-harina integral a partir del próximo lunes.
+Acusamos recibo de su comunicación y les agradecemos el aviso previo sobre la próxima modificación de tarifas.
 
-Les confirmamos que deseamos **mantener nuestro pedido mensual habitual**, y que
-formalizamos dicha confirmación dentro del plazo indicado (antes del jueves 26),
-por lo que entendemos aplicable el **precio vigente de 38 euros el saco** conforme
-a las condiciones comunicadas en su mensaje.
+Les confirmamos que deseamos **mantener nuestro pedido mensual de harina integral al precio antiguo de 38 euros el saco**, acogiéndonos al plazo que ustedes ofrecen para ello, es decir, confirmando el pedido **antes del jueves 26**.
 
-Agradeceríamos nos remitieran la confirmación formal del pedido con el precio
-mantenido, así como la fecha prevista de entrega.
+Quedamos a su disposición para formalizar cualquier detalle del pedido (cantidad, fecha de entrega o forma de pago) y recibir la confirmación correspondiente.
 
-Quedamos a su disposición para cualquier aclaración.
+Agradeciéndoles de antemano su atención, reciban un cordial saludo.
 
-Un cordial saludo,
-
-Panadería Puente
+**Panadería Puente**
 panaderia@puente.es

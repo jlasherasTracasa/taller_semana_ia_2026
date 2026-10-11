@@ -1,10 +1,11 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//taller_pan//es//NONSGML v1.0//EN
+PRODID:-//Ayto Puente//Taller de Pan//ES
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VTIMEZONE
 TZID:Europe/Madrid
+X-LIC-LOCATION:Europe/Madrid
 BEGIN:STANDARD
 DTSTART:19701025T030000
 TZOFFSETFROM:+0200
@@ -22,14 +23,14 @@ END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:taller-pan-artesano-20261128@ayto-puente.es
-DTSTAMP:20261123T091500Z
+DTSTAMP:20261011T120000Z
 DTSTART;TZID=Europe/Madrid:20261128T100000
 DTEND;TZID=Europe/Madrid:20261128T123000
 SUMMARY:Taller de pan artesano
-LOCATION:Casa de Cultura\, Puente
-DESCRIPTION:Taller de pan artesano. 12 niños inscritos. La organización pu
- e los delantales\; traigan suficiente harina. Colaboración con las fiest
- as del pueblo.
+LOCATION:Casa de Cultura
+DESCRIPTION:Confirmamos el taller de pan artesano del sabado 28 a las 10:
+ 00 en la casa de cultura. Habra 12 ninos inscritos. Traigan suficiente ha
+ rina\; nosotros ponemos los delantales.
 STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR

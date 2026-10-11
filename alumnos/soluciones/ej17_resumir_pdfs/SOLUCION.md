@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 17 · Resumir varios PDF en una tabla
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 25 s · 46.938 tokens de entrada y 2.006 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 20 s · 79.394 tokens de entrada y 1.630 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

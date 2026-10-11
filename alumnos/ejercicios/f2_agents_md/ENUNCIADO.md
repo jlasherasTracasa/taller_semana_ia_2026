@@ -48,9 +48,11 @@ python taller.py comprobar f2      # el agente no decide si está bien: lo decid
 
 Escribe tus propias normas (tu empresa, tu clase, tu casa) y pruébalas con tres encargos distintos.
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
-Con `AGENTS.md` cumplió todas las normas: carpeta `avisos/`, «Aviso:», «Qué llevar:», fechas dd/mm/aaaa y la firma. Sin él, el mismo encargo salió con emojis, firma «La organización» y una pregunta final.
+El 11-10 se saltó una vez la norma de las fechas («domingo 8 de noviembre»). Con la norma reforzada con un ejemplo en `AGENTS.md`, la cumple. Sin `AGENTS.md`: emojis, firma inventada y una pregunta final.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/f2_agents_md/`](../../soluciones/f2_agents_md/)
 

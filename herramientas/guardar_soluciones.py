@@ -76,6 +76,7 @@ def guardar(ej, d):
     seg = f" · {v['segundos']} s" if v.get("segundos") else ""
     md = [f"# {ico} Solución · {e['num']} · {e['titulo']}", "",
           f"Ejecución real del {v.get('fecha', '')} con opencode 2.0.19 y GLM-5.3-Flash, solo CPU{seg}{tok}.", "",
+          (f"Con el modelo gratuito de opencode (`{v['gratis']['modelo']}`): " + ("✅ también cumple el criterio." if v["gratis"]["estado"] == "ok" else "❌ no cumple el criterio.")) if v.get("gratis") else None, "",
           "## Qué pasó", "", v.get("nota", "—"), ""]
     if comp.stdout.strip():
         md += ["## Veredicto del comprobador", "", "```text", anonimizar(comp.stdout.strip(), d), "```", ""]

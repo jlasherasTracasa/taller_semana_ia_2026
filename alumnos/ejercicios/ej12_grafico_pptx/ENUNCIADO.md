@@ -56,9 +56,11 @@ python taller.py comprobar ej12      # el agente no decide si está bien: lo dec
 
 - Con el encargo antiguo (sin pedir la tabla) los totales no aparecían en ningún sitio: lo que no pides, no está.
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
 Gráfico y tabla con los totales exactos. En la ronda 1, sin pedir la tabla, **los totales no estaban en ningún sitio**. Repetido con un HOME limpio (sin skills globales): también pasa.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/ej12_grafico_pptx/`](../../soluciones/ej12_grafico_pptx/)
 

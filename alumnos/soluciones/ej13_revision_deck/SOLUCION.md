@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 13 · Revisar y corregir una presentación ajena
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 134 s · 565.225 tokens de entrada y 10.369 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 72 s · 149.304 tokens de entrada y 6.878 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

@@ -54,9 +54,11 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar ej05      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
-Con `question: deny` y «no me hagas preguntas», escribió `incidencias.md` y la página corregida. En la ronda 1 (opencode 2 sin ese permiso) **se paró a preguntar** y, en modo `run`, falló.
+El 11-10 falló una vez: dijo que «el mensaje se cortaba» y no creó `web_corregida.html`. Con la entrega numerada —(1) `incidencias.md`, (2) `web_corregida.html`— pasa. En la primera ronda de octubre se paró a preguntar y por eso el kit tiene `question: deny`.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/ej05_auditoria_web/`](../../soluciones/ej05_auditoria_web/)
 

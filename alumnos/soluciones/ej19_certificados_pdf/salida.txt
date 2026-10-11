@@ -1,79 +1,63 @@
 
 > build · Qwen3.8-27B-FP8
-$ ls -la && cat nombres.csv 2>/dev/null | head -30
-total 20
-drwxr-xr-x  2 alumno alumno 4096 Oct  9 09:26 .
-drwxr-xr-x 34 alumno alumno 4096 Oct  9 09:26 ..
--rw-r--r--  1 alumno alumno 1602 Oct  9 09:20 ENUNCIADO.md
--rw-r--r--  1 alumno alumno  238 Oct  9 08:44 nombres.csv
--rw-r--r--  1 alumno alumno 1068 Oct  9 09:26 opencode.json
--rw-r--r--  1 alumno alumno    0 Oct  9 09:26 salida.txt
-nombre,curso,horas
-Amparo Lecumberri,Gimnasia de mantenimiento,12
-Teodoro Sanz,Taller de memoria,16
-Purificación Aranguren,Taller de memoria,16
-Félix Bergoa,Gimnasia de mantenimiento,12
-Nieves Izco,Taller de radio para mayores,10
-> build · Qwen3.8-27B-FP8
-→ Read ENUNCIADO.md 
+Voy a revisar primero el contenido del directorio de trabajo y el archivo `nombres.csv`.
+→ Read . 
 > build · Qwen3.8-27B-FP8
 → Read nombres.csv 
+→ Read ENUNCIADO.md 
 > build · Qwen3.8-27B-FP8
-Voy a crear el script con reportlab y ejecutarlo.
+El CSV tiene 5 participantes. Ahora compruebo si `reportlab` está disponible y qué contiene `salida.txt`.
+→ Read salida.txt 
+$ python3 -c "import reportlab; print(reportlab.Version)" 2>&1; echo "---"; python3 --version
+5.0.1
+---
+Python 3.12.3
+> build · Qwen3.8-27B-FP8
+El CSV tiene 5 participantes con nombre, curso y horas. Ahora creo el script con reportlab.
 ← Write generar_certificados.py
 Created file successfully: generar_certificados.py
 > build · Qwen3.8-27B-FP8
+Ahora lo ejecuto:
 $ python3 generar_certificados.py
-Generado: certificados/certificado_Amparo_Lecumberri.pdf
-Generado: certificados/certificado_Teodoro_Sanz.pdf
-Generado: certificados/certificado_Purificación_Aranguren.pdf
-Generado: certificados/certificado_Félix_Bergoa.pdf
-Generado: certificados/certificado_Nieves_Izco.pdf
+Generado: certificados/certificado_Amparo Lecumberri.pdf
+Generado: certificados/certificado_Teodoro Sanz.pdf
+Generado: certificados/certificado_Purificación Aranguren.pdf
+Generado: certificados/certificado_Félix Bergoa.pdf
+Generado: certificados/certificado_Nieves Izco.pdf
 
-Filas del CSV: 5 | PDFs generados: 5
-✔ Verificación correcta: un PDF por fila, cada uno con su nombre.
+OK: 5 PDFs generados en 'certificados/', uno por fila del CSV, todos con su nombre.
 > build · Qwen3.8-27B-FP8
+El script se ejecutó correctamente: generó los 5 PDFs y la verificación interna (conteo de ficheros + extracción de texto con `pypdf`) pasó sin errores. Hago una comprobación final externa listando los ficheros:
 $ ls -la certificados/
 total 28
-drwxr-xr-x 2 alumno alumno 4096 Oct  9 09:27 .
-drwxr-xr-x 3 alumno alumno 4096 Oct  9 09:27 ..
--rw-r--r-- 1 alumno alumno 2260 Oct  9 09:27 certificado_Amparo_Lecumberri.pdf
--rw-r--r-- 1 alumno alumno 2260 Oct  9 09:27 certificado_Félix_Bergoa.pdf
--rw-r--r-- 1 alumno alumno 2256 Oct  9 09:27 certificado_Nieves_Izco.pdf
--rw-r--r-- 1 alumno alumno 2260 Oct  9 09:27 certificado_Purificación_Aranguren.pdf
--rw-r--r-- 1 alumno alumno 2252 Oct  9 09:27 certificado_Teodoro_Sanz.pdf
+drwxr-xr-x 2 alumno alumno 4096 Oct 11 11:16 .
+drwxr-xr-x 3 alumno alumno 4096 Oct 11 11:16 ..
+-rw-r--r-- 1 alumno alumno 2218 Oct 11 11:16 certificado_Amparo Lecumberri.pdf
+-rw-r--r-- 1 alumno alumno 2218 Oct 11 11:16 certificado_Félix Bergoa.pdf
+-rw-r--r-- 1 alumno alumno 2216 Oct 11 11:16 certificado_Nieves Izco.pdf
+-rw-r--r-- 1 alumno alumno 2217 Oct 11 11:16 certificado_Purificación Aranguren.pdf
+-rw-r--r-- 1 alumno alumno 2204 Oct 11 11:16 certificado_Teodoro Sanz.pdf
 > build · Qwen3.8-27B-FP8
-$ which pdftotext || pip list 2>/dev/null | grep -iE 'reportlab|pypdf'
-pypdf                     6.19.0
-pypdfium2                 5.14.0
-reportlab                 5.0.1
-> build · Qwen3.8-27B-FP8
-$ python3 - <<'EOF'
-from pypdf import PdfReader
-r = PdfReader("certificados/certificado_Teodoro_Sanz.pdf")
-print(len(r.pages), "página(s)")
-print(r.pages[0].extract_text())
-EOF
-1 página(s)
-CERTIFICADO DE ASISTENCIA
- Centro de Mayores · Fin de curso
-Se certifica que
-Teodoro Sanz
-ha participado en la actividad:
-«Taller de memoria»
-Duración del curso: 16 horas
-La Dirección
-> build · Qwen3.8-27B-FP8
-All 5 PDFs check out. Each one exists and contains the correct text:
+¡Listo! He completado la tarea:
 
-| Fichero | Contenido |
-|---|---|
-| `certificado_Amparo_Lecumberri.pdf` | Gimnasia de mantenimiento, 12 horas |
-| `certificado_Teodoro_Sanz.pdf` | Taller de memoria, 16 horas |
-| `certificado_Purificación_Aranguren.pdf` | Taller de memoria, 16 horas |
-| `certificado_Félix_Bergoa.pdf` | Gimnasia de mantenimiento, 12 horas |
-| `certificado_Nieves_Izco.pdf` | Taller de radio para mayores, 10 horas |
+## Resumen
 
-Verificación: **5 filas del CSV → 5 PDFs**, cada uno con el nombre, curso y horas correctos, sin duplicados ni omisiones. ✅
+**Generados 5 certificados en `certificados/`** (uno por cada fila del CSV):
 
-If you'd like, I can also save this verification to `salida.txt`, or run the official checker if there's a `taller.py` in a parent folder (it wasn't present here).
+| Fichero | Persona | Curso | Horas |
+|---|---|---|---|
+| `certificado_Amparo Lecumberri.pdf` | Amparo Lecumberri | Gimnasia de mantenimiento | 12 |
+| `certificado_Teodoro Sanz.pdf` | Teodoro Sanz | Taller de memoria | 16 |
+| `certificado_Purificación Aranguren.pdf` | Purificación Aranguren | Taller de memoria | 16 |
+| `certificado_Félix Bergoa.pdf` | Félix Bergoa | Gimnasia de mantenimiento | 12 |
+| `certificado_Nieves Izco.pdf` | Nieves Izco | Taller de radio para mayores | 10 |
+
+**Plantilla sobria** (A4, fuentes serif Times): doble marco fino, título "CERTIFICADO DE ASISTENCIA", nombre destacado en grande, curso y horas centrados, y fecha de expedición al pie.
+
+## Verificación ✅
+
+El script (`generar_certificados.py`) incluye una verificación automática que confirma:
+- **5 PDFs generados = 5 filas del CSV** (sin duplicados ni omisiones).
+- **Cada PDF contiene el nombre de su persona** (verificado extrayendo el texto de cada PDF con `pypdf`).
+
+Ambas comprobaciones pasaron correctamente. El script es reutilizable: si actualizas `nombres.csv`, basta con volver a ejecutar `python3 generar_certificados.py`.

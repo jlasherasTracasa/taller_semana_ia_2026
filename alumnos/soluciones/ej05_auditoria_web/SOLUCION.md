@@ -1,10 +1,12 @@
 # ✅ Solución · EJ 05 · Auditoría de accesibilidad de una web
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 123 s · 226.139 tokens de entrada y 8.598 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 22 s · 47.252 tokens de entrada y 2.261 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 
-Con `question: deny` y «no me hagas preguntas», escribió `incidencias.md` y la página corregida. En la ronda 1 (opencode 2 sin ese permiso) **se paró a preguntar** y, en modo `run`, falló.
+El 11-10 falló una vez: dijo que «el mensaje se cortaba» y no creó `web_corregida.html`. Con la entrega numerada —(1) `incidencias.md`, (2) `web_corregida.html`— pasa. En la primera ronda de octubre se paró a preguntar y por eso el kit tiene `question: deny`.
 
 ## Veredicto del comprobador
 

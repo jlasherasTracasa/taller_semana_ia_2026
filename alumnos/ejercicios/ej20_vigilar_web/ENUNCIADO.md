@@ -53,9 +53,11 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar ej20      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
-Script con rutas relativas a su ubicación; funciona lanzado desde `/`. En septiembre, con 30 tools extra de un MCP global, dijo «Listo» con un script vacío.
+Ahora en Python (antes era bash + curl, que no funciona en Windows): rutas relativas al propio script, log de dos líneas y funciona lanzado desde la raíz del disco. En septiembre, con 30 tools extra de un MCP global, dijo «Listo» con un script vacío.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/ej20_vigilar_web/`](../../soluciones/ej20_vigilar_web/)
 

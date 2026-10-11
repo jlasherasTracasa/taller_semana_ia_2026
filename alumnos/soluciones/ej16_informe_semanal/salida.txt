@@ -1,84 +1,42 @@
 
 > build · Qwen3.8-27B-FP8
-→ Read . 
-> build · Qwen3.8-27B-FP8
-→ Read ENUNCIADO.md 
+Voy a empezar leyendo el CSV para entender su estructura.
 → Read ventas_tienda.csv 
 > build · Qwen3.8-27B-FP8
+Ahora creo el script `informe.py`:
 ← Write informe.py
 Created file successfully: informe.py
 > build · Qwen3.8-27B-FP8
-← Write informe.py
-Wrote file successfully: informe.py
-> build · Qwen3.8-27B-FP8
-$ python3 informe.py && cat informe_semanal.txt
-Traceback (most recent call last):
-  File "~/taller-agentes/ej16_informe_semanal/informe.py", line 61, in <module>
-    main()
-  File "~/taller-agentes/ej16_informe_semanal/informe.py", line 36, in main
-    fila["mes"]: sum(fila[cat] for cat in categorias) for fila in filas
-    ~~~~^^^^^^^
-KeyError: 'mes'
-> build · Qwen3.8-27B-FP8
-The script dropped the `mes` column when building the row dicts. Let me fix that:
-← Edit informe.py
-Index: informe.py
-===================================================================
---- informe.py
-+++ informe.py
-@@ -14,9 +14,12 @@
-     """Lee el CSV y devuelve (categorias, filas). Cada fila es {categoria: valor}."""
-     with open(ruta, newline="", encoding="utf-8") as f:
-         lector = csv.DictReader(f)
-         categorias = lector.fieldnames[1:]
--        filas = [{cat: int(fila[cat]) for cat in categorias} for fila in lector]
-+        filas = [
-+            {"mes": fila["mes"], **{cat: int(fila[cat]) for cat in categorias}}
-+            for fila in lector
-+        ]
-     return categorias, filas
- 
- 
- def main():
+Ahora ejecuto el script:
+$ python3 informe.py
+Informe generado en ~/taller-agentes/ej16_informe_semanal/informe_semanal.txt
 
-> build · Qwen3.8-27B-FP8
-$ python3 informe.py && cat informe_semanal.txt
 INFORME SEMANAL DE VENTAS
-==============================
 
-Total por categoría:
-  hogar: 29.800
-  textil: 18.700
-  bazar: 14.000
+Total por categoria:
+  hogar: 29800
+  textil: 18700
+  bazar: 14000
 
-Mes con más ventas: junio (12.800)
-
-Tendencia enero → junio: +43.8 %
-
-Informe guardado en: ~/taller-agentes/ej16_informe_semanal/informe_semanal.txt
-INFORME SEMANAL DE VENTAS
-==============================
-
-Total por categoría:
-  hogar: 29.800
-  textil: 18.700
-  bazar: 14.000
-
-Mes con más ventas: junio (12.800)
-
-Tendencia enero → junio: +43.8 %
+Mes con mas ventas: junio (12800)
+Tendencia de enero a junio: +43.82% (8900 -> 12800)
 > build · Qwen3.8-27B-FP8
-The script works and the output matches the expected values. Here's a summary:
+He creado y ejecutado el script `informe.py`. El archivo `informe_semanal.txt` se ha generado correctamente con los siguientes resultados:
 
-**`informe.py`** reads `ventas_tienda.csv` and generates `informe_semanal.txt` containing:
+## Resumen del informe
 
-- **Total por categoría:**
-  - hogar: 29.800 ✓
-  - textil: 18.700 ✓
-  - bazar: 14.000 ✓
-- **Mes con más ventas:** junio (12.800) ✓
-- **Tendencia enero → junio:** +43,8 % ✓
+**Total por categoría** (sumando enero–junio):
+| Categoría | Total |
+|---|---|
+| hogar | 29.800 |
+| textil | 18.700 |
+| bazar | 14.000 |
 
-All values are computed directly from the CSV — nothing hardcoded — so it will automatically recalculate if you update `ventas_tienda.csv` next week. The fixed bug along the way: the script initially dropped the `mes` column when parsing rows, causing a `KeyError`, which was resolved by including it in each row dict.
+**Mes con más ventas:** junio, con un total de **12.800** (4200→... espera, no: 6200 + 3900 + 2700).
 
-You can verify with `python3 taller.py comprobar ej16` to get the official seal.
+**Tendencia de enero a junio:** **+43,82 %** — el total mensual pasó de 8.900 en enero a 12.800 en junio.
+
+## Detalles técnicos
+- El script lee `ventas_tienda.csv` dinámicamente (detecta las categorías y meses desde el propio CSV), así que si añades más filas o columnas el informe se adaptará sin tocar el código.
+- La tendencia se calcula como variación porcentual del total mensual: `((total_junio − total_enero) / total_enero) × 100`.
+- Ningún número está escrito a mano; todos salen de la lectura del CSV.

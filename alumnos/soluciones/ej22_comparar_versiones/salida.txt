@@ -1,63 +1,53 @@
 
 > build · Qwen3.8-27B-FP8
-$ ls -la && python3 -c "import docx; print('python-docx OK', docx.__version__ if hasattr(docx,'__version__') else '')"
-total 88
-drwxr-xr-x  2 alumno alumno  4096 Oct  9 09:26 .
-drwxr-xr-x 34 alumno alumno  4096 Oct  9 09:26 ..
--rw-r--r--  1 alumno alumno  1521 Oct  9 09:20 ENUNCIADO.md
--rw-r--r--  1 alumno alumno 36748 Oct  9 08:44 informe_v1.docx
--rw-r--r--  1 alumno alumno 36820 Oct  9 08:44 informe_v2.docx
--rw-r--r--  1 alumno alumno  1068 Oct  9 09:26 opencode.json
--rw-r--r--  1 alumno alumno     0 Oct  9 09:26 salida.txt
-python-docx OK 1.2.0
+✱ Glob "*.docx" 2 matches
 > build · Qwen3.8-27B-FP8
-→ Read ENUNCIADO.md 
-$ python3 - <<'EOF'
+Ambos archivos existen. Compruebo que `python-docx` está disponible y extraigo el texto de los dos documentos:
+$ python3 -c "import docx; print('ok', docx.__version__ if hasattr(docx,'__version__') else '')" 2>&1
+ok 1.2.0
+> build · Qwen3.8-27B-FP8
+La librería está disponible. Extraigo el texto de ambos documentos:
+$ python3 << 'EOF'
 import docx
 
-def full_text(path):
-    d = docx.Document(path)
-    parts = []
-    for p in d.paragraphs:
+for name in ["informe_v1.docx", "informe_v2.docx"]:
+    doc = docx.Document(name)
+    print(f"===== {name} =====")
+    for i, p in enumerate(doc.paragraphs):
         if p.text.strip():
-            parts.append(p.text.strip())
-    for t in d.tables:
-        for row in t.rows:
-            cells = [c.text.strip() for c in row.cells]
-            parts.append(" | ".join(cells))
-    return parts
-
-v1 = full_text("informe_v1.docx")
-v2 = full_text("informe_v2.docx")
-print(f"v1: {len(v1)} bloques | v2: {len(v2)} bloques")
-print("--- V1 ---")
-for b in v1: print(repr(b))
-print("--- V2 ---")
-for b in v2: print(repr(b))
+            print(f"[P{i}] {p.text}")
+    for ti, table in enumerate(doc.tables):
+        print(f"--- Tabla {ti+1} ---")
+        for row in table.rows:
+            print(" | ".join(c.text.strip() for c in row.cells))
+    print()
 EOF
-v1: 4 bloques | v2: 4 bloques
---- V1 ---
-'Informe anual del Centro Cívico Alhama'
-'En 2025 el centro ofreció 14 talleres y contó con 210 socios.'
-'La gimnasia de mantenimiento fue el taller más frecuentado.'
-'El saldo económico cerró en positivo.'
---- V2 ---
-'Informe anual del Centro Cívico Alhama'
-'En 2025 el centro ofreció 17 talleres y contó con 238 socios.'
-'La gimnasia de mantenimiento volvió a ser el taller más frecuentado, seguido del nuevo taller de memoria digital.'
-'El saldo económico cerró en positivo, con un remanente de 3.150 euros destinado a audiovisuales del salón.'
+===== informe_v1.docx =====
+[P0] Informe anual del Centro Cívico Alhama
+[P1] En 2025 el centro ofreció 14 talleres y contó con 210 socios.
+[P2] La gimnasia de mantenimiento fue el taller más frecuentado.
+[P3] El saldo económico cerró en positivo.
+
+===== informe_v2.docx =====
+[P0] Informe anual del Centro Cívico Alhama
+[P1] En 2025 el centro ofreció 17 talleres y contó con 238 socios.
+[P2] La gimnasia de mantenimiento volvió a ser el taller más frecuentado, seguido del nuevo taller de memoria digital.
+[P3] El saldo económico cerró en positivo, con un remanente de 3.150 euros destinado a audiovisuales del salón.
 > build · Qwen3.8-27B-FP8
-He extraído el texto de ambas versiones (4 bloques cada una: título + 3 frases). Ahora escribo `cambios.md` en prosa:
+He extraído el texto de ambas versiones. Comparo los párrafos y redacto el resumen en `cambios.md`:
 ← Write cambios.md
 Created file successfully: cambios.md
 > build · Qwen3.8-27B-FP8
-Listo. He leído ambos `.docx` con python-docx, comparado su texto y escrito **`cambios.md`**.
+He completado la tarea. Resumen de lo realizado:
 
-Lo que contienen los documentos (título + 3 párrafos cada uno) y lo que resume el archivo:
+1. **Lectura de los documentos** con `python-docx`: extraje los párrafos de `informe_v1.docx` e `informe_v2.docx` (ninguno contiene tablas).
 
-- **Modificado:** talleres **14 → 17** y socios **210 → 238**.
-- **Añadido:** el nuevo *taller de memoria digital* como segundo más frecuentado, y la única cifra económica del informe: remanente de **3.150 €** para audiovisuales del salón.
-- **Eliminado:** nada (el título no cambia y ninguna frase desaparece; la versión 2 solo actualiza y amplía).
-- Sobre el remanente, dejo claro que la "cifra vieja" no existe: la v1 hablaba de saldo positivo sin cuantificarlo.
+2. **Comparación del texto**: identifiqué que no hay contenido eliminado; los cambios son actualizaciones de cifras y frases ampliadas:
+   - **Talleres**: 14 → 17
+   - **Socios**: 210 → 238
+   - **Remanente económico**: no existía en v1 → 3.150 € en v2
+   - Mención nueva del taller de *memoria digital*
 
-El resumen está todo en prosa, pensado para alguien que no ha visto los documentos, con las cifras viejas y nuevas de talleres, socios y remanente.
+3. **Creación de `cambios.md`**: un resumen en prosa, sin tablas ni tecnicismos, pensado para alguien que no ha visto los documentos. Explica el contexto (informe anual 2025 del Centro Cívico Alhama), aclara que no se eliminó nada, y detalla lo añadido y lo modificado con las cifras viejas y nuevas.
+
+El archivo está listo en `cambios.md`.

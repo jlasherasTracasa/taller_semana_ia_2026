@@ -1,63 +1,60 @@
 import csv
 import os
 
-RUTA_CSV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ventas_tienda.csv")
-RUTA_SALIDA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "informe_semanal.txt")
-
-
-def formatear_miles(n):
-    """Formatea un número con puntos como separador de miles (29.800)."""
-    return f"{n:,}".replace(",", ".")
-
-
-def cargar_datos(ruta):
-    """Lee el CSV y devuelve (categorias, filas). Cada fila es {categoria: valor}."""
-    with open(ruta, newline="", encoding="utf-8") as f:
-        lector = csv.DictReader(f)
-        categorias = lector.fieldnames[1:]
-        filas = [
-            {"mes": fila["mes"], **{cat: int(fila[cat]) for cat in categorias}}
-            for fila in lector
-        ]
-    return categorias, filas
-
 
 def main():
-    categorias, filas = cargar_datos(RUTA_CSV)
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(base_dir, "ventas_tienda.csv")
+    output_path = os.path.join(base_dir, "informe_semanal.txt")
 
-    lineas = ["INFORME SEMANAL DE VENTAS", "=" * 30, ""]
+    # Leer los datos del CSV
+    with open(csv_path, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        categories = [name for name in reader.fieldnames if name != "mes"]
+        rows = list(reader)
 
-    # Total por categoría (calculado desde el CSV)
-    lineas.append("Total por categoría:")
-    for cat in categorias:
-        total = sum(fila[cat] for fila in filas)
-        lineas.append(f"  {cat}: {formatear_miles(total)}")
-    lineas.append("")
+    if not rows:
+        raise ValueError("El CSV no contiene datos.")
 
-    # Mes con más ventas (suma de todas las categorías)
-    totales_mes = {
-        fila["mes"]: sum(fila[cat] for cat in categorias) for fila in filas
+    # Total por categoría
+    totals_by_category = {
+        cat: sum(int(row[cat]) for row in rows) for cat in categories
     }
-    mejor_mes = max(totales_mes, key=totales_mes.get)
-    lineas.append(
-        f"Mes con más ventas: {mejor_mes} ({formatear_miles(totales_mes[mejor_mes])})"
+
+    # Total por mes (para hallar el mes con más ventas)
+    totals_by_month = {
+        row["mes"]: sum(int(row[cat]) for cat in categories) for row in rows
+    }
+
+    best_month = max(totals_by_month, key=totals_by_month.get)
+
+    # Tendencia de enero a junio (variación porcentual del total)
+    first_month_total = totals_by_month[rows[0]["mes"]]
+    last_month_total = totals_by_month[rows[-1]["mes"]]
+    trend_pct = (
+        (last_month_total - first_month_total) / first_month_total * 100
     )
-    lineas.append("")
 
-    # Tendencia del primer al último mes en porcentaje
-    meses = list(totales_mes)
-    primero = totales_mes[meses[0]]
-    ultimo = totales_mes[meses[-1]]
-    tendencia = (ultimo - primero) / primero * 100
-    lineas.append(
-        f"Tendencia {meses[0]} → {meses[-1]}: {tendencia:+.1f} %"
+    # Escribir el informe
+    lines = []
+    lines.append("INFORME SEMANAL DE VENTAS")
+    lines.append("")
+    lines.append("Total por categoria:")
+    for cat in categories:
+        lines.append(f"  {cat}: {totals_by_category[cat]}")
+    lines.append("")
+    lines.append(f"Mes con mas ventas: {best_month} ({totals_by_month[best_month]})")
+    lines.append(
+        f"Tendencia de enero a junio: {trend_pct:+.2f}% "
+        f"({first_month_total} -> {last_month_total})"
     )
 
-    with open(RUTA_SALIDA, "w", encoding="utf-8") as f:
-        f.write("\n".join(lineas) + "\n")
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
 
-    print("\n".join(lineas))
-    print(f"\nInforme guardado en: {RUTA_SALIDA}")
+    print(f"Informe generado en {output_path}")
+    print()
+    print("\n".join(lines))
 
 
 if __name__ == "__main__":

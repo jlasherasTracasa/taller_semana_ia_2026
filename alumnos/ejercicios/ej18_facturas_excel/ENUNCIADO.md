@@ -53,9 +53,11 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar ej18      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
 Totales 454,48 y 1.212,90 y suma 1.667,38. En la ronda 1 puso la suma como fórmula `=SUM()`, que no se ve sin abrir el Excel: ahora el encargo pide el número.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/ej18_facturas_excel/`](../../soluciones/ej18_facturas_excel/)
 

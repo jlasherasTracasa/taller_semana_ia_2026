@@ -1,44 +1,56 @@
 
 > build · Qwen3.8-27B-FP8
-$ ls -la && cat data_salida.txt
+$ ls -la ~/taller-agentes/f2_agents_md
 total 28
-drwxr-xr-x  2 alumno alumno 4096 Oct  9 09:24 .
-drwxr-xr-x 12 alumno alumno 4096 Oct  9 09:24 ..
--rw-r--r--  1 alumno alumno  770 Oct  9 09:06 AGENTS.ejemplo.md
--rw-r--r--  1 alumno alumno  770 Oct  9 09:24 AGENTS.md
--rw-r--r--  1 alumno alumno 2233 Oct  9 09:20 ENUNCIADO.md
--rw-r--r--  1 alumno alumno  470 Oct  9 09:06 datos_salida.txt
--rw-r--r--  1 alumno alumno 1068 Oct  9 09:24 opencode.json
--rw-r--r--  1 alumno alumno    0 Oct  9 09:24 salida.txt
-cat: data_salida.txt: No such file or directory
+drwxr-xr-x 2 alumno alumno 4096 Oct 11 11:12 .
+drwxr-xr-x 9 alumno alumno 4096 Oct 11 11:12 ..
+-rw-r--r-- 1 alumno alumno  824 Oct 11 10:43 AGENTS.ejemplo.md
+-rw-r--r-- 1 alumno alumno  824 Oct 11 11:12 AGENTS.md
+-rw-r--r-- 1 alumno alumno 2836 Oct 11 11:10 ENUNCIADO.md
+-rw-r--r-- 1 alumno alumno  470 Oct  9 09:06 datos_salida.txt
+-rw-r--r-- 1 alumno alumno 1277 Oct 11 11:12 opencode.json
+-rw-r--r-- 1 alumno alumno    0 Oct 11 11:12 salida.txt
 > build · Qwen3.8-27B-FP8
 → Read datos_salida.txt 
+→ Read ENUNCIADO.md 
 > build · Qwen3.8-27B-FP8
-← Write avisos/2026-11-08_subida_beriain.md
-Created file successfully: avisos/2026-11-08_subida_beriain.md
+← Write avisos/2026-11-08_beriain.md
+Created file successfully: avisos/2026-11-08_beriain.md
 > build · Qwen3.8-27B-FP8
-He creado el aviso en `avisos/2026-11-08_subida_beriain.md`, siguiendo las reglas del club (máximo 150 palabras, sin emojis, fechas en dd/mm/aaaa):
+← Edit avisos/2026-11-08_beriain.md
+Index: avisos/2026-11-08_beriain.md
+===================================================================
+--- avisos/2026-11-08_beriain.md
++++ avisos/2026-11-08_beriain.md
+@@ -6,7 +6,6 @@
+ - Agua
+ - Comida (bocadillo para la cima)
+ - Ropa de abrigo
+ - Chubasquero
+-- Calzado de montaña
+ 
+ Junta del Club Andía
 
----
+> build · Qwen3.8-27B-FP8
+Aviso guardado en `avisos/2026-11-08_beriain.md`.
 
-**Aviso: Salida de otoño al Beriain**
+He seguido las normas de `AGENTS.md`:
 
-El domingo 08/11/2026 hacemos la salida de otoño del club: subiremos al Beriain (San Donato) desde Unanue. Quedamos a las 8:00 en el aparcamiento de la estación de autobuses de Pamplona.
+- **Título** que empieza por `Aviso:` y párrafo con qué, cuándo y dónde.
+- **Fechas en formato dd/mm/aaaa** también dentro del texto: el domingo 08/11/2026, el sábado 07/11/2026 y el jueves 05/11/2026 (inferidos del calendario, sin inventar datos).
+- **Sección `Qué llevar:`** con agua, comida, ropa de abrigo y chubasquero; no he añadido nada que no esté en los datos de la salida.
+- **Firma exacta** `Junta del Club Andía`, sin emojis y por debajo del límite de palabras.
 
-La ruta tiene un desnivel de 750 m y durará unas 5 horas con paradas, de dificultad media. Compartiremos coche y la gasolina son 4 euros por persona. Comemos bocadillo en la cima.
+Contenido final:
 
-Qué llevar:
-- Bocadillo y agua
-- Ropa de abrigo
-- Chubasquero
-- Calzado de montaña
-
-Si llueve fuerte, la salida se suspende y se avisa por el grupo el sábado 07/11/2026 a las 20:00.
-
-Para apuntarte, responde a este correo antes del jueves 05/11/2026.
-
-Junta del Club Andía
-
----
-
-Todos los datos salen del archivo `datos_salida.txt` (he añadido agua y calzado de montaña a la lista de "qué llevar", ya que son habituales; puedo quitarlos si prefieres).
+> Aviso: salida de otoño al Beriain (San Donato)
+>
+> El domingo 08/11/2026 subimos al Beriain (San Donato) desde Unanue. Quedamos a las 8:00 en el aparcamiento de la estación de autobuses de Pamplona. La ruta tiene 750 m de desnivel, unas 5 horas con paradas y dificultad media. El desplazamiento es en coche compartido, con 4 euros por persona para gasolina. Comeremos bocadillo en la cima. Si llueve fuerte, la salida se suspende y se avisa por el grupo el sábado 07/11/2026 a las 20:00. Apúntate antes del jueves 05/11/2026 respondiendo a este correo.
+>
+> Qué llevar:
+> - Agua
+> - Comida (bocadillo para la cima)
+> - Ropa de abrigo
+> - Chubasquero
+>
+> Junta del Club Andía

@@ -1,22 +1,8 @@
 [
   {
-    "nombre": "Prueba curl",
-    "correo": "test@taller.es",
-    "mensaje": "Envío de prueba desde curl (ej03)"
-  },
-  {
-    "nombre": "Prueba curl",
-    "correo": "test@taller.es",
-    "mensaje": "Envío de prueba desde curl (ej03)"
-  },
-  {
-    "nombre": "Prueba curl",
-    "correo": "test@taller.es",
-    "mensaje": "Envio de prueba desde curl (ej03)"
-  },
-  {
-    "nombre": "Ana Prueba",
-    "correo": "ana@ejemplo.es",
-    "mensaje": "Hola, quiero apuntarme al taller"
+    "recibido": "2026-10-11 11:13:43",
+    "nombre": "Ada Lovelace",
+    "correo": "ada@example.com",
+    "mensaje": "Envío de prueba del formulario."
   }
 ]

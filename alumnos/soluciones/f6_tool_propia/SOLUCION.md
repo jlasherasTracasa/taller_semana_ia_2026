@@ -1,6 +1,8 @@
 # ✅ Solución · F.6 · Tu propia tool: plazos en días hábiles
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 60 s · 56.393 tokens de entrada y 3.824 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 37 s · 26.790 tokens de entrada y 2.792 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

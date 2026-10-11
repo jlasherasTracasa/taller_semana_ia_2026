@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 26 · ¿Qué oferta de luz me sale más barata?
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 18 s · 44.078 tokens de entrada y 2.546 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 19 s · 46.537 tokens de entrada y 2.004 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

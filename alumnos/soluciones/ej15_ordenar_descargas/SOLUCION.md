@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 15 · Ordenar la carpeta de Descargas
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 18 s · 37.784 tokens de entrada y 1.530 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 8 s · 26.045 tokens de entrada y 750 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

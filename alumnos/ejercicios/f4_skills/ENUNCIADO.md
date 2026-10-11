@@ -59,9 +59,11 @@ python taller.py comprobar f4      # el agente no decide si está bien: lo decid
 
 Crea tu propia skill en `.opencode/skills/<nombre>/SKILL.md` (por ejemplo, «ficha-receta» o «parte-de-incidencias») y comprueba que se activa con un encargo que no la menciona.
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
 El agente **descubrió y cargó la skill** `acta-reunion` sin que el encargo la nombrara, escribió `actas/2026-10-15_acta.md` y el validador de la skill dijo `ACTA VÁLIDA` a la primera.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/f4_skills/`](../../soluciones/f4_skills/)
 

@@ -1,6 +1,8 @@
 # ✅ Solución · EJ 09 · De un correo a un evento de calendario
 
-Ejecución real del 09-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 27 s · 55.423 tokens de entrada y 2.100 de salida.
+Ejecución real del 11-10-2026 con opencode 2.0.19 y GLM-5.3-Flash, solo CPU · 69 s · 170.803 tokens de entrada y 7.230 de salida.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ también cumple el criterio.
 
 ## Qué pasó
 

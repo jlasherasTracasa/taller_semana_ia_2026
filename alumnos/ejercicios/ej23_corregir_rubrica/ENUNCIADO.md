@@ -55,9 +55,11 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar ej23      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (09-10-2026)
+## 🧪 Lo que pasó al validarlo (11-10-2026)
 
-No cayó en la trampa (Dani: 8,5 y marcado para revisar) y Carmen suspende… pero **sumó mal la nota de Dani**: 2,5 + 2,5 + 1,5 + 2,5 = 9, y escribió 8,5. Por eso firma quien corrige.
+El 11-10: sumas correctas, Dani marcado para revisar (no le puso el 10 que pedía) y Carmen suspende. El 09-10 **sumó mal** la nota de Dani (9 → 8,5): por eso firma quien corrige.
+
+Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
 
 Prompt, salida real y ficheros: [`soluciones/ej23_corregir_rubrica/`](../../soluciones/ej23_corregir_rubrica/)
 

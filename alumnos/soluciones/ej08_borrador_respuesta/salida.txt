@@ -2,21 +2,16 @@
 > build · Qwen3.8-27B-FP8
 → Read correo/bandeja/01_proveedor_urgente.eml 
 > build · Qwen3.8-27B-FP8
-✱ Glob "correo/**" 1 match
-> build · Qwen3.8-27B-FP8
-→ Read correo 
-> build · Qwen3.8-27B-FP8
-→ Read correo/bandeja/01_proveedor_urgente.eml 
-> build · Qwen3.8-27B-FP8
+He leído el correo del proveedor. Ahora escribo el borrador de respuesta:
 ← Write correo/borrador_proveedor.md
 Created file successfully: correo/borrador_proveedor.md
 > build · Qwen3.8-27B-FP8
-Listo.
+Voy a revisar el borrador que ya está guardado para asegurarme de que solo contiene la respuesta al proveedor, tal y como pides:
+→ Read correo/borrador_proveedor.md 
+> build · Qwen3.8-27B-FP8
+Todo correcto. El borrador en `correo/borrador_proveedor.md` ya estaba bien guardado y cumple exactamente lo pedido:
 
-**Correo leído** — `correo/bandeja/01_proveedor_urgente.eml`: Harinas Verde S.A. comunica una subida de harina integral de 38 € a 44 € el saco desde el lunes, y ofrece mantener el precio antiguo si se confirma el pedido mensual antes del jueves 26.
-
-**Borrador creado** — `correo/borrador_proveedor.md` con tono profesional, que:
-- Acusa recibo del aviso de subida de precios.
-- Confirma el pedido mensual dentro del plazo (antes del jueves 26).
-- Deja constancia de que aplica el precio antiguo de 38 €/saco según sus condiciones.
-- Pide confirmación formal del pedido con precio mantenido y la fecha de entrega.
+- **Precio antiguo:** mantiene el pedido mensual a **38 euros el saco** (el precio que subirá a 44 según el correo del proveedor).
+- **Plazo del proveedor:** confirma que se acoge a la oferta **antes del jueves 26**.
+- **Tono:** profesional y en castellano.
+- **Sin envío:** no se ha enviado nada; solo queda guardado como borrador en markdown para revisión.
