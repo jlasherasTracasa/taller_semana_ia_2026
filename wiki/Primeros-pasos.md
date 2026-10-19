@@ -26,6 +26,11 @@ Abre `.env` con el Bloc de notas (o cualquier editor) y rellena `OPENROUTER_API_
 kit usa **GLM-5.3-Flash**, el modelo con el que se validaron los ejercicios. Más detalles en
 [🤖 Modelos](Modelos.md) y [🔑 Variables de entorno](Variables-de-entorno.md).
 
+¿Sin clave de OpenRouter y quieres hacer F.0 y F.1 (los dos ejercicios que son programas de Python)? Saca una clave
+**gratuita y personal**, sin tarjeta, en [Google AI Studio](https://aistudio.google.com/apikey) o en
+[Groq](https://console.groq.com/keys), y ponla en `.env` en la línea `GEMINI_API_KEY=` o `GROQ_API_KEY=`. Los pasos,
+en [🤖 Modelos](Modelos.md), apartado «F.0 y F.1 sin OpenRouter».
+
 > 🔐 `.env` es tuyo y de nadie más: no lo subas a git, no lo pegues en un chat, no lo enseñes en pantalla.
 
 ## 2. Comprueba que todo está listo

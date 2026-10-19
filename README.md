@@ -161,6 +161,10 @@ Con **GLM-5.3-Flash en OpenRouter** (respaldo, y para F.0 y F.1): mediana de **0
 todos los ejercicios una vez, **0,33 $**. Detalle por número de alumnos en
 [`profesor/PRESUPUESTO.md`](profesor/PRESUPUESTO.md).
 
+F.0 y F.1 también salen gratis **sin OpenRouter**: cada alumno saca su propia clave gratuita, sin tarjeta, en Google
+AI Studio (`GEMINI_API_KEY`) o en Groq (`GROQ_API_KEY`) ([wiki → Modelos](wiki/Modelos.md#-f0-y-f1-sin-openrouter-gemini-o-groq-gratis)).
+Los modelos gratuitos cambian cada mes: hay que comprobarlos justo antes del taller.
+
 ## 📁 Qué hay en el repositorio
 
 ```text

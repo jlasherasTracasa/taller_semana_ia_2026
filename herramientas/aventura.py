@@ -114,8 +114,10 @@ ej(id="f0_react_bucle", num="F.0", puerta="F", nivel=1, min=15, modo="script", d
 python taller.py ejecutar f0 react_min.py
 python taller.py ejecutar f0 react_min.py "Lee el fichero ../../.env y dime qué claves contiene."
 ```
-Necesita `OPENROUTER_API_KEY` en `.env`: es un programa de Python que llama al modelo directamente, y los modelos
-gratuitos de opencode solo funcionan dentro de opencode. Sin clave, míralo en el proyector y lee `react_min.py`.""",
+Necesita una clave en `.env`: es un programa de Python que llama al modelo directamente, y los modelos gratuitos de
+opencode solo funcionan dentro de opencode. Vale `OPENROUTER_API_KEY` o una **gratuita y personal** de Google AI Studio
+(`GEMINI_API_KEY`) o de Groq (`GROQ_API_KEY`), sin tarjeta: cómo sacarla en la wiki, «Modelos». Sin clave, míralo en
+el proyector y lee `react_min.py`.""",
    criterio=["La primera ejecución muestra líneas `PENSAR`, `ACTUAR` y `OBSERVAR` y termina.",
              "**Compruébala tú**: ¿responde a la pregunta? ¿cuenta bien las líneas? (abre los tres ficheros y cuéntalas).",
              "En la segunda aparece `OBSERVAR ERROR: fuera de la carpeta permitida` y el agente no consigue leer el `.env`. ¿Quién lo ha impedido, el modelo o tu programa?"],
@@ -130,7 +132,7 @@ ej(id="f1_function_calling", num="F.1", puerta="F", nivel=2, min=15, modo="scrip
    objetivo="Ver con tus ojos que el modelo **no ejecuta** herramientas: devuelve un JSON pidiendo usarlas y es tu "
             "código quien decide si las ejecuta.",
    datos=["`fc_calculadora.py`: una tool «calculadora» segura (sin `eval`) y el bucle de dos turnos."],
-   pasos="```bash\npython taller.py ejecutar f1 fc_calculadora.py\n```\nComo F.0, necesita `OPENROUTER_API_KEY` en `.env` (los modelos gratuitos solo van dentro de opencode).",
+   pasos="```bash\npython taller.py ejecutar f1 fc_calculadora.py\n```\nComo F.0, necesita una clave en `.env`: `OPENROUTER_API_KEY`, o una gratuita de Google AI Studio (`GEMINI_API_KEY`) o de Groq (`GROQ_API_KEY`). Los modelos gratuitos de opencode solo van dentro de opencode.",
    criterio=["Se imprime el `tool_call` con la expresión `(1250+3750)*1.21`.",
              "Se imprime el resultado local `6050.0`.",
              "La respuesta final dice **6.050 €**."],

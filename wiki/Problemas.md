@@ -24,7 +24,9 @@ Primero, siempre: `python taller.py entorno`. Te dice qué falta y cómo arregla
 |---|---|---|
 | `Error: Invalid URL` o `No api key passed in` | opencode 2.x manda el trabajo a un **servicio en segundo plano** que arrancó antes de que cargaras tu `.env` | Usa `python taller.py abrir …`/`lanzar …` o añade `--standalone`. También vale `opencode service restart` |
 | El modelo gratuito no contesta, va muy lento o da error de límite | Mucha gente a la vez por la misma conexión, o el modelo ha dejado de ser gratuito | Espera un minuto; prueba otro con `/models`; usa la clave de OpenRouter ([🤖 Modelos](Modelos.md)) |
-| F.0 o F.1: «necesita OPENROUTER_API_KEY» | Son programas de Python: los modelos gratuitos solo funcionan dentro de opencode | Pon la clave de OpenRouter en `.env`, o mira la demo del profesor |
+| F.0 o F.1: «necesita una clave en el .env del kit» | Son programas de Python: los modelos gratuitos de opencode solo funcionan dentro de opencode | Pon en `.env` la clave de OpenRouter o una gratuita de Gemini o Groq ([🤖 Modelos](Modelos.md)), o mira la demo del profesor |
+| F.0 o F.1 con Gemini o Groq: `404`, `model not found` o `does not support tools` | El modelo gratuito ha cambiado de nombre o ya no es gratuito | Busca uno actual con *tool calling* y ponlo en `.env` con `TALLER_MODELO_PY=` ([🤖 Modelos](Modelos.md)) |
+| F.0 o F.1 con Gemini o Groq: `429` o `RESOURCE_EXHAUSTED` | Límite por minuto o diario de la capa gratuita | Espera un minuto; si es el diario, prueba con el otro servicio |
 | `Standalone server exited before reporting readiness` | Dos opencode arrancando a la vez en el mismo usuario | Vuelve a lanzarlo (`taller.py lanzar` ya lo reintenta solo) |
 
 ## Trabajando con el agente

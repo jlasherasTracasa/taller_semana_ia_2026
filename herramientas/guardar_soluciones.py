@@ -26,10 +26,10 @@ def anonimizar(t, origen):
     t = re.sub(r"/home/[^/\s]+/", "~/", t)
     t = re.sub(r"jlasheras@tcsa\.local|usuarios del dominio@tcsa\.local", "alumno", t)
     t = t.replace("tcsa.local", "ejemplo.local")
-    for var in ("LITELLM_API_KEY", "OPENROUTER_API_KEY"):  # las claves reales, sin escribirlas aquí
+    for var in ("LITELLM_API_KEY", "OPENROUTER_API_KEY", "GEMINI_API_KEY", "GROQ_API_KEY"):  # las claves reales, sin escribirlas aquí
         if len(os.environ.get(var, "")) > 5:
             t = t.replace(os.environ[var], "***")
-    t = re.sub(r"sk-[A-Za-z0-9_-]{16,}|ghp_[A-Za-z0-9]{20,}|github_pat_\w{20,}", "***", t)
+    t = re.sub(r"sk-[A-Za-z0-9_-]{16,}|gsk_[A-Za-z0-9]{20,}|AIza[A-Za-z0-9_-]{30,}|ghp_[A-Za-z0-9]{20,}|github_pat_\w{20,}", "***", t)
     return re.sub(r"\x1b\[[0-9;]*m", "", t)
 
 

@@ -75,7 +75,7 @@
  "f1_function_calling": {
   "estado": "ok",
   "fecha": "11-10-2026",
-  "nota": "Funciona (11-10): tool_call con `(1250+3750)*1.21`, ejecución local 6050.0 y respuesta «6.050 €». Necesita OpenRouter: los modelos gratuitos de opencode solo van dentro de opencode.",
+  "nota": "Funciona (11-10): tool_call con `(1250+3750)*1.21`, ejecución local 6050.0 y respuesta «6.050 €» con GLM-5.3-Flash. Necesita clave: OpenRouter, o una gratuita de Gemini o Groq (estas dos aún sin validar). Los modelos gratuitos de opencode solo van dentro de opencode.",
   "segundos": null,
   "entrada": null,
   "salida": null,

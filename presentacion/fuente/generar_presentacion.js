@@ -259,11 +259,12 @@ async function construir(conNotas) {
       "#   …cierra PowerShell y abre otra", "git clone https://github.com/jlasherasTracasa/taller_semana_ia_2026.git", "cd taller_semana_ia_2026\\alumnos",
       "npm i -g @opencode/cli@2.0.19", "py -m venv .venv; .venv\\Scripts\\Activate.ps1", "python -m pip install -r requirements.txt", "python taller.py entorno"].join("\n"), 0.6, 2.05, 7.5, 4.6, 12);
     filaIcono(s, "linux", "Linux y Mac", "Lo mismo con apt o brew, y «. .venv/bin/activate». Paso a paso en la wiki: «Instalar».", 8.4, 2.05, 4.35, 1.4);
-    filaIcono(s, "key", "¿Y el modelo?", "Sin clave: uno gratuito de opencode. Con la clave de OpenRouter: GLM-5.3-Flash. Wiki: «Modelos».", 8.4, 3.65, 4.35, 1.4);
+    filaIcono(s, "key", "¿Y el modelo?", "Sin clave: uno gratuito de opencode. Con OpenRouter: GLM-5.3-Flash. F.0 y F.1 gratis con tu clave de Gemini o Groq. Wiki: «Modelos».", 8.4, 3.65, 4.35, 1.4);
     filaIcono(s, "cloud", "¿No puedes instalar?", "Plan B: Codespaces en el navegador, en pareja o «en seco». Wiki: «Plan B».", 8.4, 5.25, 4.35, 1.4);
     notas(s, "Si lo mandaste antes, aquí solo se comprueba con «python taller.py entorno» (5 min máximo; quien vaya con retraso, en pareja). " +
       "Ojo: el paquete npm opencode-ai instala la 1.x; el bueno es @opencode/cli@2.0.19. En Windows, Git for Windows trae Git Bash, que opencode usa para ejecutar órdenes. " +
-      "Con el entorno activado la orden es «python» en los tres sistemas. Si el modelo gratuito va lento con toda el aula, repartir la clave de OpenRouter.");
+      "Con el entorno activado la orden es «python» en los tres sistemas. Si el modelo gratuito va lento con toda el aula, repartir la clave de OpenRouter. " +
+      "Para F.0 y F.1 sin OpenRouter: cada uno su clave gratuita, sin tarjeta, de Google AI Studio (GEMINI_API_KEY) o Groq (GROQ_API_KEY). Personal, no compartida. Comprobar la víspera que los modelos siguen siendo gratuitos y con tool calling.");
   }
 
   // ================================================================ 6 · Modo interactivo
@@ -448,7 +449,7 @@ async function construir(conNotas) {
     filaIcono(s, "brain", "El historial es su memoria", "guardado mal, dejaba de responder a la pregunta (bug real, corregido).", 8.6, 3.4, 4.15, 1.15);
     filaIcono(s, "shield", "Tu programa pone los límites", "máximo de pasos y carpeta permitida.", 8.6, 4.75, 4.15, 1.15);
     s.addText("Demo:  python taller.py ejecutar f0 react_min.py", { x: 0.6, y: 6.2, w: 12, h: 0.4, fontFace: MONO, fontSize: 13, color: C.cian, margin: 0 });
-    notas(s, "DEMO EN DIRECTO (5 min): F.0 (necesita OPENROUTER_API_KEY en tu .env). Luego la segunda orden con ../../.env: «OBSERVAR ERROR: fuera de la carpeta permitida». ¿Quién lo ha impedido, el modelo o el programa? El programa. " +
+    notas(s, "DEMO EN DIRECTO (5 min): F.0 (necesita en tu .env OPENROUTER_API_KEY, o una clave gratuita GEMINI_API_KEY o GROQ_API_KEY). Luego la segunda orden con ../../.env: «OBSERVAR ERROR: fuera de la carpeta permitida». ¿Quién lo ha impedido, el modelo o el programa? El programa. " +
       "Historia real de octubre: react_min.py guardaba las tool_calls como texto JSON en vez de como objetos; el agente acababa preguntando «¿quieres que resuma alguno?» sin contestar, 3 de 3 veces. Corregido el historial, contestó 2 de 2.");
   }
 
@@ -467,7 +468,7 @@ async function construir(conNotas) {
     s.addText([{ text: "Los argumentos los escribe el modelo… o un atacante a través de un documento que el modelo ha leído. ", options: { color: C.tinta } },
       { text: "Por eso la calculadora no usa eval() y por eso existen los permisos.", options: { color: C.rojo, bold: true } }],
       { x: 0.9, y: 5.3, w: 11.6, h: 1.2, fontFace: TXT, fontSize: 15.5, margin: 0, valign: "middle" });
-    notas(s, "DEMO EN DIRECTO: python taller.py ejecutar f1 fc_calculadora.py (necesita OpenRouter). La idea más importante del bloque: el modelo solo produce texto (un JSON). " +
+    notas(s, "DEMO EN DIRECTO: python taller.py ejecutar f1 fc_calculadora.py (necesita OpenRouter, o una clave gratuita de Gemini o Groq). La idea más importante del bloque: el modelo solo produce texto (un JSON). " +
       "Quien toca el mundo es tu programa. Todo lo que hace opencode es esto, con más herramientas.");
   }
 
@@ -745,7 +746,7 @@ async function construir(conNotas) {
       s.addText(t, { x: 8.35, y: 2.38 + i * 1.15, w: 4.2, h: 0.6, fontFace: TXT, fontSize: 14, color: C.tinta, margin: 0, valign: "top" });
     });
     notas(s, "Lo que más gasta no es la respuesta: es releer el contexto en cada paso del bucle (97 % de los tokens son de entrada; solo decir «hola» son ≈ 8.000 tokens). " +
-      "Con el modelo gratuito el coste es cero; OpenRouter queda como respaldo y para F.0/F.1. Presupuesto por número de alumnos: profesor/PRESUPUESTO.md.");
+      "Con el modelo gratuito el coste es cero; OpenRouter queda como respaldo y para F.0/F.1, que también pueden ir gratis con una clave personal de Gemini o Groq. Presupuesto por número de alumnos: profesor/PRESUPUESTO.md.");
   }
 
   // ================================================================ 04 · Cierre

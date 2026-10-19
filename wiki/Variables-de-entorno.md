@@ -1,7 +1,8 @@
 # 🔑 Variables de entorno: dónde se guarda tu clave
 
 > ¿Usas el modelo gratuito de opencode? Entonces **no necesitas ninguna clave** y puedes saltarte esta página.
-> Solo hace falta si en clase os dan una clave de OpenRouter ([🤖 Modelos](Modelos.md)).
+> Solo hace falta si en clase os dan una clave de OpenRouter, o si sacas una gratuita de Gemini o Groq para F.0 y
+> F.1 ([🤖 Modelos](Modelos.md)).
 
 Una **variable de entorno** es un par `NOMBRE=valor` que vive en tu terminal y que pueden leer los programas que
 lances desde ella. Las usamos para que la clave **no esté escrita en ningún fichero que se comparta**: opencode
@@ -13,6 +14,9 @@ lee `OPENROUTER_API_KEY` directamente del entorno, y en un `opencode.json` las c
 | Variable | Qué lleva | Ejemplo |
 |---|---|---|
 | `OPENROUTER_API_KEY` | Tu clave de OpenRouter | `sk-or-v1-…` (te la dan en clase) |
+| `GEMINI_API_KEY` | *(opcional)* tu clave gratuita de Google AI Studio, para F.0 y F.1 | `AIza…` |
+| `GROQ_API_KEY` | *(opcional)* tu clave gratuita de Groq, para F.0 y F.1 | `gsk_…` |
+| `TALLER_MODELO_PY` | *(opcional)* otro modelo **solo** para F.0 y F.1 (formato de litellm) | `groq/qwen/qwen3-32b` |
 | `TALLER_MODELO` | *(opcional)* otro modelo para los ejercicios | `opencode/nemotron-3-ultra-free` |
 | `TALLER_TRABAJO` | *(opcional)* dónde crea `taller.py` las carpetas de trabajo | `~/taller-agentes` |
 | `LITELLM_API_BASE` · `LITELLM_API_KEY` | *(solo el docente)* su LiteLLM propio | — |

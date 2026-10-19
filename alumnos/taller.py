@@ -12,6 +12,7 @@
   python taller.py progreso             ejercicios completados y nivel alcanzado
 
 Modelo: sin clave, uno GRATUITO de opencode; con OPENROUTER_API_KEY en .env, GLM-5.3-Flash en OpenRouter.
+F.0 y F.1 (programas en Python) necesitan clave: OPENROUTER_API_KEY, o una gratuita de Gemini (GEMINI_API_KEY) o Groq (GROQ_API_KEY).
 Para elegir otro: variable TALLER_MODELO (por ejemplo, TALLER_MODELO=opencode/nemotron-3-ultra-free).
 Las carpetas de trabajo van a ~/taller-agentes/ (cámbialo con la variable TALLER_TRABAJO).
 Las claves se leen del fichero .env de este kit; nunca se copian a las carpetas de trabajo.
@@ -281,7 +282,12 @@ def entorno(sin_modelo=False):
         print(f"  ✅ {mod}: OpenRouter (clave definida; no se imprime)")
     else:
         print(f"  ✅ {mod or 'LiteLLM del docente (opencode.json del kit)'}")
-    print("  ℹ️  F.0 y F.1 (programas en Python) necesitan OPENROUTER_API_KEY: los modelos gratuitos solo van dentro de opencode")
+    clave_py = next((k for k in ("LITELLM_API_KEY", "OPENROUTER_API_KEY", "GEMINI_API_KEY", "GROQ_API_KEY") if env.get(k)), None)
+    if clave_py:
+        print(f"  ✅ F.0 y F.1 (programas en Python) usarán {clave_py} (no se imprime)")
+    else:
+        print("  ℹ️  F.0 y F.1 (programas en Python) necesitan clave: OPENROUTER_API_KEY, o una GRATUITA y personal de Google AI\n"
+              "     Studio (GEMINI_API_KEY) o de Groq (GROQ_API_KEY). Los modelos gratuitos de opencode solo van dentro de opencode")
 
     print("== 6) Prueba real con el modelo ==")
     if sin_modelo or fallos:

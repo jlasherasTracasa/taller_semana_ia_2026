@@ -9,17 +9,26 @@ from pathlib import Path
 import litellm
 
 # Con el LiteLLM del taller: "openai/<modelo>" + su URL. Con OpenRouter: "openrouter/z-ai/glm-5.3-flash".
-# Los modelos gratuitos de opencode solo funcionan DENTRO de opencode: este programa necesita OpenRouter (o el LiteLLM del docente)
+# Sin OpenRouter: una clave GRATUITA y personal de Google AI Studio ("gemini/…") o de Groq ("groq/…").
+# Los modelos gratuitos de opencode solo funcionan DENTRO de opencode: este programa necesita una de esas claves
 OTRO = os.environ.get("TALLER_MODELO", "")
 OTRO = "" if OTRO.startswith("opencode/") else OTRO
+OTRO = os.environ.get("TALLER_MODELO_PY") or OTRO   # solo para estos programas, no para opencode
 if os.environ.get("LITELLM_API_KEY"):
     MODEL = OTRO or "openai/GLM-5.3-Flash"
     KW = {"api_base": os.environ["LITELLM_API_BASE"] + "/v1", "api_key": os.environ["LITELLM_API_KEY"]}
 elif os.environ.get("OPENROUTER_API_KEY"):
     MODEL = OTRO or "openrouter/z-ai/glm-5.3-flash"
     KW = {"api_key": os.environ["OPENROUTER_API_KEY"]}
+elif os.environ.get("GEMINI_API_KEY"):           # los gratuitos cambian cada mes: comprueba el nombre (wiki: Modelos)
+    MODEL = OTRO or "gemini/gemini-flash-latest"
+    KW = {"api_key": os.environ["GEMINI_API_KEY"]}
+elif os.environ.get("GROQ_API_KEY"):
+    MODEL = OTRO or "groq/openai/gpt-oss-120b"
+    KW = {"api_key": os.environ["GROQ_API_KEY"]}
 else:
-    sys.exit("Este programa llama al modelo directamente y necesita OPENROUTER_API_KEY en el .env del kit.\n"
+    sys.exit("Este programa llama al modelo directamente y necesita una clave en el .env del kit:\n"
+             "OPENROUTER_API_KEY, o una gratuita de Google AI Studio (GEMINI_API_KEY) o de Groq (GROQ_API_KEY).\n"
              "Los modelos gratuitos de opencode solo funcionan dentro de opencode (wiki: Modelos).")
 RAIZ = Path(__file__).resolve().parent  # el agente solo puede ver esta carpeta
 MAX_PASOS = 8                            # freno de seguridad: un agente sin límite puede dar vueltas sin fin

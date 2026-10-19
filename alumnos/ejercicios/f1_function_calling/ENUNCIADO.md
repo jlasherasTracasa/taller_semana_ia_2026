@@ -21,7 +21,7 @@ Ver con tus ojos que el modelo **no ejecuta** herramientas: devuelve un JSON pid
 ```bash
 python taller.py ejecutar f1 fc_calculadora.py
 ```
-Como F.0, necesita `OPENROUTER_API_KEY` en `.env` (los modelos gratuitos solo van dentro de opencode).
+Como F.0, necesita una clave en `.env`: `OPENROUTER_API_KEY`, o una gratuita de Google AI Studio (`GEMINI_API_KEY`) o de Groq (`GROQ_API_KEY`). Los modelos gratuitos de opencode solo van dentro de opencode.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -35,7 +35,7 @@ Cambia el mensaje por «¿Cuánto es 9**9**9?» y comprueba que tu calculadora l
 
 ## 🧪 Lo que pasó al validarlo (11-10-2026)
 
-Funciona (11-10): tool_call con `(1250+3750)*1.21`, ejecución local 6050.0 y respuesta «6.050 €». Necesita OpenRouter: los modelos gratuitos de opencode solo van dentro de opencode.
+Funciona (11-10): tool_call con `(1250+3750)*1.21`, ejecución local 6050.0 y respuesta «6.050 €» con GLM-5.3-Flash. Necesita clave: OpenRouter, o una gratuita de Gemini o Groq (estas dos aún sin validar). Los modelos gratuitos de opencode solo van dentro de opencode.
 
 Prompt, salida real y ficheros: [`soluciones/f1_function_calling/`](../../soluciones/f1_function_calling/)
 

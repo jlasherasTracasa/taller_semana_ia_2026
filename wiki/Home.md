@@ -26,7 +26,7 @@ Aquí está todo lo que necesitas para hacer los ejercicios en clase y repetirlo
 
 | Página | Para qué |
 |---|---|
-| [🤖 Modelos](Modelos.md) | El modelo gratuito de opencode (sin clave), OpenRouter y cómo cambiar de modelo |
+| [🤖 Modelos](Modelos.md) | El modelo gratuito de opencode (sin clave), OpenRouter, F.0 y F.1 gratis con Gemini o Groq, y cómo cambiar de modelo |
 | [🔑 Variables de entorno](Variables-de-entorno.md) | Dónde va tu clave, si la usas |
 | [⚙️ El fichero opencode.json](opencode-json.md) | Qué es, dónde va y cómo se escribe, con un ejemplo comentado |
 | [🔧 Problemas y soluciones](Problemas.md) | «No se reconoce python», «Invalid URL», «Permission required»… |
