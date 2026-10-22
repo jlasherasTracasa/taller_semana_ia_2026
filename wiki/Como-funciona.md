@@ -47,6 +47,28 @@ tests → F.10 · inyección de prompt → EJ 10.
 6. **Haz la prueba de seguridad** (EJ 10): es obligatoria para todos los perfiles.
 7. **Mira tu nivel**: `python taller.py progreso` o «Mi progreso» en la web.
 
+### Así se ve en la web del taller
+
+Elige tu perfil en la portada:
+
+![Portada de la web: los cuatro perfiles para elegir](img/web_perfiles.png)
+
+Debajo aparece tu itinerario recomendado, por áreas, con lo que ya has hecho marcado:
+
+![El itinerario del perfil Oficina y aula, con ejercicios marcados como hechos](img/web_itinerario.png)
+
+En «Ejercicios» puedes buscar y filtrar por dificultad, demos o prácticas:
+
+![La lista de ejercicios filtrada por Fácil](img/web_ejercicios.png)
+
+Cada ejercicio tiene a la derecha sus datos, las órdenes para copiar y el botón para marcarlo como completado:
+
+![La ficha del EJ 24 con el panel de órdenes](img/web_ficha.png)
+
+Y «Mi progreso» cuenta lo que llevas por área:
+
+![Mi progreso: barras por área](img/web_progreso.png)
+
 ## Áreas
 
 | | Área | De qué va |
