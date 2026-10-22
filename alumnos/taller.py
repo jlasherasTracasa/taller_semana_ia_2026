@@ -8,12 +8,13 @@
   python taller.py comprobar ej01       pasa el comprobador; si todo está bien, marca el ejercicio como completado
   python taller.py lanzar ej01          (alternativa) el encargo de una vez, sin conversar (guarda salida.txt)
   python taller.py lanzar ej01 --prompt "tu propio encargo"
+  python taller.py abrir ej01 --modelo glm-5.3-flash-free     otro modelo gratuito (si el de siempre se agota)
   python taller.py ejecutar f0 react_min.py [args]   ejecuta un script del ejercicio con tu .env cargado
   python taller.py progreso             ejercicios completados y nivel alcanzado
 
 Modelo: sin clave, uno GRATUITO de opencode; con OPENROUTER_API_KEY en .env, GLM-5.3-Flash en OpenRouter.
-F.0 y F.1 (programas en Python) necesitan clave: OPENROUTER_API_KEY, o una gratuita de Gemini (GEMINI_API_KEY) o Groq (GROQ_API_KEY).
-Para elegir otro: variable TALLER_MODELO (por ejemplo, TALLER_MODELO=opencode/nemotron-3-ultra-free).
+F.0 y F.1 (programas en Python) necesitan clave: OPENROUTER_API_KEY, o una gratuita de Groq (GROQ_API_KEY, recomendada) o Gemini (GEMINI_API_KEY).
+Para elegir otro: variable TALLER_MODELO (por ejemplo, TALLER_MODELO=opencode/glm-5.3-flash-free).
 Las carpetas de trabajo van a ~/taller-agentes/ (cámbialo con la variable TALLER_TRABAJO).
 Las claves se leen del fichero .env de este kit; nunca se copian a las carpetas de trabajo.
 """
@@ -28,8 +29,12 @@ WIN = os.name == "nt"
 PY = "python" if WIN else "python3"   # cómo se escribe en las órdenes que se muestran
 GRATIS = "opencode/big-pickle"       # modelo gratuito de opencode por defecto (validado el 11-10-2026)
 # Los gratuitos tienen un límite de uso POR MODELO: si uno lo agota, lanzar prueba el siguiente
-GRATIS_OTROS = ["opencode/nemotron-3-ultra-free", "opencode/ling-3.1-flash-free", "opencode/step-5-preview-free"]
+# Lista actual: https://opencode.ai/zen/v1/models (22-10-2026). El cupo es por modelo: si uno se agota, otro sigue
+GRATIS_OTROS = ["opencode/glm-5.3-flash-free", "opencode/deepseek-v4.1-flash-free", "opencode/mimo-v2.6-flash-free",
+                "opencode/flint-40b-free", "opencode/nemotron-3.5-super-vl-free"]
 OPENROUTER = "openrouter/z-ai/glm-5.3-flash"
+# Lo que dice opencode cuando un modelo gratuito agota su límite de uso (1.x y 2.x)
+LIMITE = ("Rate limit exceeded", "Free usage limit reached")
 VENV_BIN = os.path.join(KIT, ".venv", "Scripts" if WIN else "bin")
 
 if WIN:   # que los emojis no rompan la consola de Windows
@@ -172,26 +177,33 @@ def tokens(d, env):
         return {"entrada": 0, "salida": 0}
 
 
-def lanzar(ej, prompt=None):
+def nombre_modelo(m):
+    """'glm-5.3-flash-free' → 'opencode/glm-5.3-flash-free'; con proveedor, tal cual."""
+    return m if not m or "/" in m else "opencode/" + m
+
+
+def lanzar(ej, prompt=None, mod_forzado=None):
     e, env = EJS[ej], cargar_env()
     d = empezar(ej, silencioso=True)
     prompt = prompt or e.get("prompt")
     if not prompt:
         sys.exit("Este ejercicio no se lanza con un único encargo: sigue los pasos de su ENUNCIADO.md.")
-    print(f"🤖 Modelo: {modelo(env) or 'el del opencode.json del kit'}\n🤖 Encargo: {prompt}\n")
+    mod = nombre_modelo(mod_forzado) or modelo(env)
+    extra = ["-m", mod] if mod_forzado else []
+    print(f"🤖 Modelo: {mod or 'el del opencode.json del kit'}\n🤖 Encargo: {prompt}\n")
     t0 = time.time()
-    mod, extra = modelo(env), []
     otros = [m for m in [GRATIS] + GRATIS_OTROS if m != mod]
     for intento in range(6):
         rc = opencode(["run", "--standalone"] + extra + [prompt], d, env, salida=os.path.join(d, "salida.txt"))
         texto = open(os.path.join(d, "salida.txt"), encoding="utf-8").read()
-        if rc == 0:
+        agotado = any(x in texto for x in LIMITE)
+        if rc == 0 and not agotado:
             break
         if "exited before reporting readiness" in texto:
             # Si otro opencode arranca a la vez, el servidor privado a veces no llega a arrancar: se reintenta
             print("↻ opencode no ha llegado a arrancar; lo intento otra vez…")
             time.sleep(5 + 5 * intento)
-        elif "Rate limit exceeded" in texto and (mod or "").startswith("opencode/") and otros:
+        elif agotado and (mod or "").startswith("opencode/") and otros:
             mod = otros.pop(0)
             extra = ["-m", mod]
             print(f"↻ El modelo gratuito ha llegado a su límite de uso. Pruebo con otro: {mod}")
@@ -206,13 +218,22 @@ def lanzar(ej, prompt=None):
     return rc
 
 
-def abrir(ej):
+def abrir(ej, mod_forzado=None):
     e, env = EJS[ej], cargar_env()
     d = empezar(ej, silencioso=True)
-    print(f"Abriendo opencode en {d}\nModelo: {modelo(env) or 'el del opencode.json del kit'} · sal con Ctrl+C")
+    # Con --modelo (o TALLER_MODELO) manda sobre el opencode.json de la carpeta, que se escribió al hacer «empezar»
+    mod = nombre_modelo(mod_forzado or env.get("TALLER_MODELO"))
+    print(f"Abriendo opencode en {d}\nModelo: {mod or modelo(env) or 'el del opencode.json del kit'} · sal con Ctrl+C")
+    print(f"Si dice «Free usage limit reached» o «Rate limit exceeded»: dentro, /models y elige otro «Free»; "
+          f"o sal y usa  {PY} taller.py abrir {e['num_corto']} --modelo {GRATIS_OTROS[0].split('/')[1]}  (wiki: Modelos)")
     if e.get("prompt") and e["modo"] == "run":
         print(f"\n💬 Pega este encargo cuando se abra:\n   {e['prompt']}\n")
     time.sleep(1)
+    if mod:   # el modo interactivo de opencode 2 no admite -m: el modelo va en el opencode.json de la carpeta
+        ruta = os.path.join(d, "opencode.json")
+        cfg = json.load(open(ruta, encoding="utf-8"))
+        cfg["model"] = mod
+        json.dump(cfg, open(ruta, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
     rc = opencode(["--standalone"], d, env)   # sin --standalone usaría el servicio en segundo plano, que no ve tu .env
     print(f"\n✅ ¿Lo ha hecho de verdad?  {PY} taller.py comprobar {e['num_corto']}")
     return rc
@@ -282,12 +303,12 @@ def entorno(sin_modelo=False):
         print(f"  ✅ {mod}: OpenRouter (clave definida; no se imprime)")
     else:
         print(f"  ✅ {mod or 'LiteLLM del docente (opencode.json del kit)'}")
-    clave_py = next((k for k in ("LITELLM_API_KEY", "OPENROUTER_API_KEY", "GEMINI_API_KEY", "GROQ_API_KEY") if env.get(k)), None)
+    clave_py = next((k for k in ("LITELLM_API_KEY", "OPENROUTER_API_KEY", "GROQ_API_KEY", "GEMINI_API_KEY") if env.get(k)), None)
     if clave_py:
         print(f"  ✅ F.0 y F.1 (programas en Python) usarán {clave_py} (no se imprime)")
     else:
-        print("  ℹ️  F.0 y F.1 (programas en Python) necesitan clave: OPENROUTER_API_KEY, o una GRATUITA y personal de Google AI\n"
-              "     Studio (GEMINI_API_KEY) o de Groq (GROQ_API_KEY). Los modelos gratuitos de opencode solo van dentro de opencode")
+        print("  ℹ️  F.0 y F.1 (programas en Python) necesitan clave: OPENROUTER_API_KEY, o una GRATUITA y personal de Groq\n"
+              "     (GROQ_API_KEY, wiki: Modelos). Los modelos gratuitos de opencode solo van dentro de opencode")
 
     print("== 6) Prueba real con el modelo ==")
     if sin_modelo or fallos:
@@ -405,9 +426,12 @@ if __name__ == "__main__":
         sys.exit(ejecutar(buscar(a[1]), a[2], a[3:]))
     elif a[0] in ("empezar", "lanzar", "abrir", "comprobar") and len(a) > 1:
         ej = buscar(a[1])
+        mod = a[a.index("--modelo") + 1] if "--modelo" in a and a.index("--modelo") + 1 < len(a) else None
         if a[0] == "lanzar":
             prompt = a[a.index("--prompt") + 1] if "--prompt" in a else None
-            sys.exit(lanzar(ej, prompt))
-        sys.exit({"empezar": lambda x: (empezar(x), 0)[1], "abrir": abrir, "comprobar": comprobar}[a[0]](ej))
+            sys.exit(lanzar(ej, prompt, mod))
+        if a[0] == "abrir":
+            sys.exit(abrir(ej, mod))
+        sys.exit({"empezar": lambda x: (empezar(x), 0)[1], "comprobar": comprobar}[a[0]](ej))
     else:
         print(__doc__)

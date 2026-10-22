@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "vllm/Qwen3.8-27B-FP8",
+  "model": "vllm/GLM-5.3-Flash",
   "provider": {
     "vllm": {
       "npm": "@ai-sdk/openai-compatible",
@@ -10,8 +10,8 @@
         "apiKey": "{env:LITELLM_API_KEY}"
       },
       "models": {
-        "Qwen3.8-27B-FP8": {
-          "name": "GLM-5.3-Flash (se publica como Qwen3.8-27B-FP8 por compatibilidad)",
+        "GLM-5.3-Flash": {
+          "name": "GLM-5.3-Flash",
           "limit": { "context": 262144, "output": 32768 }
         }
       }

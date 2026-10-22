@@ -29,6 +29,15 @@ clave y falla con «Invalid URL» o «No api key». Con el modelo gratuito no ha
 
 ## La pantalla
 
+Al abrirlo, opencode ocupa toda la terminal. Abajo, la caja donde escribes; debajo, el agente (**Build**) y el modelo
+(**Big Pickle**, el gratuito), y la carpeta en la que trabaja:
+
+![opencode recién abierto: el logotipo, la caja Ask anything y Build · Big Pickle](img/cs_7_opencode.png)
+
+> Si pone `/update to install v2.x`, no actualices: el kit está validado con la **2.0.19**.
+
+En esquema:
+
 ```text
 ┃  Ask anything… "Fix a TODO in the codebase"          ← aquí escribes o pegas el encargo
 ┃
@@ -37,8 +46,19 @@ clave y falla con «Invalid URL» o «No api key». Con el modelo gratuito no ha
  ~/taller-agentes/ej24_lista_compra   shift+tab agents   ctrl+p commands
 ```
 
-Mientras trabaja verás cada paso: `→ Read lista.txt` (lee), `← Write lista_compra.md` (escribe), `$ python …`
-(ejecuta una orden) y, al final, su respuesta con el modelo y el tiempo que ha tardado.
+Pega el encargo en la caja (`Ctrl+V`) y pulsa **Enter**:
+
+![El encargo del EJ 01 pegado en la caja de opencode](img/oc_1_encargo.png)
+
+Mientras trabaja verás cada paso: `→ Explored: 2 reads` (lee), `Preparing write…` / `← Write` (escribe),
+`$ python …` (ejecuta una orden) y `+ Thought` (piensa). A la derecha, el título de la conversación y cuánto
+**contexto** lleva gastado. Abajo, `esc interrupt` para pararlo:
+
+![opencode trabajando: lecturas, pensamientos y escritura en curso](img/oc_2_trabajando.png)
+
+Al final, su respuesta, con el modelo y el tiempo que ha tardado (`Build · Big Pickle · 57.7s`):
+
+![La respuesta final del agente con el resumen de lo que ha hecho](img/demo_ej01_1.png)
 
 ## Teclas que necesitas
 
@@ -66,8 +86,11 @@ Mientras trabaja verás cada paso: `→ Read lista.txt` (lee), `← Write lista_
 | `/exit` | Salir |
 | `/informe-semanal` | Ejemplo de **comando propio** del ejercicio F.3: el encargo guardado en `.opencode/commands/` |
 
-Al escribir `/` aparecen también los comandos del proyecto (los de `.opencode/commands/`). Al elegir uno, opencode
-pega su texto en la caja; pulsa **Enter** una vez para enviarlo.
+Al escribir `/` aparecen también los comandos del proyecto (los de `.opencode/commands/`). Sigue escribiendo para
+filtrar y pulsa **Enter** para elegir uno; luego **Enter** otra vez para enviarlo (si el comando admite argumentos,
+escríbelos antes: `/resumen-mes junio`).
+
+![Al escribir / aparece la lista de comandos, con los del proyecto](img/oc_4_comandos.png)
 
 ## Cuando pide permiso
 

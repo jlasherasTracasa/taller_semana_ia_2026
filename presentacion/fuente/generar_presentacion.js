@@ -449,7 +449,7 @@ async function construir(conNotas) {
     filaIcono(s, "brain", "El historial es su memoria", "guardado mal, dejaba de responder a la pregunta (bug real, corregido).", 8.6, 3.4, 4.15, 1.15);
     filaIcono(s, "shield", "Tu programa pone los límites", "máximo de pasos y carpeta permitida.", 8.6, 4.75, 4.15, 1.15);
     s.addText("Demo:  python taller.py ejecutar f0 react_min.py", { x: 0.6, y: 6.2, w: 12, h: 0.4, fontFace: MONO, fontSize: 13, color: C.cian, margin: 0 });
-    notas(s, "DEMO EN DIRECTO (5 min): F.0 (necesita en tu .env OPENROUTER_API_KEY, o una clave gratuita GEMINI_API_KEY o GROQ_API_KEY). Luego la segunda orden con ../../.env: «OBSERVAR ERROR: fuera de la carpeta permitida». ¿Quién lo ha impedido, el modelo o el programa? El programa. " +
+    notas(s, "Si el directo falla: anexo «Si falla la demo», al final. " + "DEMO EN DIRECTO (5 min): F.0 (necesita en tu .env OPENROUTER_API_KEY, o una clave gratuita GEMINI_API_KEY o GROQ_API_KEY). Luego la segunda orden con ../../.env: «OBSERVAR ERROR: fuera de la carpeta permitida». ¿Quién lo ha impedido, el modelo o el programa? El programa. " +
       "Historia real de octubre: react_min.py guardaba las tool_calls como texto JSON en vez de como objetos; el agente acababa preguntando «¿quieres que resuma alguno?» sin contestar, 3 de 3 veces. Corregido el historial, contestó 2 de 2.");
   }
 
@@ -468,7 +468,7 @@ async function construir(conNotas) {
     s.addText([{ text: "Los argumentos los escribe el modelo… o un atacante a través de un documento que el modelo ha leído. ", options: { color: C.tinta } },
       { text: "Por eso la calculadora no usa eval() y por eso existen los permisos.", options: { color: C.rojo, bold: true } }],
       { x: 0.9, y: 5.3, w: 11.6, h: 1.2, fontFace: TXT, fontSize: 15.5, margin: 0, valign: "middle" });
-    notas(s, "DEMO EN DIRECTO: python taller.py ejecutar f1 fc_calculadora.py (necesita OpenRouter, o una clave gratuita de Gemini o Groq). La idea más importante del bloque: el modelo solo produce texto (un JSON). " +
+    notas(s, "Si el directo falla: anexo «Si falla la demo», al final. " + "DEMO EN DIRECTO: python taller.py ejecutar f1 fc_calculadora.py (necesita OpenRouter, o una clave gratuita de Gemini o Groq). La idea más importante del bloque: el modelo solo produce texto (un JSON). " +
       "Quien toca el mundo es tu programa. Todo lo que hace opencode es esto, con más herramientas.");
   }
 
@@ -494,7 +494,7 @@ async function construir(conNotas) {
     filaIcono(s, "terminal", "Cómo se usa", "En opencode interactivo escribe / y elige el comando. Con argumentos: /resumen-mes junio.", 7.5, 2.05, 5.25, 1.4);
     filaIcono(s, "users", "Para qué", "Que todo el equipo pida lo mismo, igual, sin copiar y pegar. Se guarda junto al proyecto.", 7.5, 3.6, 5.25, 1.4);
     filaIcono(s, "warn", "Solo en interactivo", "En opencode 2 no se pueden lanzar con «opencode run». Otra razón para el modo interactivo.", 7.5, 5.15, 5.25, 1.4);
-    notas(s, "DEMO EN DIRECTO: python taller.py abrir f3, escribe /informe-semanal y Enter (opencode pega el texto del comando; Enter otra vez si no se envía). " +
+    notas(s, "Si el directo falla: anexo «Si falla la demo», al final. " + "DEMO EN DIRECTO: python taller.py abrir f3, escribe /informe-semanal y Enter (opencode pega el texto del comando; Enter otra vez si no se envía). " +
       "Validado en interactivo el 11-10-2026: 3 diapositivas y totales exactos. Reto: que escriban /resumen-mes.");
   }
 
@@ -518,7 +518,7 @@ async function construir(conNotas) {
       { text: " ", options: { breakLine: true } },
       { text: "Dónde: ", options: { bold: true } }, { text: ".opencode/skills/acta-reunion/SKILL.md (+ sus scripts)", options: {} }],
     { x: 8.45, y: 2.85, w: 4.1, h: 3.3, fontFace: TXT, fontSize: 14, color: C.tinta, margin: 0, valign: "top" });
-    notas(s, "DEMO EN DIRECTO: python taller.py abrir f4 y pega «Haz el acta de la reunión de transcripcion_reunion.txt.». Señala en pantalla la carga de la skill: el encargo no la nombraba. " +
+    notas(s, "Si el directo falla: anexo «Si falla la demo», al final. " + "DEMO EN DIRECTO: python taller.py abrir f4 y pega «Haz el acta de la reunión de transcripcion_reunion.txt.». Señala en pantalla la carga de la skill: el encargo no la nombraba. " +
       "La descripción es lo que el agente ve siempre (poco contexto); el resto solo se carga si hace falta. Por eso la descripción tiene que decir CUÁNDO usarla.");
   }
 
@@ -814,6 +814,40 @@ async function construir(conNotas) {
     s.addImage({ data: qrWeb, x: 9.55, y: 1.75, w: 2.7, h: 2.7 });
     s.addText("La web del taller", { x: 9.3, y: 4.5, w: 3.2, h: 0.45, fontFace: TIT, fontSize: 17, bold: true, color: C.tinta, align: "center", margin: 0 });
     notas(s, "Recuerda la web y que las soluciones están para comparar, no para copiar. Pide feedback.");
+  }
+
+  // ================================================================ Anexo · Si falla la demo
+  // Capturas reales de cada demo (las mismas de la wiki, en wiki/img/). Si el directo falla, salta aquí.
+  const IMG = path.join(__dirname, "..", "..", "wiki", "img");
+  const DEMOS = [
+    ["f0_react_bucle", "El bucle ReAct", [["demo_f0_1.png", "El agente lista, lee los tres ficheros y responde"], ["demo_f0_2.png", "Pide el .env: lo impide el programa, no el modelo"]]],
+    ["f1_function_calling", "Function calling", [["demo_f1_1.png", "El modelo solo devuelve un JSON; la cuenta la hace nuestro código"]]],
+    ["f2_agents_md", "AGENTS.md: las normas de la casa", [["demo_f2_1.png", "Sin AGENTS.md: un aviso a su manera"], ["demo_f2_2.png", "Con AGENTS.md: formato, firma y fechas como pide la norma"]]],
+    ["f3_comandos", "Comandos", [["demo_f3_1.png", "Al escribir / salen los comandos del proyecto"], ["demo_f3_2.png", "/informe-semanal: 3 diapositivas y totales que cuadran"]]],
+    ["f4_skills", "Skills", [["demo_f4_1.png", "Carga la skill acta-reunion sin que el encargo la nombre"], ["demo_f4_2.png", "Escribe el acta y la valida: ACTA VÁLIDA"]]],
+    ["ej01_pagina_personal", "Una web personal en un archivo", [["demo_ej01_1.png", "El encargo, en modo interactivo"], ["demo_ej01_2.png", "La página que ha hecho, en el navegador"]]],
+    ["ej10_inyeccion_prompt", "Correo con instrucciones ocultas", [["demo_ej10_1.png", "Detecta la inyección y no la obedece"], ["demo_ej10_2.png", "El comprobador: ningún borrador va al atacante"]]],
+  ].filter(([, , imgs]) => imgs.every(([f]) => fs.existsSync(path.join(IMG, f))));
+  if (DEMOS.length) {
+    separador("A", "Si falla la demo", "Capturas reales de cada demostración, hechas el 22-10-2026 con el modelo gratuito de opencode",
+      "Anexo de respaldo: si una demo falla en directo (sin red, modelo saturado, límite de uso), salta aquí y cuéntala con las capturas. No hace falta enseñarlo si todo va bien.");
+    for (const [id, titulo, imgs] of DEMOS) {
+      const s = slide("Anexo · " + EJ[id].num, titulo, imgs.length > 1 ? "Si el directo falla: lo que se ve en pantalla, paso a paso" : "Si el directo falla: lo que se ve en pantalla");
+      sello(s, [id]);
+      const cajaW = imgs.length > 1 ? 5.95 : 9.0, cajaH = 4.35, y0 = 2.0, hueco = 0.25;
+      let x = imgs.length > 1 ? 0.6 : (W - cajaW) / 2;
+      for (const [f, pie_] of imgs) {
+        const m = await sharp(path.join(IMG, f)).metadata();
+        let w = cajaW, h = (w * m.height) / m.width;
+        if (h > cajaH) { h = cajaH; w = (h * m.width) / m.height; }
+        const xi = x + (cajaW - w) / 2;
+        s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: xi - 0.06, y: y0 - 0.06, w: w + 0.12, h: h + 0.12, rectRadius: 0.08, fill: { color: C.superficie }, line: { color: C.superficie, width: 0 }, shadow: SOMBRA });
+        s.addImage({ path: path.join(IMG, f), x: xi, y: y0, w, h });
+        s.addText(pie_, { x, y: y0 + h + 0.15, w: cajaW, h: 0.4, fontFace: TXT, fontSize: 13, color: C.tinta2, align: "center", margin: 0 });
+        x += cajaW + hueco;
+      }
+      notas(s, `Respaldo de la demo ${EJ[id].num}. Cuenta lo que se ve: ` + imgs.map(([, t]) => t).join(" → ") + ".");
+    }
   }
 
   const out = path.join(__dirname, "..", conNotas ? "taller-agentes-ia-con-notas.pptx" : "taller-agentes-ia.pptx");

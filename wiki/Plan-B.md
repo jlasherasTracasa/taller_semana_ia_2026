@@ -37,29 +37,89 @@ Si el antivirus o la política del aula bloquean ejecutables en tu carpeta, pasa
 
 Un **Codespace** es un ordenador Linux en la nube, con VS Code en el navegador. El repositorio del taller trae una
 configuración (`.devcontainer/`) que lo deja todo instalado: Python, Node, opencode 2.0.19 y las bibliotecas. Con el
-modelo gratuito no hace falta ninguna clave.
+modelo gratuito no hace falta ninguna clave. Todo lo de este apartado está probado el 22-10-2026.
 
-1. Crea una cuenta gratuita en <https://github.com/signup> (si no la tienes). La cuenta gratuita incluye unas 60 horas
-   al mes de Codespaces: el taller usa tres.
-2. Abre <https://github.com/jlasherasTracasa/taller_semana_ia_2026>.
-3. Botón verde **Code → pestaña Codespaces → Create codespace on main**.
-4. Espera unos 3 minutos: la primera vez instala todo (verás el progreso en la terminal de abajo).
-5. Abre una terminal nueva (menú ☰ → *Terminal → New Terminal*). Ya estás en `alumnos/` con el entorno activado:
+### 1. Crea una cuenta gratuita de GitHub (si no la tienes)
 
-   ```bash
-   python taller.py entorno
-   python taller.py empezar ej24
-   python taller.py abrir ej24
-   ```
+Entra en <https://github.com/signup>. Puedes registrarte con **Google** o con correo: correo, contraseña (al menos
+15 caracteres, u 8 con un número y una minúscula), nombre de usuario y país. Pulsa **Create account**, resuelve el
+pequeño puzle y escribe el código que te llega al correo. La cuenta gratuita incluye unas 60 horas al mes de
+Codespaces: el taller usa tres.
 
-   opencode se abre dentro de la terminal del navegador y funciona igual que en un portátil.
+![Formulario de registro de GitHub con datos de ejemplo y el botón Create account](img/github_registro.png)
 
-- Los ficheros que cree el agente están en `~/taller-agentes/`. Para verlos en el explorador de la izquierda:
-  `code ~/taller-agentes/ej24_lista_compra/lista_compra.md`. Para descargar uno: clic derecho → *Download*.
-- **Al terminar**, para el Codespace para no gastar horas: <https://github.com/codespaces> → ⋯ → *Stop codespace*
-  (o bórralo con *Delete*).
-- Si quieres usar la clave de OpenRouter, crea `.env` en `alumnos/` como en [🚀 Primeros pasos](Primeros-pasos.md).
-  No subas ese fichero (git ya lo ignora).
+### 2. Abre el repositorio y pulsa «Code»
+
+Con la sesión iniciada, abre <https://github.com/jlasherasTracasa/taller_semana_ia_2026> y pulsa el botón verde
+**Code**.
+
+![El repositorio del taller en GitHub con el botón verde Code](img/cs_1_repo_code.png)
+
+### 3. Pestaña «Codespaces» → «Create codespace on main»
+
+![Desplegable Code, pestaña Codespaces, botón Create codespace on main](img/cs_2_crear.png)
+
+### 4. Espera a que se prepare (unos 3 minutos la primera vez)
+
+Se abre una pestaña nueva con VS Code. Abajo a la izquierda pone *Opening Remote…* mientras instala todo.
+
+![VS Code en el navegador mientras arranca el Codespace](img/cs_3_arrancando.png)
+
+Cuando termina verás el explorador de ficheros a la izquierda, el README del kit y una **terminal** abajo, ya en la
+carpeta `alumnos` y con el entorno activado (`(.venv)`):
+
+![El Codespace listo: explorador, README y terminal en alumnos](img/cs_4_vscode.png)
+
+> 💡 Si VS Code pregunta **«Do you trust the authors of the files in this folder?»**, pulsa **Trust Folder &
+> Continue**: es el repositorio del taller.
+>
+> 💡 Si no ves la terminal: menú ☰ → *Terminal → New Terminal*. Si a la derecha se abre el panel **Chat**
+> (Copilot), ciérralo con su ✕: en el taller usamos opencode, no Copilot.
+>
+> ⚠️ Al arrancar, la extensión de Python de VS Code escribe sola `source …/activate` en la terminal y **corta lo que
+> se esté ejecutando** en ese momento. Si ves un `KeyboardInterrupt` en tu primera orden, repítela.
+
+### 5. Comprueba el entorno
+
+```bash
+python taller.py entorno
+```
+
+![taller.py entorno dentro del Codespace: todo en verde y el modelo responde](img/cs_5_entorno.png)
+
+### 6. Haz un ejercicio
+
+```bash
+python taller.py empezar ej24
+python taller.py abrir ej24
+```
+
+![taller.py empezar ej24 en el Codespace](img/cs_6_empezar.png)
+
+opencode se abre dentro de la terminal del navegador y funciona igual que en un portátil. Pega el encargo y pulsa
+**Enter**:
+
+![opencode en el Codespace, listo para recibir el encargo](img/cs_7_opencode.png)
+
+![La respuesta del agente: lista de la compra por secciones y decisiones tomadas](img/cs_8_resultado.png)
+
+> No le hagas caso si sugiere `/update to install v2.x`: el kit está validado con la **2.0.19**.
+
+Sal con `Ctrl+C` y comprueba: `python taller.py comprobar ej24`.
+
+### 7. Al terminar: para el Codespace
+
+Un Codespace parado no gasta horas. En <https://github.com/codespaces> → ⋯ junto al tuyo → *Stop codespace* (o
+*Delete* si ya no lo vas a usar).
+
+### Más cosas útiles
+
+- Los ficheros que cree el agente están en `~/taller-agentes/`. Para abrir uno en el editor:
+  `code ~/taller-agentes/ej24_lista_compra/lista_compra.md`. Para descargarlo: clic derecho → *Download*.
+- ¿Una web (EJ 01)? `python -m http.server 8000 -d ~/taller-agentes/ej01_pagina_personal` y abre el aviso
+  *Open in Browser* que sale abajo a la derecha (o la pestaña **Ports**).
+- Si quieres usar una clave (Groq para F.0 y F.1, u OpenRouter), crea `.env` en `alumnos/` como en
+  [🤖 Modelos](Modelos.md). No subas ese fichero (git ya lo ignora).
 - Los ejercicios que tocan el sistema (EJ 21, tareas programadas) funcionan a medias: un Codespace no tiene cron ni
   systemd de usuario. Elige otro.
 

@@ -5,6 +5,7 @@
 - [🚀 Primeros pasos](Primeros-pasos.md)
 - [🖥️ Modo interactivo](Modo-interactivo.md)
 - [🤖 Modelos](Modelos.md)
+- [🎥 Demos del profesor](Demos.md)
 - [🆘 Plan B](Plan-B.md)
 - [🧭 Cómo funciona](Como-funciona.md)
 - [🧠 Conceptos](Conceptos.md)

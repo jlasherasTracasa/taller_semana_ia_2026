@@ -440,11 +440,12 @@ def ej24(d):
     t = leer(os.path.join(d, "lista_compra.md"))
     if not ok(t, "existe lista_compra.md"):
         return
-    compra, casa = [], []
+    compra, casa, otros = [], [], []   # otros: tablas de comprobación, resúmenes y notas (no son la compra)
     destino = compra
     for linea in t.splitlines():
         if linea.startswith("#"):
-            destino = casa if re.search(r"tienes|tengo|despensa|casa|no compr", linea, re.I) else compra
+            destino = (casa if re.search(r"tienes|tengo|despensa|casa|no compr", linea, re.I) else
+                       otros if re.search(r"comprobaci|cuentas|resumen|verifica|nota|c[aá]lculo", linea, re.I) else compra)
         destino.append(linea.lower())
     c = "\n".join(compra)
     ok(re.search(r"1[.,]2\s*kg|1\.?200\s*g", c) and "pocha" in c, "1,2 kg de pochas")

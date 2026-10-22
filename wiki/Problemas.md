@@ -6,6 +6,8 @@ Primero, siempre: `python taller.py entorno`. Te dice qué falta y cómo arregla
 
 | Síntoma | Por qué pasa | Arreglo |
 |---|---|---|
+| `Free usage limit reached. Subscribe to OpenCode Go…` o `Rate limit exceeded` | El modelo gratuito de opencode ha agotado su cupo desde tu conexión | **No hace falta pagar.** Pasos con capturas en [🤖 Modelos](Modelos.md#-si-se-acaba-el-modelo-gratuito) |
+| 🖥️ Codespace: «Do you trust the authors of the files in this folder?» | VS Code abre el repositorio en modo restringido | Pulsa **Trust Folder & Continue** ([🆘 Plan B](Plan-B.md)) |
 | 🪟 `python` o `py` «no se reconoce» | Python no está instalado o no está en el PATH | [🛠️ Instalar](Instalar.md). Reinstala marcando «Add python.exe to PATH» y abre otra PowerShell |
 | 🪟 `python3` o `python` abre la Microsoft Store | Windows trae un alias que no es Python | Usa `py` para crear el `.venv`; dentro del entorno, `python`. O quita el alias en *Configuración → Aplicaciones → Alias de ejecución de aplicaciones* |
 | 🪟 `Activate.ps1 no se puede cargar… ejecución de scripts deshabilitada` | Política de PowerShell | `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` y repite |
@@ -24,9 +26,10 @@ Primero, siempre: `python taller.py entorno`. Te dice qué falta y cómo arregla
 |---|---|---|
 | `Error: Invalid URL` o `No api key passed in` | opencode 2.x manda el trabajo a un **servicio en segundo plano** que arrancó antes de que cargaras tu `.env` | Usa `python taller.py abrir …`/`lanzar …` o añade `--standalone`. También vale `opencode service restart` |
 | El modelo gratuito no contesta, va muy lento o da error de límite | Mucha gente a la vez por la misma conexión, o el modelo ha dejado de ser gratuito | Espera un minuto; prueba otro con `/models`; usa la clave de OpenRouter ([🤖 Modelos](Modelos.md)) |
-| F.0 o F.1: «necesita una clave en el .env del kit» | Son programas de Python: los modelos gratuitos de opencode solo funcionan dentro de opencode | Pon en `.env` la clave de OpenRouter o una gratuita de Gemini o Groq ([🤖 Modelos](Modelos.md)), o mira la demo del profesor |
+| F.0 o F.1: «necesita una clave en el .env del kit» | Son programas de Python: los modelos gratuitos de opencode solo funcionan dentro de opencode | Pon en `.env` la clave de OpenRouter o una gratuita de Groq ([🤖 Modelos](Modelos.md), paso a paso), o mira la demo del profesor |
 | F.0 o F.1 con Gemini o Groq: `404`, `model not found` o `does not support tools` | El modelo gratuito ha cambiado de nombre o ya no es gratuito | Busca uno actual con *tool calling* y ponlo en `.env` con `TALLER_MODELO_PY=` ([🤖 Modelos](Modelos.md)) |
 | F.0 o F.1 con Gemini o Groq: `429` o `RESOURCE_EXHAUSTED` | Límite por minuto o diario de la capa gratuita | Espera un minuto; si es el diario, prueba con el otro servicio |
+| F.0 o F.1 con Gemini: `503`, `This model is currently experiencing high demand` | Google tiene el modelo gratuito saturado (nos pasó el 22-10-2026) | Saca una clave de Groq ([🤖 Modelos](Modelos.md)) o espera un rato |
 | `Standalone server exited before reporting readiness` | Dos opencode arrancando a la vez en el mismo usuario | Vuelve a lanzarlo (`taller.py lanzar` ya lo reintenta solo) |
 
 ## Trabajando con el agente

@@ -23,9 +23,10 @@ Dar **instrucciones permanentes** al agente con un fichero `AGENTS.md` en la car
    > Escribe el aviso para los socios con la excursión de datos_salida.txt.
 
    Sal con `Ctrl+C`.
-2. **Con normas.** Copia las normas (en PowerShell, Mac o Linux) y repite el MISMO encargo en un opencode nuevo:
+2. **Con normas.** Copia las normas en tu carpeta de trabajo (la orden vale en PowerShell, Mac y Linux, desde
+   `alumnos`) y repite el MISMO encargo en un opencode nuevo:
    ```bash
-   cp AGENTS.ejemplo.md AGENTS.md
+   cp ~/taller-agentes/f2_agents_md/AGENTS.ejemplo.md ~/taller-agentes/f2_agents_md/AGENTS.md
    python taller.py abrir f2
    ```
 3. Compara los dos avisos. ¿Qué normas ha cumplido? ¿Alguna se ha saltado?

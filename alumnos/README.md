@@ -44,7 +44,7 @@ python taller.py abrir ej24            # opencode en MODO INTERACTIVO: pega el e
 python taller.py comprobar ej24        # ¿lo hizo de verdad? Si sí, queda completado y te propone el siguiente paso
 python taller.py progreso              # ejercicios completados y nivel alcanzado
 python taller.py lanzar ej24           # (alternativa) el encargo de una vez, sin conversar; dice los tokens gastados
-python taller.py ejecutar f0 react_min.py   # los ejercicios que son programas de Python (necesitan clave: OpenRouter, Gemini o Groq)
+python taller.py ejecutar f0 react_min.py   # los ejercicios que son programas de Python (necesitan clave: OpenRouter, o una gratuita de Groq)
 ```
 
 `taller.py` trabaja **siempre en copias** (`~/taller-agentes/`), lee tu `.env`, elige el modelo y abre opencode en
@@ -60,7 +60,7 @@ modo `--standalone`. Cómo se usa opencode por dentro (teclas, permisos, comando
 | `taller.py` | El mando del taller (solo biblioteca estándar; funciona igual en Windows, Linux y Mac) |
 | `comprobar.py` | El comprobador de cada ejercicio: `python comprobar.py --lista` |
 | `opencode.json` | Configuración del agente: modelo y **permisos**. Sin claves ([wiki](../wiki/opencode-json.md)) |
-| `.env.example` | Plantilla para tus claves (OpenRouter, o Gemini o Groq gratis para F.0 y F.1), si las usas (cópiala a `.env`, que nunca se sube a git) |
+| `.env.example` | Plantilla para tus claves (OpenRouter, o Groq gratis para F.0 y F.1), si las usas (cópiala a `.env`, que nunca se sube a git) |
 | `requirements.txt` | Bibliotecas de Python de los ejercicios |
 | `comprobar_entorno.sh` | Lo mismo que `python taller.py entorno`, para quien prefiera bash |
 | [`replicar_paper/`](replicar_paper/README.md) | Reto avanzado: replicar un artículo científico en CPU |

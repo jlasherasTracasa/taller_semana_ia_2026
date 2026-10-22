@@ -12,8 +12,6 @@ profesor/notas_profesor.md
 presentacion/*-con-notas.pptx
 presentacion/*-con-notas.pdf
 
-# ---- presentaciones antiguas, con notas del ponente
-archivo/presentaciones/
 
 # ---- dependencias y basura
 node_modules/

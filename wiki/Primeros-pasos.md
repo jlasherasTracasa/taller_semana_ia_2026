@@ -27,9 +27,8 @@ kit usa **GLM-5.3-Flash**, el modelo con el que se validaron los ejercicios. Má
 [🤖 Modelos](Modelos.md) y [🔑 Variables de entorno](Variables-de-entorno.md).
 
 ¿Sin clave de OpenRouter y quieres hacer F.0 y F.1 (los dos ejercicios que son programas de Python)? Saca una clave
-**gratuita y personal**, sin tarjeta, en [Google AI Studio](https://aistudio.google.com/apikey) o en
-[Groq](https://console.groq.com/keys), y ponla en `.env` en la línea `GEMINI_API_KEY=` o `GROQ_API_KEY=`. Los pasos,
-en [🤖 Modelos](Modelos.md), apartado «F.0 y F.1 sin OpenRouter».
+**gratuita y personal** de [Groq](https://console.groq.com/keys), sin tarjeta, y ponla en `.env` en la línea
+`GROQ_API_KEY=`. Los pasos, con capturas, en [🤖 Modelos](Modelos.md), apartado «F.0 y F.1 gratis».
 
 > 🔐 `.env` es tuyo y de nadie más: no lo subas a git, no lo pegues en un chat, no lo enseñes en pantalla.
 
@@ -39,6 +38,11 @@ en [🤖 Modelos](Modelos.md), apartado «F.0 y F.1 sin OpenRouter».
 python taller.py entorno
 ```
 
+Seis comprobaciones, cada una con ✅ o ❌ y, si falla, qué hacer. La última hace una llamada real al modelo. Al final
+tiene que poner **«0 cosa(s) por arreglar»**:
+
+![taller.py entorno con las seis comprobaciones en verde](img/06_entorno.png)
+
 ## 3. Mira el menú
 
 ```bash
@@ -46,7 +50,10 @@ python taller.py
 ```
 
 Perfiles, itinerarios, áreas y ejercicios. Los marcados con 🎥 los hace el profesor **en directo**; el resto son
-**prácticas** que haces tú (y en las que preguntas al profesor cuando te atasques).
+**prácticas** que haces tú (y en las que preguntas al profesor cuando te atasques). El color es la dificultad:
+🟢 fácil, 🔵 medio, 🟣 avanzado, ⚫ experto. Al final, tu progreso:
+
+![El menú de taller.py: ejercicios por áreas con su dificultad y el progreso](img/10_menu.png)
 
 ## 4. Tu primer encargo, en modo interactivo
 
@@ -55,10 +62,20 @@ python taller.py empezar ej24      # prepara ~/taller-agentes/ej24_lista_compra 
 python taller.py abrir ej24        # abre opencode en esa carpeta
 ```
 
-Se abre opencode a pantalla completa. **Copia el encargo** que te ha enseñado `empezar` (también está en el
+`empezar` te cuenta la situación, te dice dónde está tu carpeta y te da el encargo para copiar:
+
+![taller.py empezar ej24: la situación, la carpeta y el encargo](img/11_empezar.png)
+
+Con `abrir` se abre opencode a pantalla completa. **Copia el encargo** que te ha enseñado `empezar` (también está en el
 enunciado y en la web), **pégalo** en la caja de abajo (`Ctrl+V`, o clic derecho en Windows) y pulsa **Enter**.
 
-Mira lo que hace: qué ficheros lee (`→ Read`), qué escribe (`← Write`), qué órdenes ejecuta. Cuando termine, sal con
+![opencode con el encargo pegado en la caja, antes de pulsar Enter](img/oc_1_encargo.png)
+
+Mira lo que hace: qué ficheros lee (`→ Read`), qué escribe (`← Write`), qué órdenes ejecuta. Al terminar te explica
+qué ha hecho y abajo pone el modelo y lo que ha tardado:
+
+![La respuesta del agente al terminar](img/cs_8_resultado.png)
+ Cuando termine, sal con
 **`Ctrl+C`** (con la caja vacía) o escribiendo `/exit`. Todo lo del modo interactivo, en
 [🖥️ Modo interactivo](Modo-interactivo.md).
 
@@ -67,6 +84,8 @@ Mira lo que hace: qué ficheros lee (`→ Read`), qué escribe (`← Write`), qu
 ```bash
 python taller.py comprobar ej24
 ```
+
+![taller.py comprobar: cada comprobación con ✅ y el criterio de éxito cumplido](img/oc_3_comprobar.png)
 
 Si sale ✅, el ejercicio cuenta como completado y te propone el siguiente. Si sale ❌, vuelve a abrir opencode
 (`python taller.py abrir ej24`) y pídele que lo arregle, o mejora el encargo.

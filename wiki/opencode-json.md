@@ -38,7 +38,7 @@ llama al fichero `opencode.jsonc`.
   "$schema": "https://opencode.ai/config.json",
 
   // Modelo: "<proveedor>/<modelo>". Este es el LiteLLM del docente; taller.py lo cambia según tu .env
-  "model": "vllm/Qwen3.8-27B-FP8",
+  "model": "vllm/GLM-5.3-Flash",
 
   "provider": {
     "vllm": {                                   // el nombre que tú le das al proveedor
@@ -49,8 +49,8 @@ llama al fichero `opencode.jsonc`.
         "apiKey": "{env:LITELLM_API_KEY}"       // ¡NUNCA la clave escrita aquí!
       },
       "models": {
-        "Qwen3.8-27B-FP8": {                    // el id que espera el servidor
-          "name": "GLM-5.3-Flash (se publica como Qwen3.8-27B-FP8 por compatibilidad)",
+        "GLM-5.3-Flash": {                      // el id que espera el servidor
+          "name": "GLM-5.3-Flash",
           "limit": { "context": 262144, "output": 32768 }
         }
       }

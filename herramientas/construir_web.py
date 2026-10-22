@@ -21,6 +21,7 @@ def enlaces(md):
     md = re.sub(r"\]\((?:\.\./\.\./)?replicar_paper/README\.md\)", f"]({REPO}/tree/main/alumnos/replicar_paper)", md)
     md = re.sub(r"\]\(\.\./alumnos/ITINERARIOS\.md\)", "](#/)", md)
     md = re.sub(r"\]\(([A-Za-z0-9_-]+)\.md\)", r"](#/wiki/\1)", md)
+    md = re.sub(r"\]\(img/", "](img/wiki/", md)   # capturas de la wiki: wiki/img/ → _site/img/wiki/
     return md
 
 
@@ -31,6 +32,8 @@ def main():
     for f in ("logo_semana_ia_2026_oscuro.png", "logo_semana_ia_2026_horizontal.png", "logo_semana_ia_2026_horizontal_oscuro.png",
               "encrucijada_semana_ia_2026.jpg", "logo_catedra_ia.png"):
         shutil.copy(os.path.join(RAIZ, "presentacion", "assets", f), os.path.join(OUT, "img", f))
+    if os.path.isdir(os.path.join(RAIZ, "wiki", "img")):
+        shutil.copytree(os.path.join(RAIZ, "wiki", "img"), os.path.join(OUT, "img", "wiki"))
     shutil.copy(os.path.join(RAIZ, "presentacion", "taller-agentes-ia.pdf"), os.path.join(OUT, "taller-agentes-ia.pdf"))
     escenas = {}
     for e in IDX["ejercicios"]:

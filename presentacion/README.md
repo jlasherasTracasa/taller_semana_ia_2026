@@ -21,7 +21,7 @@ Minimalista, tipo Material Design, con la identidad de la **Semana de la IA 2026
   oficial (`assets/banner_semana_ia_2026_oficial.jpg`, de unavarra.es).
 - Código QR a la web del taller en la diapositiva 2 y en la de cierre.
 
-## Estructura (50 diapositivas)
+## Estructura
 
 | # | Bloque |
 |---|---|
@@ -31,6 +31,7 @@ Minimalista, tipo Material Design, con la identidad de la **Semana de la IA 2026
 | 29-36 | **03 · Ejercicios por áreas**: reparto, una diapositiva por área (con las demos marcadas) y la prueba de seguridad |
 | 37-45 | **04 · Lo que aprendimos**: cinco casos reales (qué pasó, por qué, qué hacemos ahora), verificar y medir, cuándo no usar un agente, coste |
 | 46-51 | **05 · Cierre**: niveles, reto avanzado, glosario, qué hacer el lunes, gracias |
+| Anexo | **A · Si falla la demo**: una diapositiva por demo (F.0, F.1, F.2, F.3, F.4, EJ 01, EJ 10) con capturas reales del 22-10-2026, para contarla si el directo falla. Las imágenes son las de la wiki (`wiki/img/`) |
 
 Cada diapositiva de una pieza lleva arriba a la derecha su ejercicio: **DEMO EN DIRECTO** (lo hace el profesor) o
 **PRÁCTICA** (lo hacen los alumnos). Las demos salen de `demo=True` en `herramientas/aventura.py`.

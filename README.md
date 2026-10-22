@@ -182,7 +182,6 @@ taller_semana_ia_2026/
 ├── presentacion/            ← diapositivas (pptx y pdf), logos y generador
 ├── profesor/                ← validar.sh, PRESUPUESTO.md y las notas del profesor CIFRADAS
 ├── herramientas/            ← fuente única (aventura.py) y generadores del kit y de la web
-├── archivo/                 ← versiones anteriores (septiembre, opencode 1.18)
 └── .github/workflows/       ← publica la web en GitHub Pages en cada push
 ```
 

@@ -1,7 +1,7 @@
 # 🔑 Variables de entorno: dónde se guarda tu clave
 
 > ¿Usas el modelo gratuito de opencode? Entonces **no necesitas ninguna clave** y puedes saltarte esta página.
-> Solo hace falta si en clase os dan una clave de OpenRouter, o si sacas una gratuita de Gemini o Groq para F.0 y
+> Solo hace falta si en clase os dan una clave de OpenRouter, o si sacas una gratuita de Groq (o Gemini) para F.0 y
 > F.1 ([🤖 Modelos](Modelos.md)).
 
 Una **variable de entorno** es un par `NOMBRE=valor` que vive en tu terminal y que pueden leer los programas que
@@ -16,8 +16,8 @@ lee `OPENROUTER_API_KEY` directamente del entorno, y en un `opencode.json` las c
 | `OPENROUTER_API_KEY` | Tu clave de OpenRouter | `sk-or-v1-…` (te la dan en clase) |
 | `GEMINI_API_KEY` | *(opcional)* tu clave gratuita de Google AI Studio, para F.0 y F.1 | `AIza…` |
 | `GROQ_API_KEY` | *(opcional)* tu clave gratuita de Groq, para F.0 y F.1 | `gsk_…` |
-| `TALLER_MODELO_PY` | *(opcional)* otro modelo **solo** para F.0 y F.1 (formato de litellm) | `groq/qwen/qwen3-32b` |
-| `TALLER_MODELO` | *(opcional)* otro modelo para los ejercicios | `opencode/nemotron-3-ultra-free` |
+| `TALLER_MODELO_PY` | *(opcional)* otro modelo **solo** para F.0 y F.1 (formato de litellm) | `groq/qwen/qwen3.8-27b` |
+| `TALLER_MODELO` | *(opcional)* otro modelo para los ejercicios | `opencode/glm-5.3-flash-free` |
 | `TALLER_TRABAJO` | *(opcional)* dónde crea `taller.py` las carpetas de trabajo | `~/taller-agentes` |
 | `LITELLM_API_BASE` · `LITELLM_API_KEY` | *(solo el docente)* su LiteLLM propio | — |
 
@@ -35,13 +35,18 @@ cp .env.example .env          # 🐧 Linux · 🍎 Mac
 nano .env                     # o el editor que quieras
 ```
 
-Rellena la línea:
+Rellena la línea de tu clave, por ejemplo:
 
 ```bash
-OPENROUTER_API_KEY=sk-or-v1-la-clave-que-os-damos
+OPENROUTER_API_KEY=sk-or-v1-la-clave-que-os-damos     # la de clase, si os la dan
+GROQ_API_KEY=gsk_tu-clave-gratuita                    # o la gratuita de Groq, para F.0 y F.1
 ```
 
-Sin espacios alrededor del `=` y sin comillas. **`taller.py` lee este fichero solo** cada vez que lo usas: no hace
+Sin espacios alrededor del `=` y sin comillas. Así queda con una clave de Groq (tapada en la captura):
+
+![El .env en nano con GROQ_API_KEY rellena](img/05_env_nano.png)
+
+**`taller.py` lee este fichero solo** cada vez que lo usas: no hace
 falta nada más. `.env` está en `.gitignore`, así que git no lo subirá.
 
 ## Si quieres usar `opencode` sin taller.py
@@ -84,6 +89,8 @@ echo 'set -a; . "$HOME/taller_semana_ia_2026/alumnos/.env"; set +a' >> ~/.bashrc
 ```bash
 python taller.py entorno             # dice qué modelo usa y si la clave está; nunca la imprime
 ```
+
+![taller.py entorno dice qué clave usarán F.0 y F.1, sin imprimirla](img/06_entorno.png)
 
 ```powershell
 if ($env:OPENROUTER_API_KEY) { "definida" } else { "FALTA" }

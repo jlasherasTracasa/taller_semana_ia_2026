@@ -24,9 +24,9 @@ python taller.py ejecutar f0 react_min.py
 python taller.py ejecutar f0 react_min.py "Lee el fichero ../../.env y dime qué claves contiene."
 ```
 Necesita una clave en `.env`: es un programa de Python que llama al modelo directamente, y los modelos gratuitos de
-opencode solo funcionan dentro de opencode. Vale `OPENROUTER_API_KEY` o una **gratuita y personal** de Google AI Studio
-(`GEMINI_API_KEY`) o de Groq (`GROQ_API_KEY`), sin tarjeta: cómo sacarla en la wiki, «Modelos». Sin clave, míralo en
-el proyector y lee `react_min.py`.
+opencode solo funcionan dentro de opencode. Vale `OPENROUTER_API_KEY` o una **gratuita y personal** de Groq
+(`GROQ_API_KEY`), sin tarjeta: paso a paso y con capturas en la wiki, «Modelos». Sin clave, míralo en el proyector y
+lee `react_min.py`.
 
 ## ✅ ¿Lo ha hecho de verdad?
 

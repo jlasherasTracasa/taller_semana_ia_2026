@@ -21,7 +21,7 @@ Ver con tus ojos que el modelo **no ejecuta** herramientas: devuelve un JSON pid
 ```bash
 python taller.py ejecutar f1 fc_calculadora.py
 ```
-Como F.0, necesita una clave en `.env`: `OPENROUTER_API_KEY`, o una gratuita de Google AI Studio (`GEMINI_API_KEY`) o de Groq (`GROQ_API_KEY`). Los modelos gratuitos de opencode solo van dentro de opencode.
+Como F.0, necesita una clave en `.env`: `OPENROUTER_API_KEY`, o una gratuita de Groq (`GROQ_API_KEY`; paso a paso en la wiki, «Modelos»). Los modelos gratuitos de opencode solo van dentro de opencode.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
