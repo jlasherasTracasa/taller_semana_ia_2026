@@ -93,29 +93,51 @@ Con `python taller.py lanzar …` no hace falta nada: si el gratuito se agota, e
 
 ## 🔌 Otros proveedores (alternativas)
 
-opencode habla con muchos proveedores. Basta con poner su clave en el `.env` del kit (`taller.py` la carga) y elegir
-el modelo con `--modelo proveedor/modelo` o, dentro de opencode, con `/models`. Algunos no usan clave sino una cuenta:
-dentro de opencode, `/connect` (o `opencode auth login`) y se sigue el asistente.
+opencode habla con muchos proveedores. Para usar uno: saca la clave en su web, ponla en el `.env` del kit con el
+nombre de la tabla (`taller.py` la carga) y abre el ejercicio con ese modelo:
 
-| Proveedor | Gratis | Para qué sirve en el taller | Estado (22-10-2026) |
-|---|---|---|---|
-| **Modelos «Free» de opencode** | Sí, sin cuenta | Todos los ejercicios menos F.0 y F.1 | ✅ Probados: 9 modelos responden y usan herramientas |
-| **Groq** (`GROQ_API_KEY`) | Sí, sin tarjeta | F.0 y F.1 | ✅ Probado. Dentro de opencode solo para cosas pequeñas (8.000 tokens/min) |
-| **GitHub Copilot** (`/connect` → GitHub Copilot) | **Copilot Free** para cualquiera; **Copilot Student** gratis para estudiantes verificados en [GitHub Education](https://education.github.com) (la verificación tarda días: hazla antes del taller); profesorado verificado: Copilot Pro gratis | Todos los ejercicios en opencode | ⚠️ Sin probar en el kit. Copilot Free solo elige modelo en automático y tiene un cupo mensual pequeño |
-| **OpenRouter** (`OPENROUTER_API_KEY`) | Modelos `:free` y el enrutador **`openrouter/free`** (elige un gratuito disponible); sin saldo, ~50 peticiones al día | F.0 y F.1, y **unos pocos ejercicios al día en opencode** | ✅ Probado: `nemotron-3-ultra:free` en F.0 y F.1, y el **EJ 24 completo en opencode** con `--modelo openrouter/openrouter/free` (81 s, comprobador ✅) |
-| **Google AI Studio** (`GEMINI_API_KEY` para F.0 y F.1; `GOOGLE_GENERATIVE_AI_API_KEY` para opencode) | Sí, sin tarjeta | F.0 y F.1 | ⚠️ El 22-10-2026, `503` (saturado) |
-| **Mistral** (`MISTRAL_API_KEY`) | Plan *Experiment*: sin tarjeta, con verificación por teléfono; pide aceptar que usen tus datos para entrenar | F.0, F.1 y opencode | ⚠️ Sin probar |
-| **NVIDIA** ([build.nvidia.com](https://build.nvidia.com), `NVIDIA_API_KEY`) | Créditos de prueba, con verificación por teléfono | F.0, F.1 y opencode | ⚠️ Sin probar |
-| **Cerebras** | Pide tarjeta para activar la prueba | — | ❌ No lo recomendamos a alumnos |
-| **Un modelo en tu ordenador** ([Ollama](https://ollama.com)) | Gratis y sin límites | Probar sin internet | ⚠️ Sin probar. Sin tarjeta gráfica va lento y los modelos pequeños usan mal las herramientas |
+```bash
+python taller.py abrir ej24 --modelo nvidia/z-ai/glm-5.3-flash
+```
+
+Dentro de opencode también puedes cambiar con `/models` (escribe el nombre del proveedor para filtrar). Los que no
+usan clave sino una cuenta se conectan dentro de opencode con `/connect` (o `opencode auth login`).
+
+### ✅ Probados el 22-10-2026
+
+| Proveedor | Variable en `.env` | Modelo para `--modelo` | Gratis | Resultado |
+|---|---|---|---|---|
+| **opencode Zen** | — (sin cuenta) | `glm-5.3-flash-free`, `deepseek-v4.1-flash-free`, `mimo-v2.6-flash-free`… | Sí, con cupo por modelo | 9 modelos usan herramientas bien. El cupo de `big-pickle` se agotó en un Codespace |
+| **OpenRouter** ([openrouter.ai/keys](https://openrouter.ai/keys)) | `OPENROUTER_API_KEY` | `openrouter/openrouter/free` | Sin saldo: modelos `:free`, ~50 peticiones al día | EJ 24 completo en 81 s, comprobador ✅ |
+| **Groq** ([console.groq.com/keys](https://console.groq.com/keys)) | `GROQ_API_KEY` | (para F.0 y F.1) | Sí, sin tarjeta | F.0 y F.1 ✅. Dentro de opencode se queda corto (8.000 tokens/min) |
+
+### ⚠️ Sin probar todavía (prometedores)
+
+Datos de sus páginas y del catálogo [models.dev](https://models.dev) que usa opencode, a 22-10-2026. Compruébalos
+antes del taller con una tarea corta.
+
+| Proveedor | Variable en `.env` | Modelo para `--modelo` | Gratis | Ojo |
+|---|---|---|---|---|
+| **NVIDIA** ([build.nvidia.com](https://build.nvidia.com)) | `NVIDIA_API_KEY` | `nvidia/z-ai/glm-5.3-flash` | Modelos gratuitos, entre ellos **GLM-5.3-Flash** (el de la validación) | Pide verificar el teléfono |
+| **Z.ai** ([z.ai](https://z.ai), los creadores de GLM) | `ZHIPU_API_KEY` | `zai/glm-4.7-flash` | `glm-4.7-flash`, `glm-4.5-flash` y `glm-4.6v-flash` gratis ([precios](https://docs.z.ai/guides/overview/pricing)) | Empresa china: piensa qué datos le mandas |
+| **Hugging Face** ([huggingface.co](https://huggingface.co/settings/tokens)) | `HF_TOKEN` | `huggingface/zai-org/GLM-4.7-Flash` | 0,10 $ al mes de crédito | Da para muy poco |
+| **Vercel AI Gateway** ([vercel.com/ai-gateway](https://vercel.com/ai-gateway)) | `AI_GATEWAY_API_KEY` | `vercel/…` (p. ej. modelos `…-free`) | 5 $ de crédito cada 30 días y algunos modelos gratis | Comprueba si te pide tarjeta |
+| **Mistral** ([console.mistral.ai](https://console.mistral.ai)) | `MISTRAL_API_KEY` | `mistral/labs-devstral-small-2512` | Plan *Experiment*, sin tarjeta | Teléfono y aceptar que entrenen con tus datos |
+| **Meta Llama API** ([llama.developer.meta.com](https://llama.developer.meta.com)) | `LLAMA_API_KEY` | `llama/llama-3.3-70b-instruct` | Modelos Llama gratis | Puede no estar disponible en la UE |
+| **SambaNova** ([cloud.sambanova.ai](https://cloud.sambanova.ai)) | `SAMBANOVA_API_KEY` | (ver `/models`) | Capa gratuita sin tarjeta, unas 20 peticiones/min | Límites sin confirmar |
+| **GitHub Copilot** | — (`/connect` → GitHub Copilot) | (los que ofrezca tu plan) | **Copilot Free** para todos; **Copilot Student** gratis para estudiantes verificados en [GitHub Education](https://education.github.com) (tarda días: antes del taller) | Copilot Free solo elige modelo en automático y su cupo mensual es pequeño |
+| **Google AI Studio** | `GOOGLE_GENERATIVE_AI_API_KEY` (opencode) · `GEMINI_API_KEY` (F.0 y F.1) | `google/gemini-flash-latest` | Sí, sin tarjeta | El 22-10-2026 daba `503` (saturado) |
+| **En tu ordenador** ([LM Studio](https://lmstudio.ai) u [Ollama](https://ollama.com)) | — | `lmstudio/openai/gpt-oss-20b` | Gratis y sin límites | Necesita un portátil potente; sin tarjeta gráfica va muy lento |
+
+**No recomendados para alumnos:** Cerebras (pide tarjeta para la prueba), y los de pago sin capa gratuita
+(DeepSeek, Together, Fireworks…), aunque sean baratos.
 
 > 🔐 Cada clave es personal. Con las que piden **teléfono** o **aceptar el uso de tus datos**, decide tú: los
 > ficheros del taller son ficticios, los tuyos de verdad no.
 
-Ejemplo con Mistral (sin probar): en `.env`, `MISTRAL_API_KEY=…` y luego
-`python taller.py abrir ej24 --modelo mistral/mistral-small-latest`. Si el nombre del modelo ha cambiado, dentro de
-opencode `/models` y escribe `mistral` para ver los que hay.
-
+**¿Y para F.0 y F.1?** Esos programas usan `litellm`, no opencode. Funcionan sin tocar nada con OpenRouter, Groq y
+Gemini; para otro proveedor, pon su clave y el modelo en formato de litellm en `TALLER_MODELO_PY` (por ejemplo
+`TALLER_MODELO_PY=nvidia_nim/z-ai/glm-5.3-flash` con `NVIDIA_NIM_API_KEY=…`; sin probar).
 
 ## 💳 OpenRouter (GLM-5.3-Flash)
 
