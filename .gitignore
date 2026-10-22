@@ -22,3 +22,6 @@ __pycache__/
 trabajo/
 entrega/
 _site/
+
+# ---- configuración local de Claude Code (puede guardar órdenes con claves)
+.claude/
