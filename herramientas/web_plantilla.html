@@ -271,9 +271,9 @@ function marcar(id) { const s = hechos(); if (s[id]) delete s[id]; else s[id] = 
 async function ruta() {
   const [a, b] = location.hash.replace(/^#\/?/, "").split("/");
   const app = $("#app");
-  app.innerHTML = a === "ejercicio" ? ejercicio(b) : a === "ejercicios" ? ejercicios() : a === "progreso" ? progreso()
+  app.innerHTML = (a === "ejercicio" || a === "escena") ? ejercicio(b) : a === "ejercicios" ? ejercicios() : a === "progreso" ? progreso()
     : a === "wiki" ? wiki(decodeURIComponent(b || "Home")) : inicio();
-  document.querySelectorAll("#nav a").forEach(x => x.classList.toggle("activo", x.dataset.r === (a === "ejercicio" ? "ejercicios" : a || "")));
+  document.querySelectorAll("#nav a").forEach(x => x.classList.toggle("activo", x.dataset.r === ((a === "ejercicio" || a === "escena") ? "ejercicios" : a || "")));
   app.querySelectorAll("pre code.language-mermaid").forEach(c => { const d = document.createElement("pre"); d.className = "mermaid"; d.textContent = c.textContent; c.parentElement.replaceWith(d); });
   if (window.mermaid) {
     const osc = getComputedStyle(document.documentElement).getPropertyValue("--fondo").trim().toLowerCase() === "#0f1c26";

@@ -14,8 +14,8 @@ VAL = json.load(open(os.path.join(RAIZ, "herramientas", "validacion.json"), enco
 
 def enlaces(md):
     """Los enlaces relativos del kit, convertidos a rutas de la web o a GitHub."""
-    md = re.sub(r"\]\(\.\./([a-z0-9_]+)/ENUNCIADO\.md\)", r"](#/escena/\1)", md)
-    md = re.sub(r"\]\(ejercicios/([a-z0-9_]+)/ENUNCIADO\.md\)", r"](#/escena/\1)", md)
+    md = re.sub(r"\]\(\.\./([a-z0-9_]+)/ENUNCIADO\.md\)", r"](#/ejercicio/\1)", md)
+    md = re.sub(r"\]\(ejercicios/([a-z0-9_]+)/ENUNCIADO\.md\)", r"](#/ejercicio/\1)", md)
     md = re.sub(r"\]\((?:\.\./\.\./)?ITINERARIOS\.md#[^)]*\)|\]\(#-áreas-y-ejercicios\)", "](#/)", md)
     md = re.sub(r"\]\(\.\./\.\./soluciones/([^)]*)\)", rf"]({REPO}/tree/main/alumnos/soluciones/\1)", md)
     md = re.sub(r"\]\((?:\.\./\.\./)?replicar_paper/README\.md\)", f"]({REPO}/tree/main/alumnos/replicar_paper)", md)
