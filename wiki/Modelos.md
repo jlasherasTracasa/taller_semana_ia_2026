@@ -83,6 +83,9 @@ Con `python taller.py lanzar …` no hace falta nada: si el gratuito se agota, e
 - **Espera** un rato: el cupo se recupera con el tiempo.
 - **Hazlo desde otra conexión** (tu portátil en casa, o el móvil compartiendo datos): el cupo va por conexión.
 - **Usa una clave**: la de OpenRouter que se da en clase (GLM-5.3-Flash, de pago y barato), o la tuya.
+- **Con una clave gratuita de OpenRouter** (sin saldo), el enrutador gratuito funciona dentro de opencode:
+  `python taller.py abrir ej24 --modelo openrouter/openrouter/free`. Probado el 22-10-2026 con el EJ 24. Da para unos
+  pocos ejercicios al día (unas 50 peticiones; cada ejercicio gasta varias).
 - **Groq dentro de opencode no sirve para los ejercicios**: responde a cosas pequeñas, pero su capa gratuita admite
   8.000 tokens por minuto y opencode manda más en cada paso (el EJ 24 se quedó esperando sin hacer nada). Úsalo solo
   para F.0 y F.1.
@@ -99,7 +102,7 @@ dentro de opencode, `/connect` (o `opencode auth login`) y se sigue el asistente
 | **Modelos «Free» de opencode** | Sí, sin cuenta | Todos los ejercicios menos F.0 y F.1 | ✅ Probados: 9 modelos responden y usan herramientas |
 | **Groq** (`GROQ_API_KEY`) | Sí, sin tarjeta | F.0 y F.1 | ✅ Probado. Dentro de opencode solo para cosas pequeñas (8.000 tokens/min) |
 | **GitHub Copilot** (`/connect` → GitHub Copilot) | **Copilot Free** para cualquiera; **Copilot Student** gratis para estudiantes verificados en [GitHub Education](https://education.github.com) (la verificación tarda días: hazla antes del taller); profesorado verificado: Copilot Pro gratis | Todos los ejercicios en opencode | ⚠️ Sin probar en el kit. Copilot Free solo elige modelo en automático y tiene un cupo mensual pequeño |
-| **OpenRouter** (`OPENROUTER_API_KEY`) | Modelos `:free` y el enrutador `openrouter/free`; sin saldo, ~50 peticiones al día | F.0 y F.1 (y algún ejercicio corto) | ✅ Probado `nemotron-3-ultra:free` en F.0 y F.1. En opencode, sin probar (`--modelo openrouter/openrouter/free`) |
+| **OpenRouter** (`OPENROUTER_API_KEY`) | Modelos `:free` y el enrutador **`openrouter/free`** (elige un gratuito disponible); sin saldo, ~50 peticiones al día | F.0 y F.1, y **unos pocos ejercicios al día en opencode** | ✅ Probado: `nemotron-3-ultra:free` en F.0 y F.1, y el **EJ 24 completo en opencode** con `--modelo openrouter/openrouter/free` (81 s, comprobador ✅) |
 | **Google AI Studio** (`GEMINI_API_KEY` para F.0 y F.1; `GOOGLE_GENERATIVE_AI_API_KEY` para opencode) | Sí, sin tarjeta | F.0 y F.1 | ⚠️ El 22-10-2026, `503` (saturado) |
 | **Mistral** (`MISTRAL_API_KEY`) | Plan *Experiment*: sin tarjeta, con verificación por teléfono; pide aceptar que usen tus datos para entrenar | F.0, F.1 y opencode | ⚠️ Sin probar |
 | **NVIDIA** ([build.nvidia.com](https://build.nvidia.com), `NVIDIA_API_KEY`) | Créditos de prueba, con verificación por teléfono | F.0, F.1 y opencode | ⚠️ Sin probar |
