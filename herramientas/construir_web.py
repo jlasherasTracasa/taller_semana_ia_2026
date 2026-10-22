@@ -20,7 +20,7 @@ def enlaces(md):
     md = re.sub(r"\]\(\.\./\.\./soluciones/([^)]*)\)", rf"]({REPO}/tree/main/alumnos/soluciones/\1)", md)
     md = re.sub(r"\]\((?:\.\./\.\./)?replicar_paper/README\.md\)", f"]({REPO}/tree/main/alumnos/replicar_paper)", md)
     md = re.sub(r"\]\(\.\./alumnos/ITINERARIOS\.md\)", "](#/)", md)
-    md = re.sub(r"\]\(([A-Za-z0-9_-]+)\.md\)", r"](#/wiki/\1)", md)
+    md = re.sub(r"\]\(([A-Za-z0-9_-]+)\.md(#[^)]*)?\)", r"](#/wiki/\1\2)", md)
     md = re.sub(r"\]\(img/", "](img/wiki/", md)   # capturas de la wiki: wiki/img/ → _site/img/wiki/
     return md
 
@@ -30,7 +30,7 @@ def main():
     os.makedirs(os.path.join(OUT, "img"))
     shutil.copytree(os.path.join(RAIZ, "herramientas", "vendor"), os.path.join(OUT, "vendor"))  # marked y mermaid, sin CDN
     for f in ("logo_semana_ia_2026_oscuro.png", "logo_semana_ia_2026_horizontal.png", "logo_semana_ia_2026_horizontal_oscuro.png",
-              "encrucijada_semana_ia_2026.jpg", "logo_catedra_ia.png"):
+              "encrucijada_semana_ia_2026.jpg", "logo_catedra_ia.png", "circuito_suelo.png", "circuito_esquina.png"):
         shutil.copy(os.path.join(RAIZ, "presentacion", "assets", f), os.path.join(OUT, "img", f))
     if os.path.isdir(os.path.join(RAIZ, "wiki", "img")):
         shutil.copytree(os.path.join(RAIZ, "wiki", "img"), os.path.join(OUT, "img", "wiki"))
