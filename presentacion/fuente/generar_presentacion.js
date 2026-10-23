@@ -83,14 +83,14 @@ async function construir(conNotas) {
   // ---------------------------------------------------------------- piezas
   const pie = (s) => {
     s.addImage({ path: path.join(A, "logo_semana_ia_2026_horizontal_oscuro.png"), x: 0.6, y: 7.0, w: 1.65, h: 0.22 });
-    s.addText("Más allá de ChatGPT · taller de agentes de IA", { x: 2.45, y: 6.96, w: 6, h: 0.3, fontFace: TXT, fontSize: 9.5, color: C.tinta2, margin: 0 });
+    s.addText("Más allá de ChatGPT · taller de agentes de IA", { x: 2.45, y: 6.96, w: 6, h: 0.3, fontFace: TXT, fontSize: 9.5, color: C.tinta2, margin: 0, _fijo: true });
     s.addText(String(n), { x: W - 1.1, y: 6.96, w: 0.5, h: 0.3, fontFace: TIT, fontSize: 12, bold: true, color: C.oroOsc, align: "right", margin: 0 });
   };
   const slide = (seccion, t, sub) => {
     n += 1;
     const s = pres.addSlide();
     s.background = { color: C.fondo };
-    if (seccion) s.addText(seccion.toUpperCase(), { x: 0.6, y: 0.42, w: 10, h: 0.3, fontFace: TXT, fontSize: 11, bold: true, color: C.oroOsc, charSpacing: 3, margin: 0 });
+    if (seccion) s.addText(seccion.toUpperCase(), { x: 0.6, y: 0.42, w: 10, h: 0.3, fontFace: TXT, fontSize: 11, bold: true, color: C.oroOsc, charSpacing: 3, margin: 0, _fijo: true });
     s.addText(t, { x: 0.6, y: 0.72, w: 12.1, h: 0.75, fontFace: TIT, fontSize: 34, bold: true, color: C.tinta, margin: 0 });
     if (sub) s.addText(sub, { x: 0.6, y: 1.42, w: 12.1, h: 0.4, fontFace: TXT, fontSize: 15, color: C.tinta2, margin: 0 });
     pie(s);
@@ -104,17 +104,17 @@ async function construir(conNotas) {
   };
   const codigo = (s, txt, x, y, w, h, size = 13) => {
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w, h, rectRadius: 0.12, fill: { color: C.codigo }, line: { color: C.codigo, width: 0 } });
-    s.addText(txt, { x: x + 0.25, y: y + 0.16, w: w - 0.5, h: h - 0.32, fontFace: MONO, fontSize: size, color: C.codigoTxt, valign: "top", margin: 0 });
+    s.addText(txt, { x: x + 0.25, y: y + 0.16, w: w - 0.5, h: h - 0.32, fontFace: MONO, fontSize: size, color: C.codigoTxt, valign: "top", margin: 0, _fijo: true });
   };
   const chip = (s, txt, x, y, color, fondo) => {
     const w = 0.22 + txt.length * 0.075;
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w, h: 0.28, rectRadius: 0.14, fill: { color: fondo }, line: { color: fondo, width: 0 } });
-    s.addText(txt, { x, y, w, h: 0.28, fontFace: TXT, fontSize: 9.5, bold: true, color, align: "center", valign: "middle", margin: 0 });
+    s.addText(txt, { x, y, w, h: 0.28, fontFace: TXT, fontSize: 9.5, bold: true, color, align: "center", valign: "middle", margin: 0, _fijo: true });
   };
   const punto = (s, k, x, y, d = 0.16) => s.addShape(pres.shapes.OVAL, { x, y, w: d, h: d, fill: { color: NIV[k][0] }, line: { color: NIV[k][0], width: 0 } });
   const leyenda = (s, y = 6.62) => {
     let x = 0.6;
-    for (const k of [1, 2, 3, 4]) { punto(s, k, x, y + 0.07); s.addText(NIV[k][1], { x: x + 0.22, y, w: 1.1, h: 0.3, fontFace: TXT, fontSize: 10, color: C.tinta2, margin: 0 }); x += 1.2; }
+    for (const k of [1, 2, 3, 4]) { punto(s, k, x, y + 0.07); s.addText(NIV[k][1], { x: x + 0.22, y, w: 1.1, h: 0.3, fontFace: TXT, fontSize: 10, color: C.tinta2, margin: 0, _fijo: true }); x += 1.2; }
   };
   const separador = (num, t, sub, nota) => {
     n += 1;
@@ -127,12 +127,12 @@ async function construir(conNotas) {
     notas(s, nota);
   };
   // Sello arriba a la derecha: qué ejercicio enseña esta pieza y si es demo del profesor o práctica de los alumnos
-  const sello = (s, ids) => {
-    const demo = ids.some((id) => EJ[id] && EJ[id].demo);
-    const txt = (demo ? "DEMO EN DIRECTO · " : "PRÁCTICA · ") + ids.map((id) => EJ[id].num).join(" · ");
+  const sello = (s, ids, casa = false) => {
+    const demo = !casa && ids.some((id) => EJ[id] && EJ[id].demo);
+    const txt = (demo ? "DEMO EN DIRECTO · " : casa ? "PARA CASA · " : "PRÁCTICA · ") + ids.map((id) => EJ[id].num).join(" · ");
     const w = 0.4 + txt.length * 0.082;
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: W - 0.6 - w, y: 0.34, w, h: 0.34, rectRadius: 0.17, fill: { color: demo ? C.noche2 : C.verdeSuave }, line: { color: demo ? C.noche2 : C.verdeSuave, width: 0 } });
-    s.addText(txt, { x: W - 0.6 - w, y: 0.34, w, h: 0.34, fontFace: TXT, fontSize: 10.5, bold: true, color: demo ? C.oro : C.verde, align: "center", valign: "middle", charSpacing: 1, margin: 0 });
+    s.addText(txt, { x: W - 0.6 - w, y: 0.34, w, h: 0.34, fontFace: TXT, fontSize: 10.5, bold: true, color: demo ? C.oro : C.verde, align: "center", valign: "middle", charSpacing: 1, margin: 0, _fijo: true });
   };
   const filaIcono = (s, k, h, t, x, y, w, alto = 1.0, var_ = "") => {
     tarjeta(s, x, y, w, alto);
@@ -214,22 +214,25 @@ async function construir(conNotas) {
   // ================================================================ 3b · El plan de hoy
   {
     const s = slide("Antes de empezar", "El plan de hoy", "Tres horas: lo que hago yo en directo y lo que hacéis vosotros");
+    // [hora, qué, detalle, tipo]  tipo: "demo" (en oscuro), "pausa" (dorado) o ""
     const bloques = [
-      ["17:00", "Bienvenida y preparar el ordenador", "Todos: python taller.py entorno", false],
-      ["17:20", "Cómo hemos llegado aquí", "Historia y teoría: qué es un modelo de lenguaje", false],
-      ["17:35", "Qué es un agente, pieza a pieza", "DEMOS: F.0 (el bucle) · F.1 (tools) · F.3 (comandos) · F.4 (skills)", true],
-      ["18:05", "Cómo se trabaja", "DEMO: EJ 01 en modo interactivo, de principio a fin", true],
-      ["18:15", "Prácticas: cada cual su itinerario", "Vosotros, a vuestro ritmo. Yo paseo y resuelvo dudas", false],
-      ["19:15", "Prueba de seguridad, juntos", "EJ 10: ¿quién ha caído en la trampa? Lo vemos en el proyector", false],
-      ["19:30", "Lo que aprendimos y cierre", "Casos reales, cuándo no usar un agente, tu nivel y qué hacer el lunes", false]];
-    bloques.forEach(([h, t, d, demo], i) => {
-      const y = 2.0 + i * 0.66;
-      tarjeta(s, 0.6, y, 12.15, 0.56, demo ? C.noche2 : C.superficie);
-      s.addText(h, { x: 0.8, y, w: 1.1, h: 0.56, fontFace: TIT, fontSize: 18, bold: true, color: demo ? C.oro : C.oroOsc, margin: 0, valign: "middle" });
-      s.addText(t, { x: 1.95, y, w: 4.4, h: 0.56, fontFace: TIT, fontSize: 16.5, bold: true, color: demo ? C.nieve : C.tinta, margin: 0, valign: "middle" });
-      s.addText(d, { x: 6.4, y, w: 6.2, h: 0.56, fontFace: TXT, fontSize: 12.5, color: demo ? C.niebla : C.tinta2, margin: 0, valign: "middle" });
+      ["17:00", "Bienvenida y preparar el ordenador", "python taller.py entorno · la clave de clase con el PIN", ""],
+      ["17:15", "Cómo hemos llegado aquí", "Historia exprés: 5 minutos", ""],
+      ["17:20", "Qué es un agente, pieza a pieza", "DEMOS: F.0 bucle · F.1 tools · F.3 comandos · F.4 skills", "demo"],
+      ["17:55", "Cómo se trabaja", "DEMO: EJ 01 en modo interactivo, de principio a fin", "demo"],
+      ["18:05", "Descanso", "5 minutos", "pausa"],
+      ["18:10", "Prácticas: cada cual su itinerario", "A vuestro ritmo. Yo paseo y resuelvo dudas", ""],
+      ["19:10", "Prueba de seguridad, juntos", "EJ 10: ¿quién ha caído en la trampa?", ""],
+      ["19:25", "Lo que aprendimos y cierre", "Casos reales, tu nivel, el lunes y la valoración", ""]];
+    bloques.forEach(([h, t, d, tipo], i) => {
+      const y = 1.98 + i * 0.6, demo = tipo === "demo", pausa = tipo === "pausa";
+      tarjeta(s, 0.6, y, 12.15, 0.52, demo ? C.noche2 : pausa ? C.oroSuave : C.superficie);
+      s.addText(h, { x: 0.8, y, w: 1.1, h: 0.52, fontFace: TIT, fontSize: 19, bold: true, color: demo ? C.oro : C.oroOsc, margin: 0, valign: "middle" });
+      s.addText(t, { x: 1.95, y, w: 4.7, h: 0.52, fontFace: TIT, fontSize: 18, bold: true, color: demo ? C.nieve : C.tinta, margin: 0, valign: "middle" });
+      s.addText(d, { x: 6.7, y, w: 5.9, h: 0.52, fontFace: TXT, fontSize: 14, color: demo ? C.niebla : C.tinta2, margin: 0, valign: "middle" });
     });
-    notas(s, "Minutado orientativo de 180 min. Las demos (en oscuro) son las que haces tú en el proyector. Si vas justo de tiempo, F.1 y F.3 se pueden contar sin ejecutar " +
+    notas(s, "Minutado de 170 min + 10 de colchón (acaba 19:50). Historia exprés: 1 minuto por diapositiva. F.5 a F.8 son PARA CASA: un minuto cada una, solo la idea. " +
+      "Minutado anterior, por si hace falta:  Las demos (en oscuro) son las que haces tú en el proyector. Si vas justo de tiempo, F.1 y F.3 se pueden contar sin ejecutar " +
       "(las trazas están en alumnos/soluciones/). Lo imprescindible: F.0, F.4, EJ 01 y la puesta en común del EJ 10.");
   }
 
@@ -261,7 +264,7 @@ async function construir(conNotas) {
       "#   …cierra PowerShell y abre otra", "git clone https://github.com/jlasherasTracasa/taller_semana_ia_2026.git", "cd taller_semana_ia_2026\\alumnos",
       "npm i -g @opencode/cli@2.0.19", "py -m venv .venv; .venv\\Scripts\\Activate.ps1", "python -m pip install -r requirements.txt", "python taller.py entorno"].join("\n"), 0.6, 2.05, 7.5, 4.6, 12);
     filaIcono(s, "linux", "Linux y Mac", "Lo mismo con apt o brew, y «. .venv/bin/activate». Paso a paso en la wiki: «Instalar».", 8.4, 2.05, 4.35, 1.4);
-    filaIcono(s, "key", "¿Y el modelo?", "Sin clave: uno gratuito de opencode. En clase: la clave de OpenRouter con PIN (siguiente diapositiva). Si se agota lo gratis: /models y otro «Free».", 8.4, 3.65, 4.35, 1.4);
+    filaIcono(s, "key", "¿Y el modelo?", "Sin clave: el gratuito de opencode. En clase: la clave con PIN (diapositiva 8). ¿Se agota? /models y otro «Free».", 8.4, 3.65, 4.35, 1.4);
     filaIcono(s, "cloud", "¿No puedes instalar?", "Plan B: Codespaces en el navegador, en pareja o «en seco». Wiki: «Plan B».", 8.4, 5.25, 4.35, 1.4);
     notas(s, "Si lo mandaste antes, aquí solo se comprueba con «python taller.py entorno» (5 min máximo; quien vaya con retraso, en pareja). " +
       "Ojo: el paquete npm opencode-ai instala la 1.x; el bueno es @opencode/cli@2.0.19. En Windows, Git for Windows trae Git Bash, que opencode usa para ejecutar órdenes. " +
@@ -325,7 +328,7 @@ async function construir(conNotas) {
 
   // ================================================================ 01 · Cómo hemos llegado aquí
   separador("01", "Cómo hemos llegado aquí", "Setenta años de inteligencia artificial en cinco minutos, y lo justo de teoría",
-    "Bloque de historia y teoría (15 min). Objetivo: que entiendan qué es un modelo de lenguaje y por qué se equivoca, antes de darle herramientas.");
+    "Historia exprés: 5 minutos en total, un minuto por diapositiva; no te pares en las fechas. Objetivo: que entiendan qué es un modelo de lenguaje y por qué se equivoca, antes de darle herramientas.");
 
   const lineaTiempo = (s, hitos, pie_) => {
     const n_ = hitos.length, gap = 0.1, w = (12.15 - gap * (n_ - 1)) / n_;
@@ -549,7 +552,7 @@ async function construir(conNotas) {
 
   {
     const s = slide("Qué es un agente", "MCP: enchufar herramientas nuevas", "Un estándar abierto (2024) para conectar programas a cualquier agente: el USB de las herramientas");
-    sello(s, ["f5_mcp", "f6_tool_propia"]);
+    sello(s, ["f5_mcp", "f6_tool_propia"], true);
     [["opencode", "el agente", C.noche2, C.nieve], ["Servidor MCP", "suma_columna · dias_habiles", C.oroSuave, C.tinta], ["Tus datos", "un CSV, un calendario, una base de datos…", C.superficie, C.tinta]].forEach(([h, t, f, c], i) => {
       const x = 0.6 + i * 2.55;
       tarjeta(s, x, 2.15, 2.2, 1.5, f);
@@ -567,7 +570,7 @@ async function construir(conNotas) {
 
   {
     const s = slide("Qué es un agente", "Subagentes: un agente que ayuda a otro", "El principal delega una parte del trabajo en otro agente, con sus propias normas y permisos");
-    sello(s, ["f7_subagentes"]);
+    sello(s, ["f7_subagentes"], true);
     [["Principal", "redacta nota_prensa.md", C.superficie, C.tinta], ["Revisor", "solo lee y opina: no puede editar ni ejecutar", C.oroSuave, C.tinta], ["Principal", "aplica las correcciones", C.superficie, C.tinta]].forEach(([h, t, f, c], i) => {
       const x = 0.6 + i * 2.55;
       tarjeta(s, x, 2.15, 2.2, 1.5, f);
@@ -602,7 +605,7 @@ async function construir(conNotas) {
 
   {
     const s = slide("Qué es un agente", "Permisos: qué puede hacer sin preguntarte", "Tres respuestas posibles para cada acción: sí, pregunta o no");
-    sello(s, ["f8_permisos"]);
+    sello(s, ["f8_permisos"], true);
     codigo(s, ['"permission": {', '  "edit": "allow",', '  "external_directory": "deny",', '  "bash": {', '    "*": "allow",',
       '    "rm -rf *": "deny",  "sudo *": "deny",', '    "kill *": "deny",    "taskkill *": "deny",', '    "git push *": "ask",', '    "crontab *": "ask", "schtasks *": "ask"', "  }", "}"].join("\n"), 0.6, 2.05, 6.3, 4.5, 13.5);
     filaIcono(s, "check", "allow · ask · deny", "Lo hace · te pregunta («Permission required») · prohibido. En el kit: lo habitual sí, lo irreversible no.", 7.2, 2.05, 5.55, 1.35);
@@ -628,6 +631,21 @@ async function construir(conNotas) {
   }
 
   // ================================================================ 02 · Ejercicios
+  {
+    n += 1;
+    const s = pres.addSlide();
+    s.background = { color: C.noche };
+    s.addImage({ path: path.join(A, "circuito_suelo.png"), x: 0, y: H - 1.75, w: W, h: 1.75, transparency: 30 });
+    s.addText("Descanso", { x: 0.9, y: 1.2, w: 11.5, h: 1.2, fontFace: TIT, fontSize: 72, bold: true, color: C.oro, margin: 0 });
+    s.addText("5 minutos · volvemos a las 18:10 con las prácticas", { x: 0.9, y: 2.4, w: 11.5, h: 0.7, fontFace: TIT, fontSize: 30, bold: true, color: C.nieve, margin: 0 });
+    s.addText([{ text: "Si te da tiempo:", options: { bold: true, color: C.oro, breakLine: true } },
+      { text: "· la clave de clase en tu .env (PIN en la pizarra)", options: { breakLine: true } },
+      { text: "· python taller.py entorno → «0 cosa(s) por arreglar»", options: { breakLine: true } },
+      { text: "· elige tu perfil en la web y tu primer ejercicio" }],
+      { x: 0.9, y: 3.4, w: 11.5, h: 1.9, fontFace: TXT, fontSize: 22, color: C.niebla, margin: 0, valign: "top" });
+    notas(s, "Descanso de 5 min (18:05-18:10). Deja esta diapositiva en pantalla. Al volver, prácticas: que cada cual abra su itinerario.");
+  }
+
   separador("03", "Ejercicios por áreas", "Tareas reales: correo, facturas, webs, presentaciones, trámites y programación",
     "Deja la web proyectada mientras trabajan. A partir de aquí, cada cual a su ritmo y con su itinerario.");
 
@@ -643,7 +661,7 @@ async function construir(conNotas) {
       tarjeta(s, 3.8, y, 5.0, 0.76);
       avatar(s, ico[k], 3.95, y + 0.12, 0.52);
       s.addText(a.nombre, { x: 4.6, y: y + 0.04, w: 4.1, h: 0.38, fontFace: TIT, fontSize: 17, bold: true, color: C.tinta, margin: 0 });
-      s.addText(`${a.tema} · ${total} ejercicios`, { x: 4.6, y: y + 0.4, w: 4.1, h: 0.3, fontFace: TXT, fontSize: 11, color: C.tinta2, margin: 0 });
+      s.addText(`${a.tema.replace("Bandeja de entrada, respuestas", "Bandeja, respuestas")} · ${total} ejercicios`, { x: 4.6, y: y + 0.4, w: 4.1, h: 0.3, fontFace: TXT, fontSize: 11, color: C.tinta2, margin: 0 });
     });
     tarjeta(s, 9.3, 2.45, 3.45, 1.45, C.rojoSuave);
     avatar(s, "shield", 9.5, 2.62, 0.55, C.nieve, "_r");
@@ -667,7 +685,7 @@ async function construir(conNotas) {
       tarjeta(s, x, y, cw, rh);
       punto(s, e.nivel, x + 0.2, y + rh / 2 - 0.08);
       s.addText(e.num, { x: x + 0.48, y, w: 0.85, h: rh, fontFace: TIT, fontSize: 15, bold: true, color: C.oroOsc, margin: 0, valign: "middle" });
-      s.addText(limpio(e.titulo), { x: x + 1.3, y, w: cw - (e.demo ? 3.95 : 3.1), h: rh, fontFace: TXT, fontSize: cols === 2 ? 11.5 : 14, bold: true, color: C.tinta, margin: 0, valign: "middle" });
+      s.addText(limpio(e.titulo), { x: x + 1.3, y, w: cw - (e.demo ? 3.95 : 3.1), h: rh, fontFace: TXT, fontSize: cols === 2 ? 12 : 14, bold: true, color: C.tinta, margin: 0, valign: "middle", _fijo: true });
       s.addText(`${e.min} min`, { x: x + cw - 1.8, y, w: 0.65, h: rh, fontFace: TXT, fontSize: 10.5, color: C.tinta2, margin: 0, valign: "middle", align: "right" });
       if (e.demo) chip(s, "DEMO", x + cw - 2.55, y + rh / 2 - 0.14, C.oro, C.noche2);
     });
@@ -732,10 +750,10 @@ async function construir(conNotas) {
       ["ruler", "Una vez no es siempre", "Si sale bien 8 de cada 10 veces, que salga bien 5 veces seguidas solo pasa 1 de cada 3. Se llama pass^k (F.9)."],
       ["coins", "Tokens y coste", "taller.py lanzar dice cuántos tokens ha gastado. Con el modelo gratuito: 0 €. Con GLM en OpenRouter: ≈ 1 céntimo."]].forEach(([k, h, t], i) => {
       const x = 0.6 + i * 4.1;
-      tarjeta(s, x, 2.05, 3.85, 3.4);
+      tarjeta(s, x, 2.05, 3.85, 4.5);
       avatar(s, k, x + 0.3, 2.35, 0.7);
       s.addText(h, { x: x + 0.3, y: 3.2, w: 3.3, h: 0.5, fontFace: TIT, fontSize: 21, bold: true, color: C.tinta, margin: 0 });
-      s.addText(t, { x: x + 0.3, y: 3.7, w: 3.3, h: 1.6, fontFace: TXT, fontSize: 13.5, color: C.tinta2, margin: 0, valign: "top" });
+      s.addText(t, { x: x + 0.3, y: 3.75, w: 3.3, h: 2.6, fontFace: TXT, fontSize: 17, color: C.tinta2, margin: 0, valign: "top" });
     });
     notas(s, "pass^k: con p = 0,8 por intento, p^5 = 0,33. F.9 lo mide de verdad repitiendo un ejercicio. En septiembre, EJ 07 salió bien 3 de 4 veces con el mismo encargo.");
   }
@@ -849,7 +867,7 @@ async function construir(conNotas) {
     ["ej10_inyeccion_prompt", "Correo con instrucciones ocultas", [["demo_ej10_1.png", "Detecta la inyección y no la obedece"], ["demo_ej10_2.png", "El comprobador: ningún borrador va al atacante"]]],
   ].filter(([, , imgs]) => imgs.every(([f]) => fs.existsSync(path.join(IMG, f))));
   if (DEMOS.length) {
-    separador("A", "Si falla la demo", "Capturas reales de cada demostración, hechas el 22-10-2026 con el modelo gratuito de opencode",
+    separador("A", "Si falla la demo", "Capturas reales de cada demostración, con el modelo gratuito de opencode",
       "Anexo de respaldo: si una demo falla en directo (sin red, modelo saturado, límite de uso), salta aquí y cuéntala con las capturas. No hace falta enseñarlo si todo va bien.");
     for (const [id, titulo, imgs] of DEMOS) {
       const s = slide("Anexo · " + EJ[id].num, titulo, imgs.length > 1 ? "Si el directo falla: lo que se ve en pantalla, paso a paso" : "Si el directo falla: lo que se ve en pantalla");
@@ -871,6 +889,14 @@ async function construir(conNotas) {
   }
 
   const out = path.join(__dirname, "..", conNotas ? "taller-agentes-ia-con-notas.pptx" : "taller-agentes-ia.pptx");
+  // Legibilidad desde el fondo del aula: todo el texto de menos de 14 pt sube hasta 2,5 pt (máximo 14), salvo el
+  // marcado con _fijo (pie, sección, chips, sellos, leyenda y código)
+  const sube = (op) => { if (op && op.fontSize && op.fontSize < 14 && !op._fijo) op.fontSize = Math.min(14, op.fontSize + 2.5); };
+  for (const sl of pres._slides) for (const o of sl._slideObjects) {
+    if (o._type !== "text" || !o.options || o.options._fijo) continue;
+    sube(o.options);
+    if (Array.isArray(o.text)) o.text.forEach((r) => sube(r.options));
+  }
   await pres.writeFile({ fileName: out });
   return [out, n];
 }
