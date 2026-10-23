@@ -1,6 +1,7 @@
 **🧭 Taller de agentes**
 
 - [Inicio](Home.md)
+- [📋 Chuleta](Chuleta.md)
 - [🛠️ Instalar](Instalar.md)
 - [🚀 Primeros pasos](Primeros-pasos.md)
 - [🖥️ Modo interactivo](Modo-interactivo.md)

@@ -294,7 +294,7 @@ async function construir(conNotas) {
 
   // ================================================================ 7b · Clave de clase (con PIN)
   {
-    const s = slide("Antes de empezar", "Clave de clase: GLM-5.3-Flash para todos", "Opcional: más rápido y fiable que el gratuito. Se ve en la web con el PIN que digo en clase");
+    const s = slide("Antes de empezar", "Clave de clase: GLM-5.3-Flash para todos", "Recomendada en clase: el gratuito se agota con toda el aula conectada. Se ve en la web con el PIN de la pizarra");
     tarjeta(s, 0.6, 2.05, 3.9, 4.55);
     s.addImage({ data: qrClave, x: 0.95, y: 2.3, w: 3.2, h: 3.2 });
     s.addText("Escanéalo o abre la dirección", { x: 0.6, y: 5.6, w: 3.9, h: 0.35, fontFace: TIT, fontSize: 16, bold: true, color: C.tinta, align: "center", margin: 0 });
@@ -644,6 +644,20 @@ async function construir(conNotas) {
       { text: "· elige tu perfil en la web y tu primer ejercicio" }],
       { x: 0.9, y: 3.4, w: 11.5, h: 1.9, fontFace: TXT, fontSize: 22, color: C.niebla, margin: 0, valign: "top" });
     notas(s, "Descanso de 5 min (18:05-18:10). Deja esta diapositiva en pantalla. Al volver, prácticas: que cada cual abra su itinerario.");
+  }
+
+  // ================================================================ Chuleta (proyectada durante las prácticas)
+  {
+    const s = slide("Prácticas", "Chuleta para las prácticas", "Déjala a mano: en la web, «Chuleta» · las órdenes van en la terminal, nunca dentro de opencode");
+    codigo(s, ["# Un ejercicio, de principio a fin", "python taller.py empezar ej24", "python taller.py abrir ej24", "   → pega el encargo · Enter · Ctrl+C al acabar",
+      "python taller.py comprobar ej24", "", "# Tu carpeta: ruta, ficheros, y la abre", "python taller.py carpeta ej24", "", "# Empezar otra vez desde cero",
+      "python taller.py empezar ej24 --de-cero", "", "# F.0 y F.1: no usan opencode", "python taller.py ejecutar f1 fc_calculadora.py"].join("\n"), 0.6, 2.05, 6.4, 4.6, 14);
+    [["key", "Free usage limit reached", "Clave de clase: …/#/clave y el PIN de la pizarra. O /models y otro «Free»."],
+      ["mail", "«No tengo acceso a tu correo»", "Dile: «son ficheros de esta carpeta, en correo/bandeja/; léelos»."],
+      ["terminal", "Escribí la orden dentro de opencode", "Sal con Ctrl+C y escríbela en la terminal."],
+      ["check", "Dice «Listo» y el comprobador falla", "Manda el comprobador: abre opencode y pídele que lo arregle."]].forEach(([k, h, t], i) =>
+      filaIcono(s, k, h, t, 7.25, 2.05 + i * 1.17, 5.5, 1.05));
+    notas(s, "Déjala proyectada durante las prácticas (18:10-19:10). Todo esto está también en la wiki, página «Chuleta», y en la portada de la web.");
   }
 
   separador("03", "Ejercicios por áreas", "Tareas reales: correo, facturas, webs, presentaciones, trámites y programación",

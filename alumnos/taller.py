@@ -32,8 +32,8 @@ PY = "python" if WIN else "python3"   # cómo se escribe en las órdenes que se 
 GRATIS = "opencode/big-pickle"       # modelo gratuito de opencode por defecto (validado el 11-10-2026)
 # Los gratuitos tienen un límite de uso POR MODELO: si uno lo agota, lanzar prueba el siguiente
 # Lista actual: https://opencode.ai/zen/v1/models (22-10-2026). El cupo es por modelo: si uno se agota, otro sigue
-GRATIS_OTROS = ["opencode/glm-5.3-flash-free", "opencode/deepseek-v4.1-flash-free", "opencode/mimo-v2.6-flash-free",
-                "opencode/flint-40b-free", "opencode/beam-free", "opencode/nemotron-3.5-super-vl-free"]
+GRATIS_OTROS = ["opencode/beam-free", "opencode/flint-40b-free", "opencode/glm-5.3-flash-free",
+                "opencode/deepseek-v4.1-flash-free", "opencode/mimo-v2.6-flash-free", "opencode/nemotron-3.5-super-vl-free"]
 OPENROUTER = "openrouter/z-ai/glm-5.3-flash"
 # Lo que dice opencode cuando un modelo gratuito agota su límite de uso (1.x y 2.x)
 LIMITE = ("Rate limit exceeded", "Free usage limit reached")
@@ -231,7 +231,8 @@ def abrir(ej, mod_forzado=None):
     mod = nombre_modelo(mod_forzado or env.get("TALLER_MODELO"))
     print(f"Abriendo opencode en {d}\nModelo: {mod or modelo(env) or 'el del opencode.json del kit'} · sal con Ctrl+C")
     print(f"Si dice «Free usage limit reached» o «Rate limit exceeded»: dentro, /models y elige otro «Free»; "
-          f"o sal y usa  {PY} taller.py abrir {e['num_corto']} --modelo {GRATIS_OTROS[0].split('/')[1]}  (wiki: Modelos)")
+          f"o sal y usa  {PY} taller.py abrir {e['num_corto']} --modelo {GRATIS_OTROS[0].split('/')[1]}  (o {GRATIS_OTROS[1].split('/')[1]}). "
+          f"En clase, mejor la clave de clase (wiki: Clave de clase)")
     if e.get("prompt") and e["modo"] == "run":
         print(f"\n💬 Pega este encargo cuando se abra:\n   {e['prompt']}\n")
     time.sleep(1)

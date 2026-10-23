@@ -118,8 +118,10 @@ Un Codespace parado no gasta horas. En <https://github.com/codespaces> → ⋯ j
   `code ~/taller-agentes/ej24_lista_compra/lista_compra.md`. Para descargarlo: clic derecho → *Download*.
 - ¿Una web (EJ 01)? `python -m http.server 8000 -d ~/taller-agentes/ej01_pagina_personal` y abre el aviso
   *Open in Browser* que sale abajo a la derecha (o la pestaña **Ports**).
-- Si quieres usar una clave (Groq para F.0 y F.1, u OpenRouter), crea `.env` en `alumnos/` como en
-  [🤖 Modelos](Modelos.md). No subas ese fichero (git ya lo ignora).
+- **En clase, pon la clave de clase** (el gratuito también se agota en Codespaces): abre `…/#/clave` en el navegador,
+  escribe el PIN y, en la terminal del Codespace, `cd alumnos && cp .env.example .env && code .env`. Pega la línea
+  en el editor, guarda con `Ctrl+S` y comprueba con `python taller.py entorno`
+  ([🔑 Clave de clase](Clave-de-clase.md)). No subas ese fichero (git ya lo ignora).
 - Los ejercicios que tocan el sistema (EJ 21, tareas programadas) funcionan a medias: un Codespace no tiene cron ni
   systemd de usuario. Elige otro.
 
@@ -149,4 +151,4 @@ Si el modelo gratuito no responde o da error de límite (puede pasar con toda el
 
 1. Espera un minuto y repite.
 2. Cambia a otro gratuito: dentro de opencode, `/models`.
-3. Usa la clave de OpenRouter que se dé en clase ([🤖 Modelos](Modelos.md)).
+3. Usa la clave de clase ([🔑 Clave de clase](Clave-de-clase.md)).

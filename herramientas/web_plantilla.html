@@ -299,10 +299,16 @@ function inicio() {
       <div class="cifra"><b>5</b><span>áreas</span></div><div class="cifra"><b>4</b><span>perfiles</span></div></div></div>
     <figure><img src="img/encrucijada_semana_ia_2026.jpg" alt="Dos personas ante un camino de circuitos"><figcaption>Imagen del cartel de la Semana de la IA 2026</figcaption></figure></div></section>
     <div class="atajos">
+      <a class="atajo" href="#/clave"><span class="ico" style="background:var(--oro-suave)">🔑</span><span><b>Clave de clase</b><span>Escribe el PIN de la pizarra y pega la clave en tu .env.</span></span></a>
+      <a class="atajo" href="#/wiki/Chuleta"><span class="ico" style="background:var(--cian-suave)">📋</span><span><b>Chuleta</b><span>Todas las órdenes y soluciones en una página.</span></span></a>
+      <a class="atajo" href="#/wiki/Prueba-de-seguridad"><span class="ico" style="background:var(--morado-suave)">🛡️</span><span><b>Prueba de seguridad</b><span>EJ 10, obligatoria: paso a paso, las tres fases.</span></span></a>
+      <a class="atajo" href="#/valorar"><span class="ico" style="background:var(--verde-suave)">⭐</span><span><b>Valora el taller</b><span>Al final: dos minutos y anónimo.</span></span></a>
+    </div>
+    <div class="atajos" style="margin-top:16px">
       <a class="atajo" href="#/wiki/Primeros-pasos"><span class="ico" style="background:var(--oro-suave)">🚀</span><span><b>Primeros pasos</b><span>Instala, comprueba el entorno y haz tu primer ejercicio.</span></span></a>
       <a class="atajo" href="#/wiki/Plan-B"><span class="ico" style="background:var(--cian-suave)">☁️</span><span><b>Sin portátil</b><span>Todo en el navegador con GitHub Codespaces, paso a paso.</span></span></a>
       <a class="atajo" href="#/wiki/Demos"><span class="ico" style="background:var(--morado-suave)">🎥</span><span><b>Demos con capturas</b><span>Las demos del profesor, tal como salieron.</span></span></a>
-      <a class="atajo" href="#/wiki/Modelos#-si-se-acaba-el-modelo-gratuito"><span class="ico" style="background:var(--verde-suave)">🔁</span><span><b>¿Se acabó lo gratis?</b><span>Cambia de modelo y sigue sin pagar.</span></span></a>
+      <a class="atajo" href="#/wiki/Modelos#-si-se-acaba-el-modelo-gratuito"><span class="ico" style="background:var(--verde-suave)">🔁</span><span><b>¿Se acabó lo gratis?</b><span>Usa la clave de clase o cambia de modelo.</span></span></a>
     </div>
     <section class="bloque"><div class="eyebrow">Cómo funciona</div><h2 class="sec">Un encargo, un agente y un comprobador</h2>
     <p class="sub">Cada ejercicio es una tarea real. Tú escribes el encargo, el agente trabaja en una copia y un programa comprueba si lo ha hecho de verdad.</p>
@@ -371,6 +377,7 @@ function ejercicio(id) {
         <p class="nota" style="margin:8px 0 0">${script ? "Es un programa que miras tú (sin opencode): márcalo cuando cumpla «¿Lo ha hecho de verdad?»." : "Márcalo cuando <code>comprobar</code> te diga que está bien."}</p></div>
       <div class="tarjeta"><h4>Más</h4><div style="display:grid;gap:8px">
         ${e.demo ? `<a class="btn tonal peq" href="#/wiki/Demos">🎥 Capturas de la demo</a>` : ""}
+        <a class="btn tonal peq" href="#/wiki/Chuleta">📋 Chuleta: órdenes y soluciones</a>
         <a class="btn borde peq" href="${D.repo}/tree/main/alumnos/ejercicios/${id}">Datos del ejercicio</a>
         <a class="btn borde peq" href="${D.repo}/tree/main/alumnos/soluciones/${id}">Solución real</a></div></div>
     </aside></div>`;
@@ -402,10 +409,10 @@ function progreso() {
   return h + `</div><div class="botones"><button class="btn borde" onclick="if(confirm('¿Borrar tu progreso de este navegador?')){guardar('taller_hechos',{});ruta()}">Borrar mi progreso</button></div>`;
 }
 
-const GRUPOS = [["Empezar", ["Home", "Instalar", "Primeros-pasos", "Modo-interactivo", "Prueba-de-seguridad", "Plan-B", "Demos"]],
+const GRUPOS = [["Empezar", ["Home", "Chuleta", "Instalar", "Primeros-pasos", "Modo-interactivo", "Prueba-de-seguridad", "Plan-B", "Demos"]],
   ["Entender", ["Como-funciona", "Conceptos", "Encargos", "Seguridad", "Glosario"]],
   ["Configurar y arreglar", ["Modelos", "Clave-de-clase", "Variables-de-entorno", "opencode-json", "Problemas", "opencode-2"]]];
-const NOMBRES = {Home: "🧭 Inicio", Instalar: "🛠️ Instalar", "Primeros-pasos": "🚀 Primeros pasos", "Clave-de-clase": "🔑 Clave de clase", "Prueba-de-seguridad": "🛡️ EJ 10 paso a paso", "Modo-interactivo": "🖥️ Modo interactivo",
+const NOMBRES = {Home: "🧭 Inicio", Instalar: "🛠️ Instalar", "Primeros-pasos": "🚀 Primeros pasos", "Clave-de-clase": "🔑 Clave de clase", Chuleta: "📋 Chuleta", "Prueba-de-seguridad": "🛡️ EJ 10 paso a paso", "Modo-interactivo": "🖥️ Modo interactivo",
   "Plan-B": "🆘 Plan B", Demos: "🎥 Demos del profesor", "Como-funciona": "🧭 Cómo funciona", Conceptos: "🧠 Conceptos", Encargos: "✍️ Encargos",
   Seguridad: "🛡️ Seguridad", Glosario: "📖 Glosario", Modelos: "🤖 Modelos", "Variables-de-entorno": "🔑 Variables de entorno",
   "opencode-json": "⚙️ opencode.json", Problemas: "🔧 Problemas", "opencode-2": "🔄 opencode 2.x"};

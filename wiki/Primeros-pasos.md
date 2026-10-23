@@ -11,8 +11,13 @@ Las órdenes son iguales en Windows, Linux y Mac **con el entorno activado** (ve
 
 ## 1. ¿Qué modelo vas a usar?
 
-**No necesitas clave.** Sin `.env`, el kit usa un **modelo gratuito de opencode** (`opencode/big-pickle`). Si en
-clase os dan una clave de **OpenRouter**, ponla así:
+> 🔑 **En clase, usa la clave de clase.** Los modelos gratuitos tienen un cupo por conexión, y con toda el aula
+> conectada a la vez se agotan pronto (`Free usage limit reached`). Abre
+> **[jlasherastracasa.github.io/taller_semana_ia_2026/#/clave](https://jlasherastracasa.github.io/taller_semana_ia_2026/#/clave)**,
+> escribe el PIN de la pizarra y sigue estos pasos con la línea que te da. Detalles en [🔑 Clave de clase](Clave-de-clase.md).
+
+**En casa no necesitas clave.** Sin `.env`, el kit usa un **modelo gratuito de opencode** (`opencode/big-pickle`).
+Para poner una clave (la de clase o la tuya), crea el fichero `.env` desde la carpeta `alumnos`:
 
 ```powershell
 copy .env.example .env        # Windows

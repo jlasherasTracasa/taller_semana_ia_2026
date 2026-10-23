@@ -12,6 +12,14 @@ cada paso, y está en internet. El kit elige el modelo solo, según lo que tenga
 
 `python taller.py entorno` te dice cuál está usando, y `abrir` y `lanzar` lo muestran al empezar.
 
+> 🔑 **En clase: la clave de clase.** El cupo gratuito va por conexión, y el aula entera sale a internet por la misma.
+> Probándolo desde una sola conexión, tras un día de uso intenso solo respondían 2 de los 7 modelos gratuitos
+> (`beam-free` y `flint-40b-free`). Con la [🔑 clave de clase](Clave-de-clase.md) no hay cupo que agotar.
+>
+> **¿Y desde Codespaces?** Cada Codespace sale a internet desde los servidores de GitHub, no desde la red del aula,
+> así que no compite con tus compañeros. Pero esas direcciones las comparte mucha gente y el cupo también se agota
+> (nos pasó tras unas siete ejecuciones). La clave de clase funciona igual en Codespaces.
+
 ## 🆓 Los modelos gratuitos de opencode
 
 opencode ofrece algunos modelos gratis a través de su servicio **OpenCode Zen**. No piden cuenta ni clave.
@@ -26,9 +34,9 @@ opencode ofrece algunos modelos gratis a través de su servicio **OpenCode Zen**
   **`Error: Free usage limit reached. Subscribe to OpenCode Go to keep going`** (no hace falta suscribirse: basta con
   cambiar de modelo, porque los demás gratuitos siguen funcionando). En clase, con toda la sala saliendo a internet
   por la misma conexión, el límite puede llegar antes. Si te pasa:
-  - en modo interactivo, `/models` y elige otro «Free» (por ejemplo `glm-5.3-flash-free`);
+  - en modo interactivo, `/models` y elige otro «Free» (por ejemplo `beam-free` o `flint-40b-free`);
   - con `python taller.py lanzar`, el kit cambia solo al siguiente gratuito;
-  - para todo el taller, pon `TALLER_MODELO=opencode/glm-5.3-flash-free` en tu `.env` (en clase podemos repartir
+  - para todo el taller, pon `TALLER_MODELO=opencode/beam-free` en tu `.env` (en clase podemos repartir
     la sala entre dos modelos para no agotar ninguno);
   - y si no hay manera, la clave de OpenRouter.
 - **Privacidad**: lo que lee el agente viaja al proveedor del modelo, y los servicios gratuitos pueden usarlo para
@@ -59,12 +67,12 @@ hoy, en <https://opencode.ai/zen/v1/models>.
 ### 2. O ábrelo ya con otro modelo
 
 ```bash
-python taller.py abrir ej24 --modelo glm-5.3-flash-free
+python taller.py abrir ej24 --modelo beam-free
 ```
 
 `--modelo` admite el nombre corto de un gratuito de opencode o cualquier `proveedor/modelo`. Lo guarda en el
 `opencode.json` de esa carpeta, así que las siguientes veces sigue con ese modelo. Para todos los ejercicios, pon
-`TALLER_MODELO=opencode/glm-5.3-flash-free` en tu `.env`.
+`TALLER_MODELO=opencode/beam-free` en tu `.env`.
 
 ![taller.py abrir con --modelo: opencode arranca con otro modelo gratuito](img/abrir_modelo.png)
 
@@ -74,7 +82,7 @@ Con `python taller.py lanzar …` no hace falta nada: si el gratuito se agota, e
 
 - **Espera** un rato: el cupo se recupera con el tiempo.
 - **Hazlo desde otra conexión** (tu portátil en casa, o el móvil compartiendo datos): el cupo va por conexión.
-- **Usa una clave**: la de OpenRouter que se da en clase (GLM-5.3-Flash, de pago y barato), o la tuya.
+- **Usa una clave**: la [🔑 clave de clase](Clave-de-clase.md) (GLM-5.3-Flash), o la tuya.
 - **Con una clave gratuita de OpenRouter** (sin saldo), el enrutador gratuito funciona dentro de opencode:
   `python taller.py abrir ej24 --modelo openrouter/openrouter/free`. Da para unos
   pocos ejercicios al día (unas 50 peticiones; cada ejercicio gasta varias).

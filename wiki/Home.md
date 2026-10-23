@@ -4,6 +4,9 @@ Bienvenida/o a la wiki de **«Más allá de ChatGPT: crea y conecta agentes de I
 Aquí está todo lo que necesitas para hacer los ejercicios en clase y repetirlos en casa, en **Windows, Linux o Mac**.
 Las páginas de los pasos llevan **capturas de pantalla reales** para que se pueda seguir sin experiencia previa.
 
+> 📋 **¿Con prisa?** La [chuleta](Chuleta.md) tiene todas las órdenes y soluciones en una página. En clase, pide el
+> PIN de la [🔑 clave de clase](Clave-de-clase.md).
+
 ## Para empezar (en este orden)
 
 | | Página | Para qué |
