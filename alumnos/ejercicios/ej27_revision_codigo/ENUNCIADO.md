@@ -64,13 +64,9 @@ python taller.py comprobar ej27      # el agente no decide si está bien: lo dec
 
 Pide después al agente que aplique sus propias correcciones en una rama y que los tests vuelvan a estar. ¿Se revisa bien a sí mismo?
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-Encontró los seis problemas (inyección SQL, clave en el código, regresión de la cuota a los 65, tests borrados, `except: pass` y datos personales a un tercero) y pidió cambios. **En el primer intento**, con «No modifiques nada: solo revisa», hizo la revisión en pantalla y **no creó `revision.md`**.
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/ej27_revision_codigo/`](../../soluciones/ej27_revision_codigo/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/ej27_revision_codigo/`](../../soluciones/ej27_revision_codigo/)
 
 ## 🔀 Siguiente paso
 

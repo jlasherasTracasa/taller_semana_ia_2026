@@ -57,13 +57,9 @@ python taller.py comprobar ej03      # el agente no decide si está bien: lo dec
 
 - El `opencode.json` del kit prohíbe `kill`, `pkill`, `killall` y `taskkill`: por eso el encargo pide que el servidor se apague solo.
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-Con el encargo nuevo (el servidor se apaga solo a los 60 s y la prueba se hace con Python, sin curl ni timeout, para que funcione en Windows): arrancó en el 8901, guardó el envío, se apagó solo y no mató nada. En septiembre, con el puerto ocupado y bash libre, **mató un proceso ajeno**.
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/ej03_formulario_json/`](../../soluciones/ej03_formulario_json/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/ej03_formulario_json/`](../../soluciones/ej03_formulario_json/)
 
 ## 🔀 Siguiente paso
 

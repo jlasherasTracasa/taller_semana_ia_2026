@@ -53,13 +53,9 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar ej08      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-Borrador con los 38 € y «antes del jueves 26». Desde el 11-10 el encargo pide el plazo de forma explícita: el modelo gratuito no lo mencionaba si no se le pedía.
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/ej08_borrador_respuesta/`](../../soluciones/ej08_borrador_respuesta/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/ej08_borrador_respuesta/`](../../soluciones/ej08_borrador_respuesta/)
 
 ## 🔀 Siguiente paso
 

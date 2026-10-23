@@ -2,7 +2,7 @@
 
 En el taller usamos opencode en **modo interactivo**: una pantalla en la terminal donde escribes (o pegas) el
 encargo, ves trabajar al agente paso a paso, apruebas lo que pide permiso y puedes seguir conversando con él.
-Todo lo de esta página está comprobado con **opencode 2.0.19**.
+Todo lo de esta página es para **opencode 2.0.19**.
 
 > **¿Qué pego?** El texto del bloque «💬 El encargo» de cada enunciado (en la web, el del botón **Copiar**); `python
 > taller.py abrir` también te lo enseña antes de abrir opencode. Si el enunciado tiene pasos numerados (F.2, F.3,
@@ -39,7 +39,7 @@ Al abrirlo, opencode ocupa toda la terminal. Abajo, la caja donde escribes; deba
 
 ![opencode recién abierto: el logotipo, la caja Ask anything y Build · Big Pickle](img/cs_7_opencode.png)
 
-> Si pone `/update to install v2.x`, no actualices: el kit está validado con la **2.0.19**.
+> Si pone `/update to install v2.x`, no actualices: el kit está preparado para la **2.0.19**.
 
 En esquema:
 

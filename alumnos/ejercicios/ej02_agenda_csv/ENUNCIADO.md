@@ -53,13 +53,9 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar ej02      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-Los 6 actos, agrupados en mañana y tarde, y los contó al final.
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/ej02_agenda_csv/`](../../soluciones/ej02_agenda_csv/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/ej02_agenda_csv/`](../../soluciones/ej02_agenda_csv/)
 
 ## 🔀 Siguiente paso
 

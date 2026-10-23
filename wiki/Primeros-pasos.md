@@ -22,7 +22,8 @@ copy .env.example .env        # Windows
 cp .env.example .env          # Linux y Mac
 ```
 
-Abre `.env` con el Bloc de notas (o cualquier editor) y rellena `OPENROUTER_API_KEY=` con la clave. Con ella, el
+Abre `.env` con el Bloc de notas (o cualquier editor) y rellena `OPENROUTER_API_KEY=` con la clave. En clase, la
+clave se ve en la web con un PIN que da el profesor: [🔑 Clave de clase](Clave-de-clase.md). Con ella, el
 kit usa **GLM-5.3-Flash**, el modelo con el que se validaron los ejercicios. Más detalles en
 [🤖 Modelos](Modelos.md) y [🔑 Variables de entorno](Variables-de-entorno.md).
 

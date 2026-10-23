@@ -144,6 +144,6 @@ python taller.py entorno
 
 - **El paquete bueno es `@opencode/cli@2.0.19`.** El paquete `opencode-ai` de npm instala la 1.x, que no vale.
 - **No actualices opencode durante el taller.** Al abrirlo verás «/update to install v2.0.x»: ignóralo. El kit está
-  validado con la 2.0.19 y entre versiones cambian cosas ([🔄 opencode 2.x](opencode-2.md)).
+  preparado para la 2.0.19 y entre versiones cambian cosas ([🔄 opencode 2.x](opencode-2.md)).
 
 Si algo falla, mira [🔧 Problemas](Problemas.md).

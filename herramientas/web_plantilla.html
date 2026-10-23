@@ -273,7 +273,7 @@ $("#tema").onclick = () => {
 function fila(e) {
   const v = e.validacion, h = hechos()[e.id];
   const chip = h ? `<span class="chip hecho">✓ Hecho</span>`
-    : v ? `<span class="chip ${v.estado}">${{ok:"Validado", parcial:"A medias", fallo:"Falló al validar"}[v.estado]}</span>` : "";
+    : "";
   return `<a class="fila" style="--c:${NIVCOL[e.nivel]}" href="#/ejercicio/${e.id}"><span class="n">${e.num}</span><span class="t">${esc(e.titulo)}</span>
     <span class="m">${e.demo ? `<span class="chip demo">🎥 Demo</span>` : `<span class="chip">✋ Práctica</span>`}<span>${I.niveles[e.nivel][1]} · ${e.min} min</span>${chip}</span></a>`;
 }
@@ -290,13 +290,13 @@ function areas(filtro) {
 }
 
 function inicio() {
-  const p = perfil(), r = D.validacion._resumen, n = I.ejercicios.length - 1;
+  const p = perfil(), n = I.ejercicios.length - 1;
   let h = `<section class="hero"><div class="hero-in"><div><div class="eyebrow">Semana de la IA 2026 · Viernes 23 de octubre · Aulario UPNA</div>
     <h1>Más allá de ChatGPT: <span>crea y conecta agentes de IA</span></h1>
     <p class="lead">${n} ejercicios con tareas reales —correo, facturas, webs, presentaciones, trámites, programación— para que cada perfil elija su camino. Funciona en cualquier portátil, sin GPU y sin pagar nada.</p>
     <div class="botones"><a class="btn lleno" href="#/wiki/Primeros-pasos">Empezar →</a><a class="btn tonal" href="#/ejercicios">Ver los ejercicios</a><a class="btn borde" href="${D.repo}">GitHub</a></div>
     <div class="cifras"><div class="cifra"><b>${n}</b><span>ejercicios</span></div><div class="cifra"><b>0 €</b><span>con el modelo gratuito</span></div>
-      <div class="cifra"><b>${r.ok}/${r.total}</b><span>validados de verdad</span></div><div class="cifra"><b>4</b><span>perfiles</span></div></div></div>
+      <div class="cifra"><b>5</b><span>áreas</span></div><div class="cifra"><b>4</b><span>perfiles</span></div></div></div>
     <figure><img src="img/encrucijada_semana_ia_2026.jpg" alt="Dos personas ante un camino de circuitos"><figcaption>Imagen del cartel de la Semana de la IA 2026</figcaption></figure></div></section>
     <div class="atajos">
       <a class="atajo" href="#/wiki/Primeros-pasos"><span class="ico" style="background:var(--oro-suave)">🚀</span><span><b>Primeros pasos</b><span>Instala, comprueba el entorno y haz tu primer ejercicio.</span></span></a>
@@ -323,11 +323,7 @@ function inicio() {
     h += `<h2 class="sec" style="margin-top:44px">Tu itinerario · ${v.nombre}</h2><p class="sub">💡 ${inline(v.consejo)}</p>${areas(v.ruta)}
       <div class="botones"><a class="btn tonal" href="#/ejercicios">Ver todos los ejercicios</a></div>`;
   }
-  h += `</section><section class="bloque"><div class="banda"><div><div class="eyebrow">Validado de verdad</div><h2>Cada ejercicio, ejecutado</h2>
-      <p>Con opencode 2.0.19 y GLM-5.3-Flash, solo con CPU, el ${r.fecha}. Los que fallan lo hacen por motivos reales y están documentados.</p></div>
-    <div><div class="num">${r.ok}/${r.total}</div><p>cumplen el criterio del comprobador</p></div>
-    <div><div class="num">${(r.coste_medio * 100).toFixed(1).replace(".", ",")}¢</div><p>coste medio por ejercicio en OpenRouter (0 € con el gratuito)</p></div>
-    <div><div class="num">97 %</div><p>de los tokens son de entrada: el agente relee el contexto en cada paso</p></div></div></section>`;
+  h += `</section>`;
   return h;
 }
 
@@ -369,7 +365,7 @@ function ejercicio(id) {
         <dt>Dificultad</dt><dd><span class="dot" style="background:${NIVCOL[e.nivel]}"></span> ${I.niveles[e.nivel][1]}</dd>
         <dt>Tiempo</dt><dd>${e.min} min</dd><dt>Tipo</dt><dd>${e.demo ? "🎥 Demo del profesor" : "✋ Práctica"}</dd>
         <dt>Perfiles</dt><dd>${e.perfiles.map(p => I.perfiles[p].icono).join(" ")}</dd>
-        ${v ? `<dt>Validado</dt><dd><span class="chip ${v.estado}">${{ok:"Sí", parcial:"A medias", fallo:"Falló"}[v.estado]}</span></dd>` : ""}</dl></div>
+</dl></div>
       <div class="tarjeta"><h4>Hazlo</h4>${ordenes.map(orden).join("")}${script ? "" : orden(`python taller.py comprobar ${e.num_corto}`)}
         <button class="btn ${h ? "tonal" : "lleno"} peq" style="width:100%;justify-content:center;margin-top:8px" onclick="marcar('${id}')">${h ? "✓ Completado (desmarcar)" : "Marcar como completado"}</button>
         <p class="nota" style="margin:8px 0 0">${script ? "Es un programa que miras tú (sin opencode): márcalo cuando cumpla «¿Lo ha hecho de verdad?»." : "Márcalo cuando <code>comprobar</code> te diga que está bien."}</p></div>
@@ -408,8 +404,8 @@ function progreso() {
 
 const GRUPOS = [["Empezar", ["Home", "Instalar", "Primeros-pasos", "Modo-interactivo", "Plan-B", "Demos"]],
   ["Entender", ["Como-funciona", "Conceptos", "Encargos", "Seguridad", "Glosario"]],
-  ["Configurar y arreglar", ["Modelos", "Variables-de-entorno", "opencode-json", "Problemas", "opencode-2"]]];
-const NOMBRES = {Home: "🧭 Inicio", Instalar: "🛠️ Instalar", "Primeros-pasos": "🚀 Primeros pasos", "Modo-interactivo": "🖥️ Modo interactivo",
+  ["Configurar y arreglar", ["Modelos", "Clave-de-clase", "Variables-de-entorno", "opencode-json", "Problemas", "opencode-2"]]];
+const NOMBRES = {Home: "🧭 Inicio", Instalar: "🛠️ Instalar", "Primeros-pasos": "🚀 Primeros pasos", "Clave-de-clase": "🔑 Clave de clase", "Modo-interactivo": "🖥️ Modo interactivo",
   "Plan-B": "🆘 Plan B", Demos: "🎥 Demos del profesor", "Como-funciona": "🧭 Cómo funciona", Conceptos: "🧠 Conceptos", Encargos: "✍️ Encargos",
   Seguridad: "🛡️ Seguridad", Glosario: "📖 Glosario", Modelos: "🤖 Modelos", "Variables-de-entorno": "🔑 Variables de entorno",
   "opencode-json": "⚙️ opencode.json", Problemas: "🔧 Problemas", "opencode-2": "🔄 opencode 2.x"};
@@ -432,12 +428,102 @@ function visor(img) {
   document.body.appendChild(v);
 }
 
+// ---------------------------------------------------------------- valoraciones (el QR del final lleva aquí)
+function valorar() {
+  const E = D.enlaces || {};
+  if (E.valorar) { setTimeout(() => location.href = E.valorar, 1200); return `<div class="doc"><h1>⭐ Valora el taller</h1><p><a class="btn lleno" href="${esc(E.valorar)}">Abrir el formulario →</a></p></div>`; }
+  if (!E.ntfy_tema) return `<div class="doc"><h1>⭐ Valora el taller</h1><p>El formulario estará disponible al final del taller.</p></div>`;
+  let ya = false; try { ya = !!localStorage.getItem("taller_valorado"); } catch (e) {}
+  const op = (n, vs) => `<div class="opciones" data-n="${n}">${vs.map(v => `<button type="button" class="fbtn" onclick="elegirOp(this)">${v}</button>`).join("")}</div>`;
+  const area = (n, t) => `<label class="campo"><b>${t}</b><textarea name="${n}" rows="3" maxlength="1500"></textarea></label>`;
+  return `<div class="doc valorar" style="max-width:720px;margin:0 auto">
+    <style>.valorar .campo{display:block;margin:18px 0}.valorar .campo b{display:block;margin-bottom:6px}
+      .valorar textarea{width:100%;box-sizing:border-box;font:inherit;padding:10px;border-radius:12px;border:1px solid var(--borde,#ccc);background:var(--tarjeta,#fff);color:inherit}
+      .valorar .opciones{display:flex;flex-wrap:wrap;gap:8px}.valorar .estrellas button{font-size:30px;background:none;border:0;cursor:pointer;color:#c9c2b0;padding:0 2px}
+      .valorar .estrellas button.on{color:#e4b858}</style>
+    <h1>⭐ ¿Qué te ha parecido el taller?</h1>
+    <p>Dos minutos y <b>anónimo</b>: no pedimos nombre ni correo. Solo es obligatoria la nota.</p>
+    ${ya ? `<p class="nota">Ya has enviado una valoración desde este navegador. Si quieres, puedes mandar otra.</p>` : ""}
+    <form id="fval" onsubmit="event.preventDefault();enviarValoracion()">
+      <div class="campo"><b>Nota general</b><div class="estrellas" id="estrellas">${[1,2,3,4,5].map(n => `<button type="button" aria-label="${n} estrellas" onclick="ponerNota(${n})">★</button>`).join("")}</div></div>
+      <div class="campo"><b>El ritmo ha sido…</b>${op("ritmo", ["Demasiado lento", "Bien", "Demasiado rápido"])}</div>
+      <div class="campo"><b>¿Te va a servir en tu día a día?</b>${op("utilidad", ["Mucho", "Algo", "Poco", "Nada"])}</div>
+      <div class="campo"><b>Tu perfil</b>${op("perfil", ["Explorador/a", "Oficina y aula", "Programador/a", "Arquitecto/a"])}</div>
+      <div class="campo"><b>¿Lo recomendarías?</b>${op("recomendaria", ["Sí", "Quizá", "No"])}</div>
+      ${area("gusto", "Lo que más te ha gustado")}${area("mejorar", "Qué mejorarías")}${area("otros", "Algo más (opcional)")}
+      <button class="btn lleno" type="submit">Enviar valoración</button></form>
+    <div id="val-res" style="margin-top:16px"></div></div>`;
+}
+let VAL_NOTA = 0;
+function ponerNota(n) { VAL_NOTA = n; document.querySelectorAll("#estrellas button").forEach((b, i) => b.classList.toggle("on", i < n)); }
+function elegirOp(b) { b.parentElement.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); }
+async function enviarValoracion() {
+  const res = $("#val-res");
+  if (!VAL_NOTA) { res.innerHTML = `<p style="color:#c0392b">Elige una nota de 1 a 5 estrellas.</p>`; return; }
+  const v = {tipo: "valoracion", nota: VAL_NOTA};
+  document.querySelectorAll("#fval .opciones").forEach(o => { const b = o.querySelector("button.on"); if (b) v[o.dataset.n] = b.textContent; });
+  document.querySelectorAll("#fval textarea").forEach(t => { if (t.value.trim()) v[t.name] = t.value.trim(); });
+  try { const p = localStorage.getItem("taller_perfil"); if (p) v.perfil_web = p; } catch (e) {}
+  res.innerHTML = "<p>Enviando…</p>";
+  try {
+    const r = await fetch("https://ntfy.sh/" + D.enlaces.ntfy_tema, {method: "POST", body: JSON.stringify(v)});
+    if (!r.ok) throw new Error(r.status);
+    try { localStorage.setItem("taller_valorado", "1"); } catch (e) {}
+    $("#fval").remove();
+    res.innerHTML = `<h2>¡Gracias! 🙌</h2><p>Valoración recibida. Eskerrik asko.</p>`;
+  } catch (e) {
+    res.innerHTML = `<p style="color:#c0392b">No se ha podido enviar (¿sin conexión?). Espera un momento y pulsa otra vez «Enviar valoración».</p>`;
+  }
+}
+
+// ---------------------------------------------------------------- clave de clase (cifrada; el PIN se da en clase)
+function clave() {
+  if (!D.clave) return `<div class="doc"><h1>Clave de clase</h1><p>Ahora mismo no hay clave de clase. Usa el modelo gratuito de opencode
+    (<a href="#/wiki/Modelos">🤖 Modelos</a>).</p></div>`;
+  return `<div class="doc" style="max-width:720px;margin:0 auto">
+    <h1>🔑 Clave de clase</h1>
+    <p>Escribe el <b>PIN</b> que ha dado el profesor y pulsa <b>Ver la clave</b>. Se descifra aquí, en tu navegador.</p>
+    <form onsubmit="event.preventDefault();abrirClave()" style="display:flex;gap:8px;flex-wrap:wrap;margin:16px 0">
+      <input id="pin" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="PIN" inputmode="numeric"
+        style="flex:1;min-width:200px;font:inherit;font-size:18px;padding:10px 14px;border-radius:12px;border:1px solid var(--borde,#ccc);background:var(--tarjeta,#fff);color:inherit">
+      <button class="btn lleno" type="submit">Ver la clave</button></form>
+    <div id="clave-res"></div></div>`;
+}
+async function abrirClave() {
+  const res = $("#clave-res"), pin = $("#pin").value.trim().toLowerCase(), c = D.clave;
+  const b = x => Uint8Array.from(atob(x), ch => ch.charCodeAt(0));
+  res.innerHTML = "<p>Comprobando el PIN… (tarda un par de segundos)</p>";
+  try {
+    const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pin), "PBKDF2", false, ["deriveKey"]);
+    const k = await crypto.subtle.deriveKey({name: "PBKDF2", salt: b(c.sal), iterations: c.iter, hash: "SHA-256"}, base,
+      {name: "AES-GCM", length: 256}, false, ["decrypt"]);
+    const txt = new TextDecoder().decode(await crypto.subtle.decrypt({name: "AES-GCM", iv: b(c.iv)}, k, b(c.cifrado)));
+    const linea = "OPENROUTER_API_KEY=" + txt;
+    res.innerHTML = `<p>✅ Esta es la clave de la clase. Copia la línea entera:</p>
+      <pre><code>${esc(linea)}</code></pre>
+      <h2>Dónde se pega</h2>
+      <ol><li>En la carpeta <code>alumnos</code> del kit, crea el fichero <code>.env</code> si no lo tienes:
+        <code>copy .env.example .env</code> (Windows) o <code>cp .env.example .env</code> (Linux, Mac, Codespaces).</li>
+      <li>Ábrelo (<code>notepad .env</code>, <code>nano .env</code> o el editor de Codespaces) y sustituye la línea
+        <code>OPENROUTER_API_KEY=</code> por la que has copiado. Guarda.</li>
+      <li>Comprueba: <code>python taller.py entorno</code> tiene que decir <b>openrouter/z-ai/glm-5.3-flash</b>.</li>
+      <li>Las carpetas de ejercicios que ya habías empezado siguen con el modelo gratuito: bórralas o usa
+        <code>python taller.py abrir ej24 --modelo openrouter/z-ai/glm-5.3-flash</code>.</li></ol>
+      <p>🔐 Es una clave compartida y con límite de gasto, solo para el taller: no la publiques, no la subas a git y no la
+        uses para otras cosas. Deja de funcionar después del taller.</p>`;
+    res.querySelectorAll("pre").forEach(pre => { const bt = document.createElement("button"); bt.className = "copiar"; bt.textContent = "Copiar";
+      bt.onclick = () => navigator.clipboard.writeText(linea).then(() => { bt.textContent = "Copiado"; setTimeout(() => bt.textContent = "Copiar", 1500); }); pre.appendChild(bt); });
+  } catch (e) {
+    res.innerHTML = `<p style="color:#c0392b">❌ Ese PIN no es. Revísalo y prueba otra vez.</p>`;
+  }
+}
+
 async function ruta() {
   const partes = location.hash.replace(/^#\/?/, "").split("/");
   const a = partes[0], [b, ancla] = (partes[1] || "").split("#");
   const app = $("#app");
   app.innerHTML = (a === "ejercicio" || a === "escena") ? ejercicio(b) : a === "ejercicios" ? ejercicios() : a === "progreso" ? progreso()
-    : a === "wiki" ? wiki(decodeURIComponent(b || "Home")) : inicio();
+    : a === "wiki" ? wiki(decodeURIComponent(b || "Home")) : a === "clave" ? clave() : a === "valorar" ? valorar() : inicio();
   app.classList.toggle("ancho", !a);
   document.querySelectorAll("#nav a").forEach(x => x.classList.toggle("activo", x.dataset.r === ((a === "ejercicio" || a === "escena") ? "ejercicios" : a || "")));
   app.querySelectorAll("pre code.language-mermaid").forEach(c => { const d = document.createElement("pre"); d.className = "mermaid"; d.textContent = c.textContent; c.parentElement.replaceWith(d); });

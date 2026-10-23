@@ -60,13 +60,9 @@ python taller.py comprobar f8      # el agente no decide si está bien: lo decid
 
 Piensa como atacante: ¿`python -c "import shutil; shutil.rmtree('x')"` lo para algún patrón? Conclusión: los patrones son un cinturón, no una jaula. Para aislar de verdad: contenedor o máquina virtual.
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-El 11-10: 17/17, `external_directory: deny`, sin claves y con el informe. El 09-10 dejó la configuración perfecta pero **no escribió el informe**: lo no comprobado no se hace.
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/f8_permisos/`](../../soluciones/f8_permisos/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/f8_permisos/`](../../soluciones/f8_permisos/)
 
 ## 🔀 Siguiente paso
 

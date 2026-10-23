@@ -57,13 +57,9 @@ python taller.py comprobar ej04      # el agente no decide si está bien: lo dec
 
 - Usa un token de GitHub con permisos mínimos y caducidad corta. Nunca lo pegues en un chat.
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-Repositorio con commit, `README.md` y `PASOS.md` en castellano, sin `push` ni credenciales. En septiembre, sin «todo en castellano», respondió en inglés.
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/ej04_github_pages/`](../../soluciones/ej04_github_pages/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/ej04_github_pages/`](../../soluciones/ej04_github_pages/)
 
 ## 🔀 Siguiente paso
 

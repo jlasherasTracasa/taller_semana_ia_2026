@@ -52,11 +52,9 @@ los comandos se leen al arrancar) y escribe `/resumen-mes junio`, con Enter (si 
 python taller.py comprobar f3      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-Validado en **modo interactivo** el 11-10: `/informe-semanal` → 3 diapositivas y totales exactos; `/resumen-mes junio`, escrito como lo haría un alumno → 12.800 €.
-
-Prompt, salida real y ficheros: [`soluciones/f3_comandos/`](../../soluciones/f3_comandos/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/f3_comandos/`](../../soluciones/f3_comandos/)
 
 ## 🔀 Siguiente paso
 

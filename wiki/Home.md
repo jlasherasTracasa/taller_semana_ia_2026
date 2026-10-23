@@ -28,6 +28,7 @@ Las páginas de los pasos llevan **capturas de pantalla reales** para que se pue
 
 | Página | Para qué |
 |---|---|
+| [🔑 Clave de clase](Clave-de-clase.md) | La clave de OpenRouter de la clase: cómo verla con el PIN y pegarla en `.env` |
 | [🤖 Modelos](Modelos.md) | El modelo gratuito de opencode (sin clave), OpenRouter, F.0 y F.1 gratis con Groq (paso a paso, con capturas), y cómo cambiar de modelo |
 | [🔑 Variables de entorno](Variables-de-entorno.md) | Dónde va tu clave, si la usas |
 | [⚙️ El fichero opencode.json](opencode-json.md) | Qué es, dónde va y cómo se escribe, con un ejemplo comentado |

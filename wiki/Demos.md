@@ -1,7 +1,7 @@
 # 🎥 Las demos del profesor, paso a paso
 
-En clase, el profesor hace estos ejercicios **en directo** en el proyector. Aquí están tal como salieron al
-probarlos el **22-10-2026**, con capturas reales: para repasarlos, para hacerlos tú después o por si el directo falla.
+En clase, el profesor hace estos ejercicios **en directo** en el proyector. Aquí están con capturas reales: para
+repasarlos, para hacerlos tú después o por si el directo falla.
 
 El agente es opencode 2.0.19 con el modelo gratuito (`big-pickle`). F.0 y F.1 son programas de Python y van con una
 clave gratuita de Groq ([🤖 Modelos](Modelos.md)).
@@ -61,8 +61,8 @@ python taller.py ejecutar f1 fc_calculadora.py --sin-modelo "9**9**9"
 
 La segunda responde `ERROR: operación no permitida`.
 
-Con «¿Cuánto es 9\*\*9\*\*9?», el 23-10-2026 el modelo de Groq **no** pasó la expresión tal cual: la cambió por una
-cuenta con logaritmos y explicó que el número tiene 369.693.100 cifras. Si se la hubiera pasado, la calculadora la
+Con «¿Cuánto es 9\*\*9\*\*9?», lo normal es que el modelo **no** pase la expresión tal cual: la cambia por una
+cuenta con logaritmos y explica que el número tiene 369.693.100 cifras. Si se la hubiera pasado, la calculadora la
 habría rechazado: quien decide qué se ejecuta es el programa, no el modelo.
 
 ## F.2 · AGENTS.md: las normas de la casa

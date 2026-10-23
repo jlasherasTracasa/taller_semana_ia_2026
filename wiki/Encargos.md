@@ -10,7 +10,7 @@ Un agente hace lo que le pides… y decide él todo lo que no le pides. Cinco pi
 | **LÍMITES** | Lo que NO puede hacer | «No envíes nada; no mates procesos; no toques el original» |
 | **CRITERIO** | Cuándo está bien | «7 filas; urgencia: alta, media, baja o ninguna» |
 
-## Lo que nos pasó por no pedirlo (validación real)
+## Lo que pasa cuando no lo pides
 
 | Escena | Faltaba… | Y el agente… |
 |---|---|---|

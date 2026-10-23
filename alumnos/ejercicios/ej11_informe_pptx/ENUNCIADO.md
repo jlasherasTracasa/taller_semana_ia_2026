@@ -53,13 +53,9 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar ej11      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-6 diapositivas con 84.000 kg y −12 % frente a 95.500 kg.
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/ej11_informe_pptx/`](../../soluciones/ej11_informe_pptx/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/ej11_informe_pptx/`](../../soluciones/ej11_informe_pptx/)
 
 ## 🔀 Siguiente paso
 

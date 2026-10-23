@@ -58,13 +58,9 @@ python taller.py comprobar ej25      # el agente no decide si está bien: lo dec
 
 - Contar días hábiles con festivos es justo lo que los modelos hacen mal. Si falla, mira F.6.
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-GLM se saltó dos veces el apartado del teléfono (aunque decía bien que la carta no lo da). Con los seis apartados numerados: 127,40 €, recargo hasta 152,88 €, plazo lunes 19/10 (salta el 12) y «la carta no lo dice».
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/ej25_carta_explicada/`](../../soluciones/ej25_carta_explicada/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/ej25_carta_explicada/`](../../soluciones/ej25_carta_explicada/)
 
 ## 🔀 Siguiente paso
 

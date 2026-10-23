@@ -21,13 +21,11 @@ opencode ofrece algunos modelos gratis a través de su servicio **OpenCode Zen**
   (apartado «F.0 y F.1 gratis», más abajo). En clase, esos dos son demostraciones del profesor.
 - **La lista cambia con el tiempo**: un modelo gratuito puede desaparecer o dejar de ser gratis. Para ver los
   disponibles, dentro de opencode escribe `/models`; los gratuitos llevan «Free» en el nombre (también
-  `big-pickle`). El 11-10-2026 había, entre otros, `big-pickle`, `nemotron-3-ultra-free`, `mimo-v2.6-flash-free`,
-  `step-5-preview-free` y `ling-3.1-flash-free`.
-- **Tienen un límite de uso, y es por modelo.** El 11-10-2026, tras unas cien ejecuciones seguidas desde la misma
-  conexión, `big-pickle` respondió `Rate limit exceeded` mientras otros gratuitos seguían funcionando. El
-  22-10-2026, en un Codespace, el aviso fue otro tras unas siete ejecuciones: **`Error: Free usage limit reached.
-  Subscribe to OpenCode Go to keep going`** (no hace falta suscribirse: basta con cambiar de modelo). En clase, con
-  toda la sala saliendo a internet por la misma conexión, el límite puede llegar antes. Si te pasa:
+  `big-pickle`).
+- **Tienen un límite de uso, y es por modelo.** Cuando se agota, opencode dice `Rate limit exceeded` o
+  **`Error: Free usage limit reached. Subscribe to OpenCode Go to keep going`** (no hace falta suscribirse: basta con
+  cambiar de modelo, porque los demás gratuitos siguen funcionando). En clase, con toda la sala saliendo a internet
+  por la misma conexión, el límite puede llegar antes. Si te pasa:
   - en modo interactivo, `/models` y elige otro «Free» (por ejemplo `glm-5.3-flash-free`);
   - con `python taller.py lanzar`, el kit cambia solo al siguiente gratuito;
   - para todo el taller, pon `TALLER_MODELO=opencode/glm-5.3-flash-free` en tu `.env` (en clase podemos repartir
@@ -36,12 +34,6 @@ opencode ofrece algunos modelos gratis a través de su servicio **OpenCode Zen**
 - **Privacidad**: lo que lee el agente viaja al proveedor del modelo, y los servicios gratuitos pueden usarlo para
   mejorar sus modelos. Con los datos ficticios del taller no hay problema; con los tuyos de verdad, piénsalo.
 
-### Validación con el modelo gratuito
-
-Los ejercicios se validaron el 11-10-2026 con `opencode/big-pickle` además de con GLM-5.3-Flash: todos los que se
-lanzan con un encargo cumplieron el criterio también con el gratuito. El resultado de cada uno está en su enunciado,
-en «Lo que pasó al validarlo».
-
 ## 🚧 Si se acaba el modelo gratuito
 
 Los modelos gratuitos de opencode tienen un **cupo de uso por modelo** que se comparte por conexión (y, en
@@ -49,8 +41,8 @@ Codespaces, también entre Codespaces de la misma cuenta). Cuando se agota, open
 
 ![opencode: Error: Free usage limit reached. Subscribe to OpenCode Go to keep going](img/limite_error.png)
 
-**No hace falta pagar.** Lo comprobado el 22-10-2026: con `big-pickle` agotado, otros modelos gratuitos seguían
-respondiendo en el mismo sitio. Abrir otro Codespace **no** reinicia el cupo.
+**No hace falta pagar**: con `big-pickle` agotado, los otros modelos gratuitos siguen respondiendo. Abrir otro
+Codespace **no** reinicia el cupo.
 
 ### 1. Cambia a otro modelo «Free» sin salir (lo más rápido)
 
@@ -59,9 +51,9 @@ Dentro de opencode escribe `/models`, Enter, y luego `free` para ver solo los gr
 
 ![/models filtrado por free: la lista de modelos gratuitos de opencode](img/models_free.png)
 
-Los gratuitos de OpenCode Zen el 22-10-2026: `big-pickle`, **`glm-5.3-flash-free`** (el modelo con el que se
-validaron los ejercicios), `deepseek-v4.1-flash-free`, `mimo-v2.6-flash-free`, `flint-40b-free`,
-`nemotron-3.5-super-vl-free`, `nemotron-3.5-lightning-free` y `beam-free` (todos probados con una tarea que usa herramientas; `jev-1.13-free` daba «Model unavailable»). La lista cambia: la de
+Algunos gratuitos de OpenCode Zen: `big-pickle`, **`glm-5.3-flash-free`** (el mismo modelo que la clave de clase),
+`deepseek-v4.1-flash-free`, `mimo-v2.6-flash-free`, `flint-40b-free`, `nemotron-3.5-super-vl-free`,
+`nemotron-3.5-lightning-free` y `beam-free`. La lista cambia: la de
 hoy, en <https://opencode.ai/zen/v1/models>.
 
 ### 2. O ábrelo ya con otro modelo
@@ -84,7 +76,7 @@ Con `python taller.py lanzar …` no hace falta nada: si el gratuito se agota, e
 - **Hazlo desde otra conexión** (tu portátil en casa, o el móvil compartiendo datos): el cupo va por conexión.
 - **Usa una clave**: la de OpenRouter que se da en clase (GLM-5.3-Flash, de pago y barato), o la tuya.
 - **Con una clave gratuita de OpenRouter** (sin saldo), el enrutador gratuito funciona dentro de opencode:
-  `python taller.py abrir ej24 --modelo openrouter/openrouter/free`. Probado el 22-10-2026 con el EJ 24. Da para unos
+  `python taller.py abrir ej24 --modelo openrouter/openrouter/free`. Da para unos
   pocos ejercicios al día (unas 50 peticiones; cada ejercicio gasta varias).
 - **Groq dentro de opencode no sirve para los ejercicios**: responde a cosas pequeñas, pero su capa gratuita admite
   8.000 tokens por minuto y opencode manda más en cada paso (el EJ 24 se quedó esperando sin hacer nada). Úsalo solo
@@ -103,18 +95,18 @@ python taller.py abrir ej24 --modelo nvidia/z-ai/glm-5.3-flash
 Dentro de opencode también puedes cambiar con `/models` (escribe el nombre del proveedor para filtrar). Los que no
 usan clave sino una cuenta se conectan dentro de opencode con `/connect` (o `opencode auth login`).
 
-### ✅ Probados el 22-10-2026
+### ✅ Los que funcionan
 
 | Proveedor | Variable en `.env` | Modelo para `--modelo` | Gratis | Resultado |
 |---|---|---|---|---|
-| **opencode Zen** | — (sin cuenta) | `glm-5.3-flash-free`, `deepseek-v4.1-flash-free`, `mimo-v2.6-flash-free`… | Sí, con cupo por modelo | 9 modelos usan herramientas bien. El cupo de `big-pickle` se agotó en un Codespace |
-| **OpenRouter** ([openrouter.ai/keys](https://openrouter.ai/keys)) | `OPENROUTER_API_KEY` | `openrouter/openrouter/free` | Sin saldo: modelos `:free`, ~50 peticiones al día | EJ 24 completo en 81 s, comprobador ✅ |
-| **Groq** ([console.groq.com/keys](https://console.groq.com/keys)) | `GROQ_API_KEY` | (para F.0 y F.1) | Sí, sin tarjeta | F.0 y F.1 ✅. Dentro de opencode se queda corto (8.000 tokens/min) |
+| **opencode Zen** | — (sin cuenta) | `glm-5.3-flash-free`, `deepseek-v4.1-flash-free`, `mimo-v2.6-flash-free`… | Sí, con cupo por modelo | Varios modelos gratuitos que usan bien las herramientas |
+| **OpenRouter** ([openrouter.ai/keys](https://openrouter.ai/keys)) | `OPENROUTER_API_KEY` | `openrouter/openrouter/free` | Sin saldo: modelos `:free`, ~50 peticiones al día | Funciona, pero da para pocos ejercicios al día |
+| **Groq** ([console.groq.com/keys](https://console.groq.com/keys)) | `GROQ_API_KEY` | (para F.0 y F.1) | Sí, sin tarjeta | Ideal para F.0 y F.1. Dentro de opencode se queda corto (8.000 tokens/min) |
 
-### ⚠️ Sin probar todavía (prometedores)
+### ⚠️ Otras opciones (sin probar en el taller)
 
-Datos de sus páginas y del catálogo [models.dev](https://models.dev) que usa opencode, a 22-10-2026. Compruébalos
-antes del taller con una tarea corta.
+Datos de sus páginas y del catálogo [models.dev](https://models.dev) que usa opencode. Pruébalos antes con una tarea
+corta.
 
 | Proveedor | Variable en `.env` | Modelo para `--modelo` | Gratis | Ojo |
 |---|---|---|---|---|
@@ -126,7 +118,7 @@ antes del taller con una tarea corta.
 | **Meta Llama API** ([llama.developer.meta.com](https://llama.developer.meta.com)) | `LLAMA_API_KEY` | `llama/llama-3.3-70b-instruct` | Modelos Llama gratis | Puede no estar disponible en la UE |
 | **SambaNova** ([cloud.sambanova.ai](https://cloud.sambanova.ai)) | `SAMBANOVA_API_KEY` | (ver `/models`) | Capa gratuita sin tarjeta, unas 20 peticiones/min | Límites sin confirmar |
 | **GitHub Copilot** | — (`/connect` → GitHub Copilot) | (los que ofrezca tu plan) | **Copilot Free** para todos; **Copilot Student** gratis para estudiantes verificados en [GitHub Education](https://education.github.com) (tarda días: antes del taller) | Copilot Free solo elige modelo en automático y su cupo mensual es pequeño |
-| **Google AI Studio** | `GOOGLE_GENERATIVE_AI_API_KEY` (opencode) · `GEMINI_API_KEY` (F.0 y F.1) | `google/gemini-flash-latest` | Sí, sin tarjeta | El 22-10-2026 daba `503` (saturado) |
+| **Google AI Studio** | `GOOGLE_GENERATIVE_AI_API_KEY` (opencode) · `GEMINI_API_KEY` (F.0 y F.1) | `google/gemini-flash-latest` | Sí, sin tarjeta | A menudo da `503` (saturado) |
 | **En tu ordenador** ([LM Studio](https://lmstudio.ai) u [Ollama](https://ollama.com)) | — | `lmstudio/openai/gpt-oss-20b` | Gratis y sin límites | Necesita un portátil potente; sin tarjeta gráfica va muy lento |
 
 **No recomendados para alumnos:** Cerebras (pide tarjeta para la prueba), y los de pago sin capa gratuita
@@ -142,7 +134,7 @@ Gemini; para otro proveedor, pon su clave y el modelo en formato de litellm en `
 ## 💳 OpenRouter (GLM-5.3-Flash)
 
 [OpenRouter](https://openrouter.ai) da acceso a cientos de modelos con una sola clave, pagando por uso. Para el
-taller, la organización facilita una clave con un límite de gasto. Ponla en `.env`:
+taller hay una clave de clase con un límite de gasto: se ve en la web con un PIN ([🔑 Clave de clase](Clave-de-clase.md)). Ponla en `.env`:
 
 ```bash
 OPENROUTER_API_KEY=sk-or-v1-…
@@ -157,9 +149,8 @@ F.0 y F.1 son programas de Python que llaman al modelo con `litellm`, sin pasar 
 clave aunque el resto del taller funcione sin ella. Si no tienes la de OpenRouter, saca **una clave gratuita y
 personal de [Groq](https://console.groq.com)**: no pide tarjeta y se hace en dos minutos.
 
-> **¿Por qué Groq?** Lo probamos el 22-10-2026 con las tres opciones gratuitas. **Groq** respondió a la primera y
-> rápido (F.0 acertó 3 de 4 veces y bloqueó el `.env`; F.1, bien). Revalidado el 23-10-2026: F.0 acierta siempre
-> (`reunion.txt`, 5 líneas) y F.1 da 6.050 €. **Gemini** devolvió una y otra vez
+> **¿Por qué Groq?** De las tres opciones gratuitas, **Groq** es la que responde rápido y sin fallos con F.0 y F.1.
+> **Gemini** devuelve a menudo
 > `503 This model is currently experiencing high demand`: si se satura, falla a toda la clase a la vez.
 > Los modelos **`:free` de OpenRouter** funcionan, pero cambian a menudo y una cuenta sin saldo tiene un límite
 > diario bajo.
@@ -244,8 +235,7 @@ final **PENSAR** con la respuesta.
   minuto**, 1.000 peticiones y 200.000 tokens al día. Una ejecución de F.0 gasta unos 5.000 tokens, así que si lanzas
   dos seguidas llegas al tope del minuto. No pasa nada: F.0 y F.1 escriben
   `(límite de uso por minuto del proveedor: espero 10 s y lo intento otra vez)` y siguen solos.
-- **A veces el modelo gratuito responde en blanco** a mitad del bucle (comprobado el 23-10-2026, más o menos una de
-  cada cuatro ejecuciones de F.0). El programa lo detecta, escribe `(el modelo no ha dicho nada: le pido que siga)` y
+- **A veces el modelo gratuito responde en blanco** a mitad del bucle. El programa lo detecta, escribe `(el modelo no ha dicho nada: le pido que siga)` y
   continúa. Es una buena lección: un agente de verdad tiene que estar preparado para que el modelo falle.
 - **Si tienes varias claves**, F.0 y F.1 usan este orden: OpenRouter, Groq y Gemini.
 - **Al terminar el taller**, si quieres, borra la clave: en <https://console.groq.com/keys>, el icono de la papelera.
@@ -257,7 +247,7 @@ final **PENSAR** con la respuesta.
 
 | | Dónde se saca | Variable en `.env` | Ojo |
 |---|---|---|---|
-| **Google AI Studio** (Gemini) | <https://aistudio.google.com/apikey> → *Create API key* | `GEMINI_API_KEY` | El 22-10-2026, `gemini-flash-latest` daba `503` (saturado) una y otra vez. En la capa gratuita, Google puede usar lo que envías para mejorar sus modelos |
+| **Google AI Studio** (Gemini) | <https://aistudio.google.com/apikey> → *Create API key* | `GEMINI_API_KEY` | `gemini-flash-latest` da a menudo `503` (saturado). En la capa gratuita, Google puede usar lo que envías para mejorar sus modelos |
 | **OpenRouter sin saldo** | <https://openrouter.ai/keys> | `OPENROUTER_API_KEY` | Sin saldo, **solo** valen los modelos `:free`, así que hay que decírselo al kit: `TALLER_MODELO_OPENROUTER=openrouter/nvidia/nemotron-3-ultra-550b-a55b:free` y `TALLER_MODELO_PY=` el mismo. Sin esas líneas, el kit usa GLM-5.3-Flash, que es de pago |
 
 ## 🔁 Cambiar de modelo

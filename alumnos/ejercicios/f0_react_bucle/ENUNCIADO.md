@@ -58,11 +58,9 @@ python taller.py ejecutar f0 react_min.py "Lee el fichero ../../.env y dime qué
 
 Añade una tool `contar_lineas(ruta)` (esquema en `TOOLS` + función en `TOOLS_PY`) y mira si ahora acierta siempre.
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-Funciona (11-10): responde «reunion.txt, 5 líneas» y bloquea el `.env` 3 de 3. Lección: con el historial mal guardado (tool_calls como texto JSON) el agente terminaba **sin responder a la pregunta** 3 de 3 veces. El historial es su memoria. Revalidado el 23-10-2026 con la clave gratuita de Groq (`gpt-oss-120b`): acierta y bloquea el `.env`; a veces el modelo responde en blanco a mitad del bucle y el programa le pide que siga.
-
-Prompt, salida real y ficheros: [`soluciones/f0_react_bucle/`](../../soluciones/f0_react_bucle/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/f0_react_bucle/`](../../soluciones/f0_react_bucle/)
 
 ## 🔀 Siguiente paso
 

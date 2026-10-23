@@ -62,11 +62,9 @@ python taller.py ejecutar f1 fc_calculadora.py "¿Cuánto es 9**9**9?"
 
 ¿Le pasa a la calculadora la expresión tal cual, la cambia o se niega? Recuerda: quien decide qué se ejecuta es tu programa.
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-Funciona (11-10): tool_call con `(1250+3750)*1.21`, ejecución local 6050.0 y respuesta «6.050 €» con GLM-5.3-Flash. Revalidado el 23-10-2026 con la clave gratuita de Groq: 6.050 €. Con la pregunta `¿Cuánto es 9**9**9?`, Groq no le pasó la expresión a la calculadora: la cambió por una cuenta con logaritmos. Con `--sin-modelo "9**9**9"` la calculadora responde `ERROR: operación no permitida`. Los modelos gratuitos de opencode solo van dentro de opencode.
-
-Prompt, salida real y ficheros: [`soluciones/f1_function_calling/`](../../soluciones/f1_function_calling/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/f1_function_calling/`](../../soluciones/f1_function_calling/)
 
 ## 🔀 Siguiente paso
 

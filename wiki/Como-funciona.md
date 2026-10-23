@@ -104,4 +104,4 @@ Y «Mi progreso» cuenta lo que llevas por área:
 - **Mejora el encargo** y compara: `python taller.py lanzar ej07 --prompt "tu versión"`. ¿Pasa ahora el comprobador?
 - **Prueba el agente Plan** (`Shift+Tab` en opencode): analiza y propone sin tocar nada. Útil antes de un encargo
   delicado.
-- Si te atascas, compara con `alumnos/soluciones/<ejercicio>/`: está la salida real del agente cuando lo validamos.
+- Si te atascas, compara con `alumnos/soluciones/<ejercicio>/`: está lo que hizo el agente con ese encargo.

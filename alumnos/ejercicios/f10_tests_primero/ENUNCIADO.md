@@ -58,13 +58,9 @@ python taller.py comprobar f10      # el agente no decide si está bien: lo deci
 
 Pide lo mismo sin la frase «NO modifiques tests/» varias veces. ¿Alguna vez «arregla» los tests en vez del código?
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-9/9 tests en verde sin tocar `tests/`. Arregló los cuatro fallos, incluido el cambio en céntimos enteros para evitar el error de coma flotante.
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/f10_tests_primero/`](../../soluciones/f10_tests_primero/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/f10_tests_primero/`](../../soluciones/f10_tests_primero/)
 
 ## 🔀 Siguiente paso
 

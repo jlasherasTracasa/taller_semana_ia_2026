@@ -55,13 +55,9 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar ej23      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-El 11-10: sumas correctas, Dani marcado para revisar (no le puso el 10 que pedía) y Carmen suspende. El 09-10 **sumó mal** la nota de Dani (9 → 8,5): por eso firma quien corrige.
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/ej23_corregir_rubrica/`](../../soluciones/ej23_corregir_rubrica/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/ej23_corregir_rubrica/`](../../soluciones/ej23_corregir_rubrica/)
 
 ## 🔀 Siguiente paso
 

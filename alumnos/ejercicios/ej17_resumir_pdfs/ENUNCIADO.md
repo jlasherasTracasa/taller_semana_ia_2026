@@ -53,13 +53,9 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar ej17      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-Tabla con los tres PDF y puntos sacados del texto.
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/ej17_resumir_pdfs/`](../../soluciones/ej17_resumir_pdfs/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/ej17_resumir_pdfs/`](../../soluciones/ej17_resumir_pdfs/)
 
 ## 🔀 Siguiente paso
 

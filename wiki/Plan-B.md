@@ -37,7 +37,7 @@ Si el antivirus o la política del aula bloquean ejecutables en tu carpeta, pasa
 
 Un **Codespace** es un ordenador Linux en la nube, con VS Code en el navegador. El repositorio del taller trae una
 configuración (`.devcontainer/`) que lo deja todo instalado: Python, Node, opencode 2.0.19 y las bibliotecas. Con el
-modelo gratuito no hace falta ninguna clave. Todo lo de este apartado está probado el 22-10-2026.
+modelo gratuito no hace falta ninguna clave.
 
 ### 1. Crea una cuenta gratuita de GitHub (si no la tienes)
 
@@ -103,7 +103,7 @@ opencode se abre dentro de la terminal del navegador y funciona igual que en un 
 
 ![La respuesta del agente: lista de la compra por secciones y decisiones tomadas](img/cs_8_resultado.png)
 
-> No le hagas caso si sugiere `/update to install v2.x`: el kit está validado con la **2.0.19**.
+> No le hagas caso si sugiere `/update to install v2.x`: el kit está preparado para la **2.0.19**.
 
 Sal con `Ctrl+C` y comprueba: `python taller.py comprobar ej24`.
 

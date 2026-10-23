@@ -54,13 +54,9 @@ O a mano, desde la carpeta de trabajo: `opencode run --standalone "…el encargo
 python taller.py comprobar ej05      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-El 11-10 falló una vez: dijo que «el mensaje se cortaba» y no creó `web_corregida.html`. Con la entrega numerada —(1) `incidencias.md`, (2) `web_corregida.html`— pasa. En la primera ronda de octubre se paró a preguntar y por eso el kit tiene `question: deny`.
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/ej05_auditoria_web/`](../../soluciones/ej05_auditoria_web/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/ej05_auditoria_web/`](../../soluciones/ej05_auditoria_web/)
 
 ## 🔀 Siguiente paso
 

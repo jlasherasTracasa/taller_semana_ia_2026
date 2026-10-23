@@ -80,13 +80,10 @@ def enunciado(e):
         L += ["## 🧗 Reto extra", "", e["reto"], ""]
     v = VAL.get(e["id"])
     if v:
-        L += [f"## 🧪 Lo que pasó al validarlo ({v.get('fecha', A.FECHA_VALIDACION)})", "", v["nota"], ""]
-        g = v.get("gratis")
-        if g:
-            L += [f"Con el modelo gratuito de opencode (`{g['modelo']}`): "
-                  + ("✅ cumple el criterio." if g["estado"] == "ok" else "❌ no cumple el criterio."), ""]
         if v.get("solucion"):
-            L += [f"Prompt, salida real y ficheros: [`soluciones/{e['id']}/`](../../soluciones/{e['id']}/)", ""]
+            L += ["## 📂 Una solución de ejemplo", "",
+                  f"¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que "
+                  f"escribió en pantalla y los ficheros): [`soluciones/{e['id']}/`](../../soluciones/{e['id']}/)", ""]
     if e["siguiente"]:
         L += ["## 🔀 Siguiente paso", ""]
         L += [f"- **{t}** → [{nombre_destino(d)}]({enlace(d)})" for t, d in e["siguiente"]] + [""]

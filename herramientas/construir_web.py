@@ -45,6 +45,11 @@ def main():
     paginas.sort(key=lambda n: orden.index(n) if n in orden else len(orden))
     wiki = {n: enlaces(open(os.path.join(RAIZ, "wiki", n + ".md"), encoding="utf-8").read()) for n in paginas}
     datos = {"indice": IDX, "validacion": VAL, "escenas": escenas, "wiki": wiki, "repo": REPO}
+    # enlaces que cambian sin regenerar las diapositivas (el QR de valoraciones apunta a #/valorar)
+    datos["enlaces"] = json.load(open(os.path.join(RAIZ, "herramientas", "enlaces.json"), encoding="utf-8"))
+    clave = os.path.join(RAIZ, "herramientas", "clave_clase.json")   # la clave de clase, cifrada con un PIN
+    if os.path.exists(clave):
+        datos["clave"] = json.load(open(clave, encoding="utf-8"))
     html = open(os.path.join(RAIZ, "herramientas", "web_plantilla.html"), encoding="utf-8").read()
     html = html.replace("/*DATOS*/null", json.dumps(datos, ensure_ascii=False).replace("</", "<\\/"))
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(html)

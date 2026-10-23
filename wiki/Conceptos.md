@@ -44,7 +44,7 @@ sequenceDiagram
   A-->>U: Resultado
 ```
 
-Dos lecciones de la validación: el bucle termina cuando **el modelo decide**, no cuando está bien hecho; y el
+Dos lecciones: el bucle termina cuando **el modelo decide**, no cuando está bien hecho; y el
 historial que le devuelves **es su memoria**: guardado mal, el agente dejaba de responder a la pregunta.
 
 ## Tools y function calling (ejercicio F.1)
@@ -78,4 +78,4 @@ unos segundos después de arrancar.
 - **pass@k**: probabilidad de que salga bien **alguna** de k veces.
 - **pass^k**: probabilidad de que salga bien **las k** veces. Es lo que importa en una rutina.
 
-Con un 80 % de acierto por intento, cinco seguidos bien es 0,8⁵ ≈ **33 %**. En la validación, el EJ 07 salió 3 de 4.
+Con un 80 % de acierto por intento, cinco seguidos bien es 0,8⁵ ≈ **33 %**. Por ejemplo, el EJ 07 sale bien unas 3 de cada 4 veces.

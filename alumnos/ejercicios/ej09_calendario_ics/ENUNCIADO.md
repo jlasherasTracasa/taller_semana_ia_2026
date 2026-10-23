@@ -57,13 +57,9 @@ python taller.py comprobar ej09      # el agente no decide si está bien: lo dec
 
 - Sin la cabecera `Date` del correo, «sábado 28» es ambiguo: el agente elige el mes. ¿Lo dice o lo calla?
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-DTSTART 28/11/2026 10:00 con `TZID=Europe/Madrid` y bloque VTIMEZONE, validado con `icalendar`. En la ronda 1 dejó la hora «flotante», sin zona horaria.
-
-Con el modelo gratuito de opencode (`big-pickle`): ✅ cumple el criterio.
-
-Prompt, salida real y ficheros: [`soluciones/ej09_calendario_ics/`](../../soluciones/ej09_calendario_ics/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/ej09_calendario_ics/`](../../soluciones/ej09_calendario_ics/)
 
 ## 🔀 Siguiente paso
 

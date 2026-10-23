@@ -39,11 +39,9 @@ Lee cada orden antes de aprobarla: ¿qué crea?, ¿cada cuánto?, ¿cómo se bor
 python taller.py comprobar ej21      # el agente no decide si está bien: lo decide el comprobador
 ```
 
-## 🧪 Lo que pasó al validarlo (11-10-2026)
+## 📂 Una solución de ejemplo
 
-Validado en **modo interactivo** el 11-10 (Linux sin cron): creó un timer de systemd de usuario, pidió permiso 6 veces (`systemctl`), el log tuvo 3 entradas separadas un minuto y al final borró el timer. Sistema limpio, comprobado a mano.
-
-Prompt, salida real y ficheros: [`soluciones/ej21_programar_cron/`](../../soluciones/ej21_programar_cron/)
+¿Te has atascado o no puedes ejecutarlo? Mira lo que hizo el agente con este encargo (el encargo, lo que escribió en pantalla y los ficheros): [`soluciones/ej21_programar_cron/`](../../soluciones/ej21_programar_cron/)
 
 ## 🔀 Siguiente paso
 
