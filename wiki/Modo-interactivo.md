@@ -4,6 +4,11 @@ En el taller usamos opencode en **modo interactivo**: una pantalla en la termina
 encargo, ves trabajar al agente paso a paso, apruebas lo que pide permiso y puedes seguir conversando con él.
 Todo lo de esta página está comprobado con **opencode 2.0.19**.
 
+> **¿Qué pego?** El texto del bloque «💬 El encargo» de cada enunciado (en la web, el del botón **Copiar**); `python
+> taller.py abrir` también te lo enseña antes de abrir opencode. Si el enunciado tiene pasos numerados (F.2, F.3,
+> EJ 10, EJ 21), síguelos en orden. **F.0, F.1 y F.9 no se hacen en opencode**: son programas de Python que se lanzan
+> con `python taller.py ejecutar …` ([🚀 Primeros pasos](Primeros-pasos.md#los-tres-tipos-de-ejercicio-qué-hago-en-cada-uno)).
+
 ## Abrirlo
 
 ```bash

@@ -2,6 +2,21 @@
 
 Primero, siempre: `python taller.py entorno`. Te dice qué falta y cómo arreglarlo.
 
+## «No sé qué hacer» (lo más preguntado)
+
+| Duda | Respuesta |
+|---|---|
+| ¿Qué tengo que pegar en opencode? | El texto del bloque **«💬 El encargo»** del enunciado (en la web, el que tiene el botón **Copiar**). `python taller.py abrir <ej>` también lo enseña antes de abrir opencode. Si el enunciado tiene **pasos numerados** (F.2, F.3, EJ 10, EJ 21), síguelos en orden: cada paso dice qué pegar |
+| He escrito `python taller.py …` dentro de opencode y no pasa nada (o el agente lo ejecuta) | Las órdenes `python taller.py …` van en la **terminal**, fuera de opencode. Sal con `Ctrl+C` (con la caja vacía) y escríbela ahí. Dentro de opencode solo va el encargo o un comando que empieza por `/` |
+| F.0, F.1: ¿dónde pego el encargo? | En ninguna parte: **no usan opencode**. Son programas de Python que se lanzan con `python taller.py ejecutar …` |
+| F.0, F.1: ¿cómo le hago otra pregunta (por ejemplo «¿Cuánto es 9\*\*9\*\*9?»)? | Escríbela **entre comillas** al final de la orden: `python taller.py ejecutar f1 fc_calculadora.py "¿Cuánto es 9**9**9?"`. Para probar la calculadora sin el modelo: `python taller.py ejecutar f1 fc_calculadora.py --sin-modelo "9**9**9"` |
+| F.1: el modelo no le pasa `9**9**9` a la calculadora | Es normal: el modelo elige los argumentos y a veces cambia la cuenta o se niega. Por eso existe `--sin-modelo`, para ver qué hace tu calculadora con esa expresión |
+| F.0 o F.1: `(límite de uso por minuto del proveedor: espero…)` | La clave gratuita de Groq admite 8.000 tokens por minuto. No toques nada: el programa espera y lo reintenta solo |
+| F.0 o F.1: `(el modelo no ha dicho nada: le pido que siga)` | El modelo gratuito ha respondido en blanco. El programa se lo vuelve a pedir; no hay que hacer nada |
+| `comprobar f0` (o `f1`) dice que no tiene comprobador | F.0, F.1 y F.9 son programas que miras tú: repasa la lista «✅ ¿Lo ha hecho de verdad?» del enunciado |
+| F.2: ¿dónde está mi carpeta de trabajo para copiar `AGENTS.md`? | En `~/taller-agentes/f2_agents_md/` (en Windows, `C:\Users\<tú>\taller-agentes\f2_agents_md\`). `python taller.py empezar f2` te la dice |
+| F.3: he escrito `/informe-semanal` y no hace nada | Al escribir `/` sale una lista: el primer **Enter** elige el comando y el segundo **Enter** lo envía |
+
 ## Instalación
 
 | Síntoma | Por qué pasa | Arreglo |

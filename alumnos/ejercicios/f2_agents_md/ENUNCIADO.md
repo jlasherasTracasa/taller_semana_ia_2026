@@ -19,19 +19,52 @@ Dar **instrucciones permanentes** al agente con un fichero `AGENTS.md` en la car
 
 ## 💬 El encargo
 
-1. **Sin normas.** Abre opencode (`python taller.py abrir f2`), pega el encargo y mira el resultado:
-   > Escribe el aviso para los socios con la excursión de datos_salida.txt.
+Vas a hacer el **mismo encargo dos veces**: primero sin normas y después con normas. Este es el encargo que
+pegarás las dos veces (es el mismo; no lo cambies):
 
-   Sal con `Ctrl+C`.
-2. **Con normas.** Copia las normas en tu carpeta de trabajo (la orden vale en PowerShell, Mac y Linux, desde
-   `alumnos`) y repite el MISMO encargo en un opencode nuevo:
-   ```bash
-   cp ~/taller-agentes/f2_agents_md/AGENTS.ejemplo.md ~/taller-agentes/f2_agents_md/AGENTS.md
-   python taller.py abrir f2
-   ```
-3. Compara los dos avisos. ¿Qué normas ha cumplido? ¿Alguna se ha saltado?
+```text
+Escribe el aviso para los socios con la excursión de datos_salida.txt.
+```
 
-(Sin conversar: `python taller.py lanzar f2` hace el paso que toque, según exista o no `AGENTS.md`.)
+**1. Sin normas.** En la terminal, desde la carpeta `alumnos` y con el entorno activado:
+
+```bash
+python taller.py abrir f2
+```
+
+Se abre opencode a pantalla completa. Copia el encargo de arriba, **pégalo** en la caja de abajo (`Ctrl+V`, o clic
+derecho en Windows) y pulsa **Enter**. Lee el aviso que escribe: ¿lleva emojis?, ¿cómo firma?, ¿cómo escribe las
+fechas? Cuando termine, sal con **`Ctrl+C`** (con la caja vacía) o escribiendo `/exit`.
+
+**2. Pon las normas.** `AGENTS.md` es un fichero que opencode lee **solo** al arrancar, si está en la carpeta en la que
+trabaja. Copia el de ejemplo con ese nombre (esta orden vale igual en PowerShell, Linux y Mac):
+
+```bash
+cp ~/taller-agentes/f2_agents_md/AGENTS.ejemplo.md ~/taller-agentes/f2_agents_md/AGENTS.md
+```
+
+(O con el explorador de archivos: en tu carpeta `taller-agentes/f2_agents_md` copia `AGENTS.ejemplo.md` y llama a la
+copia `AGENTS.md`. En Windows, cuidado si no ves las extensiones: no tiene que quedar `AGENTS.md.md`.)
+
+Ábrelo y léelo: son las normas del club (formato, firma, fechas, dónde guardar el aviso).
+
+**3. Con normas.** Abre un opencode **nuevo** (así lee `AGENTS.md`) y pega **el mismo encargo**:
+
+```bash
+python taller.py abrir f2
+```
+
+Esta vez el aviso debe quedar guardado en `avisos/2026-11-08_….md`, con la firma y las fechas de las normas. Sal con
+`Ctrl+C`.
+
+**4. Compara** los dos avisos. ¿Qué normas ha cumplido? ¿Alguna se ha saltado? Y compruébalo con la orden de abajo.
+
+<details><summary>Sin conversar, de una vez (opcional)</summary>
+
+`python taller.py lanzar f2` hace el encargo sin abrir la pantalla interactiva: sin `AGENTS.md` es el paso 1 y, con
+`AGENTS.md`, el paso 3.
+
+</details>
 
 > 💡 Antes de pegarlo, léelo buscando las cinco piezas de un buen encargo: **contexto, objetivo, entrega, límites y criterio**. ¿Falta alguna? Prueba a quitarla y mira qué pasa.
 

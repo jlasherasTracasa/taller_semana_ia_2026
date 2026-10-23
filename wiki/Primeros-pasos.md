@@ -75,8 +75,8 @@ Mira lo que hace: qué ficheros lee (`→ Read`), qué escribe (`← Write`), qu
 qué ha hecho y abajo pone el modelo y lo que ha tardado:
 
 ![La respuesta del agente al terminar](img/cs_8_resultado.png)
- Cuando termine, sal con
-**`Ctrl+C`** (con la caja vacía) o escribiendo `/exit`. Todo lo del modo interactivo, en
+
+Cuando termine, sal con **`Ctrl+C`** (con la caja vacía) o escribiendo `/exit`. Todo lo del modo interactivo, en
 [🖥️ Modo interactivo](Modo-interactivo.md).
 
 ## 5. ¿Lo ha hecho de verdad?
@@ -91,6 +91,42 @@ Si sale ✅, el ejercicio cuenta como completado y te propone el siguiente. Si s
 (`python taller.py abrir ej24`) y pídele que lo arregle, o mejora el encargo.
 
 Abre `~/taller-agentes/ej24_lista_compra/lista_compra.md` y compruébalo tú también: ¿son 1,2 kg de pochas?
+
+## Los tres tipos de ejercicio: qué hago en cada uno
+
+No todos los ejercicios se hacen igual. Lo dice la cabecera del enunciado, en el apartado 🛠️:
+
+| En la cabecera pone… | Ejercicios | Qué haces |
+|---|---|---|
+| 🛠️ **opencode interactivo** | La mayoría (EJ 01, EJ 24, F.4…) | `python taller.py abrir <ej>`, **pegas el encargo** que aparece en el bloque «El encargo» (el del botón de copiar) y Enter. Es lo de arriba |
+| 🛠️ **solo opencode interactivo**, o un encargo con pasos numerados | F.2, F.3, EJ 10, EJ 21 | Sigue los **pasos numerados** del enunciado, en orden. Te dicen qué abrir y qué pegar en cada momento. En F.3 no se pega nada: se escribe un comando, `/informe-semanal` |
+| 🛠️ **tu propio programa en Python** | F.0, F.1, F.9 | **No se usa opencode.** Escribes la orden `python taller.py ejecutar …` en la terminal y miras lo que imprime. Si quieres hacerle otra pregunta, va **entre comillas** detrás del nombre del programa |
+
+Ejemplo del tercer tipo (F.1, la calculadora):
+
+```bash
+python taller.py ejecutar f1 fc_calculadora.py
+```
+
+Con tu propia pregunta, entre comillas:
+
+```bash
+python taller.py ejecutar f1 fc_calculadora.py "¿Cuánto es 9**9**9?"
+```
+
+Y para probar la calculadora sola, sin el modelo:
+
+```bash
+python taller.py ejecutar f1 fc_calculadora.py --sin-modelo "9**9**9"
+```
+
+F.0 y F.1 necesitan una clave en `.env` (la de OpenRouter o una gratuita de Groq: [🤖 Modelos](Modelos.md)); sin
+ella, son demos que mira toda la clase en el proyector. Esos ejercicios no tienen comprobador: `comprobar` te recuerda
+que lo revises tú con la lista «✅ ¿Lo ha hecho de verdad?» del enunciado.
+
+> 💡 Las órdenes `python taller.py …` se escriben **siempre en la terminal, fuera de opencode**, desde la carpeta
+> `alumnos` y con el entorno activado. Dentro de opencode solo se escribe el encargo (o un comando que empieza por `/`).
+> Si estás dentro de opencode y quieres escribir una orden, sal antes con `Ctrl+C`.
 
 ## ¿Y si prefiero no conversar?
 

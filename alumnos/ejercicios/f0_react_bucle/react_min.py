@@ -6,6 +6,7 @@ import os
 import sys
 from pathlib import Path
 
+import time
 import litellm
 
 # Con el LiteLLM del taller: "openai/<modelo>" + su URL. Con OpenRouter: "openrouter/z-ai/glm-5.3-flash".
@@ -30,8 +31,20 @@ else:
     sys.exit("Este programa llama al modelo directamente y necesita una clave en el .env del kit:\n"
              "OPENROUTER_API_KEY, o una gratuita de Groq (GROQ_API_KEY) o de Google AI Studio (GEMINI_API_KEY).\n"
              "Los modelos gratuitos de opencode solo funcionan dentro de opencode (wiki: Modelos).")
+def preguntar(**datos):
+    """Llama al modelo. Si una clave gratuita llega a su límite por minuto, espera y lo reintenta."""
+    for espera in (10, 20, 30, 40, 0):
+        try:
+            return litellm.completion(model=MODEL, **datos, **KW).choices[0].message
+        except litellm.RateLimitError:
+            if not espera:
+                sys.exit("El proveedor sigue diciendo que has llegado a tu límite: espera un minuto y repite.")
+            print(f"   (límite de uso por minuto del proveedor: espero {espera} s y lo intento otra vez)")
+            time.sleep(espera)
+
+
 RAIZ = Path(__file__).resolve().parent  # el agente solo puede ver esta carpeta
-MAX_PASOS = 8                            # freno de seguridad: un agente sin límite puede dar vueltas sin fin
+MAX_PASOS = 10                           # freno de seguridad: un agente sin límite puede dar vueltas sin fin
 
 
 def _dentro(ruta):
@@ -67,9 +80,13 @@ mensajes = [
 print(f"OBJETIVO: {objetivo}\n")
 
 for paso in range(1, MAX_PASOS + 1):
-    msg = litellm.completion(model=MODEL, messages=mensajes, tools=TOOLS, **KW).choices[0].message
+    msg = preguntar(messages=mensajes, tools=TOOLS)
     if msg.content:
         print(f"[{paso}] PENSAR   {msg.content.strip()}")
+    if not msg.tool_calls and not (msg.content or "").strip():   # a veces un modelo gratuito responde en blanco
+        print(f"[{paso}] (el modelo no ha dicho nada: le pido que siga)")
+        mensajes.append({"role": "user", "content": "Sigue hasta responder a la pregunta."})
+        continue
     if not msg.tool_calls:                      # sin acciones pendientes: el agente da la tarea por terminada
         print("\nFIN: el modelo no pide más herramientas.")
         break

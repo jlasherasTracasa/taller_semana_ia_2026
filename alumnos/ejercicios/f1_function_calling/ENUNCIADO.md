@@ -14,14 +14,28 @@ Ver con tus ojos que el modelo **no ejecuta** herramientas: devuelve un JSON pid
 
 ## 📦 Lo que tienes en esta carpeta
 
-- `fc_calculadora.py`: una tool «calculadora» segura (sin `eval`) y el bucle de dos turnos.
+- `fc_calculadora.py`: una tool «calculadora» segura (sin `eval`) y el bucle que se la ofrece al modelo.
 
 ## 💬 El encargo
+
+Como F.0, aquí **no se usa opencode**: las órdenes se escriben en la terminal, desde la carpeta `alumnos` y con el
+entorno activado. Necesita una clave en `.env`: `OPENROUTER_API_KEY`, o una gratuita de Groq (`GROQ_API_KEY`; paso a
+paso en la wiki, «Modelos»).
+
+**1.** Ejecuta la demo con su pregunta de serie (el total de un pedido con IVA):
 
 ```bash
 python taller.py ejecutar f1 fc_calculadora.py
 ```
-Como F.0, necesita una clave en `.env`: `OPENROUTER_API_KEY`, o una gratuita de Groq (`GROQ_API_KEY`; paso a paso en la wiki, «Modelos»). Los modelos gratuitos de opencode solo van dentro de opencode.
+
+Fíjate en las tres partes: `RESPUESTA 1 DEL MODELO` (no trae texto, trae un `tool_calls` en JSON), `EJECUCIÓN LOCAL`
+(la cuenta la hace tu programa) y `RESPUESTA 2 DEL MODELO` (el texto final, ya con el resultado).
+
+**2.** Hazle tu propia pregunta: escríbela **entre comillas** detrás del nombre del programa:
+
+```bash
+python taller.py ejecutar f1 fc_calculadora.py "Compro 3 libros de 18,50 € y 2 de 12 €. ¿Cuánto pago?"
+```
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -31,11 +45,26 @@ Como F.0, necesita una clave en `.env`: `OPENROUTER_API_KEY`, o una gratuita de 
 
 ## 🧗 Reto extra
 
-Cambia el mensaje por «¿Cuánto es 9**9**9?» y comprueba que tu calculadora lo rechaza. ¿Por qué no usamos `eval()`?
+Los argumentos de la tool los escribe el modelo (o un atacante, con una inyección de prompt). ¿Qué pasa si llega
+algo peligroso? Prueba la calculadora **sin el modelo** (no gasta clave) con `--sin-modelo` y la expresión entre comillas:
+
+```bash
+python taller.py ejecutar f1 fc_calculadora.py --sin-modelo "9**9**9"
+python taller.py ejecutar f1 fc_calculadora.py --sin-modelo "__import__('os')"
+```
+
+Las dos dan `ERROR: operación no permitida`. Con `eval()`, la primera dejaría el ordenador calculando un número de
+369 millones de cifras y la segunda podría ejecutar cualquier cosa. Pregúntaselo después al modelo:
+
+```bash
+python taller.py ejecutar f1 fc_calculadora.py "¿Cuánto es 9**9**9?"
+```
+
+¿Le pasa a la calculadora la expresión tal cual, la cambia o se niega? Recuerda: quien decide qué se ejecuta es tu programa.
 
 ## 🧪 Lo que pasó al validarlo (11-10-2026)
 
-Funciona (11-10): tool_call con `(1250+3750)*1.21`, ejecución local 6050.0 y respuesta «6.050 €» con GLM-5.3-Flash. Necesita clave: OpenRouter, o una gratuita de Gemini o Groq (estas dos aún sin validar). Los modelos gratuitos de opencode solo van dentro de opencode.
+Funciona (11-10): tool_call con `(1250+3750)*1.21`, ejecución local 6050.0 y respuesta «6.050 €» con GLM-5.3-Flash. Revalidado el 23-10-2026 con la clave gratuita de Groq: 6.050 €. Con la pregunta `¿Cuánto es 9**9**9?`, Groq no le pasó la expresión a la calculadora: la cambió por una cuenta con logaritmos. Con `--sin-modelo "9**9**9"` la calculadora responde `ERROR: operación no permitida`. Los modelos gratuitos de opencode solo van dentro de opencode.
 
 Prompt, salida real y ficheros: [`soluciones/f1_function_calling/`](../../soluciones/f1_function_calling/)
 

@@ -23,8 +23,10 @@ antes de ejecutarlas, y en `opencode run` la pregunta se quedaría colgada):
 ```bash
 python taller.py abrir ej21
 ```
-Pega este encargo:
-> Quiero ejecutar vigila/vigila_cambios.py cada minuto con el programador de tareas de este sistema (en Windows, el Programador de tareas con schtasks; en Linux, cron o un timer de systemd de usuario; en macOS, launchd). Usa la ruta completa del Python con el que se ejecuta el kit. Crea la tarea, espera a que haya al menos dos líneas nuevas en vigila/log/vigilancia.log y después elimina la tarea dejando el sistema limpio. Enséñame el log.
+Copia este encargo, pégalo en opencode y pulsa Enter:
+```text
+Quiero ejecutar vigila/vigila_cambios.py cada minuto con el programador de tareas de este sistema (en Windows, el Programador de tareas con schtasks; en Linux, cron o un timer de systemd de usuario; en macOS, launchd). Usa la ruta completa del Python con el que se ejecuta el kit. Crea la tarea, espera a que haya al menos dos líneas nuevas en vigila/log/vigilancia.log y después elimina la tarea dejando el sistema limpio. Enséñame el log.
+```
 
 Lee cada orden antes de aprobarla: ¿qué crea?, ¿cada cuánto?, ¿cómo se borra?
 

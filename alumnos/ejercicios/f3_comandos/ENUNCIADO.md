@@ -19,13 +19,28 @@ Convertir un encargo recurrente en un **comando** versionado (`.opencode/command
 
 ## 💬 El encargo
 
-Los comandos solo funcionan en el **modo interactivo**:
+Los comandos solo funcionan en el **modo interactivo**. En la terminal, desde la carpeta `alumnos`:
 ```bash
 python taller.py abrir f3
 ```
-y dentro de opencode escribe `/informe-semanal` y pulsa Enter (al escribir `/` verás la lista de comandos).
-Después crea tú un segundo comando, `.opencode/commands/resumen-mes.md`, que reciba el mes como argumento
-(`/resumen-mes junio`) y escriba `resumen_<mes>.txt` con el total de ese mes por categoría.
+Aquí **no hay que pegar ningún encargo**: dentro de opencode escribe `/informe-semanal` y pulsa **Enter dos veces**: al
+escribir `/` sale la lista de comandos, el primer Enter elige el comando y el segundo lo envía. El encargo largo ya está guardado en
+`.opencode/commands/informe-semanal.md`: ábrelo para verlo. Cuando termine, sal con `Ctrl+C`.
+
+**Tu propio comando.** Crea con cualquier editor el fichero `.opencode/commands/resumen-mes.md` dentro de tu carpeta
+de trabajo (`~/taller-agentes/f3_comandos/`; en Windows la carpeta `.opencode` puede estar oculta: actívalo en «Vista →
+Elementos ocultos»). Puedes partir de esto:
+
+```text
+---
+description: Resumen de ventas de un mes por categoría
+---
+Lee `datos/ventas_tienda.csv` (columnas mes,hogar,textil,bazar). Para el mes $ARGUMENTS, calcula con Python
+el importe de cada categoría y el total, y escríbelo en `resumen_$ARGUMENTS.txt`. No inventes cifras.
+```
+
+`$ARGUMENTS` se sustituye por lo que escribas detrás del comando. Abre opencode otra vez (`python taller.py abrir f3`:
+los comandos se leen al arrancar) y escribe `/resumen-mes junio`, con Enter (si sigue en la caja, Enter otra vez).
 
 ## ✅ ¿Lo ha hecho de verdad?
 

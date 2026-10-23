@@ -51,6 +51,20 @@ python taller.py ejecutar f1 fc_calculadora.py
 La respuesta 1 del modelo no tiene texto (`content: None`): solo un **JSON** que dice «llama a `calculadora` con
 `(1250+3750)*1.21`». Lo ejecuta **nuestro código**, que le devuelve 6050, y entonces el modelo responde.
 
+Para hacerle otra pregunta, escríbela **entre comillas** detrás del nombre del programa. Y para ver que la calculadora
+rechaza lo peligroso (sin gastar clave), `--sin-modelo`:
+
+```bash
+python taller.py ejecutar f1 fc_calculadora.py "¿Cuánto es 9**9**9?"
+python taller.py ejecutar f1 fc_calculadora.py --sin-modelo "9**9**9"
+```
+
+La segunda responde `ERROR: operación no permitida`.
+
+Con «¿Cuánto es 9\*\*9\*\*9?», el 23-10-2026 el modelo de Groq **no** pasó la expresión tal cual: la cambió por una
+cuenta con logaritmos y explicó que el número tiene 369.693.100 cifras. Si se la hubiera pasado, la calculadora la
+habría rechazado: quien decide qué se ejecuta es el programa, no el modelo.
+
 ## F.2 · AGENTS.md: las normas de la casa
 
 ```bash

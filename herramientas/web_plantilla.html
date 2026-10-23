@@ -357,7 +357,11 @@ function ejercicio(id) {
   if (!e || !D.escenas[id]) return `<p>No encuentro ese ejercicio. <a href="#/ejercicios">Ver todos</a>.</p>`;
   const h = hechos()[id], a = I.puertas[e.puerta], v = e.validacion;
   const orden = t => `<div class="orden"><span>${esc(t)}</span><button onclick="navigator.clipboard.writeText('${t}');this.textContent='✓'">Copiar</button></div>`;
-  const ordenes = e.modo === "script" ? [`python taller.py empezar ${e.num_corto}`] : [`python taller.py empezar ${e.num_corto}`, `python taller.py abrir ${e.num_corto}`];
+  // Los programas de Python (F.0, F.1, F.9) no se abren con opencode: se ejecutan, y no tienen comprobador
+  const PROG = {f0: "react_min.py", f1: "fc_calculadora.py", f9: "medir.py ej07 5"};
+  const script = e.modo === "script";
+  const ordenes = script ? [`python taller.py empezar ${e.num_corto}`].concat(PROG[e.num_corto] ? [`python taller.py ejecutar ${e.num_corto} ${PROG[e.num_corto]}`] : [])
+                         : [`python taller.py empezar ${e.num_corto}`, `python taller.py abrir ${e.num_corto}`];
   return `<div class="botones" style="margin-top:0"><a class="btn borde peq" href="#/ejercicios">← Todos los ejercicios</a></div>
     <div class="ficha"><div class="doc">${md(D.escenas[id])}</div>
     <aside class="panel">
@@ -366,9 +370,9 @@ function ejercicio(id) {
         <dt>Tiempo</dt><dd>${e.min} min</dd><dt>Tipo</dt><dd>${e.demo ? "🎥 Demo del profesor" : "✋ Práctica"}</dd>
         <dt>Perfiles</dt><dd>${e.perfiles.map(p => I.perfiles[p].icono).join(" ")}</dd>
         ${v ? `<dt>Validado</dt><dd><span class="chip ${v.estado}">${{ok:"Sí", parcial:"A medias", fallo:"Falló"}[v.estado]}</span></dd>` : ""}</dl></div>
-      <div class="tarjeta"><h4>Hazlo</h4>${ordenes.map(orden).join("")}${orden(`python taller.py comprobar ${e.num_corto}`)}
+      <div class="tarjeta"><h4>Hazlo</h4>${ordenes.map(orden).join("")}${script ? "" : orden(`python taller.py comprobar ${e.num_corto}`)}
         <button class="btn ${h ? "tonal" : "lleno"} peq" style="width:100%;justify-content:center;margin-top:8px" onclick="marcar('${id}')">${h ? "✓ Completado (desmarcar)" : "Marcar como completado"}</button>
-        <p class="nota" style="margin:8px 0 0">Márcalo cuando <code>comprobar</code> te diga que está bien.</p></div>
+        <p class="nota" style="margin:8px 0 0">${script ? "Es un programa que miras tú (sin opencode): márcalo cuando cumpla «¿Lo ha hecho de verdad?»." : "Márcalo cuando <code>comprobar</code> te diga que está bien."}</p></div>
       <div class="tarjeta"><h4>Más</h4><div style="display:grid;gap:8px">
         ${e.demo ? `<a class="btn tonal peq" href="#/wiki/Demos">🎥 Capturas de la demo</a>` : ""}
         <a class="btn borde peq" href="${D.repo}/tree/main/alumnos/ejercicios/${id}">Datos del ejercicio</a>

@@ -345,14 +345,19 @@ def comprobar(ej):
     e, d = EJS[ej], carpeta(ej)
     if not os.path.isdir(d):
         sys.exit(f"Aún no has empezado {e['num']}:  {PY} taller.py empezar {e['num_corto']}")
-    rc = subprocess.call([sys.executable, os.path.join(KIT, "comprobar.py"), ej, d])
-    if rc == 0:
+    if e["modo"] == "script":   # F.0, F.1, F.9 y el reto: programas que miras tú, sin comprobador automático
+        print(f"{e['num']} no tiene comprobador automático: es un programa que miras tú.\n"
+              f"Repasa la lista «✅ ¿Lo ha hecho de verdad?» de su enunciado: {os.path.join(d, 'ENUNCIADO.md')}")
+        rc = 0
+    elif subprocess.call([sys.executable, os.path.join(KIT, "comprobar.py"), ej, d]) == 0:
+        rc = 0
         p = leer_progreso()
         p[ej] = time.strftime("%Y-%m-%d %H:%M")
         os.makedirs(TRABAJO, exist_ok=True)
         json.dump(p, open(PROGRESO, "w", encoding="utf-8"), indent=1)
         print(f"\n✅ Ejercicio completado: {e['num']} · {e['titulo']}")
     else:
+        rc = 1
         print("\nTodavía no está. Vuelve a opencode y pídele que lo arregle, o mejora el encargo (más CONTEXTO,\n"
               f"ENTREGA, LÍMITES y CRITERIO) y repítelo:   {PY} taller.py abrir {e['num_corto']}")
     if e.get("siguiente"):

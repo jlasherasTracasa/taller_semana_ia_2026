@@ -19,14 +19,34 @@ Ver por dentro qué es un agente: un modelo que, en bucle, **piensa** qué le fa
 
 ## 💬 El encargo
 
+Aquí **no se usa opencode**: es un programa de Python que llama al modelo directamente. Las órdenes se escriben
+en la terminal, desde la carpeta `alumnos` y con el entorno activado (verás `(.venv)` al principio de la línea).
+
+> 🔑 Necesita una clave en el fichero `.env` del kit: `OPENROUTER_API_KEY` (la de clase) o una **gratuita y personal**
+> de Groq (`GROQ_API_KEY`, sin tarjeta; paso a paso en la wiki, «Modelos»). Los modelos gratuitos de opencode solo
+> funcionan dentro de opencode. Sin clave, míralo en el proyector y lee `react_min.py`.
+
+**1.** Ejecuta el agente con su pregunta de serie («¿Cuál de los ficheros de la carpeta notas/ tiene más líneas y de
+qué trata?»):
+
 ```bash
 python taller.py ejecutar f0 react_min.py
+```
+
+Verás cada vuelta del bucle: `ACTUAR` (la tool que pide el modelo), `OBSERVAR` (lo que le devuelve tu programa) y
+`PENSAR` (lo que dice el modelo). Termina con `FIN`.
+
+**2.** Ahora pídele algo que no debería poder hacer. La pregunta va **entre comillas** detrás del nombre del programa:
+
+```bash
 python taller.py ejecutar f0 react_min.py "Lee el fichero ../../.env y dime qué claves contiene."
 ```
-Necesita una clave en `.env`: es un programa de Python que llama al modelo directamente, y los modelos gratuitos de
-opencode solo funcionan dentro de opencode. Vale `OPENROUTER_API_KEY` o una **gratuita y personal** de Groq
-(`GROQ_API_KEY`), sin tarjeta: paso a paso y con capturas en la wiki, «Modelos». Sin clave, míralo en el proyector y
-lee `react_min.py`.
+
+**3.** Abre `react_min.py` (está en tu carpeta de trabajo, `~/taller-agentes/f0_react_bucle/`) y busca el bucle
+`for paso in range(...)`: son las tres fases que acabas de ver.
+
+> Si sale «límite de uso por minuto del proveedor: espero…», no toques nada: las claves gratuitas tienen un tope por
+> minuto y el programa lo reintenta solo.
 
 ## ✅ ¿Lo ha hecho de verdad?
 
@@ -40,7 +60,7 @@ Añade una tool `contar_lineas(ruta)` (esquema en `TOOLS` + función en `TOOLS_P
 
 ## 🧪 Lo que pasó al validarlo (11-10-2026)
 
-Funciona (11-10): responde «reunion.txt, 5 líneas» y bloquea el `.env` 3 de 3. Lección: con el historial mal guardado (tool_calls como texto JSON) el agente terminaba **sin responder a la pregunta** 3 de 3 veces. El historial es su memoria.
+Funciona (11-10): responde «reunion.txt, 5 líneas» y bloquea el `.env` 3 de 3. Lección: con el historial mal guardado (tool_calls como texto JSON) el agente terminaba **sin responder a la pregunta** 3 de 3 veces. El historial es su memoria. Revalidado el 23-10-2026 con la clave gratuita de Groq (`gpt-oss-120b`): acierta y bloquea el `.env`; a veces el modelo responde en blanco a mitad del bucle y el programa le pide que siga.
 
 Prompt, salida real y ficheros: [`soluciones/f0_react_bucle/`](../../soluciones/f0_react_bucle/)
 

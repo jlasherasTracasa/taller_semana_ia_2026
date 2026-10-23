@@ -158,7 +158,8 @@ clave aunque el resto del taller funcione sin ella. Si no tienes la de OpenRoute
 personal de [Groq](https://console.groq.com)**: no pide tarjeta y se hace en dos minutos.
 
 > **¿Por qué Groq?** Lo probamos el 22-10-2026 con las tres opciones gratuitas. **Groq** respondió a la primera y
-> rápido (F.0 acertó 3 de 4 veces y bloqueó el `.env`; F.1, bien). **Gemini** devolvió una y otra vez
+> rápido (F.0 acertó 3 de 4 veces y bloqueó el `.env`; F.1, bien). Revalidado el 23-10-2026: F.0 acierta siempre
+> (`reunion.txt`, 5 líneas) y F.1 da 6.050 €. **Gemini** devolvió una y otra vez
 > `503 This model is currently experiencing high demand`: si se satura, falla a toda la clase a la vez.
 > Los modelos **`:free` de OpenRouter** funcionan, pero cambian a menudo y una cuenta sin saldo tiene un límite
 > diario bajo.
@@ -239,9 +240,13 @@ final **PENSAR** con la respuesta.
   F.1, con el modelo `groq/openai/gpt-oss-120b`.
 - **Es tu clave, no la compartas.** Cada alumno saca la suya: así lo piden las condiciones de uso, y el límite es
   solo tuyo.
-- **Límites de la capa gratuita** (octubre de 2026, `gpt-oss-120b`): 30 peticiones por minuto, 1.000 al día y
-  200.000 tokens al día. F.0 hace como mucho 8 llamadas por ejecución y F.1 dos: da de sobra. Si ves `429`, espera
-  un minuto.
+- **Límites de la capa gratuita** (octubre de 2026, `gpt-oss-120b`): 30 peticiones por minuto, **8.000 tokens por
+  minuto**, 1.000 peticiones y 200.000 tokens al día. Una ejecución de F.0 gasta unos 5.000 tokens, así que si lanzas
+  dos seguidas llegas al tope del minuto. No pasa nada: F.0 y F.1 escriben
+  `(límite de uso por minuto del proveedor: espero 10 s y lo intento otra vez)` y siguen solos.
+- **A veces el modelo gratuito responde en blanco** a mitad del bucle (comprobado el 23-10-2026, más o menos una de
+  cada cuatro ejecuciones de F.0). El programa lo detecta, escribe `(el modelo no ha dicho nada: le pido que siga)` y
+  continúa. Es una buena lección: un agente de verdad tiene que estar preparado para que el modelo falle.
 - **Si tienes varias claves**, F.0 y F.1 usan este orden: OpenRouter, Groq y Gemini.
 - **Al terminar el taller**, si quieres, borra la clave: en <https://console.groq.com/keys>, el icono de la papelera.
 - **Los modelos gratuitos cambian.** Si Groq retira `gpt-oss-120b`, pon otro en `.env` con `TALLER_MODELO_PY`, por

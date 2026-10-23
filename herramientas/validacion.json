@@ -66,7 +66,7 @@
  "f0_react_bucle": {
   "estado": "ok",
   "fecha": "11-10-2026",
-  "nota": "Funciona (11-10): responde «reunion.txt, 5 líneas» y bloquea el `.env` 3 de 3. Lección: con el historial mal guardado (tool_calls como texto JSON) el agente terminaba **sin responder a la pregunta** 3 de 3 veces. El historial es su memoria.",
+  "nota": "Funciona (11-10): responde «reunion.txt, 5 líneas» y bloquea el `.env` 3 de 3. Lección: con el historial mal guardado (tool_calls como texto JSON) el agente terminaba **sin responder a la pregunta** 3 de 3 veces. El historial es su memoria. Revalidado el 23-10-2026 con la clave gratuita de Groq (`gpt-oss-120b`): acierta y bloquea el `.env`; a veces el modelo responde en blanco a mitad del bucle y el programa le pide que siga.",
   "segundos": null,
   "entrada": null,
   "salida": null,
@@ -75,7 +75,7 @@
  "f1_function_calling": {
   "estado": "ok",
   "fecha": "11-10-2026",
-  "nota": "Funciona (11-10): tool_call con `(1250+3750)*1.21`, ejecución local 6050.0 y respuesta «6.050 €» con GLM-5.3-Flash. Necesita clave: OpenRouter, o una gratuita de Gemini o Groq (estas dos aún sin validar). Los modelos gratuitos de opencode solo van dentro de opencode.",
+  "nota": "Funciona (11-10): tool_call con `(1250+3750)*1.21`, ejecución local 6050.0 y respuesta «6.050 €» con GLM-5.3-Flash. Revalidado el 23-10-2026 con la clave gratuita de Groq: 6.050 €. Con la pregunta `¿Cuánto es 9**9**9?`, Groq no le pasó la expresión a la calculadora: la cambió por una cuenta con logaritmos. Con `--sin-modelo \"9**9**9\"` la calculadora responde `ERROR: operación no permitida`. Los modelos gratuitos de opencode solo van dentro de opencode.",
   "segundos": null,
   "entrada": null,
   "salida": null,
