@@ -14,7 +14,9 @@ Primero, siempre: `python taller.py entorno`. Te dice qué falta y cómo arregla
 | F.0 o F.1: `(límite de uso por minuto del proveedor: espero…)` | La clave gratuita de Groq admite 8.000 tokens por minuto. No toques nada: el programa espera y lo reintenta solo |
 | F.0 o F.1: `(el modelo no ha dicho nada: le pido que siga)` | El modelo gratuito ha respondido en blanco. El programa se lo vuelve a pedir; no hay que hacer nada |
 | `comprobar f0` (o `f1`) dice que no tiene comprobador | F.0, F.1 y F.9 son programas que miras tú: repasa la lista «✅ ¿Lo ha hecho de verdad?» del enunciado |
-| F.2: ¿dónde está mi carpeta de trabajo para copiar `AGENTS.md`? | En `~/taller-agentes/f2_agents_md/` (en Windows, `C:\Users\<tú>\taller-agentes\f2_agents_md\`). `python taller.py empezar f2` te la dice |
+| ¿Dónde está mi carpeta de trabajo? (por ejemplo, para copiar `AGENTS.md` en F.2) | `python taller.py carpeta f2`: te dice la ruta completa, lista lo que hay y la abre en el explorador. Con un fichero, te lo enseña: `python taller.py carpeta ej10 correo/aviso_seguridad.md` |
+| Quiero repetir un ejercicio desde el principio | `python taller.py empezar ej10 --de-cero` |
+| El agente dice *«No tengo acceso a tu correo electrónico»* (EJ 06–10) | Entiende «correos» como tu cuenta de correo real. Dile: «Son ficheros .eml de esta carpeta, en correo/bandeja/. Léelos con tus herramientas». Es la pieza **contexto** de un buen encargo |
 | F.3: he escrito `/informe-semanal` y no hace nada | Al escribir `/` sale una lista: el primer **Enter** elige el comando y el segundo **Enter** lo envía |
 
 ## Instalación

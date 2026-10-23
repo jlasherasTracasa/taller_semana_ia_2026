@@ -6,6 +6,7 @@
 - [🖥️ Modo interactivo](Modo-interactivo.md)
 - [🤖 Modelos](Modelos.md)
 - [🔑 Clave de clase](Clave-de-clase.md)
+- [🛡️ EJ 10 paso a paso](Prueba-de-seguridad.md)
 - [🎥 Demos del profesor](Demos.md)
 - [🆘 Plan B](Plan-B.md)
 - [🧭 Cómo funciona](Como-funciona.md)

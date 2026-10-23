@@ -167,3 +167,6 @@ Un buen agente lo trata como **dato**, no como **orden**:
 ![EJ 10: el agente detecta las instrucciones ocultas y no las sigue](img/demo_ej10_1.png)
 
 ![EJ 10: el comprobador, ningún borrador va al atacante](img/demo_ej10_2.png)
+
+Las tres fases (sin avisar, defensa y ataque), paso a paso y con lo que sale en pantalla:
+[🛡️ EJ 10 paso a paso](Prueba-de-seguridad.md).

@@ -4,6 +4,7 @@
   python taller.py                      perfiles, áreas, ejercicios y tu progreso
   python taller.py entorno              comprueba que tu ordenador está listo (y que el modelo responde)
   python taller.py empezar ej01         prepara la carpeta de trabajo y te explica la situación
+  python taller.py empezar ej01 --de-cero    borra tu carpeta de trabajo de ese ejercicio y la prepara otra vez
   python taller.py abrir ej01           abre opencode en MODO INTERACTIVO en esa carpeta: pega ahí el encargo
   python taller.py comprobar ej01       pasa el comprobador; si todo está bien, marca el ejercicio como completado
   python taller.py lanzar ej01          (alternativa) el encargo de una vez, sin conversar (guarda salida.txt)
@@ -11,6 +12,7 @@
   python taller.py abrir ej01 --modelo glm-5.3-flash-free     otro modelo gratuito (si el de siempre se agota)
   python taller.py ejecutar f0 react_min.py [args]   ejecuta un script del ejercicio con tu .env cargado
   python taller.py progreso             ejercicios completados y nivel alcanzado
+  python taller.py carpeta ej10 [sub]   dónde está tu carpeta de trabajo, qué hay dentro, y la abre en el explorador
 
 Modelo: sin clave, uno GRATUITO de opencode; con OPENROUTER_API_KEY en .env, GLM-5.3-Flash en OpenRouter.
 F.0 y F.1 (programas en Python) necesitan clave: OPENROUTER_API_KEY, o una gratuita de Groq (GROQ_API_KEY, recomendada) o Gemini (GEMINI_API_KEY).
@@ -31,7 +33,7 @@ GRATIS = "opencode/big-pickle"       # modelo gratuito de opencode por defecto (
 # Los gratuitos tienen un límite de uso POR MODELO: si uno lo agota, lanzar prueba el siguiente
 # Lista actual: https://opencode.ai/zen/v1/models (22-10-2026). El cupo es por modelo: si uno se agota, otro sigue
 GRATIS_OTROS = ["opencode/glm-5.3-flash-free", "opencode/deepseek-v4.1-flash-free", "opencode/mimo-v2.6-flash-free",
-                "opencode/flint-40b-free", "opencode/nemotron-3.5-super-vl-free"]
+                "opencode/flint-40b-free", "opencode/beam-free", "opencode/nemotron-3.5-super-vl-free"]
 OPENROUTER = "openrouter/z-ai/glm-5.3-flash"
 # Lo que dice opencode cuando un modelo gratuito agota su límite de uso (1.x y 2.x)
 LIMITE = ("Rate limit exceeded", "Free usage limit reached")
@@ -107,11 +109,15 @@ def config_opencode(ej, destino, env):
     json.dump(cfg, open(os.path.join(destino, "opencode.json"), "w", encoding="utf-8"), indent=2, ensure_ascii=False)
 
 
-def empezar(ej, silencioso=False):
+def empezar(ej, silencioso=False, de_cero=False):
     e, d, env = EJS[ej], carpeta(ej), cargar_env()
+    if de_cero and os.path.isdir(d):
+        shutil.rmtree(d)   # carpeta() ya garantiza que está en ~/taller-agentes y no dentro del kit
+        print(f"🧹 Borrada tu carpeta de trabajo de {e['num']}: empiezas de cero.")
     if os.path.exists(d):
         if not silencioso:
-            print(f"La carpeta {d} ya existe: la dejo como está (bórrala tú si quieres empezar de cero).")
+            print(f"La carpeta {d} ya existe: la dejo como está. Para empezar de cero:  "
+                  f"{PY} taller.py empezar {e['num_corto']} --de-cero")
     else:
         shutil.copytree(os.path.join(KIT, "ejercicios", ej), d)
         config_opencode(ej, d, env)
@@ -397,6 +403,43 @@ def progreso():
         print("\nAún no tienes nivel: el básico pide 3 ejercicios y la prueba de seguridad (EJ 10).")
 
 
+def ver_carpeta(ej, sub=""):
+    """Dice la ruta completa de la carpeta de trabajo (o de una subcarpeta), lista lo que hay y la abre."""
+    d = carpeta(ej)
+    if not os.path.isdir(d):
+        sys.exit(f"Aún no has empezado {EJS[ej]['num']}:  {PY} taller.py empezar {EJS[ej]['num_corto']}")
+    ruta = os.path.normpath(os.path.join(d, sub)) if sub else d
+    if not os.path.exists(ruta):
+        print(f"📁 {d}\n❌ Ahí dentro todavía no existe «{sub}» (¿ha terminado el agente?). Lo que hay:")
+        ruta = d
+    else:
+        print(f"📁 {ruta}")
+    if os.path.isfile(ruta):
+        print(open(ruta, encoding="utf-8", errors="replace").read())
+        return 0
+    for raiz, dirs, ficheros in os.walk(ruta):
+        dirs[:] = sorted(x for x in dirs if not x.startswith("."))
+        nivel = os.path.relpath(raiz, ruta).count(os.sep) + (0 if raiz == ruta else 1)
+        if nivel > 2:
+            continue
+        if raiz != ruta:
+            print("   " * (nivel - 1) + f"📂 {os.path.basename(raiz)}/")
+        for f in sorted(ficheros):
+            if not f.startswith("."):
+                print("   " * nivel + f"   {f}")
+    try:   # que se abra en el explorador de archivos, si hay pantalla (en Codespaces no la hay: basta con la lista)
+        if WIN:
+            os.startfile(ruta)
+        elif sys.platform == "darwin":
+            subprocess.Popen(["open", ruta])
+        elif os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY"):
+            subprocess.Popen(["xdg-open", ruta], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except OSError:
+        pass
+    print(f"\nPara leer un fichero:  {PY} taller.py carpeta {EJS[ej]['num_corto']} " + (sub.rstrip('/\\') + "/" if sub else "") + "<fichero>")
+    return 0
+
+
 def inicio():
     print(INDICE["prologo_corto"])
     print("Perfiles e itinerarios recomendados (puedes ir a cualquier ejercicio):\n")
@@ -427,6 +470,8 @@ if __name__ == "__main__":
         progreso()
     elif a[0] == "entorno":
         sys.exit(entorno("--sin-modelo" in a))
+    elif a[0] == "carpeta" and len(a) > 1:
+        sys.exit(ver_carpeta(buscar(a[1]), a[2] if len(a) > 2 else ""))
     elif a[0] == "ejecutar" and len(a) > 2:
         sys.exit(ejecutar(buscar(a[1]), a[2], a[3:]))
     elif a[0] in ("empezar", "lanzar", "abrir", "comprobar") and len(a) > 1:
@@ -437,6 +482,6 @@ if __name__ == "__main__":
             sys.exit(lanzar(ej, prompt, mod))
         if a[0] == "abrir":
             sys.exit(abrir(ej, mod))
-        sys.exit({"empezar": lambda x: (empezar(x), 0)[1], "comprobar": comprobar}[a[0]](ej))
+        sys.exit({"empezar": lambda x: (empezar(x, de_cero="--de-cero" in a), 0)[1], "comprobar": comprobar}[a[0]](ej))
     else:
         print(__doc__)

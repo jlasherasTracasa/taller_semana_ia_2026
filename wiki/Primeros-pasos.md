@@ -140,6 +140,7 @@ usaremos el modo interactivo: se ve mejor qué hace el agente y puedes aprobar p
 | Qué | Dónde |
 |---|---|
 | El kit (no lo toques) | `taller_semana_ia_2026/alumnos/` |
-| Tus carpetas de trabajo (copias) | `~/taller-agentes/<ejercicio>/` · en Windows, `C:\Users\<tú>\taller-agentes\` |
+| Tus carpetas de trabajo (copias) | `~/taller-agentes/<ejercicio>/` · en Windows, `C:\Users\<tú>\taller-agentes\`. La ruta exacta, lo que hay dentro y abrirla en el explorador: `python taller.py carpeta ej24` |
+| Empezar un ejercicio de cero | `python taller.py empezar ej24 --de-cero` (borra tu carpeta de trabajo de ese ejercicio y la prepara otra vez) |
 | Tu progreso | `~/taller-agentes/progreso.json` (`python taller.py progreso`) |
-| Lo que hizo el agente al validar | `alumnos/soluciones/<ejercicio>/` |
+| Una solución de ejemplo de cada ejercicio | `alumnos/soluciones/<ejercicio>/` |

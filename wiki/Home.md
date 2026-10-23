@@ -12,6 +12,7 @@ Las páginas de los pasos llevan **capturas de pantalla reales** para que se pue
 | 2 | [🚀 Primeros pasos](Primeros-pasos.md) | Comprobar el entorno y hacer tu primer ejercicio |
 | 3 | [🖥️ Modo interactivo](Modo-interactivo.md) | Cómo se usa opencode: pegar el encargo, aprobar permisos, teclas y comandos |
 | — | [🆘 Plan B](Plan-B.md) | Sin portátil o sin poder instalar: Codespaces en el navegador (con capturas), en pareja o «en seco» |
+| — | [🛡️ EJ 10 paso a paso](Prueba-de-seguridad.md) | La prueba de seguridad (obligatoria): las tres fases, con lo que sale en pantalla |
 | — | [🎥 Demos del profesor](Demos.md) | Las demos de clase paso a paso, con capturas reales: para repasarlas o por si falla el directo |
 
 ## Para entender
